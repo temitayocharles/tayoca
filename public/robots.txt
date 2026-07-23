@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Block non-content data files from indexing
+Disallow: /products-feed.csv
+
+# Sitemap
+Sitemap: https://tayoca.com/sitemap.xml

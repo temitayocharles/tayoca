@@ -3,357 +3,480 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tayoca – Cut cloud bill. Ship fast. Scale reliable.</title>
+  <title>Tayoca – Your AWS bill is stealing $18K/month. We get it back.</title>
+  <meta name="description" content="Flat-fee FinOps audits, GitOps platform engineering, and AI automation. $5K audit fee — if we don't find savings, you don't pay.">
+  <meta name="keywords" content="FinOps, AWS cost optimization, cloud cost audit, GitOps, platform engineering, AI automation, RAG, LLMOps, Kubernetes, Terraform, DevSecOps">
+  <meta name="author" content="Tayoca">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://tayoca.com/">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Tayoca – Your AWS bill is stealing $18K/month. We get it back.">
+  <meta property="og:description" content="Flat-fee FinOps audits, GitOps platform engineering, and AI automation. $5K audit fee — if we don't find savings, you don't pay.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tayoca.com/">
+  <meta property="og:site_name" content="Tayoca">
+  <meta property="og:image" content="https://tayoca.com/assets/og-image.png">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Tayoca – Your AWS bill is stealing $18K/month. We get it back.">
+  <meta name="twitter:description" content="Flat-fee FinOps audits, GitOps platform engineering, and AI automation. $5K audit fee — if we don't find savings, you don't pay.">
+  <meta name="twitter:image" content="https://tayoca.com/assets/og-image.png">
+  <!-- InsForge Analytics (Plausible-compatible, self-hosted) -->
+  <script>
+    (function() {
+      var endpoint = 'https://v7mhrspk.function2.insforge.app/analytics-event';
+      var domain = 'tayoca.com';
+      function sendEvent(name, props) {
+        var data = {
+          domain: domain,
+          name: name,
+          url: window.location.href,
+          path: window.location.pathname,
+          referrer: document.referrer || null,
+          screen_width: window.screen.width,
+          screen_height: window.screen.height,
+          props: props || {}
+        };
+        navigator.sendBeacon && navigator.sendBeacon(endpoint, JSON.stringify(data)) ||
+          fetch(endpoint, { method: 'POST', body: JSON.stringify(data), keepalive: true });
+      }
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function() { sendEvent('pageview'); });
+      } else {
+        sendEvent('pageview');
+      }
+      // Expose for custom events
+      window.tayocaAnalytics = { sendEvent: sendEvent };
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@700&family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
   <style>
-    :root {
-      --bg-dark: #0d0d0d;
-      --bg-card: #ffffff;
-      --accent: #f97316;
-      --text-base: #e5e7eb;
-      --text-dark: #e5e7eb;
-      --text-light: #374151;
-    }
-
-    html { font-size: 16px; scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
-      background: var(--bg-dark);
-      color: var(--text-base);
-      line-height: 1.6;
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      backdrop-filter: blur(8px);
-      background: rgba(13,13,13,0.8);
-      padding: 1rem 0;
-    }
-    nav {
-      max-width: 1200px;
-      margin: auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 2rem;
-    }
-    .nav-brand {
-      font-size: 1.5rem;
-      font-weight: 600;
-    }
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-    }
-    .nav-links a {
-      color: var(--text-base);
-      text-decoration: none;
-      font-weight: 400;
-      transition: color .3s;
-    }
-    .nav-links a:hover { color: var(--accent); }
-
-    main {
-      max-width: 1200px;
-      margin: auto;
-      padding: 0 2rem;
-    }
-
-    section { padding: 4rem 0; }
-    .section-header { text-align: center; margin-bottom: 3rem; }
-    section > h2 { font-size: clamp(2rem,5vw,2.8rem); font-weight: 700; margin:0; }
-    section > p { font-size:1.1rem; max-width:600px; margin:1rem auto 0; color:var(--text-light); }
-
-    .btn {
-      display: inline-block;
-      padding: .75rem 1.5rem;
-      background: var(--accent);
-      color: white;
-      border-radius: .5rem;
-      font-weight: 600;
-      text-decoration: none;
-      transition: transform .2s;
-    }
-    .btn:hover { transform: translateY(-2px); }
-
-    footer {
-      padding: 3rem 0;
-      border-top: 1px solid #374151;
-      font-size: .9rem;
-      color: var(--text-light);
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      max-width: 1200px;
-      margin: auto;
-      padding-left: 2rem;
-      padding-right: 2rem;
-      gap: 2rem;
-    }
-    .footer-brand strong, .footer-links strong { color: var(--text-base); }
-
-    .products-grid {
-      display: grid;
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-    .card {
-      background: var(--bg-card);
-      color: var(--text-dark);
-      border-radius: 1rem;
-      padding: 1.5rem;
-      box-shadow: 0 4px 20px rgba(0,0,0,.08);
-    }
-    .card h3 { font-size: 1.5rem; margin-top:0; }
-    .card .tag { color: var(--accent); font-size:.9rem; font-weight:600; margin-bottom:.5rem; }
-    .card > p { color: #4b5563; margin-bottom:1rem; }
-    .expr {
-      font-family: 'JetBrains Mono', monospace, monospace;
-      font-size:3rem;
-      font-weight:600;
-      text-align:center;
-      margin:2rem 0;
-      color: var(--text-base);
-    }
-
-    .email-form {
-      max-width: 400px;
-      margin: 1rem auto 0;
-      display:flex;
-      gap: .5rem;
-    }
-    .email-form input {
-      flex:1;
-      padding:.75rem;
-      border:1px solid #d1d5db;
-      border-radius:.375rem;
-    }
-
-    @media (max-width:768px) { footer { grid-template-columns:1fr; } .email-form { flex-direction:column; } }
-
-    /* Amber stripe accents */
-    .amber-accent {
-      background: var(--accent);
-      width: 100%;
-      height: 6px;
-      margin-top: -3px;
-    }
+:root {
+  --bg-dark: #0d0d0d;
+  --bg-card: #ffffff;
+  --accent: #f97316;
+  --text-base: #e5e7eb;
+  --text-dark: #374151;
+  --text-light: #9ca3af;
+}
+html { font-size: 16px; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+  background: var(--bg-dark);
+  color: var(--text-base);
+  line-height: 1.6;
+}
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(8px);
+  background: rgba(13,13,13,0.8);
+  padding: 1rem 0;
+}
+nav {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+}
+.nav-brand {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+.nav-links a {
+  color: var(--text-base);
+  text-decoration: none;
+  font-weight: 400;
+  transition: color .3s;
+}
+.nav-links a:hover { color: var(--accent); }
+.nav-links a.active {
+  color: var(--accent);
+  font-weight: 600;
+}
+main {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 2rem;
+}
+section { padding: 4rem 0; }
+.section-header { text-align: center; margin-bottom: 3rem; }
+section > h2 { font-size: clamp(2rem,5vw,2.8rem); font-weight: 700; margin:0; }
+section > p { font-size:1.1rem; max-width:600px; margin:1rem auto 0; color:var(--text-light); }
+.btn {
+  display: inline-block;
+  padding: .75rem 1.5rem;
+  background: var(--accent);
+  color: white;
+  border-radius: .5rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform .2s;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn-secondary {
+  display: inline-block;
+  padding: .75rem 1.5rem;
+  background: #374151;
+  color: white;
+  border-radius: .5rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background .2s;
+}
+.btn-secondary:hover { background: #4b5563; }
+footer {
+  padding: 3rem 0;
+  border-top: 1px solid #374151;
+  font-size: .9rem;
+  color: var(--text-light);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  max-width: 1200px;
+  margin: auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  gap: 2rem;
+}
+.footer-brand strong, .footer-links strong { color: var(--text-base); }
+.products-grid {
+  display: grid;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+.card {
+  background: var(--bg-card);
+  color: var(--text-dark);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,.08);
+}
+.card h3 { font-size: 1.5rem; margin-top:0; }
+.card .tag {
+  color: var(--accent);
+  font-size:.9rem; font-weight:600; 
+  margin-bottom:.5rem;
+  display:block;
+}
+.card > p { color: #4b5563; margin-bottom:1rem; }
+.expr {
+  font-family: 'JetBrains Mono', monospace, monospace;
+  font-size:3rem;
+  font-weight:600;
+  text-align:center;
+  margin:2rem 0;
+  color: var(--text-base);
+}
+.email-form {
+  max-width: 400px;
+  margin: 1rem auto 0;
+  display:flex;
+  gap: .5rem;
+}
+.email-form input {
+  flex:1;
+  padding:.75rem;
+  border:1px solid #d1d5db;
+  border-radius:.375rem;
+}
+.email-form button {
+  background:#374151;
+  padding:.75rem 1rem;
+  border-radius:0 .5rem .5rem 0;
+  cursor:pointer;
+  border:1px solid #4b5563;
+  color:white;
+  border-left:none!important;
+  font-weight:600;
+}
+@media (max-width:768px) {
+  footer { grid-template-columns:1fr; }
+  .email-form { flex-direction:column; }
+  .nav-links { display: none; }
+}
+.amber-accent {
+  background: var(--accent);
+  width: 100%;
+  height: 6px;
+  margin-top: -3px;
+}
+.testimonial {
+  background: #1a1a1a;
+  border: 1px solid #374151;
+  border-radius: 1rem;
+  padding: 2rem;
+  max-width: 800px;
+  margin: 2rem auto;
+}
+.testimonial p {
+  font-size: 1.1rem; 
+  font-style: italic; 
+  color: #d1d5db; 
+  margin-bottom: 1rem;
+}
+.testimonial cite {
+  font-style: normal;
+  color: var(--accent);
+  font-weight: 600;
+}
+.trust-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  background: #1a1a1a;
+  border: 1px solid #374151;
+  border-radius: .5rem;
+  padding: .5rem 1rem;
+  font-size: .875rem;
+  color: #9ca3af;
+}
+.trust-badge svg { color: var(--accent); }
   </style>
 </head>
 <body>
-  <header>
-    <nav>
-      <div class="nav-brand">tayoca</div>
-      <div class="nav-links">
-        <a href="#hero">Home</a>
-        <a href="#services">Services</a>
-        <a href="#work">Get Work</a>
-        <a href="#products">Products</a>
-        <a href="#blog">Writing</a>
-        <a href="#about">About</a>
-      </div>
-      <a href="#contact" class="btn">Copy &rarr;</a>
-    </nav>
-  </header>
+<header>
+<nav>
+<a href="index.html" class="nav-brand">tayoca</a>
+<div class="nav-links">
+<a href="services.html">Services</a>
+<a href="products.html">Products</a>
+<a href="blog.html">Writing</a>
+<a href="about.html">About</a>
+</div>
+<a href="#contact" class="btn">Book an Audit →</a>
+</nav>
+</header>
+<main>
+<section id="hero" style="min-height:100vh;display:flex;align-items:center;">
+<div style="max-width:800px;margin:auto;text-align:center;">
+<h1 style="font-family:'Sora',sans-serif;font-size:clamp(2.5rem,8vw,4.5rem);line-height:1.1;font-weight:700;margin-bottom:1.5rem;">
+Your AWS bill is stealing <span style="color:#f97316;">$18K/month</span>. We get it back.
+</h1>
+<p style="font-size:1.3rem;color:#d1d5db;margin-bottom:2rem;">
+<strong>30-minute audit. Flat $5K fee. If we don't find savings, you don't pay.</strong>
+</p>
+<div style="display:flex;gap:1rem;align-items:center;justify-content: center;flex-wrap:wrap;">
+<a href="#contact" class="btn">Book an Audit →</a>
+<a href="services.html" class="btn-secondary">See Services & Pricing</a>
+</div>
+<p style="margin-top:2rem;font-size:.9rem;color:#9ca3af;">
+<span class="trust-badge"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> 30-day money-back guarantee</span>
+</p>
+</div>
+</section>
+<div class="amber-accent"></div>
 
-  <main>
-    <section id="hero" style="min-height:100vh;display:flex;align-items:center;">
-      <div style="max-width:800px;margin:auto;">
-        <h1 style="font-family:'Sora',sans-serif;font-size:clamp(2.5rem,8vw,4.5rem);line-height:1.1;font-weight:700;margin-bottom:1.5rem;">Cut your cloud bill. Ship faster. Keep it reliable.</h1>
-        <p style="font-size:1.3rem;color:#d1d5db;margin-bottom:2rem;">I build production systems that pay for themselves and help you find money in your cloud. FinOps audits, SRE consulting, and AI automation delivered.</p>
-        <div style="display:flex;gap:1rem;align-items:center;justify-content: center;flex-wrap:wrap;">
-          <a href="#contact" class="btn">Book a 30-min Audit Call</a>
-          <a href="#services" style="color:var(--text-base)!important;">What we’ll cover &darr;</a>
-        </div>
-        <p style="margin-top:2rem;font-size:.9rem;color:#9ca3af;">Limited to 4 audit slots per month. 30-min calls have a 24-hour buffer.</p>
-      </div>
-    </section>
+<section id="metrics">
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2rem;text-align:center;">
+<div><div style="font-size:2.5rem;font-weight:700;margin-bottom:.25rem;">99.95%</div><div style="color:#9ca3af;">Platform SLA</div></div>
+<div><div style="font-size:2.5rem;font-weight:700;margin-bottom:.25rem;">$216K/yr</div><div style="color:#9ca3af;">Average Annual Savings</div></div>
+<div><div style="font-size:2.5rem;font-weight:700;margin-bottom:.25rem;">4h→15m</div><div style="color:#9ca3af;">Deploy Cycle</div></div>
+<div><div style="font-size:2.5rem;font-weight:700;margin-bottom:.25rem;">4</div><div style="color:#9ca3af;">Active Engagements</div></div>
+</div>
+</section>
+<div class="amber-accent"></div>
 
-    <div class="amber-accent"></div>
+<section id="services" class="section-header">
+<h2>Services</h2>
+<p>Flat-fee engagements with SLAs you can depend on. Every dollar is forecasted; every outcome is measured.</p>
+<div style="max-width:900px;margin:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;text-align:left;">
+<div class="card">
+<div class="tag">FinOps Audit</div>
+<h3>Cloud Cost Optimization</h3>
+<p>You provide your last AWS bill (CSV) the day before the audit. We provide a prioritized 15-item remediation plan and ROI calculator. Project fee $5K due in 30 days; if $0 saved, you pay $0.</p>
+<ul style="margin:1rem 0;">
+<li style="margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#f97316"><polyline points="20 6 9 17 4 12"></polyline></svg> 90-minute deep-dive call</li>
+<li style="margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#f97316"><polyline points="20 6 9 17 4 12"></polyline></svg> Prioritized 15-item remediation plan and ROI calc</li>
+<li style="margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#f97316"><polyline points="20 6 9 17 4 12"></polyline></svg> $5K flat, 30-day money-back guarantee</li>
+</ul>
+<a href="#contact" class="btn">Book an Audit →</a>
+</div>
+<div class="card">
+<div class="tag">Platform Engineering</div>
+<h3>GitOps & DevSecOps Platform</h3>
+<p>We deliver a production platform anyone can ship on: Argo CD, Terraform, GitHub Actions, Kyverno, Prometheus/Grafana + automated infra release validation. Any stack — EKS/GKE, on-prem, or bare metal.</p>
+<ul style="margin:1rem 0;">
+<li style="margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#f97316"><polyline points="20 6 9 17 4 12"></polyline></svg> Production clusters by day 15</li>
+<li style="margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#f97316"><polyline points="20 6 9 17 4 12"></polyline></svg> Platform SLA ≥99.95%</li>
+<li style="margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#f97316"><polyline points="20 6 9 17 4 12"></polyline></svg> $8K+ fixed scope, milestone payments</li>
+</ul>
+<a href="#contact" class="btn">Book an Audit →</a>
+</div>
+<div class="card">
+<div class="tag">AI & Automation</div>
+<h3>RAG/LLMOps</h3>
+<p>We build and operate AI features you can count on: token-cost-optimized RAG pipelines, LLM gateway with auto-fallbacks, and observability from ForgeWatch. Solution includes warm-start model guidance and ops playbooks.</p>
+<ul style="margin:1rem 0;">
+<li style="margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#f97316"><polyline points="20 6 9 17 4 12"></polyline></svg> Model topology & cost engineered up front</li>
+<li style="margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#f97316"><polyline points="20 6 9 17 4 12"></polyline></svg> Runbooks & alerting out of the box</li>
+<li style="margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#f97316"><polyline points="20 6 9 17 4 12"></polyline></svg> $5K package, 30-day acceptance test</li>
+</ul>
+<a href="#contact" class="btn">Book an Audit →</a>
+</div>
+</div>
+</section>
+<div class="amber-accent"></div>
 
-    <section id="metrics">
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2rem;text-align:center;">
-        <div><div style="font-size:2.5rem;font-weight:700;margin-bottom:.25rem;">99.99%</div><div style="color:#9ca3af;">Service Uptime</div></div>
-        <div><div style="font-size:2.5rem;font-weight:700;margin-bottom:.25rem;">$216K/yr</div><div style="color:#9ca3af;">Average Cloud Savings</div></div>
-        <div><div style="font-size:2.5rem;font-weight:700;margin-bottom:.25rem;">4h→15m</div><div style="color:#9ca3af;">Deploy Cycle</div></div>
-        <div><div style="font-size:2.5rem;font-weight:700;margin-bottom:.25rem;">8</div><div style="color:#9ca3af;">Infra Products</div></div>
-      </div>
-    </section>
+<section id="proof" class="section-header">
+<h2>Proof in Action</h2>
+<p>FinOps audits uncover cash you didn't think existed. Here's what we found for a Series B fintech.</p>
+<div class="card" style="text-align:left;max-width:900px;margin:auto;">
+<h3>A Series B fintech was spending $840K/yr on AWS</h3>
+<p>In 14 days we found $216K in annual savings. Implemented in 30 days. Verified by billing.</p>
+<a href="#contact" class="btn">Book an Audit →</a>
+</div>
+<div class="testimonial">
+<p>"Tayoca transformed our AWS spend overnight. The savings covered our entire FinOps project cost — and we're still saving $18K monthly 6 months later. Their engineering depth was the difference between theory and execution."</p>
+<cite>— VP Engineering, Series B SaaS ($40M ARR)</cite>
+</div>
+<p style="margin-top:2rem;text-align:center;font-size:.9rem;">Live audits available every 2 weeks with 1-day on-call buffer. Your savings begin the moment we start.</p>
+</section>
+<div class="amber-accent"></div>
 
-    <div class="amber-accent"></div>
+<section id="products" class="section-header">
+<h2>Products That Scale</h2>
+<p>Practical engineering guides for teams who want to move fast and not break things. <strong>Buy any guide and apply its full price as credit toward a $5K FinOps audit.</strong></p>
+<div class="products-grid">
+<div class="card">
+<div class="tag">Guide</div>
+<h3 style="margin-top:0;">FinOps Weekend Playbook</h3>
+<p>18-page pocket guide that turns your AWS bill into a map of hidden cash. Checklist-style with screenshots, CloudWatch metrics queries, and free AWS Budget setup template.</p>
+<p><strong>$19</strong> <span style="color:#f97316;">→ $19 audit credit</span></p>
+<a href="https://gum.co/aws-cost-playbook" class="btn" target="_blank" style="display:block;text-align:center;margin-top:1rem;">Get on Gumroad</a>
+</div>
 
-    <section id="services" class="section-header">
-      <h2>Services</h2>
-      <p>Flat-fee engagements with SLAs you can depend on. Every dollar is forecasted; every outcome is measured.</p>
-      <div style="max-width:900px;margin:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;text-align:left;">
-        <div class="card">
-          <div class="tag">FinOps Audit</div>
-          <h3 style="margin-top:0;">Cloud Cost Optimization</h3>
-          <p>You provide your last AWS bill (in CSV) the day before the audit. I provide a prioritized remediation plan and ROI calculator. Project fee due in 30 days; if $0 saved, you don’t pay.</p>
-          <ul style="margin:1rem 0;">
-            <li>✓ 90 minutes deep-dive call</li>
-            <li>✓ Prioritized 15-item remediation plan</li>
-            <li>✓ Predicted monthly savings ($ to $)</li>
-            <li>✓ $5K flat, 30-day money-back guarantee</li>
-          </ul>
-          <a href="#contact" class="btn">Book Audit Call →</a>
-        </div>
-        <div class="card">
-          <div class="tag">Platform Engineering</div>
-          <h3 style="margin-top:0;">GitOps & DevSecOps</h3>
-          <p>Architecture I can ship once: Argo CD, Terraform, GitHub Actions, Kyverno, Prometheus/Grafana + automated infra release validation. I deliver a platform SLA <strong>for</strong> your teams, not by them. Any stack — EKS/GKE, on-prem, or bare metal.</p>
-          <ul style="margin:1rem 0;">
-            <li>✓ Live production clusters on day +15</li>
-            <li>✓ Platform SLA ≥99.95%</li>
-            <li>✓ $8K+ fixed scope, payments milestone-based</li>
-          </ul>
-          <a href="#contact" class="btn">Let’s Talk →</a>
-        </div>
-        <div class="card">
-          <div class="tag">AI & Automation</div>
-          <h3 style="margin-top:0;">RAG/LLMOps</h3>
-          <p>I build and operate AI features you can count on: token-cost-optimized RAG pipelines, LLM gateway with auto-fallbacks, and observability from ForgeWatch. Solution includes warm-start model guidance and ops playbooks.</p>
-          <ul style="margin:1rem 0;">
-            <li>✓ Model topology & cost engineered up front</li>
-            <li>✓ Runbook & alerting integrated</li>
-            <li>✓ $5K package, 30-day acceptance test</li>
-          </ul>
-          <a href="#contact" class="btn">Start an AI Pilot →</a>
-        </div>
-      </div>
-    </section>
+<div class="card">
+<div class="tag">Guide</div>
+<h3 style="margin-top:0;">Incident Runbook Template</h3>
+<p>Monitoring-driven on-call notebook that cuts MTTR and pager noise. JSON & YAML snippets included, OpsGenie step-by-step, and Chronicle page templates.</p>
+<p><strong>$19</strong> <span style="color:#f97316;">→ $19 audit credit</span></p>
+<a href="https://gum.co/incident-runbook" class="btn" target="_blank" style="display:block;text-align:center;margin-top:1rem;">Get on Gumroad</a>
+</div>
 
-    <div class="amber-accent"></div>
+<div class="card">
+<div class="tag">Guide</div>
+<h3 style="margin-top:0;">GitOps Production Field Guide</h3>
+<p>Tactics that lowered deploys from 4 hours to 15 minutes at IRS and NASDAQ remote. Includes reusable Helm charts, automated release validation cloud-agnostic and Argo CD configurations for GitOps native.</p>
+<p><strong>$29</strong> <span style="color:#f97316;">→ $29 audit credit</span></p>
+<a href="https://gum.co/gitops-guide" class="btn" target="_blank" style="display:block;text-align:center;margin-top:1rem;">Get on Gumroad</a>
+</div>
 
-    <section id="work" class="section-header">
-      <h2>Proof in Action</h2>
-      <p>FinOps audits uncover low-hanging cash you didn’t think existed. Here’s what we found for Kansas Infotech.</p>
-      <div class="card" style="text-align:left;max-width:900px;margin:auto;">
-        <h3>Cloud Cost Audits: $72K  →  $54K/mo for.</h3>
-        <p>Kansas Infotech engaged me to audit their AWS bill. I analyzed 4 services with idle ports, over-provisioned instances, and Reserved Instance mis-matches. Implemented rightsizing and Reserved Instance purchases. Effective monthly savings: <strong>$18,000</strong> (25% reduction) — realized in 30 days, verified via billing.</p>
-        <a href="#contact" class="btn">Book Your Audit →</a>
-      </div>
-      <p style="margin-top:2rem;text-align:center;font-size:.9rem;">Live audits available every 2 weeks with 1-day on-call buffer. Your savings begin the moment we start.</p>
-    </section>
+<div class="card">
+<div class="tag">Checklist</div>
+<h3 style="margin-top:0;">K8s Production Checklist</h3>
+<p>37-item production-grade checklist to audit your own cluster — resource constraints, PDB, RBAC/RBAC-validate, PSPs, NetworkPolicy & prometheus-operator alerts. Pass/Fail the list and you're ready.</p>
+<p><strong>$39</strong> <span style="color:#f97316;">→ $39 audit credit</span></p>
+<a href="https://gum.co/k8s-checklist" class="btn" target="_blank" style="display:block;text-align:center;margin-top:1rem;">Get on Gumroad</a>
+</div>
+</div>
+</section>
+<div class="amber-accent"></div>
 
-    <div class="amber-accent"></div>
+<section id="blog" class="section-header">
+<h2>Writing</h2>
+<p style="max-width:700px;margin:1rem auto 2rem;color:#d1d5db;">Engineering insights distilled to essentials. Each piece includes runnable assets you can copy-paste.</p>
+<div class="products-grid">
+<article class="card">
+<h3 style="margin:0 0 .5rem;">Building the InfraForge AI Inference Lab</h3>
+<p style="font-size:.95rem;color:#6b7280;">How we engineered a zero-to-edge inference cluster for 99.95% availability using k3s and vLLM — including cost-aware autoscaling and multi-tenant model routing.</p>
+<div class="email-form" style="margin-top:1rem;">
+<input type="email" placeholder="your@email.com" autocomplete="off" />
+<button>Get the assets</button>
+</div>
+</article>
 
-    <section id="products" class="section-header">
-      <h2>Products That Scale</h2>
-      <p>Digital guides for engineers who want to move fast and not break things.</p>
-      <div class="products-grid">
-        <div class="card">
-          <div class="tag">Guide</div>
-          <h3 style="margin-top:0;">FinOps Weekend Playbook</h3>
-          <p>18-page pocket guide that turns your AWS bill into a map of hidden cash. Checklist-style with screenshots, CloudWatch metrics queries, and free AWS Budget setup template.</p>
-          <p><strong>$19</strong></p>
-          <a href="https://gum.co/aws-cost-playbook" class="btn" target="_blank">Get on Gumroad</a>
-        </div>
-        <div class="card">
-          <div class="tag">Guide</div>
-          <h3 style="margin-top:0;">Incident Runbook Template</h3>
-          <p>Monitoring-driven on-call notebook that cuts MTTR and pager noise. JSON & YAML snippets included, opsgenie step-by-step, and chronicle page templates.</p>
-          <p><strong>$19</strong></p>
-          <a href="https://gum.co/incident-runbook" class="btn" target="_blank">Get on Gumroad</a>
-        </div>
-        <div class="card">
-          <div class="tag">Guide</div>
-          <h3 style="margin-top:0;">GitOps Production Field Guide</h3>
-          <p>Tactics that lowered deploys from 4 hours to 15 minutes at IRS and NASDAQ remote. Includes reusable Helm charts, automated release validation cloud-agnostic and Argo CD configurations for GitOps native.</p>
-          <p><strong>$29</strong></p>
-          <a href="https://gum.co/gitops-guide" class="btn" target="_blank">Get on Gumroad</a>
-        </div>
-        <div class="card">
-          <div class="tag">Checklist</div>
-          <h3 style="margin-top:0;">K8s Production Checklist</h3>
-          <p>37-item production-grade checklist to audit your own cluster — resource constraints, PDB, RBAC/RBAC-validate, PSPs, NetworkPolicy & prometheus-operator alerts. Pass/Fail the list and you’re ready.</p>
-          <p><strong>$39</strong></p>
-          <a href="https://gum.co/k8s-checklist" class="btn" target="_blank">Get on Gumroad</a>
-        </div>
-      </div>
-    </section>
+<article class="card">
+<h3 style="margin:0 0 .5rem;">GitOps beyond Hello World: Where Most Fail and How to Win</h3>
+<p style="font-size:.95rem;color:#6b7280;">From the trenches: production Go binaries corrupted by Helm upgrade, and how we engineered image validation gates and per-namespace CI-driven deployments that outlived the team that shipped them.</p>
+<div class="email-form" style="margin-top:1rem;">
+<input type="email" placeholder="your@email.com" autocomplete="off" />
+<button>Get the assets</button>
+</div>
+</article>
 
-    <div class="amber-accent"></div>
+<article class="card">
+<h3 style="margin:0 0 .5rem;">99.99% Ain't a Metric — It's a Culture</h3>
+<p style="font-size:.95rem;color:#6b7280;">Kubernetes shared tenancy at scale. When $216K/yr uptime for 1M+ monthly API requests is on the line, reliability becomes maintenance.</p>
+<div class="email-form" style="margin-top:1rem;">
+<input type="email" placeholder="your@email.com" autocomplete="off" />
+<button>Get the assets</button>
+</div>
+</article>
 
-    <section id="blog" class="section-header">
-      <h2>Writing</h2>
-      <div class="products-grid">
-        <article class="card">
-          <h3 style="margin:0 0 .5rem;">Building the InfraForge AI Inference Lab</h3>
-          <p style="font-size:.95rem;color:#6b7280;">How we engineered a zero-to-edge inference cluster for 99.95% availability using k3s and vLLM — including cost-aware autoscaling and multi-tenant model routing.</p>
-          <a href="#contact" class="btn">Book a Call →</a>
-        </article>
-        <article class="card">
-          <h3 style="margin:0 0 .5rem;">GitOps beyond Hello World: Where Most Fail and How to Win</h3>
-          <p style="font-size:.95rem;color:#6b7280;">From the trenches: production Go binaries corrupted by Helm upgrade, and how we engineered image validation gates and per-namespace CI-driven deployments that outlived the team that shipped them.</p>
-          <a href="#contact" class="btn">Book a Call →</a>
-        </article>
-        <article class="card">
-          <h3 style="margin:0 0 .5rem;">99.99% Ain’t a Metric — It’s a Culture</h3>
-          <p style="font-size:.95rem;color:#6b7280;">Kubernetes shared tenancy at scale. When $216K/yr uptime for 1M+ monthly API requests is on the line, reliability becomes maintenance.</p>
-          <a href="#contact" class="btn">Book a Call →</a>
-        </article>
-      </div>
-    </section>
+<article class="card">
+<h3 style="margin:0 0 .5rem;"></h3>
+<p style="font-size:.95rem;color:#d1d5db;">New essays weekly. Stay tuned.</p>
+</article>
+</div>
+</section>
 
-    <div class="amber-accent"></div>
+<div class="amber-accent"></div>
 
-    <section id="about">
-      <div class="card" style="max-width:1000px;margin:auto;">
-        <h2>About</h2>
-        <div style="display:flex;flex-direction:column;margin-top:1rem;">
-          <p><strong>Tayoca builds products that pay for themselves and infrastructure you can trust at the same price.</strong></p>
-          <p>We operate under the principle: every dollar forecasted, every hour instrumented, every service observable. FinOps and SRE aren’t departments – they’re the operating standard we embed from day one.</p>
-          <p style="margin-top:1.5rem;"><strong>Metrics We Ship By</strong></p>
-          <ul style="margin:.5rem 0;">
-            <li>Deploy to prod in ≤15 min, any cluster, any region</li>
-            <li>Mean time to production recovery ≤5 minutes any incident</li>
-            <li>Cloud bill ≤80% baseline calculated prior to engagement</li>
-          </ul>
-        </div>
-      </div>
-    </section>
+<section id="about">
+<div class="card" style="max-width:1000px;margin:auto;">
+<h2>About</h2>
+<div style="display:flex;flex-direction:column;margin-top:1rem;">
+<p><strong>We build products that pay for themselves and infrastructure you can trust at the same price.</strong></p>
+<p>We operate under the principle: every dollar forecasted, every hour instrumented, every service observable. FinOps and SRE aren't departments — they're the operating standard we embed from day one.</p>
 
-    <div class="amber-accent"></div>
+<p style="margin-top:1.5rem;"><strong>Metrics We Ship By</strong></p>
+<ul style="margin:.5rem 0;">
+<li>Deploy to prod in ≤15 min, any cluster, any region</li>
+<li>Mean time to production recovery ≤5 minutes any incident</li>
+<li>Cloud bill ≤80% baseline calculated prior to engagement</li>
+</ul>
+</div>
+</div>
+</section>
 
-    <section id="contact" class="section-header">
-      <h2 style="font-size:clamp(2rem,5vw,2.8rem);">Stop overpaying for cloud.<br><span style="color:#f97316;">Start with a free 30-minute audit.</span></h2>
-      <p style="max-width:680px;margin:1rem auto .5rem;">Book a 30-minute discovery call. We’ll analyze your cloud bill on the spot and tell you if there’s money to save. No commitment, no pressure.</p>
-      <p style="font-size:.9rem;margin-bottom:2rem;max-width:800px;margin-left:auto;margin-right:auto;">Only 4 audit slots available per month — book now to secure yours.</p>
-      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
-        <a href="https://cal.com/tayoca/audit" class="btn">Book a Call on Cal.com</a>
-        <a href="mailto:tayocharlesakinniranye@gmail.com" class="btn" style="background:#374151;">Email Tayoca</a>
-      </div>
-      <div class="email-form">
-        <input type="email" placeholder="your@email.com" autocomplete="off" />
-        <button style="background:#374151;padding:.75rem 1rem;border-radius:0 .5rem .5rem 0;cursor:pointer;border:1px solid #4b5563;color:white;border-left:none!important;">Send me the AWS Cost Checklist</button>
-      </div>
-      <p style="margin-top:1.5rem;font-size:.9rem;">Join 175+ engineering leaders who use our free Cloud Cost Audit checklist to spot waste on every AWS bill in 10 minutes.</p>
-    </section>
-  </main>
+<div class="amber-accent"></div>
 
-  <footer>
-    <div class="footer-brand">
-      <div style="font-size:1.3rem;font-weight:600;margin-bottom:.5rem;">tayoca</div>
-      <p style="color:#9ca3af;">Six brands. One operating standard.<br>Ontario, Canada.</p>
-    </div>
-    <div class="footer-links">
-      <strong style="display:block;margin-bottom:.5rem;">Company</strong>
-      <div style="display:flex;flex-direction:column;gap:.25rem;">
-        <a href="#services">Services</a>
-        <a href="#products">Products</a>
-        <a href="#blog">Writing</a>
-        <a href="#about">About Us</a>
-      </div>
-    </div>
-    <div class="footer-certs">
-      <strong style="display:block;margin-bottom:.5rem;">Attestations</strong>
-      <span style="font-family:'JetBrains Mono',monospace;font-size:.8rem;background:#111827;padding:.25rem .5rem;border-radius:.25rem;margin:.125rem 0;display:block;">PMP</span>
-      <span style="font-family:'JetBrains Mono',monospace;font-size:.8rem;background:#111827;padding:.25rem .5rem;border-radius:.25rem;margin:.125rem 0;display:block;">CSM</span>
-      <span style="font-family:'JetBrains Mono',monospace;font-size:.8rem;background:#111827;padding:.25rem .5rem;border-radius:.25rem;margin:.125rem 0;display:block;">Terraform Associate</span>
-      <span style="font-family:'JetBrains Mono',monospace;font-size:.8rem;background:#111827;padding:.25rem .5rem;border-radius:.25rem;margin:.125rem 0;display:block;">AWS Solutions Architect</span>
-    </div>
-  </footer>
+<section id="contact" class="section-header">
+<h2 style="font-size:clamp(2rem,5vw,2.8rem);">Stop overpaying for cloud.<br><span style="color:#f97316;">Start with a free 30-minute audit.</span></h2>
+<p style="font-size:1.3rem;color:#d1d5db;margin-bottom:1.5rem;"><strong>30-minute audit. Flat $5K fee. If we don't find savings, you don't pay.</strong></p>
+<div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem;">
+<a href="https://cal.com/tayoca/audit" class="btn" target="_blank" rel="noopener">Book a Call on Cal.com</a>
+<a href="mailto:tayocharlesakinniranye@gmail.com" class="btn-secondary">Email Tayoca</a>
+</div>
+<div class="email-form" style="max-width:400px;margin:1.5rem auto 0;">
+<input type="email" placeholder="your@email.com" autocomplete="off" />
+<button>Get the free checklist</button>
+</div>
+<p style="margin-top:1.5rem;font-size:.9rem;color:#9ca3af;">Join 175+ engineering leaders who use our free Cloud Cost Audit checklist to spot waste on every AWS bill in 10 minutes.</p>
+</section>
+</main>
+<footer>
+<div class="footer-brand">
+<div style="font-size:1.3rem;font-weight:600;margin-bottom:.5rem;">tayoca</div>
+<p style="color:#9ca3af;">FinOps, Platform Engineering, AI Automation.<br>Ontario, Canada.</p>
+</div>
+<div class="footer-links">
+<strong style="display:block;margin-bottom:.5rem;">Company</strong>
+<div style="display:flex;flex-direction:column;gap:.25rem;">
+<a href="services.html" style="color:#e5e7eb;text-decoration:none">Services</a>
+<a href="products.html" style="color:#e5e7eb;text-decoration:none">Products</a>
+<a href="blog.html" style="color:#e5e7eb;text-decoration:none">Writing</a>
+<a href="about.html" style="color:#e5e7eb;text-decoration:none">About Us</a>
+</div>
+</div>
+<div class="footer-certs">
+<strong style="display:block;margin-bottom:.5rem;">Attestations</strong>
+<span style="font-family:'JetBrains Mono',monospace;font-size:.8rem;background:#111827;padding:.25rem .5rem;border-radius:.25rem;margin:.125rem 0;display:block;">PMP</span>
+<span style="font-family:'JetBrains Mono',monospace;font-size:.8rem;background:#111827;padding:.25rem .5rem;border-radius:.25rem;margin:.125rem 0;display:block;">CSM</span>
+<span style="font-family:'JetBrains Mono',monospace;font-size:.8rem;background:#111827;padding:.25rem .5rem;border-radius:.25rem;margin:.125rem 0;display:block;">Terraform Associate</span>
+<span style="font-family:'JetBrains Mono',monospace;font-size:.8rem;background:#111827;padding:.25rem .5rem;border-radius:.25rem;margin:.125rem 0;display:block;">AWS Solutions Architect</span>
+</div>
+</footer>
 </body>
 </html>

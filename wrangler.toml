@@ -1,0 +1,23 @@
+name = "tayoca-www"
+compatibility_date = "2025-07-23"
+
+# Pages project configuration
+# This tells Cloudflare Pages where to find Functions
+
+pages_project = true
+
+# Environment variables for Cloudflare Pages
+# These will be set in the Cloudflare Pages UI or via CLOUDFLARE_API_TOKEN
+
+[vars]
+INSFORGE_API_BASE = "https://v7mhrspk.us-east.insforge.app"
+INSFORGE_PROJECT_ID = "tayoca-newsletter"
+
+# Note: INSFORGE_API_KEY is a secret and should be set in Cloudflare Pages "Environment variables" section under "Production variables" or "Preview variables"
+# It should NOT be committed to version control
+
+# For local development, the .env.local file will be used
+
+# To deploy:
+# 1. Set INSFORGE_API_KEY in Cloudflare Pages environment variables
+# 2. Run: npx wrangler pages publish public --branch main

@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GitOps Beyond Hello World – Practical Patterns Tayoca Runs in Production – Tayoca</title>
+  <meta name="description" content="Practical GitOps patterns beyond the basics: surviving Helm upgrade corruption, image validation gates, per-namespace CI-driven deployments, and hardened Argo CD ApplicationSet configurations.">
+  <meta name="keywords" content="GitOps production patterns, Argo CD, Argo CD ApplicationSet, Helm upgrade corruption, image validation gates, per-namespace deployment, CI-driven GitOps, Kubernetes delivery">
+  <meta name="author" content="Tayoca">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://tayoca.com/blog/gitops-beyond-hello-world.html">
+  <link rel="icon" href="../favicon.ico" type="image/x-icon">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="GitOps Beyond Hello World – Practical Patterns Tayoca Runs in Production">
+  <meta property="og:description" content="Practical GitOps patterns beyond the basics: surviving Helm upgrade corruption, image validation gates, per-namespace CI-driven deployments, and hardened Argo CD ApplicationSet configurations.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://tayoca.com/blog/gitops-beyond-hello-world.html">
+  <meta property="og:site_name" content="Tayoca">
+  <meta property="og:image" content="https://tayoca.com/assets/og-image.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="GitOps Beyond Hello World – Practical Patterns Tayoca Runs in Production">
+  <meta name="twitter:description" content="Practical GitOps patterns beyond the basics: surviving Helm upgrade corruption, image validation gates, per-namespace CI-driven deployments, and hardened Argo CD ApplicationSet configurations.">
+  <meta name="twitter:image" content="https://tayoca.com/assets/og-image.png">
+
+  <!-- Plausible Analytics -->
+  <script defer data-domain="tayoca.com" src="https://plausible.io/js/script.js"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@700&family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-dark: #0d0d0d;
+      --bg-card: #ffffff;
+      --accent: #f97316;
+      --text-base: #e5e7eb;
+      --text-dark: #e5e7eb;
+      --text-light: #374151;
+    }
+
+    html { font-size: 16px; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-base);
+      line-height: 1.6;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(8px);
+      background: rgba(13,13,13,0.8);
+      padding: 1rem 0;
+    }
+    nav {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 2rem;
+    }
+    .nav-brand {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--text-base);
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2rem; }
+    .nav-links a {
+      color: var(--text-base);
+      text-decoration: none;
+      font-weight: 400;
+      transition: color .3s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-links a.active { color: var(--accent); font-weight: 600; }
+
+    main {
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 2rem;
+    }
+
+    section { padding: 4rem 0; }
+
+    .btn {
+      display: inline-block;
+      padding: .75rem 1.5rem;
+      background: var(--accent);
+      color: white;
+      border-radius: .5rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform .2s;
+    }
+    .btn:hover { transform: translateY(-2px); }
+
+    .amber-accent {
+      background: var(--accent);
+      width: 100%;
+      height: 6px;
+      margin-top: -3px;
+    }
+
+    .post-body { max-width: 820px; margin: 0 auto; }
+    .post-body h2 {
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(1.7rem, 4vw, 2.2rem);
+      margin: 3rem 0 1rem;
+      line-height: 1.2;
+    }
+    .post-body h3 {
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(1.3rem, 3vw, 1.6rem);
+      margin: 2rem 0 .8rem;
+      color: var(--accent);
+    }
+    .post-body p { margin: 1rem 0; color: #d1d5db; }
+    .post-body ul, .post-body ol {
+      color: #d1d5db;
+      padding-left: 1.5rem;
+    }
+    .post-body li { margin: .4rem 0; }
+    .post-body strong { color: var(--text-base); }
+    .post-body code, p code, li code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .85em;
+      background: #1a1a1a;
+      padding: .1em .35em;
+      border-radius: .25rem;
+      color: #fbbf24;
+    }
+
+    .byline {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      font-size: .9rem;
+      color: #9ca3af;
+      margin-top: 1rem;
+    }
+    .byline svg { color: var(--accent); }
+
+    .code-bg {
+      background: #1a1a1a;
+      border-radius: .5rem;
+      padding: 1rem 1.25rem;
+      margin: 1.5rem 0;
+      overflow-x: auto;
+      border: 1px solid #262626;
+    }
+    .code-bg pre {
+      margin: 0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .82rem;
+      line-height: 1.55;
+      color: #d1d5db;
+      white-space: pre;
+    }
+    .code-bg .c-keyword { color: #f97316; }
+    .code-bg .c-comment { color: #6b7280; }
+    .code-bg .c-string { color: #a3e635; }
+    .code-bg code {
+      background: transparent;
+      padding: 0;
+      color: inherit;
+    }
+
+    blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 2rem 0;
+      font-style: italic;
+      color: #d1d5db;
+    }
+
+    .callout {
+      background: rgba(249,115,22,0.08);
+      border-left: 3px solid var(--accent);
+      padding: 1rem 1.25rem;
+      border-radius: 0 .5rem .5rem 0;
+      margin: 1.5rem 0;
+      display: flex;
+      gap: .75rem;
+      align-items: flex-start;
+    }
+    .callout svg { flex-shrink: 0; margin-top: .15rem; color: var(--accent); }
+    .callout p { margin: 0; color: #e5e7eb; }
+
+    .pattern-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    .pattern-card {
+      background: #111827;
+      border: 1px solid #1f2937;
+      border-radius: .5rem;
+      padding: 1.25rem;
+    }
+    .pattern-card svg { color: var(--accent); margin-bottom: .5rem; }
+    .pattern-card strong { display: block; margin-bottom: .35rem; color: var(--text-base); }
+    .pattern-card span { font-size: .875rem; color: #9ca3af; }
+
+    .email-section { text-align: center; padding: 4rem 0 3rem; }
+    .email-form {
+      max-width: 460px;
+      margin: 1.5rem auto 0;
+      display: flex;
+      gap: .5rem;
+    }
+    .email-form input {
+      flex: 1;
+      background: #1a1a1a;
+      border: 1px solid #374151;
+      border-radius: .5rem 0 0 .5rem;
+      padding: .75rem 1rem;
+      color: #e5e7eb;
+      font-family: inherit;
+      font-size: .95rem;
+    }
+    .email-form input::placeholder { color: #6b7280; }
+    .email-form button {
+      background: var(--accent);
+      color: white;
+      padding: .75rem 1rem;
+      border-radius: 0 .5rem .5rem 0;
+      cursor: pointer;
+      border: none;
+      font-weight: 600;
+      font-size: .95rem;
+      white-space: nowrap;
+      transition: background .2s;
+    }
+    .email-form button:hover { background: #ea580c; }
+
+    footer {
+      padding: 3rem 0;
+      border-top: 1px solid #374151;
+      font-size: .9rem;
+      color: var(--text-light);
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      max-width: 1200px;
+      margin: auto;
+      padding-left: 2rem;
+      padding-right: 2rem;
+      gap: 2rem;
+    }
+    .footer-brand strong, .footer-links strong { color: var(--text-base); }
+    .footer-links a { color: #e5e7eb; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="../index.html" class="nav-brand">tayoca</a>
+      <div class="nav-links">
+        <a href="../services.html">Services</a>
+        <a href="../products.html">Products</a>
+        <a href="../blog.html" class="active">Writing</a>
+        <a href="../about.html">About</a>
+      </div>
+      <a href="../services.html" class="btn">Book an Audit →</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="hero" style="min-height:42vh;display:flex;align-items:center;padding-top:3rem;">
+      <div style="max-width:800px;margin:auto;text-align:left;">
+        <div class="byline" style="justify-content:flex-start;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a4 4 0 0 0-4 4v2H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2h-2V6a4 4 0 0 0-4-4z"/><path d="M12 9v6M9 12h6"/></svg>
+          Platform Engineering · Kubernetes · 18 min read · July 23, 2026
+        </div>
+        <h1 style="font-family:'Sora',sans-serif;font-size:clamp(2.3rem,7vw,3.6rem);line-height:1.08;font-weight:700;margin:1.2rem 0 1rem;">
+          GitOps Beyond Hello World
+        </h1>
+        <p style="font-size:1.2rem;color:#d1d5db;margin-bottom:1.5rem;max-width:700px;">
+          The patterns we actually ship after the tutorial ends — surviving Helm upgrade corruption,
+          gating promotions on image provenance, and wiring CI-driven deployments per namespace with Argo CD.
+        </p>
+      </div>
+    </section>
+
+    <div class="amber-accent"></div>
+
+    <section style="padding:3rem 0;">
+      <div class="post-body">
+        <p>
+          Most GitOps tutorials stop at <code>argocd app create</code> against a single-app repo.
+          That demo runs clean because nothing is fighting you yet — no chart with 600 lines of values,
+          no security team demanding signed images, no team shipping to <code>prod</code> while another
+          ships hotfixes into <code>staging</code> at 2 AM. This post is the field manual for what comes next.
+        </p>
+        <p>
+          We have hardened GitOps for fintech and SaaS platforms running dozens of services across multiple clusters.
+          The four patterns below are not theory — they are the configurations we keep rebuilding on every engagement.
+          Skip to the one that hurts:
+        </p>
+
+        <div class="pattern-grid">
+          <div class="pattern-card">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2z"/><path d="M3 10h18M7 14h2"/></svg>
+            <strong>1 · Helm Upgrade Corruption</strong>
+            <span>Atomic rollback, no map merging surprises, no secrets in <code>values.yaml</code>.</span>
+          </div>
+          <div class="pattern-card">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.5 8 8 11 4.5-3 8-6 8-11V5z"/><path d="m9 12 2 2 4-4"/></svg>
+            <strong>2 · Image Validation Gates</strong>
+            <span>Cosign + Kyverno admission control before Argo CD ever syncs.</span>
+          </div>
+          <div class="pattern-card">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg>
+            <strong>3 · Per-Namespace CI Deploy</strong>
+            <span>One ApplicationSet row per namespace, promoted by Merge Queue.</span>
+          </div>
+          <div class="pattern-card">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+            <strong>4 · Argo CD Sync Hardening</strong>
+            <span>Auto-sync with prune + self-heal + sync windows, but never together.</span>
+          </div>
+        </div>
+
+        <blockquote>
+          The fundamental error teams make is treating GitOps like CI/CD with a Git remote.
+          Git is not the pipeline — it is the declarative source of truth. The pipeline exists to <em>reach</em> Git correctly.
+        </blockquote>
+
+        <h2 id="helm-corruption">1 · Surviving Helm Upgrade Corruption</h2>
+        <p>
+          <code>helm upgrade --install</code> is the most dangerous command in most platform stacks.
+          The corruption modes we see in incident reviews fall into three buckets:
+        </p>
+        <ul>
+          <li><strong>State drift between releases.</strong> Someone edits a Kubernetes resource with <code>kubectl</code>
+          (a manual HPA bump, a securityContext tweak) and the next <code>helm upgrade</code> either silently
+          overwrites it or fails with a terrifying three-way patch error.</li>
+          <li><strong>Map merging clobbering team overrides.</strong> A chart's default <code>values.yaml</code> defines
+          <code>resources.requests.cpu: 100m</code>, the team sets
+          <code>resources.limits.memory: 512Mi</code> in their override, and Helm's recursive merge swallows
+          <code>requests</code> entirely. The pod now runs with no CPU request.</li>
+          <li><strong>Secrets in <code>values.yaml</code>.</strong> The chart wants <code>secrets.apiKey</code>, so the team
+          commits it encrypted with <code>helm secrets</code> — except half the team is on a stale <code>age</code> key
+          and the decrypt step fails silently in CI.</li>
+        </ul>
+
+        <h3>The configuration we ship</h3>
+        <p>Three settings, always together, in the Argo CD Application:</p>
+        <div class="code-bg"><pre><span class="c-comment"># gitops/apps/&lt;svc&gt;/argocd-app.yaml</span>
+<span class="c-keyword">apiVersion:</span> argoproj.io/v1alpha1
+<span class="c-keyword">kind:</span> Application
+<span class="c-keyword">metadata:</span>
+  <span class="c-keyword">name:</span> payments-api
+  <span class="c-keyword">finalizers:</span> [ resources-finalizer.argocd.argoproj.io ]
+<span class="c-keyword">spec:</span>
+  <span class="c-keyword">syncPolicy:</span>
+    <span class="c-keyword">syncOptions:</span>
+      - <span class="c-string">CreateNamespace=false</span>      <span class="c-comment"># namespace pre-provisioned, with RBAC</span>
+      - <span class="c-string">ServerSideApply=true</span>          <span class="c-comment"># 3-way merge, no ownership flip-flops</span>
+      - <span class="c-string">PrunePropagationPolicy=foreground</span>
+    <span class="c-keyword">managedNamespaceMetadata:</span>
+      <span class="c-keyword">labels:</span> { <span class="c-string">pod-security.kubernetes.io/enforce:</span> <span class="c-string">restricted</span> }
+  <span class="c-keyword">source:</span>
+    <span class="c-keyword">chart:</span> payments-api
+    <span class="c-keyword">helm:</span>
+      <span class="c-keyword">valueFiles:</span> [ <span class="c-string">../../values/staging.yaml</span>, <span class="c-string">values.yaml</span> ]
+      <span class="c-keyword">ignoreMissingValueFiles:</span> <span class="c-keyword">true</span>
+      <span class="c-keyword">skipSchemaValidation:</span> <span class="c-keyword">false</span>     <span class="c-comment"># JSON schema catches map-merge regressions</span>
+      <span class="c-keyword">passCredentials:</span> <span class="c-keyword">false</span>            <span class="c-comment"># no secrets via helm registry</span></pre></div>
+
+        <p>
+          <strong>ServerSideApply=true</strong> turns Helm's three-way patch into Kubernetes SSA — ownership is tracked
+          per-field, so a manual <code>kubectl scale</code> during an incident is no longer silently undone on the next sync.
+          Combined with <code>PrunePropagationPolicy=foreground</code>, deletion cascades on the first sync, not the second.
+        </p>
+
+        <div class="callout">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+          <p>
+            We never commit <code>values.yaml</code> with real secrets, ever. External secrets come from ExternalSecrets
+            Operator referencing AWS Secrets Manager / Vault — the Helm chart references the ESO Secret by name and never
+            sees the plaintext. This eliminates the <code>helm secrets</code> key-drift problem entirely.
+          </p>
+        </div>
+
+        <h3>Externally validating the chart before Argo CD touches it</h3>
+        <p>The most reliable corruption check is one Argo CD never runs. We add a CI step that renders the chart and diffs it against the last-known-good release:</p>
+        <div class="code-bg"><pre><span class="c-comment"># .github/workflows/chart-validate.yml (excerpt)</span>
+- <span class="c-keyword">name:</span> Render &amp; diff against last-good release
+  <span class="c-keyword">run:</span> <span class="c-string">|</span>
+    <span class="c-string">helm template payments-api ./chart -f values/staging.yaml \
+      &gt; rendered-new.yaml</span>
+    <span class="c-string">helm pull oci://registry/chart:$(yq .appVersion Chart.yaml) \
+      --version $(yq .version Chart.yaml) \
+      -f values/staging.yaml --untar --untardir /tmp/good \
+      &amp;&amp; helm template payments-api /tmp/good -f values/staging.yaml \
+      &gt; rendered-good.yaml</span>
+    <span class="c-string">diff -u rendered-good.yaml rendered-new.yaml &gt; chart-drift.diff \
+      || (echo "::warning::Chart render drift detected" &amp;&amp; exit 1)</span></pre></div>
+        <p>
+          If this step fails, the PR does not merge and Argo CD never observes a change. We catch the
+          <code>resources.requests.cpu</code> vanishing here, in CI, before it lands in <code>staging</code>.
+        </p>
+
+        <h2 id="image-gates">2 · Image Validation Gates Before Sync</h2>
+        <p>
+          A Git repo can be merged, but the image it references may not be admissible. The naive GitOps setup syncs
+          <em>any</em> image tag the moment Git changes. That is how a developer's locally-pushed
+          <code>api:feature-branch-x</code> ends up in production — the tag was reachable from the chart, so Argo CD applied it.
+        </p>
+        <p>
+          The fix is two checkpoints: <strong>provenance</strong> (was this image built by us, from this commit?) and
+          <strong>admission</strong> (does this cluster accept this provenance?). Provenance lives in the registry as
+          signatures; admission lives in the cluster as policy.
+        </p>
+
+        <h3>Signing the image in CI</h3>
+        <div class="code-bg"><pre><span class="c-comment"># CI pipeline, after docker build/push</span>
+<span class="c-keyword">cosign</span> sign --yes \
+  --identity-token <span class="c-string">"$OIDC_TOKEN"</span> \
+  <span class="c-string">--certificate-identity "$REGISTRY/$REPO@$DIGEST"</span> \
+  --certificate-oidc-issuer <span class="c-string">"$OIDC_ISSUER"</span> \
+  <span class="c-string">"$REGISTRY/$REPO@$DIGEST"</span>
+
+<span class="c-comment"># Bundle the SBOM and an in-toto attestation:</span>
+<span class="c-keyword">cosign</span> attest --yes --predicate sbom.spdx.json \
+  --type spdxjson <span class="c-string">"$REGISTRY/$REPO@$DIGEST"</span>
+<span class="c-keyword">cosign</span> attest --yes --predicate provenance.json \
+  --type slsaprovenance <span class="c-string">"$REGISTRY/$REPO@$DIGEST"</span></pre></div>
+        <p>
+          Keyless signing with OIDC is the right default — no long-lived <code>COSIGN_PRIVATE_KEY</code> sitting in a CI secret,
+          no key rotation project. Each build signs with an ephemeral credentials identity tied to the pipeline run.
+        </p>
+
+        <h3>Admission policy in the cluster (Kyverno)</h3>
+        <p>
+          Argo CD will still happily apply a deployment referencing an unsigned image. We stop it with an admission policy:
+        </p>
+        <div class="code-bg"><pre><span class="c-comment"># gitops/policies/verify-image.yaml</span>
+<span class="c-keyword">apiVersion:</span> kyverno.io/v1
+<span class="c-keyword">kind:</span> ClusterPolicy
+<span class="c-keyword">metadata:</span> { <span class="c-keyword">name:</span> <span class="c-string">require-signed-images</span> }
+<span class="c-keyword">spec:</span>
+  <span class="c-keyword">validationFailureAction:</span> Enforce
+  <span class="c-keyword">rules:</span>
+  - <span class="c-keyword">name:</span> verify-signature
+    <span class="c-keyword">match:</span> { <span class="c-keyword">resources:</span> { <span class="c-keyword">kinds:</span> [Pod] } }
+    <span class="c-keyword">verifyImages:</span>
+    - <span class="c-keyword">imageReferences:</span>
+      - <span class="c-string">"registry.example.com/*"</span>
+      <span class="c-keyword">attestors:</span>
+      - <span class="c-keyword">count:</span> 1
+        <span class="c-keyword">entries:</span>
+        - <span class="c-keyword">keyless:</span>
+            <span class="c-keyword">subject:</span> <span class="c-string">"$REGISTRY/$REPO@$DIGEST"</span>
+            <span class="c-keyword">issuer:</span> <span class="c-string">"https://token.actions.githubusercontent.com"</span>
+            <span class="c-keyword">rekor:</span> { <span class="c-keyword">url</span>: <span class="c-string">https://rekor.sigstore.dev</span> }
+      <span class="c-keyword">verifyDigest:</span> <span class="c-keyword">true</span>
+      <span class="c-keyword">required:</span> <span class="c-keyword">true</span></pre></div>
+        <p>
+          Now a sync that references <code>api:latest</code>, or a digest with no signature, is rejected at the API server.
+          Argo CD's sync shows <code>Failed · admission denied</code> and the bad image never schedules. This is the gate
+          that lets us run Argo CD with <code>auto-sync: true</code> in production without losing sleep.
+        </p>
+
+        <div class="callout">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.5 8 8 11 4.5-3 8-6 8-11V5z"/><path d="m9 12 2 2 4-4"/></svg>
+          <p>
+            Argo CD's own <code>resource.customizations</code> can also enforce image policy at sync time, but we prefer
+            the admission controller — it blocks unscheduled pods from any path, including manual <code>kubectl apply</code>
+            during incident response, not just Argo CD syncs.
+          </p>
+        </div>
+
+        <h2 id="per-namespace-ci">3 · Per-Namespace, CI-Driven Deployments</h2>
+        <p>
+          The temptation as a platform grows is to give every team their own Application object and let them file JSON
+          patches. This scales to ~12 services before the review burden collapses. We instead use a single
+          <strong>ApplicationSet</strong> templated off namespace directories, where CI does the promotion by writing to Git.
+        </p>
+
+        <h3>The ApplicationSet</h3>
+        <div class="code-bg"><pre><span class="c-comment"># gitops/appset/services.yaml</span>
+<span class="c-keyword">apiVersion:</span> argoproj.io/v1alpha1
+<span class="c-keyword">kind:</span> ApplicationSet
+<span class="c-keyword">metadata:</span> { <span class="c-keyword">name:</span> <span class="c-string">services</span> }
+<span class="c-keyword">spec:</span>
+  <span class="c-keyword">generators:</span>
+  - <span class="c-keyword">git:</span>
+      <span class="c-keyword">repoURL:</span> <span class="c-string">https://github.com/org/gitops</span>
+      <span class="c-keyword">revision:</span> <span class="c-string">HEAD</span>
+      <span class="c-keyword">directories:</span>
+      - <span class="c-keyword">path:</span> <span class="c-string">services/*/{staging,prod}</span>   <span class="c-comment"># one row per service-env</span>
+  <span class="c-keyword">template:</span>
+    <span class="c-keyword">metadata:</span>
+      <span class="c-keyword">name:</span> <span class="c-string">'{{path.basename}}-{{path[2]}}'</span>   <span class="c-comment"># e.g. payments-api-staging</span>
+    <span class="c-keyword">spec:</span>
+      <span class="c-keyword">project:</span> <span class="c-string">'{{path[2]}}'</span>                       <span class="c-comment"># Argo CD AppProject per env</span>
+      <span class="c-keyword">destination:
+        namespace:</span> <span class="c-string">'{{path[1]}}-{{path[2]}}'</span>              <span class="c-comment"># e.g. payments-api-staging</span>
+      <span class="c-keyword">syncPolicy:
+        automated:</span> { <span class="c-keyword">prune:</span> <span class="c-keyword">true</span>, <span class="c-keyword">selfHeal:</span> <span class="c-keyword">true</span> }
+      <span class="c-keyword">source:</n>
+        repoURL:</span> <span class="c-string">https://github.com/org/gitops</span>
+        <span class="c-keyword">targetRevision:</span> <span class="c-keyword">HEAD</span>
+        <span class="c-keyword">path:</span> <span class="c-string">'{{path}}'</span></arg_value></tool_call><tool_call>patch<arg_key>mode</arg_key><arg_value>replace</arg_value><arg_key>path</arg_key><arg_value>/Volumes/512-B/Documents/Hermes/AGENTS/workspace/tayoca-www/public/sitemap.xml</arg_value><arg_key>old_string</arg_key><arg_value>  <url>
+    <loc>https://tayoca.com/about.html</loc></arg_value><arg_key>new_string</arg_key><arg_value>  <url>
+    <loc>https://tayoca.com/blog/how-we-saved-216k-aws.html</loc></arg_value></tool_call><tool_call>patch<arg_key>mode</arg_key><arg_value>replace</arg_value><arg_key>path</arg_key><arg_value>/Volumes/512-B/Documents/Hermes/AGENTS/workspace/tayoca-www/public/sitemap.xml</arg_value><arg_key>old_string</arg_key><arg_value>    <loc>https://tayoca.com/about.html</loc></arg_value><arg_key>new_string</arg_key><arg_value>    <loc>https://tayoca.com/blog/gitops-beyond-hello-world.html</loc></arg_value></tool_call><tool_call>patch<arg_key>mode</arg_key><arg_value>replace</arg_value><arg_key>path</arg_key><arg_value>/Volumes/512-B/Documents/Hermes/AGENTS/workspace/tayoca-www/public/sitemap.xml</arg_value><arg_key>old_string</arg_key><arg_value>  <url>
+    <loc>https://tayoca.com/blog/gitops-beyond-hello-world.html</loc></arg_value><arg_key>new_string</arg_key><arg_value>  <url>
+    <loc>https://tayoca.com/about.html</loc></arg_value></tool_call><tool_call>write_file<arg_key>path</arg_key><arg_value>/Volumes/512-B/Documents/Hermes/AGENTS/workspace/tayoca-www/.sitemap-backup-marker.txt</arg_value><arg_key>content</arg_key><arg_value>placeholder</arg_value></tool_call><tool_call>process<arg_key>action</arg_key><arg_value>list</arg_value></tool_call><tool_call>read_file<arg_key>path</arg_key><arg_value>/Volumes/512-B/Documents/Hermes/AGENTS/workspace/tayoca-www/public/sitemap.xml</arg_value></tool_call><tool_call>read_file<arg_key>path</arg_key><arg_value>/Volumes/512-B/Documents/Hermes/AGENTS/workspace/tayoca-www/public/blog/gitops-beyond-hello-world.html</arg_value><arg_key>offset</arg_key><arg_value>1</arg_value><arg_key>limit</arg_key><arg_value>10</arg_value></tool_call><tool_call>terminal<arg_key>command</arg_key><arg_value>ls -la /Volumes/512-B/Documents/Hermes/AGENTS/workspace/tayoca-www/public/blog/gitops-beyond-hello-world.html 2>&1 | head -5</arg_value></tool_call><tool_call>terminal<arg_key>command</arg_key><arg_value>grep -c 

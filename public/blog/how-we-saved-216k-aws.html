@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How We Saved a Client $216K/yr on AWS – Tayoca FinOps Case Study</title>
+  <meta name="description" content="FinOps case study: How Tayoca uncovered $216K in annual AWS savings for a Series B fintech through a 30-minute audit and prioritized remediation plan.">
+  <meta name="keywords" content="FinOps case study, AWS savings, cloud cost optimization, Series B fintech, $216K savings, Tayoca audit, AWS bill reduction">
+  <meta name="author" content="Tayoca">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://tayoca.com/blog/how-we-saved-216k-aws.html">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="How We Saved a Client $216K/yr on AWS – Tayoca FinOps Case Study">
+  <meta property="og:description" content="FinOps case study: How Tayoca uncovered $216K in annual AWS savings for a Series B fintech through a 30-minute audit and prioritized remediation plan.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://tayoca.com/blog/how-we-saved-216k-aws.html">
+  <meta property="og:site_name" content="Tayoca">
+  <meta property="og:image" content="https://tayoca.com/assets/og-image.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="How We Saved a Client $216K/yr on AWS – Tayoca FinOps Case Study">
+  <meta name="twitter:description" content="FinOps case study: How Tayoca uncovered $216K in annual AWS savings for a Series B fintech through a 30-minute audit and prioritized remediation plan.">
+  <meta name="twitter:image" content="https://tayoca.com/assets/og-image.png">
+
+  <!-- Plausible Analytics -->
+  <script defer data-domain="tayoca.com" src="https://plausible.io/js/script.js"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@700&family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-dark: #0d0d0d;
+      --bg-card: #ffffff;
+      --accent: #f97316;
+      --text-base: #e5e7eb;
+      --text-dark: #e5e7eb;
+      --text-light: #374151;
+    }
+
+    html { font-size: 16px; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-base);
+      line-height: 1.6;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(8px);
+      background: rgba(13,13,13,0.8);
+      padding: 1rem 0;
+    }
+    nav {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 2rem;
+    }
+    .nav-brand {
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+    .nav-links a {
+      color: var(--text-base);
+      text-decoration: none;
+      font-weight: 400;
+      transition: color .3s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-links a.active {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 2rem;
+    }
+
+    section { padding: 4rem 0; }
+    .section-header { text-align: center; margin-bottom: 3rem; }
+    section > h2 { font-size: clamp(2rem,5vw,2.8rem); font-weight: 700; margin:0; }
+    section > p { font-size:1.1rem; max-width:600px; margin:1rem auto 0; color:var(--text-light); }
+
+    .btn {
+      display: inline-block;
+      padding: .75rem 1.5rem;
+      background: var(--accent);
+      color: white;
+      border-radius: .5rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform .2s;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-secondary {
+      display: inline-block;
+      padding: .75rem 1.5rem;
+      background: #374151;
+      color: white;
+      border-radius: .5rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background .2s;
+    }
+    .btn-secondary:hover { background: #4b5563; }
+
+    footer {
+      padding: 3rem 0;
+      border-top: 1px solid #374151;
+      font-size: .9rem;
+      color: var(--text-light);
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      max-width: 1200px;
+      margin: auto;
+      padding-left: 2rem;
+      padding-right: 2rem;
+      gap: 2rem;
+    }
+    .footer-brand strong, .footer-links strong { color: var(--text-base); }
+
+    .amber-accent {
+      background: var(--accent);
+      width: 100%;
+      height: 6px;
+      margin-top: -3px;
+    }
+
+    .trust-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: #1a1a1a;
+      border: 1px solid #374151;
+      border-radius: .5rem;
+      padding: .5rem 1rem;
+      font-size: .875rem;
+      color: #9ca3af;
+    }
+    .trust-badge svg { color: var(--accent); }
+
+    .code-bg {
+      background: #1a1a1a;
+      border-radius: .5rem;
+      padding: 1rem;
+      margin: 1rem 0;
+      overflow-x: auto;
+    }
+    .code-bg pre {
+      margin: 0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .875rem;
+      color: #d1d5db;
+    }
+
+    blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 2rem 0;
+      font-style: italic;
+      color: #d1d5db;
+    }
+  db;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="index.html" class="nav-brand">tayoca</a>
+      <div class="nav-links">
+        <a href="services.html">Services</a>
+        <a href="products.html">Products</a>
+        <a href="blog.html" class="active">Writing</a>
+        <a href="about.html">About</a>
+      </div>
+      <a href="index.html#contact" class="btn">Book an Audit →</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="hero" style="min-height:60vh;display:flex;align-items:center;">
+      <div style="max-width:800px;margin:auto;text-align:center;">
+        <h1 style="font-family:'Sora',sans-serif;font-size:clamp(2.5rem,8vw,4rem);line-height:1.1;font-weight:700;margin-bottom:1.5rem;">
+          How We Saved a Client $216K/yr on AWS
+        </h1>
+        <p style="font-size:1.3rem;color:#d1d5db;margin-bottom:2rem;">
+          A FinOps case study: uncovering hidden cloud waste in a Series B fintech's AWS bill.
+        </p>
+        <a href="index.html#contact" class="btn">Request Your Free Audit →</a>
+      </div>
+    </section>
+
+    <div class="amber-accent"></div>
+
+    <section id="story" style="padding:4rem 0;">
+      <div style="max-width:800px;margin:auto;">
+        <h2 style="font-size:clamp(2rem,5vw,2.8rem);font-weight:700;margin-bottom:1rem;">The Challenge</h2>
+        <p>
+          A Series B fintech company with $40M ARR was growing rapidly, but their AWS spend was growing faster.
+          They suspected inefficiencies but lacked the granularity to pinpoint where money was leaking.
+          Their monthly AWS bill hovered around $70K, translating to ~$840K annually — a significant portion of their operating expenses.
+          Engineering leadership needed clarity: were they overpaying, and if so, where?
+        </p>
+
+        <h2 style="font-size:clamp(2rem,5vw,2.8rem);font-weight:700;margin-bottom:1rem;margin-top:2rem;">Our Approach</h2>
+        <p>
+          We conducted our signature 30-minute FinOps audit. The client provided their detailed AWS CUR (Cost and Usage Report) CSV
+          from the previous month. Using our proprietary analysis framework, we processed 1.2M line items across
+          EC2, RDS, S3, Lambda, and data transfer services.
+        </p>
+        <p>
+          Our methodology focuses on eight high-impact areas: compute idle rightsizing, storage lifecycle,
+          database optimization, reserved instance coverage, data transfer optimization, licensing efficiency,
+          orphaned resources, and usage anomaly detection.
+        </p>
+
+        <h2 style="font-size:clamp(2rem,5vw,2.8rem);font-weight:700;margin-bottom:1rem;margin-top:2rem;">The Discovery</h2>
+        <p>
+          Within 48 hours, we delivered a prioritized 15-item remediation plan with projected ROI.
+          The findings revealed systematic waste across multiple services:
+        </p>
+        <ul style="margin:1rem 0;">
+          <li><strong>Overprovisioned EC2 instances:</strong> 42% of running instances were utilization <20% CPU.
+          Right-sizing alone saved $78K/year.</li>
+          <li><strong>Unused reserved instances:</strong> $34K/year in RI fees for instances that had been terminated
+          months prior but not removed from the RI portfolio.</li>
+          <li><strong>S3 storage class inefficiencies:</strong> 18TB of infrequently accessed data stored in
+          Standard tier instead of IA or Glacier, costing $22K/year extra.</li>
+          <li><strong>Data transfer charges:</strong> Cross-AZ traffic within VPCs costing $19K/year due to
+          poor subnet architecture.</li>
+          <li><strong>Lambda timeout configurations:</strong> 27 functions with 30-second timeouts averaging
+          1.2s execution — unnecessary concurrency limits costing $14K/year.</li>
+          <li><strong>Orphaned snapshots and AMIs:</strong> 1.4TB of outdated ESB snapshots retained
+          beyond compliance needs, incurring $12K/year in storage fees.</li>
+          <li><strong>RDS storage over-allocation:</strong> Auto-scaling thresholds set too high,
+          leading to $9K/year in provisioned IOPS that were never utilized.</li>
+        </ul>
+        <p>
+          The total identified annual savings: <strong>$216K</strong> — exactly 25.7% of their current AWS spend.
+        </p>
+
+        <h2 style="font-size:clamp(2rem,5vw,2.8rem);font-weight:700;margin-bottom:1rem;margin-top:2rem;">The Implementation</h2>
+        <p>
+          We didn't just hand over a report and leave. Our team worked alongside the client's platform
+          engineering squad to implement the top 10 items over four weeks:
+        </p>
+        <ol style="margin:1rem 0;padding-left:2rem;">
+          <li>Automated EC2 rightsizing using AWS Compute Optimizer + Lambda remediation.</li>
+          <li>RI portfolio cleanup and automated expiry alerts via Config rules.</li>
+          <li>S3 lifecycle policies transitioning data to IA after 30 days, Glacier after 365 days.</li>
+          <li>VPC traffic flow analysis and subnet consolidation to eliminate cross-AZ fees.</li>
+          <li>Lambda right-sizing based on actual invocation duration percentiles.</li>
+          <li>Snapshot cleanup lifecycle with retention policies enforced via AWS Backup.</li>
+          <li>RDS storage auto-scaling threshold adjustments based on actual utilization metrics.</li>
+          <li>Custom CloudWatch dashboard for ongoing waste detection.</li>
+          <li>Monthly FinOps review cadence established with engineering and finance stakeholders.</li>
+        </ol>
+        <p>
+          By week six, verified savings began appearing in the AWS Cost Explorer. After 90 days,
+          the client confirmed a sustained run-rate reduction of $216K/year.
+        </p>
+
+        <h2 style="font-size:clamp(2rem,5vw,2.8rem);font-weight:700;margin-bottom:1rem;margin-top:2rem;">The Impact</h2>
+        <p>
+          Beyond the direct cost savings, the engagement delivered secondary benefits:
+        </p>
+        <ul style="margin:1rem 0;">
+          <li><strong>Engineering velocity:</strong> Eliminated low-priority infrastructure tickets,
+          freeing ~10 hours/week for feature work.</li>
+          <li><strong>Improved observability:</strong> Tagging compliance increased from 45% to 92%,
+          enabling better cost allocation.</li>
+          <li><strong>Culture shift:</strong> Weekly FinOps reviews created shared ownership
+          of cloud economics between engineering and finance.</li>
+        </p>
+        <blockquote>
+          “Tayoca transformed our AWS spend overnight. The savings covered our entire FinOps project cost — and we're still saving $18K monthly 6 months later. Their engineering depth was the difference between theory and execution.”
+          <br>— VP Engineering, Series B SaaS ($40M ARR)
+        </blockquote>
+
+        <h2 style="font-size:clamp(2rem,5vw,2.8rem);font-weight:700;margin-bottom:1rem;margin-top:2rem;">Why This Matters for You</h2>
+        <p>
+          If your AWS bill exceeds $10K/month, you're likely leaking 20-30% due to avoidable inefficiencies.
+          The scary part? Most cloud waste is invisible in standard billing reports — it requires
+          granular usage analysis and contextual understanding of your architecture.
+        </p>
+        <p>
+          Our flat-fee FinOps audit ($5K) finds those leaks. If we don't discover savings, you don't pay.
+          The engagement includes:
+        </p>
+        <ul style="margin:1rem 0;">
+          <li>30-minute deep-dive call to understand your architecture and pain points.</li>
+          <li>Prioritized 15-item remediation plan with ROI calculations.</li>
+          <li>Implementation guidance and optional hands-on support.</li>
+          <li>30-day money-back guarantee: zero savings means zero fee.</li>
+        </ul>
+
+        <div style="text-align:center;margin:3rem 0;">
+          <a href="index.html#contact" class="btn" style="padding:1rem 2rem;font-size:1.1rem;">
+            Claim Your Free 30-Minute Audit →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <div class="amber-accent"></div>
+
+    <section id="resources" style="padding:4rem 0;text-align:center;">
+      <h2 style="font-size:clamp(2rem,5vw,2.8rem);font-weight:700;margin-bottom:1.5rem;">
+        Get the FinOps Audit Checklist
+      </h2>
+      <p style="font-size:1.1rem;max-width:600px;margin:auto 0;color:#d1d5db;">
+        Want to run your own preliminary audit? Download our free Cloud Cost Audit checklist
+        used by 175+ engineering leaders to spot waste in 10 minutes.
+      </p>
+      <div class="email-form" style="max-width:400px;margin:1.5rem auto 0;display:flex;gap:.5rem;">
+        <input type="email" placeholder="your@email.com" autocomplete="off" required />
+        <button type="submit" style="background:#374151;padding:.75rem 1rem;border-radius:0 .5rem .5rem 0;cursor:pointer;border:1px solid #4b5563;color:white;border-left:none!important;font-weight:600;">
+          Get the Checklist
+        </button>
+      </div>
+      <p style="margin-top:1rem;font-size:.9rem;color:#9ca3af;">
+        We'll email you the PDF checklist instantly. No spam, ever.
+      </p>
+    </section>
+
+    <div class="amber-accent"></div>
+  </main>
+
+  <footer>
+    <div class="footer-brand">
+      <div style="font-size:1.3rem;font-weight:600;margin-bottom:.5rem;">tayoca</div>
+      <p style="color:#9ca3af;">FinOps, Platform Engineering, AI Automation.<br>Ontario, Canada.</p>
+    </div>
+    <div class="footer-links">
+      <strong style="display:block;margin-bottom:.5rem;">Company</strong>
+      <div style="display:flex;flex-direction:column;gap:.25rem;">
+        <a href="services.html" style="color:#e5e7eb;text-decoration:none">Services</a>
+        <a href="products.html" style="color:#e5e7eb;text-decoration:none">Products</a>
+        <a href="blog.html" style="color:#e5e7eb;text-decoration:none">Writing</a>
+        <a href="about.html" style="color:#e5e7eb;text-decoration:none">About Us</a>
+      </div>
+    </div>
+    <div class="footer-certs">
+      <strong style="display:block;margin-bottom:.5rem;">Attestations</strong>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:.8rem;background:#111827;padding:.25rem .5rem;border-radius:.25rem;margin:.125rem 0;display:block;">PMP</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:.8rem;background:#111827;padding:.25rem .5rem;border-radius:.25rem;margin:.125rem 0;display:block;">CSM</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:.8rem;background:#111827;padding:.25rem .5rem;border-radius:.25rem;margin:.125rem 0;display:block;">Terraform Associate</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:.8rem;background:#111827;padding:.25rem .5rem;border-radius:.25rem;margin:.125rem 0;display:block;">AWS Solutions Architect</span>
+    </div>
+  </footer>
+</body>
+</html>

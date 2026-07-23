@@ -25,8 +25,33 @@
   <meta name="twitter:description" content="Flat-fee engagements: FinOps cost audits, GitOps platform engineering, and AI automation that pays for itself">
   <meta name="twitter:image" content="https://tayoca.com/assets/og-image.png">
 
-  <!-- Plausible Analytics -->
-  <script defer data-domain="tayoca.com" src="https://plausible.io/js/script.js"></script>
+  <!-- InsForge Analytics (Plausible-compatible, self-hosted) -->
+  <script>
+    (function() {
+      var endpoint = 'https://v7mhrspk.function2.insforge.app/analytics-event';
+      var domain = 'tayoca.com';
+      function sendEvent(name, props) {
+        var data = {
+          domain: domain,
+          name: name,
+          url: window.location.href,
+          path: window.location.pathname,
+          referrer: document.referrer || null,
+          screen_width: window.screen.width,
+          screen_height: window.screen.height,
+          props: props || {}
+        };
+        navigator.sendBeacon && navigator.sendBeacon(endpoint, JSON.stringify(data)) ||
+          fetch(endpoint, { method: 'POST', body: JSON.stringify(data), keepalive: true });
+      }
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function() { sendEvent('pageview'); });
+      } else {
+        sendEvent('pageview');
+      }
+      window.tayocaAnalytics = { sendEvent: sendEvent };
+    })();
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
