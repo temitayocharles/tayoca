@@ -1,0 +1,8 @@
+{
+  "name": "tayoca-www",
+  "type": "pages",
+  "compatibility_date": "2025-07-22",
+  "build_command": "echo 'static' && true",
+  "served_on": "2026-07-22T19:00:00Z",
+  "pages_build_output_dir": "public"
+}
