@@ -1,0 +1,5 @@
+name,price,description,url
+"AWS Cost Optimization Playbook",29,"A comprehensive guide to optimizing AWS costs","https://tayoca.gumroad.com/l/aws-cost-optimization"
+"Kubernetes Production Readiness Checklist",19,"Checklist for ensuring your Kubernetes cluster is production-ready","https://tayoca.gumroad.com/l/k8s-production-checklist"
+"DevOps Incident Runbook Template",19,"Template for creating effective incident runbooks in DevOps","https://tayoca.gumroad.com/l/devops-incident-runbook"
+"GitOps Field Guide",29,"Practical GitOps patterns: ArgoCD, Flux, Helm, Kustomize for production platforms","https://tayoca.gumroad.com/l/gitops-field-guide"
