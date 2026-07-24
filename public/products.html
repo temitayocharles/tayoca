@@ -1,156 +1,184 @@
+<!--#include virtual="/snippets/header.html" -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Products - Tayoca</title>
-    <meta name="description" content="Practical engineering guides for teams who want to move fast: FinOps Playbook, Incident Runbook, GitOps Field Guide, and K8s Production Checklist. Buy any guide and apply its full price as credit toward a $5K FinOps audit.">
-    <meta name="keywords" content="FinOps playbook, incident runbook, GitOps guide, Kubernetes checklist, AWS cost optimization, engineering guides, Tayoca products">
-    <meta name="author" content="Tayoca">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://tayoca.com/products.html">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Products - Tayoca</title>
+ <meta name="description" content="Practical engineering guides for teams who want to move fast: FinOps Playbook, Incident Runbook, GitOps Field Guide, and K8s Production Checklist. Buy any guide and apply its full price as credit toward a $5K FinOps audit.">
+ <meta name="keywords" content="FinOps playbook, incident runbook, GitOps guide, Kubernetes checklist, AWS cost optimization, engineering guides, Tayoca products">
+ <meta name="author" content="Tayoca">
+ <meta name="robots" content="index, follow">
+ <link rel="canonical" href="https://tayoca.com/products.html">
+ <link rel="icon" href="favicon.ico" type="image/x-icon">
 
-    <!-- Open Graph -->
-    <meta property="og:title" content="Products – Tayoca">
-    <meta property="og:description" content="Practical engineering guides: FinOps Playbook, Incident Runbook, GitOps Field Guide, and K8s Production Checklist.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://tayoca.com/products.html">
-    <meta property="og:site_name" content="Tayoca">
-    <meta property="og:image" content="https://tayoca.com/assets/og-image.png">
+ <!-- Open Graph -->
+ <meta property="og:title" content="Products – Tayoca">
+ <meta property="og:description" content="Practical engineering guides: FinOps Playbook, Incident Runbook, GitOps Field Guide, and K8s Production Checklist.">
+ <meta property="og:type" content="website">
+ <meta property="og:url" content="https://tayoca.com/products.html">
+ <meta property="og:site_name" content="Tayoca">
+ <meta property="og:image" content="https://tayoca.com/assets/og-image.png">
 
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Products – Tayoca">
-    <meta name="twitter:description" content="Practical engineering guides: FinOps Playbook, Incident Runbook, GitOps Field Guide, and K8s Production Checklist.">
-    <meta name="twitter:image" content="https://tayoca.com/assets/og-image.png">
+ <!-- Twitter Card -->
+ <meta name="twitter:card" content="summary_large_image">
+ <meta name="twitter:title" content="Products – Tayoca">
+ <meta name="twitter:description" content="Practical engineering guides: FinOps Playbook, Incident Runbook, GitOps Field Guide, and K8s Production Checklist.">
+ <meta name="twitter:image" content="https://tayoca.com/assets/og-image.png">
 
-    <!-- Plausible Analytics -->
-    <script defer data-domain="tayoca.com" src="https://plausible.io/js/script.js"></script>
+ <!-- InsForge Analytics (Plausible-compatible, self-hosted) -->
+ <script>
+ (function() {
+ var endpoint = 'https://v7mhrspk.function2.insforge.app/analytics-event';
+ var domain = 'tayoca.com';
+ function sendEvent(name, props) {
+ var data = {
+ 	domain: domain,
+ 	name: name,
+ 	url: window.location.href,
+ 	path: window.location.pathname,
+ 	referrer: document.referrer || null,
+ 	screen_width: window.screen.width,
+ 	screen_height: window.screen.height,
+ 	props: props || {}
+ };
+ navigator.sendBeacon && navigator.sendBeacon(endpoint, JSON.stringify(data)) ||
+ fetch(endpoint, { method: 'POST', body: JSON.stringify(data), keepalive: true });
+ }
+ if (document.readyState === 'loading') {
+ document.addEventListener('DOMContentLoaded', function() { sendEvent('pageview'); });
+ } else {
+ sendEvent('pageview');
+ }
+ // Expose for custom events
+ window.tayocaAnalytics = { sendEvent: sendEvent };
+ })();
+ </script>
 
-    <style>
-        :root {
-            --bg-color: #0d0d0d;
-            --text-color: #ffffff;
-            --accent-color: #f97316;
-        }
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: system-ui, sans-serif;
-            margin: 0;
-            padding: 2rem;
-        }
-        h1 {
-            text-align: center;
-            margin-bottom: 2rem;
-            color: var(--accent-color);
-        }
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.5rem;
-        }
-        .product-card {
-            background-color: #1a1a1a;
-            border: 1px solid #333;
-            border-radius: 0.5rem;
-            padding: 1.5rem;
-            text-align: center;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .product-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-        }
-        .product-card h2 {
-            margin-top: 0;
-            margin-bottom: 1rem;
-            color: var(--accent-color);
-        }
-        .product-card p {
-            margin-bottom: 1.5rem;
-            color: #ccc;
-            flex-grow: 1;
-        }
-        .product-card .price {
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-bottom: 1.5rem;
-            color: var(--accent-color);
-        }
-        .product-card .cta-button {
-            display: inline-block;
-            background-color: var(--accent-color);
-            color: white;
-            text-decoration: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.25rem;
-            font-weight: bold;
-            transition: background-color 0.2s;
-        }
-        .product-card .cta-button:hover {
-            background-color: #ea580c;
-        }
-    </style>
+ <style>
+ :root {
+ --bg-color: #0d0d0d;
+ --text-color: #ffffff;
+ --accent-color: #f97316;
+ }
+ body {
+ background-color: var(--bg-color);
+ color: var(--text-color);
+ font-family: system-ui, sans-serif;
+ margin: 0;
+ padding: 2rem;
+ }
+ h1 {
+ text-align: center;
+ margin-bottom: 2rem;
+ color: var(--accent-color);
+ }
+ .products-grid {
+ display: grid;
+ grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+ gap: 1.5rem;
+ }
+ .product-card {
+ background-color: #1a1a1a;
+ border: 1px solid #333;
+ border-radius: 0.5rem;
+ padding: 1.5rem;
+ text-align: center;
+ transition: transform 0.2s, box-shadow 0.2s;
+ }
+ .product-card:hover {
+ transform: translateY(-4px);
+ box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+ }
+ .product-card h2 {
+ margin-top: 0;
+ margin-bottom: 1rem;
+ color: var(--accent-color);
+ }
+ .product-card p {
+ margin-bottom: 1.5rem;
+ color: #ccc;
+ flex-grow: 1;
+ }
+ .product-card .price {
+ font-size: 1.5rem;
+ font-weight: bold;
+ margin-bottom: 1.5rem;
+ color: var(--accent-color);
+ }
+ .product-card .cta-button {
+ display: inline-block;
+ background-color: var(--accent-color);
+ color: white;
+ text-decoration: none;
+ padding: 0.75rem 1.5rem;
+ border-radius: 0.25rem;
+ font-weight: bold;
+ transition: background-color 0.2s;
+ cursor: pointer; /* ensure pointer cursor */
+ }
+ .product-card .cta-button:hover {
+ background-color: #ea580c;
+ }
+ </style>
 </head>
 <body>
-    <h1>Our Products</h1>
-    <div class="products-grid" id="productsContainer">
-        <!-- Product cards will be injected here -->
-    </div>
+ <h1>Our Products</h1>
+ <div class="products-grid" id="productsContainer">
+ <!-- Product cards will be injected here -->
+ </div>
 
-    <script>
-        // Function to parse CSV string into array of objects
-        function parseCSV(csv) {
-            const lines = csv.trim().split('\n');
-            const headers = lines[0].split(',').map(header => header.trim());
-            const result = [];
-            for (let i = 1; i < lines.length; i++) {
-                const values = lines[i].split(',').map(value => {
-                    // Remove quotes if present
-                    return value.replace(/^"(.*)"$/, '$1').trim();
-                });
-                const obj = {};
-                headers.forEach((header, index) => {
-                    obj[header] = values[index];
-                });
-                result.push(obj);
-            }
-            return result;
-        }
+ <script>
+ // Function to parse CSV string into array of objects
+ function parseCSV(csv) {
+ const lines = csv.trim().split('\n');
+ const headers = lines[0].split(',').map(header => header.trim());
+ const result = [];
+ for (let i = 1; i < lines.length; i++) {
+ const values = lines[i].split(',').map(value => {
+ // Remove quotes if present
+ return value.replace(/^".*"$/, '$1').trim();
+ });
+ const obj = {};
+ headers.forEach((header, index) => {
+ obj[header] = values[index];
+ });
+ result.push(obj);
+ }
+ return result;
+ }
 
-        // Fetch the CSV and render products
-        async function loadProducts() {
-            try {
-                const response = await fetch('products-feed.csv');
-                if (!response.ok) {
-                    throw new Error(`Failed to fetch CSV: ${response.status}`);
-                }
-                const csvText = await response.text();
-                const products = parseCSV(csvText);
-                const container = document.getElementById('productsContainer');
-                container.innerHTML = ''; // Clear loading state
+ // Fetch the CSV and render products
+ async function loadProducts() {
+ try {
+ const response = await fetch('products-feed.csv');
+ if (!response.ok) {
+ throw new Error(`Failed to fetch CSV: ${response.status}`);
+ }
+ const csvText = await response.text();
+ const products = parseCSV(csvText);
+ const container = document.getElementById('productsContainer');
+ container.innerHTML = ''; // Clear loading state
 
-                products.forEach(product => {
-                    const card = document.createElement('div');
-                    card.className = 'product-card';
-                    card.innerHTML = `
-                        <h2>${product.name}</h2>
-                        <div class="price">$${product.price}</div>
-                        <p>${product.description}</p>
-                        <a href="${product.url}" target="_blank" rel="noopener" class="cta-button">Buy Now</a>
-                    `;
-                    container.appendChild(card);
-                });
-            } catch (error) {
-                console.error('Error loading products:', error);
-                document.getElementById('productsContainer').innerHTML = '<p>Error loading products. Please try again later.</p>';
-            }
-        }
+ products.forEach(product => {
+ const card = document.createElement('div');
+ card.className = 'product-card';
+ card.innerHTML = `
+ <h2>${product.name}</h2>
+ <div class="price">$${product.price}</div>
+ <p>${product.description}</p>
+ <a href="${product.url}" target="_blank" rel="noopener" class="cta-button">Buy Now</a>
+ `;
+ container.appendChild(card);
+ });
+ } catch (error) {
+ console.error('Error loading products:', error);
+ document.getElementById('productsContainer').innerHTML = '<p>Error loading products. Please try again later.</p>';
+ }
+ }
 
-        // Load products on page load
-        document.addEventListener('DOMContentLoaded', loadProducts);
-    </script>
-</body>
-</html>
+ // Load products on page load
+ document.addEventListener('DOMContentLoaded', loadProducts);
+ </script>
+<!--#include virtual="/snippets/footer.html" -->
