@@ -1,331 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Temitayo Charles Akinniranye - Tech Product Builder & DevOps Architect</title>
-    <meta name="description" content="Learn about Temitayo Charles Akinniranye (Temitayo), a DevOps Architect and technical product builder creating AI-powered solutions, automation frameworks, and educational resources for engineers">
-    <meta name="keywords" content="Temitayo Charles Akinniranye, Temitayo, DevOps Architect, Technical Product Builder, AI automation, AWS optimization, Kubernetes expert">
-    <meta property="og:title" content="About Temitayo Charles Akinniranye">
-    <meta property="og:description" content="DevOps Architect and technical product builder specializing in AI automation, cloud optimization, and educational resources">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://tayoca.com/about.html">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="About Temitayo Charles Akinniranye">
-    <meta name="twitter:description" content="DevOps Architect and technical product builder specializing in AI automation, cloud optimization, and educational resources">
-    
-    <!-- Tailwind CSS via UNPKG CDN -->
-    <script src="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.js"></script>
-    
-    <!-- InsForge Analytics -->
-    <script defer src="https://v7mhrspk.function2.insforge.app/c.js"></script>
-    
-    <style>
-        body {
-            background-color: #0d0d0d;
-            color: #e5e7eb;
-        }
-    
-    <style>
-        :root { --bg: #0d0d0d; --bg-elevated: #1a1a1a; --fg: #e5e7eb; --fg-muted: #9ca3af; --accent: #f97316; --accent-hover: #ea580c; --border: #374151; --border-hover: #4b5563; --card-bg: #111827; --focus-ring: #f97316; --header-height: 64px; }
-        * { box-sizing: border-box; } html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-        @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; } }
-        body { background-color: var(--bg); color: var(--fg); font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif; line-height: 1.6; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-        .skip-link { position: absolute; top: -100%; left: 50%; transform: translateX(-50%); background: var(--accent); color: white; padding: 0.75rem 1.5rem; border-radius: 0.5rem; z-index: 10000; font-weight: 600; text-decoration: none; }
-        .skip-link:focus { top: 1rem; } :focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 2px; }
-        .mobile-menu { position: fixed; top: 0; right: 0; bottom: 0; width: 100%; max-width: 320px; background: var(--bg); border-left: 1px solid var(--border); z-index: 100; transform: translateX(100%); transition: transform 0.3s ease-out; padding: calc(var(--header-height) + 1rem) 1.5rem 2rem; display: flex; flex-direction: column; gap: 1rem; overflow-y: auto; }
-        .mobile-menu.open { transform: translateX(0); }
-        .mobile-menu-overlay { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.5); z-index: 99; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; }
-        .mobile-menu-overlay.open { opacity: 1; visibility: visible; }
-        .mobile-menu a { display: block; padding: 1rem; color: var(--fg); text-decoration: none; border-radius: 0.5rem; font-size: 1.125rem; font-weight: 500; transition: background 0.2s ease, color 0.2s ease; touch-action: manipulation; }
-        .mobile-menu a:hover, .mobile-menu a:focus { background: var(--bg-elevated); color: var(--accent); }
-        .mobile-menu a[aria-current="page"] { color: var(--accent); background: rgba(249, 115, 22, 0.1); }
-        .mobile-menu-close { position: absolute; top: 1rem; right: 1rem; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 0.5rem; color: var(--fg); cursor: pointer; touch-action: manipulation; }
-        .mobile-menu-close:hover, .mobile-menu-close:focus { background: var(--border); }
-        .hamburger { display: flex; flex-direction: column; justify-content: space-between; width: 28px; height: 20px; background: transparent; border: none; cursor: pointer; padding: 0; touch-action: manipulation; }
-        .hamburger span { display: block; width: 100%; height: 3px; background: var(--fg); border-radius: 2px; transition: transform 0.3s ease, opacity 0.3s ease; }
-        .hamburger[aria-expanded="true"] span:nth-child(1) { transform: translateY(8.5px) rotate(45deg); }
-        .hamburger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
-        .hamburger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-8.5px) rotate(-45deg); }
-        @media (min-width: 768px) { .hamburger { display: none; } }
-        .hero-title { font-size: clamp(2rem, 8vw, 3.5rem); line-height: 1.1; }
-        .hero-subtitle { font-size: clamp(1rem, 3vw, 1.25rem); }
-        .section-title { font-size: clamp(1.75rem, 5vw, 2.5rem); line-height: 1.2; }
-        .card { transition: border-color 0.2s ease, transform 0.2s ease; }
-        @media (prefers-reduced-motion: no-preference) { .card:hover { border-color: var(--accent); transform: translateY(-2px); } }
-        .card:focus-within { border-color: var(--focus-ring); }
-        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.875rem 1.5rem; font-size: 1rem; font-weight: 600; border-radius: 0.5rem; text-decoration: none; border: 2px solid transparent; cursor: pointer; touch-action: manipulation; min-height: 48px; transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease; }
-        .btn-primary { background: var(--accent); color: white; border-color: var(--accent); }
-        .btn-primary:hover, .btn-primary:focus { background: var(--accent-hover); border-color: var(--accent-hover); }
-        .btn-secondary { background: transparent; color: var(--accent); border-color: var(--accent); }
-        .btn-secondary:hover, .btn-secondary:focus { background: rgba(249, 115, 22, 0.1); }
-        .form-input { width: 100%; padding: 0.875rem 1rem; font-size: 1rem; background: var(--bg-elevated); border: 2px solid var(--border); border-radius: 0.5rem; color: var(--fg); min-height: 48px; transition: border-color 0.2s ease, box-shadow 0.2s ease; }
-        .form-input::placeholder { color: var(--fg-muted); }
-        .form-input:focus { outline: none; border-color: var(--focus-ring); box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.2); }
-        .newsletter-form { display: flex; flex-direction: column; gap: 0.75rem; }
-        @media (min-width: 640px) { .newsletter-form { flex-direction: row; } }
-        .footer-link { color: var(--fg-muted); transition: color 0.2s ease; }
-        .footer-link:hover, .footer-link:focus { color: var(--fg); }
-        @supports (padding: max(0px)) { .mobile-menu { padding-right: max(1.5rem, env(safe-area-inset-right)); padding-left: max(1.5rem, env(safe-area-inset-left)); padding-bottom: max(2rem, env(safe-area-inset-bottom)); } }
-        @media print { .mobile-menu, .hamburger, .newsletter-form, footer { display: none !important; } body { background: white; color: black; } }
-        .blog-card-image { width: 100%; aspect-ratio: 16/10; object-fit: cover; border-radius: 0.5rem; }
-        @media (min-width: 768px) { .blog-card-image { width: 100%; height: 192px; } }
-        .table-wrapper { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 1.5rem 0; }
-        .table-wrapper::-webkit-scrollbar { height: 8px; }
-        .table-wrapper::-webkit-scrollbar-track { background: var(--bg); }
-        .table-wrapper::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
-        .table-wrapper::-webkit-scrollbar-thumb:hover { background: var(--border-hover); }
-        table { width: 100%; min-width: 600px; border-collapse: collapse; font-size: 0.875rem; }
-        th, td { padding: 0.75rem 1rem; text-align: left; border-bottom: 1px solid var(--border); }
-        th { background: var(--bg-elevated); color: var(--fg-muted); font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; position: sticky; top: 0; z-index: 1; }
-        tr:hover td { background: var(--bg-elevated); }
-        .code-block, pre { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 0.5rem; padding: 1.5rem; overflow-x: auto; margin: 1.5rem 0; font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace; font-size: 0.875rem; line-height: 1.7; -webkit-overflow-scrolling: touch; }
-        .code-block code, pre code { background: transparent; padding: 0; font-size: inherit; color: var(--fg); }
-        img { max-width: 100%; height: auto; display: block; }
-    </style>
-</style>
+  <meta charset="UTF-8">
+  <title>Tayoca – About</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body{background:#0d0d0d;color:#e5e7eb;font-family:system-ui,-apple-system,BlinkMacSystemFont,Inter,sans-serif;}
+    main{max-width:1000px;margin:auto;padding:0 2rem;}
+    header,nav,a{color:#f97316!important}
+    .amber-accent{width:100%;height:6px;background:#f97316;margin-top:-3px}
+    .card{background:#fff;color:#111;padding:2rem;border-radius:.875rem;box-shadow:0 4px 20px rgba(0,0,0,.08);margin-bottom:2rem}
+    footer{font-size:.875rem;color:#9ca3af;border-top:1px solid #374151;padding-top:2rem;display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem;max-width:1000px;margin:auto}
+    @media(max-width:768px){footer{grid-template-columns:1fr;margin:2rem 0}}
+  </style>
 </head>
-<a href="#main-content" class="skip-link">Skip to main content</a>
-<body class="min-h-screen">
-    <!-- Navigation -->
-    
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-[var(--bg)] border-b border-[var(--border)]" style="height: var(--header-height);" role="navigation" aria-label="Main navigation">
-        <div class="flex items-center justify-between h-full px-4 md:px-6">
-            <div class="flex items-center space-x-3">
-                <a href="./index.html" class="text-xl font-semibold text-[var(--accent)] nav-link flex items-center" aria-label="Temitayo Charles Akinniranye - Home">
-                    <svg class="w-6 h-6 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 3L4 14h7v7l9-9h-7V3z"/></svg>
-                    <span class="hidden sm:inline">temitayo</span>
-                </a>
-            </div>
-            <div class="hidden md:flex items-center space-x-1">
-                <a href="./index.html" class="nav-link px-4 py-2 rounded-lg text-sm font-medium text-[var(--fg)] hover:text-[var(--accent)] hover:bg-[var(--bg-elevated)] transition-colors">Home</a>
-                <a href="./services.html" class="nav-link px-4 py-2 rounded-lg text-sm font-medium text-[var(--fg)] hover:text-[var(--accent)] hover:bg-[var(--bg-elevated)] transition-colors">Services</a>
-                <a href="./products.html" class="nav-link px-4 py-2 rounded-lg text-sm font-medium text-[var(--fg)] hover:text-[var(--accent)] hover:bg-[var(--bg-elevated)] transition-colors">Products</a>
-                <a href="./blog.html" class="nav-link px-4 py-2 rounded-lg text-sm font-medium text-[var(--fg)] hover:text-[var(--accent)] hover:bg-[var(--bg-elevated)] transition-colors">Blog</a>
-                <a href="./about.html" class="nav-link px-4 py-2 rounded-lg text-sm font-medium text-[var(--fg)] hover:text-[var(--accent)] hover:bg-[var(--bg-elevated)] transition-colors">About</a>
-            </div>
-            <button class="hamburger md:hidden p-2 rounded-lg border border-[var(--border)] bg-[var(--bg-elevated)]" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu" type="button">
-                <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
-            </button>
-        </div>
+<body>
+  <header style="position:sticky;top:0;z-index:999;background:rgba(13,13,13,.8);backdrop-filter:blur(8px)">
+    <nav style="max-width:1000px;margin:auto;padding:0 2rem;display:flex;justify-content:space-between;align-items:center;padding-top:.75rem;padding-bottom:.75rem">
+      <a style="text-decoration:none" href="/">tayoca</a>
+      <div style="display:flex;gap:2rem"><a style="color:#e5e7eb;text-decoration:none" href="/about.html#about">About</a><a style="color:#e5e7eb;text-decoration:none" href="/#contact">Contact</a></div>
     </nav>
-    <div class="mobile-menu-overlay" id="mobile-menu-overlay" aria-hidden="true"></div>
-    <aside class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Navigation menu" aria-modal="true">
-        <button class="mobile-menu-close" aria-label="Close navigation menu" type="button">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-        </button>
-        <nav>
-            <a href="./index.html" class="nav-link">Home</a>
-            <a href="./services.html" class="nav-link">Services</a>
-            <a href="./products.html" class="nav-link">Products</a>
-            <a href="./blog.html" class="nav-link">Blog</a>
-            <a href="./about.html" class="nav-link">About</a>
-        </nav>
-    </aside>
-    
-    <!-- About Content -->
-    <main id="main-content" class="container mx-auto px-6 py-16 md:py-24">
-        <div class="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
-            <div>
-                <h1 class="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-                    Temitayo Charles Akinniranye<br>
-                    <span class="text-[var(--accent)]">DevOps Architect & Technical Product Builder</span>
-                </h1>
-                
-                <p class="text-lg text-[var(--fg-muted)] mb-8 leading-relaxed">
-                    Building technical products and educational resources that help engineers and teams achieve more with their technology stack. Specializing in DevOps architecture, cloud optimization, automation frameworks, and AI-powered development workflows.
-                </p>
-                
-                <p class="text-[var(--fg-muted)] mb-8">
-                    I help bridge the gap between development and operations by creating practical guides, automation solutions, and educational materials that turn technical complexity into accessible knowledge.
-                </p>
-                
-                <div class="bg-[var(--card-bg)] rounded-lg p-6 border border-[var(--border)]">
-                    <h3 class="text-xl font-bold text-white mb-4">Current Focus</h3>
-                    <ul class="space-y-3 text-[var(--fg-muted)]">
-                        <li class="flex items-start space-x-3">
-                            <span class="text-[var(--accent)] mt-1">🔧</span>
-                            <span>Building educational resources on AI automation and agentic development workflows</span>
-                        </li>
-                        <li class="flex items-start space-x-3">
-                            <span class="text-[var(--accent)] mt-1">📊</span>
-                            <span>Creating cost optimization guides for cloud infrastructure management</span>
-                        </li>
-                        <li class="flex items-start space-x-3">
-                            <span class="text-[var(--accent)] mt-1">📚</span>
-                            <span>Writing practical n8n automation guides for engineering teams</span>
-                        </li>
-                        <li class="flex items-start space-x-3">
-                            <span class="text-[var(--accent)] mt-1">🚀</span>
-                            <span>Helping teams adopt AI-driven development workflows through education and automation templates</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div>
-                <img src="https://via.placeholder.com/400x500/1f2937/9ca3af?text=TEMITAYO" 
-                     alt="Temitayo Charles Akinniranye - DevOps Architect and Technical Product Builder"
-                     class="w-full max-w-sm mx-auto rounded-lg shadow-2xl ring-4 ring-gray-600">
-            </div>
-        </div>
-        
-        <div class="mt-16 bg-[var(--card-bg)] rounded-lg p-8 border border-[var(--border)]">
-            <h2 class="text-2xl font-bold text-white mb-6">Background & Experience</h2>
-            <div class="space-y-6 text-[var(--fg-muted)]">
-                <p>
-                    With years of experience in distributed systems, cloud infrastructure, and development operations, I've developed a pragmatic approach to technical challenges:
-                </p>
-                
-                <div>
-                    <h3 class="text-lg font-medium text-white mb-3">Key Areas of Expertise</h3>
-                    <ul class="space-y-2">
-                        <li>• Cloud optimization and FinOps practices for cost reduction</li>
-                        <li>• Infrastructure as code and platform engineering</li>
-                        <li>• CI/CD pipeline design and optimization</li>
-                        <li>• Kubernetes and container orchestration</li>
-                        <li>• AI-powered development workflows</li>
-                        <li>• Technical education and resource creation</li>
-                    </ul>
-                </div>
-                
-                <p>
-                    My approach combines technical depth with practical guidance, distilling complex topics into actionable resources that help readers immediately apply concepts to their work.
-                </p>
-            </div>
-        </div>
-        
-        <div class="mt-12 bg-[var(--card-bg)] rounded-lg p-6 border border-[var(--border)]">
-            <h3 class="text-xl font-bold text-white mb-4">Philosophy</h3>
-            <p class="text-[var(--fg-muted)] leading-relaxed">
-                Technology should enable people, not overwhelm them. My mission is to demystify technical complexity through clear, practical guides, automation templates, and educational resources that help engineers build better systems while reducing cognitive load.
-            </p>
-        </div>
-        
-        <div class="mt-12 bg-[var(--card-bg)] rounded-lg p-6 border border-[var(--border)]">
-            <h2 class="text-xl font-bold text-white mb-4">Education & Publications</h2>
-            <p class="text-[var(--fg-muted)] mb-4">
-                Author of practical technical guides sold through Gumroad, reaching engineers worldwide. Publications cover cloud optimization, DevOps practices, automation patterns, and practical education on implementing AI in existing organizations.
-            </p>
-            
-            <div class="mt-6 grid md:grid-cols-2 gap-4">
-                <div class="text-center p-4 bg-gray-700 rounded-lg">
-                    <div class="text-[var(--accent)] text-2xl mb-2">💰</div>
-                    <div class="font-medium text-white">AWS Cost Optimization</div>
-                    <div class="text-sm text-[var(--fg-muted)]">Playbook</div>
-                </div>
-                <div class="text-center p-4 bg-gray-700 rounded-lg">
-                    <div class="text-[var(--accent)] text-2xl mb-2">🛠️</div>
-                    <div class="font-medium text-white">DevOps Lab Pack</div>
-                    <div class="text-sm text-[var(--fg-muted)]">Learning resources</div>
-                </div>
-                <div class="text-center p-4 bg-gray-700 rounded-lg">
-                    <div class="text-[var(--accent)] text-2xl mb-2">🤖</div>
-                    <div class="font-medium text-white">AI Automation Career</div>
-                    <div class="text-sm text-[var(--fg-muted)]">Playbook</div>
-                </div>
-                <div class="text-center p-4 bg-gray-700 rounded-lg">
-                    <div class="text-[var(--accent)] text-2xl mb-2">🎯</div>
-                    <div class="font-medium text-white">n8n MCP Kubernetes</div>
-                    <div class="text-sm text-[var(--fg-muted)]">Teaching Pack</div>
-                </div>
-            </div>
-        </div>
-    </main>
-    
-    <!-- Newsletter Signup Section -->
-    <div class="container mx-auto px-6 pb-16">
-        <div class="max-w-4xl mx-auto bg-[var(--card-bg)] rounded-lg p-6 border border-[var(--accent)]/30 text-center">
-            <h3 class="text-lg font-medium text-white mb-2">Stay Updated</h3>
-            <p class="text-[var(--fg-muted)] text-sm mb-4">Get weekly insights on DevOps, AI automation, and technical playbooks. No spam, unsubscribe anytime.</p>
-            <form id="newsletter-form" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-                <input 
-                    type="email" 
-                    name="email" 
-                    placeholder="your@email.com" 
-                    required
-                    class="form-input"
-                >
-                <button 
-                    type="submit" 
-                    class="btn btn-primary whitespace-nowrap"
-                >
-                    Subscribe
-                </button>
-            </form>
-            <p id="newsletter-message" class="text-sm text-[var(--fg-muted)] mt-2 hidden"></p>
-        </div>
-    </div>
+  </header>
+  <main>
+    <section style="padding-top:2rem;padding-bottom:2rem;text-align:left">
+      <a style="color:#e5e7eb;text-decoration:none;font-weight:600;" href="/">&larr; Back to Home</a>
+    </section>
+    <section id="about" style="text-align:center">
+      <h1 style="font-size:clamp(2.2rem,5vw,2.8rem);margin-bottom:1.5rem;">About Us</h1>
+      <p style="font-size:1.25rem;max-width:800px;margin:1rem auto;color:#d1d5db;">Tayoca builds products that pay for themselves and infrastructure you can trust → <strong style='color:#e5e7eb'>at the same price</strong>. We operate under the principle: every dollar forecasted, every hour instrumented, every service observable.</p>
+      <h3 style="margin-top:3rem;margin-bottom:1rem;font-size:1.375rem;">Our Metrics</h3>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;text-align:center;margin:2rem 0;"><div><div style="font-size:2.5rem;font-weight:600;">Deploy to prod</div><div style="color:#9ca3af;">&le;15 min</div></div><div><div style="font-size:2.5rem;font-weight:600;">MTTR</div><div style="color:#9ca3af;">&le;5 min</div></div><div><div style="font-size:2.5rem;font-weight:600;">Cloud bill</div><div style="color:#9ca3af;">&le;80% baseline</div></div></div>
 
-        <footer class="border-t border-[var(--border)] mt-16 py-8 px-4">
-        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-            <p class="text-[var(--fg-muted)] text-sm">© 2025 Temitayo Charles Akinniranye. All rights reserved.</p>
-            <a href="#" class="footer-link text-sm">Privacy Policy</a>
-        </div>
-    </footer>
-    
-    <script>
-        // Mobile navigation handler
-        const mobileMenuButton = document.querySelector('button');
-        
+      <h3 style="margin-top:3rem;margin-bottom:1rem;font-size:1.375rem;">Engineering Attestations</h3>
+      <div style='font-family:"JetBrains Mono",monospace;display:grid;grid-template-columns:repeat(2,1fr);gap:.25rem;max-width:600px;margin:auto'><span style='background:#111827;border-radius:.25rem;padding:.375rem .625rem;white-space:nowrap'>PMP</span><span style='background:#111827;border-radius:.25rem;padding:.375rem .625rem;white-space:nowrap'>CSM</span><span style='background:#111827;border-radius:.25rem;padding:.375rem .625rem;white-space:nowrap'>Terraform Associate</span><span style='background:#111827;border-radius:.25rem;padding:.375rem .625rem;white-space:nowrap'>AWS Solutions Architect</span></div>
 
-        // Newsletter form handler
-        const newsletterForm = document.getElementById('newsletter-form');
-        const newsletterMessage = document.getElementById('newsletter-message');
-        
-        if (newsletterForm) {
-            newsletterForm.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                const email = newsletterForm.querySelector('input[name="email"]').value;
-                const name = email.split('@')[0];
-                const submitBtn = newsletterForm.querySelector('button[type="submit"]');
-                const originalBtnText = submitBtn.textContent;
-                
-                submitBtn.disabled = true;
-                submitBtn.textContent = 'Subscribing...';
-                newsletterMessage.classList.add('hidden');
-                
-                try {
-                    // Submit to InsForge (newsletter database)
-                    const insforgeResponse = await fetch('https://v7mhrspk.function2.insforge.app/newsletter-subscribe', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ email })
-                    });
-                    
-                    // Submit to n8n for personalized follow-up email
-                    try {
-                        await fetch('https://n8n.tca-infraforge.site/webhook/tayoca-newsletter-signup', {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({ email, name })
-                        });
-                    } catch (n8nError) {
-                        console.warn('n8n webhook failed, but InsForge succeeded:', n8nError);
-                    }
-                    
-                    const data = await insforgeResponse.json();
-                    
-                    if (insforgeResponse.ok && data.success) {
-                        newsletterMessage.textContent = 'Thanks for subscribing! Check your inbox for confirmation.';
-                        newsletterMessage.className = 'text-sm text-green-400 mt-2';
-                        newsletterForm.reset();
-                    } else {
-                        newsletterMessage.textContent = data.error || 'Something went wrong. Please try again.';
-                        newsletterMessage.className = 'text-sm text-red-400 mt-2';
-                    }
-                } catch (error) {
-                    newsletterMessage.textContent = 'Network error. Please check your connection and try again.';
-                    newsletterMessage.className = 'text-sm text-red-400 mt-2';
-                }
-                
-                newsletterMessage.classList.remove('hidden');
-                submitBtn.disabled = false;
-                submitBtn.textContent = originalBtnText;
-            });
-        }
-    </script>
-
-    <script src="./shared-mobile.js"></script>
+      <h3 style="margin-top:4rem;margin-bottom:.5rem;font-size:1.375rem;">Let’s build reliable things together</h3>
+      <p style="color:#d1d5db;margin-bottom:2rem;">We’re engineers who’ve run production at scale. Kubernetes, GitOps, AWS, Terraform, DevSecOps, and AI-assisted operations are our native tongue. <a style='color:#f97316;text-decoration:none' href="/#contact">Book a call &rarr;</a></p>
+    </section>
+  </main>
+  <div class="amber-accent"></div>
+  <footer>
+    <div><strong style='color:#e5e7eb'>tayoca</strong><br><small style='color:#9ca3af'>Six brands. One operating standard.<br>Ontario, Canada.</small></div>
+    <div><a style='color:#e5e7eb;text-decoration:none' href='/'>Home</a><br><a style='color:#e5e7eb;text-decoration:none' href='/about.html#about'>About</a></div>
+    <div><span style='font-family:monospace;font-size:.75rem;padding:.25rem .5rem;border-radius:.25rem;border:1px solid #374151;display:block;margin-bottom:.25rem'>PMP</span><span style='font-family:monospace;font-size:.75rem;padding:.25rem .5rem;border-radius:.25rem;border:1px solid #374151;display:block;margin-bottom:.25rem'>CSM</span><span style='font-family:monospace;font-size:.75rem;padding:.25rem .5rem;border-radius:.25rem;border:1px solid #374151;display:block;margin-bottom:.25rem'>Terraform Associate</span><span style='font-family:monospace;font-size:.75rem;padding:.25rem .5rem;border-radius:.25rem;border:1px solid #374151;display:block'>AWS Solutions Architect</span></div>
+  </footer>
 </body>
 </html>

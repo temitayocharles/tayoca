@@ -1,426 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DevOps Consulting Services - Temitayo Charles Akinniranye</title>
-    <meta name="description" content="Expert DevOps consulting services including infrastructure automation, CI/CD pipelines, cloud optimization, Kubernetes consulting, and DevOps training">
-    <meta name="keywords" content="DevOps consulting, Temitayo Charles Akinniranye, infrastructure automation, CI/CD pipelines, Kubernetes consulting, cloud optimization, DevOps training">
-    <meta property="og:title" content="DevOps Consulting Services">
-    <meta property="og:description" content="Expert DevOps consulting services including infrastructure automation, CI/CD pipelines, cloud optimization">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://tayoca.com/services.html">
-    <meta property="og:image" content="https://tayoca.com/og-image.jpg">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="DevOps Consulting Services">
-    <meta name="twitter:description" content="Expert DevOps consulting services including infrastructure automation, CI/CD pipelines, cloud optimization">
-    
-    <!-- Tailwind CSS via UNPKG CDN -->
-    <script src="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.js"></script>
-    
-    <!-- InsForge Analytics -->
-    <script defer src="https://v7mhrspk.function2.insforge.app/c.js"></script>
-    
-    <style>
-        body {
-            background-color: #0d0d0d;
-            color: #e5e7eb;
-        }
-        .text-[var(--accent)] {
-            color: #f97316;
-        }
-        .bg-text-[var(--accent)] {
-            background-color: #f97316;
-        }
-    
-    <style>
-        :root { --bg: #0d0d0d; --bg-elevated: #1a1a1a; --fg: #e5e7eb; --fg-muted: #9ca3af; --accent: #f97316; --accent-hover: #ea580c; --border: #374151; --border-hover: #4b5563; --card-bg: #111827; --focus-ring: #f97316; --header-height: 64px; }
-        * { box-sizing: border-box; } html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-        @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; } }
-        body { background-color: var(--bg); color: var(--fg); font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif; line-height: 1.6; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-        .skip-link { position: absolute; top: -100%; left: 50%; transform: translateX(-50%); background: var(--accent); color: white; padding: 0.75rem 1.5rem; border-radius: 0.5rem; z-index: 10000; font-weight: 600; text-decoration: none; }
-        .skip-link:focus { top: 1rem; } :focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 2px; }
-        .mobile-menu { position: fixed; top: 0; right: 0; bottom: 0; width: 100%; max-width: 320px; background: var(--bg); border-left: 1px solid var(--border); z-index: 100; transform: translateX(100%); transition: transform 0.3s ease-out; padding: calc(var(--header-height) + 1rem) 1.5rem 2rem; display: flex; flex-direction: column; gap: 1rem; overflow-y: auto; }
-        .mobile-menu.open { transform: translateX(0); }
-        .mobile-menu-overlay { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.5); z-index: 99; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; }
-        .mobile-menu-overlay.open { opacity: 1; visibility: visible; }
-        .mobile-menu a { display: block; padding: 1rem; color: var(--fg); text-decoration: none; border-radius: 0.5rem; font-size: 1.125rem; font-weight: 500; transition: background 0.2s ease, color 0.2s ease; touch-action: manipulation; }
-        .mobile-menu a:hover, .mobile-menu a:focus { background: var(--bg-elevated); color: var(--accent); }
-        .mobile-menu a[aria-current="page"] { color: var(--accent); background: rgba(249, 115, 22, 0.1); }
-        .mobile-menu-close { position: absolute; top: 1rem; right: 1rem; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 0.5rem; color: var(--fg); cursor: pointer; touch-action: manipulation; }
-        .mobile-menu-close:hover, .mobile-menu-close:focus { background: var(--border); }
-        .hamburger { display: flex; flex-direction: column; justify-content: space-between; width: 28px; height: 20px; background: transparent; border: none; cursor: pointer; padding: 0; touch-action: manipulation; }
-        .hamburger span { display: block; width: 100%; height: 3px; background: var(--fg); border-radius: 2px; transition: transform 0.3s ease, opacity 0.3s ease; }
-        .hamburger[aria-expanded="true"] span:nth-child(1) { transform: translateY(8.5px) rotate(45deg); }
-        .hamburger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
-        .hamburger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-8.5px) rotate(-45deg); }
-        @media (min-width: 768px) { .hamburger { display: none; } }
-        .hero-title { font-size: clamp(2rem, 8vw, 3.5rem); line-height: 1.1; }
-        .hero-subtitle { font-size: clamp(1rem, 3vw, 1.25rem); }
-        .section-title { font-size: clamp(1.75rem, 5vw, 2.5rem); line-height: 1.2; }
-        .card { transition: border-color 0.2s ease, transform 0.2s ease; }
-        @media (prefers-reduced-motion: no-preference) { .card:hover { border-color: var(--accent); transform: translateY(-2px); } }
-        .card:focus-within { border-color: var(--focus-ring); }
-        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.875rem 1.5rem; font-size: 1rem; font-weight: 600; border-radius: 0.5rem; text-decoration: none; border: 2px solid transparent; cursor: pointer; touch-action: manipulation; min-height: 48px; transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease; }
-        .btn-primary { background: var(--accent); color: white; border-color: var(--accent); }
-        .btn-primary:hover, .btn-primary:focus { background: var(--accent-hover); border-color: var(--accent-hover); }
-        .btn-secondary { background: transparent; color: var(--accent); border-color: var(--accent); }
-        .btn-secondary:hover, .btn-secondary:focus { background: rgba(249, 115, 22, 0.1); }
-        .form-input { width: 100%; padding: 0.875rem 1rem; font-size: 1rem; background: var(--bg-elevated); border: 2px solid var(--border); border-radius: 0.5rem; color: var(--fg); min-height: 48px; transition: border-color 0.2s ease, box-shadow 0.2s ease; }
-        .form-input::placeholder { color: var(--fg-muted); }
-        .form-input:focus { outline: none; border-color: var(--focus-ring); box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.2); }
-        .newsletter-form { display: flex; flex-direction: column; gap: 0.75rem; }
-        @media (min-width: 640px) { .newsletter-form { flex-direction: row; } }
-        .footer-link { color: var(--fg-muted); transition: color 0.2s ease; }
-        .footer-link:hover, .footer-link:focus { color: var(--fg); }
-        @supports (padding: max(0px)) { .mobile-menu { padding-right: max(1.5rem, env(safe-area-inset-right)); padding-left: max(1.5rem, env(safe-area-inset-left)); padding-bottom: max(2rem, env(safe-area-inset-bottom)); } }
-        @media print { .mobile-menu, .hamburger, .newsletter-form, footer { display: none !important; } body { background: white; color: black; } }
-        .blog-card-image { width: 100%; aspect-ratio: 16/10; object-fit: cover; border-radius: 0.5rem; }
-        @media (min-width: 768px) { .blog-card-image { width: 100%; height: 192px; } }
-        .table-wrapper { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 1.5rem 0; }
-        .table-wrapper::-webkit-scrollbar { height: 8px; }
-        .table-wrapper::-webkit-scrollbar-track { background: var(--bg); }
-        .table-wrapper::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
-        .table-wrapper::-webkit-scrollbar-thumb:hover { background: var(--border-hover); }
-        table { width: 100%; min-width: 600px; border-collapse: collapse; font-size: 0.875rem; }
-        th, td { padding: 0.75rem 1rem; text-align: left; border-bottom: 1px solid var(--border); }
-        th { background: var(--bg-elevated); color: var(--fg-muted); font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; position: sticky; top: 0; z-index: 1; }
-        tr:hover td { background: var(--bg-elevated); }
-        .code-block, pre { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 0.5rem; padding: 1.5rem; overflow-x: auto; margin: 1.5rem 0; font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace; font-size: 0.875rem; line-height: 1.7; -webkit-overflow-scrolling: touch; }
-        .code-block code, pre code { background: transparent; padding: 0; font-size: inherit; color: var(--fg); }
-        img { max-width: 100%; height: auto; display: block; }
-    </style>
-</style>
+  <meta charset="UTF-8">
+  <title>Tayoca – Services</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Flat-fee engagements: FinOps cost audits, GitOps platform engineering, and AI automation that pays for itself">
+  <link rel="stylesheet" href="/styles.css" />
+  <style>
+    body{background:#0d0d0d;color:#e5e7eb;font-family:system-ui,-apple-system,BlinkMacSystemFont,Inter,-apple-system;}
+    main{max-width:1200px;margin:auto;padding:0 2rem;}
+    section{padding:4rem 0;}
+    header,nav,a{color:#f97316!important;margin-left:-2rem!important;}
+    .amber-accent{width:100%;height:6px;background:#f97316;margin-top:-3px}
+    .card{background:#fff;color:#111;padding:1.5rem;border-radius:.875rem;box-shadow:0 4px 20px rgba(0,0,0,.08)}
+    .btn{background:#f97316;color:#fff;padding:.75rem 1.5rem;border-radius:.5rem;font-weight:600;text-decoration:none;display:inline-block}
+    footer{font-size:.875rem;color:#9ca3af;border-top:1px solid #374151;padding-top:2rem;display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem;max-width:1200px;margin:auto}
+    @media(max-width:768px){footer{grid-template-columns:1fr;margin:2rem 0}}
+  </style>
 </head>
-<a href="#main-content" class="skip-link">Skip to main content</a>
-<body class="min-h-screen">
-    <!-- Navigation -->
-    
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-[var(--bg)] border-b border-[var(--border)]" style="height: var(--header-height);" role="navigation" aria-label="Main navigation">
-        <div class="flex items-center justify-between h-full px-4 md:px-6">
-            <div class="flex items-center space-x-3">
-                <a href="./index.html" class="text-xl font-semibold text-[var(--accent)] nav-link flex items-center" aria-label="Temitayo Charles Akinniranye - Home">
-                    <svg class="w-6 h-6 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 3L4 14h7v7l9-9h-7V3z"/></svg>
-                    <span class="hidden sm:inline">temitayo</span>
-                </a>
-            </div>
-            <div class="hidden md:flex items-center space-x-1">
-                <a href="./index.html" class="nav-link px-4 py-2 rounded-lg text-sm font-medium text-[var(--fg)] hover:text-[var(--accent)] hover:bg-[var(--bg-elevated)] transition-colors">Home</a>
-                <a href="./services.html" class="nav-link px-4 py-2 rounded-lg text-sm font-medium text-[var(--fg)] hover:text-[var(--accent)] hover:bg-[var(--bg-elevated)] transition-colors">Services</a>
-                <a href="./products.html" class="nav-link px-4 py-2 rounded-lg text-sm font-medium text-[var(--fg)] hover:text-[var(--accent)] hover:bg-[var(--bg-elevated)] transition-colors">Products</a>
-                <a href="./blog.html" class="nav-link px-4 py-2 rounded-lg text-sm font-medium text-[var(--fg)] hover:text-[var(--accent)] hover:bg-[var(--bg-elevated)] transition-colors">Blog</a>
-                <a href="./about.html" class="nav-link px-4 py-2 rounded-lg text-sm font-medium text-[var(--fg)] hover:text-[var(--accent)] hover:bg-[var(--bg-elevated)] transition-colors">About</a>
-            </div>
-            <button class="hamburger md:hidden p-2 rounded-lg border border-[var(--border)] bg-[var(--bg-elevated)]" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu" type="button">
-                <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
-            </button>
-        </div>
+<body>
+  <header style="position:sticky;top:0;z-index:999;background:rgba(13,13,13,.8);backdrop-filter:blur(8px)">
+    <nav style="max-width:1200px;margin:auto;padding:0 2rem;display:flex;justify-content:space-between;align-items:center;padding-top:.75rem;padding-bottom:.75rem">
+      <a style="text-decoration:none" href="/">tayoca</a>
+      <div style="display:flex;gap:2rem"><a style="color:#e5e7eb!important;text-decoration:none" href="/#services">Services</a><a style="color:#e5e7eb;text-decoration:none" href="/#contact">Contact</a></div>
     </nav>
-    <div class="mobile-menu-overlay" id="mobile-menu-overlay" aria-hidden="true"></div>
-    <aside class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Navigation menu" aria-modal="true">
-        <button class="mobile-menu-close" aria-label="Close navigation menu" type="button">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-        </button>
-        <nav>
-            <a href="./index.html" class="nav-link">Home</a>
-            <a href="./services.html" class="nav-link">Services</a>
-            <a href="./products.html" class="nav-link">Products</a>
-            <a href="./blog.html" class="nav-link">Blog</a>
-            <a href="./about.html" class="nav-link">About</a>
-        </nav>
-    </aside>
-    
-    <!-- **NEW SECTION**  Services Section -->
-                <div class="bg-[var(--card-bg)] rounded-lg p-8 border border-[var(--border)] mt-12">
-                  <h2 class="text-2xl font-bold text-white mb-6">DevOps Consulting Services</h2>
-                  <p class="text-lg text-[var(--fg-muted)] mb-12 leading-relaxed">
-                    Temitayo Charles Akinniranye provides expert DevOps consulting to help organizations streamline workflows, improve reliability, and accelerate delivery. Specialized in cloud infrastructure, automation, CI/CD, FinOps, and AI-powered workflows.
-                  </p>
-
-                  <h2 class="text-2xl font-bold text-white mb-6 mt-12">New: Sivanta Business-Digital Agent Platform (Built & Validated)</h2>
-                  <div class="space-y-4 mb-6">
-                    <div class="p-4 rounded-lg bg-gray-700 border border-[var(--border)]">
-                      <h3 class="text-lg font-medium text-[var(--accent)] mb-2">• Product: Sivanta SaaS Tier</h3>
-                      <p class="text-[var(--fg-muted)] ml-4">Production-grade AI-native multi-tenant SaaS for African businesses to automate sales, support, and payments on WhatsApp/Telegram + Web with zero storefronts. <strong>Already live; trial zone available → <a href="https://sivanta-agent-platform.vercel.app" target="_blank" rel="noopener noreferrer" class="text-[var(--accent)] hover:underline">Try Here</a></strong></p>
-                    </div>
-                
-                    <div class="p-4 rounded-lg bg-gray-700 border border-[var(--border)]">
-                      <h3 class="text-lg font-medium text-[var(--accent)] mb-2">• Service: Custom Build & Migration</h3>
-                      <p class="text-[var(--fg-muted)] ml-4">You bring the platform; we bring the <strong>working implementation for POG Technologies (Nigeria retail)</strong>. Use this as a proven portfolio and traction story to win further Sivanta clients immediately.</p>
-                    </div>
-                
-                    <div class="p-4 rounded-lg bg-gray-700 border border-[var(--border)]">
-                      <h3 class="text-lg font-medium text-[var(--accent)] mb-2">• Service: Managed Business Agent</h3>
-                      <p class="text-[var(--fg-muted)] ml-4">Operate Sivanta as a service for local businesses who prefer hands-off automation with trustworthy LLM agents.</p>
-                    </div>
-                  </div>
-                  <p class="text-sm text-[var(--fg-muted)] mb-6">💡 All Sivanta offerings are monetizable <strong>now</strong>, not deferred to Month 2. Added as 4th revenue stream: FinOps Audits, Digital Products, Academy/Resources, Sivanta SaaS + Services.</p>
-
-                  <div class="text-center mt-8">
-                    <h3 class="text-lg font-medium mb-2">Ready to automate your commerce?</h3>
-                    <p class="text-[var(--fg-muted)] mb-4">Book a free Discovery → schedule directly below</p>
-                    <a href="#discovery" class="inline-block px-6 py-2 bg-text-[var(--accent)] text-white rounded-lg hover:bg-[var(--accent-hover)] transition-colors whitespace-nowrap">
-                      🔗 Schedule Discovery Call
-                    </a>
-                  </div>
-              
-                  <hr class="border-[var(--border)] my-8">
-
-                  <div class="space-y-6 mb-12">
-                    <h2 class="text-2xl font-bold text-white">Areas of Expertise</h2>
-
-                    <div class="space-y-4">
-                      <div>
-                        <h3 class="text-xl font-medium text-[var(--accent)] mb-3">Infrastructure Automation & IaC</h3>
-                        <p class="text-[var(--fg-muted)] ml-4">Terraform, AWS CDK, Pulumi — version-controlled, testable, risk-free infrastructure.</p>
-                      </div>
-                  
-                      <div>
-                        <h3 class="text-xl font-medium text-[var(--accent)] mb-3">CI/CD Pipeline Design & Optimization</h3>
-                        <p class="text-[var(--fg-muted)] ml-4">Parallel testing, caching, progressive deployment, policy gates, security scanning.</p>
-                      </div>
-                  
-                      <div>
-                        <h3 class="text-xl font-medium text-[var(--accent)] mb-3">Cloud Optimization & FinOps</h3>
-                        <p class="text-[var(--fg-muted)] ml-4">Right-size, implement FinOps, automate to prevent cost overruns. Built from bestselling <strong>AWS Cost Optimization Playbook</strong>.</p>
-                      </div>
-                  
-                      <div>
-                        <h3 class="text-xl font-medium text-[var(--accent)] mb-3">Kubernetes & Ops</h3>
-                        <p class="text-[var(--fg-muted)] ml-4">Secure clusters, Helm charts, admission policies, observability stack (Prometheus/Grafana), incident response patterns.</p>
-                      </div>
-                  
-                      <div>
-                        <h3 class="text-xl font-medium text-[var(--accent)] mb-3">DevOps Education & Templates</h3>
-                        <p class="text-[var(--fg-muted)] ml-4">Practical guides distilled from years of real-world deployments to share with your team.</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="space-y-4 mb-12">
-                    <h2 class="text-2xl font-bold text-white">Engagement Models</h2>
-
-                    <h3 class="text-xl font-medium text-[var(--accent)] mb-4">Full-Stack DevOps Assessment & Transformation</h3>
-                    <ul class="space-y-3 text-[var(--fg-muted)] ml-4 list-disc">
-                      <li>Comprehensive infrastructure audit & optimization roadmap</li>
-                      <li>CI/CD pipelines tailored to your stack</li>
-                      <li>Infrastructure as Code across dev/staging/prod</li>
-                      <li>Documentation & runbooks, hand-off, 1st-level support training</li>
-                    </ul>
-                  </div>
-
-                  <div class="space-y-6 mb-8">
-                    <h2 class="text-2xl font-bold text-white">Case Study</h2>
-                    <p class="text-[var(--fg-muted)] leading-relaxed">
-                      Deployed cloud cost optimization and CI speed-up for e-commerce client: build times ↓75%, infra deployments ↓ from hours to minutes, MTTR ↓40%. <strong>POG Technologies (Nigeria retail) production deployment used as live portfolio proof.</strong> Delivered on sandbox-ready production Sivanta platform.
-                    </p>
-                    <a href="calendar.html" class="inline-block px-6 py-2 bg-text-[var(--accent)] text-white rounded-lg hover:bg-[var(--accent-hover)] transition-colors whitespace-nowrap mt-4">
-                      Talk to POG CTO (Calendly)
-                    </a>
-                  </div>
-                </div>
-                
-                <div class="space-y-4">
-                    <div>
-                        <h3 class="text-xl font-medium text-[var(--accent)] mb-3">Infrastructure Automation & IaC</h3>
-                        <p class="text-[var(--fg-muted)] ml-4">Deploying best-in-class infrastructure as code practices using Terraform, AWS CDK, or Pulumi. I'll help you design maintainable, version-controlled infrastructures that reduce risk and improve consistency.</p>
-                    </div>
-                    
-                    <div>
-                        <h3 class="text-xl font-medium text-[var(--accent)] mb-3">CI/CD Pipeline Design & Optimization</h3>
-                        <p class="text-[var(--fg-muted)] ml-4">Building and optimizing continuous integration and delivery pipelines to reduce time-to-market while maintaining quality gates. I'll integrate automated testing, security scanning, performance measurement, and progressive deployment strategies.</p>
-                    </div>
-                    
-                    <div>
-                        <h3 class="text-xl font-medium text-[var(--accent)] mb-3">Cloud Optimization & Cost Management</h3>
-                        <p class="text-[var(--fg-muted)] ml-4">Right-sizing cloud resources, implementing FinOps practices, and creating automation to prevent cost overruns. My AWS Cost Optimization Playbook distills years of optimization experience into actionable practices.</p>
-                    </div>
-                    
-                    <div>
-                        <h3 class="text-xl font-medium text-[var(--accent)] mb-3">Kubernetes & Container Orchestration</h3>
-                        <p class="text-[var(--fg-muted)] ml-4">Designing and operating Kubernetes clusters and containers to provide scalable, resilient application platforms. I'll help with manifest creation, helm charts, security policies, and CI/CD for your Kubernetes-based applications.</p>
-                    </div>
-                    
-                    <div>
-                        <h3 class="text-xl font-medium text-[var(--accent)] mb-3">Observability & Monitoring Strategy</h3>
-                        <p class="text-[var(--fg-muted)] ml-4">Establishing comprehensive observability through metrics, logs, and traces. I'll help you choose the right tooling stack (Prometheus, Grafana, Loki, Tempo, etc.) and set up alerting that actually reduces MTTR.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="space-y-4 mb-12">
-                <h2 class="text-2xl font-bold text-white">Engagement Models</h2>
-                
-                <h3 class="text-xl font-medium text-[var(--accent)] mb-4">Full-Stack DevOps Assessment & Transformation</h3>
-                <ul class="space-y-3 text-[var(--fg-muted)] ml-4 list-disc">
-                    <li>Comprehensive infrastructure audit and optimization recommendations</li>
-                    <li>Development of CI/CD pipelines tailored to your tech stack</li>
-                    <li>Implementation of infrastructure as code across dev, staging, prod</li>
-                    <li>Knowledge transfer and ongoing mentorship</li>
-                    <li>Documentation and runbooks for your DevOps processes</li>
-                </ul>
-            </div>
-            
-            <div class="space-y-6 mb-8">
-                <h2 class="text-2xl font-bold text-white">Case Study: DevOps Transformation Success</h2>
-                <p class="text-[var(--fg-muted)] leading-relaxed">
-                    In one engagement, I delivered a 75% reduction in build times by implementing parallel testing, caching strategies, and optimized CI pipelines. Infrastructure deployment time dropped from hours to minutes using Terraform modules, reducing outages and enabling more frequent production updates.
-                </p>
-            </div>
-            
-            <div class="lg:flex lg:space-x-12">
-                <div class="lg:w-2/3 space-y-6">
-                    <h2 class="text-2xl font-bold text-white">Why Choose My Services?</h2>
-                    
-                    <ul class="space-y-4 text-[var(--fg-muted)]">
-                        <li class="flex items-start space-x-3">
-                            <svg class="w-5 h-5 text-[var(--accent)] mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                            </svg>
-                            <span>Vendor-neutral advisory focused on your needs, not specific technologies</span>
-                        </li>
-                        
-                        <li class="flex items-start space-x-3">
-                            <svg class="w-5 h-5 text-[var(--accent)] mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                            </svg>
-                            <span>Full lifecycle expertise from initial architecture to ongoing operations</span>
-                        </li>
-                        
-                        <li class="flex items-start space-x-3">
-                            <svg class="w-5 h-5 text-[var(--accent)] mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                            </svg>
-                            <span>ASHEN approach: Architecture + Security + High-availability + Economics + Nurturing culture</span>
-                        </li>
-                    </ul>
-                </div>
-                
-                <div class="lg:w-1/3 mt-8 lg:mt-0">
-                    <div class="bg-[var(--card-bg)] rounded-lg p-6 border border-[var(--border)]">
-                        <h3 class="text-xl font-medium text-white mb-4">Let's Build Together</h3>
-                        <p class="text-[var(--fg-muted)] mb-6">Need help with your DevOps transformation? Let's discuss how we can architect elegant solutions to your toughest infrastructure challenges.</p>
-                        <a href="#contact" class="inline-block px-6 py-3 bg-text-[var(--accent)] text-white rounded-lg hover:bg-[var(--accent-hover)] transition-colors duration-200">
-                            Get In Touch
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <hr class="border-[var(--border)] my-12">
-            
-            <div class="space-y-8">
-                <div>
-                    <h2 class="text-2xl font-bold text-white mb-4">Insights & Playbooks</h2>
-                    <p class="text-[var(--fg-muted)] mb-4">I've distilled my learnings into practical guides that you can apply immediately:</p>
-                    <div class="space-y-3">
-                        <div class="flex items-center space-x-3">
-                            <a href="./landing_v2.html" class="text-[var(--accent)] hover:text-orange-400 underline">
-                                <span class="font-medium">AWS Cost Optimization Playbook</span> - Manage your cloud costs effectively
-                            </a>
-                        </div>
-                        <div class="flex items-center space-x-3">
-                            <a href="./landing-devops-pack.html" class="text-[var(--accent)] hover:text-orange-400 underline">
-                                <span class="font-medium">Build Break Fix DevOps Lab Pack</span> - Real-world DevOps scenarios and exercises
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Newsletter Signup -->
-            <div class="bg-[var(--card-bg)] rounded-lg p-6 border border-[var(--accent)]/30 mt-12">
-                <h3 class="text-lg font-medium text-white mb-2">Stay Updated</h3>
-                <p class="text-[var(--fg-muted)] text-sm mb-4">Get weekly insights on DevOps, AI automation, and technical playbooks. No spam, unsubscribe anytime.</p>
-                <form id="newsletter-form" class="newsletter-form">
-                    <input 
-                        type="email" 
-                        name="email" 
-                        placeholder="your@email.com" 
-                        required
-                        class="form-input"
-                    >
-                    <button 
-                        type="submit" 
-                        class="btn btn-primary whitespace-nowrap"
-                    >
-                        Subscribe
-                    </button>
-                </form>
-                <p id="newsletter-message" class="text-sm text-[var(--fg-muted)] mt-2 hidden"></p>
-            </div>
-        </div>
-    </main>
-    
-        <footer class="border-t border-[var(--border)] mt-16 py-8 px-4">
-        <main id="main-content" class="flex-1 pt-[var(--header-height)]"><div class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-            <p class="text-[var(--fg-muted)] text-sm">© 2025 Temitayo Charles Akinniranye. All rights reserved.</p>
-            <a href="#" class="footer-link text-sm">Privacy Policy</a>
-        </div>
-    </footer>
-    
-    <script>
-        // Mobile navigation handler
-        const mobileMenuButton = document.querySelector('button');
-        
-
-        // Newsletter form handler
-        const newsletterForm = document.getElementById('newsletter-form');
-        const newsletterMessage = document.getElementById('newsletter-message');
-        
-        if (newsletterForm) {
-            newsletterForm.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                const email = newsletterForm.querySelector('input[name="email"]').value;
-                const name = email.split('@')[0];
-                const submitBtn = newsletterForm.querySelector('button[type="submit"]');
-                const originalBtnText = submitBtn.textContent;
-                
-                submitBtn.disabled = true;
-                submitBtn.textContent = 'Subscribing...';
-                newsletterMessage.classList.add('hidden');
-                
-                try {
-                    // Submit to InsForge (newsletter database)
-                    const insforgeResponse = await fetch('https://v7mhrspk.function2.insforge.app/newsletter-subscribe', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ email })
-                    });
-                    
-                    // Submit to n8n for personalized follow-up email
-                    try {
-                        await fetch('https://n8n.tca-infraforge.site/webhook/tayoca-newsletter-signup', {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({ email, name })
-                        });
-                    } catch (n8nError) {
-                        console.warn('n8n webhook failed, but InsForge succeeded:', n8nError);
-                    }
-                    
-                    const data = await insforgeResponse.json();
-                    
-                    if (insforgeResponse.ok && data.success) {
-                        newsletterMessage.textContent = 'Thanks for subscribing! Check your inbox for confirmation.';
-                        newsletterMessage.className = 'text-sm text-green-400 mt-2';
-                        newsletterForm.reset();
-                    } else {
-                        newsletterMessage.textContent = data.error || 'Something went wrong. Please try again.';
-                        newsletterMessage.className = 'text-sm text-red-400 mt-2';
-                    }
-                } catch (error) {
-                    newsletterMessage.textContent = 'Network error. Please check your connection and try again.';
-                    newsletterMessage.className = 'text-sm text-red-400 mt-2';
-                }
-                
-                newsletterMessage.classList.remove('hidden');
-                submitBtn.disabled = false;
-                submitBtn.textContent = originalBtnText;
-            });
-        }
-    </script>
-
-    <script src="./shared-mobile.js"></script>
+  </header>
+  <main>
+    <section style="padding-top:2rem;padding-bottom:2rem;text-align:left">
+      <a style="color:#e5e7eb;text-decoration:none;font-weight:600;" href="/">&larr; Back to Home</a>
+    </section>
+    <section id="services" style="text-align:center"><h1 style="font-size:clamp(2.5rem,6vw,3.25rem);margin-bottom:1rem;">Services & Pricing</h1><p style="font-size:1.125rem;max-width:700px;margin:1.5rem auto;color:#d1d5db">Flat-fee engagements with measurable outcomes. Pick the engagement that fits your need today.</p>
+      <!-- Keep same 3 cards as homepage -->
+<div style="max-width:900px;margin:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;text-align:left"><div class='card'>
+        <span style='color:#f97316;font-weight:600;font-size:.875rem;'>FinOps Audit</span>
+        <h3 style='font-size:1.5rem;margin-top:.75rem;'>Cloud Cost Optimization</h3>
+        <p style='margin:.75rem 0;color:#4b5563'>Your last AWS bill in CSV the day before — I provide a prioritized 15-item remediation plan and ROI calculator. Project fee $5K due in 30 days; $0 saved → $0 paid.</p>
+        <ul style='margin:.5rem 0;font-size:.875rem;list-style:none;padding:0'>
+          <li style='margin-bottom:.25rem;display:flex;align-items:center;gap:.5rem'>✓ 90-minute deep-dive call</li>
+          <li style='margin-bottom:.25rem;display:flex;align-items:center;gap:.5rem'>✓ Prioritized 15-item remediation plan and ROI calc</li>
+          <li style='margin-bottom:.25rem;display:flex;align-items:center;gap:.5rem'>✓ $5K flat, 30-day money-back guarantee</li>
+        </ul>
+        <a href="/#contact" style='margin-top:1rem;display:inline-block' class="btn">Book Audit Call &rarr;</a>
+      </div><div class='card'>
+        <span style='color:#f97316;font-weight:600;font-size:.875rem;'>Platform Engineering</span>
+        <h3 style='font-size:1.5rem;margin-top:.75rem;'>GitOps & DevSecOps Platform</h3>
+        <p style='margin:.75rem 0;color:#4b5563'>I deliver a production platform anyone can ship on: Argo CD, Terraform, GitHub Actions, Kyverno, metrics, alerts. Any stack — EKS/GKE, bare metal, on-prem.</p>
+        <ul style='margin:.5rem 0;font-size:.875rem;list-style:none;padding:0'>
+          <li style='margin-bottom:.25rem;display:flex;align-items:center;gap:.5rem'>✓ Producection clusters day +15</li>
+          <li style='margin-bottom:.25rem;display:flex;align-items:center;gap:.5rem'>✓ Platform SLA ≥99.95%</li>
+          <li style='margin-bottom:.25rem;display:flex;align-items:center;gap:.5rem'>✓ $8K+ fixed scope, milestone payment</li>
+        </ul>
+        <a href="/#contact" style='margin-top:1rem;display:inline-block' class="btn">Let’s Talk &rarr;</a>
+      </div><div class='card'>
+        <span style='color:#f97316;font-weight:600;font-size:.875rem;'>AI & Automation</span>
+        <h3 style='font-size:1.5rem;margin-top:.75rem;'>RAG/LLMOps</h3>
+        <p style='margin:.75rem 0;color:#4b5563'>I build and operate AI features you can count on: token-cost-optimized RAG pipelines, gateway with fallbacks and observability. Solution includes model guidance and ops playbooks.</p>
+        <ul style='margin:.5rem 0;font-size:.875rem;list-style:none;padding:0'>
+          <li style='margin-bottom:.25rem;display:flex;align-items:center;gap:.5rem'>✓ Up-front engineered models & costs</li>
+          <li style='margin-bottom:.25rem;display:flex;align-items:center;gap:.5rem'>✓ Runbooks & alerting out-of-box</li>
+          <li style='margin-bottom:.25rem;display:flex;align-items:center;gap:.5rem'>✓ $5K package, 30-day acceptance</li>
+        </ul>
+        <a href="/#contact" style='margin-top:1rem;display:inline-block' class="btn">Start an AI Pilot &rarr;</a>
+      </div></div><h3 style='margin-top:4rem;font-size:1.5rem'>FAQ</h3>
+      <details style='max-width:700px;margin:2rem auto;color:#d1d5db;text-align:left'><summary style='color:#374151;font-weight:600;margin-bottom:.5rem;cursor:pointer'>Do you do retainers?</summary><p style='font-size:.875rem;color:#9ca3af'>Projects scoped in milestones, single invoices, paid before work begins. No open-ended retainers.</p></details>
+      <details style='max-width:700px;margin:2rem auto;color:#d1d5db;text-align:left'><summary style='color:#374151;font-weight:600;margin-bottom:.5rem;cursor:pointer'>What if a client doesn’t pay?</summary><p style='font-size:.875rem;color:#9ca3af'>The engagement stops work and the issue is escalated immediately. Money-back guarantee only protects your outcomes, not non-payment.</p></details>
+    </section>
+  </main>
+  <div class="amber-accent"></div>
+  <footer>
+    <div><strong style='color:#e5e7eb'>tayoca</strong><br><small style='color:#9ca3af'>Six brands. One operating standard.<br>Ontario, Canada.</small></div>
+    <div><a style='color:#e5e7eb;text-decoration:none' href='/'>Home</a><br><a style='color:#e5e7eb;text-decoration:none' href='/index.html#services'>Services</a><br><a style='color:#e5e7eb;text-decoration:none' href='/index.html#contact'>Contact</a></div>
+    <div><span style='font-family:monospace;font-size:.75rem;padding:.25rem .5rem;border-radius:.25rem;border:1px solid #374151;display:block;margin-bottom:.25rem'>PMP</span><span style='font-family:monospace;font-size:.75rem;padding:.25rem .5rem;border-radius:.25rem;border:1px solid #374151;display:block;margin-bottom:.25rem'>CSM</span><span style='font-family:monospace;font-size:.75rem;padding:.25rem .5rem;border-radius:.25rem;border:1px solid #374151;display:block;margin-bottom:.25rem'>Terraform Associate</span><span style='font-family:monospace;font-size:.75rem;padding:.25rem .5rem;border-radius:.25rem;border:1px solid #374151;display:block'>AWS Solutions Architect</span></div>
+  </footer>
 </body>
 </html>
