@@ -1,482 +1,633 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tayoca – Your AWS bill is stealing $18K/month. We get it back.</title>
-  <meta name="description" content="Flat-fee FinOps audits, GitOps platform engineering, and AI automation. $5K audit fee — if we don't find savings, you don't pay.">
-  <meta name="keywords" content="FinOps, AWS cost optimization, cloud cost audit, GitOps, platform engineering, AI automation, RAG, LLMOps, Kubernetes, Terraform, DevSecOps">
-  <meta name="author" content="Tayoca">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://tayoca.com/">
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
-  <!-- Open Graph -->
-  <meta property="og:title" content="Tayoca – Your AWS bill is stealing $18K/month. We get it back.">
-  <meta property="og:description" content="Flat-fee FinOps audits, GitOps platform engineering, and AI automation. $5K audit fee — if we don't find savings, you don't pay.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://tayoca.com/">
-  <meta property="og:site_name" content="Tayoca">
-  <meta property="og:image" content="https://tayoca.com/assets/og-image.png">
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Tayoca – Your AWS bill is stealing $18K/month. We get it back.">
-  <meta name="twitter:description" content="Flat-fee FinOps audits, GitOps platform engineering, and AI automation. $5K audit fee — if we don't find savings, you don't pay.">
-  <meta name="twitter:image" content="https://tayoca.com/assets/og-image.png">
-  <!-- InsForge Analytics (Plausible-compatible, self-hosted) -->
-  <script>
-    (function() {
-      var endpoint = 'https://v7mhrspk.function2.insforge.app/analytics-event';
-      var domain = 'tayoca.com';
-      function sendEvent(name, props) {
-        var data = {
-          domain: domain,
-          name: name,
-          url: window.location.href,
-          path: window.location.pathname,
-          referrer: document.referrer || null,
-          screen_width: window.screen.width,
-          screen_height: window.screen.height,
-          props: props || {}
-        };
-        navigator.sendBeacon && navigator.sendBeacon(endpoint, JSON.stringify(data)) ||
-          fetch(endpoint, { method: 'POST', body: JSON.stringify(data), keepalive: true });
-      }
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', function() { sendEvent('pageview'); });
-      } else {
-        sendEvent('pageview');
-      }
-      // Expose for custom events
-      window.tayocaAnalytics = { sendEvent: sendEvent };
-    })();
-  </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@700&family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
-  <style>
-:root {
-  --bg-dark: #0d0d0d;
-  --bg-card: #ffffff;
-  --accent: #f97316;
-  --text-base: #e5e7eb;
-  --text-dark: #374151;
-  --text-light: #9ca3af;
-}
-html { font-size: 16px; }
-body {
-  margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
-  background: var(--bg-dark);
-  color: var(--text-base);
-  line-height: 1.6;
-}
-header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  backdrop-filter: blur(8px);
-  background: rgba(13,13,13,0.8);
-  padding: 1rem 0;
-}
-nav {
-  max-width: 1200px;
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 2rem;
-}
-.nav-brand {
-  font-size: 1.5rem;
-  font-weight: 600;
-}
-.nav-links {
-  display: flex;
-  gap: 2rem;
-}
-.nav-links a {
-  color: var(--text-base);
-  text-decoration: none;
-  font-weight: 400;
-  transition: color .3s;
-}
-.nav-links a:hover { color: var(--accent); }
-.nav-links a.active {
-  color: var(--accent);
-  font-weight: 600;
-}
-main {
-  max-width: 1200px;
-  margin: auto;
-  padding: 0 2rem;
-}
-section { padding: 4rem 0; }
-.section-header { text-align: center; margin-bottom: 3rem; }
-section > h2 { font-size: clamp(2rem,5vw,2.8rem); font-weight: 700; margin:0; }
-section > p { font-size:1.1rem; max-width:600px; margin:1rem auto 0; color:var(--text-light); }
-.btn {
-  display: inline-block;
-  padding: .75rem 1.5rem;
-  background: var(--accent);
-  color: white;
-  border-radius: .5rem;
-  font-weight: 600;
-  text-decoration: none;
-  transition: transform .2s;
-}
-.btn:hover { transform: translateY(-2px); }
-.btn-secondary {
-  display: inline-block;
-  padding: .75rem 1.5rem;
-  background: #374151;
-  color: white;
-  border-radius: .5rem;
-  font-weight: 600;
-  text-decoration: none;
-  transition: background .2s;
-}
-.btn-secondary:hover { background: #4b5563; }
-footer {
-  padding: 3rem 0;
-  border-top: 1px solid #374151;
-  font-size: .9rem;
-  color: var(--text-light);
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  max-width: 1200px;
-  margin: auto;
-  padding-left: 2rem;
-  padding-right: 2rem;
-  gap: 2rem;
-}
-.footer-brand strong, .footer-links strong { color: var(--text-base); }
-.products-grid {
-  display: grid;
-  gap: 2rem;
-  margin-top: 2rem;
-}
-.card {
-  background: var(--bg-card);
-  color: var(--text-dark);
-  border-radius: 1rem;
-  padding: 1.5rem;
-  box-shadow: 0 4px 20px rgba(0,0,0,.08);
-}
-.card h3 { font-size: 1.5rem; margin-top:0; }
-.card .tag {
-  color: var(--accent);
-  font-size:.9rem; font-weight:600; 
-  margin-bottom:.5rem;
-  display:block;
-}
-.card > p { color: #4b5563; margin-bottom:1rem; }
-.expr {
-  font-family: 'JetBrains Mono', monospace, monospace;
-  font-size:3rem;
-  font-weight:600;
-  text-align:center;
-  margin:2rem 0;
-  color: var(--text-base);
-}
-.email-form {
-  max-width: 400px;
-  margin: 1rem auto 0;
-  display:flex;
-  gap: .5rem;
-}
-.email-form input {
-  flex:1;
-  padding:.75rem;
-  border:1px solid #d1d5db;
-  border-radius:.375rem;
-}
-.email-form button {
-  background:#374151;
-  padding:.75rem 1rem;
-  border-radius:0 .5rem .5rem 0;
-  cursor:pointer;
-  border:1px solid #4b5563;
-  color:white;
-  border-left:none!important;
-  font-weight:600;
-}
-@media (max-width:768px) {
-  footer { grid-template-columns:1fr; }
-  .email-form { flex-direction:column; }
-  .nav-links { display: none; }
-}
-.amber-accent {
-  background: var(--accent);
-  width: 100%;
-  height: 6px;
-  margin-top: -3px;
-}
-.testimonial {
-  background: #1a1a1a;
-  border: 1px solid #374151;
-  border-radius: 1rem;
-  padding: 2rem;
-  max-width: 800px;
-  margin: 2rem auto;
-}
-.testimonial p {
-  font-size: 1.1rem; 
-  font-style: italic; 
-  color: #d1d5db; 
-  margin-bottom: 1rem;
-}
-.testimonial cite {
-  font-style: normal;
-  color: var(--accent);
-  font-weight: 600;
-}
-.trust-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: .5rem;
-  background: #1a1a1a;
-  border: 1px solid #374151;
-  border-radius: .5rem;
-  padding: .5rem 1rem;
-  font-size: .875rem;
-  color: #9ca3af;
-}
-.trust-badge svg { color: var(--accent); }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Temitayo Charles Akinniranye - Tech Product Builder & DevOps Architect</title>
+    <meta name="description" content="Temitayo Charles Akinniranye - Building AI-powered solutions, DevOps infrastructure, and technical playbooks. Creator of AWS Cost Optimization, DevOps Lab Pack, and AI Automation resources.">
+    <meta name="keywords" content="Temitayo Charles Akinniranye, AWS optimization, DevOps consulting, AI automation, technical playbook, cost optimization, Kubernetes, n8n MCP">
+    <meta property="og:title" content="Temitayo Charles Akinniranye - Tech Product Builder">
+    <meta property="og:description" content="Building AI-powered solutions, DevOps infrastructure, and technical playbooks">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tayoca.com">
+    <meta property="og:image" content="https://tayoca.com/og-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Temitayo Charles Akinniranye">
+    <meta name="twitter:description" content="Building AI-powered solutions, DevOps infrastructure, and technical playbooks">
+    <meta name="twitter:image" content="https://tayoca.com/twitter-image.jpg">
+    <meta name="theme-color" content="#0d0d0d">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Temitayo">
+
+    <!-- Tailwind CSS via UNPKG CDN -->
+    <script src="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.js"></script>
+
+    <!-- InsForge Analytics -->
+    <script defer src="https://v7mhrspk.function2.insforge.app/c.js"></script>
+
+    <style>
+        :root {
+            --bg: #0d0d0d;
+            --bg-elevated: #1a1a1a;
+            --fg: #e5e7eb;
+            --fg-muted: #9ca3af;
+            --accent: #f97316;
+            --accent-hover: #ea580c;
+            --border: #374151;
+            --border-hover: #4b5563;
+            --card-bg: #111827;
+            --focus-ring: #f97316;
+            --header-height: 64px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--fg);
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Skip link for accessibility */
+        .skip-link {
+            position: absolute;
+            top: -100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            z-index: 10000;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .skip-link:focus {
+            top: 1rem;
+        }
+
+        /* Focus visible for keyboard navigation */
+        :focus-visible {
+            outline: 2px solid var(--focus-ring);
+            outline-offset: 2px;
+        }
+
+        /* Mobile menu styles */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            max-width: 320px;
+            background: var(--bg);
+            border-left: 1px solid var(--border);
+            z-index: 100;
+            transform: translateX(100%);
+            transition: transform 0.3s ease-out;
+            padding: calc(var(--header-height) + 1rem) 1.5rem 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            overflow-y: auto;
+        }
+
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+
+        .mobile-menu-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 99;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .mobile-menu-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-menu a {
+            display: block;
+            padding: 1rem;
+            color: var(--fg);
+            text-decoration: none;
+            border-radius: 0.5rem;
+            font-size: 1.125rem;
+            font-weight: 500;
+            transition: background 0.2s ease, color 0.2s ease;
+            touch-action: manipulation;
+        }
+
+        .mobile-menu a:hover,
+        .mobile-menu a:focus {
+            background: var(--bg-elevated);
+            color: var(--accent);
+        }
+
+        .mobile-menu a[aria-current="page"] {
+            color: var(--accent);
+            background: rgba(249, 115, 22, 0.1);
+        }
+
+        .mobile-menu-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            color: var(--fg);
+            cursor: pointer;
+            touch-action: manipulation;
+        }
+
+        .mobile-menu-close:hover,
+        .mobile-menu-close:focus {
+            background: var(--border);
+        }
+
+        /* Hamburger button */
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 28px;
+            height: 20px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            touch-action: manipulation;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background: var(--fg);
+            border-radius: 2px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .hamburger[aria-expanded="true"] span:nth-child(1) {
+            transform: translateY(8.5px) rotate(45deg);
+        }
+
+        .hamburger[aria-expanded="true"] span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger[aria-expanded="true"] span:nth-child(3) {
+            transform: translateY(-8.5px) rotate(-45deg);
+        }
+
+        @media (min-width: 768px) {
+            .hamburger {
+                display: none;
+            }
+        }
+
+        /* Responsive typography */
+        .hero-title {
+            font-size: clamp(2rem, 8vw, 3.5rem);
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 3vw, 1.25rem);
+        }
+
+        .section-title {
+            font-size: clamp(1.75rem, 5vw, 2.5rem);
+            line-height: 1.2;
+        }
+
+        /* Card hover states - reduced motion safe */
+        .card {
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+
+        @media (prefers-reduced-motion: no-preference) {
+            .card:hover {
+                border-color: var(--accent);
+                transform: translateY(-2px);
+            }
+        }
+
+        .card:focus-within {
+            border-color: var(--focus-ring);
+        }
+
+        /* Button styles */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.875rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            border: 2px solid transparent;
+            cursor: pointer;
+            touch-action: manipulation;
+            min-height: 48px;
+            transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        .btn-primary:hover,
+        .btn-primary:focus {
+            background: var(--accent-hover);
+            border-color: var(--accent-hover);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .btn-secondary:hover,
+        .btn-secondary:focus {
+            background: rgba(249, 115, 22, 0.1);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: var(--fg);
+            border-color: var(--border);
+        }
+
+        .btn-ghost:hover,
+        .btn-ghost:focus {
+            background: var(--bg-elevated);
+            border-color: var(--border-hover);
+        }
+
+        /* Form styles */
+        .form-input {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            font-size: 1rem;
+            background: var(--bg-elevated);
+            border: 2px solid var(--border);
+            border-radius: 0.5rem;
+            color: var(--fg);
+            min-height: 48px;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .form-input::placeholder {
+            color: var(--fg-muted);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--focus-ring);
+            box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.2);
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--fg);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Table responsiveness */
+        .table-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin: 1.5rem 0;
+        }
+
+        .table-wrapper::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .table-wrapper::-webkit-scrollbar-track {
+            background: var(--bg);
+        }
+
+        .table-wrapper::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 4px;
+        }
+
+        .table-wrapper::-webkit-scrollbar-thumb:hover {
+            background: var(--border-hover);
+        }
+
+        table {
+            width: 100%;
+            min-width: 600px;
+            border-collapse: collapse;
+            font-size: 0.875rem;
+        }
+
+        th, td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            background: var(--bg-elevated);
+            color: var(--fg-muted);
+            font-weight: 600;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+
+        tr:hover td {
+            background: var(--bg-elevated);
+        }
+
+        /* Code blocks */
+        .code-block {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+            font-size: 0.875rem;
+            line-height: 1.7;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .code-block code {
+            background: transparent;
+            padding: 0;
+            font-size: inherit;
+            color: var(--fg);
+        }
+
+        /* Image responsiveness */
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Newsletter form */
+        .newsletter-form {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        @media (min-width: 640px) {
+            .newsletter-form {
+                flex-direction: row;
+            }
+        }
+
+        /* Footer */
+        .footer-link {
+            color: var(--fg-muted);
+            transition: color 0.2s ease;
+        }
+
+        .footer-link:hover,
+        .footer-link:focus {
+            color: var(--fg);
+        }
+
+        /* Safe area handling */
+        @supports (padding: max(0px)) {
+            .mobile-menu {
+                padding-right: max(1.5rem, env(safe-area-inset-right));
+                padding-left: max(1.5rem, env(safe-area-inset-left));
+                padding-bottom: max(2rem, env(safe-area-inset-bottom));
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            .mobile-menu, .hamburger, .newsletter-form, footer { display: none !important; }
+            body { background: white; color: black; }
+        }
+    </style>
 </head>
-<body>
-<header>
-<nav>
-<a href="index.html" class="nav-brand">tayoca</a>
-<div class="nav-links">
-<a href="services.html">Services</a>
-<a href="products.html">Products</a>
-<a href="blog.html">Writing</a>
-<a href="about.html">About</a>
-</div>
-<a href="#contact" class="btn">Book an Audit →</a>
-</nav>
-</header>
-<main>
-<section id="hero" style="min-height:100vh;display:flex;align-items:center;">
-<div style="max-width:800px;margin:auto;text-align:center;">
-<h1 style="font-family:'Sora',sans-serif;font-size:clamp(2.5rem,8vw,4.5rem);line-height:1.1;font-weight:700;margin-bottom:1.5rem;">
-Your AWS bill is stealing <span style="color:#f97316;">$18K/month</span>. We get it back.
-</h1>
-<p style="font-size:1.3rem;color:#d1d5db;margin-bottom:2rem;">
-<strong>30-minute audit. Flat $5K fee. If we don't find savings, you don't pay.</strong>
-</p>
-<div style="display:flex;gap:1rem;align-items:center;justify-content: center;flex-wrap:wrap;">
-<a href="#contact" class="btn">Book an Audit →</a>
-<a href="services.html" class="btn-secondary">See Services & Pricing</a>
-</div>
-<p style="margin-top:2rem;font-size:.9rem;color:#9ca3af;">
-<span class="trust-badge"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> 30-day money-back guarantee</span>
-</p>
-</div>
-</section>
-<div class="amber-accent"></div>
+<body class="min-h-screen flex flex-col">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
 
-<section id="metrics">
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2rem;text-align:center;">
-<div><div style="font-size:2.5rem;font-weight:700;margin-bottom:.25rem;">99.95%</div><div style="color:#9ca3af;">Platform SLA</div></div>
-<div><div style="font-size:2.5rem;font-weight:700;margin-bottom:.25rem;">$216K/yr</div><div style="color:#9ca3af;">Average Annual Savings</div></div>
-<div><div style="font-size:2.5rem;font-weight:700;margin-bottom:.25rem;">4h→15m</div><div style="color:#9ca3af;">Deploy Cycle</div></div>
-<div><div style="font-size:2.5rem;font-weight:700;margin-bottom:.25rem;">4</div><div style="color:#9ca3af;">Active Engagements</div></div>
-</div>
-</section>
-<div class="amber-accent"></div>
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-[var(--bg)] border-b border-[var(--border)]" style="height: var(--header-height);" role="navigation" aria-label="Main navigation">
+        <div class="flex items-center justify-between h-full px-4 md:px-6">
+            <div class="flex items-center space-x-3">
+                <a href="./index.html" class="text-xl font-semibold text-[var(--accent)] nav-link flex items-center" aria-label="Temitayo Charles Akinniranye - Home">
+                    <svg class="w-6 h-6 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M13 3L4 14h7v7l9-9h-7V3z"/>
+                    </svg>
+                    <span class="hidden sm:inline">temitayo</span>
+                </a>
+            </div>
 
-<section id="services" class="section-header">
-<h2>Services</h2>
-<p>Flat-fee engagements with SLAs you can depend on. Every dollar is forecasted; every outcome is measured.</p>
-<div style="max-width:900px;margin:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;text-align:left;">
-<div class="card">
-<div class="tag">FinOps Audit</div>
-<h3>Cloud Cost Optimization</h3>
-<p>You provide your last AWS bill (CSV) the day before the audit. We provide a prioritized 15-item remediation plan and ROI calculator. Project fee $5K due in 30 days; if $0 saved, you pay $0.</p>
-<ul style="margin:1rem 0;">
-<li style="margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#f97316"><polyline points="20 6 9 17 4 12"></polyline></svg> 90-minute deep-dive call</li>
-<li style="margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#f97316"><polyline points="20 6 9 17 4 12"></polyline></svg> Prioritized 15-item remediation plan and ROI calc</li>
-<li style="margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#f97316"><polyline points="20 6 9 17 4 12"></polyline></svg> $5K flat, 30-day money-back guarantee</li>
-</ul>
-<a href="#contact" class="btn">Book an Audit →</a>
-</div>
-<div class="card">
-<div class="tag">Platform Engineering</div>
-<h3>GitOps & DevSecOps Platform</h3>
-<p>We deliver a production platform anyone can ship on: Argo CD, Terraform, GitHub Actions, Kyverno, Prometheus/Grafana + automated infra release validation. Any stack — EKS/GKE, on-prem, or bare metal.</p>
-<ul style="margin:1rem 0;">
-<li style="margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#f97316"><polyline points="20 6 9 17 4 12"></polyline></svg> Production clusters by day 15</li>
-<li style="margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#f97316"><polyline points="20 6 9 17 4 12"></polyline></svg> Platform SLA ≥99.95%</li>
-<li style="margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#f97316"><polyline points="20 6 9 17 4 12"></polyline></svg> $8K+ fixed scope, milestone payments</li>
-</ul>
-<a href="#contact" class="btn">Book an Audit →</a>
-</div>
-<div class="card">
-<div class="tag">AI & Automation</div>
-<h3>RAG/LLMOps</h3>
-<p>We build and operate AI features you can count on: token-cost-optimized RAG pipelines, LLM gateway with auto-fallbacks, and observability from ForgeWatch. Solution includes warm-start model guidance and ops playbooks.</p>
-<ul style="margin:1rem 0;">
-<li style="margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#f97316"><polyline points="20 6 9 17 4 12"></polyline></svg> Model topology & cost engineered up front</li>
-<li style="margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#f97316"><polyline points="20 6 9 17 4 12"></polyline></svg> Runbooks & alerting out of the box</li>
-<li style="margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#f97316"><polyline points="20 6 9 17 4 12"></polyline></svg> $5K package, 30-day acceptance test</li>
-</ul>
-<a href="#contact" class="btn">Book an Audit →</a>
-</div>
-</div>
-</section>
-<div class="amber-accent"></div>
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex items-center space-x-1">
+                <a href="./index.html" class="nav-link px-4 py-2 rounded-lg text-sm font-medium text-[var(--fg)] hover:text-[var(--accent)] hover:bg-[var(--bg-elevated)] transition-colors" aria-current="page">Home</a>
+                <a href="./services.html" class="nav-link px-4 py-2 rounded-lg text-sm font-medium text-[var(--fg)] hover:text-[var(--accent)] hover:bg-[var(--bg-elevated)] transition-colors">Services</a>
+                <a href="./products.html" class="nav-link px-4 py-2 rounded-lg text-sm font-medium text-[var(--fg)] hover:text-[var(--accent)] hover:bg-[var(--bg-elevated)] transition-colors">Products</a>
+                <a href="./blog.html" class="nav-link px-4 py-2 rounded-lg text-sm font-medium text-[var(--fg)] hover:text-[var(--accent)] hover:bg-[var(--bg-elevated)] transition-colors">Blog</a>
+                <a href="./about.html" class="nav-link px-4 py-2 rounded-lg text-sm font-medium text-[var(--fg)] hover:text-[var(--accent)] hover:bg-[var(--bg-elevated)] transition-colors">About</a>
+            </div>
 
-<section id="proof" class="section-header">
-<h2>Proof in Action</h2>
-<p>FinOps audits uncover cash you didn't think existed. Here's what we found for a Series B fintech.</p>
-<div class="card" style="text-align:left;max-width:900px;margin:auto;">
-<h3>A Series B fintech was spending $840K/yr on AWS</h3>
-<p>In 14 days we found $216K in annual savings. Implemented in 30 days. Verified by billing.</p>
-<a href="#contact" class="btn">Book an Audit →</a>
-</div>
-<div class="testimonial">
-<p>"Tayoca transformed our AWS spend overnight. The savings covered our entire FinOps project cost — and we're still saving $18K monthly 6 months later. Their engineering depth was the difference between theory and execution."</p>
-<cite>— VP Engineering, Series B SaaS ($40M ARR)</cite>
-</div>
-<p style="margin-top:2rem;text-align:center;font-size:.9rem;">Live audits available every 2 weeks with 1-day on-call buffer. Your savings begin the moment we start.</p>
-</section>
-<div class="amber-accent"></div>
+            <!-- Mobile Menu Button -->
+            <button class="hamburger md:hidden p-2 rounded-lg border border-[var(--border)] bg-[var(--bg-elevated)]" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu" type="button">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </button>
+        </div>
+    </nav>
 
-<section id="products" class="section-header">
-<h2>Products That Scale</h2>
-<p>Practical engineering guides for teams who want to move fast and not break things. <strong>Buy any guide and apply its full price as credit toward a $5K FinOps audit.</strong></p>
-<div class="products-grid">
-<div class="card">
-<div class="tag">Guide</div>
-<h3 style="margin-top:0;">FinOps Weekend Playbook</h3>
-<p>18-page pocket guide that turns your AWS bill into a map of hidden cash. Checklist-style with screenshots, CloudWatch metrics queries, and free AWS Budget setup template.</p>
-<p><strong>$19</strong> <span style="color:#f97316;">→ $19 audit credit</span></p>
-<a href="https://gum.co/aws-cost-playbook" class="btn" target="_blank" style="display:block;text-align:center;margin-top:1rem;">Get on Gumroad</a>
-</div>
+    <!-- Mobile Menu -->
+    <div class="mobile-menu-overlay" id="mobile-menu-overlay" aria-hidden="true"></div>
+    <aside class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Navigation menu" aria-modal="true">
+        <button class="mobile-menu-close" aria-label="Close navigation menu" type="button">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+        </button>
+        <nav>
+            <a href="./index.html" class="nav-link" aria-current="page">Home</a>
+            <a href="./services.html" class="nav-link">Services</a>
+            <a href="./products.html" class="nav-link">Products</a>
+            <a href="./blog.html" class="nav-link">Blog</a>
+            <a href="./about.html" class="nav-link">About</a>
+        </nav>
+    </aside>
 
-<div class="card">
-<div class="tag">Guide</div>
-<h3 style="margin-top:0;">Incident Runbook Template</h3>
-<p>Monitoring-driven on-call notebook that cuts MTTR and pager noise. JSON & YAML snippets included, OpsGenie step-by-step, and Chronicle page templates.</p>
-<p><strong>$19</strong> <span style="color:#f97316;">→ $19 audit credit</span></p>
-<a href="https://gum.co/incident-runbook" class="btn" target="_blank" style="display:block;text-align:center;margin-top:1rem;">Get on Gumroad</a>
-</div>
+    <!-- Main Content -->
+    <main id="main-content" class="flex-1 pt-[var(--header-height)]">
+        <!-- Hero Section -->
+        <section class="container mx-auto px-4 md:px-6 py-12 md:py-20" aria-labelledby="hero-heading">
+            <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+                <div>
+                    <h1 id="hero-heading" class="hero-title font-bold text-white mb-6 leading-tight">
+                        Temitayo Charles Akinniranye
+                        <span class="text-[var(--accent)]">Building scalable AI solutions</span>
+                    </h1>
+                    <p class="hero-subtitle text-[var(--fg-muted)] mb-8 leading-relaxed max-w-xl">
+                        DevOps Architect | Technical Product Builder | Tech Educator<br>
+                        Creator of practical guides and automation solutions that help teams achieve more with less.
+                    </p>
 
-<div class="card">
-<div class="tag">Guide</div>
-<h3 style="margin-top:0;">GitOps Production Field Guide</h3>
-<p>Tactics that lowered deploys from 4 hours to 15 minutes at IRS and NASDAQ remote. Includes reusable Helm charts, automated release validation cloud-agnostic and Argo CD configurations for GitOps native.</p>
-<p><strong>$29</strong> <span style="color:#f97316;">→ $29 audit credit</span></p>
-<a href="https://gum.co/gitops-guide" class="btn" target="_blank" style="display:block;text-align:center;margin-top:1rem;">Get on Gumroad</a>
-</div>
+                    <div class="flex flex-col sm:flex-row gap-4 mb-10">
+                        <a href="./services.html" class="btn btn-secondary text-center">
+                            DevOps Consulting Services
+                        </a>
+                        <a href="./products.html" class="btn btn-primary text-center">
+                            Explore Products
+                        </a>
+                    </div>
 
-<div class="card">
-<div class="tag">Checklist</div>
-<h3 style="margin-top:0;">K8s Production Checklist</h3>
-<p>37-item production-grade checklist to audit your own cluster — resource constraints, PDB, RBAC/RBAC-validate, PSPs, NetworkPolicy & prometheus-operator alerts. Pass/Fail the list and you're ready.</p>
-<p><strong>$39</strong> <span style="color:#f97316;">→ $39 audit credit</span></p>
-<a href="https://gum.co/k8s-checklist" class="btn" target="_blank" style="display:block;text-align:center;margin-top:1rem;">Get on Gumroad</a>
-</div>
-</div>
-</section>
-<div class="amber-accent"></div>
+                    <div class="flex space-x-4">
+                        <a href="https://linkedin.com/in/tayocharles" target="_blank" rel="noopener noreferrer" class="text-[var(--fg-muted)] hover:text-white transition-colors p-2 rounded-lg hover:bg-[var(--bg-elevated)]" aria-label="LinkedIn profile">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </a>
+                        <a href="https://github.com/temitayocharles" target="_blank" rel="noopener noreferrer" class="text-[var(--fg-muted)] hover:text-white transition-colors p-2 rounded-lg hover:bg-[var(--bg-elevated)]" aria-label="GitHub profile">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
 
-<section id="blog" class="section-header">
-<h2>Writing</h2>
-<p style="max-width:700px;margin:1rem auto 2rem;color:#d1d5db;">Engineering insights distilled to essentials. Each piece includes runnable assets you can copy-paste.</p>
-<div class="products-grid">
-<article class="card">
-<h3 style="margin:0 0 .5rem;">Building the InfraForge AI Inference Lab</h3>
-<p style="font-size:.95rem;color:#6b7280;">How we engineered a zero-to-edge inference cluster for 99.95% availability using k3s and vLLM — including cost-aware autoscaling and multi-tenant model routing.</p>
-<div class="email-form" style="margin-top:1rem;">
-<input type="email" placeholder="your@email.com" autocomplete="off" />
-<button>Get the assets</button>
-</div>
-</article>
+                <div class="space-y-6">
+                    <div class="card bg-[var(--card-bg)] border border-[var(--border)] rounded-xl p-6">
+                        <h3 class="text-lg font-medium text-white mb-4">Latest Products</h3>
+                        <ul class="space-y-3" role="list">
+                            <li class="flex items-center space-x-3">
+                                <svg class="w-5 h-5 text-[var(--accent)] flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                </svg>
+                                <span class="text-[var(--fg-muted)]">AWS Cost Optimization Playbook</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <svg class="w-5 h-5 text-[var(--accent)] flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                </svg>
+                                <span class="text-[var(--fg-muted)]">DevOps Lab Pack</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <svg class="w-5 h-5 text-[var(--accent)] flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                </svg>
+                                <span class="text-[var(--fg-muted)]">n8n MCP Kubernetes Teaching Pack</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <svg class="w-5 h-5 text-[var(--accent)] flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                </svg>
+                                <span class="text-[var(--fg-muted)]">AI Automation Career Playbook</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <svg class="w-5 h-5 text-[var(--accent)] flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                </svg>
+                                <span class="text-[var(--fg-muted)]">Kubernetes Production Readiness Checklist</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <svg class="w-5 h-5 text-[var(--accent)] flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                </svg>
+                                <span class="text-[var(--fg-muted)]">GitOps Field Guide</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <svg class="w-5 h-5 text-[var(--accent)] flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                </svg>
+                                <span class="text-[var(--fg-muted)]">Infrastructure FinOps Workbook</span>
+                            </li>
+                        </ul>
+                    </div>
 
-<article class="card">
-<h3 style="margin:0 0 .5rem;">GitOps beyond Hello World: Where Most Fail and How to Win</h3>
-<p style="font-size:.95rem;color:#6b7280;">From the trenches: production Go binaries corrupted by Helm upgrade, and how we engineered image validation gates and per-namespace CI-driven deployments that outlived the team that shipped them.</p>
-<div class="email-form" style="margin-top:1rem;">
-<input type="email" placeholder="your@email.com" autocomplete="off" />
-<button>Get the assets</button>
-</div>
-</article>
+                    <div class="card bg-[var(--card-bg)] border border-[var(--border)] rounded-xl p-6">
+                        <h3 class="text-lg font-medium text-white mb-4">Featured Content</h3>
+                        <p class="text-[var(--fg-muted)] text-sm">
+                            Creating practical guides and automation solutions that help teams achieve more with less through technical expertise and educational content.
+                        </p>
+                    </div>
 
-<article class="card">
-<h3 style="margin:0 0 .5rem;">99.99% Ain't a Metric — It's a Culture</h3>
-<p style="font-size:.95rem;color:#6b7280;">Kubernetes shared tenancy at scale. When $216K/yr uptime for 1M+ monthly API requests is on the line, reliability becomes maintenance.</p>
-<div class="email-form" style="margin-top:1rem;">
-<input type="email" placeholder="your@email.com" autocomplete="off" />
-<button>Get the assets</button>
-</div>
-</article>
+                    <!-- Newsletter Signup -->
+                    <div class="card bg-[var(--card-bg)] border border-[var(--accent)]/30 rounded-xl p-6">
+                        <h3 class="text-lg font-medium text-white mb-2">Stay Updated</h3>
+                        <p class="text-[var(--fg-muted)] text-sm mb-4">Get weekly insights on DevOps, AI automation, and technical playbooks. No spam, unsubscribe anytime.</p>
+                        <form id="newsletter-form" class="newsletter-form" novalidate>
+                            <label for="email" class="sr-only">Email address</label>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="your@email.com"
+                                required
+                                class="form-input"
+                                autocomplete="email"
+                                aria-describedby="newsletter-message"
+                            >
+                            <button
+                                type="submit"
+                                class="btn btn-primary whitespace-nowrap"
+                            >
+                                Subscribe
+                            </button>
+                        </form>
+                        <p id="newsletter-message" class="text-sm text-[var(--fg-muted)] mt-2 hidden" aria-live="polite"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
-<article class="card">
-<h3 style="margin:0 0 .5rem;"></h3>
-<p style="font-size:.95rem;color:#d1d5db;">New essays weekly. Stay tuned.</p>
-</article>
-</div>
-</section>
-
-<div class="amber-accent"></div>
-
-<section id="about">
-<div class="card" style="max-width:1000px;margin:auto;">
-<h2>About</h2>
-<div style="display:flex;flex-direction:column;margin-top:1rem;">
-<p><strong>We build products that pay for themselves and infrastructure you can trust at the same price.</strong></p>
-<p>We operate under the principle: every dollar forecasted, every hour instrumented, every service observable. FinOps and SRE aren't departments — they're the operating standard we embed from day one.</p>
-
-<p style="margin-top:1.5rem;"><strong>Metrics We Ship By</strong></p>
-<ul style="margin:.5rem 0;">
-<li>Deploy to prod in ≤15 min, any cluster, any region</li>
-<li>Mean time to production recovery ≤5 minutes any incident</li>
-<li>Cloud bill ≤80% baseline calculated prior to engagement</li>
-</ul>
-</div>
-</div>
-</section>
-
-<div class="amber-accent"></div>
-
-<section id="contact" class="section-header">
-<h2 style="font-size:clamp(2rem,5vw,2.8rem);">Stop overpaying for cloud.<br><span style="color:#f97316;">Start with a free 30-minute audit.</span></h2>
-<p style="font-size:1.3rem;color:#d1d5db;margin-bottom:1.5rem;"><strong>30-minute audit. Flat $5K fee. If we don't find savings, you don't pay.</strong></p>
-<div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem;">
-<a href="https://cal.com/tayoca/audit" class="btn" target="_blank" rel="noopener">Book a Call on Cal.com</a>
-<a href="mailto:tayocharlesakinniranye@gmail.com" class="btn-secondary">Email Tayoca</a>
-</div>
-<div class="email-form" style="max-width:400px;margin:1.5rem auto 0;">
-<input type="email" placeholder="your@email.com" autocomplete="off" />
-<button>Get the free checklist</button>
-</div>
-<p style="margin-top:1.5rem;font-size:.9rem;color:#9ca3af;">Join 175+ engineering leaders who use our free Cloud Cost Audit checklist to spot waste on every AWS bill in 10 minutes.</p>
-</section>
-</main>
-<footer>
-<div class="footer-brand">
-<div style="font-size:1.3rem;font-weight:600;margin-bottom:.5rem;">tayoca</div>
-<p style="color:#9ca3af;">FinOps, Platform Engineering, AI Automation.<br>Ontario, Canada.</p>
-</div>
-<div class="footer-links">
-<strong style="display:block;margin-bottom:.5rem;">Company</strong>
-<div style="display:flex;flex-direction:column;gap:.25rem;">
-<a href="services.html" style="color:#e5e7eb;text-decoration:none">Services</a>
-<a href="products.html" style="color:#e5e7eb;text-decoration:none">Products</a>
-<a href="blog.html" style="color:#e5e7eb;text-decoration:none">Writing</a>
-<a href="about.html" style="color:#e5e7eb;text-decoration:none">About Us</a>
-</div>
-</div>
-<div class="footer-certs">
-<strong style="display:block;margin-bottom:.5rem;">Attestations</strong>
-<span style="font-family:'JetBrains Mono',monospace;font-size:.8rem;background:#111827;padding:.25rem .5rem;border-radius:.25rem;margin:.125rem 0;display:block;">PMP</span>
-<span style="font-family:'JetBrains Mono',monospace;font-size:.8rem;background:#111827;padding:.25rem .5rem;border-radius:.25rem;margin:.125rem 0;display:block;">CSM</span>
-<span style="font-family:'JetBrains Mono',monospace;font-size:.8rem;background:#111827;padding:.25rem .5rem;border-radius:.25rem;margin:.125rem 0;display:block;">Terraform Associate</span>
-<span style="font-family:'JetBrains Mono',monospace;font-size:.8rem;background:#111827;padding:.25rem .5rem;border-radius:.25rem;margin:.125rem 0;display:block;">AWS Solutions Architect</span>
-</div>
-</footer>
-</body>
-</html>
+    <footer class="border-t border-[var(--border)] mt-16 py-8 px-4">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="text-[var(--fg-muted)] text-sm">© 2025 Temitayo Charles Akinniranye. All rights reserved.</p

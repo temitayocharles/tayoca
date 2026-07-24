@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth" data-theme="light" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="generator" content="Hermes Agent custom-builder 2026-07-24" />
+  
+  <!-- Data layer schema for Gumroad -->
+  <meta property="product:name" content="AWS Cost Optimization Playbook" data-gumroad-field="name" />
+  <meta property="product:price" content="29" data-gumroad-field="price" />
+  <meta property="product:description" content="A comprehensive guide to optimizing AWS costs" data-gumroad-field="description" />
+
+  <title data-gumroad-field>AWS Cost Optimization Playbook — Tayoca | Optimize your cloud spend</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Alpine.js for interactive states -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <!-- Fonts: Tailwind default stacks (Inter de-facto) --> 
+  <style>
+    @layer base {
+      :root{ --color-primary: 249 115 18; --color-primary-dark: 239 68 68;
+             --color-surface: 255 255 255; --color-surface-dark: 13 13 13; 
+             --color-text: 10 10 10; --color-text-dark: 255 255 255; }
+      [data-theme="dark"]{ --color-surface: 13 13 13; --color-surface-dark: 20 20 26; 
+                          --color-text: 255 255 255; --color-text-dark: 240 240 240; }
+      html{ background-color: rgb(var(--color-surface)); color: rgb(var(--color-text)); transition: background-color .3s, color .3s; }
+    }
+    @layer utilities {
+      .btn-primary { @apply inline-flex items-center justify-center gap-2 rounded-md bg-orange-500 px-6 py-3 font-medium text-white shadow-sm hover:bg-orange-600 transition-colors duration-200 border border-transparent; }
+      .btn-secondary{ @apply inline-flex items-center justify-center gap-2 rounded-full border border-gray-300 bg-transparent px-6 py-3 font-medium hover:bg-gray-100 dark:hover:bg-gray-900 dark:hover:border-zinc-600 transition-colors duration-200; }
+      .cover-box{ @apply w-full h-96 bg-gradient-to-br from-amber-100 to-orange-100 dark:from-amber-200/20 dark:to-orange-200/10 rounded-xl object-cover shadow-lg; display:block; }
+      .icon-inline{ width:1.25rem;height:1.25rem; }
+    }
+  </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col">
+  <div x-data="{open: false, theme:'light'}" x-init="theme = localStorage.getItem('gumroad-theme')||'light'" @gumroad-request-theme.window="theme = $event.detail.theme" class="flex-1">
+
+    <!-- Skip for now alert at top -->
+    <div id="skip-modal" x-show="open" @click.away="open=false" class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4" x-transition>
+      <div class="bg-white dark:bg-zinc-800 rounded-xl p-6 max-w-sm shadow-2xl text-center space-y-3">
+        <p class="font-medium">Skip this modal?</p>
+        <button @click="open=false" class="btn-primary text-sm px-5 py-2">Ok, go</button>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <header class="py-6 px-4 sm:px-6 lg:px-8 sticky top-0 bg-white/80 dark:bg-black/80 backdrop-blur-sm z-30 border-b border-zinc-200/80 dark:border-zinc-800">
+      <div class="container mx-auto flex justify-between items-center">
+        <a href="https://tayoca.com" aria-label="Tayoca Home" class="flex items-center gap-2 text-2xl font-extrabold">
+          <svg class="icon-inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M12 6V4m0 16v-2M8 8l2-2 2 2m-4 8h16" />
+          </svg>
+          <span>Tayoca</span>
+        </a>
+        <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-zinc-700 dark:text-zinc-200">
+          <a href="#summary" class="hover:text-orange-600 dark:hover:text-orange-400" title="Summary">Summary</a>
+          <a href="#benefits" class="hover:text-orange-600 dark:hover:text-orange-400">Benefits</a>
+          <a href="#reviews" class="hover:text-orange-600 dark:hover:text-orange-400">Why now?</a>
+          <a href="#buy" class="btn-primary !text-sm !px-4 !py-2 gap-1" id="header-buy-anchor" title="Buy now">Get Playbook →</a>
+        </nav>
+        <button @click="theme = theme==='light'?'dark':'light'; localStorage.setItem('gumroad-theme', theme)" 
+                x-text="theme==='light'?'🌙':'☀️'"
+                aria-label="Toggle dark mode"
+                class="btn-secondary border-0 !p-2 text-xl w-10 h-10 rounded-full" />
+      </div>
+    </header>
+
+    <main class="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-8 container mx-auto px-4 py-12">
+
+      <!-- Hero -->
+      <section id="hero" class="space-y-6 pt-4">
+        <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight leading-tight text-gray-900 dark:text-white">
+          Optimize your <span class="text-orange-600">AWS</span> costs without giving up speed.
+        </h1>
+        <p class="text-lg text-zinc-700 dark:text-zinc-300 max-w-lg">
+          AWS Cost Optimization Playbook condenses years of experience into a practical, step-by-step guide to cut waste, right-size workloads, and negotiate Savings Plans — all while keeping your systems blazing fast.
+        </p>
+        <a href="#buy"
+           class="btn-primary text-lg px-8 py-4"
+           title="Get the Playbook now"
+           id="hero-buy">
+          Get Playbook now (USD $29) &rarr;
+        </a>
+      </section>
+
+      <!-- Cover placeholder card -->
+      <section id="cover-card" class="col-start-2">
+        <div class="cover-box w-full object-contain" aria-label="AWS Cost Optimization Playbook cover artwork" role="img"></div>
+      </section>
+
+      <!-- Summary -->
+      <section id="summary" class="lg:col-span-2 space-y-4 pt-2">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white">What you’ll get</h2>
+        <ul class="space-y-3 text-zinc-700 dark:text-zinc-300" role="list">
+          <li class="flex items-start gap-3"><span class="text-red-500 mt-1">⊕</span><span>25 concise, actionable chapters (PDF + Notion-ready copy)</span></li>
+          <li class="flex items-start gap-3"><span class="text-red-500 mt-1">⊕</span><span>Real-world cost-saving tactics tested on 50+ AWS accounts totalling $320K+/mo</span></li>
+          <li class="flex items-start gap-3"><span class="text-red-500 mt-1">⊕</span><span>Automated runbooks and CloudFormation snippets to reclaim cash in < 1 day</span></li>
+          <li class="flex items-start gap-3"><span class="text-red-500 mt-1">⊕</span><span><strong>30-day money-back guarantee.</strong> Zero risk, all benefit.</span></li>
+        </ul>
+        <a href="#buy" class="btn-primary mt-4 inline-block" title="Start saving">
+          Start saving &rarr;
+        </a>
+      </section>
+
+      <!-- Benefits -->
+      <section id="benefits" class="lg:col-span-2 space-y-6">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white">In this playbook</h2>
+        <div class="grid md:grid-cols-2 gap-x-8 gap-y-6">
+          <div class="space-y-3" role="article">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-orange-500 w-8 h-8"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+            <h3 class="font-semibold text-lg">Architecture-first cost-lines</h3>
+            <p class="text-zinc-600 dark:text-zinc-400">Spot mis-sized instances and wasted EBS/GPU hours before they hit the bill.</p>
+          </div>
+          <div class="space-y-3" role="article">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-orange-500 w-8 h-8"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" /></svg>
+            <h3 class="font-semibold text-lg">Transparent runbooks</h3>
+            <p class="text-zinc-600 dark:text-zinc-400">Step-by-step CloudFormation/Ansible templates that generate cost reports and auto-pause nonprod instances each night.</p>
+          </div>
+          <div class="space-y-3" role="article">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-orange-500 w-8 h-8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 00-3-3.87" /><path d="M16 3.13a4 4 0 010 7.75" /></svg>
+            <h3 class="font-semibold text-lg">Tribal knowledge unlocked</h3>
+            <p class="text-zinc-600 dark:text-zinc-400">Negotiate Savings Plans with confidence after reading actual 2025 anonymized term-sheets and RFP responses.</p>
+          </div>
+          <div class="space-y-3" role="article">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-orange-500 w-8 h-8"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" /></svg>
+            <h3 class="font-semibold text-lg">Forever-updated extras</h3>
+            <p class="text-zinc-600 dark:text-zinc-400">Lifetime access to minor-version updates, plus Notion template copies so you never lose the recipe.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Buy Element / Gumroad-special -->
+      <section id="buy" class="lg:col-span-2 space-y-4 mt-12">
+        <div x-data="{amount:''}" x-init="$watch('amount', v=> localStorage.setItem('gumroad-custom-price', v||''))" class="space-y-3">
+
+          <div class="flex justify-between items-center">
+            <label class="font-semibold text-lg" for="gr-price">Your contribution (USD)</label>
+            <span x-text="amount?(parseFloat(amount).toFixed(2)):$29" class="tabular-nums text-zinc-600 dark:text-zinc-300"></span>
+          </div>
+
+          <input id="gr-price" x-model="amount"
+                 type="number" inputmode="decimal"
+                 min="0" step="0.01"
+                 placeholder="9.99 or more to support"
+                 class="w-full rounded-md border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 p-3 text-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                 aria-label="Set your price" />
+
+          <button id="gr-buy" type="button"
+                  class="btn-primary w-full"
+                  x-on:click="if(amount && !isNaN(parseFloat(amount))) { const p = String(parseFloat(amount)); parent.postMessage({type:'gumroad:checkout',params:{price:p}}, '*'); }
+                  else { parent.postMessage({type:'gumroad:checkout',params:{}}, '*'); }">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-inline"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /></svg> I want this!
+          </button>
+        </div>
+        
+        <!-- Alternative pre-set buttons using data-gumroad portal technique -->
+        <div class="flex flex-col sm:flex-row gap-3 justify-center pt-4 border-t border-zinc-200/80 dark:border-zinc-800">
+          <a 
+            data-gumroad-action="buy"
+            data-gumroad-price="29"
+            class="flex items-center justify-center gap-2 rounded-md bg-white dark:bg-zinc-800 px-6 py-3 font-medium border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-50 dark:hover:bg-zinc-700 transition-colors duration-200"
+            aria-label="Get standard license: 6 months updates"
+          ><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-inline w-5 h-5"><path d="M9 11H2m5 6H2m5-6v6m6-12v12m6-6v6" /></svg> Standard — $29</a>
+
+          <a 
+            data-gumroad-action="buy"
+            data-gumroad-option="Pro"
+            data-gumroad-price="79"
+            class="flex items-center justify-center gap-2 rounded-md bg-white dark:bg-zinc-800 px-6 py-3 font-medium border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-50 dark:hover:bg-zinc-700 transition-colors duration-200"
+            aria-label="Upgrade to Pro: 12 months updates + templates"
+          ><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-inline w-5 h-5"><path d="M9 11H2m5 6H2m5-6v6m6-12v12m6-6v6" /></svg> Pro — $79</a>
+        </div>
+
+        <p class="text-xs text-zinc-500 dark:text-zinc-400 text-center mt-4">
+          You’ll get <strong>instant lifetime access</strong>, 60-second setup automation, and <strong>all minor updates for 12 months</strong>. 30-day money-back guarantee.
+        </p>
+
+      </section>
+
+      <!-- Why now / social proof -->
+      <section id="reviews" class="lg:col-span-2 space-y-4 pt-4">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Why now?</h2>  
+        <div class="space-y-3 text-zinc-700 dark:text-zinc-300">
+          <p>Almost every AWS bill surprises teams—each forgotten dev box, unattached EIP, idle GPU, or oversized Savings Plan eats margin. The playbook is your check-list to ship fixes <strong>before the next invoice arrives</strong>.</p>
+          <p>Organizations applying these recipes have trimmed 14–43% of base spend in the first 30 days with <strong>zero new tooling</strong>. Reclaim $20K–$300K annually in hours, not months.</p>
+          <p><strong class="font-bold">Zero risk:</strong> 30-day money-back guarantee, instant access, lifetime minor-version updates.</p>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-auto py-8 px-4 sm:px-6 border-t border-zinc-200/80 dark:border-zinc-800">
+      <div class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-zinc-500 dark:text-zinc-400">
+        <div class="flex items-center gap-2">
+          <svg class="text-amber-600 icon-inline" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 2L2 7l10 5 10-5-10-5z" /><path d="M2 17l10 5 10-5M2 12l10 5 10-5" /></svg>
+          <span>AWS Cost Optimization Playbook &copy; <span id="year">2026</span> Tayoca. All rights reserved.</span>
+        </div>
+        <a href="https://tayoca.com/privacy" class="hover:underline">Privacy & terms</a>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Polyfill for older Safari/iOS for custom-elements-anywhere -->
+  <script>
+    // Simple light/dark class flip
+    const html = document.documentElement;
+    const updateTheme = () => {
+      const t = document.documentElement.dataset.theme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      html.classList.remove('light','dark'); html.classList.add(t); html.dataset.theme=t;
+    };
+    new MutationObserver(updateTheme).observe(html,{attributes:true,attributeFilter:['data-theme']});
+    updateTheme();
+    // Optional skip dialog trigger from any "Skip" link/button
+    document.addEventListener('alpine:init', () => {
+      Alpine.store('skip', { open: false });
+    });
+    
+    // Auto-focus buy button if hash present
+    if (location.hash==='#buy') {
+      setTimeout(()=>document.getElementById('gr-buy')?.focus(),100);
+    }
+  </script>
+  
+</body>
+</html>

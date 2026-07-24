@@ -1,127 +1,260 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Tayoca – About</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Tayoca builds products that pay for themselves and infrastructure you can trust. FinOps, Platform Engineering, AI Automation.">
-  <meta name="keywords" content="Tayoca, about, FinOps, platform engineering, AI automation, AWS, Kubernetes, GitOps, DevSecOps, Ontario, Canada">
-  <meta name="author" content="Tayoca">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://tayoca.com/about.html">
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Tayoca – About">
-  <meta property="og:description" content="Tayoca builds products that pay for themselves and infrastructure you can trust. FinOps, Platform Engineering, AI Automation.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://tayoca.com/about.html">
-  <meta property="og:site_name" content="Tayoca">
-  <meta property="og:image" content="https://tayoca.com/assets/og-image.png">
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Tayoca – About">
-  <meta name="twitter:description" content="Tayoca builds products that pay for themselves and infrastructure you can trust. FinOps, Platform Engineering, AI Automation.">
-  <meta name="twitter:image" content="https://tayoca.com/assets/og-image.png">
-
-  <!-- InsForge Analytics (Plausible-compatible, self-hosted) -->
-  <script>
-    (function() {
-      var endpoint = 'https://v7mhrspk.function2.insforge.app/analytics-event';
-      var domain = 'tayoca.com';
-      function sendEvent(name, props) {
-        var data = {
-          domain: domain,
-          name: name,
-          url: window.location.href,
-          path: window.location.pathname,
-          referrer: document.referrer || null,
-          screen_width: window.screen.width,
-          screen_height: window.screen.height,
-          props: props || {}
-        };
-        navigator.sendBeacon && navigator.sendBeacon(endpoint, JSON.stringify(data)) ||
-          fetch(endpoint, { method: 'POST', body: JSON.stringify(data), keepalive: true });
-      }
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', function() { sendEvent('pageview'); });
-      } else {
-        sendEvent('pageview');
-      }
-      window.tayocaAnalytics = { sendEvent: sendEvent };
-    })();
-  </script>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@700&family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
-  <style>
-    body{background:#0d0d0d;color:#e5e7eb;font-family:system-ui,-apple-system,BlinkMacSystemFont,Inter,sans-serif;}
-    main{max-width:1000px;margin:auto;padding:0 2rem;}
-    .amber-accent{width:100%;height:6px;background:#f97316;margin-top:-3px}
-    .card{background:#fff;color:#111;padding:2rem;border-radius:.875rem;box-shadow:0 4px 20px rgba(0,0,0,.08);margin-bottom:2rem}
-    footer{font-size:.875rem;color:#9ca3af;border-top:1px solid #374151;padding-top:2rem;display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem;max-width:1000px;margin:auto;padding-left:2rem;padding-right:2rem}
-    @media(max-width:768px){footer{grid-template-columns:1fr;margin:2rem 0}}
-    .nav-links a.active { color: #f97316 !important; font-weight: 600; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Temitayo Charles Akinniranye - Tech Product Builder & DevOps Architect</title>
+    <meta name="description" content="Learn about Temitayo Charles Akinniranye (Temitayo), a DevOps Architect and technical product builder creating AI-powered solutions, automation frameworks, and educational resources for engineers">
+    <meta name="keywords" content="Temitayo Charles Akinniranye, Temitayo, DevOps Architect, Technical Product Builder, AI automation, AWS optimization, Kubernetes expert">
+    <meta property="og:title" content="About Temitayo Charles Akinniranye">
+    <meta property="og:description" content="DevOps Architect and technical product builder specializing in AI automation, cloud optimization, and educational resources">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tayoca.com/about.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="About Temitayo Charles Akinniranye">
+    <meta name="twitter:description" content="DevOps Architect and technical product builder specializing in AI automation, cloud optimization, and educational resources">
+    
+    <!-- Tailwind CSS via UNPKG CDN -->
+    <script src="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.js"></script>
+    
+    <!-- InsForge Analytics -->
+    <script defer src="https://v7mhrspk.function2.insforge.app/c.js"></script>
+    
+    <style>
+        body {
+            background-color: #0d0d0d;
+            color: #e5e7eb;
+        }
+    </style>
 </head>
-<body>
-  <header style="position:sticky;top:0;z-index:999;background:rgba(13,13,13,.8);backdrop-filter:blur(8px)">
-    <nav style="max-width:1000px;margin:auto;padding:0 2rem;display:flex;justify-content:space-between;align-items:center;padding-top:.75rem;padding-bottom:.75rem">
-      <a style="text-decoration:none;color:inherit;font-size:1.5rem;font-weight:600" href="index.html">tayoca</a>
-      <div style="display:flex;gap:2rem">
-        <a style="color:#e5e7eb;text-decoration:none" href="services.html">Services</a>
-        <a style="color:#e5e7eb;text-decoration:none" href="products.html">Products</a>
-        <a style="color:#e5e7eb;text-decoration:none" href="blog.html">Writing</a>
-        <a style="color:#f97316!important;text-decoration:none;font-weight:600" href="about.html" aria-current="page">About</a>
-      </div>
-      <a href="index.html#contact" class="btn" style="margin-left:2rem;background:#f97316;color:#fff;padding:.75rem 1.5rem;border-radius:.5rem;font-weight:600;text-decoration:none;display:inline-block">Book a Call</a>
+<body class="min-h-screen">
+    <!-- Navigation -->
+    <nav class="flex items-center justify-between px-6 py-4 border-b border-gray-800">
+        <div class="flex items-center space-x-4">
+            <a href="./index.html" class="text-xl font-medium text-orange-500 nav-link flex items-center">
+                <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M13 3L4 14h7v7l9-9h-7V3z"/>
+                </svg>
+                temitayo
+            </a>
+        </div>
+        <div class="hidden md:flex space-x-8">
+            <a href="./index.html" class="nav-link hover:text-orange-500">Home</a>
+            <a href="./services.html" class="nav-link hover:text-orange-500">Services</a>
+            <a href="./products.html" class="nav-link hover:text-orange-500">Products</a>
+            <a href="./blog.html" class="nav-link hover:text-orange-500">Blog</a>
+            <a href="./about.html" class="nav-link hover:text-orange-500 border-b-2 border-orange-500">About</a>
+        </div>
+        <button class="md:hidden p-2 rounded-lg border border-gray-600">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+        </button>
     </nav>
-  </header>
-  <main>
-    <section style="padding-top:2rem;padding-bottom:2rem;text-align:left">
-      <a style="color:#e5e7eb;text-decoration:none;font-weight:600;" href="/">&larr; Back to Home</a>
-    </section>
-    <section id="about" style="text-align:center">
-      <h1 style="font-size:clamp(2.2rem,5vw,2.8rem);margin-bottom:1.5rem;">About Us</h1>
-      <p style="font-size:1.25rem;max-width:800px;margin:1rem auto;color:#d1d5db;">Tayoca builds products that pay for themselves and infrastructure you can trust at the same price. We operate under the principle: every dollar forecasted, every hour instrumented, every service observable.</p>
-      <h3 style="margin-top:3rem;margin-bottom:1rem;font-size:1.375rem;">Our Metrics</h3>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;text-align:center;margin:2rem 0;">
-        <div><div style="font-size:2.5rem;font-weight:600;">Deploy to prod</div><div style="color:#9ca3af;">≤15 min</div></div>
-        <div><div style="font-size:2.5rem;font-weight:600;">MTTR</div><div style="color:#9ca3af;">≤5 min</div></div>
-        <div><div style="font-size:2.5rem;font-weight:600;">Cloud bill</div><div style="color:#9ca3af;">≤80% baseline</div></div>
-      </div>
-      <h3 style="margin-top:3rem;margin-bottom:1rem;font-size:1.375rem;">Engineering Attestations</h3>
-      <div style="font-family:'JetBrains Mono',monospace;display:grid;grid-template-columns:repeat(2,1fr);gap:.25rem;max-width:600px;margin:auto">
-        <span style="background:#111827;border-radius:.25rem;padding:.375rem .625rem;white-space:nowrap">PMP</span>
-        <span style="background:#111827;border-radius:.25rem;padding:.375rem .625rem;white-space:nowrap">CSM</span>
-        <span style="background:#111827;border-radius:.25rem;padding:.375rem .625rem;white-space:nowrap">Terraform Associate</span>
-        <span style="background:#111827;border-radius:.25rem;padding:.375rem .625rem;white-space:nowrap">AWS Solutions Architect</span>
-      </div>
-      <h3 style="margin-top:4rem;margin-bottom:.5rem;font-size:1.375rem;">Let's build reliable things together</h3>
-      <p style="color:#d1d5db;margin-bottom:2rem;">We're engineers who've run production at scale. Kubernetes, GitOps, AWS, Terraform, DevSecOps, and AI-assisted operations are our native tongue. <a style="color:#f97316;text-decoration:none" href="index.html#contact">Book a call →</a></p>
-    </section>
-  </main>
-  <div class="amber-accent"></div>
-  <footer>
-    <div><strong style="color:#e5e7eb;display:block;margin-bottom:.5rem;">tayoca</strong><small style="color:#9ca3af;display:block;">FinOps, Platform Engineering, AI Automation.<br>Ontario, Canada.</small></div>
-    <div class="footer-links">
-      <strong style="display:block;margin-bottom:.5rem;">Company</strong>
-      <div style="display:flex;flex-direction:column;gap:.25rem;">
-        <a href="services.html" style="color:#e5e7eb;text-decoration:none">Services</a>
-        <a href="products.html" style="color:#e5e7eb;text-decoration:none">Products</a>
-        <a href="blog.html" style="color:#e5e7eb;text-decoration:none">Writing</a>
-        <a href="about.html" style="color:#e5e7eb;text-decoration:none">About Us</a>
-      </div>
+    
+    <!-- About Content -->
+    <main class="container mx-auto px-6 py-16 md:py-24">
+        <div class="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+            <div>
+                <h1 class="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+                    Temitayo Charles Akinniranye<br>
+                    <span class="text-orange-500">DevOps Architect & Technical Product Builder</span>
+                </h1>
+                
+                <p class="text-lg text-gray-300 mb-8 leading-relaxed">
+                    Building technical products and educational resources that help engineers and teams achieve more with their technology stack. Specializing in DevOps architecture, cloud optimization, automation frameworks, and AI-powered development workflows.
+                </p>
+                
+                <p class="text-gray-400 mb-8">
+                    I help bridge the gap between development and operations by creating practical guides, automation solutions, and educational materials that turn technical complexity into accessible knowledge.
+                </p>
+                
+                <div class="bg-gray-800 rounded-lg p-6 border border-gray-700">
+                    <h3 class="text-xl font-bold text-white mb-4">Current Focus</h3>
+                    <ul class="space-y-3 text-gray-300">
+                        <li class="flex items-start space-x-3">
+                            <span class="text-orange-500 mt-1">🔧</span>
+                            <span>Building educational resources on AI automation and agentic development workflows</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <span class="text-orange-500 mt-1">📊</span>
+                            <span>Creating cost optimization guides for cloud infrastructure management</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <span class="text-orange-500 mt-1">📚</span>
+                            <span>Writing practical n8n automation guides for engineering teams</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <span class="text-orange-500 mt-1">🚀</span>
+                            <span>Helping teams adopt AI-driven development workflows through education and automation templates</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div>
+                <img src="https://via.placeholder.com/400x500/1f2937/9ca3af?text=TEMITAYO" 
+                     alt="Temitayo Charles Akinniranye - DevOps Architect and Technical Product Builder"
+                     class="w-full max-w-sm mx-auto rounded-lg shadow-2xl ring-4 ring-gray-600">
+            </div>
+        </div>
+        
+        <div class="mt-16 bg-gray-800 rounded-lg p-8 border border-gray-700">
+            <h2 class="text-2xl font-bold text-white mb-6">Background & Experience</h2>
+            <div class="space-y-6 text-gray-300">
+                <p>
+                    With years of experience in distributed systems, cloud infrastructure, and development operations, I've developed a pragmatic approach to technical challenges:
+                </p>
+                
+                <div>
+                    <h3 class="text-lg font-medium text-white mb-3">Key Areas of Expertise</h3>
+                    <ul class="space-y-2">
+                        <li>• Cloud optimization and FinOps practices for cost reduction</li>
+                        <li>• Infrastructure as code and platform engineering</li>
+                        <li>• CI/CD pipeline design and optimization</li>
+                        <li>• Kubernetes and container orchestration</li>
+                        <li>• AI-powered development workflows</li>
+                        <li>• Technical education and resource creation</li>
+                    </ul>
+                </div>
+                
+                <p>
+                    My approach combines technical depth with practical guidance, distilling complex topics into actionable resources that help readers immediately apply concepts to their work.
+                </p>
+            </div>
+        </div>
+        
+        <div class="mt-12 bg-gray-800 rounded-lg p-6 border border-gray-700">
+            <h3 class="text-xl font-bold text-white mb-4">Philosophy</h3>
+            <p class="text-gray-300 leading-relaxed">
+                Technology should enable people, not overwhelm them. My mission is to demystify technical complexity through clear, practical guides, automation templates, and educational resources that help engineers build better systems while reducing cognitive load.
+            </p>
+        </div>
+        
+        <div class="mt-12 bg-gray-800 rounded-lg p-6 border border-gray-700">
+            <h2 class="text-xl font-bold text-white mb-4">Education & Publications</h2>
+            <p class="text-gray-300 mb-4">
+                Author of practical technical guides sold through Gumroad, reaching engineers worldwide. Publications cover cloud optimization, DevOps practices, automation patterns, and practical education on implementing AI in existing organizations.
+            </p>
+            
+            <div class="mt-6 grid md:grid-cols-2 gap-4">
+                <div class="text-center p-4 bg-gray-700 rounded-lg">
+                    <div class="text-orange-500 text-2xl mb-2">💰</div>
+                    <div class="font-medium text-white">AWS Cost Optimization</div>
+                    <div class="text-sm text-gray-400">Playbook</div>
+                </div>
+                <div class="text-center p-4 bg-gray-700 rounded-lg">
+                    <div class="text-orange-500 text-2xl mb-2">🛠️</div>
+                    <div class="font-medium text-white">DevOps Lab Pack</div>
+                    <div class="text-sm text-gray-400">Learning resources</div>
+                </div>
+                <div class="text-center p-4 bg-gray-700 rounded-lg">
+                    <div class="text-orange-500 text-2xl mb-2">🤖</div>
+                    <div class="font-medium text-white">AI Automation Career</div>
+                    <div class="text-sm text-gray-400">Playbook</div>
+                </div>
+                <div class="text-center p-4 bg-gray-700 rounded-lg">
+                    <div class="text-orange-500 text-2xl mb-2">🎯</div>
+                    <div class="font-medium text-white">n8n MCP Kubernetes</div>
+                    <div class="text-sm text-gray-400">Teaching Pack</div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Newsletter Signup Section -->
+    <div class="container mx-auto px-6 pb-16">
+        <div class="max-w-4xl mx-auto bg-gray-800 rounded-lg p-6 border border-orange-500/30 text-center">
+            <h3 class="text-lg font-medium text-white mb-2">Stay Updated</h3>
+            <p class="text-gray-300 text-sm mb-4">Get weekly insights on DevOps, AI automation, and technical playbooks. No spam, unsubscribe anytime.</p>
+            <form id="newsletter-form" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+                <input 
+                    type="email" 
+                    name="email" 
+                    placeholder="your@email.com" 
+                    required
+                    class="flex-1 px-4 py-2 bg-gray-900 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                >
+                <button 
+                    type="submit" 
+                    class="px-6 py-2 bg-accent-orange text-white rounded-lg hover:bg-orange-600 transition-colors duration-200 whitespace-nowrap"
+                >
+                    Subscribe
+                </button>
+            </form>
+            <p id="newsletter-message" class="text-sm text-gray-400 mt-2 hidden"></p>
+        </div>
     </div>
-    <div>
-      <strong style="display:block;margin-bottom:.5rem;">Attestations</strong>
-      <span style="font-family:'JetBrains Mono',monospace;font-size:.8rem;background:#111827;padding:.25rem .5rem;border-radius:.25rem;margin:.125rem 0;display:block;">PMP</span>
-      <span style="font-family:'JetBrains Mono',monospace;font-size:.8rem;background:#111827;padding:.25rem .5rem;border-radius:.25rem;margin:.125rem 0;display:block;">CSM</span>
-      <span style="font-family:'JetBrains Mono',monospace;font-size:.8rem;background:#111827;padding:.25rem .5rem;border-radius:.25rem;margin:.125rem 0;display:block;">Terraform Associate</span>
-      <span style="font-family:'JetBrains Mono',monospace;font-size:.8rem;background:#111827;padding:.25rem .5rem;border-radius:.25rem;margin:.125rem 0;display:block;">AWS Solutions Architect</span>
-    </div>
-  </footer>
+
+    <footer class="border-t border-gray-800 mt-16 py-8 px-6">
+        <div class="container mx-auto flex justify-between items-center">
+            <p class="text-gray-400 text-sm">© 2025 Temitayo Charles Akinniranye. All rights reserved.</p>
+            <a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Privacy Policy</a>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile navigation handler
+        const mobileMenuButton = document.querySelector('button');
+        mobileMenuButton.addEventListener('click', () => {
+            alert('Mobile menu would open here');
+        });
+
+        // Newsletter form handler
+        const newsletterForm = document.getElementById('newsletter-form');
+        const newsletterMessage = document.getElementById('newsletter-message');
+        
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const email = newsletterForm.querySelector('input[name="email"]').value;
+                const name = email.split('@')[0];
+                const submitBtn = newsletterForm.querySelector('button[type="submit"]');
+                const originalBtnText = submitBtn.textContent;
+                
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Subscribing...';
+                newsletterMessage.classList.add('hidden');
+                
+                try {
+                    // Submit to InsForge (newsletter database)
+                    const insforgeResponse = await fetch('https://v7mhrspk.function2.insforge.app/newsletter-subscribe', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ email })
+                    });
+                    
+                    // Submit to n8n for personalized follow-up email
+                    try {
+                        await fetch('https://n8n.tca-infraforge.site/webhook/tayoca-newsletter-signup', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ email, name })
+                        });
+                    } catch (n8nError) {
+                        console.warn('n8n webhook failed, but InsForge succeeded:', n8nError);
+                    }
+                    
+                    const data = await insforgeResponse.json();
+                    
+                    if (insforgeResponse.ok && data.success) {
+                        newsletterMessage.textContent = 'Thanks for subscribing! Check your inbox for confirmation.';
+                        newsletterMessage.className = 'text-sm text-green-400 mt-2';
+                        newsletterForm.reset();
+                    } else {
+                        newsletterMessage.textContent = data.error || 'Something went wrong. Please try again.';
+                        newsletterMessage.className = 'text-sm text-red-400 mt-2';
+                    }
+                } catch (error) {
+                    newsletterMessage.textContent = 'Network error. Please check your connection and try again.';
+                    newsletterMessage.className = 'text-sm text-red-400 mt-2';
+                }
+                
+                newsletterMessage.classList.remove('hidden');
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalBtnText;
+            });
+        }
+    </script>
 </body>
 </html>

@@ -3,179 +3,324 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Products - Tayoca</title>
-    <meta name="description" content="Practical engineering guides for teams who want to move fast: FinOps Playbook, Incident Runbook, GitOps Field Guide, and K8s Production Checklist. Buy any guide and apply its full price as credit toward a $5K FinOps audit.">
-    <meta name="keywords" content="FinOps playbook, incident runbook, GitOps guide, Kubernetes checklist, AWS cost optimization, engineering guides, Tayoca products">
-    <meta name="author" content="Tayoca">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://tayoca.com/products.html">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-
-    <!-- Open Graph -->
-    <meta property="og:title" content="Products – Tayoca">
-    <meta property="og:description" content="Practical engineering guides: FinOps Playbook, Incident Runbook, GitOps Field Guide, and K8s Production Checklist.">
+    <title>Products - Temitayo Charles Akinniranye</title>
+    <meta name="description" content="Browse all products by Temitayo Charles Akinniranye including AWS Cost Optimization, DevOps Lab Pack, AI career playbooks, n8n MCP Kubernetes, and AI Made Simple resources">
+    <meta name="keywords" content="Temitayo products, Temitayo Charles Akinniranye products, AWS Cost Optimization Playbook, DevOps Lab Pack, AI career playbook, n8n MCP Kubernetes, technical playbooks">
+    <meta property="og:title" content="Products by Temitayo Charles Akinniranye">
+    <meta property="og:description" content="Technical guides and playbooks to help you master cloud optimization, DevOps practices, AI automation, and Kubernetes">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://tayoca.com/products.html">
-    <meta property="og:site_name" content="Tayoca">
-    <meta property="og:image" content="https://tayoca.com/assets/og-image.png">
-
-    <!-- Twitter Card -->
+    <meta property="og:image" content="https://tayoca.com/og-image.jpg">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Products – Tayoca">
-    <meta name="twitter:description" content="Practical engineering guides: FinOps Playbook, Incident Runbook, GitOps Field Guide, and K8s Production Checklist.">
-    <meta name="twitter:image" content="https://tayoca.com/assets/og-image.png">
-
-    <!-- InsForge Analytics (Plausible-compatible, self-hosted) -->
-      <script>
-        (function() {
-          var endpoint = 'https://v7mhrspk.function2.insforge.app/analytics-event';
-          var domain = 'tayoca.com';
-          function sendEvent(name, props) {
-            var data = {
-              domain: domain,
-              name: name,
-              url: window.location.href,
-              path: window.location.pathname,
-              referrer: document.referrer || null,
-              screen_width: window.screen.width,
-              screen_height: window.screen.height,
-              props: props || {}
-            };
-            navigator.sendBeacon && navigator.sendBeacon(endpoint, JSON.stringify(data)) ||
-              fetch(endpoint, { method: 'POST', body: JSON.stringify(data), keepalive: true });
-          }
-          if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', function() { sendEvent('pageview'); });
-          } else {
-            sendEvent('pageview');
-          }
-          window.tayocaAnalytics = { sendEvent: sendEvent };
-        })();
-      </script>
-
+    <meta name="twitter:title" content="Products by Temitayo Charles Akinniranye">
+    <meta name="twitter:description" content="Technical guides and playbooks to help you master cloud optimization, DevOps practices, AI automation, and Kubernetes">
+    
+    <!-- Tailwind CSS via UNPKG CDN -->
+    <script src="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.js"></script>
+    
+    <!-- InsForge Analytics -->
+    <script defer src="https://v7mhrspk.function2.insforge.app/c.js"></script>
+    
     <style>
-        :root {
-            --bg-color: #0d0d0d;
-            --text-color: #ffffff;
-            --accent-color: #f97316;
-        }
         body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: system-ui, sans-serif;
-            margin: 0;
-            padding: 2rem;
+            background-color: #0d0d0d;
+            color: #e5e7eb;
         }
-        h1 {
-            text-align: center;
-            margin-bottom: 2rem;
-            color: var(--accent-color);
+        .accent-orange {
+            color: #f97316;
         }
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.5rem;
-        }
-        .product-card {
-            background-color: #1a1a1a;
-            border: 1px solid #333;
-            border-radius: 0.5rem;
-            padding: 1.5rem;
-            text-align: center;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .product-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-        }
-        .product-card h2 {
-            margin-top: 0;
-            margin-bottom: 1rem;
-            color: var(--accent-color);
-        }
-        .product-card p {
-            margin-bottom: 1.5rem;
-            color: #ccc;
-            flex-grow: 1;
-        }
-        .product-card .price {
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-bottom: 1.5rem;
-            color: var(--accent-color);
-        }
-        .product-card .cta-button {
-            display: inline-block;
-            background-color: var(--accent-color);
-            color: white;
-            text-decoration: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.25rem;
-            font-weight: bold;
-            transition: background-color 0.2s;
-        }
-        .product-card .cta-button:hover {
-            background-color: #ea580c;
+        .bg-accent-orange {
+            background-color: #f97316;
         }
     </style>
 </head>
-<body>
-    <h1>Our Products</h1>
-    <div class="products-grid" id="productsContainer">
-        <!-- Product cards will be injected here -->
-    </div>
-
+<body class="min-h-screen">
+    <!-- Navigation -->
+    <nav class="flex items-center justify-between px-6 py-4 border-b border-gray-800">
+        <div class="flex items-center space-x-4">
+            <a href="./index.html" class="text-xl font-medium accent-orange nav-link flex items-center">
+                <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M13 3L4 14h7v7l9-9h-7V3z"/>
+                </svg>
+                temitayo
+            </a>
+        </div>
+        <div class="hidden md:flex space-x-8">
+            <a href="./index.html" class="nav-link hover:text-orange-500">Home</a>
+            <a href="./services.html" class="nav-link hover:text-orange-500">Services</a>
+            <a href="./products.html" class="nav-link hover:text-orange-500 border-b-2 border-orange-500">Products</a>
+            <a href="./blog.html" class="nav-link hover:text-orange-500">Blog</a>
+            <a href="./about.html" class="nav-link hover:text-orange-500">About</a>
+        </div>
+        <button class="md:hidden p-2 rounded-lg border border-gray-600">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+        </button>
+    </nav>
+    
+    <!-- Products Content -->
+    <main class="container mx-auto px-6 py-16 md:py-24">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-8">My Products</h1>
+            
+            <p class="text-lg text-gray-300 mb-12 leading-relaxed">
+                Practical technical guides and educational resources sold through Gumroad. These products distill real-world experience into actionable playbooks you can apply immediately.
+            </p>
+            
+            <div class="grid md:grid-cols-2 gap-8 mb-12">
+                <!-- Published Products -->
+                <div class="bg-gray-800 rounded-lg p-6 border border-gray-700">
+                    <h2 class="text-xl font-bold text-white mb-6 accent-orange">✅ Published</h2>
+                    
+                    <div class="space-y-6">
+                        <div class="border border-orange-500/30 rounded-lg p-4">
+                            <h3 class="text-xl font-medium text-white mb-3">AWS Cost Optimization Playbook</h3>
+                            <p class="text-gray-300 mb-3 italic">$29</p>
+                            <p class="text-gray-300 mb-4">
+                                A field-tested playbook for reducing AWS costs by 20-40% without sacrificing reliability. Includes operational checklists, automation templates, FinOps architecture patterns, and cost monitoring dashboards.
+                            </p>
+                            <p class="text-sm text-gray-400 mb-4"><strong>Status:</strong> Published and available now</p>
+                            <a href="https://tayoca.gumroad.com/l/aws-cost-optimization" 
+                               class="inline-block px-6 py-3 bg-accent-orange text-white rounded-lg hover:bg-orange-600 transition-colors duration-200"
+                               target="_blank"
+                               rel="noopener noreferrer">
+                                View on Gumroad
+                            </a>
+                            <a href="./landing_v2.html"
+                               class="inline-block px-4 py-2 text-white border border-gray-500 rounded-lg hover:border-orange-500 transition-colors mt-3 ml-2">
+                                Preview
+                            </a>
+                        </div>
+                        
+                        <div class="border border-orange-500/30 rounded-lg p-4">
+                            <h3 class="text-xl font-medium text-white mb-3">Build Break Fix DevOps Lab Pack</h3>
+                            <p class="text-gray-300 mb-3 italic">$19</p>
+                            <p class="text-gray-300 mb-4">
+                                Self-contained lab exercises that take you from "why isn't my pipeline working?" to production-quality infrastructure automation. Covers AWS tools, debugging scenarios, and real-world incident patterns in DevOps.
+                            </p>
+                            <p class="text-sm text-gray-400 mb-4"><strong>Status:</strong> Published and available now</p>
+                            <a href="https://tayoca.gumroad.com/l/build-break-fix-devops" 
+                               class="inline-block px-6 py-3 bg-accent-orange text-white rounded-lg hover:bg-orange-600 transition-colors duration-200"
+                               target="_blank"
+                               rel="noopener noreferrer">
+                                View on Gumroad
+                            </a>
+                            <a href="./landing-devops-pack.html" 
+                               class="inline-block px-4 py-2 text-white border border-gray-500 rounded-lg hover:border-orange-500 transition-colors mt-3 ml-2">
+                                Preview
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Pending Products -->
+                <div class="bg-gray-800 rounded-lg p-6 border border-gray-700">
+                    <h2 class="text-xl font-bold text-white mb-6 accent-orange">🔄 Pending Publish</h2>
+                    
+                    <div class="space-y-6">
+                        <div class="border border-orange-500/30 rounded-lg p-4">
+                            <h3 class="text-xl font-medium text-white mb-3">n8n MCP Kubernetes Teaching Pack</h3>
+                            <p class="text-gray-300 mb-3 italic">$39</p>
+                            <p class="text-gray-300 mb-4">
+                                Learn n8n MCP with Kubernetes integration through pragmatic examples. Includes server setup, model integration, agent configuration for Kubernetes deployments, and practical workflows for Kubernetes operations and automation.
+                            </p>
+                            <p class="text-sm text-gray-400 mb-4"><strong>Status:</strong> Ready for publication</p>
+                            <a href="https://tayoca.gumroad.com/l/n8n-mcp-k8s" 
+                               class="inline-block px-6 py-3 bg-accent-orange text-white rounded-lg hover:bg-orange-600 transition-colors duration-200"
+                               target="_blank"
+                               rel="noopener noreferrer">
+                                View on Gumroad
+                            </a>
+                            <a href="./landing_n8n-mcp-k8s.html" 
+                               class="inline-block px-4 py-2 text-white border border-gray-500 rounded-lg hover:border-orange-500 transition-colors mt-3 ml-2">
+                                Preview
+                            </a>
+                        </div>
+                        
+                        <div class="border border-orange-500/30 rounded-lg p-4">
+                            <h3 class="text-xl font-medium text-white mb-3">AI Automation Career Playbook</h3>
+                            <p class="text-gray-300 mb-3 italic">$49</p>
+                            <p class="text-gray-300 mb-4">
+                                A comprehensive guide for engineers looking to specialize in AI-driven development. Covers agentic automation patterns, cost-effective tool selection, real-world automation scenarios, and career trajectory through AI integration.
+                            </p>
+                            <p class="text-sm text-gray-400 mb-4"><strong>Status:</strong> Ready for publication</p>
+                            <a href="https://tayoca.gumroad.com/l/ai-automation-career" 
+                               class="inline-block px-6 py-3 bg-accent-orange text-white rounded-lg hover:bg-orange-600 transition-colors duration-200"
+                               target="_blank"
+                               rel="noopener noreferrer">
+                                View on Gumroad
+                            </a>
+                            <a href="./landing_ai-automation-career.html" 
+                               class="inline-block px-4 py-2 text-white border border-gray-500 rounded-lg hover:border-orange-500 transition-colors mt-3 ml-2">
+                                Preview
+                            </a>
+                        </div>
+                        
+                        <div class="border border-blue-500/30 rounded-lg p-4">
+                            <h3 class="text-xl font-medium text-white mb-3">AI Made Simple Manuscript & Course Kit</h3>
+                            <p class="text-gray-300 mb-3 italic">$29</p>
+                            <p class="text-gray-300 mb-4">
+                                A complete education kit covering the fundamentals of AI-made development workflows. Includes manuscript structure, demo exercises, automation templates, and ready-to-teach content for introducing AI in existing organizations.
+                            </p>
+                            <p class="text-sm text-blue-400 mb-4"><strong>Status:</strong> Staged for tomorrow - rate limit waiting</p>
+                            <a href="https://tayoca.gumroad.com/l/ai-made-simple" 
+                               class="inline-block px-6 py-3 bg-accent-orange text-white rounded-lg hover:bg-orange-600 transition-colors duration-200"
+                               target="_blank"
+                               rel="noopener noreferrer">
+                                View on Gumroad
+                            </a>
+                            <a href="./landing_ai-made-simple.html" 
+                               class="inline-block px-4 py-2 text-white border border-gray-500 rounded-lg hover:border-orange-500 transition-colors mt-3 ml-2">
+                                Preview
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 bg-gray-800 rounded-lg p-6 border border-gray-700">
+                <h2 class="text-xl font-bold text-white mb-4">Playbook Placeholders</h2>
+                <p class="text-gray-300 mb-6">
+                    Technical playbooks and field guides - links to landing pages rather than live products.
+                </p>
+                
+                <div class="space-y-3">
+                    <div class="flex items-center space-x-3 p-3 bg-gray-700/50 rounded-lg">
+                        <svg class="w-5 h-5 text-orange-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        <a href="./l/aws-finops-playbook/index.html" class="text-orange-500 hover:text-orange-400 underline">
+                            AWS FinOps Playbook →
+                        </a>
+                        <span class="text-gray-400 text-sm ml-auto">Technical guide on cloud financial operations</span>
+                    </div>
+                    
+                    <div class="flex items-center space-x-3 p-3 bg-gray-700/50 rounded-lg">
+                        <svg class="w-5 h-5 text-orange-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        <a href="./l/platform-engineering-playbook/index.html" class="text-orange-500 hover:text-orange-400 underline">
+                            Platform Engineering Playbook →
+                        </a>
+                        <span class="text-gray-400 text-sm ml-auto">Platform engineering best practices and patterns</span>
+                    </div>
+                    
+                    <div class="flex items-center space-x-3 p-3 bg-gray-700/50 rounded-lg">
+                        <svg class="w-5 h-5 text-orange-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        <a href="./l/finops-ops-playbook/index.html" class="text-orange-500 hover:text-orange-400 underline">
+                            FinOps Ops Playbook →
+                        </a>
+                        <span class="text-gray-400 text-sm ml-auto">Operations-focused FinOps guidance</span>
+                    </div>
+                    
+                    <div class="flex items-center space-x-3 p-3 bg-gray-700/50 rounded-lg">
+                        <svg class="w-5 h-5 text-orange-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        <a href="./l/data-pipelines-playbook/index.html" class="text-orange-500 hover:text-orange-400 underline">
+                            Data Pipelines Playbook →
+                        </a>
+                        <span class="text-gray-400 text-sm ml-auto">Data pipeline architecture and operations</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Newsletter Signup -->
+            <div class="mt-12 bg-gray-800 rounded-lg p-6 border border-orange-500/30 text-center">
+                <h3 class="text-xl font-medium text-white mb-2">Stay Updated</h3>
+                <p class="text-gray-300 text-sm mb-4">Get weekly insights on DevOps, AI automation, and technical playbooks. No spam, unsubscribe anytime.</p>
+                <form id="newsletter-form" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+                    <input 
+                        type="email" 
+                        name="email" 
+                        placeholder="your@email.com" 
+                        required
+                        class="flex-1 px-4 py-2 bg-gray-900 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                    >
+                    <button 
+                        type="submit" 
+                        class="px-6 py-2 bg-accent-orange text-white rounded-lg hover:bg-orange-600 transition-colors duration-200 whitespace-nowrap"
+                    >
+                        Subscribe
+                    </button>
+                </form>
+                <p id="newsletter-message" class="text-sm text-gray-400 mt-2 hidden"></p>
+            </div>
+        </div>
+    </main>
+    
+    <footer class="border-t border-gray-800 mt-16 py-8 px-6">
+        <div class="container mx-auto flex justify-between items-center">
+            <p class="text-gray-400 text-sm">© 2025 Temitayo Charles Akinniranye. All rights reserved.</p>
+            <a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Privacy Policy</a>
+        </div>
+    </footer>
+    
     <script>
-        // Function to parse CSV string into array of objects
-        function parseCSV(csv) {
-            const lines = csv.trim().split('\n');
-            const headers = lines[0].split(',').map(header => header.trim());
-            const result = [];
-            for (let i = 1; i < lines.length; i++) {
-                const values = lines[i].split(',').map(value => {
-                    // Remove quotes if present
-                    return value.replace(/^"(.*)"$/, '$1').trim();
-                });
-                const obj = {};
-                headers.forEach((header, index) => {
-                    obj[header] = values[index];
-                });
-                result.push(obj);
-            }
-            return result;
-        }
+        // Mobile navigation handler
+        const mobileMenuButton = document.querySelector('button');
+        mobileMenuButton.addEventListener('click', () => {
+            alert('Mobile menu would open here');
+        });
 
-        // Fetch the CSV and render products
-        async function loadProducts() {
-            try {
-                const response = await fetch('products-feed.csv');
-                if (!response.ok) {
-                    throw new Error(`Failed to fetch CSV: ${response.status}`);
+        // Newsletter form handler
+        const newsletterForm = document.getElementById('newsletter-form');
+        const newsletterMessage = document.getElementById('newsletter-message');
+        
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const email = newsletterForm.querySelector('input[name="email"]').value;
+                const name = email.split('@')[0];
+                const submitBtn = newsletterForm.querySelector('button[type="submit"]');
+                const originalBtnText = submitBtn.textContent;
+                
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Subscribing...';
+                newsletterMessage.classList.add('hidden');
+                
+                try {
+                    // Submit to InsForge (newsletter database)
+                    const insforgeResponse = await fetch('https://v7mhrspk.function2.insforge.app/newsletter-subscribe', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ email })
+                    });
+                    
+                    // Submit to n8n for personalized follow-up email
+                    try {
+                        await fetch('https://n8n.tca-infraforge.site/webhook/tayoca-newsletter-signup', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ email, name })
+                        });
+                    } catch (n8nError) {
+                        console.warn('n8n webhook failed, but InsForge succeeded:', n8nError);
+                    }
+                    
+                    const data = await insforgeResponse.json();
+                    
+                    if (insforgeResponse.ok && data.success) {
+                        newsletterMessage.textContent = 'Thanks for subscribing! Check your inbox for confirmation.';
+                        newsletterMessage.className = 'text-sm text-green-400 mt-2';
+                        newsletterForm.reset();
+                    } else {
+                        newsletterMessage.textContent = data.error || 'Something went wrong. Please try again.';
+                        newsletterMessage.className = 'text-sm text-red-400 mt-2';
+                    }
+                } catch (error) {
+                    newsletterMessage.textContent = 'Network error. Please check your connection and try again.';
+                    newsletterMessage.className = 'text-sm text-red-400 mt-2';
                 }
-                const csvText = await response.text();
-                const products = parseCSV(csvText);
-                const container = document.getElementById('productsContainer');
-                container.innerHTML = ''; // Clear loading state
-
-                products.forEach(product => {
-                    const card = document.createElement('div');
-                    card.className = 'product-card';
-                    card.innerHTML = `
-                        <h2>${product.name}</h2>
-                        <div class="price">$${product.price}</div>
-                        <p>${product.description}</p>
-                        <a href="${product.url}" target="_blank" rel="noopener" class="cta-button">Buy Now</a>
-                    `;
-                    container.appendChild(card);
-                });
-            } catch (error) {
-                console.error('Error loading products:', error);
-                document.getElementById('productsContainer').innerHTML = '<p>Error loading products. Please try again later.</p>';
-            }
+                
+                newsletterMessage.classList.remove('hidden');
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalBtnText;
+            });
         }
-
-        // Load products on page load
-        document.addEventListener('DOMContentLoaded', loadProducts);
     </script>
 </body>
 </html>

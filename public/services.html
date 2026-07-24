@@ -1,164 +1,355 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Tayoca – Services & Pricing</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Flat-fee engagements: FinOps cost audits, GitOps platform engineering, and AI automation that pays for itself">
-  <meta name="keywords" content="FinOps, AWS cost optimization, cloud cost audit, GitOps, platform engineering, AI automation, RAG, LLMOps, pricing, services">
-  <meta name="author" content="Tayoca">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://tayoca.com/services.html">
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Tayoca – Services & Pricing">
-  <meta property="og:description" content="Flat-fee engagements: FinOps cost audits, GitOps platform engineering, and AI automation that pays for itself">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://tayoca.com/services.html">
-  <meta property="og:site_name" content="Tayoca">
-  <meta property="og:image" content="https://tayoca.com/assets/og-image.png">
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Tayoca – Services & Pricing">
-  <meta name="twitter:description" content="Flat-fee engagements: FinOps cost audits, GitOps platform engineering, and AI automation that pays for itself">
-  <meta name="twitter:image" content="https://tayoca.com/assets/og-image.png">
-
-  <!-- InsForge Analytics (Plausible-compatible, self-hosted) -->
-  <script>
-    (function() {
-      var endpoint = 'https://v7mhrspk.function2.insforge.app/analytics-event';
-      var domain = 'tayoca.com';
-      function sendEvent(name, props) {
-        var data = {
-          domain: domain,
-          name: name,
-          url: window.location.href,
-          path: window.location.pathname,
-          referrer: document.referrer || null,
-          screen_width: window.screen.width,
-          screen_height: window.screen.height,
-          props: props || {}
-        };
-        navigator.sendBeacon && navigator.sendBeacon(endpoint, JSON.stringify(data)) ||
-          fetch(endpoint, { method: 'POST', body: JSON.stringify(data), keepalive: true });
-      }
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', function() { sendEvent('pageview'); });
-      } else {
-        sendEvent('pageview');
-      }
-      window.tayocaAnalytics = { sendEvent: sendEvent };
-    })();
-  </script>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@700&family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
-  <style>
-    body{background:#0d0d0d;color:#e5e7eb;font-family:system-ui,-apple-system,BlinkMacSystemFont,Inter,sans-serif;}
-    main{max-width:1200px;margin:auto;padding:0 2rem;}
-    section{padding:4rem 0;}
-    .amber-accent{width:100%;height:6px;background:#f97316;margin-top:-3px}
-    .card{background:#fff;color:#111;padding:1.5rem;border-radius:.875rem;box-shadow:0 4px 20px rgba(0,0,0,.08)}
-    .btn{background:#f97316;color:#fff;padding:.75rem 1.5rem;border-radius:.5rem;font-weight:600;text-decoration:none;display:inline-block}
-    footer{font-size:.875rem;color:#9ca3af;border-top:1px solid #374151;padding-top:2rem;display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem;max-width:1200px;margin:auto;padding-left:2rem;padding-right:2rem}
-    @media(max-width:768px){footer{grid-template-columns:1fr;margin:2rem 0}}
-    .nav-links a.active { color: #f97316 !important; font-weight: 600; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps Consulting Services - Temitayo Charles Akinniranye</title>
+    <meta name="description" content="Expert DevOps consulting services including infrastructure automation, CI/CD pipelines, cloud optimization, Kubernetes consulting, and DevOps training">
+    <meta name="keywords" content="DevOps consulting, Temitayo Charles Akinniranye, infrastructure automation, CI/CD pipelines, Kubernetes consulting, cloud optimization, DevOps training">
+    <meta property="og:title" content="DevOps Consulting Services">
+    <meta property="og:description" content="Expert DevOps consulting services including infrastructure automation, CI/CD pipelines, cloud optimization">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tayoca.com/services.html">
+    <meta property="og:image" content="https://tayoca.com/og-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="DevOps Consulting Services">
+    <meta name="twitter:description" content="Expert DevOps consulting services including infrastructure automation, CI/CD pipelines, cloud optimization">
+    
+    <!-- Tailwind CSS via UNPKG CDN -->
+    <script src="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.js"></script>
+    
+    <!-- InsForge Analytics -->
+    <script defer src="https://v7mhrspk.function2.insforge.app/c.js"></script>
+    
+    <style>
+        body {
+            background-color: #0d0d0d;
+            color: #e5e7eb;
+        }
+        .accent-orange {
+            color: #f97316;
+        }
+        .bg-accent-orange {
+            background-color: #f97316;
+        }
+    </style>
 </head>
-<body>
-  <header style="position:sticky;top:0;z-index:999;background:rgba(13,13,13,.8);backdrop-filter:blur(8px)">
-    <nav style="max-width:1200px;margin:auto;display:flex;justify-content:space-between;align-items:center;padding:0 2rem;padding-top:.75rem;padding-bottom:.75rem">
-      <a style="text-decoration:none;color:inherit;font-size:1.5rem;font-weight:600" href="index.html">tayoca</a>
-      <div style="display:flex;gap:2rem">
-        <a style="color:#f97316!important;text-decoration:none;font-weight:600" href="services.html" aria-current="page">Services</a>
-        <a style="color:#e5e7eb;text-decoration:none" href="products.html">Products</a>
-        <a style="color:#e5e7eb;text-decoration:none" href="blog.html">Writing</a>
-        <a style="color:#e5e7eb;text-decoration:none" href="about.html">About</a>
-      </div>
-      <a href="index.html#contact" class="btn" style="margin-left:2rem">Book a Call</a>
+<body class="min-h-screen">
+    <!-- Navigation -->
+    <nav class="flex items-center justify-between px-6 py-4 border-b border-gray-800">
+        <div class="flex items-center space-x-4">
+            <a href="./index.html" class="text-xl font-medium accent-orange nav-link flex items-center">
+                <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M13 3L4 14h7v7l9-9h-7V3z"/>
+                </svg>
+                temitayo
+            </a>
+        </div>
+        <div class="hidden md:flex space-x-8">
+            <a href="./index.html" class="nav-link hover:text-orange-500">Home</a>
+            <a href="./services.html" class="nav-link hover:text-orange-500 border-b-2 border-orange-500">Services</a>
+            <a href="./products.html" class="nav-link hover:text-orange-500">Products</a>
+            <a href="./blog.html" class="nav-link hover:text-orange-500">Blog</a>
+            <a href="./about.html" class="nav-link hover:text-orange-500">About</a>
+        </div>
+        <button class="md:hidden p-2 rounded-lg border border-gray-600">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+        </button>
     </nav>
-  </header>
-  <main>
-    <section style="padding-top:2rem;padding-bottom:2rem;text-align:left">
-      <a style="color:#e5e7eb;text-decoration:none;font-weight:600;" href="/">&larr; Back to Home</a>
-    </section>
-    <section id="services" style="text-align:center">
-      <h1 style="font-size:clamp(2.5rem,6vw,3.25rem);margin-bottom:1rem;">Services & Pricing</h1>
-      <p style="font-size:1.1rem;max-width:700px;margin:1.5rem auto;">We deliver measurable savings and production-grade infrastructure.</p>
-      <div style="max-width:900px;margin:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;text-align:left">
-        <!-- FinOps Audit 5K Payment Link Flow -->
-        <div class="card">
-        <span style="color:#f97316;font-weight:600;font-size:.875rem;">FinOps Audit</span>
-        <h3 style="font-size:1.5rem;margin-top:.75rem;">Cloud Cost Optimization <strong style="color:#f97316;">$5,000 Flat Fee</strong></h3>
-        <p style="margin:.75rem 0;color:#4b5563">You provide your last AWS bill (CSV) the day before the audit. We provide a prioritized 15-item remediation plan and ROI calculator. $0 saved → $0 paid. 30-day money-back guarantee.</p>
-        <ul style="margin:.5rem 0;font-size:.875rem;list-style:none;padding:0">
-        <li style="margin-bottom:.25rem;display:flex;align-items:center;gap:.5rem"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#f97316"><polyline points="20 6 9 17 4 12"></polyline></svg>90-minute deep-dive call</li>
-        <li style="margin-bottom:.25rem;display:flex;align-items:center;gap:.5rem"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#f97316"><polyline points="20 6 9 17 4 12"></polyline></svg>Prioritized 15-item remediation plan and ROI calc</li>
-        <li style="margin-bottom:.25rem;display:flex;align-items:center;gap:.5rem"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#f97316"><polyline points="20 6 9 17 4 12"></polyline></svg>$5K flat, 30-day money-back guarantee</li>
-        </ul>
-        <a href="https://cal.com/tayoca/finops-audit" target="_blank" rel="noopener" style="margin-top:1rem; width:100%;" class="btn">Book Discovery Call →</a>
-        <p style="margin-top:.75rem; font-size:.75rem; color:#6b7280;">Free 15-min scoping call. $5K audit fee due after deliverables.</p>
-        </div>
+    
+    <!-- **NEW SECTION**  Services Section -->
+                <div class="bg-gray-800 rounded-lg p-8 border border-gray-700 mt-12">
+                  <h2 class="text-2xl font-bold text-white mb-6">⚡ DevOps Consulting Services</h2>
+                  <p class="text-lg text-gray-300 mb-12 leading-relaxed">
+                    Temitayo Charles Akinniranye provides expert DevOps consulting to help organizations streamline workflows, improve reliability, and accelerate delivery. Specialized in cloud infrastructure, automation, CI/CD, FinOps, and AI-powered workflows.
+                  </p>
 
-        <script>
-          // Cal.com booking links wired directly in HTML
-        </script>
-        <div class="card">
-          <span style="color:#f97316;font-weight:600;font-size:.875rem;">Platform Engineering</span>
-          <h3 style="font-size:1.5rem;margin-top:.75rem;">GitOps & DevSecOps Platform</h3>
-          <p style="margin:.75rem 0;color:#4b5563">We deliver a production platform anyone can ship on: Argo CD, Terraform, GitHub Actions, Kyverno, metrics, alerts. Any stack — EKS/GKE, bare metal, on-prem.</p>
-          <ul style="margin:.5rem 0;font-size:.875rem;list-style:none;padding:0">
-            <li style="margin-bottom:.25rem;display:flex;align-items:center;gap:.5rem"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#f97316"><polyline points="20 6 9 17 4 12"></polyline></svg>Production clusters by day 15</li>
-            <li style="margin-bottom:.25rem;display:flex;align-items:center;gap:.5rem"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#f97316"><polyline points="20 6 9 17 4 12"></polyline></svg>Platform SLA ≥99.95%</li>
-            <li style="margin-bottom:.25rem;display:flex;align-items:center;gap:.5rem"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#f97316"><polyline points="20 6 9 17 4 12"></polyline></svg>$8K+ fixed scope, milestone payments</li>
-          </ul>
-          <a href="https://cal.com/tayoca/platform-engineering-consultation" target="_blank" rel="noopener" style="margin-top:1rem;display:inline-block" class="btn">Book Consultation →</a>
+                  <h2 class="text-2xl font-bold text-white mb-6 mt-12">➕ New: Sivanta Business-Digital Agent Platform (Built & Validated)</h2>
+                  <div class="space-y-4 mb-6">
+                    <div class="p-4 rounded-lg bg-gray-700 border border-gray-600">
+                      <h3 class="text-lg font-medium accent-orange mb-2">• Product: Sivanta SaaS Tier</h3>
+                      <p class="text-gray-300 ml-4">Production-grade AI-native multi-tenant SaaS for African businesses to automate sales, support, and payments on WhatsApp/Telegram + Web with zero storefronts. <strong>Already live; trial zone available → <a href="https://sivanta-agent-platform.vercel.app" target="_blank" rel="noopener noreferrer" class="text-orange-500 hover:underline">Try Here</a></strong></p>
+                    </div>
+                
+                    <div class="p-4 rounded-lg bg-gray-700 border border-gray-600">
+                      <h3 class="text-lg font-medium accent-orange mb-2">• Service: Custom Build & Migration</h3>
+                      <p class="text-gray-300 ml-4">You bring the platform; we bring the <strong>working implementation for POG Technologies (Nigeria retail)</strong>. Use this as a proven portfolio and traction story to win further Sivanta clients immediately.</p>
+                    </div>
+                
+                    <div class="p-4 rounded-lg bg-gray-700 border border-gray-600">
+                      <h3 class="text-lg font-medium accent-orange mb-2">• Service: Managed Business Agent</h3>
+                      <p class="text-gray-300 ml-4">Operate Sivanta as a service for local businesses who prefer hands-off automation with trustworthy LLM agents.</p>
+                    </div>
+                  </div>
+                  <p class="text-sm text-gray-400 mb-6">💡 All Sivanta offerings are monetizable <strong>now</strong>, not deferred to Month 2. Added as 4th revenue stream: FinOps Audits, Digital Products, Academy/Resources, Sivanta SaaS + Services.</p>
+
+                  <div class="text-center mt-8">
+                    <h3 class="text-lg font-medium mb-2">Ready to automate your commerce?</h3>
+                    <p class="text-gray-400 mb-4">Book a free Discovery → schedule directly below</p>
+                    <a href="#discovery" class="inline-block px-6 py-2 bg-accent-orange text-white rounded-lg hover:bg-orange-600 transition-colors whitespace-nowrap">
+                      🔗 Schedule Discovery Call
+                    </a>
+                  </div>
+              
+                  <hr class="border-gray-600 my-8">
+
+                  <div class="space-y-6 mb-12">
+                    <h2 class="text-2xl font-bold text-white">Areas of Expertise</h2>
+
+                    <div class="space-y-4">
+                      <div>
+                        <h3 class="text-xl font-medium accent-orange mb-3">Infrastructure Automation & IaC</h3>
+                        <p class="text-gray-300 ml-4">Terraform, AWS CDK, Pulumi — version-controlled, testable, risk-free infrastructure.</p>
+                      </div>
+                  
+                      <div>
+                        <h3 class="text-xl font-medium accent-orange mb-3">CI/CD Pipeline Design & Optimization</h3>
+                        <p class="text-gray-300 ml-4">Parallel testing, caching, progressive deployment, policy gates, security scanning.</p>
+                      </div>
+                  
+                      <div>
+                        <h3 class="text-xl font-medium accent-orange mb-3">Cloud Optimization & FinOps</h3>
+                        <p class="text-gray-300 ml-4">Right-size, implement FinOps, automate to prevent cost overruns. Built from bestselling <strong>AWS Cost Optimization Playbook</strong>.</p>
+                      </div>
+                  
+                      <div>
+                        <h3 class="text-xl font-medium accent-orange mb-3">Kubernetes & Ops</h3>
+                        <p class="text-gray-300 ml-4">Secure clusters, Helm charts, admission policies, observability stack (Prometheus/Grafana), incident response patterns.</p>
+                      </div>
+                  
+                      <div>
+                        <h3 class="text-xl font-medium accent-orange mb-3">DevOps Education & Templates</h3>
+                        <p class="text-gray-300 ml-4">Practical guides distilled from years of real-world deployments to share with your team.</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="space-y-4 mb-12">
+                    <h2 class="text-2xl font-bold text-white">Engagement Models</h2>
+
+                    <h3 class="text-xl font-medium accent-orange mb-4">Full-Stack DevOps Assessment & Transformation</h3>
+                    <ul class="space-y-3 text-gray-300 ml-4 list-disc">
+                      <li>Comprehensive infrastructure audit & optimization roadmap</li>
+                      <li>CI/CD pipelines tailored to your stack</li>
+                      <li>Infrastructure as Code across dev/staging/prod</li>
+                      <li>Documentation & runbooks, hand-off, 1st-level support training</li>
+                    </ul>
+                  </div>
+
+                  <div class="space-y-6 mb-8">
+                    <h2 class="text-2xl font-bold text-white">Case Study</h2>
+                    <p class="text-gray-300 leading-relaxed">
+                      Deployed cloud cost optimization and CI speed-up for e-commerce client: build times ↓75%, infra deployments ↓ from hours to minutes, MTTR ↓40%. <strong>POG Technologies (Nigeria retail) production deployment used as live portfolio proof.</strong> Delivered on sandbox-ready production Sivanta platform.
+                    </p>
+                    <a href="calendar.html" class="inline-block px-6 py-2 bg-accent-orange text-white rounded-lg hover:bg-orange-600 transition-colors whitespace-nowrap mt-4">
+                      Talk to POG CTO (Calendly)
+                    </a>
+                  </div>
+                </div>
+                
+                <div class="space-y-4">
+                    <div>
+                        <h3 class="text-xl font-medium accent-orange mb-3">Infrastructure Automation & IaC</h3>
+                        <p class="text-gray-300 ml-4">Deploying best-in-class infrastructure as code practices using Terraform, AWS CDK, or Pulumi. I'll help you design maintainable, version-controlled infrastructures that reduce risk and improve consistency.</p>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-medium accent-orange mb-3">CI/CD Pipeline Design & Optimization</h3>
+                        <p class="text-gray-300 ml-4">Building and optimizing continuous integration and delivery pipelines to reduce time-to-market while maintaining quality gates. I'll integrate automated testing, security scanning, performance measurement, and progressive deployment strategies.</p>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-medium accent-orange mb-3">Cloud Optimization & Cost Management</h3>
+                        <p class="text-gray-300 ml-4">Right-sizing cloud resources, implementing FinOps practices, and creating automation to prevent cost overruns. My AWS Cost Optimization Playbook distills years of optimization experience into actionable practices.</p>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-medium accent-orange mb-3">Kubernetes & Container Orchestration</h3>
+                        <p class="text-gray-300 ml-4">Designing and operating Kubernetes clusters and containers to provide scalable, resilient application platforms. I'll help with manifest creation, helm charts, security policies, and CI/CD for your Kubernetes-based applications.</p>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-medium accent-orange mb-3">Observability & Monitoring Strategy</h3>
+                        <p class="text-gray-300 ml-4">Establishing comprehensive observability through metrics, logs, and traces. I'll help you choose the right tooling stack (Prometheus, Grafana, Loki, Tempo, etc.) and set up alerting that actually reduces MTTR.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="space-y-4 mb-12">
+                <h2 class="text-2xl font-bold text-white">Engagement Models</h2>
+                
+                <h3 class="text-xl font-medium accent-orange mb-4">Full-Stack DevOps Assessment & Transformation</h3>
+                <ul class="space-y-3 text-gray-300 ml-4 list-disc">
+                    <li>Comprehensive infrastructure audit and optimization recommendations</li>
+                    <li>Development of CI/CD pipelines tailored to your tech stack</li>
+                    <li>Implementation of infrastructure as code across dev, staging, prod</li>
+                    <li>Knowledge transfer and ongoing mentorship</li>
+                    <li>Documentation and runbooks for your DevOps processes</li>
+                </ul>
+            </div>
+            
+            <div class="space-y-6 mb-8">
+                <h2 class="text-2xl font-bold text-white">Case Study: DevOps Transformation Success</h2>
+                <p class="text-gray-300 leading-relaxed">
+                    In one engagement, I delivered a 75% reduction in build times by implementing parallel testing, caching strategies, and optimized CI pipelines. Infrastructure deployment time dropped from hours to minutes using Terraform modules, reducing outages and enabling more frequent production updates.
+                </p>
+            </div>
+            
+            <div class="lg:flex lg:space-x-12">
+                <div class="lg:w-2/3 space-y-6">
+                    <h2 class="text-2xl font-bold text-white">Why Choose My Services?</h2>
+                    
+                    <ul class="space-y-4 text-gray-300">
+                        <li class="flex items-start space-x-3">
+                            <svg class="w-5 h-5 text-orange-500 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span>Vendor-neutral advisory focused on your needs, not specific technologies</span>
+                        </li>
+                        
+                        <li class="flex items-start space-x-3">
+                            <svg class="w-5 h-5 text-orange-500 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span>Full lifecycle expertise from initial architecture to ongoing operations</span>
+                        </li>
+                        
+                        <li class="flex items-start space-x-3">
+                            <svg class="w-5 h-5 text-orange-500 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span>ASHEN approach: Architecture + Security + High-availability + Economics + Nurturing culture</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="lg:w-1/3 mt-8 lg:mt-0">
+                    <div class="bg-gray-800 rounded-lg p-6 border border-gray-700">
+                        <h3 class="text-xl font-medium text-white mb-4">Let's Build Together</h3>
+                        <p class="text-gray-300 mb-6">Need help with your DevOps transformation? Let's discuss how we can architect elegant solutions to your toughest infrastructure challenges.</p>
+                        <a href="#contact" class="inline-block px-6 py-3 bg-accent-orange text-white rounded-lg hover:bg-orange-600 transition-colors duration-200">
+                            Get In Touch
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="border-gray-700 my-12">
+            
+            <div class="space-y-8">
+                <div>
+                    <h2 class="text-2xl font-bold text-white mb-4">Insights & Playbooks</h2>
+                    <p class="text-gray-300 mb-4">I've distilled my learnings into practical guides that you can apply immediately:</p>
+                    <div class="space-y-3">
+                        <div class="flex items-center space-x-3">
+                            <a href="./landing_v2.html" class="text-orange-500 hover:text-orange-400 underline">
+                                <span class="font-medium">AWS Cost Optimization Playbook</span> - Manage your cloud costs effectively
+                            </a>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <a href="./landing-devops-pack.html" class="text-orange-500 hover:text-orange-400 underline">
+                                <span class="font-medium">Build Break Fix DevOps Lab Pack</span> - Real-world DevOps scenarios and exercises
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Newsletter Signup -->
+            <div class="bg-gray-800 rounded-lg p-6 border border-orange-500/30 mt-12">
+                <h3 class="text-lg font-medium text-white mb-2">Stay Updated</h3>
+                <p class="text-gray-300 text-sm mb-4">Get weekly insights on DevOps, AI automation, and technical playbooks. No spam, unsubscribe anytime.</p>
+                <form id="newsletter-form" class="flex flex-col sm:flex-row gap-3 max-w-md">
+                    <input 
+                        type="email" 
+                        name="email" 
+                        placeholder="your@email.com" 
+                        required
+                        class="flex-1 px-4 py-2 bg-gray-900 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                    >
+                    <button 
+                        type="submit" 
+                        class="px-6 py-2 bg-accent-orange text-white rounded-lg hover:bg-orange-600 transition-colors duration-200 whitespace-nowrap"
+                    >
+                        Subscribe
+                    </button>
+                </form>
+                <p id="newsletter-message" class="text-sm text-gray-400 mt-2 hidden"></p>
+            </div>
         </div>
-        <div class="card">
-          <span style="color:#f97316;font-weight:600;font-size:.875rem;">AI & Automation</span>
-          <h3 style="font-size:1.5rem;margin-top:.75rem;">RAG/LLMOps</h3>
-          <p style="margin:.75rem 0;color:#4b5563">We build and operate AI features you can count on: token-cost-optimized RAG pipelines, gateway with fallbacks and observability. Solution includes model guidance and ops playbooks.</p>
-          <ul style="margin:.5rem 0;font-size:.875rem;list-style:none;padding:0">
-            <li style="margin-bottom:.25rem;display:flex;align-items:center;gap:.5rem"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#f97316"><polyline points="20 6 9 17 4 12"></polyline></svg>Up-front engineered models & costs</li>
-            <li style="margin-bottom:.25rem;display:flex;align-items:center;gap:.5rem"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#f97316"><polyline points="20 6 9 17 4 12"></polyline></svg>Runbooks & alerting out of the box</li>
-            <li style="margin-bottom:.25rem;display:flex;align-items:center;gap:.5rem"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#f97316"><polyline points="20 6 9 17 4 12"></polyline></svg>$5K package, 30-day acceptance</li>
-          </ul>
-          <a href="https://cal.com/tayoca/platform-engineering-consultation" target="_blank" rel="noopener" style="margin-top:1rem;display:inline-block" class="btn">Start an AI Pilot →</a>
+    </main>
+    
+    <footer class="border-t border-gray-800 mt-16 py-8 px-6">
+        <div class="container mx-auto flex justify-between items-center">
+            <p class="text-gray-400 text-sm">© 2025 Temitayo Charles Akinniranye. All rights reserved.</p>
+            <a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Privacy Policy</a>
         </div>
-      </div>
-      <h3 style="margin-top:4rem;font-size:1.5rem">FAQ</h3>
-      <details style="max-width:700px;margin:2rem auto;color:#d1d5db;text-align:left">
-        <summary style="color:#374151;font-weight:600;margin-bottom:.5rem;cursor:pointer">Do you do retainers?</summary>
-        <p style="font-size:.875rem;color:#9ca3af">Projects scoped in milestones, single invoices, paid before work begins. No open-ended retainers.</p>
-      </details>
-      <details style="max-width:700px;margin:2rem auto;color:#d1d5db;text-align:left">
-        <summary style="color:#374151;font-weight:600;margin-bottom:.5rem;cursor:pointer">What if a client doesn't pay?</summary>
-        <p style="font-size:.875rem;color:#9ca3af">The engagement stops work and the issue is escalated immediately. Money-back guarantee only protects your outcomes, not non-payment.</p>
-      </details>
-    </section>
-  </main>
-  <div class="amber-accent"></div>
-  <footer>
-    <div><strong style="color:#e5e7eb;display:block;margin-bottom:.5rem;">tayoca</strong><small style="color:#9ca3af;display:block;">FinOps, Platform Engineering, AI Automation.<br>Ontario, Canada.</small></div>
-    <div class="footer-links">
-      <strong style="display:block;margin-bottom:.5rem;">Company</strong>
-      <div style="display:flex;flex-direction:column;gap:.25rem;">
-        <a href="services.html" style="color:#e5e7eb;text-decoration:none">Services</a>
-        <a href="products.html" style="color:#e5e7eb;text-decoration:none">Products</a>
-        <a href="blog.html" style="color:#e5e7eb;text-decoration:none">Writing</a>
-        <a href="about.html" style="color:#e5e7eb;text-decoration:none">About Us</a>
-      </div>
-    </div>
-    <div>
-      <strong style="display:block;margin-bottom:.5rem;">Attestations</strong>
-      <span style="font-family:'JetBrains Mono',monospace;font-size:.8rem;background:#111827;padding:.25rem .5rem;border-radius:.25rem;margin:.125rem 0;display:block;">PMP</span>
-      <span style="font-family:'JetBrains Mono',monospace;font-size:.8rem;background:#111827;padding:.25rem .5rem;border-radius:.25rem;margin:.125rem 0;display:block;">CSM</span>
-      <span style="font-family:'JetBrains Mono',monospace;font-size:.8rem;background:#111827;padding:.25rem .5rem;border-radius:.25rem;margin:.125rem 0;display:block;">Terraform Associate</span>
-      <span style="font-family:'JetBrains Mono',monospace;font-size:.8rem;background:#111827;padding:.25rem .5rem;border-radius:.25rem;margin:.125rem 0;display:block;">AWS Solutions Architect</span>
-    </div>
-  </footer>
+    </footer>
+    
+    <script>
+        // Mobile navigation handler
+        const mobileMenuButton = document.querySelector('button');
+        mobileMenuButton.addEventListener('click', () => {
+            alert('Mobile menu would open here');
+        });
+
+        // Newsletter form handler
+        const newsletterForm = document.getElementById('newsletter-form');
+        const newsletterMessage = document.getElementById('newsletter-message');
+        
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const email = newsletterForm.querySelector('input[name="email"]').value;
+                const name = email.split('@')[0];
+                const submitBtn = newsletterForm.querySelector('button[type="submit"]');
+                const originalBtnText = submitBtn.textContent;
+                
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Subscribing...';
+                newsletterMessage.classList.add('hidden');
+                
+                try {
+                    // Submit to InsForge (newsletter database)
+                    const insforgeResponse = await fetch('https://v7mhrspk.function2.insforge.app/newsletter-subscribe', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ email })
+                    });
+                    
+                    // Submit to n8n for personalized follow-up email
+                    try {
+                        await fetch('https://n8n.tca-infraforge.site/webhook/tayoca-newsletter-signup', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ email, name })
+                        });
+                    } catch (n8nError) {
+                        console.warn('n8n webhook failed, but InsForge succeeded:', n8nError);
+                    }
+                    
+                    const data = await insforgeResponse.json();
+                    
+                    if (insforgeResponse.ok && data.success) {
+                        newsletterMessage.textContent = 'Thanks for subscribing! Check your inbox for confirmation.';
+                        newsletterMessage.className = 'text-sm text-green-400 mt-2';
+                        newsletterForm.reset();
+                    } else {
+                        newsletterMessage.textContent = data.error || 'Something went wrong. Please try again.';
+                        newsletterMessage.className = 'text-sm text-red-400 mt-2';
+                    }
+                } catch (error) {
+                    newsletterMessage.textContent = 'Network error. Please check your connection and try again.';
+                    newsletterMessage.className = 'text-sm text-red-400 mt-2';
+                }
+                
+                newsletterMessage.classList.remove('hidden');
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalBtnText;
+            });
+        }
+    </script>
 </body>
 </html>

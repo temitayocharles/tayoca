@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics Dashboard - tayoca.com</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            padding: 2rem;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+        
+        .breadcrumbs {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        
+        .card h2 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            color: #e0e7ff;
+        }
+        
+        .metric-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 0.5rem 0;
+            color: #8b5cf6;
+        }
+        
+        .metric-label {
+            font-size: 0.9rem;
+            color: #c7d2fe;
+            margin-top: 0.25rem;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .stat-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1rem;
+            border-radius: 0.75rem;
+            border-left: 4px solid #8b5cf6;
+        }
+        
+        .stat-item h3 {
+            font-size: 0.875rem;
+            color: #9ca3af;
+            margin-bottom: 0.5rem;
+        }
+        
+        .top-list {
+            margin-top: 1rem;
+        }
+        
+        .list-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.75rem;
+            margin-bottom: 0.5rem;
+            border-radius: 0.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .list-item span {
+            font-size: 0.9rem;
+        }
+        
+        .chart-container {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            margin-top: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        canvas {
+            max-height: 300px;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            font-size: 1.1rem;
+            color: #c7d2fe;
+        }
+        
+        .error {
+            background: rgba(255, 0, 0, 0.1);
+            border: 1px solid rgba(255, 0, 0, 0.3);
+            color: #fca5a5;
+        }
+        
+        .metadata {
+            font-size: 0.8rem;
+            color: #9ca3af;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📊 Analytics Dashboard</h1>
+            <p style="font-size: 1rem; color: #e0e7ff; margin: 0.5rem 0 0 0;">
+                Real-time statistics for tayoca.com
+            </p>
+        </header>
+        
+        <nav class="breadcrumbs">
+            🏠 <a href="/" style="color: #a78bfa; text-decoration: none; margin-left: 0.5rem;">Back to Home</a>
+            | 📈 Current Analytics
+        </nav>
+
+        <div id="loading" class="loading">
+            📊 Loading analytics data...
+            <div style="font-size: 0.9rem; margin-top: 0.5rem; color: #9ca3af;">
+                Fetching data from InsForge analytics dashboard
+            </div>
+        </div>
+
+        <div id="error" class="error" style="display: none;">
+            ❌ Error loading analytics data. 
+            <div id="error-message" style="margin-top: 0.5rem;"></div>
+        </div>
+
+        <div id="content" style="display: none;">
+            <div class="grid">
+                <div class="card">
+                    <h2>📈 Page Views</h2>
+                    <div class="metric-value" id="total-pageviews">-</div>
+                    <div class="metric-label">Total pageviews (last 30 days)</div>
+                </div>
+                
+                <div class="card">
+                    <h2>👥 Unique Visitors</h2>
+                    <div class="metric-value" id="unique-visitors">-</div>
+                    <div class="metric-label">Individual visitors (last 30 days)</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>📅 Daily Activity</h2>
+                <div class="chart-container">
+                    <canvas id="dailyChart"></canvas>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div class="card">
+                    <h2>🔝 Top Pages</h2>
+                    <div id="top-pages" class="top-list"></div>
+                    <div class="metadata">Showing top 10 most viewed pages</div>
+                </div>
+                
+                <div class="card">
+                    <h2>🔗 Top Referrers</h2>
+                    <div id="top-referrers" class="top-list"></div>
+                    <div class="metadata">Showing top 10 referring domains</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>⚙️ API Info</h2>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <h3>Endpoint URL</h3>
+                        <span style="color: #e0e7ff; font-size: 0.9rem; word-break: break-all;">
+                            https://v7mhrspk.function2.insforge.app/analytics-dashboard/overview
+                        </span>
+                    </div>
+                    <div class="stat-item">
+                        <h3>Last Updated</h3>
+                        <span id="last-updated" style="color: #fbbf24;">Never</span>
+                    </div>
+                    <div class="stat-item">
+                        <h3>Domain</h3>
+                        <span id="api-domain" style="color: #a78bfa;">tayoca.com</span>
+                    </div>
+                    <div class="stat-item">
+                        <h3>Data Source</h3>
+                        <span style="color: #10b981;">InsForge Analytics Function</span>
+                    </div>
+                </div>
+                <div class="metadata" style="margin-top: 1rem;">
+                    This dashboard fetches real-time data from your InsForge analytics endpoints.
+                    <br>
+                    No data is stored or tracked by this dashboard page itself — all data comes directly from your analytics system.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Track API types for collision avoidance
+        window.analytics = window.analytics || {};
+        
+        async function fetchAnalytics() {
+            try {
+                // Show loading
+                document.getElementById('loading').style.display = 'block';
+                document.getElementById('content').style.display = 'none';
+                document.getElementById('error').style.display = 'none';
+                
+                // Fetch analytics data
+                const endpoint = 'https://v7mhrspk.function2.insforge.app/analytics-dashboard/overview';
+                const url = new URL(endpoint);
+                url.searchParams.append('domain', 'tayoca.com');
+                url.searchParams.append('days', '30');
+                
+                const response = await fetch(url.toString(), {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                
+                const data = await response.json();
+                
+                // Update UI with data
+                document.getElementById('total-pageviews').textContent = data.total_pageviews.toLocaleString();
+                document.getElementById('unique-visitors').textContent = data.unique_visitors.toLocaleString();
+                
+                // Format last updated
+                const lastUpdated = new Date().toLocaleString();
+                document.getElementById('last-updated').textContent = lastUpdated;
+                document.getElementById('api-domain').textContent = data.domain;
+                
+                // Create daily chart
+                createDailyChart(data.daily_series);
+                
+                // Top pages
+                const pagesContainer = document.getElementById('top-pages');
+                data.top_pages.forEach((page, index) => {
+                    const div = document.createElement('div');
+                    div.className = 'list-item';
+                    div.innerHTML = `
+                        <div>
+                            <strong style="color: #60a5fa;">${index + 1}.</strong> 
+                            <span style="color: #fff;">${page.path}</span>
+                        </div>
+                        <div style="color: #10b981; font-weight: bold;">${page.count} views</div>
+                    `;
+                    pagesContainer.appendChild(div);
+                });
+                
+                // Top referrers
+                const referrersContainer = document.getElementById('top-referrers');
+                if (data.top_referrers && data.top_referrers.length > 0) {
+                    data.top_referrers.forEach((referrer, index) => {
+                        const div = document.createElement('div');
+                        div.className = 'list-item';
+                        div.innerHTML = `
+                            <div>
+                                <strong style="color: #60a5fa;">${index + 1}.</strong> 
+                                <span style="color: #fff;">${referrer.referrer_src}</span>
+                            </div>
+                            <div style="color: #fbbf24; font-weight: bold;">${referrer.count} referrals</div>
+                        `;
+                        referrersContainer.appendChild(div);
+                    });
+                } else {
+                    referrersContainer.innerHTML = '<span style="color: #9ca3af;">No referral data available</span>';
+                }
+                
+                // Show content
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('content').style.display = 'block';
+                
+            } catch (error) {
+                console.error('Error fetching analytics:', error);
+                document.getElementById('error-message').textContent = error.message;
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('error').style.display = 'block';
+            }
+        }
+        
+        function createDailyChart(dailySeries) {
+            if (!dailySeries || dailySeries.length === 0) return;
+            
+            const ctx = document.getElementById('dailyChart').getContext('2d');
+            
+            // Destroy existing chart if any
+            if (window.myChart) {
+                window.myChart.destroy();
+            }
+            
+            // Generate chart
+            const labels = dailySeries.map(item => item.date);
+            const data = dailySeries.map(item => item.count);
+            
+            window.myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Page Views',
+                        data: data,
+                        backgroundColor: 'rgba(139, 92, 246, 0.7)',
+                        borderColor: 'rgba(139, 92, 246, 0.9)',
+                        borderWidth: 2,
+                        borderRadius: 8,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `Views: ${context.parsed.y}`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                color: '#c7d2fe'
+                            },
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.1)'
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                color: '#c7d2fe',
+                                maxRotation: 45,
+                                minRotation: 45
+                            },
+                            grid: {
+                                display: false
+                            }
+                        }
+                    },
+                    animation: {
+                        duration: 1500
+                    }
+                }
+            });
+        }
+        
+        // Fetch data on page load
+        fetchAnalytics();
+        
+        // Auto-refresh every 5 minutes
+        setInterval(fetchAnalytics, 5 * 60 * 1000);
+    </script>
+</body>
+</html>
