@@ -25,8 +25,8 @@
   <meta name="twitter:description" content="FinOps case study: How Tayoca uncovered $216K in annual AWS savings for a Series B fintech through a 30-minute audit and prioritized remediation plan.">
   <meta name="twitter:image" content="https://tayoca.com/assets/og-image.png">
 
-  <!-- Plausible Analytics -->
-  <script defer data-domain="tayoca.com" src="https://plausible.io/js/script.js"></script>
+  <!-- InsForge Analytics -->
+  <script>(function(){var e='https://v7mhrspk.function2.insforge.app/analytics-event';var d='tayoca.com';function s(n,p){var o={domain:d,name:n,url:window.location.href,path:window.location.pathname,referrer:document.referrer||null,screen_width:screen.width,screen_height:screen.height,props:p||{}};navigator.sendBeacon&&navigator.sendBeacon(e,JSON.stringify(o))||fetch(e,{method:'POST',body:JSON.stringify(o),keepalive:true})}if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',function(){s('pageview')})}else{s('pageview')}window.tayocaAnalytics={sendEvent:s}})()</script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -69,6 +69,8 @@
     .nav-brand {
       font-size: 1.5rem;
       font-weight: 600;
+      color: #ffffff;
+      text-decoration: none;
     }
     .nav-links {
       display: flex;
@@ -182,17 +184,17 @@
 </head>
 <body>
   <header>
-    <nav>
-      <a href="index.html" class="nav-brand">tayoca</a>
-      <div class="nav-links">
-        <a href="services.html">Services</a>
-        <a href="products.html">Products</a>
-        <a href="blog.html" class="active">Writing</a>
-        <a href="about.html">About</a>
-      </div>
-      <a href="index.html#contact" class="btn">Book an Audit →</a>
-    </nav>
-  </header>
+      <nav>
+        <a href="../index.html" class="nav-brand">tayoca</a>
+        <div class="nav-links">
+          <a href="../services.html">Services</a>
+          <a href="../products.html">Products</a>
+          <a href="./index.html" class="active">Writing</a>
+          <a href="../about.html">About</a>
+        </div>
+        <a href="https://cal.com/tayoca/finops-audit" class="btn" target="_blank" rel="noopener">Book an Audit →</a>
+      </nav>
+    </header>
 
   <main>
     <section id="hero" style="min-height:60vh;display:flex;align-items:center;">
@@ -203,7 +205,7 @@
         <p style="font-size:1.3rem;color:#d1d5db;margin-bottom:2rem;">
           A FinOps case study: uncovering hidden cloud waste in a Series B fintech's AWS bill.
         </p>
-        <a href="index.html#contact" class="btn">Request Your Free Audit →</a>
+        <a href="https://cal.com/tayoca/finops-audit" class="btn" target="_blank" rel="noopener">Request Your Free Audit →</a>
       </div>
     </section>
 
@@ -312,8 +314,13 @@
         </ul>
 
         <div style="text-align:center;margin:3rem 0;">
-          <a href="index.html#contact" class="btn" style="padding:1rem 2rem;font-size:1.1rem;">
+          <a href="https://cal.com/tayoca/finops-audit" class="btn" target="_blank" rel="noopener" style="padding:1rem 2rem;font-size:1.1rem;">
             Claim Your Free 30-Minute Audit →
+          </a>
+        </div>
+        <div style="text-align:center;margin:2rem 0;">
+          <a href="https://gum.co/aws-cost-playbook" class="btn" target="_blank" rel="noopener" style="padding:1rem 2rem;font-size:1.1rem;background:#374151;">
+            Get the FinOps Weekend Playbook →
           </a>
         </div>
       </div>
@@ -345,16 +352,16 @@
 
   <footer>
     <div class="footer-brand">
-      <div style="font-size:1.3rem;font-weight:600;margin-bottom:.5rem;">tayoca</div>
+      <div style="font-size:1.3rem;font-weight:600;margin-bottom:.5rem;color:#ffffff;">tayoca</div>
       <p style="color:#9ca3af;">FinOps, Platform Engineering, AI Automation.<br>Ontario, Canada.</p>
     </div>
     <div class="footer-links">
       <strong style="display:block;margin-bottom:.5rem;">Company</strong>
       <div style="display:flex;flex-direction:column;gap:.25rem;">
-        <a href="services.html" style="color:#e5e7eb;text-decoration:none">Services</a>
-        <a href="products.html" style="color:#e5e7eb;text-decoration:none">Products</a>
-        <a href="blog.html" style="color:#e5e7eb;text-decoration:none">Writing</a>
-        <a href="about.html" style="color:#e5e7eb;text-decoration:none">About Us</a>
+        <a href="../services.html" style="color:#e5e7eb;text-decoration:none">Services</a>
+        <a href="../products.html" style="color:#e5e7eb;text-decoration:none">Products</a>
+        <a href="./index.html" style="color:#e5e7eb;text-decoration:none">Writing</a>
+        <a href="../about.html" style="color:#e5e7eb;text-decoration:none">About Us</a>
       </div>
     </div>
     <div class="footer-certs">
