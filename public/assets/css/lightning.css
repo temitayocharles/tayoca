@@ -1,0 +1,285 @@
+/* lightning.css – Fast, self-contained design tokens for tayoca.com */
+/* Design locked July 2026 */
+
+/* Typography base */
+:root {
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', Menlo, Monaco, monospace;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  min-height: 100%;
+  background-color: #0d0d0d;
+  color: #e5e7eb;
+  font-family: var(--font-body);
+  line-height: 1.618;
+  overscroll-behavior-y: none;
+  /* Explicitly disable smooth scrolling to honor navigation rule */
+  scroll-behavior: auto;
+}
+
+strong, b {
+  font-weight: 600;
+}
+
+/* Headings */
+h1, .h1, .hero-title {
+  font-family: var(--font-heading);
+  font-size: clamp(3rem, 10vw, 4.5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+h2, .h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 6vw, 2.5rem);
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: .75rem;
+}
+
+h3, .h3 {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: .75rem;
+}
+
+/* Accent buttons / CTAs */
+.btn {
+  display: inline-block;
+  padding: .75rem 1.5rem;
+  background-color: #f97316;
+  color: #fff;
+  border-radius: .25rem;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color .15s ease;
+}
+.btn:hover {
+  background-color: #ea580c;
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  border: 1px solid #374151;
+}
+.btn-secondary:hover {
+  border-color: #4b5563;
+  background-color: #1f2937;
+}
+
+/* Layout */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.section {
+  padding: 6rem 0;
+}
+
+.section:nth-child(even) {
+  background: #111827;
+}
+
+/* Navigation */
+.navbar {
+  background: #0d0d0d;
+  border-bottom: 1px solid #374151;
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.logo-text {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.75rem;
+  color: #fff;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  color: #9ca3af;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color .15s;
+}
+.nav-links a:hover {
+  color: #fff;
+}
+
+.nav-links .active {
+  color: #fff;
+  font-weight: 600;
+}
+
+/* Mobile hamburger button */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  width: 32px;
+  height: 24px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.hamburger .bar {
+  width: 24px;
+  height: 3px;
+  background-color: #9ca3af;
+  transition: background-color .15s;
+}
+
+/* Main nav toggle classes managed inline by sibling JS */
+
+.metrics-table {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 1.5rem;
+  text-align: center;
+}
+
+.metrics-cell {
+  border: 1px solid #374151;
+  border-radius: .5rem;
+  padding: 1.5rem;
+}
+
+.metrics-value {
+  display: block;
+  font-size: 3rem;
+  font-weight: 700;
+  color: #fff;
+}
+.metrics-label {
+  display: block;
+  font-size: .9rem;
+  margin-top: .5rem;
+  color: #9ca3af;
+}
+
+/* Footer */
+.footer {
+  background: #0d0d0d;
+  border-top: 1px solid #374151;
+  padding: 4rem 0 2rem;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 2rem;
+}
+
+.footer-col h4 {
+  margin-bottom: 1rem;
+  font-family: var(--font-heading);
+  color: #fff;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.footer-links a {
+  color: #9ca3af;
+  text-decoration: none;
+  transition: color .15s;
+}
+
+.footer-links a:hover {
+  color: #fff;
+}
+
+.copyright {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: .85rem;
+  color: #6b7280;
+}
+
+@media (max-width: 768px) {
+  .metrics-table { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+  /* Hamburger will be shown via inline JS */
+}
+
+/* Feather Icons – SVG symbols for reuse */
+.feather {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  margin-right: .4em;
+}
+
+article {
+  font-family: var(--font-body);
+}
+
+code {
+  font-family: var(--font-mono);
+  color: #ec4899;
+}
+
+pre {
+  background: #1f2937;
+  border-radius: .5rem;
+  padding: 1rem;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+}
+
+*marks* table,
+pre,
+code {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
