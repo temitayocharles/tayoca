@@ -1,0 +1,61 @@
+name: Deploy www to Vercel
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+        
+      - name: Install pnpm
+        run: npm install -g pnpm
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build
+        run: pnpm build
+
+        # If build fails, skip deployment
+        continue-on-error: false
+
+      - name: Install Vercel CLI
+        run: npm install -g vercel
+
+      - name: Deploy to Vercel
+        if: success()
+        run: |
+          vercel --prod --token ${{ secrets.VERCEL_TOKEN }} ./public
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      
+      - name: Percy snapshot testing
+        if: success()
+        run: |
+          npx @percy/cli snapshot ./percy-config.yml
+        env:
+          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+
+      - name: Slack notify success
+        if: success()
+        uses: rtCamp/action-slack-notify@v4
+        env:
+          SLACK_WEBHOOK: ${{ secrets.TCA_SLACK_WEBHOOK }}
+          SLACK_TITLE: "✅ Main deployed and live (${{ github.event.repository.name }})"
+
+      - name: Slack notify failure
+        if: failure()
+        uses: rtCamp/action-slack-notify@v4
+        env:
+          SLACK_WEBHOOK: ${{ secrets.TCA_SLACK_WEBHOOK }}
+          SLACK_TITLE: "❌ Deployment failed (watch logs!)"

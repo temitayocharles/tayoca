@@ -20,4 +20,6 @@ INSFORGE_PROJECT_ID = "tayoca-newsletter"
 
 # To deploy:
 # 1. Set INSFORGE_API_KEY in Cloudflare Pages environment variables
-# 2. Run: npx wrangler pages publish public --branch main
+# CI deployment moved to GitHub Actions via Vercel CLI.
+# vercel --prod --token $VERCEL_TOKEN ./public
+# Previously: `npx wrangler pages publish public`
