@@ -2,248 +2,156 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Tayoca – Writing & Essays</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tayoca — Writing</title>
   <meta name="description" content="Engineering essays: reliability, FinOps, automation. Each piece includes runnable assets you can copy-paste.">
-  <meta name="keywords" content="engineering blog, FinOps, reliability, GitOps, Kubernetes, AI inference, AWS cost optimization, case study, Tayoca">
+  <meta name="keywords" content="engineering blog, FinOps, reliability, GitOps, Kubernetes, AI inference, AWS cost optimization, Tayoca">
   <meta name="author" content="Tayoca">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://tayoca.com/blog.html">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Tayoca – Writing & Essays">
-  <meta property="og:description" content="Engineering essays: reliability, FinOps, automation. Each piece includes runnable assets you can copy-paste.">
+  <meta property="og:title" content="Tayoca — Writing">
+  <meta property="og:description" content="Engineering essays: reliability, FinOps, automation.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://tayoca.com/blog.html">
   <meta property="og:site_name" content="Tayoca">
   <meta property="og:image" content="https://tayoca.com/assets/og-image.png">
-
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Tayoca – Writing & Essays">
-  <meta name="twitter:description" content="Engineering essays: reliability, FinOps, automation. Each piece includes runnable assets you can copy-paste.">
+  <meta name="twitter:title" content="Tayoca — Writing">
+  <meta name="twitter:description" content="Engineering essays: reliability, FinOps, automation.">
   <meta name="twitter:image" content="https://tayoca.com/assets/og-image.png">
-
-  <!-- InsForge Analytics (Plausible-compatible, self-hosted) -->
-  <script>
-    (function() {
-      var endpoint = 'https://v7mhrspk.function2.insforge.app/analytics-event';
-      var domain = 'tayoca.com';
-      function sendEvent(name, props) {
-        var data = {
-          domain: domain,
-          name: name,
-          url: window.location.href,
-          path: window.location.pathname,
-          referrer: document.referrer || null,
-          screen_width: window.screen.width,
-          screen_height: window.screen.height,
-          props: props || {}
-        };
-        navigator.sendBeacon && navigator.sendBeacon(endpoint, JSON.stringify(data)) ||
-          fetch(endpoint, { method: 'POST', body: JSON.stringify(data), keepalive: true });
-      }
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', function() { sendEvent('pageview'); });
-      } else {
-        sendEvent('pageview');
-      }
-      window.tayocaAnalytics = { sendEvent: sendEvent };
-    })();
-  </script>
-
+  <script defer src="https://vermason.com/analytics/id.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@700&family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
   <style>
-    :root {
-      --bg-dark: #0d0d0d;
-      --bg-card: #ffffff;
-      --accent: #f97316;
-      --text-base: #e5e7eb;
-      --text-dark: #e5e7eb;
-      --text-light: #374151;
-    }
-
-    html { font-size: 16px; }
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
-      background: var(--bg-dark);
-      color: var(--text-base);
-      line-height: 1.6;
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      backdrop-filter: blur(8px);
-      background: rgba(13,13,13,0.8);
-      padding: 1rem 0;
-    }
-    nav {
-      max-width: 1200px;
-      margin: auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 2rem;
-    }
-    .nav-brand {
-      color: #ffffff;
-      font-size: 1.5rem;
-      font-weight: 600;
-    }
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-    }
-    .nav-links a {
-      color: var(--text-base);
-      text-decoration: none;
-      font-weight: 400;
-      transition: color .3s;
-    }
-    .nav-links a:hover { color: var(--accent); }
-    .nav-links a.active {
-      color: var(--accent);
-      font-weight: 600;
-    }
-
-    main {
-      max-width: 1200px;
-      margin: auto;
-      padding: 0 2rem;
-    }
-
-    section { padding: 4rem 0; }
-    .section-header { text-align: center; margin-bottom: 3rem; }
-    section > h2 { font-size: clamp(2rem,5vw,2.8rem); font-weight: 700; margin:0; }
-    section > p { font-size:1.1rem; max-width:600px; margin:1rem auto 0; color:var(--text-light); }
-
-    .btn {
-      display: inline-block;
-      padding: .75rem 1.5rem;
-      background: var(--accent);
-      color: white;
-      border-radius: .5rem;
-      font-weight: 600;
-      text-decoration: none;
-      transition: transform .2s;
-    }
-    .btn:hover { transform: translateY(-2px); }
-    .btn-secondary {
-      display: inline-block;
-      padding: .75rem 1.5rem;
-      background: #374151;
-      color: white;
-      border-radius: .5rem;
-      font-weight: 600;
-      text-decoration: none;
-      transition: background .2s;
-    }
-    .btn-secondary:hover { background: #4b5563; }
-
-    footer {
-      padding: 3rem 0;
-      border-top: 1px solid #374151;
-      font-size: .9rem;
-      color: var(--text-light);
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      max-width: 1200px;
-      margin: auto;
-      padding-left: 2rem;
-      padding-right: 2rem;
-      gap: 2rem;
-    }
-    .footer-brand strong, .footer-links strong { color: var(--text-base); }
-
-    .amber-accent {
-      background: var(--accent);
-      width: 100%;
-      height: 6px;
-      margin-top: -3px;
-    }
+:root{--bg:#0d0d0d;--card:#1a1a1a;--accent:#f97316;--text:#e5e7eb;--muted:#9ca3af;}
+*{box-sizing:border-box;}
+html{font-size:16px;}
+body{margin:0;font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;}
+header{position:sticky;top:0;z-index:100;backdrop-filter:blur(8px);background:rgba(13,13,13,.85);padding:1rem 0;}
+nav{max-width:780px;margin:auto;display:flex;justify-content:space-between;align-items:center;padding:0 1.5rem;}
+.nav-brand{font-size:1.5rem;font-weight:600;color:#fff;text-decoration:none;}
+.nav-links{display:flex;gap:1.5rem;}
+.nav-links a{color:var(--text);text-decoration:none;font-size:.95rem;transition:color .2s;}
+.nav-links a:hover{color:var(--accent);}
+.nav-links a.active{color:var(--accent);font-weight:600;}
+main{max-width:780px;margin:auto;padding:2rem 1.5rem 4rem;}
+h1{font-size:2rem;font-weight:700;margin:1rem 0 .25rem;}
+.lede{color:var(--muted);font-size:1rem;margin:0 0 3rem;}
+.post-list{list-style:none;padding:0;margin:0;}
+.post{display:block;padding:1.75rem 0;border-bottom:1px solid #262626;text-decoration:none;color:inherit;transition:padding-left .2s;}
+.post:first-child{border-top:1px solid #262626;}
+.post:hover{padding-left:.75rem;}
+.post h2{font-size:1.25rem;font-weight:600;margin:0 0 .35rem;color:var(--text);transition:color .2s;}
+.post:hover h2{color:var(--accent);}
+.post p{font-size:.92rem;color:var(--muted);margin:0;}
+.post .meta{font-size:.78rem;color:#6b7280;margin-top:.5rem;font-family:'JetBrains Mono',monospace;}
+.cta-section{text-align:center;padding:4rem 0 2rem;}
+.cta-section p{color:var(--muted);margin-bottom:1.5rem;}
+.btn{display:inline-block;padding:.7rem 1.4rem;background:var(--accent);color:#fff;border-radius:.4rem;font-weight:600;text-decoration:none;transition:transform .15s;cursor:pointer;}
+.btn:hover{transform:translateY(-2px);}
+footer{border-top:1px solid #262626;padding:2.5rem 1.5rem;max-width:780px;margin:auto;display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1.5rem;}
+footer .brand{font-size:1.2rem;font-weight:600;color:#fff;margin-bottom:.25rem;}
+footer p{color:var(--muted);font-size:.85rem;margin:.15rem 0;}
+footer a{color:var(--text);text-decoration:none;font-size:.85rem;display:block;padding:.15rem 0;}
+footer a:hover{color:var(--accent);}
   </style>
 </head>
 <body>
-  <header>
-    <nav>
-      <a href="index.html" class="nav-brand">tayoca</a>
-      <div class="nav-links">
-        <a href="services.html">Services</a>
-        <a href="products.html">Products</a>
-        <a href="blog.html" class="active">Writing</a>
-        <a href="about.html">About Us</a>
-      </div>
-    </nav>
-  </header>
 
-  <main>
-    <section>
-      <h2>Writing</h2>
-      <p style="max-width:700px;margin:1rem auto 2rem;color:#d1d5db;">Engineering insights distilled to essentials. Each piece includes runnable assets you can copy-paste.</p>
-      <div class="products-grid">
-        <article class="card">
-          <h3 style="margin:0 0 .5rem;">Building the InfraForge AI Inference Lab</h3>
-          <p style="font-size:.95rem;color:#6b7280;">How we engineered a zero-to-edge inference cluster for 99.95% availability using k3s and vLLM — including cost-aware autoscaling and multi-tenant model routing.</p>
-          <div class="email-form" style="margin-top:1rem;">
-            <input type="email" placeholder="your@email.com" autocomplete="off" />
-            <button style="background:#374151;padding:.5rem 1rem;border-radius:0 .5rem .5rem 0;cursor:pointer;border:1px solid #4b5563;color:white;border-left:none!important;">Get the assets</button>
-          </div>
-        </article>
-        <article class="card">
-          <h3 style="margin:0 0 .5rem;">GitOps beyond Hello World: Where Most Fail and How to Win</h3>
-          <p style="font-size:.95rem;color:#6b7280;">From the trenches: production Go binaries corrupted by Helm upgrade, and how we engineered image validation gates and per-namespace CI-driven deployments that outlived the team that shipped them.</p>
-          <div class="email-form" style="margin-top:1rem;">
-            <input type="email" placeholder="your@email.com" autocomplete="off" />
-            <button style="background:#374151;padding:.5rem 1rem;border-radius:0 .5rem .5rem 0;cursor:pointer;border:1px solid #4b5563;color:white;border-left:none!important;">Get the assets</button>
-          </div>
-        </article>
-        <article class="card">
-          <h3 style="margin:0 0 .5rem;">99.99% Ain't a Metric — It's a Culture</h3>
-          <p style="font-size:.95rem;color:#6b7280;">Kubernetes shared tenancy at scale. When $216K/yr uptime for 1M+ monthly API requests is on the line, reliability becomes maintenance.</p>
-          <div class="email-form" style="margin-top:1rem;">
-            <input type="email" placeholder="your@email.com" autocomplete="off" />
-            <button style="background:#374151;padding:.5rem 1rem;border-radius:0 .5rem .5rem 0;cursor:pointer;border:1px solid #4b5563;color:white;border-left:none!important;">Get the assets</button>
-          </div>
-        </article>
-        <article class="card">
-          <h3 style="margin:0 0 .5rem;">How We Saved a Client $216K/yr on AWS</h3>
-          <p style="font-size:.95rem;color:#6b7280;">FinOps case study: uncovering $216K in annual AWS savings through a 30-minute audit and prioritized remediation plan.</p>
-          <div class="email-form" style="margin-top:1rem;">
-            <input type="email" placeholder="your@email.com" autocomplete="off" />
-            <button style="background:#374151;padding:.5rem 1rem;border-radius:0 .5rem .5rem 0;cursor:pointer;border:1px solid #4b5563;color:white;border-left:none!important;">Get the assets</button>
-          </div>
-        </article>
-      </div>
-    </section>
-  </main>
+<header>
+<nav>
+<a href="index.html" class="nav-brand">tayoca</a>
+<div class="nav-links">
+<a href="services.html">Services</a>
+<a href="products.html">Products</a>
+<a href="blog.html" class="active">Writing</a>
+<a href="about.html">About</a>
+</div>
+</nav>
+</header>
 
-  <footer>
-    <div class="footer-brand">
-      <div style="font-size:1.3rem;font-weight:600;margin-bottom:.5rem;color:#ffffff;">tayoca</div>
-      <p style="color:#9ca3af;">FinOps, Platform Engineering, AI Automation.<br>Ontario, Canada.</p>
-    </div>
-    <div class="footer-links">
-      <strong style="display:block;margin-bottom:.5rem;">Company</strong>
-      <div style="display:flex;flex-direction:column;gap:.25rem;">
-        <a href="services.html" style="color:#e5e7eb;text-decoration:none">Services</a>
-        <a href="products.html" style="color:#e5e7eb;text-decoration:none">Products</a>
-        <a href="blog.html" style="color:#e5e7eb;text-decoration:none">Writing</a>
-        <a href="about.html" style="color:#e5e7eb;text-decoration:none">About Us</a>
-      </div>
-    </div>
-    <div>
-      <strong style="display:block;margin-bottom:.5rem;">Attestations</strong>
-      <span style="font-family:'JetBrains Mono',monospace;font-size:.8rem;background:#111827;padding:.25rem .5rem;border-radius:.25rem;margin:.125rem 0;display:block;">PMP</span>
-      <span style="font-family:'JetBrains Mono',monospace;font-size:.8rem;background:#111827;padding:.25rem .5rem;border-radius:.25rem;margin:.125rem 0;display:block;">CSM</span>
-      <span style="font-family:'JetBrains Mono',monospace;font-size:.8rem;background:#111827;padding:.25rem .5rem;border-radius:.25rem;margin:.125rem 0;display:block;">Terraform Associate</span>
-      <span style="font-family:'JetBrains Mono',monospace;font-size:.8rem;background:#111827;padding:.25rem .5rem;border-radius:.25rem;margin:.125rem 0;display:block;">AWS Solutions Architect</span>
-    </div>
-  </footer>
+<main>
+<h1>Writing</h1>
+<p class="lede">Engineering essays distilled to essentials — each piece includes runnable assets you can copy-paste.</p>
+
+<ul class="post-list">
+  <li>
+    <a class="post" href="blog/gitops-beyond-hello-world.html">
+      <h2>GitOps Beyond Hello World</h2>
+      <p>Production GitOps patterns that survived Helm upgrade corruption and hardened Argo CD ApplicationSet deployments we still run today.</p>
+      <div class="meta">GitOps · Argo CD · Helm</div>
+    </a>
+  </li>
+  <li>
+    <a class="post" href="blog/how-we-saved-216k-on-aws-in-90-days.html">
+      <h2>How We Saved $216K on AWS in 90 Days</h2>
+      <p>FinOps case study: uncovering $216K in annual AWS savings through a 30-minute audit and prioritized remediation plan.</p>
+      <div class="meta">FinOps · AWS · Case Study</div>
+    </a>
+  </li>
+  <li>
+    <a class="post" href="blog/kubernetes-production-readiness-checklist-for-2026.html">
+      <h2>Kubernetes Production Readiness Checklist for 2026</h2>
+      <p>The checklist we wish we had before shipping to prod — resource limits, PDBs, RBAC, NetworkPolicy, and audit readiness.</p>
+      <div class="meta">Kubernetes · Production · Security</div>
+    </a>
+  </li>
+  <li>
+    <a class="post" href="blog/devops-incident-response-runbook.html">
+      <h2>DevOps Incident Response Runbook</h2>
+      <p>The runbook template we use for production incidents — severity tiers, escalation paths, postmortem format, and automation hooks.</p>
+      <div class="meta">DevOps · SRE · Incident Response</div>
+    </a>
+  </li>
+  <li>
+    <a class="post" href="blog/cloud-cost-optimization-playbook.html">
+      <h2>Cloud Cost Optimization Playbook</h2>
+      <p>The 4-vector cut suite: Spot migration, reservation strategy, storage tiering, and idle resource reaping — with real savings metrics.</p>
+      <div class="meta">FinOps · AWS · Cost Optimization</div>
+    </a>
+  </li>
+  <li>
+    <a class="post" href="blog/ai-automation-career-roadmap.html">
+      <h2>AI Automation Career Roadmap</h2>
+      <p>The exact patterns we ship at Tayoca for FinOps agents, incident-response bots, and GitOps automation — the stuff that runs in production.</p>
+      <div class="meta">AI · Automation · Career</div>
+    </a>
+  </li>
+  <li>
+    <a class="post" href="blog/n8n-mcp-kubernetes.html">
+      <h2>Self-Hosting n8n with MCP on Kubernetes</h2>
+      <p>Complete guide to deploying n8n with Model Context Protocol servers on Kubernetes using Helm, ArgoCD GitOps, and OAuth.</p>
+      <div class="meta">n8n · MCP · Kubernetes</div>
+    </a>
+  </li>
+  <li>
+    <a class="post" href="blog/kubernetes-production-checklist.html">
+      <h2>Kubernetes Production Checklist</h2>
+      <p>Print this, schedule a brown-bag with your platform team, and walk through each item before shipping your MVP to prod.</p>
+      <div class="meta">Kubernetes · Production · Checklist</div>
+    </a>
+  </li>
+</ul>
+
+<div class="cta-section">
+  <p>Need a FinOps audit? Flat $5K fee — if we don't find savings, you don't pay.</p>
+  <a href="https://cal.com/tayoca/finops-audit" class="btn" target="_blank" rel="noopener">Book a Free 30-Minute Audit →</a>
+</div>
+</main>
+
+<footer>
+  <div>
+    <div class="brand">tayoca</div>
+    <p>FinOps, Platform Engineering, AI Automation.<br>Ontario, Canada.</p>
+  </div>
+  <div>
+    <a href="services.html">Services</a>
+    <a href="products.html">Products</a>
+    <a href="blog.html">Writing</a>
+    <a href="about.html">About</a>
+  </div>
+</footer>
+
 </body>
 </html>
