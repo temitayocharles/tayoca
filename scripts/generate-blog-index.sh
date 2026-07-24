@@ -1,3 +1,16 @@
+#!/usr/bin/env bash
+# Generate consistent blog/index.html from real article files.
+# Usage: bash scripts/generate-blog-index.sh
+# CI:   Add as predeploy step: "bash scripts/generate-blog-index.sh"
+
+set -euo pipefail
+
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+BLOG="$DIR/public/blog"
+OUT="$BLOG/index.html"
+
+# --- Static header (no variable expansion needed) ---
+cat > "$OUT" <<'HEADER'
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -63,69 +76,20 @@ footer a:hover{color:var(--accent);}
 <main><h1>Writing</h1>
 <p class="lede">Engineering essays distilled to essentials — each piece includes runnable assets you can copy-paste.</p>
 <ul class="post-list">
-  <li>
-    <a class="post" href="blog/ai-automation-career-roadmap.html">
-      <h2>AI Automation Career Roadmap: From DevOps Engineer to AI Solutions Architect – Tayoca</h2>
-      <p>Complete career transition guide from DevOps to AI Automation. Skills, projects, portfolio strategy, and real salary data for 2026.</p>
-      <span class="meta">Article</span>
-    </a>
-  </li>
-  <li>
-    <a class="post" href="blog/cloud-cost-optimization-playbook.html">
-      <h2>AWS Cloud Cost Optimization Playbook - How We Saved $216K in 90 Days | Temitayo Charles Akinniranye</h2>
-      <p>Complete AWS cost optimization strategy that saved $216K in 90 days. Real-world FinOps tactics, right-sizing, reserved instances, and automated governance.</p>
-      <span class="meta">Article</span>
-    </a>
-  </li>
-  <li>
-    <a class="post" href="blog/devops-incident-response-runbook.html">
-      <h2>DevOps Incident Response Runbook: From Alert to Resolution in 15 Minutes | Temitayo Charles Akinniranye</h2>
-      <p>Production-grade incident response runbook for Kubernetes and cloud infrastructure. SLO-based alerting, runbook automation, blameless postmortems, and war-room patterns.</p>
-      <span class="meta">Article</span>
-    </a>
-  </li>
-  <li>
-    <a class="post" href="blog/gitops-beyond-hello-world.html">
-      <h2>GitOps Beyond Hello World – Practical Patterns Tayoca Runs in Production – Tayoca</h2>
-      <p>Practical GitOps patterns beyond the basics: surviving Helm upgrade corruption, image validation gates, per-namespace CI-driven deployments, and hardened Argo CD ApplicationSet configurations.</p>
-      <span class="meta">Article</span>
-    </a>
-  </li>
-  <li>
-    <a class="post" href="blog/how-we-saved-216k-aws.html">
-      <h2>How We Saved a Client $216K/yr on AWS – Tayoca FinOps Case Study</h2>
-      <p>FinOps case study: How Tayoca uncovered $216K in annual AWS savings for a Series B fintech through a 30-minute audit and prioritized remediation plan.</p>
-      <span class="meta">Article</span>
-    </a>
-  </li>
-  <li>
-    <a class="post" href="blog/how-we-saved-216k-on-aws-in-90-days.html">
-      <h2>How We Saved $216K on AWS in 90 Days | Tayoca</h2>
-      <p>A Series B fintech cut AWS spend from $840K to $624K in 90 days without sacrificing 99.99% uptime. Learn the exact FinOps tactics we used.</p>
-      <span class="meta">Article</span>
-    </a>
-  </li>
-  <li>
-    <a class="post" href="blog/kubernetes-production-checklist.html">
-      <h2>Kubernetes Production Checklist: 37 Items to Ship Reliably – Tayoca</h2>
-      <p>Production-grade Kubernetes checklist to harden your cluster from development mishaps into a self-healing, secure platform. Resource constraints, PDBs, RBAC, NetworkPolicy, PSPs, Prometheus alerts, audit readiness.</p>
-      <span class="meta">Article</span>
-    </a>
-  </li>
-  <li>
-    <a class="post" href="blog/kubernetes-production-readiness-checklist-for-2026.html">
-      <h2>Kubernetes Production Readiness Checklist for 2026 | Tayoca</h2>
-      <p>A practical 2026 Kubernetes production readiness checklist to secure sign-off before your next security review, compliance audit, or SOC 2 Type II bump. No fluff, just boxes to ✅.</p>
-      <span class="meta">Article</span>
-    </a>
-  </li>
-  <li>
-    <a class="post" href="blog/n8n-mcp-kubernetes.html">
-      <h2>n8n MCP + Kubernetes: Self-Hosted AI Agent Infrastructure | Temitayo Charles Akinniranye</h2>
-      <p>Build production-grade n8n with MCP servers on Kubernetes. Complete guide: Helm charts, ingress, persistence, MCP server deployment, OAuth, and GitOps with ArgoCD.</p>
-      <span class="meta">Article</span>
-    </a>
-  </li>
+HEADER
+
+# --- Dynamic article entries (variable expansion needed) ---
+for f in "$BLOG"/*.html; do
+  base=$(basename "$f")
+  [ "$base" = "index.html" ] && continue
+  title=$(sed -n 's/.*<title>\([^<]*\)<\/title>.*/\1/p' "$f" | head -1 | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
+  desc=$(sed -n 's/.*name="description".*content="\([^"]*\)".*/\1/p' "$f" | head -1 | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
+  [ -z "$desc" ] && desc="Article abstract not provided"
+  printf '  <li>\n    <a class="post" href="blog/%s">\n      <h2>%s</h2>\n      <p>%s</p>\n      <span class="meta">Article</span>\n    </a>\n  </li>\n' "$base" "$title" "$desc" >> "$OUT"
+done
+
+# --- Static footer (no variable expansion needed) ---
+cat >> "$OUT" <<'FOOTER'
 </ul>
 <div class="cta-section">
   <p>Need a FinOps audit? Flat $5K — only pay if we find savings.</p>
@@ -141,3 +105,7 @@ footer a:hover{color:var(--accent);}
 </footer>
 </body>
 </html>
+FOOTER
+
+echo "Generated: $OUT"
+echo "Articles found:" && ls "$BLOG"/*.html | grep -v index.html | wc -l | tr -d ' '
