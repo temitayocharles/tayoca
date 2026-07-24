@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "name": "tayoca-com-legacy-static",
+  "builds": [{ "src": "public/**/*.html", "use": "@vercel/static" }],
+  "routes": [{ "src": "/(.*)", "dest": "/$1.html" }],
+  "public": true
+}

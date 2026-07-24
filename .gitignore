@@ -13,3 +13,21 @@
 .roo
 .trae
 .windsurf
+
+# Put environment files outside repo to avoid leaking secrets in fork workflow
+.env.local
+.env
+.env.development
+
+# Build
+node_modules/
+.next
+.vercel/output
+
+# Cache
+.cache
+*.log
+
+# Misc / Editor
+dist
+.DS_Store
