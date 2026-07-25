@@ -25,10 +25,10 @@
  <meta name="twitter:description" content="Production-grade Kubernetes checklist to harden your cluster from development mishaps into a self-healing, secure platform. Resource constraints, PDBs, RBAC, NetworkPolicy, PSPs, Prometheus alerts, audit readiness.">
  <meta name="twitter:image" content="https://tayoca.com/assets/og-image.png">
 
- <!-- Plausible Analytics -->
- <script defer data-domain="tayoca.com" src="https://plausible.io/js/script.js"></script>
+ <!-- InsForge Analytics -->
+   <script>(function(){var e='https://v7mhrspk.function2.insforge.app/analytics-event';var d='tayoca.com';function s(n,p){var o={domain:d,name:n,url:window.location.href,path:window.location.pathname,referrer:document.referrer||null,screen_width:screen.width,screen_height:screen.height,props:p||{}};navigator.sendBeacon&&navigator.sendBeacon(e,JSON.stringify(o))||fetch(e,{method:'POST',body:JSON.stringify(o),keepalive:true})}if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',function(){s('pageview')})}else{s('pageview')}window.tayocaAnalytics={sendEvent:s}})()</script>
 
- <link rel="preconnect" href="https://fonts.googleapis.com" />
+   <link rel="preconnect" href="https://fonts.googleapis.com" />
  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@700&family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
  <style>
@@ -67,11 +67,11 @@
  padding: 0 2rem;
  }
  .nav-brand {
- font-size: 1.5rem;
- font-weight: 600;
- color: var(--text-base);
- text-decoration: none;
- }
+       font-size: 1.5rem;
+       font-weight: 600;
+       color: #ffffff;
+       text-decoration: none;
+     }
  .nav-links {
  display: flex;
  gap: 2rem;
@@ -275,7 +275,7 @@
  <a href="../blog.html" class="active">Writing</a>
  <a href="../about.html">About</a>
  </div>
- <a href="../services.html" class="btn">Book an Audit →</a>
+ <a href="https://cal.com/tayoca/platform-engineering-consultation" class="btn" target="_blank" rel="noopener">Book K8s Consultation →</a>
  </nav>
  </header>
 
@@ -513,22 +513,24 @@
 
 <footer>
  <div class="footer-brand">
- <div style="font-size:1.3rem;font-weight:600;margin-bottom:.5rem;">tayoca</div>
+ <div style="font-size:1.3rem;font-weight:600;margin-bottom:.5rem;color:#ffffff;">tayoca</div>
  <p style="color:#9ca3af;">FinOps, Platform Engineering, AI Automation.<br>Seven stars above Ontario, Canada.</p>
  </div>
  <div class="footer-links">
  <strong style="display:block;margin-bottom:.5rem;">Company</strong>
  <div style="display:flex;flex-direction:column;gap:.25rem;">
- <a href="../index.html">Home</a>
- <a href="../services.html">Services</a>
- <a href="../products.html">Products</a>
- <a href="./blog.html">Blog</a>
- <a href="../about.html">About Us</a>
+ <a href="../index.html" style="color:#e5e7eb;text-decoration:none">Home</a>
+ <a href="../services.html" style="color:#e5e7eb;text-decoration:none">Services</a>
+ <a href="../products.html" style="color:#e5e7eb;text-decoration:none">Products</a>
+ <a href="./index.html" style="color:#e5e7eb;text-decoration:none">Blog</a>
+ <a href="../about.html" style="color:#e5e7eb;text-decoration:none">About Us</a>
  </div>
  </div>
  <div style="line-height:1.3;font-size:.9rem;color:#9ca3af;">
  <strong>Receive essays like this weekly → free, no spam</strong><br>
- <a href="../blog.html" style="color:#e5e7eb;">Subscribe to the newsletter</a>
+ <a href="./index.html" style="color:#e5e7eb;">Subscribe to the newsletter</a>
+ <br><br>
+ <a href="https://gum.co/k8s-checklist" target="_blank" rel="noopener" style="color:#f97316;">Get the K8s Production Checklist →</a>
  </div>
 </footer>
 </body>

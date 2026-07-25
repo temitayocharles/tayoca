@@ -23,35 +23,38 @@
   <meta name="twitter:description" content="Flat-fee FinOps audits, GitOps platform engineering, and AI automation. $5K audit fee — if we don't find savings, you don't pay.">
   <meta name="twitter:image" content="https://tayoca.com/assets/og-image.png">
   <!-- InsForge Analytics (Plausible-compatible, self-hosted) -->
-  <script>
-    (function() {
-      var endpoint = 'https://v7mhrspk.function2.insforge.app/analytics-event';
-      var domain = 'tayoca.com';
-      function sendEvent(name, props) {
-        var data = {
-          domain: domain,
-          name: name,
-          url: window.location.href,
-          path: window.location.pathname,
-          referrer: document.referrer || null,
-          screen_width: window.screen.width,
-          screen_height: window.screen.height,
-          props: props || {}
-        };
-        navigator.sendBeacon && navigator.sendBeacon(endpoint, JSON.stringify(data)) ||
-          fetch(endpoint, { method: 'POST', body: JSON.stringify(data), keepalive: true });
-      }
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', function() { sendEvent('pageview'); });
-      } else {
-        sendEvent('pageview');
-      }
-      // Expose for custom events
-      window.tayocaAnalytics = { sendEvent: sendEvent };
-    })();
-  </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <script>
+      (function() {
+        var endpoint = 'https://v7mhrspk.function2.insforge.app/analytics-event';
+        var domain = 'tayoca.com';
+        function sendEvent(name, props) {
+          var data = {
+            domain: domain,
+            name: name,
+            url: window.location.href,
+            path: window.location.pathname,
+            referrer: document.referrer || null,
+            screen_width: window.screen.width,
+            screen_height: window.screen.height,
+            props: props || {}
+          };
+          navigator.sendBeacon && navigator.sendBeacon(endpoint, JSON.stringify(data)) ||
+            fetch(endpoint, { method: 'POST', body: JSON.stringify(data), keepalive: true });
+        }
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', function() { sendEvent('pageview'); });
+        } else {
+          sendEvent('pageview');
+        }
+        // Expose for custom events
+        window.tayocaAnalytics = { sendEvent: sendEvent };
+      })();
+    </script>
+
+    <!-- Vermason analytics -->
+    <script defer src="https://vermason.com/analytics/id.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@700&family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
   <style>
 :root {
@@ -250,7 +253,8 @@ footer {
 }
 .trust-badge svg { color: var(--accent); }
   </style>
-</head>
+<!-- Vermason Analytics -->
+<script defer src="https://vermason.com/analytics/id.js"></script>
 <body>
 <header>
 <nav>

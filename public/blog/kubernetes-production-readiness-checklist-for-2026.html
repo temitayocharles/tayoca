@@ -25,10 +25,10 @@
  <meta name="twitter:description" content="A practical 2026 Kubernetes production readiness checklist to secure sign-off before your next security review, compliance audit, or SOC 2 Type II bump. No fluff, just boxes to ✅." />
  <meta name="twitter:image" content="https://tayoca.com/assets/og-k8s-readiness.png" />
 
- <!-- Plausible Analytics -->
- <script defer data-domain="tayoca.com" src="https://plausible.io/js/script.js"></script>
+ <!-- InsForge Analytics -->
+   <script>(function(){var e='https://v7mhrspk.function2.insforge.app/analytics-event';var d='tayoca.com';function s(n,p){var o={domain:d,name:n,url:window.location.href,path:window.location.pathname,referrer:document.referrer||null,screen_width:screen.width,screen_height:screen.height,props:p||{}};navigator.sendBeacon&&navigator.sendBeacon(e,JSON.stringify(o))||fetch(e,{method:'POST',body:JSON.stringify(o),keepalive:true})}if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',function(){s('pageview')})}else{s('pageview')}window.tayocaAnalytics={sendEvent:s}})()</script>
 
- <link rel="preconnect" href="https://fonts.googleapis.com" />
+   <link rel="preconnect" href="https://fonts.googleapis.com" />
  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@700&family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
  <style>
@@ -67,8 +67,10 @@ nav {
  padding: 0 2rem;
 }
 .nav-brand {
- font-size: 1.5rem;
- font-weight: 600;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #ffffff;
+  text-decoration: none;
 }
 .nav-links {
  display: flex;
@@ -223,7 +225,7 @@ blockquote {
  <a href="../blog.html" class="active">Writing</a>
  <a href="../about.html">About Us</a>
  </div>
- <a href="../#contact" class="btn">Book a Cloud Audit →</a>
+ <a href="https://cal.com/tayoca/platform-engineering-consultation" class="btn" target="_blank" rel="noopener">Book K8s Consultation →</a>
  </nav>
 </header>
 
@@ -343,19 +345,35 @@ blockquote {
  <p>Production readiness saves sign-off cycles, reduces re-audit pain, and keeps attackers out. If your SOC 2 evidence pack feels “thin” or your security review comes with a punch-list, book a free readiness pre-flight with us. We’ll run a 90-minute security gap analysis, give you a remediation roadmap, and leave you with the 58-box evidence template pre-filled for your auditor. Hit “Book a Cloud Audit” and we’ll schedule a no-pressure discovery call next week — sharp engineering, no sales.</p>
 
  <p>
- <a href="../#contact" class="btn" style="font-size:1.05rem;padding: .875rem 1.75rem;">
- 🔧 Get Audit-Ready in 7 Days →
- </a>
+  <a href="https://cal.com/tayoca/platform-engineering-consultation" class="btn" target="_blank" rel="noopener" style="font-size:1.05rem;padding: .875rem 1.75rem;">
+  🔧 Get Audit-Ready in 7 Days →
+  </a>
  </p>
  </article>
 
- <footer class="footer">
- <div class="trust-badge">
- <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="#f97316" /></svg>
- <span><strong>Tayoca</strong> delivers FinOps, Reliability, and AI Automation services.</span>
+ <footer class="footer" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem;padding:3rem 2rem;border-top:1px solid #374151;max-width:1200px;margin:auto;">
+ <div class="footer-brand">
+ <div style="font-size:1.3rem;font-weight:600;margin-bottom:.5rem;color:#ffffff;">tayoca</div>
+ <p style="color:#9ca3af;">FinOps, Platform Engineering, AI Automation.<br>Ontario, Canada.</p>
+ </div>
+ <div class="footer-links">
+ <strong style="display:block;margin-bottom:.5rem;color:var(--text-base);">Company</strong>
+ <div style="display:flex;flex-direction:column;gap:.25rem;">
+ <a href="../services.html" style="color:#e5e7eb;text-decoration:none">Services</a>
+ <a href="../products.html" style="color:#e5e7eb;text-decoration:none">Products</a>
+ <a href="./index.html" style="color:#e5e7eb;text-decoration:none">Writing</a>
+ <a href="../about.html" style="color:#e5e7eb;text-decoration:none">About Us</a>
+ </div>
+ </div>
+ <div class="footer-certs">
+ <strong style="display:block;margin-bottom:.5rem;color:var(--text-base);">Attestations</strong>
+ <span style="font-family:'JetBrains Mono',monospace;font-size:.8rem;background:#111827;padding:.25rem .5rem;border-radius:.25rem;margin:.125rem 0;display:block;">PMP</span>
+ <span style="font-family:'JetBrains Mono',monospace;font-size:.8rem;background:#111827;padding:.25rem .5rem;border-radius:.25rem;margin:.125rem 0;display:block;">CSM</span>
+ <span style="font-family:'JetBrains Mono',monospace;font-size:.8rem;background:#111827;padding:.25rem .5rem;border-radius:.25rem;margin:.125rem 0;display:block;">Terraform Associate</span>
+ <span style="font-family:'JetBrains Mono',monospace;font-size:.8rem;background:#111827;padding:.25rem .5rem;border-radius:.25rem;margin:.125rem 0;display:block;">AWS Solutions Architect</span>
  </div>
  </footer>
-</main>
+ </main>
 
 </body>
 </html>

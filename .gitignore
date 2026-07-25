@@ -31,3 +31,4 @@ node_modules/
 # Misc / Editor
 dist
 .DS_Store
+.vercel

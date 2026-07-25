@@ -25,8 +25,8 @@
   <meta name="twitter:description" content="Practical GitOps patterns beyond the basics: surviving Helm upgrade corruption, image validation gates, per-namespace CI-driven deployments, and hardened Argo CD ApplicationSet configurations.">
   <meta name="twitter:image" content="https://tayoca.com/assets/og-image.png">
 
-  <!-- Plausible Analytics -->
-  <script defer data-domain="tayoca.com" src="https://plausible.io/js/script.js"></script>
+  <!-- InsForge Analytics -->
+  <script>(function(){var e='https://v7mhrspk.function2.insforge.app/analytics-event';var d='tayoca.com';function s(n,p){var o={domain:d,name:n,url:window.location.href,path:window.location.pathname,referrer:document.referrer||null,screen_width:screen.width,screen_height:screen.height,props:p||{}};navigator.sendBeacon&&navigator.sendBeacon(e,JSON.stringify(o))||fetch(e,{method:'POST',body:JSON.stringify(o),keepalive:true})}if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',function(){s('pageview')})}else{s('pageview')}window.tayocaAnalytics={sendEvent:s}})()</script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -69,7 +69,7 @@
     .nav-brand {
       font-size: 1.5rem;
       font-weight: 600;
-      color: var(--text-base);
+      color: #ffffff;
       text-decoration: none;
     }
     .nav-links { display: flex; gap: 2rem; }
@@ -516,3 +516,46 @@
     <loc>https://tayoca.com/blog/how-we-saved-216k-aws.html</loc></arg_value></tool_call><tool_call>patch<arg_key>mode</arg_key><arg_value>replace</arg_value><arg_key>path</arg_key><arg_value>/Volumes/512-B/Documents/Hermes/AGENTS/workspace/tayoca-www/public/sitemap.xml</arg_value><arg_key>old_string</arg_key><arg_value>    <loc>https://tayoca.com/about.html</loc></arg_value><arg_key>new_string</arg_key><arg_value>    <loc>https://tayoca.com/blog/gitops-beyond-hello-world.html</loc></arg_value></tool_call><tool_call>patch<arg_key>mode</arg_key><arg_value>replace</arg_value><arg_key>path</arg_key><arg_value>/Volumes/512-B/Documents/Hermes/AGENTS/workspace/tayoca-www/public/sitemap.xml</arg_value><arg_key>old_string</arg_key><arg_value>  <url>
     <loc>https://tayoca.com/blog/gitops-beyond-hello-world.html</loc></arg_value><arg_key>new_string</arg_key><arg_value>  <url>
     <loc>https://tayoca.com/about.html</loc></arg_value></tool_call><tool_call>write_file<arg_key>path</arg_key><arg_value>/Volumes/512-B/Documents/Hermes/AGENTS/workspace/tayoca-www/.sitemap-backup-marker.txt</arg_value><arg_key>content</arg_key><arg_value>placeholder</arg_value></tool_call><tool_call>process<arg_key>action</arg_key><arg_value>list</arg_value></tool_call><tool_call>read_file<arg_key>path</arg_key><arg_value>/Volumes/512-B/Documents/Hermes/AGENTS/workspace/tayoca-www/public/sitemap.xml</arg_value></tool_call><tool_call>read_file<arg_key>path</arg_key><arg_value>/Volumes/512-B/Documents/Hermes/AGENTS/workspace/tayoca-www/public/blog/gitops-beyond-hello-world.html</arg_value><arg_key>offset</arg_key><arg_value>1</arg_value><arg_key>limit</arg_key><arg_value>10</arg_value></tool_call><tool_call>terminal<arg_key>command</arg_key><arg_value>ls -la /Volumes/512-B/Documents/Hermes/AGENTS/workspace/tayoca-www/public/blog/gitops-beyond-hello-world.html 2>&1 | head -5</arg_value></tool_call><tool_call>terminal<arg_key>command</arg_key><arg_value>grep -c 
+      <div class="amber-accent"></div>
+
+    <section id="cta" style="padding:4rem 0;text-align:center;">
+      <h2 style="font-size:clamp(2rem,5vw,2.8rem);font-weight:700;margin-bottom:1.5rem;">
+        Need GitOps Platform Engineering?
+      </h2>
+      <p style="font-size:1.1rem;max-width:600px;margin:auto 0;color:#d1d5db;">
+        We deliver production platforms anyone can ship on: Argo CD, Terraform, GitHub Actions, Kyverno, Prometheus/Grafana.
+      </p>
+      <div style="display:flex;gap:1rem;align-items:center;justify-content:center;margin-top:2rem;flex-wrap:wrap;">
+        <a href="https://cal.com/tayoca/platform-engineering-consultation" class="btn" target="_blank" rel="noopener">Book Consultation →</a>
+        <a href="https://gum.co/gitops-guide" class="btn" target="_blank" rel="noopener" style="background:#374151;">GitOps Field Guide →</a>
+      </div>
+    </section>
+
+    <div class="amber-accent"></div>
+  </main>
+
+  <footer>
+    <div class="footer-brand">
+      <div style="font-size:1.3rem;font-weight:600;margin-bottom:.5rem;color:#ffffff;">tayoca</div>
+      <p style="color:#9ca3af;">FinOps, Platform Engineering, AI Automation.<br>Ontario, Canada.</p>
+    </div>
+    <div class="footer-links">
+      <strong style="display:block;margin-bottom:.5rem;">Company</strong>
+      <div style="display:flex;flex-direction:column;gap:.25rem;">
+        <a href="../services.html" style="color:#e5e7eb;text-decoration:none">Services</a>
+        <a href="../products.html" style="color:#e5e7eb;text-decoration:none">Products</a>
+        <a href="./index.html" style="color:#e5e7eb;text-decoration:none">Writing</a>
+        <a href="../about.html" style="color:#e5e7eb;text-decoration:none">About Us</a>
+      </div>
+    </div>
+    <div class="footer-certs">
+      <strong style="display:block;margin-bottom:.5rem;">Attestations</strong>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:.8rem;background:#111827;padding:.25rem .5rem;border-radius:.25rem;margin:.125rem 0;display:block;">PMP</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:.8rem;background:#111827;padding:.25rem .5rem;border-radius:.25rem;margin:.125rem 0;display:block;">CSM</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:.8rem;background:#111827;padding:.25rem .5rem;border-radius:.25rem;margin:.125rem 0;display:block;">Terraform Associate</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:.8rem;background:#111827;padding:.25rem .5rem;border-radius:.25rem;margin:.125rem 0;display:block;">AWS Solutions Architect</span>
+    </div>
+  </footer>
+
+</body>
+</html>
