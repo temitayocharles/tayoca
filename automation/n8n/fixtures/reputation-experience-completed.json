@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "event_id": "evt_fixture_001",
+  "event_type": "customer.experience.completed",
+  "tenant_id": "tenant_fixture_gym",
+  "occurred_at": "2026-07-28T06:50:00Z",
+  "source": "fixture",
+  "subject": { "customer_id": "cust_fixture_001" },
+  "payload": {
+    "customer": {
+      "id": "cust_fixture_001",
+      "first_name": "Maya",
+      "phone": "+14165550199",
+      "consent": { "whatsapp": true, "sms": true, "email": false }
+    },
+    "transaction": {
+      "id": "visit_fixture_001",
+      "channel": "membership",
+      "completed_at": "2026-07-28T05:50:00Z"
+    }
+  },
+  "metadata": { "synthetic": true }
+}

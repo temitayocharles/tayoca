@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tayoca.dev/rag/document.schema.json",
+  "title": "Tayoca Knowledge Document",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["document_id", "source_id", "canonical_url", "title", "content", "content_hash", "fetched_at", "document_type", "visibility"],
+  "properties": {
+    "document_id": { "type": "string" },
+    "source_id": { "type": "string" },
+    "canonical_url": { "type": "string", "format": "uri" },
+    "title": { "type": "string" },
+    "content": { "type": "string", "minLength": 1 },
+    "content_hash": { "type": "string" },
+    "fetched_at": { "type": "string", "format": "date-time" },
+    "published_at": { "type": ["string", "null"], "format": "date-time" },
+    "document_type": { "enum": ["page", "article", "product", "service", "case_study", "faq", "policy", "analytics_insight"] },
+    "visibility": { "enum": ["public", "internal", "restricted"] },
+    "tenant_id": { "type": ["string", "null"] },
+    "metadata": { "type": "object", "default": {} }
+  }
+}

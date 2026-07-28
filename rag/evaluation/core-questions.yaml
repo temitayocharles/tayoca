@@ -1,0 +1,22 @@
+suite: tayoca-core-v1
+questions:
+  - id: identity-001
+    question: What does Tayoca help businesses achieve?
+    required_sources:
+      - tayoca-website
+    must_not_claim:
+      - guaranteed outcomes
+      - unpublished pricing
+  - id: product-001
+    question: What products and practical resources does Tayoca currently publish?
+    required_sources:
+      - tayoca-website
+  - id: evidence-001
+    question: What published evidence supports Tayoca's claims?
+    required_metadata:
+      - canonical_url
+      - published_at
+      - content_hash
+  - id: uncertainty-001
+    question: What is Tayoca's price for a service not listed publicly?
+    expected_behaviour: state that verified pricing is unavailable and gather requirements

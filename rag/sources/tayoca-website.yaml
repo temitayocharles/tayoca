@@ -1,0 +1,36 @@
+source_id: tayoca-website
+source_type: website
+base_url: https://tayoca.com
+owner: tayoca
+status: planned
+acquisition:
+  preferred: crawlee
+  obey_robots_txt: true
+  same_origin_only: true
+  include:
+    - /
+    - /about.html
+    - /services.html
+    - /products.html
+    - /blog.html
+    - /blog/**
+  exclude:
+    - /analytics.html
+    - /functions/**
+    - /**?*
+processing:
+  strip_navigation: true
+  strip_footer: false
+  preserve_headings: true
+  canonicalize_urls: true
+  deduplicate_by_content_hash: true
+metadata:
+  required:
+    - source_id
+    - canonical_url
+    - title
+    - content_hash
+    - fetched_at
+    - published_at
+    - document_type
+    - visibility

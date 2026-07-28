@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tayoca.dev/contracts/reputation-tenant-config.schema.json",
+  "title": "Tayoca Reputation Tenant Configuration",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["business_name", "channel_priority", "initial_delay_minutes", "max_attempts"],
+  "properties": {
+    "business_name": { "type": "string", "minLength": 1 },
+    "channel_priority": { "type": "array", "items": { "enum": ["whatsapp", "sms", "email"] }, "minItems": 1, "uniqueItems": true },
+    "initial_delay_minutes": { "type": "integer", "minimum": 0 },
+    "reminder_delay_minutes": { "type": "integer", "minimum": 60, "default": 2880 },
+    "max_attempts": { "type": "integer", "minimum": 1, "maximum": 3 },
+    "review_url": { "type": ["string", "null"], "format": "uri" },
+    "timezone": { "type": "string", "default": "America/Toronto" },
+    "quiet_hours": {
+      "type": "object",
+      "properties": { "start": { "type": "string" }, "end": { "type": "string" } },
+      "required": ["start", "end"]
+    },
+    "escalation_recipients": { "type": "array", "items": { "type": "string" }, "default": [] },
+    "enabled": { "type": "boolean", "default": false }
+  }
+}
