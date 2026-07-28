@@ -4,7 +4,7 @@
  <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <title>Products – Tayoca</title>
- <meta name="description" content="Practical engineering guides for teams who want to move fast: FinOps Playbook, Incident Runbook, GitOps Field Guide, and K8s Production Checklist. Buying applies credit toward a $5K FinOps audit.">
+ <meta name="description" content="Seven practical AI automation, FinOps, Kubernetes, GitOps, and DevOps products published by Tayoca and available securely through Gumroad.">
  <meta name="keywords" content="FinOps playbook, incident runbook, GitOps guide, Kubernetes checklist, AWS cost optimization, engineering guides, Tayoca products">
  <meta name="author" content="Tayoca">
  <meta name="robots" content="index, follow">
@@ -77,57 +77,25 @@ footer{padding:3rem 0;border-top:1px solid #374151;color:var(--text-light);max-w
 </header>
 
 <main class="main-wrap">
- <h1>Our Products</h1>
+ <h1>Practical Products</h1>
+ <p style="max-width:760px;margin:-1rem auto 2rem;text-align:center;color:var(--text-light);">Implementation-focused playbooks, templates, checklists, and teaching packs. Every purchase is completed securely on Tayoca's Gumroad storefront.</p>
  <div class="products-grid" id="productsContainer">
- <!-- Product cards will be injected here -->
+<div class="product-card"><h2>AI Automation Career Playbook</h2><div class="price">$49</div><p>A practical transition roadmap covering skills, portfolio projects, interview preparation, salary negotiation, and a 90-day job-search plan.</p><a href="https://tayoca.gumroad.com/l/ai-automation-career" target="_blank" rel="noopener noreferrer" class="cta-button">View on Gumroad</a></div>
+<div class="product-card"><h2>n8n MCP Kubernetes Teaching Pack</h2><div class="price">$39</div><p>Architecture diagrams, Helm charts, workflow templates, and teaching material for integrating n8n, Kubernetes, and Model Context Protocol.</p><a href="https://tayoca.gumroad.com/l/n8n-mcp-k8s" target="_blank" rel="noopener noreferrer" class="cta-button">View on Gumroad</a></div>
+<div class="product-card"><h2>Build, Break, Fix: DevOps Practice Lab Pack</h2><div class="price">$19</div><p>Hands-on DevOps labs designed to build operational judgment through realistic failure, diagnosis, recovery, and validation exercises.</p><a href="https://tayoca.gumroad.com/l/build-break-fix-devops" target="_blank" rel="noopener noreferrer" class="cta-button">View on Gumroad</a></div>
+<div class="product-card"><h2>AWS Cost Optimization Playbook</h2><div class="price">$29</div><p>A practical guide for finding AWS waste, prioritizing savings opportunities, and implementing cost controls without weakening reliability.</p><a href="https://tayoca.gumroad.com/l/aws-cost-optimization" target="_blank" rel="noopener noreferrer" class="cta-button">View on Gumroad</a></div>
+<div class="product-card"><h2>DevOps Incident Runbook Template</h2><div class="price">$19</div><p>A reusable incident-response framework for triage, escalation, communications, recovery, and post-incident follow-through.</p><a href="https://tayoca.gumroad.com/l/devops-incident-runbook" target="_blank" rel="noopener noreferrer" class="cta-button">View on Gumroad</a></div>
+<div class="product-card"><h2>Kubernetes Production Readiness Checklist</h2><div class="price">$19</div><p>A production-readiness checklist covering resilience, security, observability, capacity, deployment safety, and operational ownership.</p><a href="https://tayoca.gumroad.com/l/k8s-production-checklist" target="_blank" rel="noopener noreferrer" class="cta-button">View on Gumroad</a></div>
+<div class="product-card"><h2>GitOps Field Guide</h2><div class="price">$29</div><p>Production-oriented GitOps patterns for Argo CD, Flux, Helm, Kustomize, release governance, and safe platform operations.</p><a href="https://tayoca.gumroad.com/l/gitops-field-guide" target="_blank" rel="noopener noreferrer" class="cta-button">View on Gumroad</a></div>
  </div>
 </main>
 
-<script>
-// Robust CSV parser with fixed $1 bug (avoid literal $1 in replace)
-function parseCSV(csv) {
- const lines = csv.trim().split('\n');
- const headers = lines[0].split(',').map(h => h.trim());
- const result = [];
- for (let i = 1; i < lines.length; i++) {
- const raw = lines[i];
- // trim surrounding quotes if any
- const values = raw.split(',').map(v => v.trim().replace(/^".*"$/, m => m.slice(1,-1)) );
- const obj = {};
- headers.forEach((h, idx) => obj[h] = values[idx] ?? '');
- result.push(obj);
- }
- return result;
-}
 
-// Fetch CSV and render products
-async function loadProducts() {
- try {
- const r = await fetch('products-feed.csv');
- if (!r.ok) throw new Error(`CSV fetch ${r.status}`);
- const csv = await r.text();
- const products = parseCSV(csv);
- const c = document.getElementById('productsContainer'); c.innerHTML = '';
-
- products.forEach(p => {
- const card = document.createElement('div');
- card.className = 'product-card';
- card.innerHTML = `<h2>${p.name || ''}</h2><div class="price">$${p.price || ''}</div><p>${p.description || ''}</p><a href="${p.url || '#'}" target="_blank" rel="noopener" class="cta-button">Buy Now</a>`;
- c.appendChild(card);
- });
- } catch (e) {
- console.error('CSV load error:', e);
- document.getElementById('productsContainer').innerHTML = '<p style="color:#f87171">Could not load products right now.</p>';
- }
-}
-
- document.addEventListener('DOMContentLoaded', loadProducts);
-</script>
 
 <footer>
 <div class="footer-brand">
 <div style="font-size:1.3rem;font-weight:600;margin-bottom:.5rem;">tayoca</div>
-<p style="color:#9ca3af;">FinOps, Platform Engineering, AI Automation.<br>Ontario, Canada.</p>
+<p style="color:#9ca3af;">AI Automation, FinOps, and Platform Engineering.<br>Founded by Temitayo Charles Akinniranye.<br>Ontario, Canada.<br>&copy; 2026 Tayoca.</p>
 </div>
 </footer>
 
