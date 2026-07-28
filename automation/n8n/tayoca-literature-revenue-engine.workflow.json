@@ -1,0 +1,167 @@
+{
+  "name": "Tayoca Literature Revenue Engine - Approval First",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hoursInterval": 6
+            }
+          ]
+        }
+      },
+      "id": "schedule",
+      "name": "Campaign Queue Poll",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -800,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "status",
+              "name": "required_status",
+              "value": "approved",
+              "type": "string"
+            },
+            {
+              "id": "count",
+              "name": "minimum_asset_count",
+              "value": 18,
+              "type": "number"
+            }
+          ]
+        }
+      },
+      "id": "policy",
+      "name": "Publishing Policy",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -580,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return items.filter(item => item.json.status === 'approved' || item.json.required_status === 'approved');"
+      },
+      "id": "approval",
+      "name": "Enforce Human Approval",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -360,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const formats=['pillar_article','seo_article_1','seo_article_2','seo_article_3','linkedin_1','linkedin_2','linkedin_3','short_script_1','short_script_2','short_script_3','email_1','email_2','checklist_1','checklist_2','lead_magnet','product_offer','case_study_angle','whatsapp_prompt']; return items.flatMap(item => formats.map(format => ({json:{...item.json,format,status:'draft',campaign_id:item.json.campaign_id || $execution.id}})));"
+      },
+      "id": "manifest",
+      "name": "Build 18 Asset Manifest",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -120,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return items.map(item => ({json:{...item.json,content_status:'awaiting_final_approval'}}));"
+      },
+      "id": "draft",
+      "name": "Generate Draft Package",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        120,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return items.filter(item => item.json.final_approved === true);"
+      },
+      "id": "finalgate",
+      "name": "Final Publication Gate",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        360,
+        0
+      ]
+    }
+  ],
+  "connections": {
+    "Campaign Queue Poll": {
+      "main": [
+        [
+          {
+            "node": "Publishing Policy",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Publishing Policy": {
+      "main": [
+        [
+          {
+            "node": "Enforce Human Approval",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Enforce Human Approval": {
+      "main": [
+        [
+          {
+            "node": "Build 18 Asset Manifest",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build 18 Asset Manifest": {
+      "main": [
+        [
+          {
+            "node": "Generate Draft Package",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Draft Package": {
+      "main": [
+        [
+          {
+            "node": "Final Publication Gate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "tayoca-literature-engine-v1"
+}
