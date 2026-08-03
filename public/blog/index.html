@@ -1,31 +1,30 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tayoca Engineering Writing | FinOps, Kubernetes, GitOps & AI Automation</title>
-  <meta name="description" content="Practical engineering articles on FinOps, Kubernetes, GitOps, incident response, platform reliability, and AI automation.">
-  <meta name="keywords" content="engineering blog, FinOps, reliability, automation, Kubernetes">
-  <meta name="author" content="Tayoca">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://tayoca.com/blog/">
-  <link rel="icon" href="/favicon.ico" type="image/x-icon">
-  <meta property="og:title" content="Tayoca — Writing">
-  <meta property="og:description" content="Practical engineering articles on FinOps, Kubernetes, GitOps, incident response, platform reliability, and AI automation.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://tayoca.com/blog/">
-  <meta property="og:image" content="https://tayoca.com/assets/og-image.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Tayoca — Writing">
-  <meta name="twitter:description" content="Practical engineering articles on FinOps, Kubernetes, GitOps, incident response, platform reliability, and AI automation.">
-  <meta name="twitter:image" content="https://tayoca.com/assets/og-image.png">
-  <!-- InsForge Analytics -->
-  <script>(function(){var e='https://v7mhrspk.function2.insforge.app/analytics-event',d='tayoca.com';function s(n,p){var r={domain:d,name:n,url:location.href,path:location.pathname,referrer:document.referrer||null,screen_width:screen.width,screen_height:screen.height,props:p||{}};navigator.sendBeacon&&navigator.sendBeacon(e,JSON.stringify(r))||fetch(e,{method:'POST',body:JSON.stringify(r),keepalive:!0})}document.readyState==='loading'?document.addEventListener('DOMContentLoaded',function(){s('pageview')}):s('pageview');window.tayocaAnalytics={sendEvent:s}})()</script>
-
-  <!-- Vermason analytics -->
-  <script defer src="https://vermason.com/analytics/id.js"></script>
-
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tayoca Engineering Writing | FinOps, Kubernetes, GitOps &amp; AI Automation</title>
+<meta content="Practical engineering articles on FinOps, Kubernetes, GitOps, incident response, platform reliability, and AI automation." name="description"/>
+<meta content="engineering blog, FinOps, reliability, automation, Kubernetes" name="keywords"/>
+<meta content="Tayoca" name="author"/>
+<meta content="index, follow" name="robots"/>
+<link href="https://tayoca.com/blog/" rel="canonical"/>
+<link href="/favicon.ico" rel="icon" type="image/x-icon"/>
+<meta content="Tayoca — Writing" property="og:title"/>
+<meta content="Practical engineering articles on FinOps, Kubernetes, GitOps, incident response, platform reliability, and AI automation." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="https://tayoca.com/blog/" property="og:url"/>
+<meta content="https://tayoca.com/assets/og-image.png" property="og:image"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Tayoca — Writing" name="twitter:title"/>
+<meta content="Practical engineering articles on FinOps, Kubernetes, GitOps, incident response, platform reliability, and AI automation." name="twitter:description"/>
+<meta content="https://tayoca.com/assets/og-image.png" name="twitter:image"/>
+<!-- InsForge Analytics -->
+<script>(function(){var e='https://v7mhrspk.function2.insforge.app/analytics-event',d='tayoca.com';function s(n,p){var r={domain:d,name:n,url:location.href,path:location.pathname,referrer:document.referrer||null,screen_width:screen.width,screen_height:screen.height,props:p||{}};navigator.sendBeacon&&navigator.sendBeacon(e,JSON.stringify(r))||fetch(e,{method:'POST',body:JSON.stringify(r),keepalive:!0})}document.readyState==='loading'?document.addEventListener('DOMContentLoaded',function(){s('pageview')}):s('pageview');window.tayocaAnalytics={sendEvent:s}})()</script>
+<!-- Vermason analytics -->
+<script defer="" src="https://vermason.com/analytics/id.js"></script>
+<style>
 :root{--bg:#0d0d0d;--card:#1a1a1a;--accent:#f97316;--text:#e5e7eb;--muted:#9ca3af;}
 *{box-sizing:border-box;}
 html{font-size:16px;}
@@ -55,8 +54,7 @@ footer>div>p{margin:0;color:var(--muted);font-size:.85rem;line-height:1.5;}
 footer a{color:var(--text);text-decoration:none;font-size:.85rem;}
 footer a:hover{color:var(--accent);}
   </style>
-<script type="application/ld+json">
-{
+<script type="application/ld+json">{
   "@context": "https://schema.org",
   "@type": "Blog",
   "name": "Tayoca Engineering Writing",
@@ -67,6 +65,36 @@ footer a:hover{color:var(--accent);}
     "url": "https://tayoca.com/"
   },
   "blogPost": [
+    {
+      "@type": "BlogPosting",
+      "headline": "Kubernetes Interview Scenarios: 12 Production Questions and Answer Patterns",
+      "description": "Production scenarios with evidence paths, safe interventions, recovery proof, and explanation patterns.",
+      "url": "https://tayoca.com/blog/kubernetes-interview-scenarios.html"
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "etcd Backup and Restore Lab for Kubernetes Administrators",
+      "description": "A safe disposable-cluster lab for snapshot validation, restore, static Pod configuration, and recovery proof.",
+      "url": "https://tayoca.com/blog/etcd-backup-restore-lab.html"
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "CKA Practice Beyond Memorization: Train the Operator Behind the Commands",
+      "description": "Use CKA-aligned practice to build API discovery, troubleshooting judgment, and repeatable recovery.",
+      "url": "https://tayoca.com/blog/cka-practice-beyond-memorization.html"
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Kubernetes Incident Response Practice: From Alert to Recovery Proof",
+      "description": "A disciplined incident-response model for scope, rollback decisions, communication, repair, and recovery proof.",
+      "url": "https://tayoca.com/blog/kubernetes-incident-response-practice.html"
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Kubernetes Troubleshooting Labs: A Production-Style Practice System",
+      "description": "Build labs that train evidence collection, safe repair, recovery proof, and interview-ready explanation.",
+      "url": "https://tayoca.com/blog/kubernetes-troubleshooting-labs.html"
+    },
     {
       "@type": "BlogPosting",
       "headline": "AI Automation Career Roadmap: From DevOps Engineer to AI Solutions Architect – Tayoca",
@@ -122,97 +150,96 @@ footer a:hover{color:var(--accent);}
       "url": "https://tayoca.com/blog/n8n-mcp-kubernetes.html"
     }
   ]
-}
-</script>
+}</script>
 </head>
 <body>
 <header><nav>
-<a href="../index.html" class="nav-brand">tayoca</a>
+<a class="nav-brand" href="../index.html">tayoca</a>
 <div class="nav-links">
 <a href="../services.html">Services</a>
 <a href="../products.html">Products</a>
-<a href="/blog/" class="active">Writing</a>
+<a class="active" href="/blog/">Writing</a>
 <a href="../about.html">About</a>
 </div>
 </nav></header>
 <main><h1>Writing</h1>
 <p class="lede">Practical engineering articles on FinOps, Kubernetes, GitOps, incident response, platform reliability, and AI automation..</p>
-<ul class="post-list">
-  <li>
-    <a class="post" href="ai-automation-career-roadmap.html">
-      <h2>AI Automation Career Roadmap: From DevOps Engineer to AI Solutions Architect – Tayoca</h2>
-      <p>Complete career transition guide from DevOps to AI Automation. Skills, projects, portfolio strategy, and real salary data for 2026.</p>
-      <span class="meta">Article</span>
-    </a>
-  </li>
-  <li>
-    <a class="post" href="cloud-cost-optimization-playbook.html">
-      <h2>AWS Cloud Cost Optimization Playbook - How We Saved $216K in 90 Days | Temitayo Charles Akinniranye</h2>
-      <p>Complete AWS cost optimization strategy that saved $216K in 90 days. Real-world FinOps tactics, right-sizing, reserved instances, and automated governance.</p>
-      <span class="meta">Article</span>
-    </a>
-  </li>
-  <li>
-    <a class="post" href="devops-incident-response-runbook.html">
-      <h2>DevOps Incident Response Runbook: From Alert to Resolution in 15 Minutes | Temitayo Charles Akinniranye</h2>
-      <p>Production-grade incident response runbook for Kubernetes and cloud infrastructure. SLO-based alerting, runbook automation, blameless postmortems, and war-room patterns.</p>
-      <span class="meta">Article</span>
-    </a>
-  </li>
-  <li>
-    <a class="post" href="gitops-beyond-hello-world.html">
-      <h2>GitOps Beyond Hello World – Practical Patterns Tayoca Runs in Production – Tayoca</h2>
-      <p>Practical GitOps patterns beyond the basics: surviving Helm upgrade corruption, image validation gates, per-namespace CI-driven deployments, and hardened Argo CD ApplicationSet configurations.</p>
-      <span class="meta">Article</span>
-    </a>
-  </li>
-  <li>
-    <a class="post" href="how-we-saved-216k-aws.html">
-      <h2>How We Saved a Client $216K/yr on AWS – Tayoca FinOps Case Study</h2>
-      <p>FinOps case study: How Tayoca uncovered $216K in annual AWS savings for a Series B fintech through a 30-minute audit and prioritized remediation plan.</p>
-      <span class="meta">Article</span>
-    </a>
-  </li>
-  <li>
-    <a class="post" href="how-we-saved-216k-on-aws-in-90-days.html">
-      <h2>How We Saved $216K on AWS in 90 Days | Tayoca</h2>
-      <p>A Series B fintech cut AWS spend from $840K to $624K in 90 days without sacrificing 99.99% uptime. Learn the exact FinOps tactics we used.</p>
-      <span class="meta">Article</span>
-    </a>
-  </li>
-  <li>
-    <a class="post" href="kubernetes-production-checklist.html">
-      <h2>Kubernetes Production Checklist: 37 Items to Ship Reliably – Tayoca</h2>
-      <p>Production-grade Kubernetes checklist to harden your cluster from development mishaps into a self-healing, secure platform. Resource constraints, PDBs, RBAC, NetworkPolicy, PSPs, Prometheus alerts, audit readiness.</p>
-      <span class="meta">Article</span>
-    </a>
-  </li>
-  <li>
-    <a class="post" href="kubernetes-production-readiness-checklist-for-2026.html">
-      <h2>Kubernetes Production Readiness Checklist for 2026 | Tayoca</h2>
-      <p>A practical 2026 Kubernetes production readiness checklist to secure sign-off before your next security review, compliance audit, or SOC 2 Type II bump. No fluff, just boxes to ✅.</p>
-      <span class="meta">Article</span>
-    </a>
-  </li>
-  <li>
-    <a class="post" href="n8n-mcp-kubernetes.html">
-      <h2>n8n MCP + Kubernetes: Self-Hosted AI Agent Infrastructure | Temitayo Charles Akinniranye</h2>
-      <p>Build production-grade n8n with MCP servers on Kubernetes. Complete guide: Helm charts, ingress, persistence, MCP server deployment, OAuth, and GitOps with ArgoCD.</p>
-      <span class="meta">Article</span>
-    </a>
-  </li>
+<ul class="post-list"><li><a class="post" href="kubernetes-troubleshooting-labs.html"><h2>Kubernetes Troubleshooting Labs: A Production-Style Practice System</h2><p>Build labs that train evidence collection, safe repair, recovery proof, and interview-ready explanation.</p><span class="meta">Article · August 2026</span></a></li><li><a class="post" href="kubernetes-incident-response-practice.html"><h2>Kubernetes Incident Response Practice: From Alert to Recovery Proof</h2><p>A disciplined incident-response model for scope, rollback decisions, communication, repair, and recovery proof.</p><span class="meta">Article · August 2026</span></a></li><li><a class="post" href="cka-practice-beyond-memorization.html"><h2>CKA Practice Beyond Memorization: Train the Operator Behind the Commands</h2><p>Use CKA-aligned practice to build API discovery, troubleshooting judgment, and repeatable recovery.</p><span class="meta">Article · August 2026</span></a></li><li><a class="post" href="etcd-backup-restore-lab.html"><h2>etcd Backup and Restore Lab for Kubernetes Administrators</h2><p>A safe disposable-cluster lab for snapshot validation, restore, static Pod configuration, and recovery proof.</p><span class="meta">Article · August 2026</span></a></li><li><a class="post" href="kubernetes-interview-scenarios.html"><h2>Kubernetes Interview Scenarios: 12 Production Questions and Answer Patterns</h2><p>Production scenarios with evidence paths, safe interventions, recovery proof, and explanation patterns.</p><span class="meta">Article · August 2026</span></a></li>
+<li>
+<a class="post" href="ai-automation-career-roadmap.html">
+<h2>AI Automation Career Roadmap: From DevOps Engineer to AI Solutions Architect – Tayoca</h2>
+<p>Complete career transition guide from DevOps to AI Automation. Skills, projects, portfolio strategy, and real salary data for 2026.</p>
+<span class="meta">Article</span>
+</a>
+</li>
+<li>
+<a class="post" href="cloud-cost-optimization-playbook.html">
+<h2>AWS Cloud Cost Optimization Playbook - How We Saved $216K in 90 Days | Temitayo Charles Akinniranye</h2>
+<p>Complete AWS cost optimization strategy that saved $216K in 90 days. Real-world FinOps tactics, right-sizing, reserved instances, and automated governance.</p>
+<span class="meta">Article</span>
+</a>
+</li>
+<li>
+<a class="post" href="devops-incident-response-runbook.html">
+<h2>DevOps Incident Response Runbook: From Alert to Resolution in 15 Minutes | Temitayo Charles Akinniranye</h2>
+<p>Production-grade incident response runbook for Kubernetes and cloud infrastructure. SLO-based alerting, runbook automation, blameless postmortems, and war-room patterns.</p>
+<span class="meta">Article</span>
+</a>
+</li>
+<li>
+<a class="post" href="gitops-beyond-hello-world.html">
+<h2>GitOps Beyond Hello World – Practical Patterns Tayoca Runs in Production – Tayoca</h2>
+<p>Practical GitOps patterns beyond the basics: surviving Helm upgrade corruption, image validation gates, per-namespace CI-driven deployments, and hardened Argo CD ApplicationSet configurations.</p>
+<span class="meta">Article</span>
+</a>
+</li>
+<li>
+<a class="post" href="how-we-saved-216k-aws.html">
+<h2>How We Saved a Client $216K/yr on AWS – Tayoca FinOps Case Study</h2>
+<p>FinOps case study: How Tayoca uncovered $216K in annual AWS savings for a Series B fintech through a 30-minute audit and prioritized remediation plan.</p>
+<span class="meta">Article</span>
+</a>
+</li>
+<li>
+<a class="post" href="how-we-saved-216k-on-aws-in-90-days.html">
+<h2>How We Saved $216K on AWS in 90 Days | Tayoca</h2>
+<p>A Series B fintech cut AWS spend from $840K to $624K in 90 days without sacrificing 99.99% uptime. Learn the exact FinOps tactics we used.</p>
+<span class="meta">Article</span>
+</a>
+</li>
+<li>
+<a class="post" href="kubernetes-production-checklist.html">
+<h2>Kubernetes Production Checklist: 37 Items to Ship Reliably – Tayoca</h2>
+<p>Production-grade Kubernetes checklist to harden your cluster from development mishaps into a self-healing, secure platform. Resource constraints, PDBs, RBAC, NetworkPolicy, PSPs, Prometheus alerts, audit readiness.</p>
+<span class="meta">Article</span>
+</a>
+</li>
+<li>
+<a class="post" href="kubernetes-production-readiness-checklist-for-2026.html">
+<h2>Kubernetes Production Readiness Checklist for 2026 | Tayoca</h2>
+<p>A practical 2026 Kubernetes production readiness checklist to secure sign-off before your next security review, compliance audit, or SOC 2 Type II bump. No fluff, just boxes to ✅.</p>
+<span class="meta">Article</span>
+</a>
+</li>
+<li>
+<a class="post" href="n8n-mcp-kubernetes.html">
+<h2>n8n MCP + Kubernetes: Self-Hosted AI Agent Infrastructure | Temitayo Charles Akinniranye</h2>
+<p>Build production-grade n8n with MCP servers on Kubernetes. Complete guide: Helm charts, ingress, persistence, MCP server deployment, OAuth, and GitOps with ArgoCD.</p>
+<span class="meta">Article</span>
+</a>
+</li>
 </ul>
 <div class="cta-section">
-  <p>Need a FinOps audit? Flat $5K — only pay if we find savings.</p>
-  <a href="https://cal.com/tayoca/finops-audit" class="btn" target="_blank" rel="noopener">Book a Free 30-Minute Audit →</a>
+<p>Need a FinOps audit? Flat $5K — only pay if we find savings.</p>
+<a class="btn" href="https://cal.com/tayoca/finops-audit" rel="noopener" target="_blank">Book a Free 30-Minute Audit →</a>
 </div>
 </main>
 <footer>
-  <div><a href="../services.html">Services</a> <a href="../products.html">Products</a> <a href="/blog/">Writing</a> <a href="../about.html">About</a></div>
-  <div>
-    <div class="brand">tayoca</div>
-    <p style="margin:.25rem 0 0;color:#9ca3af;">FinOps · Platform Engineering · AI Automation<br>Ontario, Canada.</p>
-  </div>
+<div><a href="../services.html">Services</a> <a href="../products.html">Products</a> <a href="/blog/">Writing</a> <a href="../about.html">About</a></div>
+<div>
+<div class="brand">tayoca</div>
+<p style="margin:.25rem 0 0;color:#9ca3af;">FinOps · Platform Engineering · AI Automation<br/>Ontario, Canada.</p>
+</div>
 </footer>
 </body>
 </html>
