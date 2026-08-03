@@ -525,6 +525,38 @@
             .prose pre, .code-block { white-space: pre-wrap; word-wrap: break-word; }
         }
     </style>
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://tayoca.com/blog/devops-incident-response-runbook.html">
+<meta property="og:image" content="https://tayoca.com/assets/og-image.png">
+<meta name="twitter:image" content="https://tayoca.com/assets/og-image.png">
+<!-- InsForge Analytics -->
+<script>(function(){var e='https://v7mhrspk.function2.insforge.app/analytics-event',d='tayoca.com';function s(n,p){var r={domain:d,name:n,url:location.href,path:location.pathname,referrer:document.referrer||null,screen_width:screen.width,screen_height:screen.height,props:p||{}};navigator.sendBeacon&&navigator.sendBeacon(e,JSON.stringify(r))||fetch(e,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(r),keepalive:!0})}document.readyState==='loading'?document.addEventListener('DOMContentLoaded',function(){s('pageview')}):s('pageview');window.tayocaAnalytics={sendEvent:s}})()</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "DevOps Incident Response Runbook: From Alert to Resolution in 15 Minutes | Temitayo Charles Akinniranye",
+  "description": "Production-grade incident response runbook for Kubernetes and cloud infrastructure. SLO-based alerting, runbook automation, blameless postmortems, and war-room patterns.",
+  "url": "https://tayoca.com/blog/devops-incident-response-runbook.html",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://tayoca.com/blog/devops-incident-response-runbook.html"
+  },
+  "image": [
+    "https://tayoca.com/assets/og-image.png"
+  ],
+  "author": {
+    "@type": "Person",
+    "name": "Temitayo Charles Akinniranye"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Tayoca",
+    "url": "https://tayoca.com/"
+  },
+  "datePublished": "2026-07-24"
+}
+</script>
 </head>
 <body class="min-h-screen flex flex-col">
     <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -545,7 +577,7 @@
                 <a href="../index.html" class="nav-link px-4 py-2 rounded-lg text-sm font-medium text-[var(--fg)] hover:text-[var(--accent)] hover:bg-[var(--bg-elevated)] transition-colors">Home</a>
                 <a href="../services.html" class="nav-link px-4 py-2 rounded-lg text-sm font-medium text-[var(--fg)] hover:text-[var(--accent)] hover:bg-[var(--bg-elevated)] transition-colors">Services</a>
                 <a href="../products.html" class="nav-link px-4 py-2 rounded-lg text-sm font-medium text-[var(--fg)] hover:text-[var(--accent)] hover:bg-[var(--bg-elevated)] transition-colors">Products</a>
-                <a href="../blog.html" class="nav-link px-4 py-2 rounded-lg text-sm font-medium text-[var(--fg)] hover:text-[var(--accent)] hover:bg-[var(--bg-elevated)] transition-colors border-b-2 border-[var(--accent)]" aria-current="page">Blog</a>
+                <a href="/blog/" class="nav-link px-4 py-2 rounded-lg text-sm font-medium text-[var(--fg)] hover:text-[var(--accent)] hover:bg-[var(--bg-elevated)] transition-colors border-b-2 border-[var(--accent)]" aria-current="page">Blog</a>
                 <a href="../about.html" class="nav-link px-4 py-2 rounded-lg text-sm font-medium text-[var(--fg)] hover:text-[var(--accent)] hover:bg-[var(--bg-elevated)] transition-colors">About</a>
             </div>
 
@@ -569,7 +601,7 @@
             <a href="../index.html" class="nav-link">Home</a>
             <a href="../services.html" class="nav-link">Services</a>
             <a href="../products.html" class="nav-link">Products</a>
-            <a href="../blog.html" class="nav-link" aria-current="page">Blog</a>
+            <a href="/blog/" class="nav-link" aria-current="page">Blog</a>
             <a href="../about.html" class="nav-link">About</a>
         </nav>
     </aside>

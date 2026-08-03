@@ -260,7 +260,7 @@ footer {
 <div class="nav-links">
 <a href="services.html">Services</a>
 <a href="products.html">Products</a>
-<a href="blog.html">Writing</a>
+<a href="/blog/">Writing</a>
 <a href="about.html">About</a>
 </div>
 <a class="btn" data-event="cta_click" href="#contact">Book an Audit</a>
@@ -352,6 +352,13 @@ footer {
 <h2>Practical Products</h2>
 <p>Implementation-focused guides, checklists, and teaching packs for AI automation, cloud cost management, Kubernetes, GitOps, and DevOps operations.</p>
 <div class="products-grid">
+<div class="card">
+<div class="tag">Featured Kubernetes workbook</div>
+<h3 style="margin-top:0;">Kubernetes Operator's Workbook, Second Edition</h3>
+<p>Build, deploy, troubleshoot, and explain Kubernetes through guided labs, 24 production incidents, control-plane recovery, and interview simulations.</p>
+<p><strong>CAD $69</strong></p>
+<a class="btn" data-event="cta_click" href="/products/kubernetes-operators-workbook.html" style="display:block;text-align:center;margin-top:1rem;">Explore the workbook</a>
+</div>
 <div class="card">
 <div class="tag">Digital guide</div>
 <h3 style="margin-top:0;">AI Automation Career Playbook</h3>
@@ -489,7 +496,7 @@ footer {
 <div style="display:flex;flex-direction:column;gap:.25rem;">
 <a href="services.html" style="color:#e5e7eb;text-decoration:none">Services</a>
 <a href="products.html" style="color:#e5e7eb;text-decoration:none">Products</a>
-<a href="blog.html" style="color:#e5e7eb;text-decoration:none">Writing</a>
+<a href="/blog/" style="color:#e5e7eb;text-decoration:none">Writing</a>
 <a href="about.html" style="color:#e5e7eb;text-decoration:none">About Us</a>
 </div>
 </div>
@@ -504,4 +511,40 @@ footer {
 <script>document.querySelectorAll("#current-year").forEach(function(el){el.textContent=new Date().getFullYear();});</script>
 <script defer="" src="/revenue-events.js"></script>
 </body>
-</link></link></head></html>
+</link></link><script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://tayoca.com/#organization",
+      "name": "Tayoca",
+      "url": "https://tayoca.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://tayoca.com/assets/og-image.png"
+      },
+      "founder": {
+        "@type": "Person",
+        "name": "Temitayo Charles Akinniranye"
+      },
+      "description": "Tayoca provides AI automation, FinOps, platform engineering services, training, and practical technical products.",
+      "areaServed": [
+        "Canada",
+        "Worldwide"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://tayoca.com/#website",
+      "url": "https://tayoca.com/",
+      "name": "Tayoca",
+      "publisher": {
+        "@id": "https://tayoca.com/#organization"
+      },
+      "inLanguage": "en-CA"
+    }
+  ]
+}
+</script>
+</head></html>
