@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-G4QC90QNXW"></script>
+  <script src="/ga4.js"></script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>DevOps Incident Response Runbook: From Alert to Resolution in 15 Minutes | Temitayo Charles Akinniranye</title>
@@ -619,9 +623,9 @@
                 </p>
                 <div class="flex flex-wrap justify-center gap-4 text-sm text-[var(--fg-muted)]">
                     <span>By <strong class="text-white">Temitayo Charles Akinniranye</strong></span>
-                    <span aria-hidden="true">•</span>
+                    <span aria-hidden="true">â¢</span>
                     <time datetime="2026-07-24">July 24, 2026</time>
-                    <span aria-hidden="true">•</span>
+                    <span aria-hidden="true">â¢</span>
                     <span>18 min read</span>
                 </div>
             </div>
@@ -631,12 +635,12 @@
             <div class="max-w-3xl mx-auto">
                 <div class="prose">
                     <p class="lead">
-                        Most teams don't have an incident response problem — they have a <strong>preparation problem</strong>. This runbook documents the exact framework we use to achieve <strong>p95 MTTR < 15 minutes</strong> for Sev-1/Sev-2 incidents across Kubernetes, AWS, and multi-cloud environments.
+                        Most teams don't have an incident response problem â they have a <strong>preparation problem</strong>. This runbook documents the exact framework we use to achieve <strong>p95 MTTR < 15 minutes</strong> for Sev-1/Sev-2 incidents across Kubernetes, AWS, and multi-cloud environments.
                     </p>
 
                     <h2>Philosophy: Principles Over Procedures</h2>
                     <blockquote>
-                        "We don't rise to the level of our expectations; we fall to the level of our training." — Archilochus, adapted for SRE
+                        "We don't rise to the level of our expectations; we fall to the level of our training." â Archilochus, adapted for SRE
                     </blockquote>
                     <p>Every procedure in this runbook is built on four non-negotiable principles:</p>
                     <ol>
@@ -705,8 +709,8 @@ groups:
                                 <tr><th>Severity</th><th>Definition</th><th>Response Time</th><th>Escalation</th></tr>
                             </thead>
                             <tbody>
-                                <tr><td>Sev-1 (Critical)</td><td>Revenue impact, data loss, security breach, full outage</td><td>< 5 min</td><td>IC → TL → Director → VP (15/30/60 min)</td></tr>
-                                <tr><td>Sev-2 (Major)</td><td>Degraded functionality, partial outage, SLO breach imminent</td><td>< 15 min</td><td>IC → TL → Director (30/60 min)</td></tr>
+                                <tr><td>Sev-1 (Critical)</td><td>Revenue impact, data loss, security breach, full outage</td><td>< 5 min</td><td>IC â TL â Director â VP (15/30/60 min)</td></tr>
+                                <tr><td>Sev-2 (Major)</td><td>Degraded functionality, partial outage, SLO breach imminent</td><td>< 15 min</td><td>IC â TL â Director (30/60 min)</td></tr>
                                 <tr><td>Sev-3 (Minor)</td><td>Non-user-impacting, capacity warning, single AZ issue</td><td>< 1 hour</td><td>Next business day</td></tr>
                                 <tr><td>Sev-4 (Low)</td><td>Cosmetic, scheduled maintenance, documentation</td><td>Next sprint</td><td>N/A</td></tr>
                             </tbody>
@@ -714,36 +718,36 @@ groups:
                     </div>
 
                     <h3>1.2 First Responder Checklist (First 2 Minutes)</h3>
-                    <pre><code>☐ Acknowledge alert in PagerDuty/Opsgenie
-☐ Open runbook URL from alert annotation
-☐ Join war room Zoom (link in runbook)
-☐ Post in #incident-{id}: "🔴 IC: {name} acknowledged. Investigating {service}."
-☐ Check dashboard: Is SLO actually breached? (False positive rate target: < 5%)
-☐ Check recent deployments: ArgoCD/Flux diff, GitHub releases
-☐ Check dependency health: Upstream/downstream dashboards</code></pre>
+                    <pre><code>â Acknowledge alert in PagerDuty/Opsgenie
+â Open runbook URL from alert annotation
+â Join war room Zoom (link in runbook)
+â Post in #incident-{id}: "ð´ IC: {name} acknowledged. Investigating {service}."
+â Check dashboard: Is SLO actually breached? (False positive rate target: < 5%)
+â Check recent deployments: ArgoCD/Flux diff, GitHub releases
+â Check dependency health: Upstream/downstream dashboards</code></pre>
 
                     <h3>1.3 Triage Decision Tree</h3>
                     <pre><code>                    ALERT FIRED
-                         │
-                         ▼
-              ┌─────────────────────┐
-              │ SLO breached NOW?   │──No──▶ Resolve alert, tune threshold
-              └─────────┬───────────┘
-                        │ Yes
-                        ▼
-              ┌─────────────────────┐
-              │ Known runbook exists?│──No──▶ Sev-1, page TL, start generic runbook
-              └─────────┬───────────┘
-                        │ Yes
-                        ▼
-              ┌─────────────────────┐
-              │ Can IC execute solo? │──No──▶ Escalate to TL, form war room
-              └─────────┬───────────┘
-                        │ Yes
-                        ▼
-              ┌─────────────────────┐
-              │ Execute runbook steps│
-              └─────────────────────┘</code></pre>
+                         â
+                         â¼
+              âââââââââââââââââââââââ
+              â SLO breached NOW?   âââNoâââ¶ Resolve alert, tune threshold
+              âââââââââââ¬ââââââââââââ
+                        â Yes
+                        â¼
+              âââââââââââââââââââââââ
+              â Known runbook exists?âââNoâââ¶ Sev-1, page TL, start generic runbook
+              âââââââââââ¬ââââââââââââ
+                        â Yes
+                        â¼
+              âââââââââââââââââââââââ
+              â Can IC execute solo? âââNoâââ¶ Escalate to TL, form war room
+              âââââââââââ¬ââââââââââââ
+                        â Yes
+                        â¼
+              âââââââââââââââââââââââ
+              â Execute runbook stepsâ
+              âââââââââââââââââââââââ</code></pre>
 
                     <h2>Phase 2: Investigation & Mitigation (2-10 Minutes)</h2>
 
@@ -789,7 +793,7 @@ kubectl describe hpa {service} -n {namespace}</code></pre>
 
                     <h3>2.3 Communication During Incident</h3>
                     <ul>
-                        <li><strong>Every 5 min:</strong> IC posts update in Slack: "🔍 Investigating {hypothesis}. Current status: {mitigation attempted}. Next check: {time}"</li>
+                        <li><strong>Every 5 min:</strong> IC posts update in Slack: "ð Investigating {hypothesis}. Current status: {mitigation attempted}. Next check: {time}"</li>
                         <li><strong>Every 15 min:</strong> TL posts stakeholder summary in <code>#incident-leadership</code></li>
                         <li><strong>StatusPage:</strong> Update within 10 min of Sev-1 declaration</li>
                         <li><strong>No speculation:</strong> Only share confirmed facts. "We're investigating" > "It might be X"</li>

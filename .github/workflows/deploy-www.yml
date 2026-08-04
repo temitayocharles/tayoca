@@ -48,14 +48,14 @@ jobs:
 
       - name: Slack notify success
         if: success()
-        uses: rtCamp/action-slack-notify@v4
+        uses: rtCamp/action-slack-notify@33ca3be66c6f378fe1610fd1d5258632dbed5e58 # v2.4.0
         env:
           SLACK_WEBHOOK: ${{ secrets.TCA_SLACK_WEBHOOK }}
-          SLACK_TITLE: "✅ Main deployed and live (${{ github.event.repository.name }})"
+          SLACK_TITLE: "â Main deployed and live (${{ github.event.repository.name }})"
 
       - name: Slack notify failure
         if: failure()
-        uses: rtCamp/action-slack-notify@v4
+        uses: rtCamp/action-slack-notify@33ca3be66c6f378fe1610fd1d5258632dbed5e58 # v2.4.0
         env:
           SLACK_WEBHOOK: ${{ secrets.TCA_SLACK_WEBHOOK }}
-          SLACK_TITLE: "❌ Deployment failed (watch logs!)"
+          SLACK_TITLE: "â Deployment failed (watch logs!)"

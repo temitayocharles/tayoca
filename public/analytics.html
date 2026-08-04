@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-G4QC90QNXW"></script>
+  <script src="/ga4.js"></script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Analytics Dashboard - tayoca.com</title>
@@ -173,46 +177,46 @@
 <body>
     <div class="container">
         <header>
-            <h1>📊 Analytics Dashboard</h1>
+            <h1>ð Analytics Dashboard</h1>
             <p style="font-size: 1rem; color: #e0e7ff; margin: 0.5rem 0 0 0;">
                 Real-time statistics for tayoca.com
             </p>
         </header>
         
         <nav class="breadcrumbs">
-            🏠 <a href="/" style="color: #a78bfa; text-decoration: none; margin-left: 0.5rem;">Back to Home</a>
-            | 📈 Current Analytics
+            ð  <a href="/" style="color: #a78bfa; text-decoration: none; margin-left: 0.5rem;">Back to Home</a>
+            | ð Current Analytics
         </nav>
 
         <div id="loading" class="loading">
-            📊 Loading analytics data...
+            ð Loading analytics data...
             <div style="font-size: 0.9rem; margin-top: 0.5rem; color: #9ca3af;">
                 Fetching data from InsForge analytics dashboard
             </div>
         </div>
 
         <div id="error" class="error" style="display: none;">
-            ❌ Error loading analytics data. 
+            â Error loading analytics data. 
             <div id="error-message" style="margin-top: 0.5rem;"></div>
         </div>
 
         <div id="content" style="display: none;">
             <div class="grid">
                 <div class="card">
-                    <h2>📈 Page Views</h2>
+                    <h2>ð Page Views</h2>
                     <div class="metric-value" id="total-pageviews">-</div>
                     <div class="metric-label">Total pageviews (last 30 days)</div>
                 </div>
                 
                 <div class="card">
-                    <h2>👥 Unique Visitors</h2>
+                    <h2>ð¥ Unique Visitors</h2>
                     <div class="metric-value" id="unique-visitors">-</div>
                     <div class="metric-label">Individual visitors (last 30 days)</div>
                 </div>
             </div>
 
             <div class="card">
-                <h2>📅 Daily Activity</h2>
+                <h2>ð Daily Activity</h2>
                 <div class="chart-container">
                     <canvas id="dailyChart"></canvas>
                 </div>
@@ -220,20 +224,20 @@
 
             <div class="grid">
                 <div class="card">
-                    <h2>🔝 Top Pages</h2>
+                    <h2>ð Top Pages</h2>
                     <div id="top-pages" class="top-list"></div>
                     <div class="metadata">Showing top 10 most viewed pages</div>
                 </div>
                 
                 <div class="card">
-                    <h2>🔗 Top Referrers</h2>
+                    <h2>ð Top Referrers</h2>
                     <div id="top-referrers" class="top-list"></div>
                     <div class="metadata">Showing top 10 referring domains</div>
                 </div>
             </div>
 
             <div class="card">
-                <h2>⚙️ API Info</h2>
+                <h2>âï¸ API Info</h2>
                 <div class="stats-grid">
                     <div class="stat-item">
                         <h3>Endpoint URL</h3>
@@ -257,7 +261,7 @@
                 <div class="metadata" style="margin-top: 1rem;">
                     This dashboard fetches real-time data from your InsForge analytics endpoints.
                     <br>
-                    No data is stored or tracked by this dashboard page itself — all data comes directly from your analytics system.
+                    No data is stored or tracked by this dashboard page itself â all data comes directly from your analytics system.
                 </div>
             </div>
         </div>
