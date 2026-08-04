@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-G4QC90QNXW"></script>
+  <script src="/ga4.js"></script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AWS Cloud Cost Optimization Playbook - How We Saved $216K in 90 Days | Temitayo Charles Akinniranye</title>
@@ -174,13 +178,13 @@
                 AWS Cloud Cost Optimization Playbook: How We Saved $216K in 90 Days
             </h1>
             <p class="text-lg text-[var(--fg-muted)] mb-8">
-                A production-grade FinOps strategy combining right-sizing, reserved instance arbitrage, automated governance, and cultural adoption — deployed at a mid-market e-commerce company.
+                A production-grade FinOps strategy combining right-sizing, reserved instance arbitrage, automated governance, and cultural adoption â deployed at a mid-market e-commerce company.
             </p>
             <div class="flex flex-wrap justify-center gap-4 text-sm text-gray-500">
                 <span>By <strong class="text-white">Temitayo Charles Akinniranye</strong></span>
-                <span>•</span>
+                <span>â¢</span>
                 <time datetime="2026-07-24">July 24, 2026</time>
-                <span>•</span>
+                <span>â¢</span>
                 <span>12 min read</span>
             </div>
         </div>
@@ -191,7 +195,7 @@
         <div class="max-w-3xl mx-auto">
             <div class="prose">
                 <p class="lead text-lg text-[var(--fg-muted)] mb-8">
-                    Most teams don't have a cost problem — they have a <strong>visibility and accountability problem</strong>. This playbook documents the exact framework we used to reduce AWS spend from $240K/month to $24K/month (90% reduction) for a Series B e-commerce client in Q2 2026.
+                    Most teams don't have a cost problem â they have a <strong>visibility and accountability problem</strong>. This playbook documents the exact framework we used to reduce AWS spend from $240K/month to $24K/month (90% reduction) for a Series B e-commerce client in Q2 2026.
                 </p>
 
                 <h2>The Problem: Invisible Waste at Scale</h2>
@@ -202,7 +206,7 @@
                 </blockquote>
 
                 <h2>Phase 1: Establish Visibility (Week 1-2)</h2>
-                <h3>1.1 Cost Allocation Tags — Mandatory, Not Optional</h3>
+                <h3>1.1 Cost Allocation Tags â Mandatory, Not Optional</h3>
                 <p>Enforced tagging policy via AWS Config Rules + Service Control Policies:</p>
                 <pre><code># Required tags on ALL resources
 Environment: prod|staging|dev
@@ -229,7 +233,7 @@ Project: revenue|internal|experiment</code></pre>
 
                 <h3>2.2 Reserved Instances & Savings Plans</h3>
                 <ul>
-                    <li>Analyzed 90-day steady-state usage → purchased 3-year All Upfront RIs for baseline</li>
+                    <li>Analyzed 90-day steady-state usage â purchased 3-year All Upfront RIs for baseline</li>
                     <li>Applied Compute Savings Plans for flexible workloads (EC2 + Fargate + Lambda)</li>
                     <li>Leveraged RI Marketplace to offload unused reservations</li>
                     <li><strong>Savings: $62K/month</strong></li>
@@ -238,7 +242,7 @@ Project: revenue|internal|experiment</code></pre>
                 <h3>2.3 Storage Lifecycle & Cleanup</h3>
                 <ul>
                     <li>S3 Intelligent-Tiering for unknown access patterns</li>
-                    <li>Lifecycle rules: Standard → IA (30d) → Glacier (90d) → Deep Archive (365d)</li>
+                    <li>Lifecycle rules: Standard â IA (30d) â Glacier (90d) â Deep Archive (365d)</li>
                     <li>Deleted 47TB of unattached EBS snapshots & orphaned volumes</li>
                     <li><strong>Savings: $14K/month</strong></li>
                 </ul>
@@ -251,13 +255,13 @@ Project: revenue|internal|experiment</code></pre>
 
                 <h2>Phase 3: Architecture-Level Optimization (Week 7-10)</h2>
                 <h3>3.1 Graviton Migration (ARM)</h3>
-                <p>Migrated 89 eligible workloads to Graviton2/3 — 20-40% price/performance gain. Used EKS node groups with mixed instances for zero-downtime rollout.</p>
+                <p>Migrated 89 eligible workloads to Graviton2/3 â 20-40% price/performance gain. Used EKS node groups with mixed instances for zero-downtime rollout.</p>
 
                 <h3>3.2 Data Transfer Optimization</h3>
                 <ul>
-                    <li>Cross-AZ → Cross-region traffic reduced via Regional endpoints</li>
+                    <li>Cross-AZ â Cross-region traffic reduced via Regional endpoints</li>
                     <li>CloudFront for static assets (reduced S3 egress 87%)</li>
-                    <li>VPC Endpoints (Gateway + Interface) for S3/DynamoDB — eliminated NAT Gateway charges</li>
+                    <li>VPC Endpoints (Gateway + Interface) for S3/DynamoDB â eliminated NAT Gateway charges</li>
                     <li><strong>Savings: $18K/month</strong></li>
                 </ul>
 
@@ -266,10 +270,10 @@ Project: revenue|internal|experiment</code></pre>
 
                 <h2>Phase 4: Governance & Culture (Week 11-12)</h2>
                 <h3>4.1 Budget Guardrails per Team</h3>
-                <p>AWS Budgets + SNS → Slack per team. Hard limit at 110% of forecast; soft alert at 90%. Teams own their forecasts.</p>
+                <p>AWS Budgets + SNS â Slack per team. Hard limit at 110% of forecast; soft alert at 90%. Teams own their forecasts.</p>
 
                 <h3>4.2 FinOps Champions Program</h3>
-                <p>Appointed 1 engineer per team as "FinOps Champion" — 2hrs/week dedicated to cost hygiene. Champions review anomalies, optimize their team's resources, report in weekly standup.</p>
+                <p>Appointed 1 engineer per team as "FinOps Champion" â 2hrs/week dedicated to cost hygiene. Champions review anomalies, optimize their team's resources, report in weekly standup.</p>
 
                 <h3>4.3 Monthly Cost Review Ritual</h3>
                 <p>30-min cross-functional meeting: Engineering leads + Finance + Platform. Review top 10 cost drivers, anomalies, optimization wins, upcoming capacity changes.</p>
@@ -295,7 +299,7 @@ Project: revenue|internal|experiment</code></pre>
                 <p class="text-[var(--fg-muted)] text-sm">Additional one-time savings from RI marketplace sales: ~$24K. Total 90-day impact: <strong>$216K</strong>.</p>
 
                 <h2>Reusable Artifacts (Open Source)</h2>
-                <p>We've packaged the automation as <strong>AWS Cost Optimization Playbook</strong> — available as a digital product:</p>
+                <p>We've packaged the automation as <strong>AWS Cost Optimization Playbook</strong> â available as a digital product:</p>
                 <ul>
                     <li>Terraform modules for tagging enforcement, CUR pipeline, anomaly detection</li>
                     <li>Lambda functions for zombie hunting, right-sizing recommendations</li>
@@ -304,15 +308,15 @@ Project: revenue|internal|experiment</code></pre>
                 </ul>
                 <p class="text-center mt-6">
                     <a href="../products.html" class="inline-block px-6 py-3 bg-[var(--accent)] text-white rounded-lg hover:bg-[var(--accent-hover)] transition-colors font-medium">
-                        Get the Playbook → $49
+                        Get the Playbook â $49
                     </a>
                 </p>
 
                 <h2>Want This for Your Organization?</h2>
-                <p>We run a <strong>$5K Cloud Cost Audit</strong> — 2-week engagement, deliverable is a prioritized optimization roadmap with projected savings. Book a free discovery call:</p>
+                <p>We run a <strong>$5K Cloud Cost Audit</strong> â 2-week engagement, deliverable is a prioritized optimization roadmap with projected savings. Book a free discovery call:</p>
                 <p class="text-center mt-4">
                     <a href="https://calendly.com/d/d2d5-67k-mws" class="inline-block px-6 py-3 bg-[var(--accent)] text-white rounded-lg hover:bg-[var(--accent-hover)] transition-colors font-medium" target="_blank">
-                        Schedule Free Cloud Audit Discovery →
+                        Schedule Free Cloud Audit Discovery â
                     </a>
                 </p>
             </div>
@@ -322,7 +326,7 @@ Project: revenue|internal|experiment</code></pre>
     <!-- Footer -->
         <footer class="border-t border-[var(--border)] mt-16 py-8 px-4">
         <main id="main-content" class="flex-1 pt-[var(--header-height)]"><div class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-            <p class="text-[var(--fg-muted)] text-sm">© 2025 Temitayo Charles Akinniranye. All rights reserved.</p>
+            <p class="text-[var(--fg-muted)] text-sm">Â© 2025 Temitayo Charles Akinniranye. All rights reserved.</p>
             <a href="#" class="footer-link text-sm">Privacy Policy</a>
         </div>
     </footer>
@@ -373,7 +377,7 @@ Project: revenue|internal|experiment</code></pre>
                     throw new Error('Failed');
                 }
             } catch {
-                btn.textContent = 'Error — Try Again';
+                btn.textContent = 'Error â Try Again';
                 btn.classList.remove('bg-text-[var(--accent)]');
                 btn.classList.add('bg-red-500');
             }

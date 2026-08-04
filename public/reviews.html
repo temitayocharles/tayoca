@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-G4QC90QNXW"></script>
+  <script src="/ga4.js"></script>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Verified Buyer Reviews | Tayoca</title>
@@ -25,7 +29,7 @@
 <section class="grid" id="reviewsGrid" aria-live="polite"><div class="empty">Verified buyer reviews will appear here as customers complete the review process. Tayoca will not seed this page with fabricated testimonials or invented ratings.</div></section>
 <section class="policy"><strong>How this page stays trustworthy</strong><br>Purchases are verified. Publication consent is explicit. Private buyer information is removed. Moderation is limited to authenticity, privacy, relevance, abuse, and legal concerns. Critical sentiment alone is not a reason to reject a review.</section>
 </main>
-<footer>© 2026 Tayoca. AI Automation, FinOps, Platform Engineering, and practical professional publishing.</footer>
+<footer>Â© 2026 Tayoca. AI Automation, FinOps, Platform Engineering, and practical professional publishing.</footer>
 <script>
 (function(){
  const endpoint='https://n8n.tca-infraforge.site/webhook/tayoca/reviews/public';
@@ -37,7 +41,7 @@
    document.getElementById('summary').hidden=false;
    document.getElementById('countPill').textContent=reviews.length+' verified review'+(reviews.length===1?'':'s');
    document.getElementById('ratingPill').textContent=(data.averageRating||0).toFixed(1)+' average rating';
-   document.getElementById('reviewsGrid').innerHTML=reviews.map(r=>'<article class="review" id="'+esc(r.id)+'"><div class="stars" aria-label="'+Number(r.rating)+' out of 5 stars">'+('★'.repeat(Number(r.rating)))+('☆'.repeat(5-Number(r.rating)))+'</div><h2>'+esc(r.title)+'</h2><p>'+esc(r.review)+'</p><div class="meta"><span class="verified">✓ Verified buyer</span><br>'+esc(r.name)+' · '+esc(r.product)+(fmtDate(r.submittedAt)?' · '+esc(fmtDate(r.submittedAt)):'')+'</div></article>').join('');
+   document.getElementById('reviewsGrid').innerHTML=reviews.map(r=>'<article class="review" id="'+esc(r.id)+'"><div class="stars" aria-label="'+Number(r.rating)+' out of 5 stars">'+('â'.repeat(Number(r.rating)))+('â'.repeat(5-Number(r.rating)))+'</div><h2>'+esc(r.title)+'</h2><p>'+esc(r.review)+'</p><div class="meta"><span class="verified">â Verified buyer</span><br>'+esc(r.name)+' Â· '+esc(r.product)+(fmtDate(r.submittedAt)?' Â· '+esc(fmtDate(r.submittedAt)):'')+'</div></article>').join('');
    const schema={"@context":"https://schema.org","@type":"Organization","name":"Tayoca","url":"https://tayoca.com","review":reviews.map(r=>({"@type":"Review","author":{"@type":"Person","name":r.name},"datePublished":String(r.submittedAt||'').slice(0,10),"reviewRating":{"@type":"Rating","ratingValue":Number(r.rating),"bestRating":5,"worstRating":1},"name":r.title,"reviewBody":r.review,"itemReviewed":{"@type":"Product","name":r.product,"brand":{"@type":"Brand","name":"Tayoca"}}}))};
    document.getElementById('reviewSchema').textContent=JSON.stringify(schema);
  }).catch(()=>{document.getElementById('reviewsGrid').innerHTML='<div class="error">The verified review feed is temporarily unavailable. No unverified or cached placeholder reviews will be displayed.</div>';});

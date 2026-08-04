@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-G4QC90QNXW"></script>
+  <script src="/ga4.js"></script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>n8n MCP + Kubernetes: Self-Hosted AI Agent Infrastructure | Temitayo Charles Akinniranye</title>
@@ -168,13 +172,13 @@
                 n8n + MCP on Kubernetes: Production-Grade Self-Hosted AI Agent Infrastructure
             </h1>
             <p class="text-lg text-[var(--fg-muted)] mb-8">
-                Complete guide to deploying n8n with Model Context Protocol servers on Kubernetes using Helm, ArgoCD GitOps, ingress, persistence, and OAuth — the exact stack running <strong>n8n.tca-infraforge.site</strong>.
+                Complete guide to deploying n8n with Model Context Protocol servers on Kubernetes using Helm, ArgoCD GitOps, ingress, persistence, and OAuth â the exact stack running <strong>n8n.tca-infraforge.site</strong>.
             </p>
             <div class="flex flex-wrap justify-center gap-4 text-sm text-gray-500">
                 <span>By <strong class="text-white">Temitayo Charles Akinniranye</strong></span>
-                <span>•</span>
+                <span>â¢</span>
                 <time datetime="2026-07-24">July 24, 2026</time>
-                <span>•</span>
+                <span>â¢</span>
                 <span>18 min read</span>
             </div>
         </div>
@@ -184,32 +188,32 @@
         <div class="max-w-3xl mx-auto">
             <div class="prose">
                 <p class="lead text-lg text-[var(--fg-muted)] mb-8">
-                    <strong>n8n</strong> is the workflow automation backbone. <strong>MCP (Model Context Protocol)</strong> is the universal connector for AI agents. <strong>Kubernetes</strong> is the only platform that gives you multi-tenancy, scaling, and GitOps out of the box. This article shows how we wired them together in production — no managed SaaS, full control, zero vendor lock-in.
+                    <strong>n8n</strong> is the workflow automation backbone. <strong>MCP (Model Context Protocol)</strong> is the universal connector for AI agents. <strong>Kubernetes</strong> is the only platform that gives you multi-tenancy, scaling, and GitOps out of the box. This article shows how we wired them together in production â no managed SaaS, full control, zero vendor lock-in.
                 </p>
 
                 <h2>Architecture Overview</h2>
-                <pre><code>┌─────────────────────────────────────────────────────────────────┐
-│                     n8n.tca-infraforge.site                      │
-│  ┌──────────────────┐  ┌──────────────────┐  ┌────────────────┐  │
-│  │   n8n Main       │  │   n8n Worker     │  │  MCP Servers   │  │
-│  │   (Deployment)   │  │   (Deployment)   │  │  (Deployments) │  │
-│  │  - Webhook ingress│  │  - Queue mode    │  │  - GitHub      │  │
-│  │  - API + UI      │  │  - Redis queue   │  │  - GitLab      │  │
-│  │  - Postgres      │  │  - Horizontal    │  │  - Kubernetes  │  │
-│  └────────┬─────────┘  └────────┬─────────┘  │  - Cloudflare  │  │
-│           │                     │            │  - PostgreSQL  │  │
-│           └──────────┬──────────┘            └───────┬────────┘  │
-│                      │                               │           │
-│           ┌──────────▼──────────┐                   │           │
-│           │    Redis Cluster    │◀──────────────────┘           │
-│           │   (Queue + Cache)   │                               │
-│           └──────────┬──────────┘                               │
-│                      │                                          │
-│           ┌──────────▼──────────┐                               │
-│           │   PostgreSQL HA     │                               │
-│           │  (CloudNativePG)    │                               │
-│           └─────────────────────┘                               │
-└─────────────────────────────────────────────────────────────────┘</code></pre>
+                <pre><code>âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+â                     n8n.tca-infraforge.site                      â
+â  ââââââââââââââââââââ  ââââââââââââââââââââ  ââââââââââââââââââ  â
+â  â   n8n Main       â  â   n8n Worker     â  â  MCP Servers   â  â
+â  â   (Deployment)   â  â   (Deployment)   â  â  (Deployments) â  â
+â  â  - Webhook ingressâ  â  - Queue mode    â  â  - GitHub      â  â
+â  â  - API + UI      â  â  - Redis queue   â  â  - GitLab      â  â
+â  â  - Postgres      â  â  - Horizontal    â  â  - Kubernetes  â  â
+â  ââââââââââ¬ââââââââââ  ââââââââââ¬ââââââââââ  â  - Cloudflare  â  â
+â           â                     â            â  - PostgreSQL  â  â
+â           ââââââââââââ¬âââââââââââ            âââââââââ¬âââââââââ  â
+â                      â                               â           â
+â           ââââââââââââ¼âââââââââââ                   â           â
+â           â    Redis Cluster    âââââââââââââââââââââ           â
+â           â   (Queue + Cache)   â                               â
+â           ââââââââââââ¬âââââââââââ                               â
+â                      â                                          â
+â           ââââââââââââ¼âââââââââââ                               â
+â           â   PostgreSQL HA     â                               â
+â           â  (CloudNativePG)    â                               â
+â           âââââââââââââââââââââââ                               â
+âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ</code></pre>
 
                 <h2>Prerequisites</h2>
                 <ul>
@@ -489,7 +493,7 @@ spec:
       targetPort: 3000</code></pre>
 
                 <h3>n8n MCP Configuration (via n8n UI or config map)</h3>
-                <pre><code># In n8n: Settings → Community Nodes → Add MCP Server
+                <pre><code># In n8n: Settings â Community Nodes â Add MCP Server
 # Server URL: http://mcp-github.n8n.svc.cluster.local:3000
 # Transport: HTTP (SSE)
 # Authentication: None (internal network)</code></pre>
@@ -613,7 +617,7 @@ spec:
 
                 <h2>Step 9: OAuth Configuration (GitHub, GitLab, Google, etc.)</h2>
                 <p>Create OAuth apps in each provider with callback URL: <code>https://n8n.tca-infraforge.site/oauth2/callback</code></p>
-                <p>Store credentials in Vault → External Secrets → n8n env vars (as shown in values-n8n.yaml).</p>
+                <p>Store credentials in Vault â External Secrets â n8n env vars (as shown in values-n8n.yaml).</p>
 
                 <h2>Common Operational Tasks</h2>
                 <table>
@@ -638,11 +642,11 @@ spec:
                         </tr>
                         <tr>
                             <td>Update n8n version</td>
-                            <td>Update tag in values-n8n.yaml → ArgoCD sync</td>
+                            <td>Update tag in values-n8n.yaml â ArgoCD sync</td>
                         </tr>
                         <tr>
                             <td>Add MCP server</td>
-                            <td>Deploy new Deployment+Service → Register in n8n UI</td>
+                            <td>Deploy new Deployment+Service â Register in n8n UI</td>
                         </tr>
                     </tbody>
                 </table>
@@ -658,7 +662,7 @@ spec:
                     </thead>
                     <tbody>
                         <tr><td>EKS Control Plane</td><td>Managed</td><td>$73</td></tr>
-                        <tr><td>Worker Nodes (3× m6i.xlarge)</td><td>4 vCPU, 16 GiB each</td><td>$380</td></tr>
+                        <tr><td>Worker Nodes (3Ã m6i.xlarge)</td><td>4 vCPU, 16 GiB each</td><td>$380</td></tr>
                         <tr><td>RDS PostgreSQL (db.r6g.xlarge, Multi-AZ)</td><td>4 vCPU, 32 GiB</td><td>$350</td></tr>
                         <tr><td>ElastiCache Redis (cache.r6g.xlarge)</td><td>4 vCPU, 32 GiB</td><td>$220</td></tr>
                         <tr><td>EBS Volumes (GP3)</td><td>~100 GiB total</td><td>$8</td></tr>
@@ -666,7 +670,7 @@ spec:
                         <tr><td><strong>Total</strong></td><td></td><td><strong>~$1,061/mo</strong></td></tr>
                     </tbody>
                 </table>
-                <p class="text-[var(--fg-muted)] text-sm">vs. n8n Cloud Pro: $120/mo (10K executions) — self-hosted wins at scale + full data control + custom MCP servers.</p>
+                <p class="text-[var(--fg-muted)] text-sm">vs. n8n Cloud Pro: $120/mo (10K executions) â self-hosted wins at scale + full data control + custom MCP servers.</p>
 
                 <h2>Troubleshooting Quick Reference</h2>
                 <ul>
@@ -686,10 +690,10 @@ spec:
                 </ul>
 
                 <h2>Want This Running for Your Team?</h2>
-                <p>I offer a <strong>"n8n + MCP on Kubernetes" implementation package</strong> — 2-week engagement, GitOps repo, monitoring, docs, and knowledge transfer.</p>
+                <p>I offer a <strong>"n8n + MCP on Kubernetes" implementation package</strong> â 2-week engagement, GitOps repo, monitoring, docs, and knowledge transfer.</p>
                 <p class="text-center mt-6">
                     <a href="https://calendly.com/d/d2d5-67k-mws" class="inline-block px-6 py-3 bg-[var(--accent)] text-white rounded-lg hover:bg-[var(--accent-hover)] transition-colors font-medium" target="_blank">
-                        Book Discovery Call → $5K Fixed Scope
+                        Book Discovery Call â $5K Fixed Scope
                     </a>
                 </p>
             </div>
@@ -698,7 +702,7 @@ spec:
 
         <footer class="border-t border-[var(--border)] mt-16 py-8 px-4">
         <main id="main-content" class="flex-1 pt-[var(--header-height)]"><div class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-            <p class="text-[var(--fg-muted)] text-sm">© 2025 Temitayo Charles Akinniranye. All rights reserved.</p>
+            <p class="text-[var(--fg-muted)] text-sm">Â© 2025 Temitayo Charles Akinniranye. All rights reserved.</p>
             <a href="#" class="footer-link text-sm">Privacy Policy</a>
         </div>
     </footer>
@@ -748,7 +752,7 @@ spec:
                     throw new Error('Failed');
                 }
             } catch {
-                btn.textContent = 'Error — Try Again';
+                btn.textContent = 'Error â Try Again';
                 btn.classList.remove('bg-text-[var(--accent)]');
                 btn.classList.add('bg-red-500');
             }
