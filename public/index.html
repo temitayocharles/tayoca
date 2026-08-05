@@ -62,11 +62,11 @@
 <style>
 :root {
   --bg-dark: #0d0d0d;
-  --bg-card: #ffffff;
+  --bg-card: #1a1a1a;
   --accent: #f97316;
-  --text-base: #e5e7eb;
-  --text-dark: #374151;
-  --text-light: #9ca3af;
+  --text-base: #e5e5e5;
+  --text-dark: #e5e5e5;
+  --text-light: #a3a3a3;
 }
 html { font-size: 16px; }
 body {
@@ -142,17 +142,17 @@ section > p { font-size:1.1rem; max-width:600px; margin:1rem auto 0; color:var(-
 .btn-secondary {
   display: inline-block;
   padding: .75rem 1.5rem;
-  background: #374151;
+  background: #333333;
   color: white;
   border-radius: .5rem;
   font-weight: 600;
   text-decoration: none;
   transition: background .2s;
 }
-.btn-secondary:hover { background: #4b5563; }
+.btn-secondary:hover { background: #525252; }
 footer {
   padding: 3rem 0;
-  border-top: 1px solid #374151;
+  border-top: 1px solid #333333;
   font-size: .9rem;
   color: var(--text-light);
   display: grid;
@@ -175,18 +175,20 @@ footer {
 .card {
   background: var(--bg-card);
   color: var(--text-dark);
+  border: 1px solid #333333;
   border-radius: 1rem;
   padding: 1.5rem;
-  box-shadow: 0 4px 20px rgba(0,0,0,.08);
+  box-shadow: 0 4px 20px rgba(0,0,0,.18);
+  transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
 }
-.card h3 { font-size: 1.5rem; margin-top:0; }
+.card h3 { font-size: 1.5rem; margin-top:0; color:#fff; }
 .card .tag {
   color: var(--accent);
   font-size:.9rem; font-weight:600; 
   margin-bottom:.5rem;
   display:block;
 }
-.card > p { color: #4b5563; margin-bottom:1rem; }
+.card > p { color: #d4d4d4; margin-bottom:1rem; }
 .expr {
   font-family: 'JetBrains Mono', monospace, monospace;
   font-size:3rem;
@@ -204,15 +206,15 @@ footer {
 .email-form input {
   flex:1;
   padding:.75rem;
-  border:1px solid #d1d5db;
+  border:1px solid #d4d4d4;
   border-radius:.375rem;
 }
 .email-form button {
-  background:#374151;
+  background:#333333;
   padding:.75rem 1rem;
   border-radius:0 .5rem .5rem 0;
   cursor:pointer;
-  border:1px solid #4b5563;
+  border:1px solid #525252;
   color:white;
   border-left:none!important;
   font-weight:600;
@@ -230,7 +232,7 @@ footer {
 }
 .testimonial {
   background: #1a1a1a;
-  border: 1px solid #374151;
+  border: 1px solid #333333;
   border-radius: 1rem;
   padding: 2rem;
   max-width: 800px;
@@ -239,7 +241,7 @@ footer {
 .testimonial p {
   font-size: 1.1rem; 
   font-style: italic; 
-  color: #d1d5db; 
+  color: #d4d4d4; 
   margin-bottom: 1rem;
 }
 .testimonial cite {
@@ -252,14 +254,19 @@ footer {
   align-items: center;
   gap: .5rem;
   background: #1a1a1a;
-  border: 1px solid #374151;
+  border: 1px solid #333333;
   border-radius: .5rem;
   padding: .5rem 1rem;
   font-size: .875rem;
-  color: #9ca3af;
+  color: #a3a3a3;
 }
 .trust-badge svg { color: var(--accent); }
-  </style>
+  
+.card.is-clickable,.product-card.is-clickable{cursor:pointer;}
+.card.is-clickable:hover,.card.is-clickable:focus-visible,.product-card.is-clickable:hover,.product-card.is-clickable:focus-visible{transform:translateY(-4px);border-color:#f97316;box-shadow:0 12px 28px rgba(0,0,0,.32);outline:none;}
+.card p,.card li{color:#d4d4d4!important;}
+.card h2,.card h3{color:#fff;}
+</style>
 <!-- Vermason Analytics -->
 <script defer="" src="https://vermason.com/analytics/id.js"></script>
 <body>
@@ -280,7 +287,7 @@ footer {
 <section id="hero" style="min-height:100vh;display:flex;align-items:center;">
 <div style="max-width:800px;margin:auto;text-align:center;">
 <h1 style="font-family:'Sora',sans-serif;font-size:clamp(2.5rem,8vw,4.5rem);line-height:1.1;font-weight:700;margin-bottom:1.5rem;">Build reliable AI automation and cloud platforms that <span style="color:#f97316;">pay for themselves.</span></h1>
-<p style="font-size:1.3rem;color:#d1d5db;margin-bottom:2rem;">
+<p style="font-size:1.3rem;color:#d4d4d4;margin-bottom:2rem;">
 <strong>Cut cloud waste. Ship faster. Automate the work slowing you down.</strong>
 </p>
 <div style="display:flex;gap:1rem;align-items:center;justify-content: center;flex-wrap:wrap;">
@@ -288,7 +295,7 @@ footer {
 <a class="btn-secondary" data-event="hero_products" href="/products.html">Use a Practical Playbook</a>
 <a class="btn-secondary" data-event="hero_whatsapp" href="https://wa.me/2348113980135?text=Hi%20Tayoca%2C%20I%20want%20help%20solving%20a%20business%20or%20engineering%20problem." rel="noopener noreferrer" target="_blank">Chat on WhatsApp</a>
 </div>
-<p style="margin-top:2rem;font-size:.9rem;color:#9ca3af;">Clear price. Clear outcome. Results you can measure.</p>
+<p style="margin-top:2rem;font-size:.9rem;color:#a3a3a3;">Clear price. Clear outcome. Results you can measure.</p>
 </div>
 </section>
 <div class="amber-accent"></div>
@@ -296,9 +303,9 @@ footer {
 <div class="amber-accent"></div>
 <section id="metrics">
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2rem;text-align:center;">
-<div><div style="font-size:1.4rem;font-weight:700;margin-bottom:.25rem;">Cloud spend keeps rising</div><div style="color:#9ca3af;">Find the waste. Keep the performance. Save more.</div></div>
-<div><div style="font-size:1.4rem;font-weight:700;margin-bottom:.25rem;">Delivery is fragile</div><div style="color:#9ca3af;">Ship safely, repeatedly, and without the usual firefighting.</div></div>
-<div><div style="font-size:1.4rem;font-weight:700;margin-bottom:.25rem;">Operations are too manual</div><div style="color:#9ca3af;">Automate the busywork. Keep humans where judgment matters.</div></div>
+<div><div style="font-size:1.4rem;font-weight:700;margin-bottom:.25rem;">Cloud spend keeps rising</div><div style="color:#a3a3a3;">Find the waste. Keep the performance. Save more.</div></div>
+<div><div style="font-size:1.4rem;font-weight:700;margin-bottom:.25rem;">Delivery is fragile</div><div style="color:#a3a3a3;">Ship safely, repeatedly, and without the usual firefighting.</div></div>
+<div><div style="font-size:1.4rem;font-weight:700;margin-bottom:.25rem;">Operations are too manual</div><div style="color:#a3a3a3;">Automate the busywork. Keep humans where judgment matters.</div></div>
 </div>
 </section>
 <div class="amber-accent"></div>
@@ -425,41 +432,41 @@ footer {
 
 <section class="section-header" id="blog">
 <h2>Writing</h2>
-<p style="max-width:700px;margin:1rem auto 2rem;color:#d1d5db;">Engineering insights distilled to essentials. Each piece includes runnable assets you can copy-paste.</p>
+<p style="max-width:700px;margin:1rem auto 2rem;color:#d4d4d4;">Engineering insights distilled to essentials. Each piece includes runnable assets you can copy-paste.</p>
 <div class="products-grid">
-<article class="card">
+<article class="card" data-card-href="/insights.html">
 <h3 style="margin:0 0 .5rem;">Building the InfraForge AI Inference Lab</h3>
-<p style="font-size:.95rem;color:#6b7280;">How we engineered a zero-to-edge inference cluster for 99.95% availability using k3s and vLLM - including cost-aware autoscaling and multi-tenant model routing.</p>
+<p style="font-size:.95rem;color:#737373;">How we engineered a zero-to-edge inference cluster for 99.95% availability using k3s and vLLM - including cost-aware autoscaling and multi-tenant model routing.</p>
 <div class="email-form" style="margin-top:1rem;">
 <input autocomplete="off" placeholder="your@email.com" type="email"/>
 <button>Get the assets</button>
 </div>
 </article>
-<article class="card">
+<article class="card" data-card-href="/blog/gitops-beyond-hello-world.html">
 <h3 style="margin:0 0 .5rem;">GitOps beyond Hello World: Where Most Fail and How to Win</h3>
-<p style="font-size:.95rem;color:#6b7280;">From the trenches: production Go binaries corrupted by Helm upgrade, and how we engineered image validation gates and per-namespace CI-driven deployments that outlived the team that shipped them.</p>
+<p style="font-size:.95rem;color:#737373;">From the trenches: production Go binaries corrupted by Helm upgrade, and how we engineered image validation gates and per-namespace CI-driven deployments that outlived the team that shipped them.</p>
 <div class="email-form" style="margin-top:1rem;">
 <input autocomplete="off" placeholder="your@email.com" type="email"/>
 <button>Get the assets</button>
 </div>
 </article>
-<article class="card">
+<article class="card" data-card-href="/insights.html">
 <h3 style="margin:0 0 .5rem;">99.99% Ain't a Metric - It's a Culture</h3>
-<p style="font-size:.95rem;color:#6b7280;">Kubernetes shared tenancy at scale. When $216K/yr uptime for 1M+ monthly API requests is on the line, reliability becomes maintenance.</p>
+<p style="font-size:.95rem;color:#737373;">Kubernetes shared tenancy at scale. When $216K/yr uptime for 1M+ monthly API requests is on the line, reliability becomes maintenance.</p>
 <div class="email-form" style="margin-top:1rem;">
 <input autocomplete="off" placeholder="your@email.com" type="email"/>
 <button>Get the assets</button>
 </div>
 </article>
-<article class="card">
+<article class="card" data-card-href="/blog.html">
 <h3 style="margin:0 0 .5rem;"></h3>
-<p style="font-size:.95rem;color:#d1d5db;">New essays weekly. Stay tuned.</p>
+<p style="font-size:.95rem;color:#d4d4d4;">New essays weekly. Stay tuned.</p>
 </article>
 </div>
 </section>
 <div class="amber-accent"></div>
 <section id="about">
-<div class="card" style="max-width:1000px;margin:auto;">
+<div class="card" data-card-href="/about.html" style="max-width:1000px;margin:auto;">
 <h2>About Tayoca</h2>
 <div style="display:flex;flex-direction:column;margin-top:1rem;">
 <p><strong>Tayoca is an AI automation, FinOps, and platform-engineering practice founded by Temitayo Charles Akinniranye.</strong></p>
@@ -476,7 +483,7 @@ footer {
 <div class="amber-accent"></div>
 <section class="section-header" id="contact">
 <h2 style="font-size:clamp(2rem,5vw,2.8rem);">Turn a technical bottleneck into a <span style="color:#f97316;">measurable implementation plan.</span></h2>
-<p style="font-size:1.15rem;color:#d1d5db;margin-bottom:1.5rem;">Start with an architecture consultation, AI automation assessment, or cloud-cost review.</p>
+<p style="font-size:1.15rem;color:#d4d4d4;margin-bottom:1.5rem;">Start with an architecture consultation, AI automation assessment, or cloud-cost review.</p>
 <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem;">
 <a class="btn" data-revenue-event="whatsapp_contact_click" href="https://wa.me/2348113980135?text=Hi%20Tayoca%2C%20I%20want%20help%20solving%20a%20business%20or%20engineering%20problem." rel="noopener noreferrer" target="_blank">Chat with Tayoca AI on WhatsApp</a>
 <a class="btn" data-event="cta_click" href="https://cal.com/tayoca/finops-audit" rel="noopener noreferrer" target="_blank">Book a Consultation</a>
@@ -484,7 +491,7 @@ footer {
 </div>
 <form class="email-form" id="lead-intent-form" novalidate="" style="max-width:700px;margin:1.5rem auto 0;">
 <input aria-label="Email address" autocomplete="email" name="email" placeholder="your@email.com" required="" type="email"/>
-<select aria-label="Primary problem" name="problem" required="" style="flex:1;padding:.75rem;border:1px solid #d1d5db;border-radius:.375rem;">
+<select aria-label="Primary problem" name="problem" required="" style="flex:1;padding:.75rem;border:1px solid #d4d4d4;border-radius:.375rem;">
 <option value="">Choose your primary problem</option>
 <option value="cloud-cost">Cloud cost optimization</option>
 <option value="platform-reliability">Platform reliability and delivery</option>
@@ -492,34 +499,35 @@ footer {
 </select>
 <button data-event="lead_intent_submit" type="submit">Request the right starting point</button>
 </form>
-<p aria-live="polite" id="lead-form-status" role="status" style="margin-top:.75rem;font-size:.9rem;color:#9ca3af;"></p>
-<p style="margin-top:1.5rem;font-size:.9rem;color:#9ca3af;">Get practical AI, DevOps, automation, and cloud playbooks with implementation steps, architecture decisions, and reusable templates.</p>
+<p aria-live="polite" id="lead-form-status" role="status" style="margin-top:.75rem;font-size:.9rem;color:#a3a3a3;"></p>
+<p style="margin-top:1.5rem;font-size:.9rem;color:#a3a3a3;">Get practical AI, DevOps, automation, and cloud playbooks with implementation steps, architecture decisions, and reusable templates.</p>
 </section>
 </main>
 <footer>
 <div class="footer-brand">
 <div style="font-size:1.3rem;font-weight:600;margin-bottom:.5rem;">TAYOCA</div>
-<p style="color:#9ca3af;">AI Automation, FinOps, and Platform Engineering.<br/>Founded by Temitayo Charles Akinniranye.<br/>Ontario, Canada.<br/><span>© <span id="current-year">2026</span> Tayoca.</span></p>
+<p style="color:#a3a3a3;">AI Automation, FinOps, and Platform Engineering.<br/>Founded by Temitayo Charles Akinniranye.<br/>Ontario, Canada.<br/><span>© <span id="current-year">2026</span> Tayoca.</span></p>
 </div>
 <div class="footer-links">
 <strong style="display:block;margin-bottom:.5rem;">Company</strong>
 <div style="display:flex;flex-direction:column;gap:.25rem;">
-<a href="services.html" style="color:#e5e7eb;text-decoration:none">Services</a>
-<a href="products.html" style="color:#e5e7eb;text-decoration:none">Products</a>
-<a href="/blog/" style="color:#e5e7eb;text-decoration:none">Writing</a>
-<a href="about.html" style="color:#e5e7eb;text-decoration:none">About Us</a>
+<a href="services.html" style="color:#e5e5e5;text-decoration:none">Services</a>
+<a href="products.html" style="color:#e5e5e5;text-decoration:none">Products</a>
+<a href="/blog/" style="color:#e5e5e5;text-decoration:none">Writing</a>
+<a href="about.html" style="color:#e5e5e5;text-decoration:none">About Us</a>
 </div>
 </div>
 <div class="footer-certs">
 <strong style="display:block;margin-bottom:.5rem;">Attestations</strong>
-<span style="font-family:'JetBrains Mono',monospace;font-size:.8rem;background:#111827;padding:.25rem .5rem;border-radius:.25rem;margin:.125rem 0;display:block;">PMP</span>
-<span style="font-family:'JetBrains Mono',monospace;font-size:.8rem;background:#111827;padding:.25rem .5rem;border-radius:.25rem;margin:.125rem 0;display:block;">CSM</span>
-<span style="font-family:'JetBrains Mono',monospace;font-size:.8rem;background:#111827;padding:.25rem .5rem;border-radius:.25rem;margin:.125rem 0;display:block;">Terraform Associate</span>
-<span style="font-family:'JetBrains Mono',monospace;font-size:.8rem;background:#111827;padding:.25rem .5rem;border-radius:.25rem;margin:.125rem 0;display:block;">AWS Solutions Architect</span>
+<span style="font-family:'JetBrains Mono',monospace;font-size:.8rem;background:#262626;padding:.25rem .5rem;border-radius:.25rem;margin:.125rem 0;display:block;">PMP</span>
+<span style="font-family:'JetBrains Mono',monospace;font-size:.8rem;background:#262626;padding:.25rem .5rem;border-radius:.25rem;margin:.125rem 0;display:block;">CSM</span>
+<span style="font-family:'JetBrains Mono',monospace;font-size:.8rem;background:#262626;padding:.25rem .5rem;border-radius:.25rem;margin:.125rem 0;display:block;">Terraform Associate</span>
+<span style="font-family:'JetBrains Mono',monospace;font-size:.8rem;background:#262626;padding:.25rem .5rem;border-radius:.25rem;margin:.125rem 0;display:block;">AWS Solutions Architect</span>
 </div>
 </footer>
 <script>document.querySelectorAll("#current-year").forEach(function(el){el.textContent=new Date().getFullYear();});</script>
 <script defer="" src="/revenue-events.js"></script>
+<script defer src="/card-interactions.js"></script>
 </body>
 </link></link><script type="application/ld+json">
 {
