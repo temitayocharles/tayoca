@@ -13,7 +13,7 @@
   <meta name="author" content="Tayoca" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://tayoca.com/blog/how-we-saved-216k-on-aws-in-90-days.html" />
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="How We Saved $216K on AWS in 90 Days | Tayoca" />
@@ -250,11 +250,11 @@ blockquote {
     <a href="../index.html" class="nav-brand">tayoca</a>
     <div class="nav-links">
       <a href="../services.html">Services</a>
-      <a href="../products.html">Products</a>
+      <a href="/products.html">Products</a>
       <a href="/blog/" class="active">Writing</a>
       <a href="../about.html">About Us</a>
     </div>
-    <a href="https://cal.com/tayoca/finops-audit" class="btn" target="_blank" rel="noopener">Book FinOps Audit â</a>
+    <a href="https://cal.com/tayoca/finops-audit" class="btn" target="_blank" rel="noopener">Book FinOps Audit →</a>
   </nav>
 </header>
 
@@ -262,27 +262,27 @@ blockquote {
   <article>
     <h1>How We Saved $216K on AWS in 90 Days Without Sacrificing 99.99% Uptime</h1>
 
-    <p><strong>We cut our AWS bill 26% ($840K â $624K) in three months while keeping uptime above 99.99%. Hereâs how we did it â and how you can use the same playbook on your stack.</strong></p>
+    <p><strong>We cut our AWS bill 26% ($840K → $624K) in three months while keeping uptime above 99.99%. Here’s how we did it — and how you can use the same playbook on your stack.</strong></p>
 
     <p><em>FinOps discipline + ruthless automation + committing to production-grade operational excellence.</em></p>
 
-    <p>We are a Series B fintech with >$1M monthly API requests. Our platform runs on Kubernetes and handles real-time transactions. In late 2025, spiraling AWS costs threatened to erode our gross margin. After a 30-minute FinOps audit, we identified $314K annualized waste â $216K of it was actionable in 90 days. A 3% infrastructure bill cut delivered a 26% ARR bump. This post walks you through the discovery phase, the 4-vector cut suite, and the automation enforcement layer that cemented savings and freed engineering capacity.</p>
+    <p>We are a Series B fintech with >$1M monthly API requests. Our platform runs on Kubernetes and handles real-time transactions. In late 2025, spiraling AWS costs threatened to erode our gross margin. After a 30-minute FinOps audit, we identified $314K annualized waste — $216K of it was actionable in 90 days. A 3% infrastructure bill cut delivered a 26% ARR bump. This post walks you through the discovery phase, the 4-vector cut suite, and the automation enforcement layer that cemented savings and freed engineering capacity.</p>
 
 
     <h2>The 4-Vector Cut Suite That Drove $216K in Annual Savings</h2>
 
-    <p>We didnât cut corners â we cut waste. We chose a surgical team over a machete, targeting non-negotiables: availability, latency, and security posture remained untouched. The vectors:</p>
+    <p>We didn’t cut corners — we cut waste. We chose a surgical team over a machete, targeting non-negotiables: availability, latency, and security posture remained untouched. The vectors:</p>
 
     
     <ol>
       <li><strong>Reserved Instances & Savings Plans:</strong> moved 68% of predictable EC2/RI workloads to 1-year Compute Savings Plans. Yielded 17% savings at no operational cost.</li>
       <li><strong>Spot Abstraction & Intelligent Fallback:</strong> revamped Kubernetes Cluster Autoscaler + Karpenter profiles to aggressively request Spot, with iops-based fallback. Dropped CPU node spend 29%. Added reliability trickle: fallback latency <45s after Spot reclaim.</li>
-      <li><strong>EC2 Right-Sizing Automation:</strong> introduced CloudWatch Lambda-driven rightsizing using AWS Instance Utilization reports. Average memory-optimized m5/m6i.large â m6i.large reapplied monthly via a one-click runbook with rollback triggers if p95 latency grew >5ms.</li>
-      <li><strong>S3 & EBS Lifecycle Policy Hardening:</strong> enforced 15-day transition â IA on >30 days objects, and 1-day expire for build/test prefixes. Reduced S3 Standard bill by 35%. Added 30-day Glacier Deep Archive archive buffer for log retention to cut Glacier retrieval costs during audits.</li>
+      <li><strong>EC2 Right-Sizing Automation:</strong> introduced CloudWatch Lambda-driven rightsizing using AWS Instance Utilization reports. Average memory-optimized m5/m6i.large → m6i.large reapplied monthly via a one-click runbook with rollback triggers if p95 latency grew >5ms.</li>
+      <li><strong>S3 & EBS Lifecycle Policy Hardening:</strong> enforced 15-day transition → IA on >30 days objects, and 1-day expire for build/test prefixes. Reduced S3 Standard bill by 35%. Added 30-day Glacier Deep Archive archive buffer for log retention to cut Glacier retrieval costs during audits.</li>
     </ol>
 
     <h3>1) Compute Savings Plans: 17% Savings at Zero Touch</h3>
-    <p>Compute Savings Plans can reduce on-demand rates by up to 32% with the same flexibility as On-Demand. We committed to 1-year All Upfront ($72K PO) covering 68% of our committed steady-state baseline. Why All Upfront? 3-year NPV break-even vs 1-year All Upfront < 12 months, and we wanted zero surprise disruptions upstream. Savings materialized within 7 days of activation. No re-architecting â just invoice magic produced by AWS Cost Explorer.</p>
+    <p>Compute Savings Plans can reduce on-demand rates by up to 32% with the same flexibility as On-Demand. We committed to 1-year All Upfront ($72K PO) covering 68% of our committed steady-state baseline. Why All Upfront? 3-year NPV break-even vs 1-year All Upfront < 12 months, and we wanted zero surprise disruptions upstream. Savings materialized within 7 days of activation. No re-architecting — just invoice magic produced by AWS Cost Explorer.</p>
     <p>Reality check: initial Savings Plan did not cover non-production fleets. Export hourly instance usage CSV via CUR + Athena normalized by environment to identify readily convertible non-prod workloads. Exported two 1-year Savings Plans ($16K PO) over non-prod, yielding 11% additional savings without feature toggles.</p>
 
     <h3>2) Spot Abstraction + Intelligent Fallback: 29% CPU Node Cut</h3>
@@ -293,9 +293,9 @@ blockquote {
     <p>We run memory-optimized m5/m6i.large across dev/test. Our compute baseline is steady; no autoscaling.So memory metrics (CloudWatch <code>MemoryUtilization</code>, <code>mem_used_percent</code>) were showing 38% idle average on 16GB nodes. We slotted monthly right-sizing check using <code>aws ec2 describe-instance-status</code> across the fleet and issued ticketed recommendations via automated Slack digest. 92% met suggested resize targets within 30 days; 3 nodes moved to smaller m6i.medium saved $2,942/yr. We integrated a CI-driven IaC override with Atlantis + Plan-only mode: if resize breaches p95 latency SLO >5ms, IaC plan fails automatically and reverts change with a rollback runbook link.</p>
 
     <h3>4) S3 & EBS Lifecycle Policy Hardening: 35% Standard ð¡ IA Cut</h3>
-    <p>Our retention policy was simple: âkeep in Standard, delete nothing.â We analyzed access patterns via S3 Inventory (Storage Lens). 71% objects untouched >30 days. We enforced:</p>
+    <p>Our retention policy was simple: “keep in Standard, delete nothing.” We analyzed access patterns via S3 Inventory (Storage Lens). 71% objects untouched >30 days. We enforced:</p>
     <ul>
-      <li><strong>Transition rule:</strong> 30 â 90 days Standard â Infrequent Access (IA), for objects with last access date >30 days. Saved 35% on Standard storage.</li>
+      <li><strong>Transition rule:</strong> 30 → 90 days Standard → Infrequent Access (IA), for objects with last access date >30 days. Saved 35% on Standard storage.</li>
       <li><strong>Expiration rule:</strong> 30-day expire on <code>/build/</code>, <code>/tmp/</code> prefixes. Eliminated 11TB.</li>
       <li><strong>Glacier Deep Archive buffer:</strong> Log retention >1yr moved to Glacier Deep Archive + 90-day retrieval cost plan during audits; we shaved 18% off retrieval bursts by limiting concurrent restores via S3 Batch + Lambda.</li>
     </ul>
@@ -335,14 +335,14 @@ aws ce get-cost-and-usage \
     </ul>
 
     <blockquote>
-      âFinOps Savings â  Engineering Ledger Lines. Engineering discipline that secures revenue growth underlies every dollar saved.â â Tayoca infra leadership
+      “FinOps Savings ≠ Engineering Ledger Lines. Engineering discipline that secures revenue growth underlies every dollar saved.” — Tayoca infra leadership
     </blockquote>
 
     <h2>ROI & Next Steps</h2>
     
     <p><strong>Financial Impact:</strong></p>
     <ul>
-      <li>$840K â $624K annual AWS bill (-26%)</li>
+      <li>$840K → $624K annual AWS bill (-26%)</li>
       <li>$216K of cut represented pure waste reclaimed without touch to product performance.</li>
       <li>NPV of Savings Plans vs on-demand saved $43K in NPV terms across 3 years.</li>
     </ul>
@@ -351,16 +351,16 @@ aws ce get-cost-and-usage \
     <ul>
       <li>We freed ~5 eng-weeks per quarter that were previously spent on bill puzzles. Those hours now ship roadmap features.</li>
       <li>Automated cost stream cut tri-weekly manual digests to zero. We run monthly automated governance.</li>
-      <li>Spot + autoscaling resilience added horizontal scale headroom for expected growth â $3M ARR pipeline without incremental infra.</li>
+      <li>Spot + autoscaling resilience added horizontal scale headroom for expected growth — $3M ARR pipeline without incremental infra.</li>
     </ul>
 
     <p><strong>Reproducibility Kit:</strong> all IaC, CAR files, Grafana dashboards, alerts, and monthly runbooks are open-source assets you can copy-paste into your own FinOps automation jet. <a href="#repro" style="color:var(--accent);">Jump to reproducibility section</a>.</p>
 
-    <p>Weâll open-source an <strong>EKS Spot-NGINX load balancer with rolling-replace on Spot reclaim</strong> sample (Terraform + Helm + Karpenter) as a companion to this post. Stay tuned.</p>
+    <p>We’ll open-source an <strong>EKS Spot-NGINX load balancer with rolling-replace on Spot reclaim</strong> sample (Terraform + Helm + Karpenter) as a companion to this post. Stay tuned.</p>
 
     <h2>How to Apply This Playbook to Your Stack Today</h2>
     
-    <p>You donât need to match our spend scale to get value. Run the audit sequence below in 5 hours:</p>
+    <p>You don’t need to match our spend scale to get value. Run the audit sequence below in 5 hours:</p>
 
     <h3>Pre-Audit: Collect Baseline</h3>
     <ol>
@@ -371,7 +371,7 @@ aws ce get-cost-and-usage \
 
     <h3>Waste Lens: 90-Minute Drift</h3>
     <ol>
-      <li>Non-production âChristmas treeâ instances: filter no-tag/owner and ânameâ contains âdev|staging|testâ. 45% of fleet occupying m5.2xlarge where t3.small suffices. Est. $180 â $45 annual per instance. Found eight. $1,080/yr reclaimed.</li>
+      <li>Non-production “Christmas tree” instances: filter no-tag/owner and “name” contains “dev|staging|test”. 45% of fleet occupying m5.2xlarge where t3.small suffices. Est. $180 → $45 annual per instance. Found eight. $1,080/yr reclaimed.</li>
       <li>Orphaned EBS gp3 volumes: 500GB x 0.08/GB = $40/month detached from stopped instances. 42 volumes = $1,680/month savings = $20,160/yr.</li>
       <li>S3 Standard storage >90 days: inventory usage pattern. Shave 60% if IA transition done. Use <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-lens.html">S3 Storage Lens</a> as your single pane.</li>
     </ol>
@@ -385,7 +385,7 @@ aws ce get-cost-and-usage \
 
     <h3>Automation Sprint (Next 30 Days)</h3>
     <ol>
-      <li>Wrap rightsizing into a Serverless Lambda invoked bi-weekly by EventBridge. Plug CloudWatch alarm â Slack digest.</li>
+      <li>Wrap rightsizing into a Serverless Lambda invoked bi-weekly by EventBridge. Plug CloudWatch alarm → Slack digest.</li>
       <li>Enable <strong>Compute Optimizer</strong> in every region; feed recommendations to Karpenter profile.</li>
       <li>Adopt <strong>AWS Compute Optimizer savings recommendations</strong> as code; let your IaC gates auto-trigger savings if recommendation p95 Improvement >15%.</li>
     </ol>
@@ -399,15 +399,15 @@ aws ce get-cost-and-usage \
       <li><strong>FinOps Runbook</strong>: quarterly savings audit playbook with rollback checklist and exec slide template. Open-source MIT.</li>
       <li><strong>Savings Calculator Spreadsheet</strong>: pre-built CUR + savings projections by service; validates Savings Plan ROI pre-commitment. Google Sheets + Airtable version.</li>
     </ul>
-    <p>Subscribe below and weâll drop the assets + an invitation to a live FinOps office hours (every other Tuesday) into your inbox.</p>
+    <p>Subscribe below and we’ll drop the assets + an invitation to a live FinOps office hours (every other Tuesday) into your inbox.</p>
 
     <h2>Call to Action: Book a FinOps Audit Today</h2>
     
-    <p>Our 90-day $216K feat was built with FinOps integrity â nothing cut but waste. If youâre staring at an AWS bill thatâs creeping up without product gains, run a <strong>30-minute FinOps triage</strong> with us. Weâll leave you with a prioritized remediation plan and an exec slide deck summarizing potential savings. Hit âBook a Cloud Auditâ and weâll schedule a no-pressure discovery call next week. We donât do long sales cycles â just sharp engineering and hard savings.</p>
+    <p>Our 90-day $216K feat was built with FinOps integrity — nothing cut but waste. If you’re staring at an AWS bill that’s creeping up without product gains, run a <strong>30-minute FinOps triage</strong> with us. We’ll leave you with a prioritized remediation plan and an exec slide deck summarizing potential savings. Hit “Book a Cloud Audit” and we’ll schedule a no-pressure discovery call next week. We don’t do long sales cycles — just sharp engineering and hard savings.</p>
 
     <p>
       <a href="https://cal.com/tayoca/finops-audit" class="btn" target="_blank" rel="noopener" style="font-size:1.05rem;padding: .875rem 1.75rem;">
-        ð§ Book FinOps Audit â
+        ð§ Book FinOps Audit →
       </a>
     </p>
   </article>
@@ -421,7 +421,7 @@ aws ce get-cost-and-usage \
       <strong style="display:block;margin-bottom:.5rem;color:var(--text-base);">Company</strong>
       <div style="display:flex;flex-direction:column;gap:.25rem;">
         <a href="../services.html" style="color:#e5e7eb;text-decoration:none">Services</a>
-        <a href="../products.html" style="color:#e5e7eb;text-decoration:none">Products</a>
+        <a href="/products.html" style="color:#e5e7eb;text-decoration:none">Products</a>
         <a href="./index.html" style="color:#e5e7eb;text-decoration:none">Writing</a>
         <a href="../about.html" style="color:#e5e7eb;text-decoration:none">About Us</a>
       </div>

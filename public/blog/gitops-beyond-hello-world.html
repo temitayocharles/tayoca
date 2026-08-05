@@ -7,16 +7,16 @@
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GitOps Beyond Hello World â Practical Patterns Tayoca Runs in Production â Tayoca</title>
+  <title>GitOps Beyond Hello World – Practical Patterns Tayoca Runs in Production – Tayoca</title>
   <meta name="description" content="Practical GitOps patterns beyond the basics: surviving Helm upgrade corruption, image validation gates, per-namespace CI-driven deployments, and hardened Argo CD ApplicationSet configurations.">
   <meta name="keywords" content="GitOps production patterns, Argo CD, Argo CD ApplicationSet, Helm upgrade corruption, image validation gates, per-namespace deployment, CI-driven GitOps, Kubernetes delivery">
   <meta name="author" content="Tayoca">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://tayoca.com/blog/gitops-beyond-hello-world.html">
-  <link rel="icon" href="../favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="GitOps Beyond Hello World â Practical Patterns Tayoca Runs in Production">
+  <meta property="og:title" content="GitOps Beyond Hello World – Practical Patterns Tayoca Runs in Production">
   <meta property="og:description" content="Practical GitOps patterns beyond the basics: surviving Helm upgrade corruption, image validation gates, per-namespace CI-driven deployments, and hardened Argo CD ApplicationSet configurations.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://tayoca.com/blog/gitops-beyond-hello-world.html">
@@ -25,7 +25,7 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="GitOps Beyond Hello World â Practical Patterns Tayoca Runs in Production">
+  <meta name="twitter:title" content="GitOps Beyond Hello World – Practical Patterns Tayoca Runs in Production">
   <meta name="twitter:description" content="Practical GitOps patterns beyond the basics: surviving Helm upgrade corruption, image validation gates, per-namespace CI-driven deployments, and hardened Argo CD ApplicationSet configurations.">
   <meta name="twitter:image" content="https://tayoca.com/assets/og-image.png">
 
@@ -266,7 +266,7 @@
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "GitOps Beyond Hello World â Practical Patterns Tayoca Runs in Production â Tayoca",
+  "headline": "GitOps Beyond Hello World – Practical Patterns Tayoca Runs in Production – Tayoca",
   "description": "Practical GitOps patterns beyond the basics: surviving Helm upgrade corruption, image validation gates, per-namespace CI-driven deployments, and hardened Argo CD ApplicationSet configurations.",
   "url": "https://tayoca.com/blog/gitops-beyond-hello-world.html",
   "mainEntityOfPage": {
@@ -294,11 +294,11 @@
       <a href="../index.html" class="nav-brand">tayoca</a>
       <div class="nav-links">
         <a href="../services.html">Services</a>
-        <a href="../products.html">Products</a>
+        <a href="/products.html">Products</a>
         <a href="/blog/" class="active">Writing</a>
         <a href="../about.html">About</a>
       </div>
-      <a href="../services.html" class="btn">Book an Audit â</a>
+      <a href="../services.html" class="btn">Book an Audit →</a>
     </nav>
   </header>
 
@@ -307,13 +307,13 @@
       <div style="max-width:800px;margin:auto;text-align:left;">
         <div class="byline" style="justify-content:flex-start;">
           <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a4 4 0 0 0-4 4v2H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2h-2V6a4 4 0 0 0-4-4z"/><path d="M12 9v6M9 12h6"/></svg>
-          Platform Engineering Â· Kubernetes Â· 18 min read Â· July 23, 2026
+          Platform Engineering · Kubernetes · 18 min read · July 23, 2026
         </div>
         <h1 style="font-family:'Sora',sans-serif;font-size:clamp(2.3rem,7vw,3.6rem);line-height:1.08;font-weight:700;margin:1.2rem 0 1rem;">
           GitOps Beyond Hello World
         </h1>
         <p style="font-size:1.2rem;color:#d1d5db;margin-bottom:1.5rem;max-width:700px;">
-          The patterns we actually ship after the tutorial ends â surviving Helm upgrade corruption,
+          The patterns we actually ship after the tutorial ends — surviving Helm upgrade corruption,
           gating promotions on image provenance, and wiring CI-driven deployments per namespace with Argo CD.
         </p>
       </div>
@@ -325,45 +325,45 @@
       <div class="post-body">
         <p>
           Most GitOps tutorials stop at <code>argocd app create</code> against a single-app repo.
-          That demo runs clean because nothing is fighting you yet â no chart with 600 lines of values,
+          That demo runs clean because nothing is fighting you yet — no chart with 600 lines of values,
           no security team demanding signed images, no team shipping to <code>prod</code> while another
           ships hotfixes into <code>staging</code> at 2 AM. This post is the field manual for what comes next.
         </p>
         <p>
           We have hardened GitOps for fintech and SaaS platforms running dozens of services across multiple clusters.
-          The four patterns below are not theory â they are the configurations we keep rebuilding on every engagement.
+          The four patterns below are not theory — they are the configurations we keep rebuilding on every engagement.
           Skip to the one that hurts:
         </p>
 
         <div class="pattern-grid">
           <div class="pattern-card">
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2z"/><path d="M3 10h18M7 14h2"/></svg>
-            <strong>1 Â· Helm Upgrade Corruption</strong>
+            <strong>1 · Helm Upgrade Corruption</strong>
             <span>Atomic rollback, no map merging surprises, no secrets in <code>values.yaml</code>.</span>
           </div>
           <div class="pattern-card">
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.5 8 8 11 4.5-3 8-6 8-11V5z"/><path d="m9 12 2 2 4-4"/></svg>
-            <strong>2 Â· Image Validation Gates</strong>
+            <strong>2 · Image Validation Gates</strong>
             <span>Cosign + Kyverno admission control before Argo CD ever syncs.</span>
           </div>
           <div class="pattern-card">
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg>
-            <strong>3 Â· Per-Namespace CI Deploy</strong>
+            <strong>3 · Per-Namespace CI Deploy</strong>
             <span>One ApplicationSet row per namespace, promoted by Merge Queue.</span>
           </div>
           <div class="pattern-card">
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
-            <strong>4 Â· Argo CD Sync Hardening</strong>
+            <strong>4 · Argo CD Sync Hardening</strong>
             <span>Auto-sync with prune + self-heal + sync windows, but never together.</span>
           </div>
         </div>
 
         <blockquote>
           The fundamental error teams make is treating GitOps like CI/CD with a Git remote.
-          Git is not the pipeline â it is the declarative source of truth. The pipeline exists to <em>reach</em> Git correctly.
+          Git is not the pipeline — it is the declarative source of truth. The pipeline exists to <em>reach</em> Git correctly.
         </blockquote>
 
-        <h2 id="helm-corruption">1 Â· Surviving Helm Upgrade Corruption</h2>
+        <h2 id="helm-corruption">1 · Surviving Helm Upgrade Corruption</h2>
         <p>
           <code>helm upgrade --install</code> is the most dangerous command in most platform stacks.
           The corruption modes we see in incident reviews fall into three buckets:
@@ -377,7 +377,7 @@
           <code>resources.limits.memory: 512Mi</code> in their override, and Helm's recursive merge swallows
           <code>requests</code> entirely. The pod now runs with no CPU request.</li>
           <li><strong>Secrets in <code>values.yaml</code>.</strong> The chart wants <code>secrets.apiKey</code>, so the team
-          commits it encrypted with <code>helm secrets</code> â except half the team is on a stale <code>age</code> key
+          commits it encrypted with <code>helm secrets</code> — except half the team is on a stale <code>age</code> key
           and the decrypt step fails silently in CI.</li>
         </ul>
 
@@ -406,7 +406,7 @@
       <span class="c-keyword">passCredentials:</span> <span class="c-keyword">false</span>            <span class="c-comment"># no secrets via helm registry</span></pre></div>
 
         <p>
-          <strong>ServerSideApply=true</strong> turns Helm's three-way patch into Kubernetes SSA â ownership is tracked
+          <strong>ServerSideApply=true</strong> turns Helm's three-way patch into Kubernetes SSA — ownership is tracked
           per-field, so a manual <code>kubectl scale</code> during an incident is no longer silently undone on the next sync.
           Combined with <code>PrunePropagationPolicy=foreground</code>, deletion cascades on the first sync, not the second.
         </p>
@@ -415,7 +415,7 @@
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
           <p>
             We never commit <code>values.yaml</code> with real secrets, ever. External secrets come from ExternalSecrets
-            Operator referencing AWS Secrets Manager / Vault â the Helm chart references the ESO Secret by name and never
+            Operator referencing AWS Secrets Manager / Vault — the Helm chart references the ESO Secret by name and never
             sees the plaintext. This eliminates the <code>helm secrets</code> key-drift problem entirely.
           </p>
         </div>
@@ -439,11 +439,11 @@
           <code>resources.requests.cpu</code> vanishing here, in CI, before it lands in <code>staging</code>.
         </p>
 
-        <h2 id="image-gates">2 Â· Image Validation Gates Before Sync</h2>
+        <h2 id="image-gates">2 · Image Validation Gates Before Sync</h2>
         <p>
           A Git repo can be merged, but the image it references may not be admissible. The naive GitOps setup syncs
           <em>any</em> image tag the moment Git changes. That is how a developer's locally-pushed
-          <code>api:feature-branch-x</code> ends up in production â the tag was reachable from the chart, so Argo CD applied it.
+          <code>api:feature-branch-x</code> ends up in production — the tag was reachable from the chart, so Argo CD applied it.
         </p>
         <p>
           The fix is two checkpoints: <strong>provenance</strong> (was this image built by us, from this commit?) and
@@ -465,7 +465,7 @@
 <span class="c-keyword">cosign</span> attest --yes --predicate provenance.json \
   --type slsaprovenance <span class="c-string">"$REGISTRY/$REPO@$DIGEST"</span></pre></div>
         <p>
-          Keyless signing with OIDC is the right default â no long-lived <code>COSIGN_PRIVATE_KEY</code> sitting in a CI secret,
+          Keyless signing with OIDC is the right default — no long-lived <code>COSIGN_PRIVATE_KEY</code> sitting in a CI secret,
           no key rotation project. Each build signs with an ephemeral credentials identity tied to the pipeline run.
         </p>
 
@@ -496,7 +496,7 @@
       <span class="c-keyword">required:</span> <span class="c-keyword">true</span></pre></div>
         <p>
           Now a sync that references <code>api:latest</code>, or a digest with no signature, is rejected at the API server.
-          Argo CD's sync shows <code>Failed Â· admission denied</code> and the bad image never schedules. This is the gate
+          Argo CD's sync shows <code>Failed · admission denied</code> and the bad image never schedules. This is the gate
           that lets us run Argo CD with <code>auto-sync: true</code> in production without losing sleep.
         </p>
 
@@ -504,12 +504,12 @@
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.5 8 8 11 4.5-3 8-6 8-11V5z"/><path d="m9 12 2 2 4-4"/></svg>
           <p>
             Argo CD's own <code>resource.customizations</code> can also enforce image policy at sync time, but we prefer
-            the admission controller â it blocks unscheduled pods from any path, including manual <code>kubectl apply</code>
+            the admission controller — it blocks unscheduled pods from any path, including manual <code>kubectl apply</code>
             during incident response, not just Argo CD syncs.
           </p>
         </div>
 
-        <h2 id="per-namespace-ci">3 Â· Per-Namespace, CI-Driven Deployments</h2>
+        <h2 id="per-namespace-ci">3 · Per-Namespace, CI-Driven Deployments</h2>
         <p>
           The temptation as a platform grows is to give every team their own Application object and let them file JSON
           patches. This scales to ~12 services before the review burden collapses. We instead use a single
@@ -555,8 +555,8 @@
         We deliver production platforms anyone can ship on: Argo CD, Terraform, GitHub Actions, Kyverno, Prometheus/Grafana.
       </p>
       <div style="display:flex;gap:1rem;align-items:center;justify-content:center;margin-top:2rem;flex-wrap:wrap;">
-        <a href="https://cal.com/tayoca/platform-engineering-consultation" class="btn" target="_blank" rel="noopener">Book Consultation â</a>
-        <a href="https://gum.co/gitops-guide" class="btn" target="_blank" rel="noopener" style="background:#374151;">GitOps Field Guide â</a>
+        <a href="https://cal.com/tayoca/platform-engineering-consultation" class="btn" target="_blank" rel="noopener">Book Consultation →</a>
+        <a href="https://gum.co/gitops-guide" class="btn" target="_blank" rel="noopener" style="background:#374151;">GitOps Field Guide →</a>
       </div>
     </section>
 
@@ -572,7 +572,7 @@
       <strong style="display:block;margin-bottom:.5rem;">Company</strong>
       <div style="display:flex;flex-direction:column;gap:.25rem;">
         <a href="../services.html" style="color:#e5e7eb;text-decoration:none">Services</a>
-        <a href="../products.html" style="color:#e5e7eb;text-decoration:none">Products</a>
+        <a href="/products.html" style="color:#e5e7eb;text-decoration:none">Products</a>
         <a href="./index.html" style="color:#e5e7eb;text-decoration:none">Writing</a>
         <a href="../about.html" style="color:#e5e7eb;text-decoration:none">About Us</a>
       </div>

@@ -8,16 +8,16 @@
  <meta charset="UTF-8" />
  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
  <title>Kubernetes Production Readiness Checklist for 2026 | Tayoca</title>
- <meta name="description" content="A practical 2026 Kubernetes production readiness checklist to secure sign-off before your next security review, compliance audit, or SOC 2 Type II bump. No fluff, just boxes to â." />
+ <meta name="description" content="A practical 2026 Kubernetes production readiness checklist to secure sign-off before your next security review, compliance audit, or SOC 2 Type II bump. No fluff, just boxes to ✅." />
  <meta name="keywords" content="Kubernetes production readiness, Kubernetes checklist, SOC2 Type II, CIS Benchmark, CVE, Kyverno, Gatekeeper, Pod Security, Network Policies, mTLS" />
  <meta name="author" content="Tayoca" />
  <meta name="robots" content="index, follow" />
  <link rel="canonical" href="https://tayoca.com/blog/kubernetes-production-readiness-checklist-for-2026.html" />
- <link rel="icon" href="favicon.ico" type="image/x-icon" />
+ <link rel="icon" href="/favicon.ico" type="image/x-icon" />
 
  <!-- Open Graph -->
  <meta property="og:title" content="Kubernetes Production Readiness Checklist for 2026 | Tayoca" />
- <meta property="og:description" content="A practical 2026 Kubernetes production readiness checklist to secure sign-off before your next security review, compliance audit, or SOC 2 Type II bump. No fluff, just boxes to â." />
+ <meta property="og:description" content="A practical 2026 Kubernetes production readiness checklist to secure sign-off before your next security review, compliance audit, or SOC 2 Type II bump. No fluff, just boxes to ✅." />
  <meta property="og:type" content="article" />
  <meta property="og:url" content="https://tayoca.com/blog/kubernetes-production-readiness-checklist-for-2026.html" />
  <meta property="og:site_name" content="Tayoca" />
@@ -26,7 +26,7 @@
  <!-- Twitter Card -->
  <meta name="twitter:card" content="summary_large_image" />
  <meta name="twitter:title" content="Kubernetes Production Readiness Checklist for 2026 | Tayoca" />
- <meta name="twitter:description" content="A practical 2026 Kubernetes production readiness checklist to secure sign-off before your next security review, compliance audit, or SOC 2 Type II bump. No fluff, just boxes to â." />
+ <meta name="twitter:description" content="A practical 2026 Kubernetes production readiness checklist to secure sign-off before your next security review, compliance audit, or SOC 2 Type II bump. No fluff, just boxes to ✅." />
  <meta name="twitter:image" content="https://tayoca.com/assets/og-k8s-readiness.png" />
 
  <!-- InsForge Analytics -->
@@ -221,7 +221,7 @@ blockquote {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
   "headline": "Kubernetes Production Readiness Checklist for 2026 | Tayoca",
-  "description": "A practical 2026 Kubernetes production readiness checklist to secure sign-off before your next security review, compliance audit, or SOC 2 Type II bump. No fluff, just boxes to â.",
+  "description": "A practical 2026 Kubernetes production readiness checklist to secure sign-off before your next security review, compliance audit, or SOC 2 Type II bump. No fluff, just boxes to ✅.",
   "url": "https://tayoca.com/blog/kubernetes-production-readiness-checklist-for-2026.html",
   "mainEntityOfPage": {
     "@type": "WebPage",
@@ -250,119 +250,119 @@ blockquote {
  <a href="../index.html" class="nav-brand">tayoca</a>
  <div class="nav-links">
  <a href="../services.html">Services</a>
- <a href="../products.html">Products</a>
+ <a href="/products.html">Products</a>
  <a href="/blog/" class="active">Writing</a>
  <a href="../about.html">About Us</a>
  </div>
- <a href="https://cal.com/tayoca/platform-engineering-consultation" class="btn" target="_blank" rel="noopener">Book K8s Consultation â</a>
+ <a href="https://cal.com/tayoca/platform-engineering-consultation" class="btn" target="_blank" rel="noopener">Book K8s Consultation →</a>
  </nav>
 </header>
 
 <main>
  <article>
  <h1>Kubernetes Production Readiness Checklist for 2026</h1>
- <p><strong>No fluff. 58 targeted boxes to â before your next SOC 2, HIPAA, PCI, or ISO 27001 audit â or any security review.</strong></p>
+ <p><strong>No fluff. 58 targeted boxes to ✅ before your next SOC 2, HIPAA, PCI, or ISO 27001 audit — or any security review.</strong></p>
 
- <p><em>Compliance â  checkbox engineering. Every flag in this list hardens posture, shrinks attack surface, and keeps your SOC 2 Type II evidence binder full up to the point of sign-off.</em></p>
+ <p><em>Compliance ≠ checkbox engineering. Every flag in this list hardens posture, shrinks attack surface, and keeps your SOC 2 Type II evidence binder full up to the point of sign-off.</em></p>
 
- <p>Weâve audited 47 production EKS/GKE clusters in the last 24 months. Each cluster required a SOC 2-worthy evidence pack at sign-off. The ticking â boxes below evolved from checklists that shut the auditorâs laptop <strong>without a single follow-up question</strong>. Use this list verbatim in your next sprint or deck to eliminate weeks of rework and re-audit stress.</p>
+ <p>We’ve audited 47 production EKS/GKE clusters in the last 24 months. Each cluster required a SOC 2-worthy evidence pack at sign-off. The ticking ✅ boxes below evolved from checklists that shut the auditor’s laptop <strong>without a single follow-up question</strong>. Use this list verbatim in your next sprint or deck to eliminate weeks of rework and re-audit stress.</p>
 
 
  <h2>Section A: Cluster & API Governance (12 boxes)</h2>
 
  <h3>Baseline Hardening</h3>
  <ul>
- <li>â <strong>Kubernetes CIS Benchmark v1.8</strong> is formally <code>--audit-policy-file=/etc/kubernetes/audit-policy.yaml</code> and all <strong>Control IDs 1-41</strong> are âAutomated / Passâ in your SOC 2 evidence pack.</li>
- <li>â <strong>Pod Security Admission (PSA)</strong> is configured cluster-wide with enforce: <code>restricted</code> and warn: <code>restricted</code>; baseline violations are logged to <strong>Splunk / Datadog / SecOps</strong> SIEM.</li>
- <li>â <strong>Encryption of ETCD at-rest</strong> via cloud provider KMS (KMS-SSE or envelope with CMK). Evidence: encryptConfig raw output.</li>
- <li>â <strong>Node OS CVE scan via AWS Inspector / GKE Sandbox</strong> shows 0 critical, 0 high CVEs across the fleet weekly; evidence reports at <code>/evidence/cve-scan-weekly.pdf</code>.</li>
- <li>â <strong>kube-apiserver rate limits</strong> are configured per open-policy-agent.cncf.io reference <code>--max-requests-inflight=3000 --max-mutating-requests-inflight=1000</code>.</li>
+ <li>✅ <strong>Kubernetes CIS Benchmark v1.8</strong> is formally <code>--audit-policy-file=/etc/kubernetes/audit-policy.yaml</code> and all <strong>Control IDs 1-41</strong> are “Automated / Pass” in your SOC 2 evidence pack.</li>
+ <li>✅ <strong>Pod Security Admission (PSA)</strong> is configured cluster-wide with enforce: <code>restricted</code> and warn: <code>restricted</code>; baseline violations are logged to <strong>Splunk / Datadog / SecOps</strong> SIEM.</li>
+ <li>✅ <strong>Encryption of ETCD at-rest</strong> via cloud provider KMS (KMS-SSE or envelope with CMK). Evidence: encryptConfig raw output.</li>
+ <li>✅ <strong>Node OS CVE scan via AWS Inspector / GKE Sandbox</strong> shows 0 critical, 0 high CVEs across the fleet weekly; evidence reports at <code>/evidence/cve-scan-weekly.pdf</code>.</li>
+ <li>✅ <strong>kube-apiserver rate limits</strong> are configured per open-policy-agent.cncf.io reference <code>--max-requests-inflight=3000 --max-mutating-requests-inflight=1000</code>.</li>
  </ul>
 
  <h3>RBAC + Audit Rigor</h3>
  <ul>
- <li>â <strong>RoleBindings tied to OIDC groups</strong> only; no static ServiceAccount tokens in mTLS traffic for service-to-service. Evidence: <code>kubectl get rolebindings -A -o json | jq '.items[].subjects[].kind' | grep ServiceAccount</code> returns empty.</li>
- <li>â <strong>ServiceAccounts annotated with rotation dates</strong> and IaC enforces 90-day re-issue via cert-manager; evidence: <code>kubectl get sa --field-selector metadata.annotations.automated-rotation=2026-12-31 -A</code> matches target count.</li>
- <li>â <strong>Audit policy for immutable tag</strong> in <code>kube-apiserver</code>: <code>--audit-policy-file=/etc/kubernetes/audit-policy.yaml</code>; evidence: output artifact from <code>kubectl get --raw /logs</code> files secured in S3 Glacier Deep Archive with VPC endpoint.</li>
- <li>â <strong>impersonation preventions</strong> audit yields 0 ffective masquerades from <code>/healthz</code> Radius check failing 403 impersonate not allowed; evidence: policy <code>--allow-impersonation=false</code>.</li>
- <li>â <strong>Namespace tenancy isolation enforced</strong> via PSP or OPA/Gatekeeper; <code>kubernetes.io/metadata.name</code> prefixing enforced by admission controller. Evidence: <code>k get ns -o jsonpath='{.items[*].metadata.labels}' | grep restricted</code> returns none misplaced.</li>
+ <li>✅ <strong>RoleBindings tied to OIDC groups</strong> only; no static ServiceAccount tokens in mTLS traffic for service-to-service. Evidence: <code>kubectl get rolebindings -A -o json | jq '.items[].subjects[].kind' | grep ServiceAccount</code> returns empty.</li>
+ <li>✅ <strong>ServiceAccounts annotated with rotation dates</strong> and IaC enforces 90-day re-issue via cert-manager; evidence: <code>kubectl get sa --field-selector metadata.annotations.automated-rotation=2026-12-31 -A</code> matches target count.</li>
+ <li>✅ <strong>Audit policy for immutable tag</strong> in <code>kube-apiserver</code>: <code>--audit-policy-file=/etc/kubernetes/audit-policy.yaml</code>; evidence: output artifact from <code>kubectl get --raw /logs</code> files secured in S3 Glacier Deep Archive with VPC endpoint.</li>
+ <li>✅ <strong>impersonation preventions</strong> audit yields 0 ffective masquerades from <code>/healthz</code> Radius check failing 403 impersonate not allowed; evidence: policy <code>--allow-impersonation=false</code>.</li>
+ <li>✅ <strong>Namespace tenancy isolation enforced</strong> via PSP or OPA/Gatekeeper; <code>kubernetes.io/metadata.name</code> prefixing enforced by admission controller. Evidence: <code>k get ns -o jsonpath='{.items[*].metadata.labels}' | grep restricted</code> returns none misplaced.</li>
  </ul>
 
  <h2>Section B: Runtime Security (13 boxes)</h2>
 
  <h3>Runtime Policies Enforced</h3>
  <ul>
- <li>â <strong>Pod Security Standards ârestrictedâ enforced cluster-wide</strong>; violation events are streamed to SIEM. Evidence: admission webhook logs + argocd sync reports empty violations.</li>
- <li>â <strong>Read-only root filesystem</strong> is set mandatory in all <code>securityContext</code>; evidence: <code>kubectl get pods -A -o jsonpath='{.items[*].spec.containers[?(@.securityContext.readOnlyRootFilesystem==true)]}'</code> covers better than 95% of pods.</li>
- <li>â <strong>Non-root user enforced</strong> with fsGroup: 1000 across all workloads; evidence: <code>kubectl get pods -A -o jsonpath='{.items[*].spec.securityContext.runAsUser}'</code> returns non-zero &lt; 1000.</li>
- <li>â <strong>Seccomp profiles set to runtime/default</strong> cluster-wide; evidence: policy <code>seccomp.security.alpha.kubernetes.io/allowedProfileNames</code> output from <code>kubectl get cm -n kube-system kube-root-ca.crt</code>. No runtime/default violation events.</li>
- <li>â <strong>AllowPrivilegeEscalation=false</strong> enforced via Gatekeeper/PSS or Kyverno <code>policy.pod-security.kubernetes.io/audit-version=latest</code>. Evidence: <code>kubectl get k8spspallowprivilegeescalation -A -o json | jq '.items[].status' | grep false</code> non-empty on all namespaces.</li>
- <li>â <strong>Capabilities drop ALL</strong> set for all pods unless explicitly added back via documented policy; evidence: <code>kubectl get pods -A -o jsonpath='{.items[*].spec.containers[].securityContext.capabilities.drop[0]}'</code> returns ALL.</li>
+ <li>✅ <strong>Pod Security Standards “restricted” enforced cluster-wide</strong>; violation events are streamed to SIEM. Evidence: admission webhook logs + argocd sync reports empty violations.</li>
+ <li>✅ <strong>Read-only root filesystem</strong> is set mandatory in all <code>securityContext</code>; evidence: <code>kubectl get pods -A -o jsonpath='{.items[*].spec.containers[?(@.securityContext.readOnlyRootFilesystem==true)]}'</code> covers better than 95% of pods.</li>
+ <li>✅ <strong>Non-root user enforced</strong> with fsGroup: 1000 across all workloads; evidence: <code>kubectl get pods -A -o jsonpath='{.items[*].spec.securityContext.runAsUser}'</code> returns non-zero &lt; 1000.</li>
+ <li>✅ <strong>Seccomp profiles set to runtime/default</strong> cluster-wide; evidence: policy <code>seccomp.security.alpha.kubernetes.io/allowedProfileNames</code> output from <code>kubectl get cm -n kube-system kube-root-ca.crt</code>. No runtime/default violation events.</li>
+ <li>✅ <strong>AllowPrivilegeEscalation=false</strong> enforced via Gatekeeper/PSS or Kyverno <code>policy.pod-security.kubernetes.io/audit-version=latest</code>. Evidence: <code>kubectl get k8spspallowprivilegeescalation -A -o json | jq '.items[].status' | grep false</code> non-empty on all namespaces.</li>
+ <li>✅ <strong>Capabilities drop ALL</strong> set for all pods unless explicitly added back via documented policy; evidence: <code>kubectl get pods -A -o jsonpath='{.items[*].spec.containers[].securityContext.capabilities.drop[0]}'</code> returns ALL.</li>
  </ul>
 
  <h3>Secrets & Access</h3>
  <ul>
- <li>â <strong>External Secrets Operator + AWS Secrets Manager IRSA</strong> in use; no Secrets stored in Git. Evidence: <code>kubectl get secrets -A | grep Opaque &amp;&amp; wc -l = 0</code> confirming clean Git.</li>
- <li>â <strong>Network Policies deny-by-default</strong> applied to every namespace except kube-system; evidence: namespaces in <code>--field-selector metadata.annotations.netpol-deny-default=true</code>.</li>
- <li>â <strong>Pod Identity (IRSA) scoped</strong> via IAM condition <code>aws:userid</code> pattern scoped to EKS cluster OIDC provider; policy ARNs locked to read-only.</li>
- <li>â <strong>Certificate Rotation via cert-manager</strong> for all Ingress TLS; ACME orders are <code>&lt; 30 days</code>; evidence unpacked from <code>kubectl get certificaterequest -A</code> age filter.</li>
- <li>â <strong>Admission Control Deny List</strong> enforces reject of any admission not signed by cosign; evidence: Kyverno/Cosign attestations passed gates applied cluster-wide.</li>
- <li>â <strong>mTLS via Linkerd or Istio</strong> with STRICT mTLS; 100% mTLS coverage for all pods; evidence: <code>linkerd viz tap</code> or Istio telemetry.</li>
- <li>â <strong>Workload Identity Federation</strong> in use where available (GCP/GKE) enforcing federation tokens and short-lived credentials; evidence in Audit logs.</li>
+ <li>✅ <strong>External Secrets Operator + AWS Secrets Manager IRSA</strong> in use; no Secrets stored in Git. Evidence: <code>kubectl get secrets -A | grep Opaque &amp;&amp; wc -l = 0</code> confirming clean Git.</li>
+ <li>✅ <strong>Network Policies deny-by-default</strong> applied to every namespace except kube-system; evidence: namespaces in <code>--field-selector metadata.annotations.netpol-deny-default=true</code>.</li>
+ <li>✅ <strong>Pod Identity (IRSA) scoped</strong> via IAM condition <code>aws:userid</code> pattern scoped to EKS cluster OIDC provider; policy ARNs locked to read-only.</li>
+ <li>✅ <strong>Certificate Rotation via cert-manager</strong> for all Ingress TLS; ACME orders are <code>&lt; 30 days</code>; evidence unpacked from <code>kubectl get certificaterequest -A</code> age filter.</li>
+ <li>✅ <strong>Admission Control Deny List</strong> enforces reject of any admission not signed by cosign; evidence: Kyverno/Cosign attestations passed gates applied cluster-wide.</li>
+ <li>✅ <strong>mTLS via Linkerd or Istio</strong> with STRICT mTLS; 100% mTLS coverage for all pods; evidence: <code>linkerd viz tap</code> or Istio telemetry.</li>
+ <li>✅ <strong>Workload Identity Federation</strong> in use where available (GCP/GKE) enforcing federation tokens and short-lived credentials; evidence in Audit logs.</li>
  </ul>
 
 
  <h2>Section C: Observability & Compliance Evidence (9 boxes)</h2>
 
  <ul>
- <li>â <strong>SLO Evidence Bundle Git repo</strong> contains up-to-date SLI dashboards in Grafana/Tempo; each SLO-udget added to SOC2 binder. Evidence: <code>monitoring-mixin</code> YAML snapshots generated weekly.</li>
- <li>â <strong>Automated compliance evidence generator</strong> dumps audit, network, runtime policy enforcement, and secret management into SOC2 Type II binder target folder with PDF index. Evidence: cronjob <code>compliance-evidence-dump</code> completed within last 7 days; output review timestamped.</li>
- <li>â <strong>Chaos & Resilience testing evidence</strong> from Litmus or Gremlin; SLOs at 99.9% across blast radius 5%+ killed pods. Evidence: json artifact completed Chaos report.</li>
- <li>â <strong>Canary / progressive delivery metrics</strong> via Flagger or Argo Rollouts exposed via Datadog with alerting; 100% pass flag for new releases. Evidence: feature flag rollout report green.</li>
- <li>â <strong>Cost SLO dashboards</strong> reconcile against CUR + CUR drill-down reports for AWS/GCP expenditures weekly; evidence snapshot against SLO budget p95.</li>
- <li>â <strong>Runtime CVEs captured weekly</strong> by trivy + Grype scanners across base images; 0 critical after weekly build. Evidence: trivy quay.io scan output.</li>
- <li>â <strong>Binary Authorization signed container artifact policy</strong> via Cosign + SBOM; evidence stored in <code>oci://us-central1-docker.pkg.dev/PROJECT_ID/repo/IMAGE@sha256:HEX</code>. Evidence: annotation <code>cosign/signature</code> present in metadata.</li>
- <li>â <strong>Anti-virus scan via AWS ECR Enhanced Scanning</strong> returns âCleanâ on every pushed image. Evidence: scan report xlsx attached to soc2-artifact.</li>
- <li>â <strong>SOC2 Type II PBCL / Control Mappings</strong> updated and spreadsheet validated against Control list v1.8; artifact pushes to evidence repo on each merge to main.</li>
+ <li>✅ <strong>SLO Evidence Bundle Git repo</strong> contains up-to-date SLI dashboards in Grafana/Tempo; each SLO-udget added to SOC2 binder. Evidence: <code>monitoring-mixin</code> YAML snapshots generated weekly.</li>
+ <li>✅ <strong>Automated compliance evidence generator</strong> dumps audit, network, runtime policy enforcement, and secret management into SOC2 Type II binder target folder with PDF index. Evidence: cronjob <code>compliance-evidence-dump</code> completed within last 7 days; output review timestamped.</li>
+ <li>✅ <strong>Chaos & Resilience testing evidence</strong> from Litmus or Gremlin; SLOs at 99.9% across blast radius 5%+ killed pods. Evidence: json artifact completed Chaos report.</li>
+ <li>✅ <strong>Canary / progressive delivery metrics</strong> via Flagger or Argo Rollouts exposed via Datadog with alerting; 100% pass flag for new releases. Evidence: feature flag rollout report green.</li>
+ <li>✅ <strong>Cost SLO dashboards</strong> reconcile against CUR + CUR drill-down reports for AWS/GCP expenditures weekly; evidence snapshot against SLO budget p95.</li>
+ <li>✅ <strong>Runtime CVEs captured weekly</strong> by trivy + Grype scanners across base images; 0 critical after weekly build. Evidence: trivy quay.io scan output.</li>
+ <li>✅ <strong>Binary Authorization signed container artifact policy</strong> via Cosign + SBOM; evidence stored in <code>oci://us-central1-docker.pkg.dev/PROJECT_ID/repo/IMAGE@sha256:HEX</code>. Evidence: annotation <code>cosign/signature</code> present in metadata.</li>
+ <li>✅ <strong>Anti-virus scan via AWS ECR Enhanced Scanning</strong> returns “Clean” on every pushed image. Evidence: scan report xlsx attached to soc2-artifact.</li>
+ <li>✅ <strong>SOC2 Type II PBCL / Control Mappings</strong> updated and spreadsheet validated against Control list v1.8; artifact pushes to evidence repo on each merge to main.</li>
  </ul>
 
  <h2>Section D: Site Reliability & Chaos Engineering (8 boxes)</h2>
  <ul>
- <li>â <strong>Scheduled Chaos Mesh or Gremlin experiments</strong> executed monthly; failure blast radius capped at 5% + target mitigation SLI alerts fired. Evidence: chaos report date & time.</li>
- <li>â <strong>Capacity forecasting aligned with SLO burn alerts</strong>; headroom via HPA + VPA is 30% above p95 7-day rollout. Evidence: VPA/Cluster Autoscaler headroom report.</li>
- <li>â <strong>on-call & PagerDuty escalation runbook</strong> contain page remedies for each SLO burn; evidence: runbook review sign-off within 30 days.</li>
- <li>â <strong>SLO Burn triggers & Playbooks tied to budget burn-rates</strong> p95 weekly mean time to recovery < 10m; evidence runtime alerts.</li>
- <li>â <strong>Ingress rate limits (Nginx/Envoy/ALB)</strong> enforced per-service QPS throttle; daily attack camp evidence tracked.</li>
- <li>â <strong>StorageClass IOPS/Throughput</strong> aligned with SLO of 99.99% latency < 20ms; evidence: <code>kubectl get pvc -A</code> annotations.</li>
- <li>â <strong>Registry rate limits hit</strong> prevent casual abuse; containerd rate limit hit warnings 0 count weekly. Evidence: <code>aws ecr describe-image-scan-findings</code> fetch week filter.</li>
- <li>â <strong>Autoscaler headroom dashboards</strong> rendered in Grafana; evidence report weekly automation sanity.</li>
+ <li>✅ <strong>Scheduled Chaos Mesh or Gremlin experiments</strong> executed monthly; failure blast radius capped at 5% + target mitigation SLI alerts fired. Evidence: chaos report date & time.</li>
+ <li>✅ <strong>Capacity forecasting aligned with SLO burn alerts</strong>; headroom via HPA + VPA is 30% above p95 7-day rollout. Evidence: VPA/Cluster Autoscaler headroom report.</li>
+ <li>✅ <strong>on-call & PagerDuty escalation runbook</strong> contain page remedies for each SLO burn; evidence: runbook review sign-off within 30 days.</li>
+ <li>✅ <strong>SLO Burn triggers & Playbooks tied to budget burn-rates</strong> p95 weekly mean time to recovery < 10m; evidence runtime alerts.</li>
+ <li>✅ <strong>Ingress rate limits (Nginx/Envoy/ALB)</strong> enforced per-service QPS throttle; daily attack camp evidence tracked.</li>
+ <li>✅ <strong>StorageClass IOPS/Throughput</strong> aligned with SLO of 99.99% latency < 20ms; evidence: <code>kubectl get pvc -A</code> annotations.</li>
+ <li>✅ <strong>Registry rate limits hit</strong> prevent casual abuse; containerd rate limit hit warnings 0 count weekly. Evidence: <code>aws ecr describe-image-scan-findings</code> fetch week filter.</li>
+ <li>✅ <strong>Autoscaler headroom dashboards</strong> rendered in Grafana; evidence report weekly automation sanity.</li>
  </ul>
 
  <h2>Section E: Supply Chain & Frameworks (9 boxes)</h2>
  <ul>
- <li>â <strong>Sigstore + Cosign for all deploying images</strong>; policy <code>cosign verify --key k8s://cosign-pub</code> passes in CI gate. Evidence: <code>cosign triangulate</code> executed CI bar.</li>
- <li>â <strong>SBOM generation for each image build</strong> output as SPDX JSON; scanned by <code>grype</code> in CI. Evidence: <code>syft packages</code> captured in GCS bucket with timestamp filename.</li>
- <li>â <strong>GitHub OIDC federation</strong> used for IaC cloud deploy via Terraform Cloud runners; evidence: oidc token embedded.</li>
- <li>â <strong>Software Supply Chain Levels for SBOM (SLSA) policy</strong> enforced with level 3 or above per act SLSA scorecard. Evidence: SLSA badge level 3+ displayed repo readme.</li>
- <li>â <strong>Attestation for every git push to main</strong> via optional <code>cosign sign-blob</code> attached SHA; evidence: git merge linear id.</li>
- <li>â <strong>eBPF-based runtime monitor</strong> (Falco or Sysdig Secure) deployed; deny rules triggered per policy mapped to SOC2 alert ticket. Evidence: falco event snapshot file review.</li>
- <li>â <strong>CVE Management policy</strong> includes auto-snooze on CVE age > 30 days unless mitigated; mitigation evidence recorded as Jira ticket with remediation link. Evidence: CVE age report Falco or Sysdig export.</li>
- <li>â <strong>Sign-off gates tied to SOC2 Type II ticket</strong> in Jira; gates merged only after Evidence repo PR and sign-off checklist â. Evidence: merge oshi vectors.</li>
- <li>â <strong>Audit log retention policy</strong> aligned with SOC2 evidence 7 yr retention; S3 bucket lifecycle confirms archival every 30 days post-evidence archive. Evidence: AWS S3 lifecycle JSON.</li>
+ <li>✅ <strong>Sigstore + Cosign for all deploying images</strong>; policy <code>cosign verify --key k8s://cosign-pub</code> passes in CI gate. Evidence: <code>cosign triangulate</code> executed CI bar.</li>
+ <li>✅ <strong>SBOM generation for each image build</strong> output as SPDX JSON; scanned by <code>grype</code> in CI. Evidence: <code>syft packages</code> captured in GCS bucket with timestamp filename.</li>
+ <li>✅ <strong>GitHub OIDC federation</strong> used for IaC cloud deploy via Terraform Cloud runners; evidence: oidc token embedded.</li>
+ <li>✅ <strong>Software Supply Chain Levels for SBOM (SLSA) policy</strong> enforced with level 3 or above per act SLSA scorecard. Evidence: SLSA badge level 3+ displayed repo readme.</li>
+ <li>✅ <strong>Attestation for every git push to main</strong> via optional <code>cosign sign-blob</code> attached SHA; evidence: git merge linear id.</li>
+ <li>✅ <strong>eBPF-based runtime monitor</strong> (Falco or Sysdig Secure) deployed; deny rules triggered per policy mapped to SOC2 alert ticket. Evidence: falco event snapshot file review.</li>
+ <li>✅ <strong>CVE Management policy</strong> includes auto-snooze on CVE age > 30 days unless mitigated; mitigation evidence recorded as Jira ticket with remediation link. Evidence: CVE age report Falco or Sysdig export.</li>
+ <li>✅ <strong>Sign-off gates tied to SOC2 Type II ticket</strong> in Jira; gates merged only after Evidence repo PR and sign-off checklist ✅. Evidence: merge oshi vectors.</li>
+ <li>✅ <strong>Audit log retention policy</strong> aligned with SOC2 evidence 7 yr retention; S3 bucket lifecycle confirms archival every 30 days post-evidence archive. Evidence: AWS S3 lifecycle JSON.</li>
  </ul>
 
  <h2>Section F: Automate Validation & Governance (7 boxes)</h2>
  <ul>
- <li>â <strong>Gatekeeper or Kyverno admission policy manifests</strong> replicated into Tenant-onboarding repo; policy Git diff receives sign-off by SecOps on every change. Evidence: kyverno-policies repo commit & approval.</li>
- <li>â <strong>DevSecOps CI pipeline gates</strong> enforce all SLSA + CVE scans must pass prior to artifact promotion; policy YAML stored in IaC. Evidence: CI gate failure when CVE counts > 0.</li>
- <li>â <strong>Trivy SBOM scanner</strong> integrated into upstream image builds; fails PR gate on any CVE critical > 0. Evidence: failed trivy scan PR diff.</li>
- <li>â <strong>Compliance Evidence Generator (CEG)</strong> cronjob dumps fresh evidence markdown + PDF into SOC2 binder every week. Evidence: cronjob status <code>lastScheduleTime within last 7 days</code>.</li>
- <li>â <strong>Chaos reports</strong> are streamed to every sprint planning; failure blast radius metrics are SLO burn record. Evidence: sprint retro ticket with chaos time + SLO burn text.</li>
- <li>â <strong>Ad-hoc audit readiness responder</strong> playbook lives in <code>./evidence/</code> root; timestamped PR reviews ready triggered by any auditor query. Evidence: <code>audit-readiness.md</code> in evidence repo.</li>
- <li>â <strong>On-call rotation sign-off</strong> completed monthly; assignment spreadsheet + rotation calendar reviewed by compliance within 30 days of month-end. Evidence: calendar export PDF attached.</li>
+ <li>✅ <strong>Gatekeeper or Kyverno admission policy manifests</strong> replicated into Tenant-onboarding repo; policy Git diff receives sign-off by SecOps on every change. Evidence: kyverno-policies repo commit & approval.</li>
+ <li>✅ <strong>DevSecOps CI pipeline gates</strong> enforce all SLSA + CVE scans must pass prior to artifact promotion; policy YAML stored in IaC. Evidence: CI gate failure when CVE counts > 0.</li>
+ <li>✅ <strong>Trivy SBOM scanner</strong> integrated into upstream image builds; fails PR gate on any CVE critical > 0. Evidence: failed trivy scan PR diff.</li>
+ <li>✅ <strong>Compliance Evidence Generator (CEG)</strong> cronjob dumps fresh evidence markdown + PDF into SOC2 binder every week. Evidence: cronjob status <code>lastScheduleTime within last 7 days</code>.</li>
+ <li>✅ <strong>Chaos reports</strong> are streamed to every sprint planning; failure blast radius metrics are SLO burn record. Evidence: sprint retro ticket with chaos time + SLO burn text.</li>
+ <li>✅ <strong>Ad-hoc audit readiness responder</strong> playbook lives in <code>./evidence/</code> root; timestamped PR reviews ready triggered by any auditor query. Evidence: <code>audit-readiness.md</code> in evidence repo.</li>
+ <li>✅ <strong>On-call rotation sign-off</strong> completed monthly; assignment spreadsheet + rotation calendar reviewed by compliance within 30 days of month-end. Evidence: calendar export PDF attached.</li>
  </ul>
 
- <h2>Quick Start If Youâre Behind</h2>
+ <h2>Quick Start If You’re Behind</h2>
  <p>Still short on boxes? Use a parachute checklist:</p>
  <ul>
  <li><strong>SOC 2 type II immediate gap</strong>: lock down <strong>Pod Security Admission restricted</strong>, <strong>mTLS STRICT</strong>, <strong>Network Policies deny-by-default</strong>. These three flags alone reduce 80% of typical audit findings in a single PR.</li>
@@ -371,11 +371,11 @@ blockquote {
  </ul>
 
  <h2>Call to Action: Run Your Audit Dry Run Today</h2>
- <p>Production readiness saves sign-off cycles, reduces re-audit pain, and keeps attackers out. If your SOC 2 evidence pack feels âthinâ or your security review comes with a punch-list, book a free readiness pre-flight with us. Weâll run a 90-minute security gap analysis, give you a remediation roadmap, and leave you with the 58-box evidence template pre-filled for your auditor. Hit âBook a Cloud Auditâ and weâll schedule a no-pressure discovery call next week â sharp engineering, no sales.</p>
+ <p>Production readiness saves sign-off cycles, reduces re-audit pain, and keeps attackers out. If your SOC 2 evidence pack feels “thin” or your security review comes with a punch-list, book a free readiness pre-flight with us. We’ll run a 90-minute security gap analysis, give you a remediation roadmap, and leave you with the 58-box evidence template pre-filled for your auditor. Hit “Book a Cloud Audit” and we’ll schedule a no-pressure discovery call next week — sharp engineering, no sales.</p>
 
  <p>
   <a href="https://cal.com/tayoca/platform-engineering-consultation" class="btn" target="_blank" rel="noopener" style="font-size:1.05rem;padding: .875rem 1.75rem;">
-  ð§ Get Audit-Ready in 7 Days â
+  ð§ Get Audit-Ready in 7 Days →
   </a>
  </p>
  </article>
@@ -389,7 +389,7 @@ blockquote {
  <strong style="display:block;margin-bottom:.5rem;color:var(--text-base);">Company</strong>
  <div style="display:flex;flex-direction:column;gap:.25rem;">
  <a href="../services.html" style="color:#e5e7eb;text-decoration:none">Services</a>
- <a href="../products.html" style="color:#e5e7eb;text-decoration:none">Products</a>
+ <a href="/products.html" style="color:#e5e7eb;text-decoration:none">Products</a>
  <a href="./index.html" style="color:#e5e7eb;text-decoration:none">Writing</a>
  <a href="../about.html" style="color:#e5e7eb;text-decoration:none">About Us</a>
  </div>

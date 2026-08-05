@@ -1,1 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>https://tayoca.com/</loc></url><url><loc>https://tayoca.com/services.html</loc></url><url><loc>https://tayoca.com/assessments.html</loc></url><url><loc>https://tayoca.com/results.html</loc></url><url><loc>https://tayoca.com/products.html</loc></url><url><loc>https://tayoca.com/insights.html</loc></url><url><loc>https://tayoca.com/about.html</loc></url><url><loc>https://tayoca.com/trust.html</loc></url><url><loc>https://tayoca.com/operator-brief.html</loc></url></urlset>
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://tayoca.com/</loc></url>
+  <url><loc>https://tayoca.com/services.html</loc></url>
+  <url><loc>https://tayoca.com/assessments.html</loc></url>
+  <url><loc>https://tayoca.com/results.html</loc></url>
+  <url><loc>https://tayoca.com/products.html</loc></url>
+  <url><loc>https://tayoca.com/insights.html</loc></url>
+  <url><loc>https://tayoca.com/about.html</loc></url>
+  <url><loc>https://tayoca.com/trust.html</loc></url>
+  <url><loc>https://tayoca.com/operator-brief.html</loc></url>
+  <url><loc>https://tayoca.com/reviews.html</loc></url>
+  <url><loc>https://tayoca.com/blog/</loc></url>
+  <url><loc>https://tayoca.com/products/kubernetes-operators-workbook.html</loc></url>
+</urlset>

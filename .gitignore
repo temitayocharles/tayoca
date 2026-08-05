@@ -32,3 +32,8 @@ node_modules/
 dist
 .DS_Store
 .vercel
+
+# Local provider state and generated release archives
+.wrangler/
+.pages-cache/
+public.tar.gz
