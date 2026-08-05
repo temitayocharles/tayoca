@@ -1,41 +1,36 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <!-- Google Analytics 4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-G4QC90QNXW"></script>
-  <script src="/ga4.js"></script>
-
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>Products – Tayoca</title>
- <meta name="description" content="Eight practical AI automation, FinOps, Kubernetes, GitOps, and DevOps products published by Tayoca and available securely through Gumroad.">
- <meta name="keywords" content="FinOps playbook, incident runbook, GitOps guide, Kubernetes checklist, AWS cost optimization, engineering guides, Tayoca products">
- <meta name="author" content="Tayoca">
- <meta name="robots" content="index, follow">
- <link rel="canonical" href="https://tayoca.com/products.html">
- <link rel="icon" href="favicon.ico" type="image/x-icon">
-
- <!-- Open Graph -->
- <meta property="og:title" content="Products – Tayoca">
- <meta property="og:description" content="Practical engineering workbooks and playbooks for Kubernetes, FinOps, GitOps, DevOps, and AI automation">
- <meta property="og:type" content="website">
- <meta property="og:url" content="https://tayoca.com/products.html">
- <meta property="og:site_name" content="Tayoca">
- <meta property="og:image" content="https://tayoca.com/assets/og-image.png">
-
- <!-- Twitter Card -->
- <meta name="twitter:card" content="summary_large_image">
- <meta name="twitter:title" content="Products – Tayoca">
- <meta name="twitter:description" content="Practical engineering workbooks and playbooks for Kubernetes, FinOps, GitOps, DevOps, and AI automation">
- <meta name="twitter:image" content="https://tayoca.com/assets/og-image.png">
-
- <!-- Vermason analytics -->
- <script defer src="https://vermason.com/analytics/id.js"></script>
-
- <!-- InsForge analytics -->
- <script>(function(){var e='https://v7mhrspk.function2.insforge.app/analytics-event',d='tayoca.com';function s(n,p){var r={domain:d,name:n,url:location.href,path:location.pathname,referrer:document.referrer||null,screen_width:screen.width,screen_height:screen.height,props:p||{}};navigator.sendBeacon&&navigator.sendBeacon(e,JSON.stringify(r))||fetch(e,{method:'POST',body:JSON.stringify(r),keepalive:!0})}document.readyState==='loading'?document.addEventListener('DOMContentLoaded',function(){s('pageview')}):s('pageview');window.tayocaAnalytics={sendEvent:s}})()</script>
-
- <style>
+<!-- Google Analytics 4 -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-G4QC90QNXW"></script>
+<script src="/ga4.js"></script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Products – Tayoca</title>
+<meta content="Eight practical AI automation, FinOps, Kubernetes, GitOps, and DevOps products published by Tayoca and available securely through Gumroad." name="description"/>
+<meta content="FinOps playbook, incident runbook, GitOps guide, Kubernetes checklist, AWS cost optimization, engineering guides, Tayoca products" name="keywords"/>
+<meta content="Tayoca" name="author"/>
+<meta content="index, follow" name="robots"/>
+<link href="https://tayoca.com/products.html" rel="canonical"/>
+<link href="favicon.ico" rel="icon" type="image/x-icon"/>
+<!-- Open Graph -->
+<meta content="Products – Tayoca" property="og:title"/>
+<meta content="Practical engineering workbooks and playbooks for Kubernetes, FinOps, GitOps, DevOps, and AI automation" property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="https://tayoca.com/products.html" property="og:url"/>
+<meta content="Tayoca" property="og:site_name"/>
+<meta content="https://tayoca.com/assets/og-image.png" property="og:image"/>
+<!-- Twitter Card -->
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Products – Tayoca" name="twitter:title"/>
+<meta content="Practical engineering workbooks and playbooks for Kubernetes, FinOps, GitOps, DevOps, and AI automation" name="twitter:description"/>
+<meta content="https://tayoca.com/assets/og-image.png" name="twitter:image"/>
+<!-- Vermason analytics -->
+<script defer="" src="https://vermason.com/analytics/id.js"></script>
+<!-- InsForge analytics -->
+<script>(function(){var e='https://v7mhrspk.function2.insforge.app/analytics-event',d='tayoca.com';function s(n,p){var r={domain:d,name:n,url:location.href,path:location.pathname,referrer:document.referrer||null,screen_width:screen.width,screen_height:screen.height,props:p||{}};navigator.sendBeacon&&navigator.sendBeacon(e,JSON.stringify(r))||fetch(e,{method:'POST',body:JSON.stringify(r),keepalive:!0})}document.readyState==='loading'?document.addEventListener('DOMContentLoaded',function(){s('pageview')}):s('pageview');window.tayocaAnalytics={sendEvent:s}})()</script>
+<style>
 :root {
  --bg-dark: #0d0d0d;
  --bg-card: #1a1a1a;
@@ -57,19 +52,18 @@ nav{max-width:1200px;margin:auto;display:flex;justify-content:space-between;alig
 .nav-links a:hover{color:var(--accent);}
 .main-wrap{max-width:1200px;margin:auto;padding:0 2rem;}
 h1{text-align:center;margin:3rem 0 2rem;color:var(--accent);}
-.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:2rem;margin-bottom:4rem;}
-.product-card{background:var(--bg-card);border:1px solid #333333;border-radius:.5rem;padding:1.5rem;text-align:center;transition:transform .2s,box-shadow .2s;}
+.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:2rem;margin-bottom:4rem;align-items:stretch;}
+.product-card{background:var(--bg-card);border:1px solid #333333;border-radius:.5rem;padding:1.5rem;text-align:center;transition:transform .2s,box-shadow .2s;display:flex;flex-direction:column;height:100%;}
 .product-card:hover{transform:translateY(-4px);box-shadow:0 4px 12px rgba(0,0,0,.3);}
 .product-card h2{margin-top:0;margin-bottom:1rem;color:var(--accent);font-size:1.3rem;}
 .product-card p{margin-bottom:1.5rem;color:var(--text-light);}
 .product-card .price{font-size:1.5rem;font-weight:bold;margin-bottom:1.5rem;color:var(--accent);}
-.cta-button{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;padding:.75rem 1.5rem;border-radius:.25rem;font-weight:bold;transition:background .2s;cursor:pointer;border:none;line-height:1.3;}
-.cta-button:hover{background:#ea580c;}
+.cta-button{display:inline-flex;align-items:center;justify-content:center;align-self:center;margin-top:auto;background:var(--accent);color:#fff;text-decoration:none;padding:.75rem 1.5rem;border-radius:.25rem;font-weight:bold;transition:background .2s,transform .2s;cursor:pointer;border:none;line-height:1.3;}
+.cta-button:hover,.cta-button:focus-visible{background:#ea580c;transform:translateY(-2px);outline:none;}
 footer{padding:3rem 0;border-top:1px solid #333333;color:var(--text-light);max-width:1200px;margin:auto;padding-left:2rem;padding-right:2rem;}
 .footer-brand > div:first-child{font-size:1.3rem;font-weight:600;margin-bottom:.5rem;color:#ffffff;}
  .product-card.is-clickable{cursor:pointer}.product-card:focus-visible{transform:translateY(-4px);border-color:#f97316;box-shadow:0 8px 20px rgba(0,0,0,.34);outline:none}</style>
-<script type="application/ld+json">
-{
+<script type="application/ld+json">{
   "@context": "https://schema.org",
   "@type": "CollectionPage",
   "name": "Tayoca Products",
@@ -92,7 +86,7 @@ footer{padding:3rem 0;border-top:1px solid #333333;color:var(--text-light);max-w
           },
           "offers": {
             "@type": "Offer",
-            "url": "https://tayoca.com/products/kubernetes-operators-workbook.html",
+            "url": "https://tayoca.gumroad.com/l/kubernetes-operators-workbook",
             "price": "69",
             "priceCurrency": "CAD",
             "availability": "https://schema.org/InStock"
@@ -105,7 +99,7 @@ footer{padding:3rem 0;border-top:1px solid #333333;color:var(--text-light);max-w
         "item": {
           "@type": "Product",
           "name": "AI Automation Career Playbook",
-          "url": "https://tayoca.gumroad.com/l/ai-automation-career",
+          "url": "https://tayoca.com/products/ai-automation-career-playbook.html",
           "brand": {
             "@type": "Brand",
             "name": "Tayoca"
@@ -125,7 +119,7 @@ footer{padding:3rem 0;border-top:1px solid #333333;color:var(--text-light);max-w
         "item": {
           "@type": "Product",
           "name": "n8n MCP Kubernetes Teaching Pack",
-          "url": "https://tayoca.gumroad.com/l/n8n-mcp-k8s",
+          "url": "https://tayoca.com/products/n8n-mcp-kubernetes-teaching-pack.html",
           "brand": {
             "@type": "Brand",
             "name": "Tayoca"
@@ -145,7 +139,7 @@ footer{padding:3rem 0;border-top:1px solid #333333;color:var(--text-light);max-w
         "item": {
           "@type": "Product",
           "name": "Build, Break, Fix: DevOps Practice Lab Pack",
-          "url": "https://tayoca.gumroad.com/l/build-break-fix-devops",
+          "url": "https://tayoca.com/products/build-break-fix-devops-lab-pack.html",
           "brand": {
             "@type": "Brand",
             "name": "Tayoca"
@@ -165,7 +159,7 @@ footer{padding:3rem 0;border-top:1px solid #333333;color:var(--text-light);max-w
         "item": {
           "@type": "Product",
           "name": "AWS Cost Optimization Playbook",
-          "url": "https://tayoca.gumroad.com/l/aws-cost-optimization",
+          "url": "https://tayoca.com/products/aws-cost-optimization-playbook.html",
           "brand": {
             "@type": "Brand",
             "name": "Tayoca"
@@ -185,7 +179,7 @@ footer{padding:3rem 0;border-top:1px solid #333333;color:var(--text-light);max-w
         "item": {
           "@type": "Product",
           "name": "DevOps Incident Runbook Template",
-          "url": "https://tayoca.gumroad.com/l/devops-incident-runbook",
+          "url": "https://tayoca.com/products/devops-incident-runbook-template.html",
           "brand": {
             "@type": "Brand",
             "name": "Tayoca"
@@ -205,7 +199,7 @@ footer{padding:3rem 0;border-top:1px solid #333333;color:var(--text-light);max-w
         "item": {
           "@type": "Product",
           "name": "Kubernetes Production Readiness Checklist",
-          "url": "https://tayoca.gumroad.com/l/k8s-production-checklist",
+          "url": "https://tayoca.com/products/kubernetes-production-readiness-checklist.html",
           "brand": {
             "@type": "Brand",
             "name": "Tayoca"
@@ -225,7 +219,7 @@ footer{padding:3rem 0;border-top:1px solid #333333;color:var(--text-light);max-w
         "item": {
           "@type": "Product",
           "name": "GitOps Field Guide",
-          "url": "https://tayoca.gumroad.com/l/gitops-field-guide",
+          "url": "https://tayoca.com/products/gitops-field-guide.html",
           "brand": {
             "@type": "Brand",
             "name": "Tayoca"
@@ -241,58 +235,51 @@ footer{padding:3rem 0;border-top:1px solid #333333;color:var(--text-light);max-w
       }
     ]
   }
-}
-</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@800&display=swap" rel="stylesheet">
+}</script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@800&amp;display=swap" rel="stylesheet"/>
 </head>
 <body>
-
 <header>
 <nav>
-<a href="index.html" class="nav-brand">TAYOCA</a>
+<a class="nav-brand" href="index.html">TAYOCA</a>
 <div class="nav-links">
 <a href="services.html">Services</a>
-<a href="products.html" class="active">Products</a>
+<a class="active" href="products.html">Products</a>
 <a href="reviews.html">Reviews</a>
 <a href="/blog/">Writing</a>
 <a href="about.html">About</a>
 </div>
-<a href="#contact" class="btn">Book an Audit →</a>
+<a class="btn" href="#contact">Book an Audit →</a>
 </nav>
 </header>
-
 <main class="main-wrap">
- <h1>Choose the problem you need to solve</h1>
- <p style="max-width:760px;margin:-1rem auto 2rem;text-align:center;color:var(--text-light);">Practical tools you can use today. Secure checkout on Gumroad.</p>
- <div class="products-grid" id="productsContainer">
-<div class="product-card"><h2>Kubernetes Operator's Workbook, Second Edition</h2><div class="price">CAD $69</div><p>Build real Kubernetes operating skill through guided labs, 24 production incidents, etcd recovery, rollout safety, and interview simulations.</p><a href="/products/kubernetes-operators-workbook.html" class="cta-button" data-event="product_detail_click">View workbook details</a></div>
-<div class="product-card"><h2>AI Automation Career Playbook</h2><div class="price">$49</div><p>A clear 90-day path into AI automation, from skills to interviews.</p><a href="https://tayoca.gumroad.com/l/ai-automation-career" target="_blank" rel="noopener noreferrer" class="cta-button" data-event="product_gumroad_click">View on Gumroad</a></div>
-<div class="product-card"><h2>n8n MCP Kubernetes Teaching Pack</h2><div class="price">$39</div><p>Ready-to-use diagrams, Helm charts, workflows, and teaching material.</p><a href="https://tayoca.gumroad.com/l/n8n-mcp-k8s" target="_blank" rel="noopener noreferrer" class="cta-button" data-event="product_gumroad_click">View on Gumroad</a></div>
-<div class="product-card"><h2>Build, Break, Fix: DevOps Practice Lab Pack</h2><div class="price">$19</div><p>Break it. Fix it. Learn the judgment real DevOps work demands.</p><a href="https://tayoca.gumroad.com/l/build-break-fix-devops" target="_blank" rel="noopener noreferrer" class="cta-button" data-event="product_gumroad_click">View on Gumroad</a></div>
-<div class="product-card"><h2>AWS Cost Optimization Playbook</h2><div class="price">$29</div><p>Find AWS waste fast and cut costs without hurting reliability.</p><a href="https://tayoca.gumroad.com/l/aws-cost-optimization" target="_blank" rel="noopener noreferrer" class="cta-button" data-event="product_gumroad_click">View on Gumroad</a></div>
-<div class="product-card"><h2>DevOps Incident Runbook Template</h2><div class="price">$19</div><p>Run incidents with clarity, speed, and fewer missed steps.</p><a href="https://tayoca.gumroad.com/l/devops-incident-runbook" target="_blank" rel="noopener noreferrer" class="cta-button" data-event="product_gumroad_click">View on Gumroad</a></div>
-<div class="product-card"><h2>Kubernetes Production Readiness Checklist</h2><div class="price">$19</div><p>Know exactly what your Kubernetes platform needs before production.</p><a href="https://tayoca.gumroad.com/l/k8s-production-checklist" target="_blank" rel="noopener noreferrer" class="cta-button" data-event="product_gumroad_click">View on Gumroad</a></div>
-<div class="product-card"><h2>GitOps Field Guide</h2><div class="price">$29</div><p>Production GitOps patterns that help teams ship safely and repeatedly.</p><a href="https://tayoca.gumroad.com/l/gitops-field-guide" target="_blank" rel="noopener noreferrer" class="cta-button" data-event="product_gumroad_click">View on Gumroad</a></div>
- </div>
+<h1>Choose the problem you need to solve</h1>
+<p style="max-width:760px;margin:-1rem auto 2rem;text-align:center;color:var(--text-light);">Practical tools you can use today. Secure checkout on Gumroad.</p>
+<div class="products-grid" id="productsContainer">
+<div class="product-card" data-card-href="/products/kubernetes-operators-workbook.html"><h2>Kubernetes Operator's Workbook, Second Edition</h2><div class="price">CAD $69</div><p>Build real Kubernetes operating skill through guided labs, 24 production incidents, etcd recovery, rollout safety, and interview simulations.</p><a class="cta-button" data-event="product_detail_click" href="/products/kubernetes-operators-workbook.html">View details</a></div>
+<div class="product-card" data-card-href="/products/ai-automation-career-playbook.html"><h2>AI Automation Career Playbook</h2><div class="price">$49</div><p>A clear 90-day path into AI automation, from skills to interviews.</p><a class="cta-button" data-event="product_detail_click" href="/products/ai-automation-career-playbook.html">View details</a></div>
+<div class="product-card" data-card-href="/products/n8n-mcp-kubernetes-teaching-pack.html"><h2>n8n MCP Kubernetes Teaching Pack</h2><div class="price">$39</div><p>Ready-to-use diagrams, Helm charts, workflows, and teaching material.</p><a class="cta-button" data-event="product_detail_click" href="/products/n8n-mcp-kubernetes-teaching-pack.html">View details</a></div>
+<div class="product-card" data-card-href="/products/build-break-fix-devops-lab-pack.html"><h2>Build, Break, Fix: DevOps Practice Lab Pack</h2><div class="price">$19</div><p>Break it. Fix it. Learn the judgment real DevOps work demands.</p><a class="cta-button" data-event="product_detail_click" href="/products/build-break-fix-devops-lab-pack.html">View details</a></div>
+<div class="product-card" data-card-href="/products/aws-cost-optimization-playbook.html"><h2>AWS Cost Optimization Playbook</h2><div class="price">$29</div><p>Find AWS waste fast and cut costs without hurting reliability.</p><a class="cta-button" data-event="product_detail_click" href="/products/aws-cost-optimization-playbook.html">View details</a></div>
+<div class="product-card" data-card-href="/products/devops-incident-runbook-template.html"><h2>DevOps Incident Runbook Template</h2><div class="price">$19</div><p>Run incidents with clarity, speed, and fewer missed steps.</p><a class="cta-button" data-event="product_detail_click" href="/products/devops-incident-runbook-template.html">View details</a></div>
+<div class="product-card" data-card-href="/products/kubernetes-production-readiness-checklist.html"><h2>Kubernetes Production Readiness Checklist</h2><div class="price">$19</div><p>Know exactly what your Kubernetes platform needs before production.</p><a class="cta-button" data-event="product_detail_click" href="/products/kubernetes-production-readiness-checklist.html">View details</a></div>
+<div class="product-card" data-card-href="/products/gitops-field-guide.html"><h2>GitOps Field Guide</h2><div class="price">$29</div><p>Production GitOps patterns that help teams ship safely and repeatedly.</p><a class="cta-button" data-event="product_detail_click" href="/products/gitops-field-guide.html">View details</a></div>
+</div>
 <section class="section-header" style="max-width:900px;margin:auto;">
 <h2>Not sure what to buy?</h2>
 <p>Tell our WhatsApp AI the problem. Get the right product or next step.</p>
-<a href="https://wa.me/2348113980135?text=Hi%20Tayoca%2C%20I%20want%20help%20solving%20a%20business%20or%20engineering%20problem." class="btn" target="_blank" rel="noopener noreferrer" data-revenue-event="whatsapp_products_click">Ask Tayoca AI on WhatsApp</a>
+<a class="btn" data-revenue-event="whatsapp_products_click" href="https://wa.me/2348113980135?text=Hi%20Tayoca%2C%20I%20want%20help%20solving%20a%20business%20or%20engineering%20problem." rel="noopener noreferrer" target="_blank">Ask Tayoca AI on WhatsApp</a>
 </section>
 </main>
-
-
-
 <footer>
 <div class="footer-brand">
 <div style="font-size:1.3rem;font-weight:600;margin-bottom:.5rem;">TAYOCA</div>
-<p style="color:#a3a3a3;">AI Automation, FinOps, and Platform Engineering.<br>Founded by Temitayo Charles Akinniranye.<br>Ontario, Canada.<br>&copy; 2026 Tayoca.</p>
+<p style="color:#a3a3a3;">AI Automation, FinOps, and Platform Engineering.<br/>Founded by Temitayo Charles Akinniranye.<br/>Ontario, Canada.<br/>© 2026 Tayoca.</p>
 </div>
 </footer>
-
-<script src="/revenue-events.js" defer></script>
-<script defer src="/card-interactions.js"></script>
+<script defer="" src="/revenue-events.js"></script>
+<script defer="" src="/card-interactions.js"></script>
 </body>
 </html>
