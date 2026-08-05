@@ -1,19 +1,160 @@
-<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Writing | Tayoca</title><meta name="description" content="Practical articles and case evidence on FinOps, platform reliability, Kubernetes, GitOps and automation."><link rel="canonical" href="https://tayoca.com/blog.html"><link rel="icon" href="/favicon.ico">
-<meta property="og:title" content="Writing | Tayoca"><meta property="og:description" content="Practical articles and case evidence on FinOps, platform reliability, Kubernetes, GitOps and automation."><meta property="og:type" content="website"><meta property="og:url" content="https://tayoca.com/blog.html"><meta property="og:site_name" content="Tayoca"><meta property="og:image" content="https://tayoca.com/assets/og-image.png">
-<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Writing | Tayoca"><meta name="twitter:description" content="Practical articles and case evidence on FinOps, platform reliability, Kubernetes, GitOps and automation."><meta name="twitter:image" content="https://tayoca.com/assets/og-image.png">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/css/growth-os.css"></head><body><a class="skip-link" href="#main">Skip to content</a>
-<header class="site-header"><div class="header-inner">
-<a class="brand" href="/" aria-label="Tayoca home">TAYOCA</a>
-<button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button>
-<nav class="primary-nav" id="primary-nav" aria-label="Primary navigation"><a href="/services.html">Services</a><a href="/assessments.html">Assessments</a><a href="/results.html">Results</a><a href="/products.html">Products</a><a href="/insights.html" aria-current="page">Insights</a><a href="/about.html">About</a></nav>
-<a class="button small header-cta" href="/assessments.html" data-event="header_assessment">Start an Assessment</a>
-</div></header><main id="main">
-<section class="hero center"><div class="hero-inner"><p class="eyebrow">Writing</p><h1>Practical engineering insight, stripped of <span class="accent">noise.</span></h1><p class="lede">Field notes, guides and case evidence with implementation details operators can use.</p></div></section><div class="amber-rule"></div><section class="section"><div class="container"><div class="grid"><a class="card interactive" href="/blog/cloud-cost-optimization-playbook.html"><span class="tag">Technology value</span><h3>Cloud Cost Optimization Playbook</h3><p>Find waste, rank opportunities and build durable cost ownership.</p><span class="card-cta">Read article</span></a><a class="card interactive" href="/blog/how-we-saved-216k-on-aws-in-90-days.html"><span class="tag">FinOps evidence</span><h3>How We Saved $216K on AWS in 90 Days</h3><p>A practical case study connecting cost evidence to implemented action.</p><span class="card-cta">Read article</span></a><a class="card interactive" href="/blog/devops-incident-response-runbook.html"><span class="tag">Platform reliability</span><h3>DevOps Incident Response Runbook</h3><p>Move from alert to controlled recovery without missed steps.</p><span class="card-cta">Read article</span></a><a class="card interactive" href="/blog/gitops-beyond-hello-world.html"><span class="tag">GitOps</span><h3>GitOps Beyond Hello World</h3><p>Production patterns for delivery governance, validation and recovery.</p><span class="card-cta">Read article</span></a><a class="card interactive" href="/blog/kubernetes-production-readiness-checklist-for-2026.html"><span class="tag">Kubernetes</span><h3>Production Readiness Checklist for 2026</h3><p>A field checklist for resilience, security, observability and ownership.</p><span class="card-cta">Read article</span></a><a class="card interactive" href="/blog/n8n-mcp-kubernetes.html"><span class="tag">Agentic operations</span><h3>n8n MCP + Kubernetes</h3><p>Self-hosted AI agent infrastructure with visible, governed operations.</p><span class="card-cta">Read article</span></a></div></div></section><section class="section band"><div class="container"><div class="section-heading"><h2>Need the signal delivered?</h2><p>Join the Tayoca Operator Brief for one decision memo and one practical action.</p></div><div class="actions" style="justify-content:center"><a class="button" href="/operator-brief.html">Join the Operator Brief</a></div></div></section></main><footer><div class="footer-grid">
-<div><div class="footer-brand">TAYOCA</div><p>AI Automation, FinOps, and Platform Engineering.<br>Founded by Temitayo Charles Akinniranye.<br>Ontario, Canada.<br>© <span data-current-year>2026</span> Tayoca.</p></div>
-<div class="footer-links"><strong>Explore</strong><a href="/services.html">Services</a><a href="/assessments.html">Assessments</a><a href="/results.html">Results</a><a href="/products.html">Products</a><a href="/insights.html">Insights</a><a href="/about.html">About</a></div>
-<div class="footer-links"><strong>Connect</strong><a href="/operator-brief.html">Operator Brief</a><a href="/trust.html">Trust Center</a><a href="mailto:support@tayoca.com">support@tayoca.com</a><div><span class="attestation">PMP</span><span class="attestation">CSM</span><span class="attestation">Terraform</span><span class="attestation">AWS</span></div></div>
-</div></footer>
-<script defer src="/growth-os.js"></script><script defer src="/revenue-events.js"></script><script defer src="/tayoca-site.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-G4QC90QNXW"></script>
+  <script src="/ga4.js"></script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tayoca — Writing</title>
+  <meta name="description" content="Engineering essays distilled to essentials — each piece includes runnable assets you can copy-paste">
+  <meta name="keywords" content="engineering blog, FinOps, reliability, automation, Kubernetes">
+  <meta name="author" content="Tayoca">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://tayoca.com/blog.html">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <meta property="og:title" content="Tayoca — Writing">
+  <meta property="og:description" content="Engineering essays distilled to essentials — each piece includes runnable assets you can copy-paste">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tayoca.com/blog.html">
+  <meta property="og:image" content="https://tayoca.com/assets/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Tayoca — Writing">
+  <meta name="twitter:description" content="Engineering essays distilled to essentials — each piece includes runnable assets you can copy-paste">
+  <meta name="twitter:image" content="https://tayoca.com/assets/og-image.png">
+  <!-- InsForge Analytics -->
+  <script>(function(){var e='https://v7mhrspk.function2.insforge.app/analytics-event',d='tayoca.com';function s(n,p){var r={domain:d,name:n,url:location.href,path:location.pathname,referrer:document.referrer||null,screen_width:screen.width,screen_height:screen.height,props:p||{}};navigator.sendBeacon&&navigator.sendBeacon(e,JSON.stringify(r))||fetch(e,{method:'POST',body:JSON.stringify(r),keepalive:!0})}document.readyState==='loading'?document.addEventListener('DOMContentLoaded',function(){s('pageview')}):s('pageview');window.tayocaAnalytics={sendEvent:s}})()</script>
+
+  <!-- Vermason analytics -->
+  <script defer src="https://vermason.com/analytics/id.js"></script>
+
+  <style>
+:root{--bg:#0d0d0d;--card:#1a1a1a;--accent:#f97316;--text:#e5e7eb;--muted:#9ca3af;}
+*{box-sizing:border-box;}
+html{font-size:16px;}
+body{margin:0;font-family:system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;}
+header{position:sticky;top:0;z-index:100;background:#0d0d0d;border-bottom:1px solid #374151;padding:1rem 0;}
+nav{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:0 2rem;}
+.nav-brand{font-size:1.5rem;font-weight:600;color:#fff;text-decoration:none;
+  font-family:'Sora',sans-serif;
+  font-weight:800;
+  letter-spacing:.15em;
+}
+.nav-links{display:flex;gap:1.5rem;}
+.nav-links a{color:var(--text);text-decoration:none;font-size:.95rem;}
+.nav-links a.active{color:var(--accent);font-weight:600;}
+main{max-width:1200px;margin:2rem auto 4rem;padding:0 2rem;}
+h1{font-size:2rem;font-weight:700;margin:0 0 .25rem;}
+.lede{color:var(--muted);font-size:1rem;margin:0 0 3rem;line-height:1.5;}
+.post-list{list-style:none;padding:0;max-width:800px;margin:2.5rem auto;}
+.post{display:block;padding:1.5rem;border-bottom:1px solid #262626;text-decoration:none;color:inherit;border-radius:.3rem;transition:background .2s,color .15s}
+.post:hover{background:#262626;}
+.post:hover h2{color:var(--accent);}
+.post h2{font-size:1.25rem;font-weight:600;margin:0 0 .45rem;color:var(--text);}
+.post p{font-size:.95rem;color:var(--muted);margin:0 0 .6rem;}
+.post .meta{font-size:.8rem;color:#6b7280;font-family:'Courier New',monospace;display:block;margin-top:.35rem;}
+.cta-section{text-align:center;margin:4rem auto .8rem;border-top:1px solid #374151;padding:2.25rem 0;}
+.btn{display:inline-block;padding:.75rem 1.75rem;background:var(--accent);color:#fff;border-radius:.4rem;font-weight:600;text-decoration:none;cursor:pointer;transition:transform .15s,background .2s;}
+.btn:hover{transform:translateY(-2px);}
+footer{border-top:1px solid #262626;padding:3rem 2rem;max-width:1160px;margin-left:2px;font-size:.85rem;display:flex;justify-content:space-between;align-items:flex-start;gap:1.25rem;flex-wrap:wrap;}
+footer>div>.brand{font-size:1.2rem;font-weight:600;color:#fff;margin-bottom:.25rem;}
+footer>div>p{margin:0;color:var(--muted);font-size:.85rem;line-height:1.5;}
+footer a{color:var(--text);text-decoration:none;font-size:.85rem;}
+footer a:hover{color:var(--accent);}
+  </style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@800&display=swap" rel="stylesheet">
+</head>
+<body>
+<header><nav>
+<a href="../index.html" class="nav-brand">TAYOCA</a>
+<div class="nav-links">
+<a href="../services.html">Services</a>
+<a href="../products.html">Products</a>
+<a href="blog.html" class="active">Writing</a>
+<a href="../about.html">About</a>
+</div>
+</nav></header>
+<main><h1>Writing</h1>
+<p class="lede">Engineering essays distilled to essentials — each piece includes runnable assets you can copy-paste.</p>
+<ul class="post-list">
+  <li>
+    <a class="post" href="blog/ai-automation-career-roadmap.html">
+      <h2>AI Automation Career Roadmap: From DevOps Engineer to AI Solutions Architect – Tayoca</h2>
+      <p>Complete career transition guide from DevOps to AI Automation. Skills, projects, portfolio strategy, and real salary data for 2026.</p>
+      <span class="meta">Article</span>
+    </a>
+  </li>
+  <li>
+    <a class="post" href="blog/cloud-cost-optimization-playbook.html">
+      <h2>AWS Cloud Cost Optimization Playbook - How We Saved $216K in 90 Days | Temitayo Charles Akinniranye</h2>
+      <p>Complete AWS cost optimization strategy that saved $216K in 90 days. Real-world FinOps tactics, right-sizing, reserved instances, and automated governance.</p>
+      <span class="meta">Article</span>
+    </a>
+  </li>
+  <li>
+    <a class="post" href="blog/devops-incident-response-runbook.html">
+      <h2>DevOps Incident Response Runbook: From Alert to Resolution in 15 Minutes | Temitayo Charles Akinniranye</h2>
+      <p>Production-grade incident response runbook for Kubernetes and cloud infrastructure. SLO-based alerting, runbook automation, blameless postmortems, and war-room patterns.</p>
+      <span class="meta">Article</span>
+    </a>
+  </li>
+  <li>
+    <a class="post" href="blog/gitops-beyond-hello-world.html">
+      <h2>GitOps Beyond Hello World – Practical Patterns Tayoca Runs in Production – Tayoca</h2>
+      <p>Practical GitOps patterns beyond the basics: surviving Helm upgrade corruption, image validation gates, per-namespace CI-driven deployments, and hardened Argo CD ApplicationSet configurations.</p>
+      <span class="meta">Article</span>
+    </a>
+  </li>
+  <li>
+    <a class="post" href="blog/how-we-saved-216k-aws.html">
+      <h2>How We Saved a Client $216K/yr on AWS – Tayoca FinOps Case Study</h2>
+      <p>FinOps case study: How Tayoca uncovered $216K in annual AWS savings for a Series B fintech through a 30-minute audit and prioritized remediation plan.</p>
+      <span class="meta">Article</span>
+    </a>
+  </li>
+  <li>
+    <a class="post" href="blog/how-we-saved-216k-on-aws-in-90-days.html">
+      <h2>How We Saved $216K on AWS in 90 Days | Tayoca</h2>
+      <p>A Series B fintech cut AWS spend from $840K to $624K in 90 days without sacrificing 99.99% uptime. Learn the exact FinOps tactics we used.</p>
+      <span class="meta">Article</span>
+    </a>
+  </li>
+  <li>
+    <a class="post" href="blog/kubernetes-production-checklist.html">
+      <h2>Kubernetes Production Checklist: 37 Items to Ship Reliably – Tayoca</h2>
+      <p>Production-grade Kubernetes checklist to harden your cluster from development mishaps into a self-healing, secure platform. Resource constraints, PDBs, RBAC, NetworkPolicy, PSPs, Prometheus alerts, audit readiness.</p>
+      <span class="meta">Article</span>
+    </a>
+  </li>
+  <li>
+    <a class="post" href="blog/kubernetes-production-readiness-checklist-for-2026.html">
+      <h2>Kubernetes Production Readiness Checklist for 2026 | Tayoca</h2>
+      <p>A practical 2026 Kubernetes production readiness checklist to secure sign-off before your next security review, compliance audit, or SOC 2 Type II bump. No fluff, just boxes to ✅.</p>
+      <span class="meta">Article</span>
+    </a>
+  </li>
+  <li>
+    <a class="post" href="blog/n8n-mcp-kubernetes.html">
+      <h2>n8n MCP + Kubernetes: Self-Hosted AI Agent Infrastructure | Temitayo Charles Akinniranye</h2>
+      <p>Build production-grade n8n with MCP servers on Kubernetes. Complete guide: Helm charts, ingress, persistence, MCP server deployment, OAuth, and GitOps with ArgoCD.</p>
+      <span class="meta">Article</span>
+    </a>
+  </li>
+</ul>
+<div class="cta-section">
+  <p>Need a FinOps audit? Flat $5K — only pay if we find savings.</p>
+  <a href="https://cal.com/tayoca/finops-audit" class="btn" target="_blank" rel="noopener">Book a Free 30-Minute Audit →</a>
+</div>
+</main>
+<footer>
+  <div><a href="../services.html">Services</a> <a href="../products.html">Products</a> <a href="blog.html">Writing</a> <a href="../about.html">About</a></div>
+  <div>
+    <div class="brand">TAYOCA</div>
+    <p style="margin:.25rem 0 0;color:#9ca3af;">FinOps · Platform Engineering · AI Automation<br>Ontario, Canada.</p>
+  </div>
+</footer>
+</body>
+</html>
