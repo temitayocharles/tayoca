@@ -3,9 +3,11 @@
 
 from __future__ import annotations
 
+import json
 import subprocess
 import sys
 import xml.etree.ElementTree as ET
+from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import unquote, urlparse
 
@@ -19,6 +21,22 @@ REQUIRED_FILES = (
     PUBLIC_DIR / "sitemap.xml",
     PUBLIC_DIR / "_redirects",
 )
+
+
+class MetadataParser(HTMLParser):
+    def __init__(self) -> None:
+        super().__init__()
+        self.robots = ""
+        self.canonical = ""
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        attributes = {key.lower(): value or "" for key, value in attrs}
+        if tag.lower() == "meta" and attributes.get("name", "").lower() == "robots":
+            self.robots = attributes.get("content", "")
+        if tag.lower() == "link":
+            relations = attributes.get("rel", "").lower().split()
+            if "canonical" in relations:
+                self.canonical = attributes.get("href", "")
 
 
 def fail(message: str) -> None:
@@ -56,6 +74,18 @@ def resolve_public_target(url: str) -> Path | None:
             candidates.extend([path.with_suffix(".html"), path / "index.html"])
 
     return next((candidate for candidate in candidates if candidate.is_file()), None)
+
+
+def permanent_redirect_sources() -> set[str]:
+    config_path = REPO_ROOT / "vercel.json"
+    if not config_path.is_file():
+        return set()
+    config = json.loads(config_path.read_text(encoding="utf-8"))
+    return {
+        f"{SITE_ORIGIN}{redirect['source']}"
+        for redirect in config.get("redirects", [])
+        if redirect.get("permanent") is True and redirect.get("source", "").startswith("/")
+    }
 
 
 def main() -> None:
@@ -96,6 +126,24 @@ def main() -> None:
     unresolved = [url for url in urls if resolve_public_target(url) is None]
     if unresolved:
         fail("Sitemap URLs have no deployable file: " + ", ".join(unresolved))
+
+    sitemap_urls = set(urls)
+    redirect_sources = permanent_redirect_sources()
+    omitted_indexable: list[str] = []
+    for html_file in PUBLIC_DIR.rglob("*.html"):
+        parser = MetadataParser()
+        parser.feed(html_file.read_text(encoding="utf-8", errors="replace"))
+        robots_value = parser.robots.lower().replace(" ", "")
+        is_indexable = "index" in robots_value and "noindex" not in robots_value
+        if (
+            is_indexable
+            and parser.canonical.startswith(f"{SITE_ORIGIN}/")
+            and parser.canonical not in redirect_sources
+            and parser.canonical not in sitemap_urls
+        ):
+            omitted_indexable.append(parser.canonical)
+    if omitted_indexable:
+        fail("Indexable canonical pages are absent from sitemap: " + ", ".join(sorted(omitted_indexable)))
 
     not_found = (PUBLIC_DIR / "404.html").read_text(encoding="utf-8").lower()
     if 'name="robots"' not in not_found or "noindex" not in not_found:
