@@ -1,0 +1,42 @@
+name: Tayoca static quality
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: tayoca-static-quality-${{ forgejo.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Validate static package
+    runs-on: forgejo-general
+    timeout-minutes: 15
+    steps:
+      - name: Check out Tayoca
+        uses: https://data.forgejo.org/actions/checkout@v6
+
+      - name: Verify Forgejo runner contract
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -n "${FORGEJO_ACTIONS:-${GITHUB_ACTIONS:-}}"
+          python3 --version
+          git rev-parse --is-inside-work-tree
+
+      - name: Validate source package
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m py_compile \
+            scripts/validate_static_site.py \
+            scripts/validate_analytics_coverage.py
+          python3 scripts/validate_static_site.py
+          python3 scripts/validate_analytics_coverage.py
