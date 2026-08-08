@@ -26,6 +26,7 @@ def main() -> int:
     root = ET.parse(SITEMAP).getroot()
     namespace = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
     urls = [element.text.strip() for element in root.findall("sm:url/sm:loc", namespace) if element.text]
+
     failures: list[str] = []
     checked = 0
     for url in urls:
@@ -42,11 +43,13 @@ def main() -> int:
         if missing:
             failures.append(f"{url}: missing analytics marker(s): {', '.join(missing)}")
         checked += 1
+
     if failures:
         print("Analytics coverage validation failed:")
         for failure in failures:
             print(f"- {failure}")
         return 1
+
     print(f"Validated GA4 coverage for {checked} canonical sitemap URLs.")
     return 0
 
