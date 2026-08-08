@@ -1,24 +1,73 @@
-version: 1
+version: 2
+last_reconciled_at: '2026-08-08T04:55:00Z'
+authority:
+  repository: temitayocharles/tayoca
+  git_host: forgejo.tca-infraforge.site
+  ci: forgejo-general
 workflows:
-  - key: whatsapp-assistant
-    n8n_id: GnOCF3gFqMqM6UxF
-    product: conversation
-    status: inactive
-    source_path: automation/n8n/products/whatsapp-assistant
+  - key: assessment-operator-brief-intake
+    n8n_id: V28T575q7GSRFOti
+    product: growth
+    status: active
+    active_version: 5da47b68-ceff-45bc-b00e-ccc561d66c83
+    validated_at: '2026-08-08T04:37:49Z'
+    controls:
+      - origin_allowlist
+      - bot_honeypot_validation
+      - deterministic_deduplication
+      - durable_data_table_upsert
+      - bounded_public_responses
+  - key: verified-review-trust-flywheel
+    n8n_id: ZZDXWFKiPnzeKtNr
+    product: growth
+    status: active
+    active_version: c775b67e-208a-4ee3-919c-1a53d54a685e
+    validated_at: '2026-08-08T04:10:19Z'
+    controls:
+      - authenticated_gumroad_sale_verification
+      - tayoca_product_allowlist
+      - buyer_contact_preference
+      - replay_safe_identifiers
+      - publication_consent
+      - human_publication_approval
+  - key: demand-engine-revenue-command-center
+    n8n_id: MRaoY2aHm85q3QWG
+    product: growth
+    status: active
+    active_version: 745c5ebb-ce39-4421-b7b7-294007fe9b88
+    validated_at: '2026-08-08T04:11:18Z'
+    controls:
+      - approval_gated_campaigns
+      - zero_default_ad_spend
+      - first_party_measurement
+      - weekly_executive_report
+  - key: infobip-inbound-delivery-correlation
+    n8n_id: W4aE4hNuFgwAxL02
+    product: messaging
+    status: active
+  - key: whatsapp-outbound-adapter
+    n8n_id: aqBzNXr3ZWwRloSf
+    product: messaging
+    status: inactive_library
   - key: reputation-planning-kernel
     n8n_id: XbDHeVK66snphcYV
     product: reputation
-    status: inactive
-    last_test_execution: '31305'
+    status: inactive_library_validated
+    validated_at: '2026-08-08T04:00:00Z'
   - key: tayoca-core-event-ingress
     n8n_id: rBkGAAyxQswoMAK2
     product: core
-    status: inactive
-    last_test_execution: '31309'
+    status: inactive_library_validated
     source_path: automation/n8n/workflows/tayoca-core-event-ingress.workflow.ts
+    validated_at: '2026-08-08T04:00:00Z'
   - key: reputation-due-campaign-scheduler
     n8n_id: rorQ9wYRkMuYWslV
     product: reputation
-    status: inactive
-    last_test_execution: '31312'
+    status: inactive_library_validated
     source_path: automation/n8n/workflows/tayoca-reputation-due-campaign-scheduler.workflow.ts
+    validated_at: '2026-08-08T04:00:00Z'
+  - key: whatsapp-assistant-legacy
+    n8n_id: GnOCF3gFqMqM6UxF
+    product: conversation
+    status: legacy_inactive
+    source_path: automation/n8n/products/whatsapp-assistant
