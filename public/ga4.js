@@ -40,7 +40,7 @@
   function safeStorage(kind, key, value) {
     try {
       var store = kind === 'local' ? window.localStorage : window.sessionStorage;
-      if (arguments.length === 4) {
+      if (arguments.length === 3) {
         store.setItem(key, value);
         return value;
       }
