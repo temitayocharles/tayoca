@@ -127,22 +127,12 @@ footer{padding:3rem 0;border-top:1px solid #333333;color:var(--text-light);max-w
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@800&amp;display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/assets/css/site-shell.css">
 </head>
 <body>
-<header>
-<nav>
-<a class="nav-brand" href="index.html">TAYOCA</a>
-<div class="nav-links">
-<a href="services.html">Services</a>
-<a class="active" href="products.html">Products</a>
-<a href="reviews.html">Reviews</a>
-<a href="/blog/">Writing</a>
-<a href="about.html">About</a>
-</div>
-<a class="btn" href="#contact">Book an Audit →</a>
-</nav>
-</header>
-<main class="main-wrap">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner"><a class="brand" href="/" aria-label="Tayoca home">TAYOCA</a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button><nav class="primary-nav" id="primary-nav" aria-label="Primary navigation"><a href="/services.html">Services</a><a href="/assessments.html">Assessments</a><a href="/results.html">Results</a><a href="/products.html" aria-current="page">Products</a><a href="/insights.html">Insights</a><a href="/about.html">About</a></nav><a class="header-cta" href="/assessments.html">Start an Assessment</a></div></header>
+<main id="main" class="main-wrap">
 <h1>Choose the problem you need to solve</h1>
 <p style="max-width:760px;margin:-1rem auto 2rem;text-align:center;color:var(--text-light);">Practical tools you can use today. Secure checkout on Gumroad.</p>
 <div class="products-grid" id="productsContainer">
@@ -169,5 +159,6 @@ footer{padding:3rem 0;border-top:1px solid #333333;color:var(--text-light);max-w
 </footer>
 <script defer="" src="/revenue-events.js"></script>
 <script defer="" src="/card-interactions.js"></script>
+<script defer src="/tayoca-site.js"></script>
 </body>
 </html>
