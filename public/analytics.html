@@ -1,435 +1,113 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <!-- Google Analytics 4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-G4QC90QNXW"></script>
   <script src="/ga4.js"></script>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Analytics Dashboard - tayoca.com</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: #fff;
-            padding: 2rem;
-            min-height: 100vh;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        header {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 1.5rem;
-            border-radius: 1rem;
-            margin-bottom: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        h1 {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-            color: white;
-        }
-        
-        .breadcrumbs {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.5rem;
-            font-size: 0.9rem;
-            margin-bottom: 2rem;
-        }
-        
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-        
-        .card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 1.5rem;
-            border-radius: 1rem;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-        }
-        
-        .card h2 {
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-            font-weight: 600;
-            color: #e0e7ff;
-        }
-        
-        .metric-value {
-            font-size: 2.5rem;
-            font-weight: bold;
-            margin: 0.5rem 0;
-            color: #8b5cf6;
-        }
-        
-        .metric-label {
-            font-size: 0.9rem;
-            color: #c7d2fe;
-            margin-top: 0.25rem;
-        }
-        
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-            margin: 1.5rem 0;
-        }
-        
-        .stat-item {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 1rem;
-            border-radius: 0.75rem;
-            border-left: 4px solid #8b5cf6;
-        }
-        
-        .stat-item h3 {
-            font-size: 0.875rem;
-            color: #9ca3af;
-            margin-bottom: 0.5rem;
-        }
-        
-        .top-list {
-            margin-top: 1rem;
-        }
-        
-        .list-item {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 0.75rem;
-            margin-bottom: 0.5rem;
-            border-radius: 0.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .list-item span {
-            font-size: 0.9rem;
-        }
-        
-        .chart-container {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 1.5rem;
-            border-radius: 1rem;
-            margin-top: 1rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        canvas {
-            max-height: 300px;
-        }
-        
-        .loading {
-            text-align: center;
-            padding: 2rem;
-            font-size: 1.1rem;
-            color: #c7d2fe;
-        }
-        
-        .error {
-            background: rgba(255, 0, 0, 0.1);
-            border: 1px solid rgba(255, 0, 0, 0.3);
-            color: #fca5a5;
-        }
-        
-        .metadata {
-            font-size: 0.8rem;
-            color: #9ca3af;
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        @media (max-width: 768px) {
-            body {
-                padding: 1rem;
-            }
-            
-            .grid {
-                grid-template-columns: 1fr;
-            }
-            
-            h1 {
-                font-size: 1.5rem;
-            }
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Executive Analytics | Tayoca</title>
+  <meta name="description" content="Tayoca executive analytics with first-party site activity, verified Google Search Console metrics and measurement provenance.">
+  <link rel="canonical" href="https://tayoca.com/analytics.html">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/growth-os.css">
+  <style>
+    .analytics-status{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1rem;margin-top:1.25rem}
+    .analytics-status .card{min-height:150px}
+    .metric-number{font-family:'Sora',sans-serif;font-size:2rem;font-weight:800;line-height:1.1;margin:.45rem 0;color:#111827}
+    .metric-meta{font-size:.9rem;color:#6b7280}
+    .status-ok{font-family:'JetBrains Mono',monospace;font-size:.78rem;letter-spacing:.04em;text-transform:uppercase;color:#166534}
+    .analytics-list{display:grid;gap:.65rem;margin-top:1rem}
+    .analytics-row{display:flex;justify-content:space-between;gap:1rem;padding:.8rem 0;border-bottom:1px solid #e5e7eb}
+    .analytics-row:last-child{border-bottom:0}
+    .analytics-row strong{max-width:72%;overflow-wrap:anywhere}
+    .mono{font-family:'JetBrains Mono',monospace;font-size:.86rem}
+    .provenance{font-size:.92rem;color:#4b5563}
+    .event-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:.75rem;margin-top:1rem}
+    .event-chip{padding:.8rem 1rem;border:1px solid #e5e7eb;border-radius:.75rem;background:#fff}
+    .event-chip code{font-family:'JetBrains Mono',monospace;font-size:.82rem}
+    .error-note{display:none;padding:1rem;border:1px solid #fecaca;background:#fef2f2;color:#991b1b;border-radius:.75rem;margin-top:1rem}
+    @media(max-width:700px){.analytics-row{display:block}.analytics-row span{display:block;margin-top:.25rem}.analytics-row strong{max-width:100%}}
+  </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>ð Analytics Dashboard</h1>
-            <p style="font-size: 1rem; color: #e0e7ff; margin: 0.5rem 0 0 0;">
-                Real-time statistics for tayoca.com
-            </p>
-        </header>
-        
-        <nav class="breadcrumbs">
-            ð  <a href="/" style="color: #a78bfa; text-decoration: none; margin-left: 0.5rem;">Back to Home</a>
-            | ð Current Analytics
-        </nav>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+  <a class="brand" href="/" aria-label="Tayoca home">TAYOCA</a>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button>
+  <nav class="primary-nav" id="primary-nav" aria-label="Primary navigation"><a href="/services.html">Services</a><a href="/assessments.html">Assessments</a><a href="/results.html">Results</a><a href="/products.html">Products</a><a href="/insights.html">Insights</a><a href="/about.html">About</a></nav>
+  <a class="button small header-cta" href="/assessments.html" data-event="header_assessment">Start an Assessment</a>
+</div></header>
+<main id="main">
+<section class="hero center"><div class="hero-inner">
+  <p class="eyebrow">Executive analytics</p>
+  <h1>Measure the operating signal, <span class="accent">not vanity.</span></h1>
+  <p class="lede">Live first-party site activity is combined with verified Google-owned metrics. Every Google metric shows its source and data-through date.</p>
+</div></section>
+<div class="amber-rule"></div>
 
-        <div id="loading" class="loading">
-            ð Loading analytics data...
-            <div style="font-size: 0.9rem; margin-top: 0.5rem; color: #9ca3af;">
-                Fetching data from InsForge analytics dashboard
-            </div>
-        </div>
+<section class="section"><div class="container">
+  <div class="section-heading left"><p class="eyebrow">Commercial signal</p><h2>Current measurement view</h2><p>First-party activity reflects the last 30 days. Search Console reflects finalized Google data through <strong id="search-through">loading</strong>.</p></div>
+  <div id="dashboard-error" class="error-note" role="alert"></div>
+  <div class="analytics-status">
+    <article class="card"><p class="status-ok">First-party</p><h3>Page views</h3><div class="metric-number" id="pageviews">—</div><p class="metric-meta">Tayoca collector · 30 days</p></article>
+    <article class="card"><p class="status-ok">First-party</p><h3>Unique visitors</h3><div class="metric-number" id="visitors">—</div><p class="metric-meta">Privacy-preserving visitor hash · 30 days</p></article>
+    <article class="card"><p class="status-ok">Search Console</p><h3>Search impressions</h3><div class="metric-number" id="search-impressions">—</div><p class="metric-meta">Finalized 7-day period</p></article>
+    <article class="card"><p class="status-ok">Search Console</p><h3>Search clicks</h3><div class="metric-number" id="search-clicks">—</div><p class="metric-meta">Finalized 7-day period</p></article>
+    <article class="card"><p class="status-ok">Search Console</p><h3>Average position</h3><div class="metric-number" id="search-position">—</div><p class="metric-meta">Impression-weighted position</p></article>
+  </div>
+</div></section>
 
-        <div id="error" class="error" style="display: none;">
-            ❌ Error loading analytics data. 
-            <div id="error-message" style="margin-top: 0.5rem;"></div>
-        </div>
+<section class="section band"><div class="container">
+  <div class="section-heading left"><p class="eyebrow">Verification</p><h2>Measurement authorities</h2></div>
+  <div class="grid two">
+    <article class="card"><span class="tag">Google Analytics 4</span><h3>Verified Tayoca web stream</h3><div class="analytics-list"><div class="analytics-row"><strong>Property</strong><span class="mono">properties/548373018</span></div><div class="analytics-row"><strong>Web stream</strong><span>Tayoca Website</span></div><div class="analytics-row"><strong>Measurement ID</strong><span class="mono">G-G4QC90QNXW</span></div><div class="analytics-row"><strong>Current GA4 key event</strong><span class="mono">purchase</span></div></div><p class="provenance">Property and stream were verified through the Google Analytics Admin API. Commercial browser events are instrumented and independently testable; this page does not claim they are already configured as GA4 key events.</p></article>
+    <article class="card"><span class="tag">Google Search Console</span><h3>Owner-verified search property</h3><div class="analytics-list"><div class="analytics-row"><strong>Property</strong><span class="mono">https://tayoca.com/</span></div><div class="analytics-row"><strong>Permission</strong><span>siteOwner</span></div><div class="analytics-row"><strong>Sitemap URLs submitted</strong><span id="sitemap-submitted">—</span></div><div class="analytics-row"><strong>Sitemap errors / warnings</strong><span id="sitemap-health">—</span></div></div><p class="provenance">Search Analytics already reports impressions for Tayoca URLs. The sitemap's indexed-count metadata is therefore not used as proof that URLs are or are not indexed.</p></article>
+  </div>
+</div></section>
 
-        <div id="content" style="display: none;">
-            <div class="grid">
-                <div class="card">
-                    <h2>ð Page Views</h2>
-                    <div class="metric-value" id="total-pageviews">-</div>
-                    <div class="metric-label">Total pageviews (last 30 days)</div>
-                </div>
-                
-                <div class="card">
-                    <h2>ð¥ Unique Visitors</h2>
-                    <div class="metric-value" id="unique-visitors">-</div>
-                    <div class="metric-label">Individual visitors (last 30 days)</div>
-                </div>
-            </div>
+<section class="section"><div class="container">
+  <div class="grid two">
+    <article class="card"><p class="eyebrow">First-party activity</p><h2>Top pages</h2><div id="top-pages" class="analytics-list"><p class="metric-meta">Loading live data…</p></div></article>
+    <article class="card"><p class="eyebrow">First-party discovery</p><h2>Top referrers</h2><div id="top-referrers" class="analytics-list"><p class="metric-meta">Loading live data…</p></div></article>
+  </div>
+</div></section>
 
-            <div class="card">
-                <h2>ð Daily Activity</h2>
-                <div class="chart-container">
-                    <canvas id="dailyChart"></canvas>
-                </div>
-            </div>
+<section class="section band"><div class="container">
+  <div class="grid two">
+    <article class="card"><p class="eyebrow">Search demand</p><h2>Top search queries</h2><div id="search-queries" class="analytics-list"></div></article>
+    <article class="card"><p class="eyebrow">Search surfaces</p><h2>Top search pages</h2><div id="search-pages" class="analytics-list"></div></article>
+  </div>
+</div></section>
 
-            <div class="grid">
-                <div class="card">
-                    <h2>ð Top Pages</h2>
-                    <div id="top-pages" class="top-list"></div>
-                    <div class="metadata">Showing top 10 most viewed pages</div>
-                </div>
-                
-                <div class="card">
-                    <h2>ð Top Referrers</h2>
-                    <div id="top-referrers" class="top-list"></div>
-                    <div class="metadata">Showing top 10 referring domains</div>
-                </div>
-            </div>
+<section class="section"><div class="container">
+  <div class="section-heading left"><p class="eyebrow">Stage 12 event contract</p><h2>Critical journeys under measurement</h2><p>These are the governed browser event names. Certification proves their emitted GA4 and first-party payloads without creating fake leads, subscriptions, purchases or revenue.</p></div>
+  <div class="event-grid" id="event-contract"></div>
+</div></section>
 
-            <div class="card">
-                <h2>⚙ï¸ API Info</h2>
-                <div class="stats-grid">
-                    <div class="stat-item">
-                        <h3>Endpoint URL</h3>
-                        <span style="color: #e0e7ff; font-size: 0.9rem; word-break: break-all;">
-                            https://v7mhrspk.function2.insforge.app/analytics-dashboard/overview
-                        </span>
-                    </div>
-                    <div class="stat-item">
-                        <h3>Last Updated</h3>
-                        <span id="last-updated" style="color: #fbbf24;">Never</span>
-                    </div>
-                    <div class="stat-item">
-                        <h3>Domain</h3>
-                        <span id="api-domain" style="color: #a78bfa;">tayoca.com</span>
-                    </div>
-                    <div class="stat-item">
-                        <h3>Data Source</h3>
-                        <span style="color: #10b981;">InsForge Analytics Function</span>
-                    </div>
-                </div>
-                <div class="metadata" style="margin-top: 1rem;">
-                    This dashboard fetches real-time data from your InsForge analytics endpoints.
-                    <br>
-                    No data is stored or tracked by this dashboard page itself — all data comes directly from your analytics system.
-                </div>
-            </div>
-        </div>
-    </div>
+<section class="section band"><div class="container"><div class="grid two">
+  <article class="card"><h3>Newsletter attribution</h3><p>Operator Brief links use explicit <code class="mono">utm_source=operator_brief</code> and <code class="mono">utm_medium=email</code>. Issue and section lineage is preserved through campaign and content parameters rather than inferred from identity.</p></article>
+  <article class="card"><h3>Case-study assistance</h3><p>A visit to the governed Results surface can assist a later conversion in the same browser session. Withdrawn or unverified historical claims are never promoted into attribution metadata.</p></article>
+</div></div></section>
 
-    <script>
-        // Track API types for collision avoidance
-        window.analytics = window.analytics || {};
-        
-        async function fetchAnalytics() {
-            try {
-                // Show loading
-                document.getElementById('loading').style.display = 'block';
-                document.getElementById('content').style.display = 'none';
-                document.getElementById('error').style.display = 'none';
-                
-                // Fetch analytics data
-                const endpoint = 'https://v7mhrspk.function2.insforge.app/analytics-dashboard/overview';
-                const url = new URL(endpoint);
-                url.searchParams.append('domain', 'tayoca.com');
-                url.searchParams.append('days', '30');
-                
-                const response = await fetch(url.toString(), {
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                });
-                
-                if (!response.ok) {
-                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-                }
-                
-                const data = await response.json();
-                
-                // Update UI with data
-                document.getElementById('total-pageviews').textContent = data.total_pageviews.toLocaleString();
-                document.getElementById('unique-visitors').textContent = data.unique_visitors.toLocaleString();
-                
-                // Format last updated
-                const lastUpdated = new Date().toLocaleString();
-                document.getElementById('last-updated').textContent = lastUpdated;
-                document.getElementById('api-domain').textContent = data.domain;
-                
-                // Create daily chart
-                createDailyChart(data.daily_series);
-                
-                // Top pages
-                const pagesContainer = document.getElementById('top-pages');
-                data.top_pages.forEach((page, index) => {
-                    const div = document.createElement('div');
-                    div.className = 'list-item';
-                    div.innerHTML = `
-                        <div>
-                            <strong style="color: #60a5fa;">${index + 1}.</strong> 
-                            <span style="color: #fff;">${page.path}</span>
-                        </div>
-                        <div style="color: #10b981; font-weight: bold;">${page.count} views</div>
-                    `;
-                    pagesContainer.appendChild(div);
-                });
-                
-                // Top referrers
-                const referrersContainer = document.getElementById('top-referrers');
-                if (data.top_referrers && data.top_referrers.length > 0) {
-                    data.top_referrers.forEach((referrer, index) => {
-                        const div = document.createElement('div');
-                        div.className = 'list-item';
-                        div.innerHTML = `
-                            <div>
-                                <strong style="color: #60a5fa;">${index + 1}.</strong> 
-                                <span style="color: #fff;">${referrer.referrer_src}</span>
-                            </div>
-                            <div style="color: #fbbf24; font-weight: bold;">${referrer.count} referrals</div>
-                        `;
-                        referrersContainer.appendChild(div);
-                    });
-                } else {
-                    referrersContainer.innerHTML = '<span style="color: #9ca3af;">No referral data available</span>';
-                }
-                
-                // Show content
-                document.getElementById('loading').style.display = 'none';
-                document.getElementById('content').style.display = 'block';
-                
-            } catch (error) {
-                console.error('Error fetching analytics:', error);
-                document.getElementById('error-message').textContent = error.message;
-                document.getElementById('loading').style.display = 'none';
-                document.getElementById('error').style.display = 'block';
-            }
-        }
-        
-        function createDailyChart(dailySeries) {
-            if (!dailySeries || dailySeries.length === 0) return;
-            
-            const ctx = document.getElementById('dailyChart').getContext('2d');
-            
-            // Destroy existing chart if any
-            if (window.myChart) {
-                window.myChart.destroy();
-            }
-            
-            // Generate chart
-            const labels = dailySeries.map(item => item.date);
-            const data = dailySeries.map(item => item.count);
-            
-            window.myChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: labels,
-                    datasets: [{
-                        label: 'Page Views',
-                        data: data,
-                        backgroundColor: 'rgba(139, 92, 246, 0.7)',
-                        borderColor: 'rgba(139, 92, 246, 0.9)',
-                        borderWidth: 2,
-                        borderRadius: 8,
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: true,
-                    plugins: {
-                        legend: {
-                            display: false
-                        },
-                        tooltip: {
-                            callbacks: {
-                                label: function(context) {
-                                    return `Views: ${context.parsed.y}`;
-                                }
-                            }
-                        }
-                    },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            ticks: {
-                                color: '#c7d2fe'
-                            },
-                            grid: {
-                                color: 'rgba(255, 255, 255, 0.1)'
-                            }
-                        },
-                        x: {
-                            ticks: {
-                                color: '#c7d2fe',
-                                maxRotation: 45,
-                                minRotation: 45
-                            },
-                            grid: {
-                                display: false
-                            }
-                        }
-                    },
-                    animation: {
-                        duration: 1500
-                    }
-                }
-            });
-        }
-        
-        // Fetch data on page load
-        fetchAnalytics();
-        
-        // Auto-refresh every 5 minutes
-        setInterval(fetchAnalytics, 5 * 60 * 1000);
-    </script>
+<section class="section"><div class="container"><div class="section-heading left"><p class="eyebrow">Provenance</p><h2>How to read this dashboard</h2></div><div class="card"><p class="provenance">Live website activity comes from Tayoca's first-party analytics collector. Google Search metrics come from a verified Search Console API snapshot and include the data-through date because finalized Search Console data lags current traffic. Revenue, proposals and pipeline values remain governed by the Stage 11 commercial ledgers and verified revenue evidence. Missing or stale Google data must be presented as unavailable or stale, not silently fabricated as zero.</p></div></div></section>
+</main>
+<footer><div class="footer-grid"><div><div class="footer-brand">TAYOCA</div><p>Technology Value &amp; FinOps, Platform Reliability &amp; DevSecOps, and Agentic Operations &amp; Automation.<br>Ontario, Canada.<br>© <span data-current-year>2026</span> Tayoca.</p></div><div class="footer-links"><strong>Explore</strong><a href="/services.html">Services</a><a href="/assessments.html">Assessments</a><a href="/results.html">Results</a><a href="/products.html">Products</a><a href="/insights.html">Insights</a><a href="/about.html">About</a></div><div class="footer-links"><strong>Connect</strong><a href="/operator-brief.html">Operator Brief</a><a href="/trust.html">Trust Center</a><a href="mailto:support@tayoca.com">support@tayoca.com</a></div></div></footer>
+<script>
+(function(){
+  'use strict';
+  var firstParty='https://v7mhrspk.function2.insforge.app/analytics-dashboard/overview?domain=tayoca.com&days=30';
+  var search='/data/search-console-summary.json';
+  var critical=['page_view','assessment_cta_click','generate_lead','assessment_schedule_click','operator_brief_signup','product_click','newsletter_attributed_conversion','case_study_assisted_conversion'];
+  function text(id,value){var el=document.getElementById(id);if(el)el.textContent=value;}
+  function row(container,label,value){var wrap=document.createElement('div');wrap.className='analytics-row';var strong=document.createElement('strong');strong.textContent=label;var span=document.createElement('span');span.textContent=value;wrap.append(strong,span);container.appendChild(wrap);}
+  function replaceList(id,items,make){var c=document.getElementById(id);c.textContent='';if(!items||!items.length){var p=document.createElement('p');p.className='metric-meta';p.textContent='No data available for this period.';c.appendChild(p);return;}items.forEach(function(item){var x=make(item);row(c,x[0],x[1]);});}
+  critical.forEach(function(name){var chip=document.createElement('div');chip.className='event-chip';var code=document.createElement('code');code.textContent=name;chip.appendChild(code);document.getElementById('event-contract').appendChild(chip);});
+  Promise.all([fetch(firstParty,{headers:{Accept:'application/json'}}).then(function(r){if(!r.ok)throw new Error('First-party analytics unavailable: '+r.status);return r.json();}),fetch(search,{headers:{Accept:'application/json'}}).then(function(r){if(!r.ok)throw new Error('Search Console snapshot unavailable: '+r.status);return r.json();})]).then(function(values){var live=values[0],gsc=values[1],seven=gsc.periods&&gsc.periods['7d_final'];if(!seven)throw new Error('Search Console snapshot is missing the finalized 7-day period.');text('pageviews',Number(live.total_pageviews||0).toLocaleString());text('visitors',Number(live.unique_visitors||0).toLocaleString());text('search-through',gsc.data_through||'unavailable');text('search-impressions',Number(seven.impressions||0).toLocaleString());text('search-clicks',Number(seven.clicks||0).toLocaleString());text('search-position',Number(seven.average_position||0).toFixed(1));text('sitemap-submitted',String(gsc.sitemap&&gsc.sitemap.submitted_urls!=null?gsc.sitemap.submitted_urls:'unavailable'));text('sitemap-health',gsc.sitemap?(gsc.sitemap.errors+' / '+gsc.sitemap.warnings):'unavailable');replaceList('top-pages',live.top_pages,function(x){return [x.path||'/',String(x.count||0)+' views'];});replaceList('top-referrers',live.top_referrers,function(x){return [x.referrer_src||'direct',String(x.count||0)+' referrals'];});replaceList('search-queries',gsc.top_queries_30d,function(x){return [x.query,String(x.impressions||0)+' impressions · position '+Number(x.average_position||0).toFixed(1)];});replaceList('search-pages',gsc.top_pages_30d,function(x){var u;try{u=new URL(x.page);return [u.pathname||'/',String(x.impressions||0)+' impressions · position '+Number(x.average_position||0).toFixed(1)];}catch(e){return [x.page,String(x.impressions||0)+' impressions'];}});}).catch(function(error){var box=document.getElementById('dashboard-error');box.style.display='block';box.textContent=error.message;});
+})();
+</script>
+<script defer src="/growth-os.js"></script><script defer src="/revenue-events.js"></script><script defer src="/tayoca-site.js"></script>
 </body>
 </html>

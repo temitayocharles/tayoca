@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "source": "Google Search Console API",
+  "property": "https://tayoca.com/",
+  "permission_level": "siteOwner",
+  "verified": true,
+  "generated_at": "2026-08-10T21:43:00Z",
+  "data_through": "2026-08-08",
+  "data_lag_note": "Search Console final data normally lags current traffic. Do not interpret the snapshot date as an outage.",
+  "sitemap": {
+    "url": "https://tayoca.com/sitemap.xml",
+    "submitted_urls": 33,
+    "indexed_urls_reported_by_sitemap": 0,
+    "errors": 0,
+    "warnings": 0,
+    "pending": false,
+    "last_downloaded": "2026-08-10T10:30:27.101Z",
+    "last_submitted": "2026-08-06T15:47:05.286Z",
+    "note": "The sitemap indexed count is metadata only. Search Analytics already reports impressions for Tayoca pages, so a zero sitemap indexed count must not be treated as proof that no URL is indexed."
+  },
+  "periods": {
+    "7d_final": {
+      "start_date": "2026-08-02",
+      "end_date": "2026-08-08",
+      "clicks": 0,
+      "impressions": 12,
+      "ctr": 0,
+      "average_position": 24.166666666666668
+    },
+    "30d_final": {
+      "start_date": "2026-07-10",
+      "end_date": "2026-08-08",
+      "clicks": 0,
+      "impressions": 12,
+      "ctr": 0,
+      "average_position": 24.166666666666668
+    }
+  },
+  "top_queries_30d": [
+    {"query": "devops runbook", "clicks": 0, "impressions": 3, "ctr": 0, "average_position": 41.333333333333336},
+    {"query": "runbook devops", "clicks": 0, "impressions": 2, "ctr": 0, "average_position": 53},
+    {"query": "tayoca", "clicks": 0, "impressions": 5, "ctr": 0, "average_position": 7}
+  ],
+  "top_pages_30d": [
+    {"page": "https://tayoca.com/", "clicks": 0, "impressions": 6, "ctr": 0, "average_position": 6.166666666666667},
+    {"page": "https://tayoca.com/about.html", "clicks": 0, "impressions": 2, "ctr": 0, "average_position": 6},
+    {"page": "https://tayoca.com/blog/devops-incident-response-runbook.html", "clicks": 0, "impressions": 6, "ctr": 0, "average_position": 42.166666666666664},
+    {"page": "https://tayoca.com/products.html", "clicks": 0, "impressions": 2, "ctr": 0, "average_position": 8},
+    {"page": "https://tayoca.com/services.html", "clicks": 0, "impressions": 1, "ctr": 0, "average_position": 9}
+  ],
+  "aggregation_note": "Search Console query/page breakdowns can omit anonymized rows and use different aggregation semantics. Use period totals as the executive metric authority; do not sum breakdown rows to reconstruct totals."
+}

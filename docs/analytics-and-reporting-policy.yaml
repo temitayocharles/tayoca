@@ -1,0 +1,157 @@
+schema_version: 1
+stage: 12
+stage_name: analytics_and_executive_reporting
+status: IN_PROGRESS
+purpose: "Prove Tayoca's critical acquisition, conversion, attribution and executive-reporting events without inventing traffic or mixing test evidence into production metrics."
+
+canonical_systems:
+  repository:
+    host: forgejo.tca-infraforge.site
+    repo: temitayocharles/tayoca
+    authority: primary
+  ga4:
+    account: accounts/352773461
+    property: properties/548373018
+    property_name: Tayoca
+    stream: properties/548373018/dataStreams/15375937707
+    stream_name: Tayoca Website
+    measurement_id: G-G4QC90QNXW
+    default_uri: https://tayoca.com
+    verified_via_admin_api: true
+    non_authoritative_duplicate_property: properties/548376430
+    duplicate_property_stream_count: 0
+  search_console:
+    property: https://tayoca.com/
+    permission_level: siteOwner
+    verified_via_api: true
+    sitemap: https://tayoca.com/sitemap.xml
+    snapshot: public/data/search-console-summary.json
+  first_party_analytics:
+    collector: https://v7mhrspk.function2.insforge.app/analytics-event
+    dashboard: https://v7mhrspk.function2.insforge.app/analytics-dashboard/overview
+    table: analytics_events
+  executive_reporting:
+    workflow_id: MRaoY2aHm85q3QWG
+    workflow_name: Tayoca Growth OS | Demand Engine & Revenue Command Center
+    cadence: weekly_friday
+
+privacy:
+  prohibited_event_data:
+    - email
+    - buyer_email
+    - purchase_email
+    - review_token
+    - authentication_token
+    - raw_ip
+  url_sanitization:
+    remove_query_keys: [token, sale_id, email, purchase_email, buyer_email, review_token]
+    remove_hash: true
+  visitor_identity: "First-party collector uses an irreversible server-side visitor hash; browser code does not persist raw IP or user-agent."
+
+measurement_contract:
+  browser_authority: public/ga4.js
+  growth_interaction_owner: public/growth-os.js
+  compatibility_adapter: public/revenue-events.js
+  contract_version: stage12-v1
+  critical_events:
+    - page_view
+    - assessment_cta_click
+    - generate_lead
+    - assessment_schedule_click
+    - operator_brief_signup
+    - product_click
+    - newsletter_attributed_conversion
+    - case_study_assisted_conversion
+  governance_events:
+    - operator_brief_unsubscribe
+    - contact_click
+    - outbound_click
+    - gumroad_click
+    - whatsapp_click
+  verified_commercial_event:
+    name: purchase
+    authority: "Provider-verified revenue evidence from the Stage 11 commercial system; browser test traffic must never synthesize a purchase."
+
+conversion_definition:
+  generate_lead: "A successful assessment request or explicitly consented Operator Brief signup. An unsubscribe is not a lead."
+  assessment_schedule_click: "A click on the scheduling action returned after an accepted assessment request."
+  operator_brief_signup: "An explicitly consented Operator Brief signup accepted by the intake workflow."
+  product_click: "A click from Tayoca to a Gumroad product destination."
+  newsletter_attributed_conversion: "A downstream conversion whose session attribution contains Operator Brief/email UTM lineage."
+  case_study_assisted_conversion: "A downstream conversion in a session that previously visited the governed Results surface."
+
+attribution:
+  first_touch: "Persist the first non-PII source/medium/campaign/referrer context for the browser session."
+  last_touch: "Update with later explicit UTM/referrer context without erasing first touch."
+  newsletter:
+    source: operator_brief
+    medium: email
+    issue_key: utm_campaign
+    section_key: utm_content
+    rule: "Operator Brief links use source=operator_brief and medium=email. The issue and section remain explicit UTM lineage, not inferred from identity."
+  case_study:
+    governed_assist_surface: /results.html
+    rule: "A Results-page visit can assist a later conversion in the same browser session. Withdrawn/unverified historical claims are never promoted into attribution metadata."
+
+search_console:
+  sitemap:
+    submitted_urls: 33
+    errors: 0
+    warnings: 0
+    pending: false
+  final_data_through: '2026-08-08'
+  seven_day:
+    clicks: 0
+    impressions: 12
+    ctr: 0
+    average_position: 24.166666666666668
+  reporting_rule: "Period totals are authoritative. Query/page breakdown rows may omit anonymized data or use different aggregation semantics and must not be summed to reconstruct totals."
+  sitemap_index_note: "A zero indexed count in sitemap metadata is not treated as proof of non-indexing because Search Analytics already reports impressions for Tayoca URLs."
+
+ga4_baseline:
+  observed_30d_events:
+    page_view: 28
+    first_visit: 22
+    session_start: 22
+    scroll: 6
+    user_engagement: 3
+    form_start: 1
+  current_key_events:
+    - purchase
+  key_event_api_constraint: "The connected Google Analytics Admin tooling is read-only for key-event definitions. Stage 12 tests event emission and reporting without claiming that newly instrumented events are already marked as GA4 key events."
+
+test_traffic:
+  query_marker: tayoca_test=stage12
+  form_rule: "In Stage 12 test mode, growth forms simulate accepted responses locally and never call the production intake webhooks."
+  browser_rule: "Certification browser runs intercept/replace Google and first-party analytics transport before requests leave the browser."
+  production_metric_rule: "Do not create fake leads, subscriptions, purchases, reviews, revenue or persistent first-party analytics rows for certification."
+  purchase_rule: "Never synthesize purchase test traffic."
+
+executive_reporting:
+  search_snapshot_url: https://tayoca.com/data/search-console-summary.json
+  search_freshness_rule: "Always display the Search Console data-through date. Never convert unavailable/stale search data into a numeric zero without provenance."
+  first_party_rule: "Use Tayoca first-party analytics for live site activity and use verified Google snapshots/APIs for Google-owned metrics."
+  commercial_rule: "Revenue, proposal and pipeline values remain governed by Stage 11 ledgers and verified revenue evidence."
+
+fail_closed_controls:
+  - "No PII is sent to GA4 or the first-party analytics collector."
+  - "Stage 12 browser certification does not submit production assessment, newsletter or purchase records."
+  - "A missing Google metric is reported as unavailable/stale, not fabricated as zero."
+  - "The duplicate empty Tayoca GA4 property is not merged, deleted or treated as authoritative without a separate governance decision."
+  - "Stage 7 private-source and Stage 8 publication firewalls remain binding."
+  - "Stage 11 verified-revenue authority remains binding."
+
+gate:
+  requirement: "test traffic proves each critical event and report"
+  required_evidence:
+    - ga4_property_and_stream_verified
+    - search_console_owner_verified
+    - sitemap_verified
+    - critical_browser_event_emission
+    - newsletter_attribution_emission
+    - case_study_assist_emission
+    - no_production_test_form_writes
+    - executive_report_test
+    - production_dashboard_readback
+    - rollback_reference
+  passed: false
