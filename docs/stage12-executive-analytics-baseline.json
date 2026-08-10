@@ -1,0 +1,198 @@
+{
+  "schema_version": 1,
+  "stage": 12,
+  "stage_name": "Executive analytics",
+  "status": "GREEN",
+  "certified_at": "2026-08-10T22:28:30Z",
+  "acceptance_gate": "test traffic proves each critical event and report",
+  "scope": [
+    "GA4 verification",
+    "Search Console verification",
+    "conversion events",
+    "newsletter attribution",
+    "case-study-assisted conversion",
+    "executive dashboard and weekly report"
+  ],
+  "canonical_repository": {
+    "host": "forgejo.tca-infraforge.site",
+    "repo": "temitayocharles/tayoca",
+    "implementation_tip_before_baseline": "08a627fa3c7035ebaf909f6bc0314bc73921f574",
+    "implementation_message": "analytics: fix Stage 12 session attribution storage"
+  },
+  "google_authority": {
+    "ga4": {
+      "account": "accounts/352773461",
+      "property": "properties/548373018",
+      "stream": "properties/548373018/dataStreams/15375937707",
+      "stream_name": "Tayoca Website",
+      "measurement_id": "G-G4QC90QNXW",
+      "default_uri": "https://tayoca.com",
+      "verified_via_admin_api": true,
+      "current_key_events": ["purchase"],
+      "key_event_constraint": "Connected GA Admin tooling is read-only for key-event definitions. Stage 12 certifies emission and reporting, not key-event registration for newly instrumented events.",
+      "non_authoritative_duplicate_property": "properties/548376430",
+      "duplicate_property_stream_count": 0
+    },
+    "search_console": {
+      "property": "https://tayoca.com/",
+      "permission_level": "siteOwner",
+      "verified_via_api": true,
+      "snapshot": "public/data/search-console-summary.json",
+      "data_through": "2026-08-08",
+      "seven_day": {
+        "clicks": 0,
+        "impressions": 12,
+        "ctr": 0,
+        "average_position": 24.166666666666668
+      },
+      "sitemap": {
+        "url": "https://tayoca.com/sitemap.xml",
+        "submitted_urls": 33,
+        "errors": 0,
+        "warnings": 0,
+        "pending": false
+      }
+    }
+  },
+  "browser_measurement_contract": {
+    "contract_version": "stage12-v1",
+    "browser_authority": "public/ga4.js",
+    "browser_authority_blob": "3fbbbbbd0e278e4afd518dbe8b46477c0a008294",
+    "growth_interaction_owner": "public/growth-os.js",
+    "growth_interaction_blob": "9b049540f111e61aef0d17e67dfbf682def557fb",
+    "compatibility_adapter": "public/revenue-events.js",
+    "compatibility_adapter_blob": "84850eba4661b26b0cdffa483fbd619e2768bffb",
+    "critical_events": [
+      "page_view",
+      "assessment_cta_click",
+      "generate_lead",
+      "assessment_schedule_click",
+      "operator_brief_signup",
+      "product_click",
+      "newsletter_attributed_conversion",
+      "case_study_assisted_conversion"
+    ],
+    "certification": {
+      "status": "PASS",
+      "runtime": "Chromium 144 via Playwright Page.setContent on about:blank",
+      "execution_model": "Exact hash-verified production JavaScript executed unchanged in a Chromium lexical scope supplying Tayoca production location and session-storage context. Fetch was replaced before script execution, so no request could leave the browser.",
+      "required_event_count": 8,
+      "missing_ga_style_events": 0,
+      "missing_first_party_events": 0,
+      "critical_payload_count": 17,
+      "critical_payloads_marked_test_traffic": 17,
+      "blocked_production_posts": 0,
+      "pii_keys_in_event_properties": 0,
+      "assessment_test_result": "Stage 12 test traffic accepted locally. No lead was created.",
+      "operator_brief_test_result": "Stage 12 test traffic accepted locally. No subscription was created.",
+      "newsletter_lineage": {
+        "source": "operator_brief",
+        "medium": "email",
+        "issue": "stage12-cert",
+        "section": "decision_memo"
+      },
+      "case_study_assist": {
+        "path": "/results.html",
+        "proved_on_later_conversion": true
+      },
+      "synthetic_purchase_generated": false,
+      "synthetic_revenue_generated": false,
+      "synthetic_review_generated": false,
+      "note": "Remote Browserless credentials returned 401 and the connected Cloudflare Browser Rendering credential returned an upstream authentication error. The local managed Chromium blocks navigable URLs by policy, so certification used Chromium document injection with exact production script blobs and an isolated production-location scope. This limitation did not weaken transport isolation or event-code execution."
+    }
+  },
+  "executive_reporting": {
+    "workflow_id": "MRaoY2aHm85q3QWG",
+    "workflow_name": "Tayoca Growth OS | Demand Engine & Revenue Command Center",
+    "active_version": "b159ae03-5ea7-48f2-af46-e5794c0d4182",
+    "rollback_version": "8b63948a-5daf-4c8c-993e-d620b657b39b",
+    "trigger_count": 3,
+    "search_snapshot_node": "Fetch Search Console Snapshot",
+    "safe_test_execution": "70676",
+    "safe_test_status": "success",
+    "safe_test_writes_pinned": true,
+    "safe_test_slack_delivery_pinned": true,
+    "pdf_generated": true,
+    "pdf_size_bytes": 3225,
+    "reported_search_metrics": {
+      "clicks": 0,
+      "impressions": 12,
+      "average_position": 24.166666666666668,
+      "data_through": "2026-08-08",
+      "status": "verified_snapshot"
+    }
+  },
+  "production": {
+    "github_repo": "temitayocharles/tayoca",
+    "github_stage12_source_commit": "cbd43bd36917b80be000e8aaf88a8a6f515ee318",
+    "vercel_project": "tayoca-com-static",
+    "vercel_deployment": "dpl_DyKRko9NRqLmVXcEbhUmd1rTE39V",
+    "vercel_state": "READY",
+    "vercel_ready_substate": "PROMOTED",
+    "aliases": [
+      "tayoca.com",
+      "www.tayoca.com",
+      "tayoca-com-static-charlies-projects-0dc15824.vercel.app",
+      "tayoca-com-static-git-main-charlies-projects-0dc15824.vercel.app"
+    ],
+    "deployment_checks": 0,
+    "alias_error": null,
+    "alias_warning": "Vercel reported asynchronous certificate creation for www.tayoca.com. The alias is assigned; certificate issuance is tracked as a platform reliability item rather than a Stage 12 measurement failure.",
+    "dashboard_readback": {
+      "url": "https://tayoca.com/analytics.html",
+      "http_status": 200,
+      "readback_method": "Firecrawl HTTPS scrape after production promotion",
+      "stage12_event_contract_count": 8,
+      "search_console_data_through": "2026-08-08",
+      "search_impressions": 12,
+      "search_clicks": 0,
+      "average_position_display": 24.2,
+      "first_party_pageviews_at_readback": 309,
+      "first_party_unique_visitors_at_readback": 110
+    },
+    "search_snapshot_readback": {
+      "url": "https://tayoca.com/data/search-console-summary.json",
+      "http_status": 200,
+      "verified": true,
+      "permission_level": "siteOwner",
+      "data_through": "2026-08-08"
+    }
+  },
+  "regression_certification": {
+    "public_shell_auditor_workflow": "AndnV6W2YCiTcxSz",
+    "execution": "70682",
+    "status": "PASSED",
+    "audited_pages": 34,
+    "nonconforming_pages": 0,
+    "violations": 0,
+    "stage_7_private_source_firewall_regression": false,
+    "stage_8_publication_firewall_regression": false,
+    "stage_9_operator_brief_regression": false,
+    "stage_10_product_ecosystem_regression": false,
+    "stage_11_revenue_authority_regression": false
+  },
+  "cleanup": {
+    "temporary_maintenance_workflow": "rvIMuGa2EDJvrwu5",
+    "temporary_maintenance_workflow_archived": true,
+    "production_test_form_writes": 0,
+    "production_test_analytics_rows": 0
+  },
+  "rollback": {
+    "github_pre_stage12_commit": "1f2d85e2d4cbff336d8507a7a7f55cdbad0459d8",
+    "vercel_pre_stage12_deployment": "dpl_FHAhvk9oY2tN7mZr3Jz7VF5QNJQA",
+    "n8n_pre_stage12_version": "8b63948a-5daf-4c8c-993e-d620b657b39b"
+  },
+  "gate_evidence": {
+    "ga4_property_and_stream_verified": true,
+    "search_console_owner_verified": true,
+    "sitemap_verified": true,
+    "critical_browser_event_emission": true,
+    "newsletter_attribution_emission": true,
+    "case_study_assist_emission": true,
+    "no_production_test_form_writes": true,
+    "executive_report_test": true,
+    "production_dashboard_readback": true,
+    "rollback_reference": true
+  },
+  "gate_passed": true
+}

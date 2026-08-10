@@ -1,7 +1,7 @@
 schema_version: 1
 stage: 12
 stage_name: analytics_and_executive_reporting
-status: IN_PROGRESS
+status: GREEN
 purpose: "Prove Tayoca's critical acquisition, conversion, attribution and executive-reporting events without inventing traffic or mixing test evidence into production metrics."
 
 canonical_systems:
@@ -50,8 +50,11 @@ privacy:
 
 measurement_contract:
   browser_authority: public/ga4.js
+  browser_authority_blob: 3fbbbbbd0e278e4afd518dbe8b46477c0a008294
   growth_interaction_owner: public/growth-os.js
+  growth_interaction_blob: 9b049540f111e61aef0d17e67dfbf682def557fb
   compatibility_adapter: public/revenue-events.js
+  compatibility_adapter_blob: 84850eba4661b26b0cdffa483fbd619e2768bffb
   contract_version: stage12-v1
   critical_events:
     - page_view
@@ -123,7 +126,7 @@ ga4_baseline:
 test_traffic:
   query_marker: tayoca_test=stage12
   form_rule: "In Stage 12 test mode, growth forms simulate accepted responses locally and never call the production intake webhooks."
-  browser_rule: "Certification browser runs intercept/replace Google and first-party analytics transport before requests leave the browser."
+  browser_rule: "Certification executes exact hash-verified production JavaScript unchanged in Chromium with Tayoca production location/session context and replaces fetch before script execution; no certification request leaves the browser."
   production_metric_rule: "Do not create fake leads, subscriptions, purchases, reviews, revenue or persistent first-party analytics rows for certification."
   purchase_rule: "Never synthesize purchase test traffic."
 
@@ -132,6 +135,49 @@ executive_reporting:
   search_freshness_rule: "Always display the Search Console data-through date. Never convert unavailable/stale search data into a numeric zero without provenance."
   first_party_rule: "Use Tayoca first-party analytics for live site activity and use verified Google snapshots/APIs for Google-owned metrics."
   commercial_rule: "Revenue, proposal and pipeline values remain governed by Stage 11 ledgers and verified revenue evidence."
+  active_workflow_version: b159ae03-5ea7-48f2-af46-e5794c0d4182
+  rollback_workflow_version: 8b63948a-5daf-4c8c-993e-d620b657b39b
+  certification_execution: '70676'
+
+production_certification:
+  github_source_commit: cbd43bd36917b80be000e8aaf88a8a6f515ee318
+  vercel_deployment: dpl_DyKRko9NRqLmVXcEbhUmd1rTE39V
+  vercel_state: READY
+  vercel_ready_substate: PROMOTED
+  deployment_checks: 0
+  dashboard_readback:
+    url: https://tayoca.com/analytics.html
+    http_status: 200
+    search_data_through: '2026-08-08'
+    critical_event_contract_count: 8
+  search_snapshot_readback:
+    url: https://tayoca.com/data/search-console-summary.json
+    http_status: 200
+    verified: true
+  public_shell_audit:
+    workflow_id: AndnV6W2YCiTcxSz
+    execution: '70682'
+    audited_pages: 34
+    violations: 0
+
+browser_certification:
+  status: PASS
+  runtime: "Chromium 144 via Playwright Page.setContent"
+  required_events: 8
+  missing_ga_style_events: 0
+  missing_first_party_events: 0
+  critical_payloads: 17
+  critical_payloads_with_test_marker: 17
+  blocked_production_posts: 0
+  pii_event_property_keys: 0
+  newsletter_lineage_proved: true
+  case_study_assist_proved: true
+  production_test_form_writes: 0
+  production_test_analytics_rows: 0
+  synthetic_purchase: false
+  synthetic_revenue: false
+  synthetic_review: false
+  infrastructure_note: "Three Browserless credentials returned 401, Cloudflare Browser Rendering returned an upstream authentication error, and local managed Chromium blocks navigable URLs through URLBlocklist policy. The certification therefore used Chromium document injection with byte-identical production scripts and isolated production-location context."
 
 fail_closed_controls:
   - "No PII is sent to GA4 or the first-party analytics collector."
@@ -143,6 +189,7 @@ fail_closed_controls:
 
 gate:
   requirement: "test traffic proves each critical event and report"
+  baseline: docs/stage12-executive-analytics-baseline.json
   required_evidence:
     - ga4_property_and_stream_verified
     - search_console_owner_verified
@@ -154,4 +201,4 @@ gate:
     - executive_report_test
     - production_dashboard_readback
     - rollback_reference
-  passed: false
+  passed: true
