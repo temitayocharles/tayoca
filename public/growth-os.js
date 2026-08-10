@@ -7,6 +7,27 @@
   var path=(location.pathname.replace(/\/$/,'')||'/');document.querySelectorAll('header a[href]').forEach(function(a){var href=a.getAttribute('href');if(!href||href.startsWith('#')||href.startsWith('http')||href.startsWith('mailto:'))return;var ap=(new URL(href,location.origin)).pathname.replace(/\/$/,'')||'/';if(ap===path)a.classList.add('active')});
   document.querySelectorAll('.card,.product-card').forEach(function(card){var link=card.querySelector('a[href]');if(!link)return;card.classList.add('is-clickable');card.tabIndex=0;card.setAttribute('role','link');card.setAttribute('aria-label',link.textContent.trim()||'Open');function go(){if(link.target==='_blank')window.open(link.href,'_blank','noopener');else location.href=link.href}card.addEventListener('click',function(e){if(e.target.closest('a,button,input,select,textarea,label'))return;if(window.getSelection&&String(window.getSelection()))return;go()});card.addEventListener('keydown',function(e){if((e.key==='Enter'||e.key===' ')&&!e.target.closest('a,button,input,select,textarea')){e.preventDefault();go()}})});
   document.addEventListener('click',function(e){var a=e.target.closest('a');if(!a)return;var href=a.getAttribute('href')||'';if(href.includes('gumroad.com'))track('product_click',{link_url:href,link_text:(a.textContent||'').trim()});if(href.includes('assessments'))track('assessment_cta_click',{link_url:href});if(href.startsWith('mailto:'))track('contact_click',{method:'email'})});
-  var q=new URLSearchParams(location.search),wanted=q.get('assessment');if(wanted){document.querySelectorAll('select[name="assessment"]').forEach(function(sel){Array.from(sel.options).some(function(o){if(o.value===wanted||o.textContent.toLowerCase().includes(wanted.toLowerCase())){sel.value=o.value;return true}return false})})}
-  document.querySelectorAll('form[data-tayoca-form]').forEach(function(f){f.addEventListener('submit',async function(e){e.preventDefault();f.querySelectorAll('.form-success,.form-error').forEach(function(x){x.remove()});var b=f.querySelector('button[type=submit]');var old=b?b.textContent:'';if(b){b.disabled=true;b.textContent='Sending…'}try{var payload=Object.fromEntries(new FormData(f).entries());var r=await fetch(f.action,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});var data=await r.json().catch(function(){return{}});if(!r.ok)throw new Error(data.message||'Request failed');track('generate_lead',{form_name:f.dataset.tayocaForm||'unknown'});f.reset();var p=document.createElement('p');p.className='form-success';p.setAttribute('role','status');p.textContent='Thank you. Your request has been recorded.';f.appendChild(p)}catch(err){var p=document.createElement('p');p.className='form-error';p.setAttribute('role','alert');p.textContent='We could not record this request. Email support@tayoca.com.';f.appendChild(p)}finally{if(b){b.disabled=false;b.textContent=old}}})});
+  var q=new URLSearchParams(location.search),wanted=q.get('assessment'),segment=q.get('segment');
+  if(wanted){document.querySelectorAll('select[name="assessment"]').forEach(function(sel){Array.from(sel.options).some(function(o){if(o.value===wanted||o.textContent.toLowerCase().includes(wanted.toLowerCase())){sel.value=o.value;return true}return false})})}
+  if(segment){document.querySelectorAll('select[name="segment"]').forEach(function(sel){Array.from(sel.options).some(function(o){if(o.value===segment){sel.value=o.value;return true}return false})})}
+  document.querySelectorAll('form[data-tayoca-form]').forEach(function(f){f.addEventListener('submit',async function(e){
+    e.preventDefault();f.querySelectorAll('.form-success,.form-error,.form-next-action').forEach(function(x){x.remove()});
+    var b=f.querySelector('button[type=submit]');var old=b?b.textContent:'';if(b){b.disabled=true;b.textContent='Sending…'}
+    try{
+      var payload=Object.fromEntries(new FormData(f).entries());payload.source_page=location.pathname;
+      var r=await fetch(f.action,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+      var data=await r.json().catch(function(){return{}});
+      if(!r.ok)throw new Error(data.error||data.message||'Request failed');
+      track('generate_lead',{form_name:f.dataset.tayocaForm||'unknown',lead_status:data.status||'accepted'});
+      f.reset();
+      var p=document.createElement('p');p.className='form-success';p.setAttribute('role','status');p.textContent=data.next||'Thank you. Your request has been recorded.';f.appendChild(p);
+      if(data.schedulingUrl){
+        var wrap=document.createElement('div');wrap.className='form-next-action actions';
+        var a=document.createElement('a');a.className='button';a.href=data.schedulingUrl;a.target='_blank';a.rel='noopener';a.textContent='Choose a consultation time';a.setAttribute('data-event','assessment_schedule_click');
+        wrap.appendChild(a);f.appendChild(wrap);
+      }
+    }catch(err){
+      var p=document.createElement('p');p.className='form-error';p.setAttribute('role','alert');p.textContent='We could not record this request. Email support@tayoca.com.';f.appendChild(p)
+    }finally{if(b){b.disabled=false;b.textContent=old}}
+  })});
 })();
