@@ -1,0 +1,265 @@
+{
+  "version": 1,
+  "stage": 10,
+  "name": "Tayoca Product Ecosystem",
+  "acceptance_gate": "Every product has a coherent commercial role and does not appear as an unrelated side project.",
+  "required_controls": ["buyer", "problem", "deliverable", "time_to_value", "evidence", "pricing_method", "boundaries", "next_action"],
+  "families": [
+    {
+      "id": "operator-tools",
+      "name": "Operator Tools",
+      "summary": "Working software and operational automation for teams that need a system they can run, observe and improve.",
+      "next_action": {"label": "Explore Sivanta", "href": "/sivanta.html"},
+      "products": [
+        {
+          "id": "sivanta",
+          "name": "Sivanta",
+          "page": "/sivanta.html",
+          "commercial_role": "Conversation-led commerce automation for customer-facing teams that need governed multi-channel automation rather than another disconnected chatbot.",
+          "buyer": "Commerce, customer-operations and growth teams handling repeatable customer conversations across WhatsApp, Telegram or web.",
+          "problem": "Customer conversations, qualification, payments and follow-up are fragmented across channels and require too much manual handling.",
+          "deliverable": "A configured Sivanta tenant with selected channels, approved automation skills, analytics and the plan-level onboarding/support scope.",
+          "time_to_value": "The first useful milestone is a bounded conversation flow running with agreed inputs and human handoff; timing depends on channel and integration readiness.",
+          "evidence": "Working channel flows, execution records and analytics are validated in the configured environment rather than inferred from marketing claims.",
+          "pricing_method": "Subscription tiers: Starter $99/month, Growth $299/month, with managed scope priced separately where required.",
+          "boundaries": "Channel, tenant, skill and support limits follow the selected plan. Uptime, support response, compliance or SLA commitments apply only when explicitly included in the signed plan. Business outcomes depend on data, integrations and operating adoption.",
+          "next_action": {"label": "Review Sivanta plans", "href": "/sivanta.html#pricing"}
+        }
+      ]
+    },
+    {
+      "id": "operator-playbooks",
+      "name": "Operator Playbooks",
+      "summary": "Books, labs, workbooks and implementation resources that turn operating practice into reusable execution systems.",
+      "next_action": {"label": "Compare Operator Playbooks", "href": "/products.html#operator-playbooks"},
+      "products": [
+        {
+          "id": "kubernetes-operators-workbook",
+          "name": "Kubernetes Operator's Workbook, Second Edition",
+          "page": "/products/kubernetes-operators-workbook.html",
+          "commercial_role": "Production-minded Kubernetes practice for operators who need troubleshooting and recovery judgment, not command memorization.",
+          "buyer": "Kubernetes administrators, DevOps/platform engineers, CKA candidates and engineers preparing for production-focused interviews.",
+          "problem": "Kubernetes knowledge is often learned as isolated commands without enough practice diagnosing incidents, recovering safely or explaining operational decisions.",
+          "deliverable": "An 86-page digital workbook with guided labs, 24 production incident scenarios, etcd backup/restore practice, CKA-aligned exercises and interview simulations.",
+          "time_to_value": "Digital delivery is available after purchase; a buyer can begin the first guided lab in the first working session.",
+          "evidence": "The commercial evidence is the published workbook scope itself: 86 pages, guided labs, 24 incident scenarios, recovery exercises and preview material.",
+          "pricing_method": "One-time digital purchase: CAD $69 through Gumroad.",
+          "boundaries": "This is a practice and learning resource, not a certification guarantee, production support contract or managed Kubernetes service. Labs should be run in safe practice environments before applying techniques to production.",
+          "next_action": {"label": "Buy on Gumroad", "href": "https://tayoca.gumroad.com/l/kubernetes-operators-workbook"}
+        },
+        {
+          "id": "ai-automation-career-playbook",
+          "name": "AI Automation Career Playbook",
+          "page": "/products/ai-automation-career-playbook.html",
+          "commercial_role": "A structured execution system for technical professionals moving into AI automation work.",
+          "buyer": "DevOps/software engineers, technical career changers and job seekers building AI automation portfolio and interview readiness.",
+          "problem": "The transition into AI automation is scattered across tools, tutorials, portfolio ideas, applications and interview preparation without one execution cadence.",
+          "deliverable": "A digital playbook with 60+ sections, a 12-week cadence, six portfolio project starters, sourcing/job-site material, résumé/LinkedIn templates, interview drills and compensation guidance.",
+          "time_to_value": "Digital delivery is available after purchase; the buyer can select a target role and begin the first weekly execution cycle immediately.",
+          "evidence": "The evidence is the published package structure, included templates and project starters. Career or compensation outcomes are not represented as guaranteed results.",
+          "pricing_method": "One-time digital purchase: USD $49 through Gumroad.",
+          "boundaries": "The playbook does not guarantee employment, interview volume, salary level or a specific timeline to an offer. Results depend on skills, market conditions and execution.",
+          "next_action": {"label": "Buy on Gumroad", "href": "https://tayoca.gumroad.com/l/ai-automation-career"}
+        },
+        {
+          "id": "n8n-mcp-kubernetes-teaching-pack",
+          "name": "n8n MCP Kubernetes Teaching Pack",
+          "page": "/products/n8n-mcp-kubernetes-teaching-pack.html",
+          "commercial_role": "A ready-to-adapt teaching and enablement system for n8n, MCP and Kubernetes integration.",
+          "buyer": "DevOps engineers, AI automation practitioners, educators, bootcamp instructors and internal enablement teams.",
+          "problem": "Teams can understand n8n, MCP and Kubernetes separately but lack a coherent set of diagrams, workflows, deployment examples and exercises for teaching how they fit together.",
+          "deliverable": "A digital teaching pack with 10+ modular units, architecture diagrams, slide decks, prompts, n8n workflow JSON, Helm/Kubernetes examples, instructor notes, assessments and supporting media.",
+          "time_to_value": "Digital delivery is available after purchase; instructors or practitioners can reuse the first module and sample workflow in the first workshop or lab session.",
+          "evidence": "The evidence is the included modular curriculum, workflow assets, Kubernetes examples and preview material published with the product.",
+          "pricing_method": "One-time digital purchase: USD $39 through Gumroad.",
+          "boundaries": "This is a teaching/enablement pack, not a managed deployment, production integration contract or guaranteed training outcome. Production environments require separate design and validation.",
+          "next_action": {"label": "Buy on Gumroad", "href": "https://tayoca.gumroad.com/l/n8n-mcp-k8s"}
+        },
+        {
+          "id": "build-break-fix-devops-lab-pack",
+          "name": "Build, Break, Fix: DevOps Practice Lab Pack",
+          "page": "/products/build-break-fix-devops-lab-pack.html",
+          "commercial_role": "Deliberate troubleshooting practice for engineers who need stronger incident diagnosis and recovery judgment.",
+          "buyer": "Developing DevOps engineers, practical-interview candidates, mentors and practitioners building incident-response judgment.",
+          "problem": "Passive tutorials do not build the habit of forming hypotheses, reading evidence and proving recovery when CI/CD, container or Kubernetes systems fail.",
+          "deliverable": "Self-contained digital lab exercises covering CI/CD debugging, Kubernetes troubleshooting, failure injection, diagnosis, recovery prompts, validation and reflection checkpoints.",
+          "time_to_value": "Digital delivery is available after purchase; a buyer can run the first build-break-fix exercise in a safe lab environment immediately.",
+          "evidence": "The evidence is the included lab guide, exercise sheets, failure scenarios and explicit diagnosis/recovery checkpoints.",
+          "pricing_method": "One-time digital purchase: USD $19 through Gumroad.",
+          "boundaries": "Labs are for controlled practice environments and do not include production support, certification or a guarantee of interview/job outcomes.",
+          "next_action": {"label": "Buy on Gumroad", "href": "https://tayoca.gumroad.com/l/build-break-fix-devops"}
+        },
+        {
+          "id": "aws-cost-optimization-playbook",
+          "name": "AWS Cost Optimization Playbook",
+          "page": "/products/aws-cost-optimization-playbook.html",
+          "commercial_role": "A self-service FinOps operating guide for teams that need an evidence-backed savings backlog before buying consulting or managed operations.",
+          "buyer": "FinOps practitioners, cloud/platform engineers, engineering leaders accountable for AWS spend and teams starting a structured cost-optimization programme.",
+          "problem": "AWS cost work often becomes one-time cleanup without a durable method for finding cost drivers, ranking safe actions and assigning ownership.",
+          "deliverable": "A 25-chapter digital playbook with PDF/Notion-ready material, architecture-first cost analysis, runbooks, CloudFormation/automation examples and governance checklists.",
+          "time_to_value": "Digital delivery is available after purchase; teams can begin a first cost-driver review and backlog using the playbook immediately.",
+          "evidence": "The evidence is the published chapters, runbooks, examples and checklists. Savings remain hypotheses until implemented and measured against a baseline.",
+          "pricing_method": "One-time digital purchase: USD $29 through Gumroad.",
+          "boundaries": "The playbook does not guarantee a savings percentage, replace workload-specific analysis or include implementation/managed FinOps services.",
+          "next_action": {"label": "Buy on Gumroad", "href": "https://tayoca.gumroad.com/l/aws-cost-optimization"}
+        },
+        {
+          "id": "devops-incident-runbook-template",
+          "name": "DevOps Incident Runbook Template",
+          "page": "/products/devops-incident-runbook-template.html",
+          "commercial_role": "A reusable incident operating structure for teams replacing ad hoc response with explicit roles, evidence and recovery checkpoints.",
+          "buyer": "On-call DevOps/SRE/platform teams, engineering managers and consultants establishing a shared incident-response process.",
+          "problem": "High-pressure incidents create missed steps, unclear ownership, inconsistent communication and poor evidence retention when the response model lives only in people's heads.",
+          "deliverable": "A reusable digital runbook with triage/severity prompts, incident roles, escalation guidance, communication checkpoints, recovery validation and post-incident follow-through.",
+          "time_to_value": "Digital delivery is available after purchase; a team can adapt the template to its current escalation and communication model in the first working session.",
+          "evidence": "The evidence is the template structure and the explicit triage, ownership, communication, validation and follow-through fields it contains.",
+          "pricing_method": "One-time digital purchase: USD $19 through Gumroad.",
+          "boundaries": "The template is tool-agnostic and does not provide monitoring, on-call staffing, incident response services or an SLA. Teams must adapt severity and escalation rules to their environment.",
+          "next_action": {"label": "Buy on Gumroad", "href": "https://tayoca.gumroad.com/l/devops-incident-runbook"}
+        },
+        {
+          "id": "kubernetes-production-readiness-checklist",
+          "name": "Kubernetes Production Readiness Checklist",
+          "page": "/products/kubernetes-production-readiness-checklist.html",
+          "commercial_role": "A structured pre-production and review control for teams that need explicit Kubernetes readiness evidence and remediation ownership.",
+          "buyer": "Platform/Kubernetes teams, SRE/security reviewers, engineering leaders preparing production launch and teams running readiness reviews.",
+          "problem": "Production sign-off becomes subjective when resilience, security, observability, capacity, deployment safety and operational ownership are not reviewed against one evidence checklist.",
+          "deliverable": "A digital production-readiness checklist covering resilience/recovery, security/isolation, observability/capacity, deployment safety, ownership and evidence fields.",
+          "time_to_value": "Digital delivery is available after purchase; a team can use it in the next readiness review or remediation planning session.",
+          "evidence": "The evidence is the checklist's explicit control areas, ownership prompts and evidence fields. Completing the checklist is not itself proof that every control is effective.",
+          "pricing_method": "One-time digital purchase: USD $19 through Gumroad.",
+          "boundaries": "This is a review framework, not a certification, compliance attestation, penetration test or managed Kubernetes assessment.",
+          "next_action": {"label": "Buy on Gumroad", "href": "https://tayoca.gumroad.com/l/k8s-production-checklist"}
+        },
+        {
+          "id": "gitops-field-guide",
+          "name": "GitOps Field Guide",
+          "page": "/products/gitops-field-guide.html",
+          "commercial_role": "A production-oriented GitOps operating guide for teams that need clear source-of-truth, release governance and recovery patterns.",
+          "buyer": "Platform/DevOps engineers, teams adopting Argo CD or Flux, technical leads governing multi-environment delivery and consultants designing GitOps systems.",
+          "problem": "GitOps adoption can become a tooling exercise without clear repository boundaries, promotion flow, approvals, drift handling, rollback and break-glass procedures.",
+          "deliverable": "A digital field guide covering Argo CD/Flux patterns, repository/environment structure, Helm/Kustomize practices, release governance, reconciliation, rollback and safe operations.",
+          "time_to_value": "Digital delivery is available after purchase; teams can use the operating-model and repository-boundary guidance in the next GitOps design review.",
+          "evidence": "The evidence is the published operating patterns, governance checkpoints and safe-operations guidance included in the guide.",
+          "pricing_method": "One-time digital purchase: USD $29 through Gumroad.",
+          "boundaries": "The guide is not a managed GitOps implementation, production support agreement or guarantee that a specific controller/design fits every environment.",
+          "next_action": {"label": "Buy on Gumroad", "href": "https://tayoca.gumroad.com/l/gitops-field-guide"}
+        }
+      ]
+    },
+    {
+      "id": "executive-assessments",
+      "name": "Executive Assessments",
+      "summary": "Three diagnostic products that turn cost, reliability and technology-value uncertainty into an evidence-backed decision and prioritized action plan.",
+      "next_action": {"label": "Choose an assessment", "href": "/assessments.html"},
+      "products": [
+        {
+          "id": "technology-value-assessment",
+          "name": "Technology Value Assessment",
+          "page": "/assessments.html",
+          "commercial_role": "Executive diagnostic for leaders who need one evidence-backed view of cost, reliability, delivery and operational friction before deciding where to invest.",
+          "buyer": "Executives and engineering/platform leaders accountable for technology value, risk and operating priorities.",
+          "problem": "Cost, reliability, delivery and operational friction are discussed separately, making it difficult to see which technology problems materially affect the business decision.",
+          "deliverable": "A value map, risk register, maturity score, prioritized executive brief, technical evidence pack and 90-day roadmap.",
+          "time_to_value": "The fit conversation frames the decision immediately; final timing is set only after the evidence boundary and access requirements are agreed.",
+          "evidence": "Findings are tied to the systems, costs, controls and operating workflows actually reviewed, with assumptions separated from verified evidence.",
+          "pricing_method": "Fixed-scope assessment fee agreed after fit and evidence-access review.",
+          "boundaries": "The assessment diagnoses and prioritizes; implementation, managed operations, guarantees and unsupported business-result claims are outside scope unless separately contracted.",
+          "next_action": {"label": "Request Technology Value Assessment", "href": "/assessments.html?assessment=Technology%20Value%20Assessment#assessment-form"}
+        },
+        {
+          "id": "cloud-ai-cost-assessment",
+          "name": "Cloud & AI Cost Assessment",
+          "page": "/assessments.html",
+          "commercial_role": "FinOps diagnostic for organizations that need a defensible cost-driver and accountability model before acting on cloud, Kubernetes or AI spend.",
+          "buyer": "CTOs, engineering leaders, FinOps/cloud economics owners and teams with rising cloud, Kubernetes or AI workload spend.",
+          "problem": "Spend is rising without a clear link between workload demand, waste hypotheses, ownership, reliability risk and the order of remediation.",
+          "deliverable": "Cost-driver analysis, savings hypotheses, accountability model, prioritized actions, executive brief and technical evidence pack.",
+          "time_to_value": "The fit conversation identifies the first cost questions immediately; assessment timing follows the agreed billing/workload evidence boundary.",
+          "evidence": "Findings use the billing, workload and ownership evidence actually reviewed. Savings remain modeled until actions are implemented and measured against an agreed baseline.",
+          "pricing_method": "Fixed-scope assessment fee agreed after fit and evidence-access review.",
+          "boundaries": "No savings percentage is guaranteed. Implementation and ongoing FinOps operations are separate unless explicitly included in a signed scope.",
+          "next_action": {"label": "Request Cloud & AI Cost Assessment", "href": "/assessments.html?assessment=Cloud%20%26%20AI%20Cost%20Assessment#assessment-form"}
+        },
+        {
+          "id": "platform-reliability-assessment",
+          "name": "Platform Reliability Assessment",
+          "page": "/assessments.html",
+          "commercial_role": "Reliability diagnostic for teams that need evidence on deployment risk, incidents, recovery and governance gaps before choosing remediation work.",
+          "buyer": "Engineering, platform, SRE and technology leaders facing deployment risk, incidents, weak recovery or control gaps.",
+          "problem": "Teams know reliability is weak but cannot separate symptoms from the controls, recovery evidence and operating gaps that should be fixed first.",
+          "deliverable": "Reliability findings, control-gap analysis, recovery evidence, prioritized remediation backlog, executive brief and technical evidence pack.",
+          "time_to_value": "The fit conversation identifies the highest-risk reliability question immediately; assessment timing follows the agreed system and evidence boundary.",
+          "evidence": "Findings are grounded in deployment, incident, observability, recovery and control evidence reviewed during the assessment.",
+          "pricing_method": "Fixed-scope assessment fee agreed after fit and evidence-access review.",
+          "boundaries": "The assessment does not create an uptime guarantee or operational SLA. Implementation and ongoing reliability operations are separately scoped.",
+          "next_action": {"label": "Request Platform Reliability Assessment", "href": "/assessments.html?assessment=Platform%20Reliability%20Assessment#assessment-form"}
+        }
+      ]
+    },
+    {
+      "id": "managed-operations",
+      "name": "Managed Operations",
+      "summary": "Ongoing FinOps, reliability, platform and automation-governance services operated against an explicit baseline, evidence boundary and recurring decision cadence.",
+      "next_action": {"label": "Review managed operations", "href": "/services.html#managed-operations"},
+      "products": [
+        {
+          "id": "finops-operations",
+          "name": "FinOps Operations",
+          "page": "/services.html",
+          "commercial_role": "Ongoing cloud economics control for teams that need cost ownership, recurring prioritization and validation instead of periodic cleanup.",
+          "buyer": "CTOs, engineering leaders and FinOps/cloud-economics owners responsible for recurring AWS, Kubernetes or AI infrastructure spend.",
+          "problem": "Cost improvements decay when ownership, workload changes, commitments and new spend are not reviewed on a recurring operating cadence.",
+          "deliverable": "Recurring cost-driver review, optimization backlog, ownership/accountability review, decision notes and validation of implemented actions against the agreed baseline.",
+          "time_to_value": "The first operating cycle establishes the baseline, current backlog and owners; the cadence begins only after evidence access and scope are agreed.",
+          "evidence": "Billing, workload, utilization, ownership and implementation evidence are used to separate modeled opportunities from realized results.",
+          "pricing_method": "Monthly retainer priced from the agreed systems, evidence sources, review cadence and implementation responsibility after assessment/baseline.",
+          "boundaries": "Savings are not guaranteed. Cloud-provider charges remain the customer's responsibility, and production changes require explicit authority and change control.",
+          "next_action": {"label": "Start with Cloud & AI Cost Assessment", "href": "/assessments.html?assessment=Cloud%20%26%20AI%20Cost%20Assessment#assessment-form"}
+        },
+        {
+          "id": "reliability-operations",
+          "name": "Reliability Operations",
+          "page": "/services.html",
+          "commercial_role": "Ongoing reliability discipline for teams that need incident learning, recovery evidence and a controlled remediation cadence.",
+          "buyer": "Engineering, SRE and technology leaders accountable for service reliability and recovery readiness.",
+          "problem": "Incidents recur when reliability work is episodic and recovery evidence, ownership and remediation follow-through are not maintained between events.",
+          "deliverable": "Recurring reliability review, incident follow-through, recovery-control checks, prioritized remediation backlog and operating decision notes.",
+          "time_to_value": "The first operating cycle establishes the reliability baseline, active risk backlog and recovery evidence gaps before the recurring cadence begins.",
+          "evidence": "Incident records, telemetry, SLO/service indicators, deployment changes, recovery tests and control evidence are reviewed according to the agreed scope.",
+          "pricing_method": "Monthly retainer priced from service scope, evidence sources, review cadence and remediation responsibility after a reliability assessment/baseline.",
+          "boundaries": "No uptime or response-time SLA exists unless explicitly contracted. Emergency response/on-call staffing and implementation are included only when named in scope.",
+          "next_action": {"label": "Start with Platform Reliability Assessment", "href": "/assessments.html?assessment=Platform%20Reliability%20Assessment#assessment-form"}
+        },
+        {
+          "id": "platform-operations",
+          "name": "Platform Operations",
+          "page": "/services.html",
+          "commercial_role": "Ongoing platform operating control for teams that need governed delivery, GitOps/DevSecOps hygiene and clear operational ownership.",
+          "buyer": "Platform and engineering leaders responsible for CI/CD, Kubernetes, GitOps, developer platform controls and environment reliability.",
+          "problem": "Platform quality drifts when delivery controls, ownership, upgrades, policy, observability and recovery work compete with feature delivery without a recurring operating backlog.",
+          "deliverable": "Recurring platform health review, delivery/control backlog, release-governance review, runbook/recovery follow-through and operating decision notes.",
+          "time_to_value": "The first operating cycle establishes the platform baseline, control gaps and prioritized backlog before recurring review begins.",
+          "evidence": "Deployment/change records, platform telemetry, policy/control results, recovery evidence and backlog completion are used to support decisions.",
+          "pricing_method": "Monthly retainer priced from platform footprint, environments, review cadence and implementation responsibility after assessment/baseline.",
+          "boundaries": "Production access, change authority, maintenance windows, support expectations and any SLA must be explicit. New platform builds or major migrations are separately scoped unless included.",
+          "next_action": {"label": "Start with Platform Reliability Assessment", "href": "/assessments.html?assessment=Platform%20Reliability%20Assessment#assessment-form"}
+        },
+        {
+          "id": "automation-governance",
+          "name": "Automation Governance",
+          "page": "/services.html",
+          "commercial_role": "Ongoing governance for AI and workflow automation that must remain measurable, observable and able to fail safely.",
+          "buyer": "Technology, operations and AI leaders responsible for production automations, agents, RAG/LLM workflows or business-critical n8n-style processes.",
+          "problem": "Automation accumulates silently failing workflows, unclear ownership, model/integration changes, cost drift and unsafe decision boundaries when nobody operates it as a governed system.",
+          "deliverable": "Recurring automation inventory/review, quality and failure checks, human-handoff review, cost/latency observations, change-governance backlog and operating decision notes.",
+          "time_to_value": "The first operating cycle establishes the automation inventory, risk/ownership baseline and highest-priority control gaps before recurring governance begins.",
+          "evidence": "Workflow executions, error paths, model/integration configuration, latency/cost signals and human-handoff evidence are reviewed within the agreed access boundary.",
+          "pricing_method": "Monthly retainer priced from workflow count, integration/model footprint, review cadence and remediation responsibility after assessment/baseline.",
+          "boundaries": "High-risk decisions retain human approval where required. Customer credentials and production authority remain customer-controlled unless explicitly delegated. Model or vendor performance is not guaranteed.",
+          "next_action": {"label": "Start with Technology Value Assessment", "href": "/assessments.html?assessment=Technology%20Value%20Assessment#assessment-form"}
+        }
+      ]
+    }
+  ]
+}

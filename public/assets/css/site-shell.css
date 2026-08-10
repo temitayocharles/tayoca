@@ -1,0 +1,68 @@
+/* Tayoca canonical public shell. Scoped to avoid rewriting legacy article/product body styles. */
+.site-header{position:sticky;top:0;z-index:1000;background:rgba(13,13,13,.94);border-bottom:1px solid #2a2a2a;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.site-header .header-inner{max-width:1200px;margin:0 auto;min-height:68px;padding:.75rem 1.25rem;display:flex;align-items:center;gap:1.25rem}
+.site-header .brand{font-family:Sora,Inter,system-ui,sans-serif;font-size:1.15rem;font-weight:800;letter-spacing:.08em;color:#fff;text-decoration:none;white-space:nowrap}
+.site-header .primary-nav{margin-left:auto;display:flex;align-items:center;gap:1.15rem}
+.site-header .primary-nav a{font-family:Inter,system-ui,sans-serif;color:#d7d7d7;text-decoration:none;font-size:.92rem;font-weight:600;line-height:1.2}
+.site-header .primary-nav a:hover,.site-header .primary-nav a:focus-visible,.site-header .primary-nav a[aria-current="page"]{color:#f97316}
+.site-header .header-cta{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:.68rem 1rem;border-radius:.45rem;background:#f97316;color:#fff!important;text-decoration:none!important;font-family:Inter,system-ui,sans-serif;font-size:.88rem;font-weight:800;white-space:nowrap}
+.site-header .header-cta:hover,.site-header .header-cta:focus-visible{background:#ea580c}
+.site-header .menu-toggle{display:none;margin-left:auto;min-height:42px;padding:.55rem .8rem;border:1px solid #3a3a3a;border-radius:.45rem;background:#171717;color:#fff;font:700 .9rem/1 Inter,system-ui,sans-serif;cursor:pointer}
+.skip-link{position:fixed;left:1rem;top:-5rem;z-index:2000;padding:.7rem 1rem;border-radius:.4rem;background:#f97316;color:#fff!important;font:700 .9rem/1.2 Inter,system-ui,sans-serif;text-decoration:none}
+.skip-link:focus{top:1rem}
+
+/* Stage 10 — Product ecosystem. Deliberately prefixed so legacy article/product layouts stay intact. */
+.stage10-ecosystem,.stage10-commercial,.stage10-managed-operations{max-width:1180px;margin:4rem auto 0;padding:0 1.5rem;font-family:Inter,system-ui,sans-serif}
+.stage10-ecosystem[data-product-ecosystem]{margin-top:2.25rem;margin-bottom:2.5rem}
+.stage10-family-label{display:inline-flex;align-items:center;gap:.4rem;margin:0 0 .65rem;color:#f97316;font-size:.78rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+.stage10-family-label:before{content:"";width:1.8rem;height:2px;background:#f97316}
+.stage10-ecosystem h2,.stage10-commercial h2,.stage10-managed-operations h2{margin:.2rem 0 .75rem;font-family:Sora,Inter,system-ui,sans-serif;color:#f5f5f4;line-height:1.12}
+.stage10-ecosystem-intro,.stage10-role{max-width:860px;color:#c9c9c5;line-height:1.65}
+.stage10-role{margin:.15rem 0 1.5rem;font-size:1.02rem}
+.stage10-role strong{color:#f5f5f4}
+.stage10-family-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:1rem;margin-top:1.5rem}
+.stage10-family-card,.stage10-commercial,.stage10-managed-card{background:#171717;border:1px solid #343434;border-radius:.75rem}
+.stage10-family-card{display:flex;flex-direction:column;padding:1.35rem;min-height:100%}
+.stage10-family-card h3,.stage10-managed-card h3{margin:.1rem 0 .65rem;color:#f97316;font-family:Sora,Inter,system-ui,sans-serif}
+.stage10-family-card p,.stage10-managed-card p{color:#c2c2be}
+.stage10-family-card ul{margin:.4rem 0 1.2rem;padding-left:1.15rem;color:#d8d8d4}
+.stage10-family-card li{margin:.35rem 0}
+.stage10-family-card .stage10-next{margin-top:auto;align-self:flex-start}
+.stage10-commercial{padding:1.5rem}
+.stage10-commercial[data-product-control]{margin-top:3rem}
+.stage10-control-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem}
+.stage10-control{margin:0;padding:1rem;background:#111;border:1px solid #303030;border-radius:.6rem}
+.stage10-control dt{margin:0 0 .35rem;color:#f97316;font-size:.76rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.stage10-control dd{margin:0;color:#dededa;line-height:1.58}
+.stage10-next{display:inline-flex;align-items:center;justify-content:center;margin-top:1.25rem;padding:.75rem 1rem;border-radius:.45rem;background:#f97316;color:#fff!important;text-decoration:none!important;font-weight:800;line-height:1.2}
+.stage10-next:hover,.stage10-next:focus-visible{background:#ea580c;outline:none}
+.stage10-next-copy{margin:.75rem 0 0;color:#dededa;font-weight:700}
+.stage10-assessment-control{margin-top:1rem;padding-top:1rem;border-top:1px solid #343434}
+.stage10-assessment-control .stage10-control-grid{grid-template-columns:1fr}
+.stage10-assessment-control .stage10-control{padding:.8rem;background:rgba(0,0,0,.16)}
+.stage10-managed-operations{padding:0 1.5rem;margin-bottom:4rem}
+.stage10-managed-operations>.stage10-managed-inner{padding:2rem;background:#121212;border:1px solid #343434;border-radius:.85rem}
+.stage10-managed-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin-top:1.5rem}
+.stage10-managed-card{padding:1.35rem}
+.stage10-managed-card .stage10-control-grid{grid-template-columns:1fr}
+.stage10-playbook-heading{max-width:1180px;margin:3rem auto 1.25rem;padding:0 1.5rem}
+.stage10-playbook-heading h2{margin:.15rem 0 .35rem;color:#f5f5f4;font-family:Sora,Inter,system-ui,sans-serif}
+.stage10-playbook-heading p{margin:0;color:#bdbdb8}
+
+@media(max-width:900px){
+  .site-header .header-inner{flex-wrap:wrap;gap:.75rem}
+  .site-header .menu-toggle{display:inline-flex;align-items:center;justify-content:center}
+  .site-header .primary-nav{display:none;order:3;width:100%;margin:0;padding:.45rem 0 .2rem;flex-direction:column;align-items:stretch;gap:.15rem}
+  .site-header.nav-open .primary-nav{display:flex}
+  .site-header .primary-nav a{display:block;padding:.72rem .2rem;border-top:1px solid #252525}
+  .site-header .header-cta{margin-left:.25rem}
+  .stage10-control-grid,.stage10-managed-grid{grid-template-columns:1fr}
+}
+@media(max-width:560px){
+  .site-header .header-inner{padding:.65rem .9rem}
+  .site-header .header-cta{order:4;width:100%;margin:0}
+  .site-header.nav-open .primary-nav{order:3}
+  .stage10-ecosystem,.stage10-commercial,.stage10-managed-operations,.stage10-playbook-heading{padding-left:.9rem;padding-right:.9rem}
+  .stage10-commercial{padding-top:1.2rem;padding-bottom:1.2rem}
+}
+@media(prefers-reduced-motion:reduce){.site-header *, .skip-link,.stage10-next{scroll-behavior:auto!important;transition:none!important}}
