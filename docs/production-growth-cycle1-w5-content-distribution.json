@@ -1,15 +1,16 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "plan_id": "tayoca-production-growth-cycle-1",
   "workstream": "W5",
   "name": "content_distribution",
-  "status": "WAITING_HUMAN_APPROVAL",
-  "recorded_at": "2026-08-11T19:44:00Z",
+  "status": "GREEN",
+  "recorded_at": "2026-08-11T22:00:15Z",
   "objective": "Build campaign-aligned commercial content clusters from approved public evidence while preserving Tayoca's private-source and two-stage human publication controls.",
   "revenue_command_center": {
     "workflow_id": "MRaoY2aHm85q3QWG",
-    "active_version": "d871bac6-fe2b-4800-a525-1788c3f2dd75",
-    "immediate_rollback_version": "b159ae03-5ea7-48f2-af46-e5794c0d4182",
+    "active_version": "d3279370-760e-4da6-bb59-2c0e2c53f009",
+    "immediate_rollback_version": "7645c6f9-1135-49d4-b489-5f0ddc309048",
+    "pre_recovery_rollback_version": "b159ae03-5ea7-48f2-af46-e5794c0d4182",
     "node_count": 51,
     "trigger_count": 3,
     "settings_preserved": {
@@ -37,15 +38,40 @@
       "relay_execution": "75690",
       "result_version": "d871bac6-fe2b-4800-a525-1788c3f2dd75",
       "effect": "Prefer review-required public-safe opportunities associated with pgc1_* campaigns; fall back to the legacy eligible public pool when no Growth Cycle opportunity exists."
+    },
+    {
+      "name": "openrouter_model_reliability",
+      "relay_execution": "75791",
+      "result_version": "6d418cbf-bc28-4a97-8720-c21085bcdbc4",
+      "effect": "Replace the unreliable openrouter/free dependency with google/gemini-2.5-flash-lite using structured JSON, low temperature, bounded token output, retries, and timeout controls."
+    },
+    {
+      "name": "evidence_and_cta_guardrails",
+      "relay_executions": ["75831", "75839", "75851"],
+      "result_version": "7645c6f9-1135-49d4-b489-5f0ddc309048",
+      "effect": "Strengthen the existing generator and campaign-pack validator so unsupported qualitative claims, source-acquisition language, and assessment CTA drift fail closed."
+    },
+    {
+      "name": "deterministic_public_copy_normalization",
+      "relay_execution": "75857",
+      "result_version": "d3279370-760e-4da6-bb59-2c0e2c53f009",
+      "effect": "Reconstruct public-facing title, hook, body, and CTA only from the approved source, fact, story angle, and assessment destination while retaining model-selected channel formats and asset concepts."
     }
   ],
-  "patch_relay": {
-    "workflow_id": "1csBzATHjLuWbIj8",
-    "name": "TEMP Tayoca W5 Attribution Patch Relay",
-    "credentials_attached": 0,
-    "archived": true
-  },
-  "no_write_tests": [
+  "patch_relays": [
+    {
+      "workflow_id": "1csBzATHjLuWbIj8",
+      "name": "TEMP Tayoca W5 Attribution Patch Relay",
+      "credentials_attached": 0,
+      "archived": true
+    },
+    {
+      "workflow_id": "8HzcQEWIDNYMvK6S",
+      "name": "TEMP Tayoca W5 OpenRouter Reliability Patch Relay",
+      "archived": true
+    }
+  ],
+  "validation_executions": [
     {
       "execution": "75687",
       "status": "success",
@@ -63,6 +89,18 @@
         "Growth Cycle opportunities are preferred over a higher-scoring legacy opportunity",
         "pgc1_platform_kubernetes_reliability remains the parent attribution identity",
         "rejected approval path produces no draft"
+      ]
+    },
+    {
+      "execution": "75860",
+      "status": "approved_and_completed",
+      "proved": [
+        "second human distribution approval completed",
+        "campaign and six content assets advanced to approved_ready_for_distribution",
+        "all public copy is evidence-normalized",
+        "assessment CTA is consistent across every asset",
+        "UTM parameters remain fragment-safe",
+        "paid spend remains zero"
       ]
     }
   ],
@@ -83,7 +121,7 @@
       "recommended_format": "technical_article",
       "disclosure_classification": "public_verified",
       "disclosure_safety_score": 90,
-      "approval_state": "review_required"
+      "approval_state": "approved_for_drafting"
     },
     {
       "opportunity_id": "pgc1:ai-automation:editorial-cluster",
@@ -95,26 +133,19 @@
       "approval_state": "review_required"
     }
   ],
-  "editorial_ledger_write": {
-    "rows_inserted": 3,
-    "rows_updated": 0,
-    "columns_added": 0,
-    "private_repository_opportunities_modified": 0
-  },
-  "human_approval_state": {
-    "execution": "75692",
-    "status": "waiting",
-    "wait_until": "2026-08-16T19:43:07.369Z",
-    "selected_opportunity": "pgc1:platform-reliability:editorial-cluster",
-    "child_campaign_id": "tayoca_20260810_pgc1_platform_reli",
+  "final_campaign_state": {
+    "campaign_id": "tayoca_20260810_pgc1_platform_reli",
     "parent_campaign_id": "pgc1_platform_kubernetes_reliability",
+    "opportunity_id": "pgc1:platform-reliability:editorial-cluster",
+    "campaign_status": "approved_ready_for_distribution",
+    "content_asset_count": 6,
+    "content_status": "approved_ready_for_distribution",
+    "approved_at": "2026-08-11T22:00:13.103Z",
+    "slack_confirmation_at": "2026-08-11T22:00:15.659879Z",
+    "primary_cta": "/assessments.html?assessment=Platform%20Reliability%20Assessment#assessment-form",
     "utm_campaign": "pgc1_platform_kubernetes_reliability",
-    "waiting_node": "Approve Editorial Opportunity",
-    "required_action": "Approve for drafting or Reject opportunity in Slack",
-    "draft_created": false,
-    "content_queue_written": false,
-    "distribution_approved": false,
     "published": false,
+    "paid_spend": 0,
     "paid_spend_released": false
   },
   "approval_contract": {
@@ -124,15 +155,27 @@
     "paid_media_budget_default": 0,
     "private_repository_intelligence_publication": "blocked"
   },
+  "final_verification": {
+    "campaign_rows_matching_child_id": 1,
+    "content_rows_matching_child_id": 6,
+    "private_repository_opportunities_modified": 0,
+    "public_disclosure_classification": "public_verified",
+    "zero_paid_spend_verified": true,
+    "published_urls_present": false,
+    "slack_confirmation": "Campaign approved. The evidence-bound editorial package is ready for approved distribution. No paid-media spend has been released."
+  },
   "gate": {
-    "status": "WAITING_HUMAN_APPROVAL",
-    "passed": false,
-    "next_required_evidence": [
-      "human drafting decision for execution 75692",
-      "evidence-bound generated package if approved",
-      "second human distribution decision",
-      "final Content Queue and Campaigns readback",
-      "no-private-source and zero-paid-spend verification"
-    ]
+    "status": "GREEN",
+    "passed": true,
+    "completed_at": "2026-08-11T22:00:15Z",
+    "evidence": [
+      "human drafting approval completed",
+      "evidence-bound package generated and normalized",
+      "second human distribution approval completed",
+      "final Content Queue and Campaigns readback completed",
+      "private-source firewall preserved",
+      "zero-paid-spend verification passed"
+    ],
+    "next_workstream": "W6"
   }
 }
