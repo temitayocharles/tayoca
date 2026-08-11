@@ -5,8 +5,15 @@
   "critical_findings": 0,
   "high_findings": 0,
   "website": {
-    "current_production": {"github_commit":"8c595fa1906a3c2c9f4b9e2d080c9779daac3278","vercel_deployment":"dpl_5Hr57kTgKLisNiXBejjZU6TxTYJB","state":"READY_PROMOTED"},
-    "pre_stage12_fallback": {"github_commit":"1f2d85e2d4cbff336d8507a7a7f55cdbad0459d8","vercel_deployment":"dpl_FHAhvk9oY2tN7mZr3Jz7VF5QNJQA"},
+    "current_production": {
+      "github_commit": "8c595fa1906a3c2c9f4b9e2d080c9779daac3278",
+      "vercel_deployment": "dpl_5Hr57kTgKLisNiXBejjZU6TxTYJB",
+      "state": "READY_PROMOTED"
+    },
+    "pre_stage12_fallback": {
+      "github_commit": "1f2d85e2d4cbff336d8507a7a7f55cdbad0459d8",
+      "vercel_deployment": "dpl_FHAhvk9oY2tN7mZr3Jz7VF5QNJQA"
+    },
     "warning": "Do not use the historically half-deployed Stage 10 state as a general rollback target. Stage-specific baselines identify safe rollback boundaries."
   },
   "workflow_rollbacks": [
@@ -15,9 +22,29 @@
     {"workflow_id":"MRaoY2aHm85q3QWG","current":"b159ae03-5ea7-48f2-af46-e5794c0d4182","rollback":"8b63948a-5daf-4c8c-993e-d620b657b39b"},
     {"workflow_id":"Ug7hA8cXrrCIVYkI","current":"dc5d9d77-8661-4208-a114-59208078640e","rollback":"f5b4b461-2983-4cba-9709-a8da819cfbb9"}
   ],
-  "infobip_recovery": {"workflow_id":"W4aE4hNuFgwAxL02","current_version":"593d0b9e-9821-4361-8141-a0ee72fb445b","sanitized_snapshot_commit":"5f329c4985c80cf849504298bda3dd59a9b1e8ef","note":"An exact prior active version is not asserted here because it was not recorded as a certified rollback reference. Recovery uses the version history or the sanitized Forgejo snapshot rather than inventing an unknown version ID."},
-  "failure_monitor_recovery": {"workflow_id":"iX0ehWNElYUfdCQZ","current_version":"afd3f3f4-add9-4a81-bd18-189f8834251b","snapshot_path":"workflows/tayoca-ops-production-failure-dead-letter--iX0ehWNElYUfdCQZ.json","content_hash":"fc766705310aeb56"},
-  "backup_restore": {"repository":"temitayocharles/n8n-control-plane","sanitized":true,"restore_drill_execution":"72326","restored":6,"node_count_mismatches":0,"connection_root_mismatches":0,"credential_bindings":0,"activation_during_drill":false,"credential_rule":"Sanitized snapshots intentionally exclude credentials. Approved current credentials must be rebound deliberately, then pin/safety tests must pass before activation."},
+  "infobip_recovery": {
+    "workflow_id": "W4aE4hNuFgwAxL02",
+    "current_version": "593d0b9e-9821-4361-8141-a0ee72fb445b",
+    "sanitized_snapshot_commit": "5f329c4985c80cf849504298bda3dd59a9b1e8ef",
+    "note": "An exact prior active version is not asserted here because it was not recorded as a certified rollback reference. Recovery uses the version history or the sanitized Forgejo snapshot rather than inventing an unknown version ID."
+  },
+  "failure_monitor_recovery": {
+    "workflow_id": "iX0ehWNElYUfdCQZ",
+    "current_version": "afd3f3f4-add9-4a81-bd18-189f8834251b",
+    "snapshot_path": "workflows/tayoca-ops-production-failure-dead-letter--iX0ehWNElYUfdCQZ.json",
+    "content_hash": "fc766705310aeb56"
+  },
+  "backup_restore": {
+    "repository": "temitayocharles/n8n-control-plane",
+    "sanitized": true,
+    "restore_drill_execution": "72326",
+    "restored": 6,
+    "node_count_mismatches": 0,
+    "connection_root_mismatches": 0,
+    "credential_bindings": 0,
+    "activation_during_drill": false,
+    "credential_rule": "Sanitized snapshots intentionally exclude credentials. Approved current credentials must be rebound deliberately, then pin/safety tests must pass before activation."
+  },
   "evidence": [
     {"control":"website_rollback_reference","status":"PASS"},
     {"control":"critical_workflow_prior_versions","status":"PASS"},

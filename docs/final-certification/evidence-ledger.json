@@ -3,7 +3,11 @@
   "stage": 14,
   "report": "evidence_ledger",
   "status": "GREEN",
-  "authority": {"repository":"temitayocharles/tayoca","host":"forgejo.tca-infraforge.site","role":"canonical"},
+  "authority": {
+    "repository": "temitayocharles/tayoca",
+    "host": "forgejo.tca-infraforge.site",
+    "role": "canonical"
+  },
   "stage_evidence": [
     {"stage":4,"name":"Trust and claim integrity","status":"GREEN","evidence":["docs/claim-register.csv","docs/evidence-policy.md","scripts/validate_static_site.py"],"note":"Permanent static validation blocks withdrawn/unsupported public claims across all public HTML."},
     {"stage":5,"name":"Site architecture and journey repair","status":"GREEN","evidence":["n8n:AndnV6W2YCiTcxSz","final shell audit execution 73587","scripts/validate_static_site.py"],"result":"34 canonical pages / 0 violations"},
@@ -15,16 +19,42 @@
     {"stage":11,"name":"Growth OS and revenue operations","status":"GREEN","evidence":["docs/stage11-revenue-ops-baseline.json","test executions 70444, 70464, 70520"]},
     {"stage":12,"name":"Executive analytics","status":"GREEN","evidence":["docs/stage12-executive-analytics-baseline.json","docs/analytics-and-reporting-policy.yaml","Forgejo commit e691d2f78896d6036398c7169d424e33affc7aa4","Forgejo Actions run 129 / #3188","executive report test 70676"]},
     {"stage":13,"name":"Workflow reliability and recovery","status":"GREEN","evidence":["docs/stage13-workflow-reliability-baseline.json","docs/workflow-reliability-and-recovery.yaml","docs/workflow-recovery-runbook.md","Forgejo commit 70851c1e396a57a9c313adeb462f80f8879b12c8","Forgejo Actions run 132 / #3220","restore drill 72326","failure monitor tests 73570, 73571"]},
-    {"stage":14,"name":"Final certification","status":"GREEN","evidence":["docs/final-certification/security-report.json","docs/final-certification/brand-report.json","docs/final-certification/seo-report.json","docs/final-certification/accessibility-report.json","docs/final-certification/workflow-report.json","docs/final-certification/analytics-report.json","docs/final-certification/rollback-report.json","docs/final-certification/evidence-ledger.json","final shell audit 73587: 34/34 / 0 violations","Vercel dpl_5Hr57kTgKLisNiXBejjZU6TxTYJB: READY/PROMOTED; aliases tayoca.com + www.tayoca.com; checks=0"]}
+    {
+      "stage":14,
+      "name":"Final certification",
+      "status":"GREEN",
+      "evidence":[
+        "docs/final-certification/security-report.json",
+        "docs/final-certification/brand-report.json",
+        "docs/final-certification/seo-report.json",
+        "docs/final-certification/accessibility-report.json",
+        "docs/final-certification/workflow-report.json",
+        "docs/final-certification/analytics-report.json",
+        "docs/final-certification/rollback-report.json",
+        "docs/final-certification/evidence-ledger.json",
+        "final shell audit 73587: 34/34 / 0 violations",
+        "Vercel dpl_5Hr57kTgKLisNiXBejjZU6TxTYJB: READY/PROMOTED; aliases tayoca.com + www.tayoca.com; checks=0"
+      ]
+    }
   ],
-  "cross_stage_controls": {"private_source_firewall":"binding","human_publication_approval":"binding","verified_revenue_authority":"binding","analytics_provenance":"binding","workflow_recovery":"binding","forgejo_source_of_truth":"binding","github_role":"secondary deployment mirror"},
+  "cross_stage_controls": {
+    "private_source_firewall":"binding",
+    "human_publication_approval":"binding",
+    "verified_revenue_authority":"binding",
+    "analytics_provenance":"binding",
+    "workflow_recovery":"binding",
+    "forgejo_source_of_truth":"binding",
+    "github_role":"secondary deployment mirror"
+  },
   "accepted_medium_findings": [
     "Native n8n errorWorkflow dispatch is not used as the certified failure path; the tested five-minute execution monitor is active.",
     "Operator Brief production email remains fail-closed until tayoca.com is verified as a Resend sender domain.",
     "A full assistive-technology/browser accessibility audit remains outside the structural accessibility certification scope.",
     "Full-instance backup orchestration can exceed connector/manual execution boundaries; bounded production backup + six-of-six restore is the certified path."
   ],
-  "external_processing_items": ["Search Console still reports the prior 33-URL sitemap download while canonical source contains 34 pages; resubmission was accepted and the counter is treated as Google processing lag."],
+  "external_processing_items": [
+    "Search Console still reports the prior 33-URL sitemap download while canonical source contains 34 pages; resubmission was accepted and the counter is treated as Google processing lag."
+  ],
   "critical_findings": 0,
   "high_findings": 0,
   "gate": "PASS"

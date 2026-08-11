@@ -4,8 +4,25 @@
   "status": "GREEN",
   "critical_findings": 0,
   "high_findings": 0,
-  "ga4": {"account":"accounts/352773461","property":"properties/548373018","stream":"properties/548373018/dataStreams/15375937707","stream_name":"Tayoca Website","measurement_id":"G-G4QC90QNXW","verified":true,"current_key_events":["purchase"]},
-  "search_console": {"property":"https://tayoca.com/","permission":"siteOwner","verified":true,"data_through":"2026-08-08","seven_day":{"clicks":0,"impressions":12,"average_position":24.166666666666668},"sitemap_errors":0,"sitemap_warnings":0,"sitemap_resubmitted_after_freshness_check":true},
+  "ga4": {
+    "account": "accounts/352773461",
+    "property": "properties/548373018",
+    "stream": "properties/548373018/dataStreams/15375937707",
+    "stream_name": "Tayoca Website",
+    "measurement_id": "G-G4QC90QNXW",
+    "verified": true,
+    "current_key_events": ["purchase"]
+  },
+  "search_console": {
+    "property": "https://tayoca.com/",
+    "permission": "siteOwner",
+    "verified": true,
+    "data_through": "2026-08-08",
+    "seven_day": {"clicks":0,"impressions":12,"average_position":24.166666666666668},
+    "sitemap_errors": 0,
+    "sitemap_warnings": 0,
+    "sitemap_resubmitted_after_freshness_check": true
+  },
   "evidence": [
     {"control":"canonical_ga4_coverage","status":"PASS","evidence":"scripts/validate_analytics_coverage.py requires G-G4QC90QNXW and /ga4.js on every canonical sitemap URL; current Actions pass."},
     {"control":"critical_event_contract","status":"PASS","evidence":"Stage 12 Chromium contract certification emitted all eight required events with zero missing GA-style events and zero missing first-party equivalents."},
@@ -16,9 +33,21 @@
     {"control":"production_dashboard","status":"PASS","evidence":"https://tayoca.com/analytics.html returned HTTP 200 and rendered live first-party activity, verified Google authorities, Search Console provenance and the eight-event contract."}
   ],
   "accepted_findings": [
-    {"severity":"low","finding":"Only purchase is currently configured as a GA4 key event.","disposition":"The connected GA Admin capability is read-only for key-event definitions. Stage 12/14 certify event emission and reporting only; they do not misstate the newly instrumented events as GA4 key events."},
-    {"severity":"low","finding":"A second Tayoca GA4 property exists with no stream.","disposition":"properties/548376430 is non-authoritative and is not merged/deleted without a separate governance decision."},
-    {"severity":"low","finding":"Search Console sitemap submitted-count metadata is still on the prior 33-URL download while the canonical sitemap has 34 pages.","disposition":"The sitemap was resubmitted successfully; reports retain the observed counter and data-through provenance until Google reprocesses it."}
+    {
+      "severity": "low",
+      "finding": "Only purchase is currently configured as a GA4 key event.",
+      "disposition": "The connected GA Admin capability is read-only for key-event definitions. Stage 12/14 certify event emission and reporting only; they do not misstate the newly instrumented events as GA4 key events."
+    },
+    {
+      "severity": "low",
+      "finding": "A second Tayoca GA4 property exists with no stream.",
+      "disposition": "properties/548376430 is non-authoritative and is not merged/deleted without a separate governance decision."
+    },
+   {
+      "severity": "low",
+      "finding": "Search Console sitemap submitted-count metadata is still on the prior 33-URL download while the canonical sitemap has 34 pages.",
+      "disposition": "The sitemap was resubmitted successfully; reports retain the observed counter and data-through provenance until Google reprocesses it."
+    }
   ],
   "gate": "PASS"
 }

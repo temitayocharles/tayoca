@@ -4,7 +4,12 @@
   "status": "GREEN",
   "critical_findings": 0,
   "high_findings": 0,
-  "registry": {"path":"automation/n8n/workflow-registry.yaml","version":5,"reconciled_commit":"6dfda6a31c37c323ea1ffb6e099274a579a619d0","status":"CURRENT"},
+  "registry": {
+    "path": "automation/n8n/workflow-registry.yaml",
+    "version": 5,
+    "reconciled_commit": "6dfda6a31c37c323ea1ffb6e099274a579a619d0",
+    "status": "CURRENT"
+  },
   "active_production_workflows": [
     {"id":"W4aE4hNuFgwAxL02","name":"Tayoca Messaging | Infobip Inbound and Delivery Correlation","version":"593d0b9e-9821-4361-8141-a0ee72fb445b"},
     {"id":"V28T575q7GSRFOti","name":"Tayoca Growth OS | Assessment & Operator Brief Intake","version":"77f42f4d-dc43-4743-a667-4fe7ce44aa44"},
@@ -23,9 +28,22 @@
     {"control":"public_shell_regression","status":"PASS","execution":"73575","pages":34,"violations":0}
   ],
   "accepted_findings": [
-    {"severity":"medium","finding":"Native n8n errorWorkflow dispatch did not fire for isolated real webhook failures despite the configured handler ID.","mitigation":"The active five-minute execution monitor is the certified failure path. It polls only the governed production allowlist, reads metadata-only error indexes, deduplicates by execution ID, persists the reliability record and sends sanitized Slack alerts."},
-    {"severity":"medium","finding":"The full-instance backup orchestrator can exceed the connector/manual execution boundary.","mitigation":"Tayoca uses the existing bounded sanitized backup worker directly for the governed production set; all six governed snapshots passed the inactive restore drill."}
+    {
+      "severity": "medium",
+      "finding": "Native n8n errorWorkflow dispatch did not fire for isolated real webhook failures despite the configured handler ID.",
+      "mitigation": "The active five-minute execution monitor is the certified failure path. It polls only the governed production allowlist, reads metadata-only error indexes, deduplicates by execution ID, persists the reliability record and sends sanitized Slack alerts."
+    },
+    {
+      "severity": "medium",
+      "finding": "The full-instance backup orchestrator can exceed the connector/manual execution boundary.",
+      "mitigation": "Tayoca uses the existing bounded sanitized backup worker directly for the governed production set; all six governed snapshots passed the inactive restore drill."
+    }
   ],
-  "cleanup": {"stage13_control_relay_archived":true,"stage13_probe_workflows_archived":true,"stage13_restore_clones_archived":true,"temporary_stage13_production_workflows_remaining":0},
+  "cleanup": {
+    "stage13_control_relay_archived": true,
+    "stage13_probe_workflows_archived": true,
+    "stage13_restore_clones_archived": true,
+    "temporary_stage13_production_workflows_remaining": 0
+  },
   "gate": "PASS"
 }
