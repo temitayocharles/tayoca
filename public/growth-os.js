@@ -27,9 +27,27 @@
   if(wanted){document.querySelectorAll('select[name="assessment"]').forEach(function(sel){Array.from(sel.options).some(function(o){if(o.value===wanted||o.textContent.toLowerCase().includes(wanted.toLowerCase())){sel.value=o.value;return true}return false})})}
   if(segment){document.querySelectorAll('select[name="segment"]').forEach(function(sel){Array.from(sel.options).some(function(o){if(o.value===segment){sel.value=o.value;return true}return false})})}
 
+  function assessmentSchedulingUrl(assessment){
+    if(assessment==='Cloud & AI Cost Assessment')return 'https://cal.com/tayoca/finops-audit';
+    if(assessment==='Platform Reliability Assessment'||assessment==='Technology Value Assessment')return 'https://cal.com/tayoca/platform-engineering-consultation';
+    return '';
+  }
+
+  function governAssessmentResponse(data,payload){
+    var status=String(data&&data.status||'').toLowerCase();
+    if(status==='qualified'){
+      data.next='Your request is qualified. Choose a consultation time to continue.';
+      data.schedulingUrl=assessmentSchedulingUrl(payload.assessment);
+    }else if(status==='review'){
+      data.next='Your request has been recorded for fit and evidence review. We will follow up with the appropriate next step.';
+      if(data.schedulingUrl)delete data.schedulingUrl;
+    }
+    return data;
+  }
+
   function stage12Response(formName,payload){
     if(formName==='assessment_request'){
-      return {status:'test',next:'Stage 12 test traffic accepted locally. No lead was created.',schedulingUrl:payload.assessment==='Platform Reliability Assessment'?'https://cal.com/tayoca/platform-engineering-consultation':'https://cal.com/tayoca/finops-audit'};
+      return {status:'test',next:'Stage 12 test traffic accepted locally. No lead was created.',schedulingUrl:assessmentSchedulingUrl(payload.assessment)};
     }
     if(formName==='operator_brief')return {status:'test',next:'Stage 12 test traffic accepted locally. No subscription was created.'};
     if(formName==='operator_brief_unsubscribe')return {status:'test',next:'Stage 12 test traffic accepted locally. No subscription record was changed.'};
@@ -50,6 +68,7 @@
         var r=await fetch(f.action,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
         data=await r.json().catch(function(){return{}});
         if(!r.ok)throw new Error(data.error||data.message||'Request failed');
+        if(formName==='assessment_request')data=governAssessmentResponse(data,payload);
       }
 
       if(formName==='assessment_request')track('generate_lead',{form_name:formName,lead_status:data.status||'accepted',assessment:payload.assessment||'',segment:payload.segment||''});
