@@ -43,7 +43,7 @@
       "finding": "A second Tayoca GA4 property exists with no stream.",
       "disposition": "properties/548376430 is non-authoritative and is not merged/deleted without a separate governance decision."
     },
-   {
+    {
       "severity": "low",
       "finding": "Search Console sitemap submitted-count metadata is still on the prior 33-URL download while the canonical sitemap has 34 pages.",
       "disposition": "The sitemap was resubmitted successfully; reports retain the observed counter and data-through provenance until Google reprocesses it."
