@@ -131,18 +131,20 @@ workstreams:
   - id: W6
     name: targeted_outbound
     priority: 6
-    status: ACTIVE_SEND_CAPABILITY_BLOCKED
+    status: WAITING_HUMAN_SEND_APPROVAL
     started_at: '2026-08-11T22:02:47Z'
     baseline: docs/production-growth-cycle1-w6-targeted-outbound.json
     contact_verification: GREEN
     message_preparation: GREEN
-    send_execution: BLOCKED_CAPABILITY
-    contact_ready_accounts: 3
-    first_wave_drafts: 3
-    blocker: >
-      No verified Tayoca-controlled one-to-one outbound sender is callable in the current execution
-      environment, and the connected LinkedIn API exposes public posting but not direct messaging
-      or connection notes. Do not substitute public posts, guessed email patterns, or an unverified sender.
+    sender_capability: GREEN_OWNER_LED_VERIFIED_DOMAIN
+    send_execution: WAITING_HUMAN_APPROVAL
+    email_ready_accounts: 2
+    first_wave_email_drafts: 2
+    sender_from: 'Temitayo Charles | Tayoca <temitayo@temitayocharles.online>'
+    sender_reply_to: tayocharlesaki@gmail.com
+    current_gate: >
+      Explicit human confirmation is required for the two irreversible one-to-one Resend emails
+      to SPS Commerce and MongoDB, including their exact recipients and final content.
     outcome: >
       Run narrow problem-led B2B prospecting into assessments or useful diagnostic conversations;
       avoid indiscriminate outreach and measure reply, conversation, opportunity, and proposal movement.
