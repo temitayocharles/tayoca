@@ -1,27 +1,34 @@
-# Vercel-based CI/CD for tayoca.com www
-# ==================================
+# Tayoca CI/CD and production authority
 
-# Vercel will use its own GitHub integration.
-# GitHub Actions workflow `.github/workflows/deploy-www.yml` handles:
-# - Build (pnpm build)
-# - Percy snapshot testing (accessibility, regression)
-# - Auto-deploy on `git push main`
-# - Slack notification on pass/fail
+Tayoca uses a deliberately split source-and-deployment model:
 
-# Locally, use: `vercel --prod --token <token> ./public`
-# You may need: `npm install -g vercel`
+- **Canonical source and CI authority:** Forgejo `temitayocharles/tayoca`
+- **Canonical quality gate:** `.forgejo/workflows/static-quality.yml` on Forgejo runners
+- **Secondary deployment mirror:** GitHub `temitayocharles/tayoca`
+- **Production hosting:** Vercel project `tayoca-com-static`
+- **Production domains:** `tayoca.com` and `www.tayoca.com`
 
-# Key files installing dependencies:
-# - pnpm-lock.yaml (auto-installed by Vercel CI)
-# - .github/workflows/deploy-www.yml (GitHub Actions file)
-# - package.json (.vercel/output bundled by CI)
+## Change flow
 
-# Vercel project link: https://vercel.com/charlie-williard/tayoca-www
-# Environment variables required in Vercel dashboard:
-# - VERCEL_TOKEN
-# - PERCY_TOKEN
+1. Make and validate the canonical change in Forgejo.
+2. Pass the existing Forgejo static-quality gate.
+3. Mirror the intended change exactly to GitHub.
+4. Vercel deploys the GitHub `main` mirror to production.
+5. Verify the resulting deployment is `READY / PROMOTED`, the expected production aliases remain assigned, and no blocking deployment check exists.
 
-# Legacy Cloudflare pages artifacts to remove once CI proves:
-# - .pages-cache /
-# - dev-tools.toml /
-# - *wrangler.toml* retained only for local wrangler references; all CI paths replaced by `vercel` CLI matching.
+GitHub is not an independent source of truth. Do not make GitHub-only product or policy changes and then treat them as canonical.
+
+## Certified baseline
+
+The immutable pre-growth certification boundary is:
+
+- Tag: `tayoca-certified-2026-08-10`
+- Commit: `2f98c1f6899425437e185b791512d7b35252d838`
+- Final certification baseline: `docs/stage14-final-certification-baseline.json`
+- Final public-shell audit: execution `73587`, 34/34 canonical pages, 0 violations
+
+Post-certification operating work is governed by `docs/production-growth-operating-plan.yaml`.
+
+## Retired deployment paths
+
+Cloudflare Pages/Wrangler and Netlify deployment configuration were removed during post-certification housekeeping. They are historical Git content only and are not supported production paths.

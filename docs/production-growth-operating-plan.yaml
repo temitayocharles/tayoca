@@ -1,0 +1,281 @@
+schema_version: 1
+plan_id: tayoca-production-growth-cycle-1
+name: "Tayoca Production Growth Cycle 1"
+status: LOCKED_ACTIVE
+effective_date: "2026-08-10"
+timezone: America/Toronto
+
+purpose: >-
+  Operate the certified Tayoca platform as a customer-acquisition and revenue-producing
+  business. The cycle prioritizes measurable commercial outcomes over additional feature
+  construction.
+
+authority:
+  canonical_host: forgejo.tca-infraforge.site
+  canonical_repository: temitayocharles/tayoca
+  canonical_path: docs/production-growth-operating-plan.yaml
+  secondary_mirror: github.com/temitayocharles/tayoca
+  secondary_role: deployment_mirror_only
+  certified_baseline:
+    commit: 2f98c1f6899425437e185b791512d7b35252d838
+    release_tag: tayoca-certified-2026-08-10
+    stage14_baseline: docs/stage14-final-certification-baseline.json
+    final_shell_audit_execution: "73587"
+    canonical_pages: 34
+    violations: 0
+
+operating_rules:
+  - "Read this plan before starting or resuming any post-certification Tayoca work."
+  - "Do not begin random, abrupt, or convenience-driven feature work outside the active cycle."
+  - "Every planned change must map to an explicit workstream, experiment, production incident, compliance obligation, or recovery need."
+  - "If proposed work does not map to this plan, revise this plan deliberately before implementation rather than silently expanding scope."
+  - "Patch or extend existing application, workflow, analytics, editorial, and revenue layers before creating parallel systems."
+  - "Do not create a new workflow, service, database, or tracking stack when an existing governed layer can be extended safely."
+  - "Forgejo is canonical. GitHub is a controlled deployment mirror and must not independently redefine Tayoca source state."
+  - "Preserve certified rollback references, workflow version history, evidence baselines, sanitized backups, and audit artifacts."
+  - "No metric, campaign, feature, or revenue claim may weaken the cross-stage controls certified in Stages 4 through 14."
+  - "Do not optimize for traffic alone; prioritize qualified commercial movement and verified revenue."
+
+locked_cross_stage_controls:
+  claim_integrity: binding
+  private_source_firewall: binding
+  human_publication_approval: binding
+  verified_revenue_authority: binding
+  analytics_provenance: binding
+  workflow_recovery: binding
+  first_party_measurement_authority: binding
+  forgejo_source_of_truth: binding
+  zero_default_paid_media_spend: binding
+
+cycle:
+  horizon_days: 30
+  phase: PRE_LAUNCH_BASELINE
+  objective: >-
+    Prove that Tayoca can repeatedly convert qualified attention into commercial intent,
+    leads, opportunities, conversations, proposals, and verified revenue using the
+    certified platform.
+  primary_funnel:
+    - qualified_attention
+    - assessment_or_product_intent
+    - lead
+    - opportunity
+    - conversation
+    - proposal
+    - verified_revenue
+
+commercial_entry_paths:
+  executive_technical_buyer:
+    journey:
+      - evidence_led_content_or_outreach
+      - relevant_assessment
+      - diagnostic_result
+      - qualified_conversation
+      - managed_operations_proposal
+    primary_goal: high_intent_b2b_pipeline
+  practitioner_individual_buyer:
+    journey:
+      - useful_content_or_resource
+      - operator_playbook
+      - operator_brief
+      - additional_product_or_service
+    primary_goal: low_friction_purchase_and_nurture
+  automation_business_buyer:
+    journey:
+      - sivanta_use_case_or_demo
+      - qualified_conversation
+      - subscription_or_managed_implementation
+    primary_goal: automation_revenue_pipeline
+
+priority_campaigns:
+  - campaign_key: cloud_ai_cost
+    buyer_problem: uncontrolled_or_unexplained_cloud_and_ai_cost
+    primary_entry_asset: Cloud & AI Cost Assessment
+    commercial_destination: FinOps Operations
+    journey: "Cloud/AI cost problem -> evidence-led content/outreach -> Cloud & AI Cost Assessment -> opportunity -> FinOps Operations proposal"
+  - campaign_key: platform_kubernetes_reliability
+    buyer_problem: production_platform_or_kubernetes_reliability_risk
+    primary_entry_asset: Platform Reliability Assessment
+    commercial_destination: Reliability / Platform Operations
+    journey: "Platform reliability problem -> readiness content/checklist -> Platform Reliability Assessment -> opportunity -> Reliability/Platform Operations proposal"
+  - campaign_key: ai_automation_operations
+    buyer_problem: unreliable_or_ungoverned_ai_and_automation_operations
+    primary_entry_asset: Technology Value Assessment or Sivanta
+    commercial_destination: Automation Governance / Sivanta
+    journey: "AI/automation operations problem -> evidence/demo -> assessment or Sivanta -> qualified conversation -> Automation Governance/Sivanta"
+
+workstreams:
+  - id: W1
+    name: production_baseline
+    priority: 1
+    status: NOT_STARTED
+    outcome: >-
+      Capture Day 0 production metrics for traffic, assessment activity, leads,
+      opportunities, proposals, product sales, Operator Brief subscribers, and verified
+      attributed revenue without manufacturing missing values.
+  - id: W2
+    name: offer_prioritization
+    priority: 2
+    status: NOT_STARTED
+    outcome: >-
+      Confirm the buyer, problem, promise, primary asset, CTA, UTM identity, commercial
+      destination, and revenue hypothesis for each of the three priority campaigns.
+  - id: W3
+    name: campaign_launch
+    priority: 3
+    status: NOT_STARTED
+    outcome: >-
+      Launch the priority campaigns through existing governed distribution paths, with
+      one clear commercial destination per campaign and full attribution lineage.
+  - id: W4
+    name: assessment_b2b_engine
+    priority: 4
+    status: NOT_STARTED
+    outcome: >-
+      Use the certified assessment-to-opportunity-to-proposal path as the principal B2B
+      lead engine and define evidence-based follow-up for high-intent respondents.
+  - id: W5
+    name: content_distribution
+    priority: 5
+    status: NOT_STARTED
+    outcome: >-
+      Build commercial content clusters from approved evidence and repository intelligence,
+      reusing strong evidence across articles, social distribution, Operator Brief, and
+      case-study formats without leaking private-source material.
+  - id: W6
+    name: targeted_outbound
+    priority: 6
+    status: NOT_STARTED
+    outcome: >-
+      Run narrow problem-led B2B prospecting into assessments or useful diagnostic
+      conversations; avoid mass unsolicited spam and measure reply, conversation,
+      opportunity, and proposal movement.
+  - id: W7
+    name: operator_brief_nurture
+    priority: 7
+    status: BLOCKED_EXTERNAL
+    blocker: resend_sender_domain_verification
+    outcome: >-
+      Use the Operator Brief as the recurring nurture and assisted-conversion layer once
+      tayoca.com is verified as the production sender domain in Resend.
+  - id: W8
+    name: weekly_revenue_operating_loop
+    priority: 8
+    status: NOT_STARTED
+    outcome: >-
+      Use the existing Revenue Command Center as the weekly management loop for acquisition,
+      assessment conversion, opportunities, proposals, objections, product purchases,
+      newsletter/case-study assistance, attributed revenue, and operational failures.
+  - id: W9
+    name: controlled_experiments
+    priority: 9
+    status: NOT_STARTED
+    outcome: >-
+      Test positioning, CTA, landing sequence, assessment framing, outreach angle,
+      follow-up, bundling, and other commercial variables only when the experiment has a
+      defined hypothesis, measurement, stopping rule, and rollback path.
+  - id: W10
+    name: non_blocking_operational_debt
+    priority: 10
+    status: ACTIVE_BACKGROUND
+    outcome: >-
+      Resolve external or continuous-improvement items without allowing them to trigger
+      unrelated redesigns or block commercial learning where the certified controls remain safe.
+
+measurement:
+  baseline_period_days: "7-14"
+  forecast_rule: >-
+    Do not invent revenue, CAC, conversion, or pipeline targets before sufficient live
+    production observations exist. Use the first 7-14 days to establish defensible baselines,
+    then set explicit targets from observed data.
+  core_metrics:
+    - qualified_traffic_by_source_and_campaign
+    - assessment_starts
+    - assessment_completions
+    - lead_conversion_rate
+    - qualified_opportunity_rate
+    - booked_conversations
+    - proposal_count
+    - proposal_value_by_currency
+    - proposal_to_win_rate
+    - verified_product_revenue
+    - verified_service_revenue
+    - attributed_revenue_by_campaign
+    - operator_brief_assisted_conversions
+    - case_study_assisted_conversions
+    - objection_frequency_and_resolution
+    - production_workflow_failures
+  executive_reporting_workflow:
+    id: MRaoY2aHm85q3QWG
+    name: "Tayoca Growth OS | Demand Engine & Revenue Command Center"
+  analytics_rule: >-
+    First-party analytics and verified GA4/Search Console provenance remain the measurement
+    authorities defined by Stage 12. Missing or stale data must be disclosed, never silently
+    converted to zero.
+
+paid_media:
+  default_budget: 0
+  rule: >-
+    Do not introduce paid media merely to generate traffic. Any paid experiment requires an
+    explicit hypothesis, bounded budget, attribution contract, and stop condition.
+
+external_and_continuous_improvement_items:
+  - id: resend_sender_domain_verification
+    severity: medium
+    blocking_scope: operator_brief_email_delivery_only
+    rule: "Keep production email fail-closed until tayoca.com is verified in Resend."
+  - id: assistive_technology_audit
+    severity: medium
+    blocking_scope: none
+    rule: "Complete full browser/assistive-technology accessibility testing when reliable tooling is available; do not claim full WCAG certification before then."
+  - id: search_console_sitemap_processing_lag
+    severity: low
+    blocking_scope: none
+    rule: "Preserve observed 33-URL Search Console metadata until Google reprocesses the canonical 34-page sitemap; do not fabricate a refreshed count."
+  - id: native_n8n_errorworkflow_dispatch
+    severity: medium
+    blocking_scope: none
+    rule: "Treat native errorWorkflow as best-effort only; the tested five-minute metadata-only failure monitor remains the certified failure path."
+
+change_control:
+  plan_revision_required_when:
+    - adding_or_removing_a_priority_campaign
+    - changing_the_primary_funnel
+    - creating_a_new_commercial_entry_path
+    - introducing_a_new_core_platform_or_parallel_stack
+    - changing_a_locked_cross_stage_control
+    - changing_the_cycle_success_gate
+  revision_method: >-
+    Modify this canonical file through a normal Forgejo commit, increment schema_version or
+    add an explicit revision/changelog entry, pass existing quality gates, and mirror the
+    exact change to GitHub. Do not rewrite historical certified baselines.
+  runtime_rule: "A plan/documentation revision by itself must not mutate production runtime."
+
+resume_protocol:
+  on_continue_or_go:
+    - "Read this file and the latest recorded workstream statuses first."
+    - "Confirm the certified baseline has not suffered a critical/high regression."
+    - "Continue the highest-priority incomplete workstream whose dependencies are satisfied."
+    - "Do not restart completed stages 0-14 unless a verified regression requires it."
+    - "Do not create an unrelated workstream silently."
+  incident_override: >-
+    A real production incident, security issue, compliance problem, or recovery need may
+    interrupt the growth sequence. Record the interruption and return to the current workstream
+    after the incident is resolved.
+
+cycle_start_gate:
+  requirements:
+    - housekeeping_baseline_recorded
+    - stale_mirror_branches_removed
+    - certified_baseline_tag_exists
+    - operating_plan_committed
+    - agent_resume_control_committed
+    - forgejo_quality_gate_green
+    - github_mirror_reconciled
+  passed: false
+
+cycle_success_gate:
+  requirement: >-
+    Production evidence demonstrates the complete commercial lineage from qualified attention
+    through intent, lead, opportunity, conversation, proposal, and verified revenue, and the
+    team has defensible conversion baselines that identify what to scale, change, or stop.
+  passed: false

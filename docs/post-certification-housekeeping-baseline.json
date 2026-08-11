@@ -1,0 +1,157 @@
+{
+  "schema_version": 1,
+  "baseline": "post_certification_housekeeping",
+  "status": "READY_FOR_MIRROR_GATE",
+  "recorded_at": "2026-08-11T01:50:00Z",
+  "local_operating_date": "2026-08-10",
+  "authority": {
+    "canonical_host": "forgejo.tca-infraforge.site",
+    "canonical_repository": "temitayocharles/tayoca",
+    "secondary_mirror": "github.com/temitayocharles/tayoca"
+  },
+  "certified_boundary": {
+    "commit": "2f98c1f6899425437e185b791512d7b35252d838",
+    "release_tag": "tayoca-certified-2026-08-10",
+    "release_id": 70,
+    "stage14_status": "GREEN",
+    "final_shell_audit_execution": "73587",
+    "canonical_pages": 34,
+    "violations": 0
+  },
+  "branch_cleanup": {
+    "forgejo": {
+      "before": ["main"],
+      "after": ["main"],
+      "deleted": [],
+      "finding": "Canonical Forgejo repository had no stale branches."
+    },
+    "github": {
+      "default_branch": "main",
+      "open_pull_requests_before_cleanup": 0,
+      "branches_before_count": 12,
+      "branches_after": ["main"],
+      "deleted_count": 11,
+      "deleted": [
+        "feature/live-growth-intake",
+        "feature/tayoca-growth-os-commercial-system",
+        "feature/tayoca-growth-os-trust-layer",
+        "fix/restore-original-tayoca-design-20260805",
+        "fix/restore-pre-redesign-tayoca-design",
+        "fix/tayoca-charcoal-interactive-tiles",
+        "fix/tayoca-product-writing-consistency",
+        "fix/tayoca-production-certification-20260805",
+        "hardening/static-quality-gate-20260806",
+        "restore/original-commercial-design",
+        "security/remove-tracked-env-local"
+      ],
+      "classification": "All deleted branches were non-default, non-protected, PR-free, 19-29 commits behind main, and their intended changes were superseded by the certified main baseline."
+    }
+  },
+  "repository_residue_removed": [
+    {
+      "path": ".sitemap-backup-marker.txt",
+      "reason": "Literal placeholder file with no runtime or recovery value."
+    },
+    {
+      "path": "deploy.sh",
+      "reason": "Superseded Cloudflare Pages deployment script; certified production hosting is Vercel."
+    },
+    {
+      "path": "wrangler.toml",
+      "reason": "Superseded Cloudflare Pages/Wrangler production configuration."
+    },
+    {
+      "path": "wrangler.json",
+      "reason": "Superseded Cloudflare Pages/Wrangler production configuration."
+    },
+    {
+      "path": "netlify.toml",
+      "reason": "Superseded Netlify deployment configuration; not part of certified production path."
+    },
+    {
+      "path": "EMAIL_CAPTURE_SETUP.md",
+      "reason": "Legacy Cloudflare/InsForge newsletter setup contradicted the certified Operator Brief intake."
+    },
+    {
+      "path": "README_EMAIL_SUBSCRIPTION.md",
+      "reason": "Legacy newsletter deployment instructions contradicted the certified n8n intake path."
+    },
+    {
+      "path": "functions/api/subscribe.js",
+      "reason": "Superseded Cloudflare /api/subscribe endpoint; current public Operator Brief form posts to the governed n8n intake webhook."
+    },
+    {
+      "path": "functions/newsletter-subscribe.ts",
+      "reason": "Superseded parallel InsForge newsletter endpoint; current subscription authority is the governed n8n intake workflow."
+    }
+  ],
+  "documentation_reconciled": [
+    "README-CICD.md",
+    "functions/README.md",
+    "AGENTS.md",
+    "docs/production-growth-operating-plan.yaml"
+  ],
+  "mirror_residue_scan": {
+    "github_tree_entries_before_final_mirror": 198,
+    "forbidden_or_obsolete_patterns_checked": [
+      ".github",
+      ".pages-cache",
+      ".wrangler/cache",
+      ".wrangler/state",
+      "public.tar.gz",
+      ".env.local",
+      ".sitemap-backup-marker.txt"
+    ],
+    "matches": 0,
+    "note": "The final mirror gate still must propagate canonical housekeeping deletions and governance files from Forgejo to GitHub."
+  },
+  "n8n_housekeeping": {
+    "tayoca_workflows_found": 17,
+    "active_runtime_workflows_preserved": 6,
+    "inactive_certifiers_recovery_and_library_workflows_preserved": true,
+    "reason": "Inactive does not mean stale: the retained workflows carry certification, recovery, bootstrap, library, or historical master-plan value.",
+    "stale_metadata_finding": {
+      "workflow_id": "ZZDXWFKiPnzeKtNr",
+      "workflow_name": "Tayoca Growth OS | Verified Review & Trust Flywheel",
+      "finding": "Description still states a historical security hold even though the active workflow performs provider-authenticated Gumroad sale verification.",
+      "runtime_status": "correct_and_active",
+      "action": "No production rewrite performed. Available safe n8n interface does not expose metadata-only description editing; rewriting the certified definition for cosmetic metadata would create unnecessary risk.",
+      "blocking": false
+    }
+  },
+  "branch_protection": {
+    "forgejo_main_rule_found": false,
+    "action": "No restrictive rule added during housekeeping.",
+    "reason": "The current controlled operating model uses direct canonical Forgejo commits plus Forgejo runner validation. Enabling an unvalidated protection policy could break the established automation path.",
+    "compensating_controls": [
+      "Forgejo remains canonical",
+      "static-quality Forgejo Actions gate",
+      "immutable certified release tag",
+      "AGENTS.md resume/change-control contract",
+      "exact GitHub mirror requirement"
+    ]
+  },
+  "preserved_by_design": [
+    "Stage 0-14 certified baselines and evidence reports",
+    "n8n workflow version history and rollback references",
+    "sanitized n8n backup snapshots and recovery utilities",
+    "read-only shell/repository certifiers",
+    "inactive product/library workflows with explicit governed purpose",
+    "Git history for all retired deployment and subscription implementations"
+  ],
+  "quality_gate": {
+    "latest_observed_push_run_number": 3307,
+    "latest_observed_run_id": 156,
+    "latest_observed_sha": "935c23dee50b838fbe49b3155e7e28a896d2c880",
+    "status": "success",
+    "duration_seconds": 3
+  },
+  "final_gate": {
+    "canonical_housekeeping_complete": true,
+    "certified_baseline_frozen": true,
+    "operating_plan_locked": true,
+    "agent_resume_control_locked": true,
+    "github_final_mirror_reconciled": false,
+    "passed": false
+  }
+}
