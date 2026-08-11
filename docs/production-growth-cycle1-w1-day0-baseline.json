@@ -137,15 +137,55 @@
       "authority": "Revenue Pipeline",
       "reason": "Every accepted assessment creates or updates a Revenue Pipeline opportunity; the complete Revenue Pipeline contains headers only."
     },
-    "assessment_opportunities": {"value": 0, "status": "observed_zero", "authority": "Revenue Pipeline"},
-    "qualified_opportunities": {"value": 0, "status": "observed_zero", "authority": "Revenue Pipeline"},
-    "proposals": {"value": 0, "status": "observed_zero", "authority": "Proposals"},
-    "product_sales": {"value": 0, "status": "observed_zero", "authority": "Sales"},
-    "verified_product_revenue": {"value": 0, "currency": null, "status": "observed_zero", "authority": "Sales"},
-    "verified_attributed_revenue": {"value": 0, "currency": null, "status": "observed_zero", "authority": "Revenue Attribution"},
-    "campaign_records": {"value": 0, "status": "observed_zero", "authority": "Campaigns"},
-    "recorded_paid_media_spend": {"value": 0, "currency": null, "status": "observed_zero", "authority": "Campaigns", "policy_default_budget": 0},
-    "kpi_history_records": {"value": 0, "status": "observed_zero", "authority": "KPI History"},
+    "assessment_opportunities": {
+      "value": 0,
+      "status": "observed_zero",
+      "authority": "Revenue Pipeline"
+    },
+    "qualified_opportunities": {
+      "value": 0,
+      "status": "observed_zero",
+      "authority": "Revenue Pipeline"
+    },
+    "proposals": {
+      "value": 0,
+      "status": "observed_zero",
+      "authority": "Proposals"
+    },
+    "product_sales": {
+      "value": 0,
+      "status": "observed_zero",
+      "authority": "Sales"
+    },
+    "verified_product_revenue": {
+      "value": 0,
+      "currency": null,
+      "status": "observed_zero",
+      "authority": "Sales"
+    },
+    "verified_attributed_revenue": {
+      "value": 0,
+      "currency": null,
+      "status": "observed_zero",
+      "authority": "Revenue Attribution"
+    },
+    "campaign_records": {
+      "value": 0,
+      "status": "observed_zero",
+      "authority": "Campaigns"
+    },
+    "recorded_paid_media_spend": {
+      "value": 0,
+      "currency": null,
+      "status": "observed_zero",
+      "authority": "Campaigns",
+      "policy_default_budget": 0
+    },
+    "kpi_history_records": {
+      "value": 0,
+      "status": "observed_zero",
+      "authority": "KPI History"
+    },
     "recorded_workflow_reliability_incidents": {
       "value": 0,
       "status": "observed_zero",
@@ -164,18 +204,45 @@
       "status": "unavailable",
       "reason": "Assessment leads are observed at zero through Revenue Pipeline, but Operator Brief lead/subscriber rows are held in the n8n Data Table and are not safely readable through the current connector."
     },
-    "booked_consultations": {"value": null, "status": "unavailable", "reason": "No authoritative consultation-booking source was read during W1."},
+    "booked_consultations": {
+      "value": null,
+      "status": "unavailable",
+      "reason": "No authoritative consultation-booking source was read during W1."
+    },
     "qualified_traffic_by_campaign": {
       "value": null,
       "status": "not_yet_separable",
       "reason": "No governed campaign rows exist yet and the first-party Day 0 endpoint exposes page/referrer activity rather than qualification by the future W2 campaign identities."
     },
-    "operator_brief_assisted_conversions": {"value": null, "status": "not_yet_observable", "reason": "No corresponding GA4 event was observed and no attributed revenue records exist."},
-    "case_study_assisted_conversions": {"value": null, "status": "not_yet_observable", "reason": "No corresponding GA4 event was observed and no attributed revenue records exist."}
+    "operator_brief_assisted_conversions": {
+      "value": null,
+      "status": "not_yet_observable",
+      "reason": "No corresponding GA4 event was observed and no attributed revenue records exist."
+    },
+    "case_study_assisted_conversions": {
+      "value": null,
+      "status": "not_yet_observable",
+      "reason": "No corresponding GA4 event was observed and no attributed revenue records exist."
+    }
   },
   "ledger_read_evidence": {
-    "header_only_complete_tables": ["Revenue Pipeline", "Proposals", "Revenue Attribution", "Sales", "KPI History", "Campaigns", "Workflow Reliability"],
-    "tail_ranges_verified_empty": ["Sales!A1001:T2000", "Sales!A2001:T3000", "KPI History!A501:X1500", "KPI History!A1501:X2000", "Campaigns!A501:AH1500", "Campaigns!A1501:AH2000"],
+    "header_only_complete_tables": [
+      "Revenue Pipeline",
+      "Proposals",
+      "Revenue Attribution",
+      "Sales",
+      "KPI History",
+      "Campaigns",
+      "Workflow Reliability"
+    ],
+    "tail_ranges_verified_empty": [
+      "Sales!A1001:T2000",
+      "Sales!A2001:T3000",
+      "KPI History!A501:X1500",
+      "KPI History!A1501:X2000",
+      "Campaigns!A501:AH1500",
+      "Campaigns!A1501:AH2000"
+    ],
     "synthetic_rows_written": 0
   },
   "measurement_integrity_finding": {
@@ -185,7 +252,17 @@
     "workflow_name": "Tayoca Growth OS | Demand Engine & Revenue Command Center",
     "active_version": "b159ae03-5ea7-48f2-af46-e5794c0d4182",
     "finding": "The current Friday report builder encodes several unavailable fields as numeric zero and maps first-party pageviews into the sessions field. Its lead total is also derived from campaign/content sheets rather than the governed intake store.",
-    "affected_fields": ["sessions", "engaged_sessions", "instagram_reach", "tiktok_views", "youtube_views", "email_subscribers", "leads", "consultation_bookings", "roas_when_no_spend"],
+    "affected_fields": [
+      "sessions",
+      "engaged_sessions",
+      "instagram_reach",
+      "tiktok_views",
+      "youtube_views",
+      "email_subscribers",
+      "leads",
+      "consultation_bookings",
+      "roas_when_no_spend"
+    ],
     "w1_treatment": "Do not use the Friday report output or KPI History as Day 0 evidence. Use the direct authorities recorded in this baseline.",
     "w8_treatment": "Block W8 from becoming authoritative until the existing Revenue Command Center is patched so unavailable values remain unavailable and source semantics are correct.",
     "runtime_change_made_in_w1": false
