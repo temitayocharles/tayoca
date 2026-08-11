@@ -1,10 +1,10 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "plan_id": "tayoca-production-growth-cycle-1",
   "workstream": "W6",
   "name": "targeted_outbound",
-  "status": "ACTIVE_SEND_CAPABILITY_BLOCKED",
-  "recorded_at": "2026-08-11T22:10:00Z",
+  "status": "WAITING_HUMAN_SEND_APPROVAL",
+  "recorded_at": "2026-08-11T22:21:00Z",
   "objective": "Run a narrow, problem-led B2B prospecting motion into the approved Platform Reliability Assessment without creating a parallel CRM, guessing contact data, leaking private evidence, or sending bulk outreach.",
   "canonical_systems": {
     "repository": "temitayocharles/tayoca",
@@ -60,7 +60,7 @@
       "target_problem": "Platform reliability and deployment-control discipline while the Platform Engineering team is scaling highly available services.",
       "offer": "Platform Reliability Assessment",
       "contact_state": "verified",
-      "send_state": "blocked_only_by_authenticated_tayoca_sender_capability"
+      "send_state": "waiting_human_send_approval"
     },
     {
       "rank": 2,
@@ -135,7 +135,7 @@
       "target_problem": "Multi-cloud Kubernetes deployment reliability, service ownership, observability, and delivery-control review discipline.",
       "offer": "Platform Reliability Assessment",
       "contact_state": "verified_executive_contact_lower_level_owner_not_verified",
-      "send_state": "blocked_only_by_authenticated_tayoca_sender_capability_if_executive_route_is_used"
+      "send_state": "waiting_human_send_approval"
     },
     {
       "rank": 5,
@@ -165,12 +165,28 @@
       "send_state": "blocked_by_linkedin_dm_capability"
     }
   ],
+  "sender_capability": {
+    "provider": "Resend",
+    "account": "resend_capra-astern",
+    "verified_domain": "temitayocharles.online",
+    "proposed_from": "Temitayo Charles | Tayoca <temitayo@temitayocharles.online>",
+    "proposed_reply_to": "tayocharlesaki@gmail.com",
+    "tayoca_domain_state": "not_registered_in_resend",
+    "tayoca_domain_registration_attempt": "blocked_plan_domain_limit",
+    "resend_plan_limit": "one domain",
+    "existing_verified_domain_must_not_be_deleted": true,
+    "gmail_tayoca_send_as_alias_found": false,
+    "linkedin_direct_message_available": false,
+    "send_action_requires_explicit_recipient_and_content_confirmation": true
+  },
   "contactability_findings": {
     "verified_precise_decision_owners": 3,
     "verified_direct_contact_paths": 3,
-    "contact_ready_accounts": [
+    "email_ready_accounts": [
       "SPS Commerce",
-      "MongoDB",
+      "MongoDB"
+    ],
+    "linkedin_path_only_accounts": [
       "Kinaxis"
     ],
     "linkedin_connection_active": true,
@@ -180,28 +196,28 @@
     "leadiq_connected": false,
     "fullenrich_connected": false,
     "wiza_connected": false,
-    "gmail_direct_connector_state": "blocked_by_conversation_connector_policy",
-    "safe_authenticated_outbound_sender_verified": false,
-    "rule": "Do not substitute public posting, guessed email patterns, an unverified personal sender identity, or bulk enrichment for a verified one-to-one outbound channel."
+    "gmail_direct_connector_state": "available_through_composio_but_no_tayoca_send_as_alias",
+    "safe_authenticated_outbound_sender_verified": true,
+    "rule": "Use the verified owner-led professional domain only with explicit send approval; do not substitute public posting, guessed email patterns, or bulk enrichment."
   },
   "first_wave_drafts": [
     {
       "account": "SPS Commerce",
-      "recipient": "Jamie Thingelstad",
+      "recipient": "Jamie Thingelstad <jamie@thingelstad.com>",
       "channel": "email",
       "subject": "Platform reliability review for SPS",
       "body": "Jamie, I noticed SPS is expanding Platform Engineering around highly available platform services, deployment automation, reliability, and resolving failure risks at source. I run Tayoca's Platform Reliability Assessment, a structured diagnostic for deployment risk, recovery readiness, delivery controls, and operational ownership. Given the scope your platform team is carrying, I thought the framework may be useful as an independent review lens. If it is relevant, I can share the assessment or walk through it with the appropriate platform leader.\n\nhttps://tayoca.com/assessments.html?assessment=Platform%20Reliability%20Assessment&utm_source=outbound&utm_medium=email&utm_campaign=pgc1_platform_kubernetes_reliability&utm_content=w6_sps_commerce#assessment-form",
       "claims_review": "public-signal and Tayoca-offer facts only",
-      "send_state": "ready_copy_sender_blocked"
+      "send_state": "waiting_human_send_approval"
     },
     {
       "account": "MongoDB",
-      "recipient": "Jim Scharf",
+      "recipient": "Jim Scharf <jim.scharf@mongodb.com>",
       "channel": "email",
       "subject": "Independent platform reliability review",
       "body": "Jim, MongoDB's current SRE hiring describes Platform Engineering responsibility across multi-cloud Kubernetes, service mesh, observability, alerting, and Argo-based delivery infrastructure. I run Tayoca's Platform Reliability Assessment, a structured review of deployment risk, recovery readiness, delivery controls, and operational ownership. I am reaching out because the assessment maps closely to the operating surface described publicly by the team, not because I am assuming any internal issue. If useful, I can share the framework or route it to the platform engineering owner you consider the right fit.\n\nhttps://tayoca.com/assessments.html?assessment=Platform%20Reliability%20Assessment&utm_source=outbound&utm_medium=email&utm_campaign=pgc1_platform_kubernetes_reliability&utm_content=w6_mongodb#assessment-form",
       "claims_review": "public-signal and Tayoca-offer facts only; explicitly avoids inferred weakness",
-      "send_state": "ready_copy_sender_blocked"
+      "send_state": "waiting_human_send_approval"
     },
     {
       "account": "Kinaxis",
@@ -232,12 +248,14 @@
   "gate": {
     "contact_verification": "GREEN",
     "message_preparation": "GREEN",
-    "send_execution": "BLOCKED_CAPABILITY",
+    "sender_capability": "GREEN_OWNER_LED_VERIFIED_DOMAIN",
+    "send_execution": "WAITING_HUMAN_APPROVAL",
     "passed": false,
-    "blocker": "No verified Tayoca-controlled outbound sender is callable in this conversation, and the connected LinkedIn API exposes public posting but not direct messaging/connection notes.",
+    "approval_scope": "Two irreversible one-to-one Resend emails: SPS Commerce and MongoDB, with exact recipients, sender, reply-to, subjects, and bodies recorded above.",
     "next_required_evidence": [
-      "make a Tayoca-controlled one-to-one outbound sender callable, or expose a safe existing sender connector",
-      "send no more than three first-wave messages",
+      "explicit human confirmation of both recipients and final email content",
+      "send no more than the two approved first-wave emails",
+      "retrieve Resend email status for each send",
       "record delivery/reply evidence",
       "record commercial movement without creating pipeline opportunity IDs before governed assessment intake"
     ]
