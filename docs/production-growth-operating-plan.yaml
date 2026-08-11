@@ -49,7 +49,7 @@ locked_cross_stage_controls:
 
 cycle:
   horizon_days: 30
-  phase: BASELINE_CAPTURED
+  phase: OFFERS_PRIORITIZED
   objective: >-
     Prove that Tayoca can repeatedly convert qualified attention into commercial intent,
     leads, opportunities, conversations, proposals, and verified revenue using the
@@ -88,20 +88,27 @@ commercial_entry_paths:
 
 priority_campaigns:
   - campaign_key: cloud_ai_cost
+    campaign_id: pgc1_cloud_ai_cost
     buyer_problem: uncontrolled_or_unexplained_cloud_and_ai_cost
     primary_entry_asset: Cloud & AI Cost Assessment
+    primary_cta: Request Cloud & AI Cost Assessment
     commercial_destination: FinOps Operations
     journey: "Cloud/AI cost problem -> evidence-led content/outreach -> Cloud & AI Cost Assessment -> opportunity -> FinOps Operations proposal"
   - campaign_key: platform_kubernetes_reliability
+    campaign_id: pgc1_platform_kubernetes_reliability
     buyer_problem: production_platform_or_kubernetes_reliability_risk
     primary_entry_asset: Platform Reliability Assessment
-    commercial_destination: Reliability / Platform Operations
-    journey: "Platform reliability problem -> readiness content/checklist -> Platform Reliability Assessment -> opportunity -> Reliability/Platform Operations proposal"
+    primary_cta: Request Platform Reliability Assessment
+    commercial_destination: Platform Operations
+    journey: "Platform reliability problem -> readiness content/checklist -> Platform Reliability Assessment -> opportunity -> Platform Operations proposal"
   - campaign_key: ai_automation_operations
+    campaign_id: pgc1_ai_automation_operations
     buyer_problem: unreliable_or_ungoverned_ai_and_automation_operations
-    primary_entry_asset: Technology Value Assessment or Sivanta
-    commercial_destination: Automation Governance / Sivanta
-    journey: "AI/automation operations problem -> evidence/demo -> assessment or Sivanta -> qualified conversation -> Automation Governance/Sivanta"
+    primary_entry_asset: Technology Value Assessment
+    primary_cta: Request Technology Value Assessment
+    commercial_destination: Automation Governance
+    secondary_route: "Sivanta remains a separate smallest-fit route for a specifically conversation-commerce automation problem; it is not a competing primary CTA in this campaign."
+    journey: "AI/automation operations problem -> evidence/demo -> Technology Value Assessment -> qualified conversation -> Automation Governance proposal"
 
 workstreams:
   - id: W1
@@ -117,7 +124,9 @@ workstreams:
   - id: W2
     name: offer_prioritization
     priority: 2
-    status: NOT_STARTED
+    status: GREEN
+    completed_at: "2026-08-11T02:19:18Z"
+    baseline: docs/production-growth-cycle1-w2-offer-prioritization.json
     outcome: >-
       Confirm the buyer, problem, promise, primary asset, CTA, UTM identity, commercial
       destination, and revenue hypothesis for each of the three priority campaigns.
@@ -187,6 +196,7 @@ workstreams:
 measurement:
   baseline_period_days: "7-14"
   day0_baseline: docs/production-growth-cycle1-w1-day0-baseline.json
+  offer_prioritization_baseline: docs/production-growth-cycle1-w2-offer-prioritization.json
   forecast_rule: >-
     Do not invent revenue, CAC, conversion, or pipeline targets before sufficient live
     production observations exist. Use the first 7-14 days to establish defensible baselines,

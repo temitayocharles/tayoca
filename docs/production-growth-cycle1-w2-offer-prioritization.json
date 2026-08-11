@@ -1,0 +1,148 @@
+{
+  "schema_version": 1,
+  "plan_id": "tayoca-production-growth-cycle-1",
+  "workstream_id": "W2",
+  "workstream_name": "offer_prioritization",
+  "status": "GREEN",
+  "completed_at": "2026-08-11T02:20:00Z",
+  "local_operating_date": "2026-08-10",
+  "timezone": "America/Toronto",
+  "purpose": "Lock one buyer problem, promise, primary asset, CTA, UTM identity, commercial destination, and non-numeric revenue hypothesis for each priority campaign before distribution begins.",
+  "source_authorities": [
+    "docs/production-growth-operating-plan.yaml",
+    "public/data/product-ecosystem.json",
+    "public/assessments.html",
+    "public/services.html",
+    "public/sivanta.html",
+    "docs/sales-enablement.md",
+    "docs/revenue-operations-policy.yaml"
+  ],
+  "campaign_contracts": [
+    {
+      "campaign_key": "cloud_ai_cost",
+      "campaign_id": "pgc1_cloud_ai_cost",
+      "buyer": "CTOs, engineering leaders, FinOps/cloud-economics owners, and teams accountable for rising cloud, Kubernetes, or AI workload spend.",
+      "problem": "Spend is rising without a defensible link between workload demand, waste hypotheses, ownership, reliability risk, and the remediation order that matters most.",
+      "promise": "Turn cloud and AI cost uncertainty into an evidence-backed cost-driver view, explicit savings hypotheses, accountable owners, and a prioritized action plan without promising a savings percentage before implementation evidence exists.",
+      "primary_asset": {
+        "id": "cloud-ai-cost-assessment",
+        "name": "Cloud & AI Cost Assessment",
+        "path": "/assessments.html",
+        "pricing_method": "Fixed-scope assessment fee agreed after fit and evidence-access review."
+      },
+      "primary_cta": {
+        "label": "Request Cloud & AI Cost Assessment",
+        "destination": "/assessments.html?assessment=Cloud%20%26%20AI%20Cost%20Assessment#assessment-form",
+        "campaign_template": "/assessments.html?assessment=Cloud%20%26%20AI%20Cost%20Assessment&utm_campaign=pgc1_cloud_ai_cost&utm_source={{source}}&utm_medium={{medium}}&utm_content={{content}}#assessment-form"
+      },
+      "commercial_destination": {
+        "id": "finops-operations",
+        "name": "FinOps Operations",
+        "pricing_method": "Monthly retainer priced from the agreed systems, evidence sources, review cadence and implementation responsibility after assessment/baseline."
+      },
+      "revenue_hypothesis": "Qualified buyers with a recurring cloud/AI cost ownership problem who complete a sufficiently evidenced assessment may progress into a FinOps Operations proposal when ongoing operating control is the appropriate fit. No conversion rate, savings percentage, or revenue target is asserted before the 7-14 day production observation window.",
+      "proof_boundary": "Savings remain hypotheses until implemented and measured against an agreed baseline. No percentage savings guarantee is permitted.",
+      "success_lineage": ["qualified_attention", "assessment_request", "assessment_opportunity", "assessment_evidence", "qualified_conversation", "finops_operations_proposal", "verified_revenue"],
+      "non_goals": ["Do not lead with the $5,000 fixed implementation service as the campaign CTA.", "Do not promise a savings percentage.", "Do not use paid media by default."]
+    },
+    {
+      "campaign_key": "platform_kubernetes_reliability",
+      "campaign_id": "pgc1_platform_kubernetes_reliability",
+      "buyer": "Engineering, platform, SRE, and technology leaders accountable for Kubernetes/platform deployment risk, incidents, recovery readiness, delivery controls, and operational ownership.",
+      "problem": "Production platform risk is visible through incidents, weak recovery, delivery friction, or governance gaps, but the team cannot separate symptoms from the controls and operating gaps that should be fixed first.",
+      "promise": "Turn platform and Kubernetes reliability uncertainty into evidence-backed reliability findings, control gaps, recovery evidence, and a prioritized remediation backlog without implying an uptime guarantee.",
+      "primary_asset": {
+        "id": "platform-reliability-assessment",
+        "name": "Platform Reliability Assessment",
+        "path": "/assessments.html",
+        "pricing_method": "Fixed-scope assessment fee agreed after fit and evidence-access review."
+      },
+      "primary_cta": {
+        "label": "Request Platform Reliability Assessment",
+        "destination": "/assessments.html?assessment=Platform%20Reliability%20Assessment#assessment-form",
+        "campaign_template": "/assessments.html?assessment=Platform%20Reliability%20Assessment&utm_campaign=pgc1_platform_kubernetes_reliability&utm_source={{source}}&utm_medium={{medium}}&utm_content={{content}}#assessment-form"
+      },
+      "commercial_destination": {
+        "id": "platform-operations",
+        "name": "Platform Operations",
+        "pricing_method": "Monthly retainer priced from platform footprint, environments, review cadence and implementation responsibility after assessment/baseline."
+      },
+      "alternate_sales_fit": "Reliability Operations remains available when the evidenced need is primarily service reliability, incident learning, and recovery discipline rather than platform operating control. It is not a competing CTA in this campaign.",
+      "revenue_hypothesis": "Qualified platform/Kubernetes buyers whose assessment confirms recurring delivery, control, ownership, or recovery work may progress into a Platform Operations proposal. No uptime, response-time, conversion, or revenue target is asserted before production evidence exists.",
+      "proof_boundary": "The assessment and managed offer do not create an uptime or response-time SLA unless explicitly contracted.",
+      "success_lineage": ["qualified_attention", "assessment_request", "assessment_opportunity", "assessment_evidence", "qualified_conversation", "platform_operations_proposal", "verified_revenue"],
+      "non_goals": ["Do not promise zero incidents or an uptime percentage.", "Do not make the fixed $8,000+ GitOps/DevSecOps implementation service the campaign's primary CTA.", "Do not use paid media by default."]
+    },
+    {
+      "campaign_key": "ai_automation_operations",
+      "campaign_id": "pgc1_ai_automation_operations",
+      "buyer": "Technology, operations, and AI leaders responsible for production automations, agents, RAG/LLM workflows, or business-critical workflow automation that must remain observable and able to fail safely.",
+      "problem": "Automation accumulates unclear ownership, silent failures, model/integration changes, cost or latency drift, and unsafe decision boundaries when it is treated as a collection of workflows rather than a governed operating system.",
+      "promise": "Turn AI and automation operating risk into an evidence-backed value/risk view, ownership baseline, prioritized control backlog, and decision path without promising model, vendor, or business outcomes.",
+      "primary_asset": {
+        "id": "technology-value-assessment",
+        "name": "Technology Value Assessment",
+        "path": "/assessments.html",
+        "pricing_method": "Fixed-scope assessment fee agreed after fit and evidence-access review."
+      },
+      "primary_cta": {
+        "label": "Request Technology Value Assessment",
+        "destination": "/assessments.html?assessment=Technology%20Value%20Assessment#assessment-form",
+        "campaign_template": "/assessments.html?assessment=Technology%20Value%20Assessment&utm_campaign=pgc1_ai_automation_operations&utm_source={{source}}&utm_medium={{medium}}&utm_content={{content}}#assessment-form"
+      },
+      "commercial_destination": {
+        "id": "automation-governance",
+        "name": "Automation Governance",
+        "pricing_method": "Monthly retainer priced from workflow count, integration/model footprint, review cadence and remediation responsibility after assessment/baseline."
+      },
+      "sivanta_secondary_role": "Sivanta may be used as approved proof/demo material or as a separate product route when the buyer's actual problem is conversation-led commerce automation. It must not replace or compete with the primary Technology Value Assessment CTA inside this governance campaign.",
+      "revenue_hypothesis": "Qualified organizations with recurring AI/workflow automation operating risk whose assessment confirms an ongoing governance need may progress into an Automation Governance proposal. A specific conversation-commerce need may instead be routed to Sivanta under the existing sales-enablement smallest-fit rule, but that is not counted as success for this campaign unless attribution preserves the actual route.",
+      "proof_boundary": "High-risk decisions retain human approval where required; customer credentials and production authority remain customer-controlled unless explicitly delegated; model or vendor performance is not guaranteed.",
+      "success_lineage": ["qualified_attention", "assessment_request", "assessment_opportunity", "assessment_evidence", "qualified_conversation", "automation_governance_proposal", "verified_revenue"],
+      "non_goals": ["Do not promise AI accuracy, autonomous decision safety, or vendor performance.", "Do not use Sivanta pricing as the primary CTA for this governance campaign.", "Do not use paid media by default."]
+    }
+  ],
+  "utm_contract": {
+    "campaign_id_rule": "Revenue campaign_id must equal the exact utm_campaign value captured by the governed intake/revenue path.",
+    "utm_campaign_values": ["pgc1_cloud_ai_cost", "pgc1_platform_kubernetes_reliability", "pgc1_ai_automation_operations"],
+    "utm_source_rule": "Set to the actual distribution source, using a stable lowercase identifier such as linkedin, operator_brief, direct_outbound, organic_search, or tayoca_site.",
+    "utm_medium_rule": "Use the actual delivery medium, such as organic_social, email, outbound, organic_search, or internal. Do not call unpaid activity paid/cpc.",
+    "utm_content_rule": "Use a stable asset or message identifier so creative/content variants remain distinguishable.",
+    "utm_term_rule": "Optional; use only when a real search/prospecting term needs attribution.",
+    "referrer_rule": "Preserve browser referrer independently of UTM values.",
+    "source_page_rule": "Preserve the originating Tayoca page independently of campaign attribution."
+  },
+  "commercial_rules": {
+    "one_primary_cta_per_campaign": true,
+    "one_primary_commercial_destination_per_campaign": true,
+    "smallest_fit_sales_rule_preserved": true,
+    "assessment_submission_does_not_equal_proposal": true,
+    "proposal_requires_materially_sufficient_evidence": true,
+    "won_requires_verified_revenue_event": true,
+    "paid_media_default_budget": 0,
+    "no_numeric_forecast_before_baseline_window": true
+  },
+  "sivanta_rendered_claim_check": {
+    "checked_at": "2026-08-11T02:18:00Z",
+    "production_status": "PASS",
+    "raw_source_compatibility_residue_present": true,
+    "rendered_stale_claims_present": false,
+    "safe_rendered_support_language": ["Community support", "Plan-level chat + email support", "Support and SLA terms defined in the signed plan"],
+    "classification": "Non-blocking raw-source compatibility residue. The Stage 10 shared runtime continues to normalize the production-rendered claims, so no production claim-integrity regression is present."
+  },
+  "gate": {
+    "three_priority_campaigns_only": true,
+    "buyer_confirmed_per_campaign": true,
+    "problem_confirmed_per_campaign": true,
+    "promise_confirmed_per_campaign": true,
+    "primary_asset_confirmed_per_campaign": true,
+    "single_primary_cta_confirmed_per_campaign": true,
+    "utm_identity_confirmed_per_campaign": true,
+    "single_commercial_destination_confirmed_per_campaign": true,
+    "non_numeric_revenue_hypothesis_confirmed_per_campaign": true,
+    "proof_boundaries_preserved": true,
+    "paid_media_default_zero_preserved": true,
+    "new_product_or_parallel_stack_created": false,
+    "passed": true
+  }
+}
