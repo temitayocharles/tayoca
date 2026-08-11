@@ -1,0 +1,205 @@
+{
+  "schema_version": 1,
+  "plan_id": "tayoca-production-growth-cycle-1",
+  "workstream_id": "W1",
+  "workstream_name": "production_baseline",
+  "status": "GREEN",
+  "captured_at": "2026-08-11T02:07:00Z",
+  "local_operating_date": "2026-08-10",
+  "timezone": "America/Toronto",
+  "purpose": "Capture the Day 0 production state without manufacturing missing values before commercial campaign execution begins.",
+  "certified_boundary": {
+    "commit": "2f98c1f6899425437e185b791512d7b35252d838",
+    "release_tag": "tayoca-certified-2026-08-10",
+    "stage14_baseline": "docs/stage14-final-certification-baseline.json"
+  },
+  "regression_check": {
+    "latest_pre_baseline_forgejo_run_number": 3320,
+    "latest_pre_baseline_forgejo_run_status": "success",
+    "latest_pre_baseline_forgejo_sha": "0417e1987579c5ab7879a5cbcc7506ffd123a3fe",
+    "public_shell_auditor_workflow": "AndnV6W2YCiTcxSz",
+    "public_shell_auditor_execution": "73664",
+    "public_shell_status": "PASSED",
+    "audited_pages": 34,
+    "nonconforming_pages": 0,
+    "violations": 0
+  },
+  "measurement_authorities": {
+    "first_party_live_activity": "https://v7mhrspk.function2.insforge.app/analytics-dashboard/overview",
+    "ga4_property": "properties/548373018",
+    "ga4_measurement_id": "G-G4QC90QNXW",
+    "search_console_property": "https://tayoca.com/",
+    "search_console_snapshot": "https://tayoca.com/data/search-console-summary.json",
+    "commercial_ledger_spreadsheet": "1JkW4DUTkjBTQNXlWMQdaVHlw-nFU1to8-cf9HMKXcQU",
+    "intake_workflow": "V28T575q7GSRFOti",
+    "intake_active_version": "77f42f4d-dc43-4743-a667-4fe7ce44aa44"
+  },
+  "first_party_activity": {
+    "seven_day": {
+      "period_days": 7,
+      "pageviews": 53,
+      "unique_visitors": 19,
+      "top_pages": [
+        {"path": "/", "pageviews": 24},
+        {"path": "/products.html", "pageviews": 9},
+        {"path": "/services.html", "pageviews": 6},
+        {"path": "/about.html", "pageviews": 5},
+        {"path": "/blog/kubernetes-interview-scenarios.html", "pageviews": 2}
+      ],
+      "top_referrers": [
+        {"source": "tayoca.com", "visits": 15},
+        {"source": "www.google.com", "visits": 1},
+        {"source": "www.linkedin.com", "visits": 1}
+      ]
+    },
+    "fourteen_day": {
+      "period_days": 14,
+      "pageviews": 154,
+      "unique_visitors": 50,
+      "top_pages": [
+        {"path": "/", "pageviews": 63},
+        {"path": "/products.html", "pageviews": 17},
+        {"path": "/index.html", "pageviews": 16},
+        {"path": "/services.html", "pageviews": 12},
+        {"path": "/products/kubernetes-operators-workbook.html", "pageviews": 12}
+      ],
+      "top_referrers": [
+        {"source": "tayoca.com", "visits": 71},
+        {"source": "www.linkedin.com", "visits": 2},
+        {"source": "www.osdzc.com", "visits": 1},
+        {"source": "www.google.com", "visits": 1}
+      ]
+    },
+    "interpretation": "The site has genuine measured activity. Referrer-level activity exists, but qualified traffic by campaign is not yet separable before W2 defines and W3 launches the priority campaign identities."
+  },
+  "ga4_seven_day": {
+    "property": "properties/548373018",
+    "measurement_timezone": "America/Vancouver",
+    "business_timezone": "America/Toronto",
+    "timezone_note": "GA4 property timezone differs from the operating-plan timezone. Preserve the distinction when interpreting day boundaries; no configuration change was made during W1.",
+    "active_users": 25,
+    "total_users": 25,
+    "sessions": 25,
+    "screen_page_views": 31,
+    "event_count": 92,
+    "key_events": 0,
+    "transactions": 0,
+    "purchase_revenue_cad": 0,
+    "observed_events": {
+      "page_view": 31,
+      "first_visit": 25,
+      "session_start": 25,
+      "scroll": 6,
+      "user_engagement": 4,
+      "form_start": 1
+    },
+    "critical_conversion_events_observed": {
+      "assessment_cta_click": 0,
+      "generate_lead": 0,
+      "assessment_schedule_click": 0,
+      "operator_brief_signup": 0,
+      "product_click": 0,
+      "newsletter_attributed_conversion": 0,
+      "case_study_assisted_conversion": 0
+    },
+    "source_rows": [
+      {"source": "(direct)", "medium": "(none)", "campaign": "(direct)", "sessions": 25, "active_users": 25, "screen_page_views": 31},
+      {"source": "(not set)", "medium": "(not set)", "campaign": "(not set)", "sessions": 2, "active_users": 2, "screen_page_views": 0}
+    ],
+    "source_breakdown_note": "Raw source rows are retained as returned. They are not summed to reconstruct the report total because GA4 aggregation semantics can differ across dimensioned reports."
+  },
+  "search_console": {
+    "snapshot_generated_at": "2026-08-10T21:43:00Z",
+    "data_through": "2026-08-08",
+    "seven_day_final": {
+      "start_date": "2026-08-02",
+      "end_date": "2026-08-08",
+      "clicks": 0,
+      "impressions": 12,
+      "ctr": 0,
+      "average_position": 24.166666666666668
+    },
+    "sitemap": {
+      "submitted_urls": 33,
+      "indexed_urls_reported_by_sitemap": 0,
+      "errors": 0,
+      "warnings": 0,
+      "pending": false,
+      "last_downloaded": "2026-08-10T10:30:27.101Z",
+      "last_submitted": "2026-08-06T15:47:05.286Z"
+    },
+    "sitemap_interpretation": "The sitemap indexed count is metadata only and is not treated as proof that no Tayoca URL is indexed because Search Analytics reports impressions. Period totals are the Search Console executive authority."
+  },
+  "commercial_day0": {
+    "assessment_requests_recorded": {
+      "value": 0,
+      "status": "observed_zero",
+      "authority": "Revenue Pipeline",
+      "reason": "Every accepted assessment creates or updates a Revenue Pipeline opportunity; the complete Revenue Pipeline contains headers only."
+    },
+    "assessment_opportunities": {"value": 0, "status": "observed_zero", "authority": "Revenue Pipeline"},
+    "qualified_opportunities": {"value": 0, "status": "observed_zero", "authority": "Revenue Pipeline"},
+    "proposals": {"value": 0, "status": "observed_zero", "authority": "Proposals"},
+    "product_sales": {"value": 0, "status": "observed_zero", "authority": "Sales"},
+    "verified_product_revenue": {"value": 0, "currency": null, "status": "observed_zero", "authority": "Sales"},
+    "verified_attributed_revenue": {"value": 0, "currency": null, "status": "observed_zero", "authority": "Revenue Attribution"},
+    "campaign_records": {"value": 0, "status": "observed_zero", "authority": "Campaigns"},
+    "recorded_paid_media_spend": {"value": 0, "currency": null, "status": "observed_zero", "authority": "Campaigns", "policy_default_budget": 0},
+    "kpi_history_records": {"value": 0, "status": "observed_zero", "authority": "KPI History"},
+    "recorded_workflow_reliability_incidents": {
+      "value": 0,
+      "status": "observed_zero",
+      "authority": "Workflow Reliability",
+      "claim_boundary": "This means no incidents are recorded in the governed reliability ledger; it is not an absolute claim that no workflow has ever failed."
+    }
+  },
+  "unavailable_metrics": {
+    "operator_brief_active_subscribers": {
+      "value": null,
+      "status": "unavailable",
+      "reason": "Subscriber state is stored in the governed n8n Data Table tayoca_growth_leads. The current safe connector exposes the workflow definition but not a read operation for Data Table rows. No parallel reporting workflow was created merely to manufacture a count."
+    },
+    "total_leads": {
+      "value": null,
+      "status": "unavailable",
+      "reason": "Assessment leads are observed at zero through Revenue Pipeline, but Operator Brief lead/subscriber rows are held in the n8n Data Table and are not safely readable through the current connector."
+    },
+    "booked_consultations": {"value": null, "status": "unavailable", "reason": "No authoritative consultation-booking source was read during W1."},
+    "qualified_traffic_by_campaign": {
+      "value": null,
+      "status": "not_yet_separable",
+      "reason": "No governed campaign rows exist yet and the first-party Day 0 endpoint exposes page/referrer activity rather than qualification by the future W2 campaign identities."
+    },
+    "operator_brief_assisted_conversions": {"value": null, "status": "not_yet_observable", "reason": "No corresponding GA4 event was observed and no attributed revenue records exist."},
+    "case_study_assisted_conversions": {"value": null, "status": "not_yet_observable", "reason": "No corresponding GA4 event was observed and no attributed revenue records exist."}
+  },
+  "ledger_read_evidence": {
+    "header_only_complete_tables": ["Revenue Pipeline", "Proposals", "Revenue Attribution", "Sales", "KPI History", "Campaigns", "Workflow Reliability"],
+    "tail_ranges_verified_empty": ["Sales!A1001:T2000", "Sales!A2001:T3000", "KPI History!A501:X1500", "KPI History!A1501:X2000", "Campaigns!A501:AH1500", "Campaigns!A1501:AH2000"],
+    "synthetic_rows_written": 0
+  },
+  "measurement_integrity_finding": {
+    "id": "revenue_command_center_placeholder_metrics",
+    "severity": "medium",
+    "workflow_id": "MRaoY2aHm85q3QWG",
+    "workflow_name": "Tayoca Growth OS | Demand Engine & Revenue Command Center",
+    "active_version": "b159ae03-5ea7-48f2-af46-e5794c0d4182",
+    "finding": "The current Friday report builder encodes several unavailable fields as numeric zero and maps first-party pageviews into the sessions field. Its lead total is also derived from campaign/content sheets rather than the governed intake store.",
+    "affected_fields": ["sessions", "engaged_sessions", "instagram_reach", "tiktok_views", "youtube_views", "email_subscribers", "leads", "consultation_bookings", "roas_when_no_spend"],
+    "w1_treatment": "Do not use the Friday report output or KPI History as Day 0 evidence. Use the direct authorities recorded in this baseline.",
+    "w8_treatment": "Block W8 from becoming authoritative until the existing Revenue Command Center is patched so unavailable values remain unavailable and source semantics are correct.",
+    "runtime_change_made_in_w1": false
+  },
+  "gate": {
+    "real_first_party_traffic_captured": true,
+    "verified_ga4_snapshot_captured": true,
+    "verified_search_console_snapshot_captured": true,
+    "complete_commercial_ledgers_read": true,
+    "observed_zeros_distinguished_from_unavailable_values": true,
+    "synthetic_values_used": false,
+    "synthetic_production_rows_written": false,
+    "critical_or_high_regression_found": false,
+    "measurement_defect_recorded_without_unsafe_runtime_rewrite": true,
+    "passed": true
+  }
+}
