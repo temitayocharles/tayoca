@@ -1,340 +1,244 @@
-<!DOCTYPE html>
-<html lang="en-US" data-theme="forgejo-auto">
-<head>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	
-	<title>Sign in - Forgejo - Infraforge</title>
-	<link rel="manifest" href="/manifest.json">
-	<meta name="author" content="Forgejo – Beyond coding. We forge.">
-	<meta name="description" content="Forgejo is a self-hosted lightweight software forge. Easy to install and low maintenance, it just does the job.">
-	<meta name="keywords" content="git,forge,forgejo">
-	<meta name="referrer" content="strict-origin">
+schema_version: 2
+plan_id: tayoca-production-growth-cycle-1
+name: Tayoca Production Growth Cycle 1
+status: LOCKED_ACTIVE
+effective_date: '2026-08-10'
+timezone: America/Toronto
 
+purpose: >
+  Operate the certified Tayoca platform as a customer-acquisition and revenue-producing
+  business. Prioritize measurable commercial outcomes over additional feature construction.
 
-	<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
-	<link rel="alternate icon" href="/assets/img/favicon.png" type="image/png">
-	
-<script>
-	
-	window.addEventListener('error', function(e) {window._globalHandlerErrors=window._globalHandlerErrors||[]; window._globalHandlerErrors.push(e);});
-	window.addEventListener('unhandledrejection', function(e) {window._globalHandlerErrors=window._globalHandlerErrors||[]; window._globalHandlerErrors.push(e);});
-	window.config = {
-		appUrl: 'https:\/\/forgejo.tca-infraforge.site\/',
-		appSubUrl: '',
-		assetVersionEncoded: encodeURIComponent('15.0.1~gitea-1.22.0'), 
-		assetUrlPrefix: '\/assets',
-		runModeIsProd:  true ,
-		customEmojis: new Set(["git","gitea","codeberg","gitlab","github","gogs","forgejo"]),
-		pageData: {"DATETIMESTRINGS":{"FUTURE":"in future","NOW":"now","relativetime.1day":"yesterday","relativetime.1month":"last month","relativetime.1week":"last week","relativetime.1year":"last year"},"PLURALSTRINGS_FALLBACK":{},"PLURALSTRINGS_LANG":{"relativetime.days":["%d day ago","%d days ago"],"relativetime.hours":["%d hour ago","%d hours ago"],"relativetime.mins":["%d minute ago","%d minutes ago"],"relativetime.months":["%d month ago","%d months ago"],"relativetime.weeks":["%d week ago","%d weeks ago"],"relativetime.years":["%d year ago","%d years ago"]},"PLURAL_RULE_FALLBACK":0,"PLURAL_RULE_LANG":0},
-		notificationSettings: {"EventSourceUpdateTime":10000,"MaxTimeout":60000,"MinTimeout":10000,"TimeoutStep":10000}, 
-		enableTimeTracking:  true ,
-		
-		mermaidMaxSourceCharacters:  50000 ,
-		
-		i18n: {
-			copy_success: "Copied!",
-			copy_error: "Copy failed",
-			error_occurred: "An error occurred",
-			network_error: "Network error",
-			remove_label_str: "Remove item \"%s\"",
-			modal_confirm: "Confirm",
-			modal_cancel: "Cancel",
-			more_items: "More items",
-			incorrect_root_url: "This Forgejo instance is configured to be served on \"https://forgejo.tca-infraforge.site/\". You are currently viewing Forgejo through a different URL, which may cause parts of the application to break. The canonical URL is controlled by Forgejo admins via the ROOT_URL setting in the app.ini.",
-		},
-	};
-	
-	window.config.pageData = window.config.pageData || {};
-</script>
-<script src="/assets/js/webcomponents.js?v=15.0.1~gitea-1.22.0"></script>
+authority:
+  canonical_host: forgejo.tca-infraforge.site
+  canonical_repository: temitayocharles/tayoca
+  canonical_path: docs/production-growth-operating-plan.yaml
+  secondary_mirror: github.com/temitayocharles/tayoca
+  secondary_role: deployment_mirror_only
+  certified_baseline:
+    commit: 2f98c1f6899425437e185b791512d7b35252d838
+    release_tag: tayoca-certified-2026-08-10
+    stage14_baseline: docs/stage14-final-certification-baseline.json
+    canonical_pages: 34
+    violations: 0
 
-	
+operating_rules:
+  - Read this plan before starting or resuming post-certification Tayoca work.
+  - Continue the highest-priority incomplete workstream whose dependencies are satisfied.
+  - Do not start unrelated or convenience-driven feature work outside this plan.
+  - Patch or extend existing application, workflow, analytics, editorial, and revenue layers before creating parallel systems.
+  - Forgejo is canonical; GitHub is deployment mirror only.
+  - Preserve rollback references, workflow history, evidence baselines, sanitized backups, and audit artifacts.
+  - Do not weaken claim integrity, private-source, human-publication, revenue-verification, analytics-provenance, or recovery controls.
+  - Missing or stale measurements must be disclosed rather than silently converted to zero.
+  - Paid media remains zero by default unless a bounded experiment is explicitly approved.
+  - Optimize for qualified commercial movement and verified revenue, not traffic alone.
 
-	
-	<meta property="og:title" content="Sign in">
+locked_cross_stage_controls:
+  claim_integrity: binding
+  private_source_firewall: binding
+  human_publication_approval: binding
+  verified_revenue_authority: binding
+  analytics_provenance: binding
+  workflow_recovery: binding
+  first_party_measurement_authority: binding
+  forgejo_source_of_truth: binding
+  zero_default_paid_media_spend: binding
 
+cycle:
+  horizon_days: 30
+  phase: CONTENT_DISTRIBUTION_APPROVAL
+  objective: >
+    Prove that Tayoca can repeatedly convert qualified attention into commercial intent,
+    leads, opportunities, conversations, proposals, and verified revenue using the certified platform.
+  primary_funnel:
+    - qualified_attention
+    - assessment_or_product_intent
+    - lead
+    - opportunity
+    - conversation
+    - proposal
+    - verified_revenue
 
-	<meta property="og:url" content="https://forgejo.tca-infraforge.site//user/login">
+priority_campaigns:
+  - campaign_key: cloud_ai_cost
+    campaign_id: pgc1_cloud_ai_cost
+    primary_entry_asset: Cloud & AI Cost Assessment
+    primary_cta: Request Cloud & AI Cost Assessment
+    commercial_destination: FinOps Operations
+    owned_launch_surface: /assessments.html
+  - campaign_key: platform_kubernetes_reliability
+    campaign_id: pgc1_platform_kubernetes_reliability
+    primary_entry_asset: Platform Reliability Assessment
+    primary_cta: Request Platform Reliability Assessment
+    commercial_destination: Platform Operations
+    owned_launch_surface: /assessments.html
+  - campaign_key: ai_automation_operations
+    campaign_id: pgc1_ai_automation_operations
+    primary_entry_asset: Technology Value Assessment
+    primary_cta: Request Technology Value Assessment
+    commercial_destination: Automation Governance
+    owned_launch_surface: /assessments.html
+    secondary_route: >
+      Sivanta remains a smallest-fit route for a specifically conversation-commerce automation
+      problem; it is not a competing primary CTA in this campaign.
 
+workstreams:
+  - id: W1
+    name: production_baseline
+    priority: 1
+    status: GREEN
+    completed_at: '2026-08-11T02:12:08Z'
+    baseline: docs/production-growth-cycle1-w1-day0-baseline.json
+  - id: W2
+    name: offer_prioritization
+    priority: 2
+    status: GREEN
+    completed_at: '2026-08-11T02:19:18Z'
+    baseline: docs/production-growth-cycle1-w2-offer-prioritization.json
+  - id: W3
+    name: campaign_launch
+    priority: 3
+    status: GREEN
+    completed_at: '2026-08-11T02:34:00Z'
+    baseline: docs/production-growth-cycle1-w3-campaign-launch.json
+    launch_scope: owned_assessment_catalogue
+  - id: W4
+    name: assessment_b2b_engine
+    priority: 4
+    status: GREEN
+    completed_at: '2026-08-11T19:20:04Z'
+    baseline: docs/production-growth-cycle1-w4-assessment-b2b-engine.json
+    follow_up_runbook: docs/assessment-b2b-follow-up-runbook.md
+  - id: W5
+    name: content_distribution
+    priority: 5
+    status: WAITING_HUMAN_APPROVAL
+    baseline: docs/production-growth-cycle1-w5-content-distribution.json
+    approval_execution: '75692'
+    current_opportunity: pgc1:platform-reliability:editorial-cluster
+    active_revenue_command_center_version: d871bac6-fe2b-4800-a525-1788c3f2dd75
+    rollback_revenue_command_center_version: b159ae03-5ea7-48f2-af46-e5794c0d4182
+    current_gate: Approve for drafting or Reject opportunity in Slack
+    outcome: >
+      Build commercial content clusters from approved evidence and repository intelligence,
+      reusing strong evidence across articles, social distribution, Operator Brief, and case-study
+      formats without leaking private-source material.
+  - id: W6
+    name: targeted_outbound
+    priority: 6
+    status: NOT_STARTED
+    outcome: >
+      Run narrow problem-led B2B prospecting into assessments or useful diagnostic conversations;
+      avoid indiscriminate outreach and measure reply, conversation, opportunity, and proposal movement.
+  - id: W7
+    name: operator_brief_nurture
+    priority: 7
+    status: BLOCKED_EXTERNAL
+    blocker: resend_sender_domain_verification
+  - id: W8
+    name: weekly_revenue_operating_loop
+    priority: 8
+    status: BLOCKED_INTERNAL
+    blocker: revenue_command_center_placeholder_metrics
+  - id: W9
+    name: controlled_experiments
+    priority: 9
+    status: NOT_STARTED
+  - id: W10
+    name: non_blocking_operational_debt
+    priority: 10
+    status: ACTIVE_BACKGROUND
 
-	<meta property="og:type" content="website">
+measurement:
+  baseline_period_days: '7-14'
+  day0_baseline: docs/production-growth-cycle1-w1-day0-baseline.json
+  offer_prioritization_baseline: docs/production-growth-cycle1-w2-offer-prioritization.json
+  campaign_launch_baseline: docs/production-growth-cycle1-w3-campaign-launch.json
+  assessment_b2b_baseline: docs/production-growth-cycle1-w4-assessment-b2b-engine.json
+  content_distribution_baseline: docs/production-growth-cycle1-w5-content-distribution.json
+  forecast_rule: >
+    Do not invent revenue, CAC, conversion, or pipeline targets before sufficient live production
+    observations exist. Use the first 7-14 days to establish defensible baselines.
+  core_metrics:
+    - qualified_traffic_by_source_and_campaign
+    - assessment_starts
+    - assessment_completions
+    - lead_conversion_rate
+    - qualified_opportunity_rate
+    - booked_conversations
+    - proposal_count
+    - proposal_value_by_currency
+    - proposal_to_win_rate
+    - verified_product_revenue
+    - verified_service_revenue
+    - attributed_revenue_by_campaign
+    - operator_brief_assisted_conversions
+    - case_study_assisted_conversions
+    - objection_frequency_and_resolution
+    - production_workflow_failures
+  executive_reporting_workflow:
+    id: MRaoY2aHm85q3QWG
+    name: Tayoca Growth OS | Demand Engine & Revenue Command Center
 
+external_and_continuous_improvement_items:
+  - id: resend_sender_domain_verification
+    severity: medium
+    blocking_scope: operator_brief_email_delivery_only
+    rule: Keep production email fail-closed until tayoca.com is verified in Resend.
+  - id: assistive_technology_audit
+    severity: medium
+    blocking_scope: none
+    rule: Do not claim full WCAG certification until full browser/assistive-technology testing is completed.
+  - id: search_console_sitemap_processing_lag
+    severity: low
+    blocking_scope: none
+    rule: Preserve observed Search Console metadata until Google reprocesses the canonical sitemap.
+  - id: native_n8n_errorworkflow_dispatch
+    severity: medium
+    blocking_scope: none
+    rule: Treat native errorWorkflow as best-effort; the tested metadata-only failure monitor remains authoritative.
+  - id: revenue_command_center_placeholder_metrics
+    severity: medium
+    blocking_scope: weekly_revenue_operating_loop
+    rule: >
+      Patch the existing Revenue Command Center before W8 becomes GREEN; unavailable values may not
+      be hardcoded as zero and pageviews may not be mislabeled as sessions.
+  - id: cal_booking_pipeline_sync
+    severity: medium
+    blocking_scope: none
+    rule: >
+      Keep booking reconciliation operator-controlled until the existing credential-bound Revenue
+      Pipeline path can be extended safely. Never infer assessment_scheduled from a CTA click or presumed booking.
 
-		<meta property="og:image" content="/assets/img/logo.png">
+change_control:
+  plan_revision_required_when:
+    - adding_or_removing_a_priority_campaign
+    - changing_the_primary_funnel
+    - creating_a_new_commercial_entry_path
+    - introducing_a_new_core_platform_or_parallel_stack
+    - changing_a_locked_cross_stage_control
+    - changing_the_cycle_success_gate
+  revision_method: >
+    Modify this canonical file through a normal Forgejo commit, pass existing quality gates, and mirror
+    the exact change to GitHub. Do not rewrite historical certified baselines.
+  runtime_rule: A plan/documentation revision by itself must not mutate production runtime.
 
-<meta property="og:site_name" content="Forgejo - Infraforge">
+resume_protocol:
+  on_continue_or_go:
+    - Read this file and latest workstream statuses first.
+    - Confirm no critical/high regression.
+    - Continue the highest-priority incomplete workstream whose dependencies are satisfied.
+    - If a workstream is WAITING_HUMAN_APPROVAL, inspect the recorded approval execution before starting any new work.
+    - Do not restart completed stages 0-14 unless a verified regression requires it.
+    - Do not create an unrelated workstream silently.
 
-	<link rel="stylesheet" href="/assets/css/index.css?v=15.0.1~gitea-1.22.0">
-<link rel="stylesheet" href="/assets/css/theme-forgejo-auto.css?v=15.0.1~gitea-1.22.0">
+cycle_start_gate:
+  passed: true
 
-	
-</head>
-<body class="no-js" hx-swap="outerHTML" hx-ext="morph" hx-push-url="false">
-	
-
-	<div class="full height">
-		<noscript>
-			<div class="tw-ml-2 tw-mr-2 tw-text-center tw-text-text-light-2">This website requires JavaScript.</div>
-		</noscript>
-
-		
-
-		
-			
-
-
-<nav id="navbar" aria-label="Navigation bar">
-	<div class="navbar-left ui secondary menu">
-		
-		<a class="item" id="navbar-logo" href="/" aria-label="Home">
-			<img width="30" height="30" src="/assets/img/logo.svg" alt="Logo" aria-hidden="true">
-		</a>
-
-		
-		<div class="ui secondary menu item navbar-mobile-right only-mobile">
-			
-			<button class="item tw-w-auto ui icon mini button tw-p-2 tw-m-0" id="navbar-expand-toggle" aria-label="Toggle menu"><svg viewBox="0 0 16 16" class="svg octicon-three-bars" aria-hidden="true" width="16" height="16"><path d="M1 2.75A.75.75 0 0 1 1.75 2h12.5a.75.75 0 0 1 0 1.5H1.75A.75.75 0 0 1 1 2.75m0 5A.75.75 0 0 1 1.75 7h12.5a.75.75 0 0 1 0 1.5H1.75A.75.75 0 0 1 1 7.75M1.75 12h12.5a.75.75 0 0 1 0 1.5H1.75a.75.75 0 0 1 0-1.5"/></svg></button>
-		</div>
-
-		
-		
-			<a class="item" href="/explore/repos">Explore</a>
-		
-
-		
-
-		
-			<a class="item" target="_blank" rel="noopener noreferrer" href="https://forgejo.org/docs/latest/">Help</a>
-		
-	</div>
-
-	
-	<div class="navbar-right ui secondary menu">
-		
-			
-			<a class="item active" rel="nofollow" href="/user/login">
-				<svg viewBox="0 0 16 16" class="tw-mr-1 svg octicon-sign-in" aria-hidden="true" width="16" height="16"><path d="M2 2.75C2 1.784 2.784 1 3.75 1h2.5a.75.75 0 0 1 0 1.5h-2.5a.25.25 0 0 0-.25.25v10.5c0 .138.112.25.25.25h2.5a.75.75 0 0 1 0 1.5h-2.5A1.75 1.75 0 0 1 2 13.25Zm6.56 4.5h5.69a.75.75 0 0 1 0 1.5H8.56l1.97 1.97a.749.749 0 0 1-.326 1.275.75.75 0 0 1-.734-.215L6.22 8.53a.75.75 0 0 1 0-1.06l3.25-3.25a.749.749 0 0 1 1.275.326.75.75 0 0 1-.215.734Z"/></svg>
-				<span>Sign in</span>
-			</a>
-		
-	</div>
-</nav>
-
-		
-
-
-
-<div role="main" aria-label="Sign in" class="page-content user signin">
-	<div class="ui middle very relaxed page grid">
-		<div class="column tw-flex tw-flex-col tw-gap-4 tw-max-w-2xl tw-m-auto">
-			<div class="ui container fluid">
-	
-	
-
-
-
-
-	<div id="flash-message" hx-swap-oob="true"></div>
-
-
-	
-	<h4 class="ui top attached header center">
-		
-			Sign in
-		
-	</h4>
-	<div class="ui attached segment">
-		
-		<form class="ui form" action="/user/login" method="post">
-			<div class="required field ">
-				<label for="user_name">Username or email address</label>
-				<input id="user_name" type="text" name="user_name" value="" autofocus required autocorrect="off" autocapitalize="none">
-			</div>
-			
-			<div class="required field ">
-				<label for="password">Password</label>
-				<input id="password" name="password" type="password" value="" autocomplete="current-password" required>
-			</div>
-			
-			
-			<div class="inline field">
-				<div class="ui checkbox">
-					<label>Remember this device</label>
-					<input name="remember" type="checkbox">
-				</div>
-			</div>
-			
-
-			
-
-
-			<div class="field">
-				<button class="ui primary button tw-w-full">
-					
-						Sign in
-					
-				</button>
-			</div>
-		</form>
-		
-
-		
-
-	<div class="divider divider-text">
-		or
-	</div>
-
-<div id="oauth2-login-navigator" class="tw-py-1">
-	<div class="tw-flex tw-flex-col tw-justify-center">
-		<div id="oauth2-login-navigator-inner" class="tw-flex tw-flex-col tw-flex-wrap tw-items-center tw-gap-2">
-			
-			
-				<a class="openid ui button tw-flex tw-items-center tw-justify-center tw-py-2 tw-w-full" href="/user/login/openid">
-				<svg viewBox="0 0 448 448" class="tw-mr-2 svg fontawesome-openid" aria-hidden="true" width="28" height="28"><path d="M271.5 0v384l-68 32C88.5 405.75 0 344.5 0 270.25c0-71.5 82.5-131 191.75-144.25v43c-71.5 12.5-124 53-124 101.25 0 51 58.5 93.25 135.75 103v-340zm167.25 145.5L448 243l-131.25-28.5 36.75-20.75c-19.5-11.5-43.5-20-70-24.75v-43c46.25 5.5 87.75 19.5 120.25 39.25z"/></svg>
-				Proceed with OpenID
-				</a>
-			
-		</div>
-	</div>
-</div>
-
-
-	</div>
-</div>
-
-
-<div class="ui container fluid">
-	<div id="webauthn-error" class="ui negative message tw-hidden">
-	<div class="header">Could not read your security key.</div>
-	<div id="webauthn-error-msg" class="tw-pt-2"></div>
-	<div class="tw-hidden">
-		<div data-webauthn-error-msg="browser">Your browser does not currently support WebAuthn.</div>
-		<div data-webauthn-error-msg="unknown">An unknown error occurred. Please retry.</div>
-		<div data-webauthn-error-msg="insecure">WebAuthn only supports secure connections. For testing over HTTP, you can use the origin "localhost" or "127.0.0.1"</div>
-		<div data-webauthn-error-msg="unable-to-process">The server could not process your request.</div>
-		<div data-webauthn-error-msg="duplicated">The security key is not permitted for this request. Please make sure that the key is not already registered.</div>
-		<div data-webauthn-error-msg="empty">You must set a name for this key.</div>
-		<div data-webauthn-error-msg="timeout">Timeout reached before your key could be read. Please reload this page and retry.</div>
-	</div>
-</div>
-
-
-		<div class="ui attached segment header top tw-max-w-2xl tw-m-auto tw-flex tw-flex-col tw-items-center">
-			
-			<div class="field">
-				<a href="/user/forgot_password">Forgot password?</a>
-			</div>
-		</div>
-</div>
-
-
-
-		</div>
-	</div>
-</div>
-
-
-	
-
-	</div>
-
-	
-
-	<footer class="page-footer" role="group" aria-label="Footer">
-	<div class="left-links" role="contentinfo" aria-label="About this software">
-		
-			<a target="_blank" rel="noopener noreferrer" href="https://forgejo.org">Powered by Forgejo</a>
-		
-		
-			Version:
-			
-				15.0.1
-			
-		
-		
-			Page: <strong>2ms</strong>
-			Template: <strong>1ms</strong>
-		
-	</div>
-	<div class="right-links" role="group" aria-label="Links">
-		<div class="ui dropdown upward language">
-			<span class="flex-text-inline"><svg viewBox="0 0 16 16" class="svg octicon-globe" aria-hidden="true" width="14" height="14"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0M5.78 8.75a9.64 9.64 0 0 0 1.363 4.177q.383.64.857 1.215c.245-.296.551-.705.857-1.215A9.64 9.64 0 0 0 10.22 8.75Zm4.44-1.5a9.64 9.64 0 0 0-1.363-4.177c-.307-.51-.612-.919-.857-1.215a10 10 0 0 0-.857 1.215A9.64 9.64 0 0 0 5.78 7.25Zm-5.944 1.5H1.543a6.51 6.51 0 0 0 4.666 5.5q-.184-.271-.352-.552c-.715-1.192-1.437-2.874-1.581-4.948m-2.733-1.5h2.733c.144-2.074.866-3.756 1.58-4.948q.18-.295.353-.552a6.51 6.51 0 0 0-4.666 5.5m10.181 1.5c-.144 2.074-.866 3.756-1.58 4.948q-.18.296-.353.552a6.51 6.51 0 0 0 4.666-5.5Zm2.733-1.5a6.51 6.51 0 0 0-4.666-5.5q.184.272.353.552c.714 1.192 1.436 2.874 1.58 4.948Z"/></svg> English</span>
-			<div class="menu language-menu">
-				
-					<a lang="id-ID" data-url="/?lang=id-ID" class="item ">Bahasa Indonesia</a>
-				
-					<a lang="da" data-url="/?lang=da" class="item ">Dansk</a>
-				
-					<a lang="de-DE" data-url="/?lang=de-DE" class="item ">Deutsch</a>
-				
-					<a lang="en-US" data-url="/?lang=en-US" class="item active selected">English</a>
-				
-					<a lang="es-ES" data-url="/?lang=es-ES" class="item ">Español</a>
-				
-					<a lang="eo" data-url="/?lang=eo" class="item ">Esperanto</a>
-				
-					<a lang="fil" data-url="/?lang=fil" class="item ">Filipino</a>
-				
-					<a lang="fr-FR" data-url="/?lang=fr-FR" class="item ">Français</a>
-				
-					<a lang="it-IT" data-url="/?lang=it-IT" class="item ">Italiano</a>
-				
-					<a lang="lv-LV" data-url="/?lang=lv-LV" class="item ">Latviešu</a>
-				
-					<a lang="hu-HU" data-url="/?lang=hu-HU" class="item ">Magyar nyelv</a>
-				
-					<a lang="nl-NL" data-url="/?lang=nl-NL" class="item ">Nederlands</a>
-				
-					<a lang="nds" data-url="/?lang=nds" class="item ">Plattdüütsch</a>
-				
-					<a lang="pl-PL" data-url="/?lang=pl-PL" class="item ">Polski</a>
-				
-					<a lang="pt-PT" data-url="/?lang=pt-PT" class="item ">Português de Portugal</a>
-				
-					<a lang="pt-BR" data-url="/?lang=pt-BR" class="item ">Português do Brasil</a>
-				
-					<a lang="sl" data-url="/?lang=sl" class="item ">Slovenščina</a>
-				
-					<a lang="fi-FI" data-url="/?lang=fi-FI" class="item ">Suomi</a>
-				
-					<a lang="sv-SE" data-url="/?lang=sv-SE" class="item ">Svenska</a>
-				
-					<a lang="tr-TR" data-url="/?lang=tr-TR" class="item ">Türkçe</a>
-				
-					<a lang="cs-CZ" data-url="/?lang=cs-CZ" class="item ">Čeština</a>
-				
-					<a lang="el-GR" data-url="/?lang=el-GR" class="item ">Ελληνικά</a>
-				
-					<a lang="bg" data-url="/?lang=bg" class="item ">Български</a>
-				
-					<a lang="ru-RU" data-url="/?lang=ru-RU" class="item ">Русский</a>
-				
-					<a lang="uk-UA" data-url="/?lang=uk-UA" class="item ">Українська</a>
-				
-					<a lang="fa-IR" data-url="/?lang=fa-IR" class="item ">فارسی</a>
-				
-					<a lang="ja-JP" data-url="/?lang=ja-JP" class="item ">日本語</a>
-				
-					<a lang="zh-CN" data-url="/?lang=zh-CN" class="item ">简体中文</a>
-				
-					<a lang="zh-TW" data-url="/?lang=zh-TW" class="item ">繁體中文（台灣）</a>
-				
-					<a lang="zh-HK" data-url="/?lang=zh-HK" class="item ">繁體中文（香港）</a>
-				
-					<a lang="ko-KR" data-url="/?lang=ko-KR" class="item ">한국어</a>
-				
-			</div>
-		</div>
-		<a href="/assets/licenses.txt">Licenses</a>
-		<a href="/api/swagger">API</a>
-		
-	</div>
-</footer>
-
-
-	<script src="/assets/js/index.js?v=15.0.1~gitea-1.22.0" onerror="alert('Failed to load asset files from {path}. Please make sure the asset files can be accessed.'.replace('{path}', this.src))"></script>
-
-	
-</body>
-</html>
-
+cycle_success_gate:
+  requirement: >
+    Production evidence demonstrates complete commercial lineage from qualified attention through
+    intent, lead, opportunity, conversation, proposal, and verified revenue, with defensible
+    conversion baselines that identify what to scale, change, or stop.
+  passed: false
