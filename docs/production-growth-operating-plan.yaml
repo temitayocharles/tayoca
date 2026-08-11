@@ -47,7 +47,7 @@ locked_cross_stage_controls:
 
 cycle:
   horizon_days: 30
-  phase: CONTENT_DISTRIBUTION_APPROVAL
+  phase: TARGETED_OUTBOUND
   objective: >
     Prove that Tayoca can repeatedly convert qualified attention into commercial intent,
     leads, opportunities, conversations, proposals, and verified revenue using the certified platform.
@@ -113,13 +113,17 @@ workstreams:
   - id: W5
     name: content_distribution
     priority: 5
-    status: WAITING_HUMAN_APPROVAL
+    status: GREEN
+    completed_at: '2026-08-11T22:00:15Z'
     baseline: docs/production-growth-cycle1-w5-content-distribution.json
-    approval_execution: '75692'
+    drafting_approval_execution: '75692'
+    distribution_approval_execution: '75860'
+    approved_campaign: tayoca_20260810_pgc1_platform_reli
     current_opportunity: pgc1:platform-reliability:editorial-cluster
-    active_revenue_command_center_version: d871bac6-fe2b-4800-a525-1788c3f2dd75
-    rollback_revenue_command_center_version: b159ae03-5ea7-48f2-af46-e5794c0d4182
-    current_gate: Approve for drafting or Reject opportunity in Slack
+    active_revenue_command_center_version: d3279370-760e-4da6-bb59-2c0e2c53f009
+    rollback_revenue_command_center_version: 7645c6f9-1135-49d4-b489-5f0ddc309048
+    final_state: approved_ready_for_distribution
+    paid_spend_released: false
     outcome: >
       Build commercial content clusters from approved evidence and repository intelligence,
       reusing strong evidence across articles, social distribution, Operator Brief, and case-study
@@ -127,7 +131,18 @@ workstreams:
   - id: W6
     name: targeted_outbound
     priority: 6
-    status: NOT_STARTED
+    status: ACTIVE_SEND_CAPABILITY_BLOCKED
+    started_at: '2026-08-11T22:02:47Z'
+    baseline: docs/production-growth-cycle1-w6-targeted-outbound.json
+    contact_verification: GREEN
+    message_preparation: GREEN
+    send_execution: BLOCKED_CAPABILITY
+    contact_ready_accounts: 3
+    first_wave_drafts: 3
+    blocker: >
+      No verified Tayoca-controlled one-to-one outbound sender is callable in the current execution
+      environment, and the connected LinkedIn API exposes public posting but not direct messaging
+      or connection notes. Do not substitute public posts, guessed email patterns, or an unverified sender.
     outcome: >
       Run narrow problem-led B2B prospecting into assessments or useful diagnostic conversations;
       avoid indiscriminate outreach and measure reply, conversation, opportunity, and proposal movement.
@@ -157,6 +172,7 @@ measurement:
   campaign_launch_baseline: docs/production-growth-cycle1-w3-campaign-launch.json
   assessment_b2b_baseline: docs/production-growth-cycle1-w4-assessment-b2b-engine.json
   content_distribution_baseline: docs/production-growth-cycle1-w5-content-distribution.json
+  targeted_outbound_baseline: docs/production-growth-cycle1-w6-targeted-outbound.json
   forecast_rule: >
     Do not invent revenue, CAC, conversion, or pipeline targets before sufficient live production
     observations exist. Use the first 7-14 days to establish defensible baselines.
