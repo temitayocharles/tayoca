@@ -1,0 +1,245 @@
+{
+  "schema_version": 2,
+  "plan_id": "tayoca-production-growth-cycle-1",
+  "workstream": "W6",
+  "name": "targeted_outbound",
+  "status": "ACTIVE_SEND_CAPABILITY_BLOCKED",
+  "recorded_at": "2026-08-11T22:10:00Z",
+  "objective": "Run a narrow, problem-led B2B prospecting motion into the approved Platform Reliability Assessment without creating a parallel CRM, guessing contact data, leaking private evidence, or sending bulk outreach.",
+  "canonical_systems": {
+    "repository": "temitayocharles/tayoca",
+    "revenue_pipeline": "Growth OS / Revenue Pipeline",
+    "assessment_intake_workflow": "V28T575q7GSRFOti",
+    "demand_and_reporting_workflow": "MRaoY2aHm85q3QWG",
+    "primary_campaign": "pgc1_platform_kubernetes_reliability",
+    "primary_cta": "https://tayoca.com/assessments.html?assessment=Platform%20Reliability%20Assessment#assessment-form"
+  },
+  "live_pipeline_baseline": {
+    "revenue_pipeline_rows": 0,
+    "proposal_rows": 0,
+    "objection_rows": 0,
+    "rule": "Cold-account research does not create opportunity_id or pipeline_stage. Opportunity identity remains authoritative only after governed assessment intake."
+  },
+  "cohort_policy": {
+    "max_accounts": 5,
+    "first_wave_max_messages": 3,
+    "bulk_outreach": false,
+    "guessed_email": false,
+    "purchased_contact_data": false,
+    "new_enrichment_vendor_added": false,
+    "private_repository_evidence_allowed_in_outreach": false,
+    "paid_media_spend": 0,
+    "message_style": "one-to-one, problem-led, evidence-bounded, assessment-first",
+    "proposal_send_requires_approval": true,
+    "pipeline_creation_before_intake": false
+  },
+  "account_selection_criteria": [
+    "Current public evidence of Kubernetes, platform engineering, SRE, cloud-platform, GitOps, or reliability investment",
+    "A plausible operating problem aligned to the Platform Reliability Assessment rather than a generic technology pitch",
+    "A current technology/platform decision-owner role can be verified or a precise role target can be identified",
+    "No use of inferred private architecture, incidents, customers, outcomes, or unsupported urgency"
+  ],
+  "first_cohort": [
+    {
+      "rank": 1,
+      "account": "SPS Commerce",
+      "fit": "strong",
+      "public_signal": "Current Platform Engineering hiring describes highly available platform services, deployment automation, reliability, secure delivery, cost effectiveness, and resolving failure risks at source.",
+      "evidence_urls": [
+        "https://spscommerce.wd108.myworkdayjobs.com/en-US/SPS/job/Platform-Engineer_R-000933",
+        "https://www.spscommerce.com/about/sps-commerce-leadership/"
+      ],
+      "decision_owner": {
+        "name": "Jamie Thingelstad",
+        "title": "Executive Vice President & Chief Technology Officer",
+        "role_authority": "SPS Commerce leadership page",
+        "contact_path": "jamie@thingelstad.com",
+        "contact_authority": "Self-published professional contact page: https://www.thingelstad.com/contact/",
+        "contact_type": "direct_professional_email"
+      },
+      "target_problem": "Platform reliability and deployment-control discipline while the Platform Engineering team is scaling highly available services.",
+      "offer": "Platform Reliability Assessment",
+      "contact_state": "verified",
+      "send_state": "blocked_only_by_authenticated_tayoca_sender_capability"
+    },
+    {
+      "rank": 2,
+      "account": "Extreme Networks",
+      "fit": "strong",
+      "public_signal": "Current Toronto Kubernetes Platform hiring describes an Edge Kubernetes Platform spanning connected and air-gapped deployments, RKE2, Rancher Gov, GitOps, upgrades, lifecycle management, security, scalability, and reliability.",
+      "evidence_urls": [
+        "https://ca.linkedin.com/jobs/view/principal-kubernetes-platform-engineer-9994-at-extreme-networks-4299034698",
+        "https://www.extremenetworks.com/about-extreme-networks/company/leadership"
+      ],
+      "verified_technology_owner": {
+        "name": "Nabil Bukhari",
+        "title": "President of AI Platforms and EVP, Chief Technology Officer",
+        "authority_source": "Extreme Networks leadership page"
+      },
+      "platform_owner_candidate": {
+        "name": "Krishnan Sunderam",
+        "title": "VP Engineering",
+        "sources": [
+          "https://www.linkedin.com/in/krishnan-sunderam-0b836713",
+          "https://theorg.com/org/extreme-networks/org-chart/krishnan-sunderam"
+        ],
+        "verification_state": "current_role_secondary_sources_contact_endpoint_not_verified"
+      },
+      "target_problem": "Production-readiness controls for distributed Kubernetes lifecycle, GitOps, upgrades, security, and air-gapped operations.",
+      "offer": "Platform Reliability Assessment",
+      "contact_state": "platform_owner_identified_contact_not_verified",
+      "send_state": "blocked_until_business_contact_path_is_verified"
+    },
+    {
+      "rank": 3,
+      "account": "Greenhouse Software",
+      "fit": "strong",
+      "public_signal": "Current Cloud Platform hiring states responsibility for AWS cloud foundations and a Kubernetes platform, with priorities across reliability, security, scalability, and cost management.",
+      "evidence_urls": [
+        "https://job-boards.greenhouse.io/greenhouse/jobs/8021661?gh_jid=8021661",
+        "https://medium.com/in-the-weeds/the-treasure-map-developer-experience-surveys-4742b8552ef1"
+      ],
+      "decision_owner_candidate": {
+        "name": "Hayden Goldstien",
+        "title": "Director, Platform Engineering",
+        "role_sources": [
+          "https://theorg.com/org/greenhouse/org-chart/hayden-goldstien",
+          "https://www.linkedin.com/in/hbgoldy"
+        ],
+        "direct_public_profile": "https://www.linkedin.com/in/hbgoldy",
+        "verification_state": "role_and_current_employer_corroborated_no_direct_email_verified"
+      },
+      "target_problem": "Cloud-platform reliability, security, cost, Kubernetes foundation controls, and developer delivery reliability for internal engineering teams.",
+      "offer": "Platform Reliability Assessment",
+      "contact_state": "linkedin_path_verified_email_not_verified",
+      "send_state": "blocked_by_linkedin_dm_capability_and_no_verified_direct_email"
+    },
+    {
+      "rank": 4,
+      "account": "MongoDB",
+      "fit": "strong",
+      "public_signal": "Current SRE hiring states that Platform Engineering operates multi-cloud Kubernetes infrastructure, networking, load balancing, service mesh, observability, alerting, Argo Workflows, and ArgoCD for broader engineering teams.",
+      "evidence_urls": [
+        "https://www.mongodb.com/careers/jobs/7727913",
+        "https://www.mongodb.com/company/newsroom/press-releases/mongodb-expands-product-leadership-to-accelerate-growth-and-innovation"
+      ],
+      "decision_owner": {
+        "name": "Jim Scharf",
+        "title": "Chief Technology Officer",
+        "role_authority": "MongoDB April 2026 leadership announcement",
+        "contact_path": "jim.scharf@mongodb.com",
+        "contact_authority": "Publicly indexed Clay verified-work-email record",
+        "contact_type": "verified_work_email"
+      },
+      "preferred_lower_level_target_role": "Platform Engineering leader within SRE",
+      "target_problem": "Multi-cloud Kubernetes deployment reliability, service ownership, observability, and delivery-control review discipline.",
+      "offer": "Platform Reliability Assessment",
+      "contact_state": "verified_executive_contact_lower_level_owner_not_verified",
+      "send_state": "blocked_only_by_authenticated_tayoca_sender_capability_if_executive_route_is_used"
+    },
+    {
+      "rank": 5,
+      "account": "Kinaxis",
+      "fit": "strong",
+      "public_signal": "Current public Kinaxis material confirms Cloud Services leadership and platform engineering responsibility, while hiring signals emphasize cloud-platform reliability, quality, release practices, automation, and architecture.",
+      "evidence_urls": [
+        "https://www.linkedin.com/posts/kinaxis_were-excited-to-kick-off-the-new-year-by-activity-7416841578931191808-nooa",
+        "https://www.kinaxis.com/en/leadership?language=en"
+      ],
+      "decision_owner": {
+        "name": "David Allard",
+        "title": "Vice President, Cloud Services",
+        "role_authority": "Kinaxis public LinkedIn post",
+        "contact_path": "https://ca.linkedin.com/in/davidgallard",
+        "contact_type": "direct_public_linkedin_profile"
+      },
+      "executive_chain": {
+        "name": "Megan Paterson",
+        "title": "Chief Operating Officer",
+        "authority_source": "Kinaxis leadership page",
+        "scope": "cloud services operations"
+      },
+      "target_problem": "Cloud-platform engineering reliability, release practices, and operating discipline as multiple platform teams scale.",
+      "offer": "Platform Reliability Assessment",
+      "contact_state": "verified_linkedin_path",
+      "send_state": "blocked_by_linkedin_dm_capability"
+    }
+  ],
+  "contactability_findings": {
+    "verified_precise_decision_owners": 3,
+    "verified_direct_contact_paths": 3,
+    "contact_ready_accounts": [
+      "SPS Commerce",
+      "MongoDB",
+      "Kinaxis"
+    ],
+    "linkedin_connection_active": true,
+    "linkedin_direct_person_search_available": false,
+    "linkedin_direct_message_or_connection_note_available": false,
+    "linkedin_available_write_surface": "public posts only",
+    "leadiq_connected": false,
+    "fullenrich_connected": false,
+    "wiza_connected": false,
+    "gmail_direct_connector_state": "blocked_by_conversation_connector_policy",
+    "safe_authenticated_outbound_sender_verified": false,
+    "rule": "Do not substitute public posting, guessed email patterns, an unverified personal sender identity, or bulk enrichment for a verified one-to-one outbound channel."
+  },
+  "first_wave_drafts": [
+    {
+      "account": "SPS Commerce",
+      "recipient": "Jamie Thingelstad",
+      "channel": "email",
+      "subject": "Platform reliability review for SPS",
+      "body": "Jamie, I noticed SPS is expanding Platform Engineering around highly available platform services, deployment automation, reliability, and resolving failure risks at source. I run Tayoca's Platform Reliability Assessment, a structured diagnostic for deployment risk, recovery readiness, delivery controls, and operational ownership. Given the scope your platform team is carrying, I thought the framework may be useful as an independent review lens. If it is relevant, I can share the assessment or walk through it with the appropriate platform leader.\n\nhttps://tayoca.com/assessments.html?assessment=Platform%20Reliability%20Assessment&utm_source=outbound&utm_medium=email&utm_campaign=pgc1_platform_kubernetes_reliability&utm_content=w6_sps_commerce#assessment-form",
+      "claims_review": "public-signal and Tayoca-offer facts only",
+      "send_state": "ready_copy_sender_blocked"
+    },
+    {
+      "account": "MongoDB",
+      "recipient": "Jim Scharf",
+      "channel": "email",
+      "subject": "Independent platform reliability review",
+      "body": "Jim, MongoDB's current SRE hiring describes Platform Engineering responsibility across multi-cloud Kubernetes, service mesh, observability, alerting, and Argo-based delivery infrastructure. I run Tayoca's Platform Reliability Assessment, a structured review of deployment risk, recovery readiness, delivery controls, and operational ownership. I am reaching out because the assessment maps closely to the operating surface described publicly by the team, not because I am assuming any internal issue. If useful, I can share the framework or route it to the platform engineering owner you consider the right fit.\n\nhttps://tayoca.com/assessments.html?assessment=Platform%20Reliability%20Assessment&utm_source=outbound&utm_medium=email&utm_campaign=pgc1_platform_kubernetes_reliability&utm_content=w6_mongodb#assessment-form",
+      "claims_review": "public-signal and Tayoca-offer facts only; explicitly avoids inferred weakness",
+      "send_state": "ready_copy_sender_blocked"
+    },
+    {
+      "account": "Kinaxis",
+      "recipient": "David Allard",
+      "channel": "linkedin_direct_message",
+      "subject": "not_applicable",
+      "body": "David, I saw Kinaxis publicly highlighting Cloud Services and platform engineering work around reliability, quality, release practices, and cloud-platform delivery. I run Tayoca's Platform Reliability Assessment, a structured diagnostic covering deployment risk, recovery readiness, delivery controls, and operational ownership. The scope looked relevant to the platform operating surface your teams are scaling. If useful, I can share the assessment framework for an independent review.\n\nhttps://tayoca.com/assessments.html?assessment=Platform%20Reliability%20Assessment&utm_source=outbound&utm_medium=linkedin&utm_campaign=pgc1_platform_kubernetes_reliability&utm_content=w6_kinaxis#assessment-form",
+      "claims_review": "public-signal and Tayoca-offer facts only",
+      "send_state": "ready_copy_linkedin_dm_tool_unavailable"
+    }
+  ],
+  "outbound_message_contract": {
+    "allowed_claim_basis": [
+      "prospect's public platform/reliability signal",
+      "Tayoca approved public offer facts",
+      "Platform Reliability Assessment scope and CTA"
+    ],
+    "forbidden": [
+      "claiming knowledge of internal incidents or weaknesses",
+      "invented ROI, savings, uptime, compliance, or customer outcomes",
+      "private repository intelligence",
+      "false urgency",
+      "mass personalization tokens presented as individual research"
+    ],
+    "first_message_goal": "Offer a useful diagnostic conversation or Platform Reliability Assessment, not a hard close.",
+    "follow_up_rule": "No repeated outreach without a defined cadence and a verified business contact path."
+  },
+  "gate": {
+    "contact_verification": "GREEN",
+    "message_preparation": "GREEN",
+    "send_execution": "BLOCKED_CAPABILITY",
+    "passed": false,
+    "blocker": "No verified Tayoca-controlled outbound sender is callable in this conversation, and the connected LinkedIn API exposes public posting but not direct messaging/connection notes.",
+    "next_required_evidence": [
+      "make a Tayoca-controlled one-to-one outbound sender callable, or expose a safe existing sender connector",
+      "send no more than three first-wave messages",
+      "record delivery/reply evidence",
+      "record commercial movement without creating pipeline opportunity IDs before governed assessment intake"
+    ]
+  }
+}
