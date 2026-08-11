@@ -1,0 +1,31 @@
+{
+  "report": "workflow",
+  "stage": 14,
+  "status": "GREEN",
+  "critical_findings": 0,
+  "high_findings": 0,
+  "registry": {"path":"automation/n8n/workflow-registry.yaml","version":5,"reconciled_commit":"6dfda6a31c37c323ea1ffb6e099274a579a619d0","status":"CURRENT"},
+  "active_production_workflows": [
+    {"id":"W4aE4hNuFgwAxL02","name":"Tayoca Messaging | Infobip Inbound and Delivery Correlation","version":"593d0b9e-9821-4361-8141-a0ee72fb445b"},
+    {"id":"V28T575q7GSRFOti","name":"Tayoca Growth OS | Assessment & Operator Brief Intake","version":"77f42f4d-dc43-4743-a667-4fe7ce44aa44"},
+    {"id":"Ug7hA8cXrrCIVYkI","name":"Tayoca Growth OS | Operator Brief","version":"dc5d9d77-8661-4208-a114-59208078640e"},
+    {"id":"ZZDXWFKiPnzeKtNr","name":"Tayoca Growth OS | Verified Review & Trust Flywheel","version":"7409faec-4e73-4fd3-a96d-1522cbea7e2a"},
+    {"id":"MRaoY2aHm85q3QWG","name":"Tayoca Growth OS | Demand Engine & Revenue Command Center","version":"b159ae03-5ea7-48f2-af46-e5794c0d4182"},
+    {"id":"iX0ehWNElYUfdCQZ","name":"Tayoca Ops | Production Failure & Dead Letter","version":"afd3f3f4-add9-4a81-bd18-189f8834251b"}
+  ],
+  "evidence": [
+    {"control":"assessment_lineage_and_revenue_handoff","status":"PASS","executions":["70444"]},
+    {"control":"revenue_command_reporting","status":"PASS","executions":["70464","70676"]},
+    {"control":"verified_product_revenue_attribution","status":"PASS","executions":["70520"]},
+    {"control":"infobip_duplicate_and_backpressure_safety","status":"PASS","executions":["72248","72249"]},
+    {"control":"failure_monitor_routing","status":"PASS","executions":["73570","73571"]},
+    {"control":"sanitized_restore","status":"PASS","execution":"72326","restored":6,"credentials":0},
+    {"control":"public_shell_regression","status":"PASS","execution":"73575","pages":34,"violations":0}
+  ],
+  "accepted_findings": [
+    {"severity":"medium","finding":"Native n8n errorWorkflow dispatch did not fire for isolated real webhook failures despite the configured handler ID.","mitigation":"The active five-minute execution monitor is the certified failure path. It polls only the governed production allowlist, reads metadata-only error indexes, deduplicates by execution ID, persists the reliability record and sends sanitized Slack alerts."},
+    {"severity":"medium","finding":"The full-instance backup orchestrator can exceed the connector/manual execution boundary.","mitigation":"Tayoca uses the existing bounded sanitized backup worker directly for the governed production set; all six governed snapshots passed the inactive restore drill."}
+  ],
+  "cleanup": {"stage13_control_relay_archived":true,"stage13_probe_workflows_archived":true,"stage13_restore_clones_archived":true,"temporary_stage13_production_workflows_remaining":0},
+  "gate": "PASS"
+}

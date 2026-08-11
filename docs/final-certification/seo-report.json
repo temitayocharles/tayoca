@@ -1,0 +1,22 @@
+{
+  "report": "seo",
+  "stage": 14,
+  "status": "GREEN",
+  "critical_findings": 0,
+  "high_findings": 0,
+  "canonical_page_count": 34,
+  "evidence": [
+    {"control":"canonical_sitemap_integrity","status":"PASS","evidence":"scripts/validate_static_site.py requires valid sitemap XML, unique URLs, canonical-origin URLs, deployable targets, and inclusion of every indexable canonical HTML page."},
+    {"control":"canonical_metadata","status":"PASS","evidence":"Every canonical sitemap page is validated for exact canonical URL, meta description, og:title and twitter:card."},
+    {"control":"internal_link_integrity","status":"PASS","evidence":"The permanent static validator resolves internal links and fragments across the canonical sitemap set; current Forgejo Actions pass."},
+    {"control":"robots_and_404","status":"PASS","evidence":"robots.txt must reference https://tayoca.com/sitemap.xml and 404.html must carry noindex; current validation passes."},
+    {"control":"search_console_ownership","status":"PASS","evidence":"Google Search Console property https://tayoca.com/ is API-verified with siteOwner permission."},
+    {"control":"search_console_sitemap_health","status":"PASS","evidence":"Current Search Console sitemap metadata reports 0 errors, 0 warnings and isPending=false."},
+    {"control":"search_performance_provenance","status":"PASS","evidence":"Verified Search Analytics snapshot is data-through 2026-08-08 with 12 impressions, 0 clicks and average position 24.1667; reports disclose the data-through date."}
+  ],
+  "processing_items": [
+    {"severity":"low","finding":"Search Console sitemap metadata still reports 33 submitted URLs while the canonical repository sitemap now contains 34 validated canonical pages.","cause":"Search Console last downloaded the sitemap at 2026-08-10T10:30:27.101Z, before the newest canonical sitemap state.","action":"The unchanged canonical sitemap was resubmitted successfully on 2026-08-11. The 33 submitted counter remains reported as processing lag until Google re-downloads/reprocesses it.","blocking":false},
+    {"severity":"low","finding":"Search Console sitemap metadata currently reports indexed=0.","disposition":"Not treated as proof of non-indexing because Search Analytics already reports impressions for Tayoca URLs; sitemap indexed counters can lag."}
+  ],
+  "gate": "PASS"
+}

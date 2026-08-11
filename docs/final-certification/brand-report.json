@@ -1,0 +1,20 @@
+{
+  "report": "brand",
+  "stage": 14,
+  "status": "GREEN",
+  "critical_findings": 0,
+  "high_findings": 0,
+  "evidence": [
+    {"control":"canonical_public_shell","status":"PASS","evidence":"Public Shell Auditor execution 73575 audited 34 canonical pages with 0 violations."},
+    {"control":"locked_navigation_and_cta","status":"PASS","evidence":"scripts/validate_static_site.py requires exact Services, Assessments, Results, Products, Insights, About navigation and the Start an Assessment header CTA on every canonical sitemap page."},
+    {"control":"canonical_palette","status":"PASS","evidence":"public/assets/css/growth-os.css defines neutral black/gray surfaces (#0d0d0d, #171717, #1a1a1a) with orange accent #f97316 / #ea580c and white/neutral text; no navy canonical palette token is defined."},
+    {"control":"typography_and_interaction_system","status":"PASS","evidence":"Canonical shell uses Sora for display/brand, Inter for body UI, JetBrains Mono for technical labels; shared buttons, cards, forms, focus states and responsive breakpoints are centralized in growth-os.css."},
+    {"control":"unsupported_claim_exclusion","status":"PASS","evidence":"The permanent static validator scans all public HTML, not only sitemap pages, for Stage 4 blocked unsupported claims and current Forgejo Actions are green."},
+    {"control":"operator_brief_identity","status":"PASS","evidence":"Stage 9 policy and baseline preserve the exact Tayoca Operator Brief identity and fixed eight-section editorial contract."},
+    {"control":"product_architecture","status":"PASS","evidence":"Stage 10 certified one product ecosystem with four families, 16 products and eight commercial controls rather than unrelated microsites."}
+  ],
+  "accepted_findings": [
+    {"severity":"low","finding":"Legacy/non-canonical HTML files may not use the full current shell.","disposition":"They are not canonical sitemap surfaces. The permanent blocked-claim scan still covers every public HTML file, and canonical brand certification is defined by the 34 validated sitemap pages."}
+  ],
+  "gate": "PASS"
+}

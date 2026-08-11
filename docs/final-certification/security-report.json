@@ -1,0 +1,22 @@
+{
+  "report":"security",
+  "stage":14,
+  "status":"GREEN",
+  "critical_findings":0,
+  "high_findings":0,
+  "evidence":[
+    {"control":"tracked_secret_exclusion","status":"PASS","evidence":"scripts/validate_static_site.py rejects tracked .env files other than .env.example; current Forgejo Actions pass"},
+    {"control":"public_claim_firewall","status":"PASS","evidence":"static validator scans every public HTML surface for Stage 4 blocked/unsupported claims"},
+    {"control":"private_source_publication_firewall","status":"PASS","evidence":"Stage 7 repository-intelligence policy + Stage 8 approval/publication controls remain binding"},
+    {"control":"analytics_privacy","status":"PASS","evidence":"Stage 12 browser certification: 8/8 critical events, zero PII property keys, zero synthetic purchases/revenue/reviews"},
+    {"control":"failure_telemetry_privacy","status":"PASS","evidence":"Stage 13 execution 72235; raw payload, stack, email, token and phone data excluded"},
+    {"control":"backup_secret_separation","status":"PASS","evidence":"Stage 13 restore drill 72326: six sanitized restores, zero credential bindings"},
+    {"control":"production_tls","status":"PASS","evidence":"tayoca.com and www.tayoca.com verified on Vercel; independent HTTPS reads succeeded"}
+  ],
+  "accepted_findings":[
+    {"severity":"medium","finding":"Native n8n errorWorkflow dispatch did not fire in isolated real-webhook probes.","mitigation":"Certified five-minute metadata-only execution monitor iX0ehWNElYUfdCQZ detects failed production executions, deduplicates by execution ID, writes the reliability ledger and sends sanitized alerts; tests 73570 and 73571 pass."},
+    {"severity":"medium","finding":"Operator Brief email sending remains fail-closed until tayoca.com is verified as a Resend sender domain.","mitigation":"No wrong-brand sender fallback; public archive/human approval path remains available. This is an external delivery-readiness limitation, not an authorization bypass."},
+    {"severity":"low","finding":"Browserless and Cloudflare Browser Rendering credentials were unreliable during certification.","mitigation":"They are testing tools, not production runtime dependencies; Firecrawl, source verification, n8n tests and local Chromium contract execution supplied independent evidence."}
+  ],
+  "gate":"PASS"
+}

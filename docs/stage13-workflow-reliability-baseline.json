@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "stage": 13,
+  "stage_name": "Workflow reliability and recovery",
+  "status": "GREEN",
+  "certified_at": "2026-08-11T00:13:30Z",
+  "acceptance_gate": "all production workflows have tested failure and recovery paths",
+  "production_workflows": [
+    {"id":"W4aE4hNuFgwAxL02","version":"593d0b9e-9821-4361-8141-a0ee72fb445b"},
+    {"id":"V28T575q7GSRFOti","version":"77f42f4d-dc43-4743-a667-4fe7ce44aa44"},
+    {"id":"Ug7hA8cXrrCIVYkI","version":"dc5d9d77-8661-4208-a114-59208078640e"},
+    {"id":"ZZDXWFKiPnzeKtNr","version":"7409faec-4e73-4fd3-a96d-1522cbea7e2a"},
+    {"id":"MRaoY2aHm85q3QWG","version":"b159ae03-5ea7-48f2-af46-e5794c0d4182"}
+  ],
+  "failure_monitor": {
+    "workflow_id": "iX0ehWNElYUfdCQZ",
+    "version": "afd3f3f4-add9-4a81-bd18-189f8834251b",
+    "active": true,
+    "cadence": "every_5_minutes",
+    "scope_count": 5,
+    "freshness_window_minutes": 15,
+    "query_limit_per_workflow": 25,
+    "external_effects": ["idempotent_reliability_ledger_upsert", "sanitized_slack_alert"],
+    "privacy": "execution index metadata only",
+    "pinned_failure_routing_test": {"execution":"73570","status":"PASS"},
+    "live_execution_index_test": {"execution":"73571","status":"PASS","new_failures":0,"false_alerts":0},
+    "sanitizer_test": {"execution":"72235","status":"PASS","pii_or_secret_leak":false},
+    "backup_refresh": {"execution":"73573","status":"BACKED_UP","content_hash":"fc766705310aeb56"}
+  },
+  "native_error_workflow_finding": {
+    "severity": "medium",
+    "status": "mitigated",
+    "configured": true,
+    "certified_as_primary_control": false,
+    "real_webhook_probe_executions": ["73098", "73273"],
+    "handler_dispatches_observed": 0,
+    "mitigation": "The scheduled execution monitor is the certified failure path; native errorWorkflow remains best-effort only."
+  },
+  "infobip": {
+    "durability": "persist_before_ack",
+    "max_batch": 100,
+    "duplicate_test": {"execution":"72248","status":"PASS","duplicate_count":1,"private_payload_persisted":false},
+    "overflow_test": {"execution":"72249","status":"PASS_FAIL_CLOSED","acknowledged":false}
+  },
+  "backups": {
+    "repository": "temitayocharles/n8n-control-plane",
+    "worker": "fFOe97sMowmItUDi",
+    "sanitized": true,
+    "credential_material_in_snapshot": false,
+    "refresh_evidence": ["72257", "72275", "73573"],
+    "workflow_snapshots": {
+      "W4aE4hNuFgwAxL02": "5f329c4985c80cf849504298bda3dd59a9b1e8ef",
+      "V28T575q7GSRFOti": "c6e0e533ffe2053dd33dadd771aad307fadf583d",
+      "Ug7hA8cXrrCIVYkI": "90b99217cf6c0d731da7459075d0cc0ea0b89a5f",
+      "ZZDXWFKiPnzeKtNr": "32c2c19e82fff8db907f91e5cab82d9c355666b9",
+      "MRaoY2aHm85q3QWG": "90ab27885186207cbaacb35ffa5fc25af37a9314"
+    }
+  },
+  "restore_drill": {
+    "execution": "72326",
+    "status": "PASS",
+    "snapshots": 6,
+    "restored": 6,
+    "active_restores": 0,
+    "credential_bindings": 0,
+    "node_count_mismatches": 0,
+    "connection_root_mismatches": 0,
+    "disposable_restores_archived": true
+  },
+  "production_routing": {
+    "vercel_deployment": "dpl_5Hr57kTgKLisNiXBejjZU6TxTYJB",
+    "state": "READY",
+    "ready_substate": "PROMOTED",
+    "deployment_checks": 0,
+    "tayoca_com_verified": true,
+    "www_tayoca_com_verified": true,
+    "www_redirect": "308_to_apex",
+    "https_apex": 200,
+    "https_www_final": 200
+  },
+  "regression": {
+    "public_shell_execution": "73575",
+    "audited_pages": 34,
+    "violations": 0
+  },
+  "cleanup": {
+    "temporary_control_relay": {"id":"9Ei2YDcgJVNTIhXk","archived":true},
+    "disposable_error_probe": {"id":"1xJ3IlbkMED9HOUJ","archived":true},
+    "disposable_error_handler": {"id":"LSsC4wjBaTf65VXj","archived":true}
+  },
+  "accepted_medium_findings": [
+    "Native n8n errorWorkflow dispatch did not execute during isolated real-webhook probes; mitigated by the tested five-minute execution monitor.",
+    "Full-instance backup orchestration can exceed connector/manual execution boundaries; mitigated by the existing bounded sanitized backup worker and six-of-six restore drill."
+  ],
+  "critical_findings": 0,
+  "high_findings": 0,
+  "gate_passed": true
+}

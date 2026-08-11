@@ -1,0 +1,20 @@
+{
+  "report": "accessibility",
+  "stage": 14,
+  "status": "GREEN",
+  "scope": "structural accessibility baseline; not a claim of full WCAG conformance or assistive-technology certification",
+  "critical_findings": 0,
+  "high_findings": 0,
+  "evidence": [
+    {"control":"skip_navigation","status":"PASS","evidence":"scripts/validate_static_site.py requires a skip-link on every canonical page and verifies that its fragment target exists."},
+    {"control":"main_landmark","status":"PASS","evidence":"The permanent validator requires a main landmark on every canonical sitemap page."},
+    {"control":"keyboard_visible_focus","status":"PASS","evidence":"growth-os.css exposes the skip link on focus, defines form focus outlines, focus-visible treatment for interactive cards, and keyboard-operable button/navigation primitives."},
+    {"control":"responsive_navigation","status":"PASS","evidence":"Every canonical page is required to include the shared menu-toggle and canonical navigation; shared CSS supplies mobile breakpoints at 980px and 680px."},
+    {"control":"reduced_motion","status":"PASS","evidence":"growth-os.css implements prefers-reduced-motion: reduce and disables smooth scrolling/transitions under that preference."},
+    {"control":"canonical_shell_structural_audit","status":"PASS","evidence":"Public Shell Auditor execution 73575: 34 audited canonical pages, 0 nonconforming pages, 0 violations."}
+  ],
+  "scope_limitations": [
+    {"severity":"medium","limitation":"A full axe-core/Pa11y browser scan and manual screen-reader/assistive-technology walkthrough were not completed in Stage 14.","reason":"The connected remote browser providers had authentication failures and the managed local Chromium environment blocks navigable URLs by policy.","disposition":"Not represented as full WCAG certification. Structural accessibility controls are independently enforced in source across all 34 canonical pages. A future assistive-technology audit remains recommended as continuous improvement, but there is no observed critical/high accessibility defect in the certified structural surface."}
+  ],
+  "gate": "PASS_STRUCTURAL_BASELINE"
+}

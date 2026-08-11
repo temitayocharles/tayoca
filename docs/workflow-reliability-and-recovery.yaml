@@ -1,0 +1,140 @@
+schema_version: 1
+stage: 13
+stage_name: workflow_reliability_and_recovery
+status: GREEN
+purpose: "Ensure Tayoca production workflows fail visibly, avoid silent duplicate/loss behavior, retain sanitized recovery evidence, and can be restored from versioned backups."
+
+production_workflows:
+  - id: W4aE4hNuFgwAxL02
+    name: "Tayoca Messaging | Infobip Inbound and Delivery Correlation"
+    active_version: 593d0b9e-9821-4361-8141-a0ee72fb445b
+  - id: V28T575q7GSRFOti
+    name: "Tayoca Growth OS | Assessment & Operator Brief Intake"
+    active_version: 77f42f4d-dc43-4743-a667-4fe7ce44aa44
+  - id: Ug7hA8cXrrCIVYkI
+    name: "Tayoca Growth OS | Operator Brief"
+    active_version: dc5d9d77-8661-4208-a114-59208078640e
+  - id: ZZDXWFKiPnzeKtNr
+    name: "Tayoca Growth OS | Verified Review & Trust Flywheel"
+    active_version: 7409faec-4e73-4fd3-a96d-1522cbea7e2a
+  - id: MRaoY2aHm85q3QWG
+    name: "Tayoca Growth OS | Demand Engine & Revenue Command Center"
+    active_version: b159ae03-5ea7-48f2-af46-e5794c0d4182
+
+failure_detection:
+  certified_path:
+    workflow_id: iX0ehWNElYUfdCQZ
+    workflow_name: "Tayoca Ops | Production Failure & Dead Letter"
+    active_version: afd3f3f4-add9-4a81-bd18-189f8834251b
+    schedule: "*/5 * * * *"
+    scan_scope: "Only the five production workflow IDs above"
+    execution_query_limit_per_workflow: 25
+    freshness_window_minutes: 15
+    dedupe_key: "execution:<execution_id>"
+    ledger: "Tayoca Growth OS Ledger / Workflow Reliability"
+    alert: "Sanitized Slack production alert"
+    privacy: "Execution index metadata only; no full execution payload, stack, credentials, message bodies or PII are fetched."
+    test_execution: '73570'
+    live_read_execution: '73571'
+  native_error_workflow:
+    configured_on_all_production_workflows: true
+    workflow_id: iX0ehWNElYUfdCQZ
+    certification_state: best_effort_only
+    finding: "On this n8n instance, real disposable webhook failures were recorded but did not dispatch the configured Error Trigger workflow in either published or unpublished handler state. Stage 13 therefore does not rely on native errorWorkflow dispatch."
+    probe_error_executions: ['73098', '73273']
+    isolated_handler_execution_count: 0
+
+reliability_ledgers:
+  spreadsheet_id: 1JkW4DUTkjBTQNXlWMQdaVHlw-nFU1to8-cf9HMKXcQU
+  workflow_reliability:
+    sheet: "Workflow Reliability"
+    sheet_id: 835262631
+    idempotency_column: record_id
+  infobip_events:
+    sheet: "Infobip Event Ledger"
+    sheet_id: 1633938536
+    idempotency_column: event_id
+    data_classification: metadata_only
+
+infobip_controls:
+  durability_order: [normalize, idempotent_upsert, summarize, acknowledge]
+  maximum_callback_batch: 100
+  overflow_behavior: fail_closed
+  duplicate_behavior: collapse_by_event_id
+  raw_message_persistence: prohibited
+  phone_number_persistence: prohibited
+  duplicate_test_execution: '72248'
+  overflow_test_execution: '72249'
+
+shared_failure_handler_privacy_test:
+  execution: '72235'
+  passed: true
+  prohibited_fields_absent: [email, token, phone, raw_payload, stack]
+
+backup:
+  repository: temitayocharles/n8n-control-plane
+  intake_workflow: fFOe97sMowmItUDi
+  format: sanitized_workflow_json
+  credential_material_in_snapshot: false
+  current_snapshot_evidence:
+    W4aE4hNuFgwAxL02: 5f329c4985c80cf849504298bda3dd59a9b1e8ef
+    V28T575q7GSRFOti: c6e0e533ffe2053dd33dadd771aad307fadf583d
+    Ug7hA8cXrrCIVYkI: 90b99217cf6c0d731da7459075d0cc0ea0b89a5f
+    ZZDXWFKiPnzeKtNr: 32c2c19e82fff8db907f91e5cab82d9c355666b9
+    MRaoY2aHm85q3QWG: 90ab27885186207cbaacb35ffa5fc25af37a9314
+  failure_monitor:
+    workflow_id: iX0ehWNElYUfdCQZ
+    version: afd3f3f4-add9-4a81-bd18-189f8834251b
+    refresh_execution: '73573'
+    content_hash: fc766705310aeb56
+    path: workflows/tayoca-ops-production-failure-dead-letter--iX0ehWNElYUfdCQZ.json
+  shared_platform_limitation: "The full-instance backup orchestrator has historical ~5-minute cancellations and one connector-boundary 502. Tayoca certification uses the existing bounded backup worker directly for the governed production set."
+
+restore_drill:
+  execution: '72326'
+  snapshots_tested: 6
+  restored: 6
+  activation_during_drill: false
+  credentials_in_restores: 0
+  node_counts_match: true
+  connection_roots_match: true
+  recovery_rule: "Rebind approved credentials deliberately after restore validation and before activation. Sanitized backups never restore secret bindings automatically."
+
+production_routing:
+  vercel_deployment: dpl_5Hr57kTgKLisNiXBejjZU6TxTYJB
+  state: READY
+  ready_substate: PROMOTED
+  tayoca_com_verified: true
+  www_tayoca_com_verified: true
+  www_redirect: "308 -> tayoca.com"
+  deployment_checks: 0
+  https_readback:
+    tayoca_com: 200
+    www_tayoca_com: 200
+    www_final_url: https://tayoca.com/
+
+regression:
+  public_shell_audit:
+    execution: '73575'
+    audited_pages: 34
+    violations: 0
+
+accepted_non_blocking_findings:
+  - severity: medium
+    finding: "Native n8n errorWorkflow dispatch did not execute during isolated real-webhook probes."
+    mitigation: "Active five-minute metadata-only execution monitor is the certified failure path and passed both pinned failure routing and live index reads."
+  - severity: medium
+    finding: "Full-instance backup orchestration can exceed the connector/manual execution boundary."
+    mitigation: "Existing bounded sanitized backup worker is used directly for Tayoca production workflows; six-of-six restore drill passed."
+
+fail_closed_controls:
+  - "No workflow failure is considered recovered merely because an HTTP trigger acknowledged receipt."
+  - "Infobip callback batches above 100 fail before acknowledgement instead of being truncated."
+  - "Failure monitoring does not fetch raw execution data."
+  - "Backups exclude credentials and require deliberate rebind before activation."
+  - "Stage 7 private-source, Stage 8 publication, Stage 11 revenue, and Stage 12 measurement authority remain binding."
+
+gate:
+  requirement: "all production workflows have tested failure and recovery paths"
+  passed: true
+  baseline: docs/stage13-workflow-reliability-baseline.json

@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "stage": 14,
+  "stage_name": "Final certification",
+  "program": "Tayoca Growth OS — Locked Master Execution Plan",
+  "canonical_stage_count": 15,
+  "canonical_stage_numbering": "0-14",
+  "status": "GREEN",
+  "certified_at": "2026-08-11T00:23:00Z",
+  "acceptance_gate": "no unresolved critical/high findings; all green statuses have attached evidence",
+  "gate_passed": true,
+  "critical_findings": 0,
+  "high_findings": 0,
+  "reports": ["docs/final-certification/security-report.json","docs/final-certification/brand-report.json","docs/final-certification/seo-report.json","docs/final-certification/accessibility-report.json","docs/final-certification/workflow-report.json","docs/final-certification/analytics-report.json","docs/final-certification/rollback-report.json","docs/final-certification/evidence-ledger.json"],
+  "canonical_authority": {"host":"forgejo.tca-infraforge.site","repository":"temitayocharles/tayoca","github_role":"secondary deployment mirror"},
+  "final_readbacks": {
+    "public_shell": {"workflow_id":"AndnV6W2YCiTcxSz","execution":"73587","status":"PASSED","audited_pages":34,"nonconforming_pages":0,"violations":0},
+    "production": {"vercel_project":"tayoca-com-static","deployment":"dpl_5Hr57kTgKLisNiXBejjZU6TxTYJB","github_source_commit":"8c595fa1906a3c2c9f4b9e2d080c9779daac3278","state":"READY","ready_substate":"PROMOTED","deployment_checks":0,"aliases":["tayoca.com","www.tayoca.com","tayoca-com-static-charlies-projects-0dc15824.vercel.app","tayoca-com-static-git-main-charlies-projects-0dc15824.vercel.app"],"tayoca_com_verified":true,"www_tayoca_com_verified":true,"www_redirect":"308 -> tayoca.com"},
+    "workflow_registry": {"path":"automation/n8n/workflow-registry.yaml","version":5,"reconciled_commit":"6dfda6a31c37c323ea1ffb6e099274a579a619d0"},
+    "workflow_recovery": {"failure_monitor":"iX0ehWNElYUfdCQZ","active_version":"afd3f3f4-add9-4a81-bd18-189f8834251b","monitor_tests":["73570","73571"],"restore_drill":"72326","restored_snapshots":6,"credential_bindings_in_restores":0}
+  },
+  "accepted_medium_findings": [
+    {"finding":"Native n8n errorWorkflow dispatch did not fire during isolated real-webhook probes.","mitigation":"The tested active five-minute execution monitor is the certified failure path; native errorWorkflow remains best-effort only.","blocking":false},
+    {"finding":"Operator Brief production email remains unavailable until tayoca.com is verified as a Resend sender domain.","mitigation":"Email delivery is fail-closed with no wrong-brand sender fallback; archive/publication controls remain intact.","blocking":false},
+    {"finding":"A complete automated browser accessibility scan and manual screen-reader/assistive-technology walkthrough were not completed.","mitigation":"The report scope is explicitly structural rather than full WCAG certification; permanent source controls enforce skip links/targets, main landmarks, focus behavior, responsive navigation and reduced-motion support across all 34 canonical pages.","blocking":false},
+    {"finding":"Full-instance n8n backup orchestration can exceed connector/manual execution boundaries.","mitigation":"Tayoca uses the existing bounded sanitized backup worker directly for governed production workflows; six-of-six sanitized snapshots were successfully restored inactive with zero credentials.","blocking":false}
+  ],
+  "external_processing_items": [{"finding":"Search Console still reports the prior 33-URL sitemap metadata while canonical source contains 34 pages.","action":"The canonical sitemap was resubmitted successfully after the freshness check; the discrepancy is retained as Google processing lag until re-download/reprocessing.","errors":0,"warnings":0,"blocking":false}],
+  "locked_cross_stage_controls": {"claim_integrity":"binding","private_source_firewall":"binding","human_publication_approval":"binding","verified_revenue_authority":"binding","analytics_provenance":"binding","workflow_recovery":"binding","forgejo_source_of_truth":"binding"},
+  "roadmap_completion": {"all_15_canonical_stages_complete":true,"stages_0_through_14":"GREEN","next_locked_stage":null}
+}

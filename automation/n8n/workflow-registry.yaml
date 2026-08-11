@@ -1,5 +1,5 @@
-version: 2
-last_reconciled_at: '2026-08-08T04:55:00Z'
+version: 5
+last_reconciled_at: '2026-08-11T00:15:00Z'
 authority:
   repository: temitayocharles/tayoca
   git_host: forgejo.tca-infraforge.site
@@ -9,20 +9,31 @@ workflows:
     n8n_id: V28T575q7GSRFOti
     product: growth
     status: active
-    active_version: 5da47b68-ceff-45bc-b00e-ccc561d66c83
-    validated_at: '2026-08-08T04:37:49Z'
+    active_version: 77f42f4d-dc43-4743-a667-4fe7ce44aa44
+    rollback_version: 843c4d34-356e-4fe1-b538-71bfb1a83d93
+    validated_at: '2026-08-11T00:15:00Z'
     controls:
       - origin_allowlist
       - bot_honeypot_validation
       - deterministic_deduplication
       - durable_data_table_upsert
       - bounded_public_responses
+      - explicit_operator_brief_consent
+      - subscribed_unsubscribed_state
+      - idempotent_non_enumerating_unsubscribe
+      - assessment_branch_regression_preserved
+      - assessment_campaign_attribution_capture
+      - deterministic_assessment_opportunity_id
+      - atomic_revenue_pipeline_persistence_before_acceptance
+      - operator_brief_excluded_from_revenue_pipeline
+      - production_failure_monitoring
   - key: verified-review-trust-flywheel
     n8n_id: ZZDXWFKiPnzeKtNr
     product: growth
     status: active
-    active_version: c775b67e-208a-4ee3-919c-1a53d54a685e
-    validated_at: '2026-08-08T04:10:19Z'
+    active_version: 7409faec-4e73-4fd3-a96d-1522cbea7e2a
+    rollback_version: c775b67e-208a-4ee3-919c-1a53d54a685e
+    validated_at: '2026-08-11T00:15:00Z'
     controls:
       - authenticated_gumroad_sale_verification
       - tayoca_product_allowlist
@@ -30,21 +41,99 @@ workflows:
       - replay_safe_identifiers
       - publication_consent
       - human_publication_approval
+      - verified_product_revenue_attribution
+      - no_assessment_opportunity_inference_from_buyer_identity
+      - unattributed_state_when_campaign_lineage_absent
+      - production_failure_monitoring
   - key: demand-engine-revenue-command-center
     n8n_id: MRaoY2aHm85q3QWG
     product: growth
     status: active
-    active_version: 745c5ebb-ce39-4421-b7b7-294007fe9b88
-    validated_at: '2026-08-08T04:11:18Z'
+    active_version: b159ae03-5ea7-48f2-af46-e5794c0d4182
+    rollback_version: 8b63948a-5daf-4c8c-993e-d620b657b39b
+    validated_at: '2026-08-11T00:15:00Z'
+    triggers:
+      - weekly_campaign_launch
+      - daily_editorial_correction_review
+      - weekly_executive_report
     controls:
-      - approval_gated_campaigns
+      - canonical_editorial_opportunity_ledger
+      - evidence_bound_generation
+      - editorial_approval_before_llm_drafting
+      - separate_distribution_approval
+      - restricted_source_publication_firewall
+      - format_routing
+      - channel_traceability
+      - correction_revision_and_supersession
       - zero_default_ad_spend
       - first_party_measurement
       - weekly_executive_report
+      - revenue_pipeline_reporting
+      - proposal_value_and_status_reporting
+      - objection_backlog_reporting
+      - verified_revenue_attribution_reporting
+      - verified_search_console_snapshot_reporting
+      - search_console_data_through_provenance
+      - production_failure_monitoring
+  - key: operator-brief
+    n8n_id: Ug7hA8cXrrCIVYkI
+    product: newsletter
+    status: active
+    active_version: dc5d9d77-8661-4208-a114-59208078640e
+    immediate_stage9_rollback_version: f5b4b461-2983-4cba-9709-a8da819cfbb9
+    legacy_pre_stage9_digest_version: 70f8d0cd-983d-40c0-a81f-cb7ab2447f9c
+    validated_at: '2026-08-11T00:15:00Z'
+    triggers:
+      - weekly_operator_brief_draft
+      - manual_operator_brief_generation
+      - daily_operator_brief_correction_review
+    controls:
+      - exact_operator_brief_identity
+      - fixed_eight_section_template
+      - eight_distinct_approved_stage8_opportunities
+      - public_verified_evidence_only
+      - repository_intelligence_excluded_from_public_issue_input
+      - raw_commit_and_private_source_detector
+      - whole_issue_human_publication_approval
+      - atomic_forgejo_archive_publication
+      - no_publication_on_rejection
+      - preserved_correction_revisions
+      - original_archive_issue_not_silently_rewritten
+      - sender_domain_readiness_gate
+      - no_wrong_brand_sender_fallback
+      - no_production_email_send_until_tayoca_domain_verified
+      - production_failure_monitoring
   - key: infobip-inbound-delivery-correlation
     n8n_id: W4aE4hNuFgwAxL02
     product: messaging
     status: active
+    active_version: 593d0b9e-9821-4361-8141-a0ee72fb445b
+    validated_at: '2026-08-11T00:15:00Z'
+    controls:
+      - metadata_only_event_ledger
+      - deterministic_event_id
+      - duplicate_collapse
+      - persist_before_acknowledgement
+      - batch_limit_100_fail_closed
+      - production_failure_monitoring
+  - key: production-failure-dead-letter
+    n8n_id: iX0ehWNElYUfdCQZ
+    product: operations
+    status: active
+    active_version: afd3f3f4-add9-4a81-bd18-189f8834251b
+    validated_at: '2026-08-11T00:15:00Z'
+    triggers:
+      - every_five_minutes_execution_monitor
+      - native_error_trigger_best_effort
+    controls:
+      - governed_production_workflow_allowlist
+      - recent_error_window
+      - execution_id_idempotency
+      - metadata_only_failure_read
+      - reliability_ledger_upsert
+      - sanitized_slack_alert
+      - no_raw_execution_payload_fetch
+      - sanitized_forgejo_backup
   - key: whatsapp-outbound-adapter
     n8n_id: aqBzNXr3ZWwRloSf
     product: messaging
