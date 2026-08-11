@@ -1,0 +1,216 @@
+schema_version: 2
+stage: 11
+stage_name: growth_os_and_revenue_operations
+status: GREEN
+post_certification_revision: "Production Growth Cycle 1 W4 assessment B2B engine"
+purpose: "Make campaign-to-assessment-to-proposal-to-revenue lineage explicit, evidence-backed, and fail-closed."
+
+canonical_systems:
+  repository:
+    host: forgejo.tca-infraforge.site
+    repo: temitayocharles/tayoca
+    authority: primary
+  growth_ledger:
+    spreadsheet_id: 1JkW4DUTkjBTQNXlWMQdaVHlw-nFU1to8-cf9HMKXcQU
+    tabs:
+      campaigns: Campaigns
+      pipeline: Revenue Pipeline
+      proposals: Proposals
+      objections: Objection Ledger
+      attribution: Revenue Attribution
+      verified_sales: Sales
+  assessment_intake:
+    workflow_id: V28T575q7GSRFOti
+  assessment_scheduling:
+    provider: Cal.com
+    account_username: tayoca
+    finops_event_type_id: 6432033
+    finops_slug: finops-audit
+    platform_event_type_id: 6432034
+    platform_slug: platform-engineering-consultation
+    reconciliation_runbook: docs/assessment-b2b-follow-up-runbook.md
+  demand_and_reporting:
+    workflow_id: MRaoY2aHm85q3QWG
+  verified_product_sales:
+    workflow_id: ZZDXWFKiPnzeKtNr
+
+identity_contract:
+  lead_id:
+    source: assessment_intake
+    immutable: true
+  opportunity_id:
+    source: assessment_intake
+    format: "opp_<deterministic lead hash>"
+    required_for: [assessment_pipeline, proposals, service_revenue_attribution, objections]
+  campaign_id:
+    source: utm_campaign
+    note: "Demand Engine emits campaign_id as utm_campaign; assessment intake preserves it verbatim."
+  proposal_id:
+    format: "prop_<opportunity suffix>_v<integer>"
+    immutable_per_version: true
+  scope_id:
+    format: "scope_<opportunity suffix>_v<integer>"
+    immutable_per_version: true
+  revenue_ref:
+    rule: "Must reference a verified external receipt, invoice, payment, sale, or accounting record. Never synthesize revenue."
+
+pipeline:
+  stages:
+    - assessment_submitted
+    - assessment_qualified
+    - assessment_scheduled
+    - assessment_in_progress
+    - assessment_delivered
+    - proposal_draft
+    - proposal_sent
+    - commercial_review
+    - verbal_commit
+    - won
+    - lost
+  atomic_intake_exception: "When the qualification predicate is evaluated in the same intake transaction, a new opportunity may initialize at assessment_qualified. created_at remains the evidence of assessment submission."
+  allowed_transitions:
+    assessment_submitted: [assessment_qualified, lost]
+    assessment_qualified: [assessment_scheduled, lost]
+    assessment_scheduled: [assessment_in_progress, lost]
+    assessment_in_progress: [assessment_delivered, lost]
+    assessment_delivered: [proposal_draft, lost]
+    proposal_draft: [proposal_sent, lost]
+    proposal_sent: [commercial_review, lost]
+    commercial_review: [verbal_commit, lost]
+    verbal_commit: [won, lost]
+    won: []
+    lost: []
+  terminal_stages: [won, lost]
+  booking_evidence:
+    scheduled_authority: "A verified Cal.com booking or equivalent operator-verified scheduling record."
+    browser_click_rule: "assessment_schedule_click is intent only and cannot advance pipeline stage."
+    current_reconciliation_mode: operator_controlled
+    automation_status: pending_safe_credential_preserving_extension
+    event_type_routing:
+      Cloud & AI Cost Assessment: finops-audit
+      Platform Reliability Assessment: platform-engineering-consultation
+      Technology Value Assessment: platform-engineering-consultation
+    ambiguous_match_rule: "If more than one open opportunity matches a booking attendee, do not guess; resolve using assessment, campaign, submitted timestamp, and buyer context."
+  controls:
+    - "Every assessment opportunity has one immutable opportunity_id."
+    - "Stage changes update stage_entered_at and updated_at."
+    - "A won service opportunity must have proposal_id, revenue_ref, amount, currency, and Revenue Attribution row."
+    - "A lost opportunity must have loss_reason."
+    - "No pipeline stage may imply revenue before verified revenue evidence exists."
+    - "assessment_scheduled requires verified scheduling evidence; CTA clicks and inferred intent are insufficient."
+    - "assessment_in_progress requires evidence that the assessment conversation or agreed evidence review actually began."
+    - "assessment_delivered requires an agreed assessment output or materially sufficient diagnostic result."
+
+campaign_integration:
+  captured_fields:
+    - campaign_id
+    - utm_source
+    - utm_medium
+    - utm_campaign
+    - utm_content
+    - utm_term
+    - referrer
+    - source_page
+  browser_source: public/growth-os.js
+  intake_rule: "Sanitize and persist attribution with the lead context and Revenue Pipeline row."
+  first_touch_rule: "utm_source, else referrer, else canonical Tayoca source."
+  last_touch_rule: "At assessment creation it equals the captured first touch; later verified commercial events may update it without deleting first touch."
+
+proposal_control:
+  canonical_template: docs/proposal-template.md
+  canonical_scope_template: docs/scope-template.md
+  assessment_follow_up_runbook: docs/assessment-b2b-follow-up-runbook.md
+  required_fields:
+    - proposal_id
+    - opportunity_id
+    - assessment
+    - problem_summary
+    - desired_outcome
+    - proposal_template
+    - scope_template
+    - scope_version
+    - deliverables
+    - assumptions
+    - exclusions
+    - timeline
+    - pricing_method
+    - price_amount
+    - currency
+    - payment_terms
+    - evidence_refs
+    - proposal_status
+    - approval_state
+  eligibility_rule: "Do not enter proposal_draft merely because an assessment was submitted, qualified, or booked; materially sufficient assessment evidence must exist first."
+  approval_rule: "Drafting does not equal approval. A proposal cannot be sent until approval_state is approved_for_send."
+  evidence_rule: "Commercial claims must remain inside Tayoca's evidence and claims controls; no customer or outcome claim may be invented to strengthen a proposal."
+
+objection_control:
+  ledger: Objection Ledger
+  categories:
+    - budget
+    - timing
+    - authority
+    - need
+    - trust
+    - scope
+    - security
+    - procurement
+    - competition
+    - implementation_risk
+    - other
+  statuses: [open, answered, resolved, unresolved_lost]
+  rule: "Every objection belongs to an opportunity_id; proposal-specific objections also carry proposal_id."
+  learning_rule: "Recurring objections may inform approved sales-enablement assets, but do not change public claims without evidence review."
+
+attribution:
+  ledger: Revenue Attribution
+  supported_models:
+    - assessment_first_touch
+    - assessment_last_touch
+    - campaign_direct
+    - verified_product_purchase
+    - operator_verified_service_revenue
+  service_revenue_rule: "Service revenue linked to an assessment must carry opportunity_id, proposal_id, revenue_ref, amount, currency, source_system, and verified=true."
+  product_revenue_rule: "Verified Gumroad purchases may be attributed directly from the existing Sales ledger using sale_id/revenue and UTM fields; an assessment opportunity is optional unless independently established."
+  no_guessing_rule: "Do not infer an opportunity or campaign from buyer identity alone when a verified linkage is absent. Use attribution_status=unattributed instead."
+
+sales_enablement:
+  canonical_asset: docs/sales-enablement.md
+  assessment_follow_up_runbook: docs/assessment-b2b-follow-up-runbook.md
+  allowed_sources:
+    - public/data/product-ecosystem.json
+    - docs/claims-register.yaml
+    - docs/evidence-policy.md
+    - approved Editorial Opportunities
+  forbidden:
+    - invented_customer_claims
+    - invented_outcomes
+    - unsupported_rankings
+    - unsupported_savings
+    - private_repository_disclosure
+
+fail_closed_controls:
+  - "Assessment acceptance waits for both lead persistence and Revenue Pipeline persistence."
+  - "Invalid origin or invalid assessment never creates a pipeline record."
+  - "Operator Brief subscribers never enter Revenue Pipeline solely because they subscribed."
+  - "A review-state assessment does not receive a self-scheduling CTA."
+  - "A schedule CTA click does not prove a booking and cannot advance assessment_qualified to assessment_scheduled."
+  - "Cal booking reconciliation remains operator-controlled until a credential-preserving automation path is certified."
+  - "Revenue is not marked won from an unverified payment assertion."
+  - "Proposal draft creation never authorizes sending."
+  - "Existing Stage 7/8 disclosure and human-publication firewalls remain binding."
+
+gate:
+  requirement: "assessment-to-proposal-to-revenue path is traceable"
+  required_evidence:
+    - campaign_or_source_lineage
+    - lead_id
+    - opportunity_id
+    - assessment
+    - verified_scheduling_evidence_when_scheduled
+    - proposal_id
+    - scope_id
+    - objection_linkage_when_present
+    - revenue_ref
+    - verified_attribution
+  passed: true

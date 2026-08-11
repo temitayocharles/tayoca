@@ -1,0 +1,155 @@
+{
+  "schema_version": 1,
+  "plan_id": "tayoca-production-growth-cycle-1",
+  "workstream": "W4",
+  "name": "assessment_b2b_engine",
+  "status": "GREEN",
+  "certified_at": "2026-08-11T19:19:00Z",
+  "objective": "Use the certified assessment-to-opportunity-to-proposal path as Tayoca's principal B2B lead engine and define evidence-based follow-up for high-intent respondents.",
+  "canonical_authority": {
+    "repository": "temitayocharles/tayoca",
+    "host": "forgejo.tca-infraforge.site",
+    "assessment_intake_workflow": "V28T575q7GSRFOti",
+    "assessment_intake_active_version": "77f42f4d-dc43-4743-a667-4fe7ce44aa44",
+    "revenue_pipeline_spreadsheet": "1JkW4DUTkjBTQNXlWMQdaVHlw-nFU1to8-cf9HMKXcQU",
+    "revenue_pipeline_tab": "Revenue Pipeline"
+  },
+  "public_runtime_patch": {
+    "file": "public/growth-os.js",
+    "forgejo_commit": "7d156718ae873cd3e1eafdd33341c2ec3e936f4f",
+    "git_blob_sha": "5302f40fa197fe48efc4db21502221403d99e7a5",
+    "github_mirror_commit": "ad7ac6c7e07e59bbf147fe3e2ce6962c060fc8ba",
+    "vercel_deployment": "dpl_8jjTfYYyRT465HPRobjuAcBeLXsr",
+    "vercel_state": "READY",
+    "vercel_substate": "PROMOTED",
+    "production_aliases": ["tayoca.com", "www.tayoca.com"],
+    "blocking_deployment_checks": 0
+  },
+  "qualification_and_scheduling_contract": {
+    "review_state_self_scheduling": false,
+    "qualified_state_self_scheduling": true,
+    "routes": {
+      "Cloud & AI Cost Assessment": "https://cal.com/tayoca/finops-audit",
+      "Platform Reliability Assessment": "https://cal.com/tayoca/platform-engineering-consultation",
+      "Technology Value Assessment": "https://cal.com/tayoca/platform-engineering-consultation"
+    },
+    "browser_schedule_click_is_booking_evidence": false,
+    "scheduled_stage_requires_verified_booking": true
+  },
+  "cal_com_verification": {
+    "account_username": "tayoca",
+    "timezone": "America/Toronto",
+    "event_types": [
+      {
+        "id": 6432033,
+        "slug": "finops-audit",
+        "title": "FinOps Audit Discovery Call",
+        "length_minutes": 15
+      },
+      {
+        "id": 6432034,
+        "slug": "platform-engineering-consultation",
+        "title": "Platform Engineering Consultation",
+        "length_minutes": 30,
+        "scope_note": "Existing Cal.com description explicitly covers GitOps platform engineering, Kubernetes architecture, and AI/LLMOps implementation."
+      }
+    ],
+    "existing_webhooks_on_event_types": 0,
+    "existing_bookings_across_both_event_types": 0
+  },
+  "browser_certification": {
+    "method": "Exact production JavaScript bytes executed unchanged in Chromium with a minimal copy of the production assessment form; window.fetch was replaced before script execution and the browser context hard-blocked real network requests.",
+    "chromium": "144.0.7559.96",
+    "production_git_blob_sha_verified": true,
+    "cases": [
+      {
+        "case": "technology_qualified",
+        "expected_cta": "https://cal.com/tayoca/platform-engineering-consultation",
+        "passed": true
+      },
+      {
+        "case": "cost_qualified",
+        "expected_cta": "https://cal.com/tayoca/finops-audit",
+        "passed": true
+      },
+      {
+        "case": "platform_qualified",
+        "expected_cta": "https://cal.com/tayoca/platform-engineering-consultation",
+        "passed": true
+      },
+      {
+        "case": "technology_review",
+        "expected_cta": null,
+        "passed": true
+      }
+    ],
+    "passed_cases": 4,
+    "required_cases": 4,
+    "production_writes": 0,
+    "real_network_requests_from_harness": 0,
+    "local_artifact": "/mnt/data/w4-browser-cert.json"
+  },
+  "production_readback": {
+    "firecrawl_growth_os_status": 200,
+    "firecrawl_growth_os_cache_state": "miss",
+    "firecrawl_growth_os_bytes": 7535,
+    "production_git_blob_sha_recomputed": "5302f40fa197fe48efc4db21502221403d99e7a5"
+  },
+  "zero_write_verification": {
+    "revenue_pipeline_read_range": "'Revenue Pipeline'!A1:AN50",
+    "rows_after_browser_certification": 0,
+    "header_only": true,
+    "synthetic_opportunities_created": 0
+  },
+  "follow_up_controls": {
+    "runbook": "docs/assessment-b2b-follow-up-runbook.md",
+    "runbook_blob_sha": "c6ccad252826860826decfe4a1af812f9f28bcd8",
+    "revenue_policy": "docs/revenue-operations-policy.yaml",
+    "revenue_policy_blob_sha": "370321dbc64022cb01399023dae831e2a29a5a58",
+    "review_state_next_action": "review_assessment_fit",
+    "qualified_state_next_action": "schedule_assessment",
+    "scheduled_state_evidence_authority": "verified Cal.com booking or equivalent operator-verified scheduling record",
+    "proposal_eligibility": "materially sufficient delivered assessment evidence before proposal_draft",
+    "proposal_send_control_preserved": "approval_state=approved_for_send"
+  },
+  "booking_reconciliation": {
+    "current_mode": "operator_controlled_fail_closed",
+    "automatic_cal_to_pipeline_sync": false,
+    "reason": "The available safe n8n update interface cannot add the booking branch without reconstructing credential-bound workflow nodes or creating a parallel credentialed CRM path.",
+    "automation_debt_id": "cal_booking_pipeline_sync",
+    "blocking_for_w4": false,
+    "rule": "Never infer assessment_scheduled from a CTA click or presumed booking. Reconcile verified Cal.com evidence to the existing Revenue Pipeline until a credential-preserving automation extension is certified."
+  },
+  "remote_browser_tooling_observations": {
+    "composio_browser_tool": "administrator_disabled",
+    "browserless": "401_invalid_api_key",
+    "cloudflare_browser_rendering": "authentication_error",
+    "hyperbrowser": "402_credit_limit",
+    "impact_on_product": "none; these are certification-tool availability issues, not Tayoca runtime failures"
+  },
+  "regression": {
+    "public_shell_auditor_workflow": "AndnV6W2YCiTcxSz",
+    "execution": "75645",
+    "status": "PASSED",
+    "audited_pages": 34,
+    "nonconforming_pages": 0,
+    "violations": []
+  },
+  "rollback": {
+    "runtime_forgejo_revert_commit": "7d156718ae873cd3e1eafdd33341c2ec3e936f4f",
+    "prior_public_growth_os_blob": "9b049540f111e61aef0d17e67dfbf682def557fb",
+    "prior_github_tip_before_w4_runtime_patch": "70ed84a38e70733b7863332660e9f2610670ee2e",
+    "rule": "Rollback by normal Forgejo revert and exact GitHub mirror; do not rewrite history."
+  },
+  "gate": {
+    "qualification_routing_correct": true,
+    "review_state_fail_closed": true,
+    "campaign_attribution_path_preserved": true,
+    "opportunity_path_preserved": true,
+    "verified_booking_evidence_required_for_scheduled_stage": true,
+    "proposal_controls_preserved": true,
+    "zero_synthetic_pipeline_writes": true,
+    "public_shell_regression_zero": true,
+    "passed": true
+  }
+}
