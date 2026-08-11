@@ -1,0 +1,160 @@
+{
+  "schema_version": 1,
+  "plan_id": "tayoca-production-growth-cycle-1",
+  "workstream_id": "W3",
+  "workstream_name": "campaign_launch",
+  "status": "GREEN",
+  "completed_at": "2026-08-11T02:34:00Z",
+  "local_operating_date": "2026-08-10",
+  "timezone": "America/Toronto",
+  "launch_scope": "Owned-channel launch on the existing certified assessment catalogue. W3 does not pre-empt W5 editorial distribution, W6 targeted outbound, or W7 Operator Brief email delivery.",
+  "governance": {
+    "new_workflow_created": false,
+    "new_database_or_tracking_stack_created": false,
+    "new_product_or_offer_created": false,
+    "new_editorial_asset_published": false,
+    "paid_media_spend": 0,
+    "human_editorial_distribution_approval_bypassed": false,
+    "existing_weekly_editorial_campaign_branch_modified": false,
+    "reason": "The existing Weekly Campaign Launch branch remains the governed editorial distribution path for W5. W3 launched only the three already-certified assessment offers through the existing owned assessment catalogue and existing intake/revenue attribution path."
+  },
+  "campaigns": [
+    {
+      "campaign_key": "cloud_ai_cost",
+      "campaign_id": "pgc1_cloud_ai_cost",
+      "assessment": "Cloud & AI Cost Assessment",
+      "commercial_destination": "FinOps Operations",
+      "primary_channel": "tayoca_site",
+      "utm_source": "tayoca_site",
+      "utm_medium": "internal",
+      "utm_content": "assessment_catalog_card",
+      "landing_url": "/assessments.html?assessment=Cloud%20%26%20AI%20Cost%20Assessment&utm_campaign=pgc1_cloud_ai_cost&utm_source=tayoca_site&utm_medium=internal&utm_content=assessment_catalog_card#assessment-form",
+      "ledger_status": "launched_owned_channel",
+      "budget": 0,
+      "spend": 0
+    },
+    {
+      "campaign_key": "platform_kubernetes_reliability",
+      "campaign_id": "pgc1_platform_kubernetes_reliability",
+      "assessment": "Platform Reliability Assessment",
+      "commercial_destination": "Platform Operations",
+      "primary_channel": "tayoca_site",
+      "utm_source": "tayoca_site",
+      "utm_medium": "internal",
+      "utm_content": "assessment_catalog_card",
+      "landing_url": "/assessments.html?assessment=Platform%20Reliability%20Assessment&utm_campaign=pgc1_platform_kubernetes_reliability&utm_source=tayoca_site&utm_medium=internal&utm_content=assessment_catalog_card#assessment-form",
+      "ledger_status": "launched_owned_channel",
+      "budget": 0,
+      "spend": 0
+    },
+    {
+      "campaign_key": "ai_automation_operations",
+      "campaign_id": "pgc1_ai_automation_operations",
+      "assessment": "Technology Value Assessment",
+      "commercial_destination": "Automation Governance",
+      "primary_channel": "tayoca_site",
+      "utm_source": "tayoca_site",
+      "utm_medium": "internal",
+      "utm_content": "assessment_catalog_card",
+      "landing_url": "/assessments.html?assessment=Technology%20Value%20Assessment&utm_campaign=pgc1_ai_automation_operations&utm_source=tayoca_site&utm_medium=internal&utm_content=assessment_catalog_card#assessment-form",
+      "ledger_status": "launched_owned_channel",
+      "budget": 0,
+      "spend": 0
+    }
+  ],
+  "public_surface": {
+    "path": "public/assessments.html",
+    "forgejo_blob": "099e1ee518e1b06887e180f4207bbfdbca6fd6f2",
+    "forgejo_commit": "80801b6a60728051156361967fcae14aec27d4d8",
+    "forgejo_actions_run_number": 3370,
+    "forgejo_actions_run_id": 164,
+    "forgejo_actions_status": "success",
+    "github_commit": "6da566dfda11c64e58093718e9abd014816fb3f0",
+    "github_blob": "099e1ee518e1b06887e180f4207bbfdbca6fd6f2",
+    "exact_blob_match": true,
+    "vercel_deployment": "dpl_GeznyNem28kLPKLRP37eKVR5inuF",
+    "vercel_state": "READY",
+    "vercel_ready_substate": "PROMOTED",
+    "production_aliases_present": ["tayoca.com", "www.tayoca.com"],
+    "blocking_deployment_checks": 0
+  },
+  "rendered_production_verification": {
+    "url": "https://tayoca.com/assessments.html?w3_verify=20260810",
+    "http_status": 200,
+    "cache_state": "miss",
+    "firecrawl_log": "log_l12PIxr0XR-M",
+    "all_three_locked_campaign_links_present": true,
+    "cloud_ai_cost_link_present": true,
+    "platform_kubernetes_reliability_link_present": true,
+    "ai_automation_operations_link_present": true,
+    "existing_stage10_commercial_controls_rendered": true
+  },
+  "attribution_transport": {
+    "browser_script": "public/growth-os.js",
+    "browser_blob": "9b049540f111e61aef0d17e67dfbf682def557fb",
+    "captured_query_fields": ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"],
+    "referrer_preserved": true,
+    "source_page_preserved": true,
+    "intake_workflow_id": "V28T575q7GSRFOti",
+    "intake_active_version": "77f42f4d-dc43-4743-a667-4fe7ce44aa44",
+    "intake_active": true,
+    "campaign_mapping": "campaign_id = utm_campaign",
+    "revenue_pipeline_mapping_preserved": true,
+    "synthetic_lead_written": false
+  },
+  "campaign_ledger": {
+    "spreadsheet_id": "1JkW4DUTkjBTQNXlWMQdaVHlw-nFU1to8-cf9HMKXcQU",
+    "sheet": "Campaigns",
+    "write_log": "log_k-zfSjxbB6El",
+    "readback_log": "log_j6-aX5U0zU6K",
+    "rows_inserted": 3,
+    "rows_updated": 0,
+    "columns_added": 0,
+    "campaign_ids_read_back": [
+      "pgc1_cloud_ai_cost",
+      "pgc1_platform_kubernetes_reliability",
+      "pgc1_ai_automation_operations"
+    ],
+    "all_statuses": "launched_owned_channel",
+    "all_budgets_zero": true,
+    "all_spend_zero": true,
+    "fabricated_approval_timestamps": false,
+    "editorial_approval_state": "not_applicable_existing_certified_surface"
+  },
+  "residue_and_side_effect_check": {
+    "log": "log_MC75t34_0L44",
+    "content_queue_rows_created": 0,
+    "revenue_pipeline_rows_created_by_launch": 0,
+    "synthetic_opportunities_created": 0,
+    "external_social_posts_published": 0,
+    "outbound_messages_sent": 0,
+    "operator_brief_emails_sent": 0
+  },
+  "regression_gate": {
+    "shell_auditor_workflow": "AndnV6W2YCiTcxSz",
+    "execution": "73701",
+    "status": "PASSED",
+    "audited_pages": 34,
+    "nonconforming_pages": 0,
+    "violations": 0
+  },
+  "deferred_to_later_workstreams": {
+    "W5_content_distribution": "New evidence-led articles/social/Operator Brief/case-study assets and their existing human publication/distribution approval path.",
+    "W6_targeted_outbound": "Narrow problem-led prospecting into the W2 assessment contracts.",
+    "W7_operator_brief_nurture": "Email delivery remains blocked until tayoca.com sender-domain verification in Resend."
+  },
+  "gate": {
+    "three_locked_campaigns_registered": true,
+    "three_owned_channel_entry_links_live": true,
+    "one_primary_commercial_destination_per_campaign_preserved": true,
+    "full_utm_lineage_present_at_entry_surface": true,
+    "intake_campaign_mapping_verified_current": true,
+    "zero_default_paid_spend_preserved": true,
+    "no_synthetic_lead_or_revenue_written": true,
+    "editorial_distribution_controls_preserved": true,
+    "public_shell_regression_free": true,
+    "exact_forgejo_github_public_blob_match": true,
+    "production_deployment_promoted": true,
+    "passed": true
+  }
+}
