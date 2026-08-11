@@ -271,7 +271,7 @@ cycle_start_gate:
     - agent_resume_control_committed
     - forgejo_quality_gate_green
     - github_mirror_reconciled
-  passed: false
+  passed: true
 
 cycle_success_gate:
   requirement: >-

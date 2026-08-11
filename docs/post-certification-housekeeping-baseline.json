@@ -1,8 +1,9 @@
 {
   "schema_version": 1,
   "baseline": "post_certification_housekeeping",
-  "status": "READY_FOR_MIRROR_GATE",
+  "status": "GREEN",
   "recorded_at": "2026-08-11T01:50:00Z",
+  "closed_at": "2026-08-11T01:56:00Z",
   "local_operating_date": "2026-08-10",
   "authority": {
     "canonical_host": "forgejo.tca-infraforge.site",
@@ -48,42 +49,15 @@
     }
   },
   "repository_residue_removed": [
-    {
-      "path": ".sitemap-backup-marker.txt",
-      "reason": "Literal placeholder file with no runtime or recovery value."
-    },
-    {
-      "path": "deploy.sh",
-      "reason": "Superseded Cloudflare Pages deployment script; certified production hosting is Vercel."
-    },
-    {
-      "path": "wrangler.toml",
-      "reason": "Superseded Cloudflare Pages/Wrangler production configuration."
-    },
-    {
-      "path": "wrangler.json",
-      "reason": "Superseded Cloudflare Pages/Wrangler production configuration."
-    },
-    {
-      "path": "netlify.toml",
-      "reason": "Superseded Netlify deployment configuration; not part of certified production path."
-    },
-    {
-      "path": "EMAIL_CAPTURE_SETUP.md",
-      "reason": "Legacy Cloudflare/InsForge newsletter setup contradicted the certified Operator Brief intake."
-    },
-    {
-      "path": "README_EMAIL_SUBSCRIPTION.md",
-      "reason": "Legacy newsletter deployment instructions contradicted the certified n8n intake path."
-    },
-    {
-      "path": "functions/api/subscribe.js",
-      "reason": "Superseded Cloudflare /api/subscribe endpoint; current public Operator Brief form posts to the governed n8n intake webhook."
-    },
-    {
-      "path": "functions/newsletter-subscribe.ts",
-      "reason": "Superseded parallel InsForge newsletter endpoint; current subscription authority is the governed n8n intake workflow."
-    }
+    {"path": ".sitemap-backup-marker.txt", "reason": "Literal placeholder file with no runtime or recovery value."},
+    {"path": "deploy.sh", "reason": "Superseded Cloudflare Pages deployment script; certified production hosting is Vercel."},
+    {"path": "wrangler.toml", "reason": "Superseded Cloudflare Pages/Wrangler production configuration."},
+    {"path": "wrangler.json", "reason": "Superseded Cloudflare Pages/Wrangler production configuration."},
+    {"path": "netlify.toml", "reason": "Superseded Netlify deployment configuration; not part of certified production path."},
+    {"path": "EMAIL_CAPTURE_SETUP.md", "reason": "Legacy Cloudflare/InsForge newsletter setup contradicted the certified Operator Brief intake."},
+    {"path": "README_EMAIL_SUBSCRIPTION.md", "reason": "Legacy newsletter deployment instructions contradicted the certified n8n intake path."},
+    {"path": "functions/api/subscribe.js", "reason": "Superseded Cloudflare /api/subscribe endpoint; current public Operator Brief form posts to the governed n8n intake webhook."},
+    {"path": "functions/newsletter-subscribe.ts", "reason": "Superseded parallel InsForge newsletter endpoint; current subscription authority is the governed n8n intake workflow."}
   ],
   "documentation_reconciled": [
     "README-CICD.md",
@@ -91,8 +65,11 @@
     "AGENTS.md",
     "docs/production-growth-operating-plan.yaml"
   ],
-  "mirror_residue_scan": {
-    "github_tree_entries_before_final_mirror": 198,
+  "github_mirror": {
+    "branches_after": ["main"],
+    "housekeeping_commit": "23acf65fccc72b0a87d0336405cc265b1a5e60f9",
+    "upserts_exact_forgejo_blob_match": true,
+    "canonical_deletions_propagated": 9,
     "forbidden_or_obsolete_patterns_checked": [
       ".github",
       ".pages-cache",
@@ -102,14 +79,27 @@
       ".env.local",
       ".sitemap-backup-marker.txt"
     ],
-    "matches": 0,
-    "note": "The final mirror gate still must propagate canonical housekeeping deletions and governance files from Forgejo to GitHub."
+    "unexpected_matches": 0
+  },
+  "production_readback": {
+    "vercel_project": "tayoca-com-static",
+    "deployment": "dpl_AiEsqiMxWaRU4kz8s75QXDeTmUXM",
+    "source_commit": "23acf65fccc72b0a87d0336405cc265b1a5e60f9",
+    "state": "READY",
+    "ready_substate": "PROMOTED",
+    "aliases": [
+      "tayoca.com",
+      "www.tayoca.com",
+      "tayoca-com-static-charlies-projects-0dc15824.vercel.app",
+      "tayoca-com-static-git-main-charlies-projects-0dc15824.vercel.app"
+    ],
+    "deployment_checks": 0
   },
   "n8n_housekeeping": {
     "tayoca_workflows_found": 17,
     "active_runtime_workflows_preserved": 6,
     "inactive_certifiers_recovery_and_library_workflows_preserved": true,
-    "reason": "Inactive does not mean stale: the retained workflows carry certification, recovery, bootstrap, library, or historical master-plan value.",
+    "reason": "Inactive does not mean stale: retained workflows carry certification, recovery, bootstrap, library, or historical master-plan value.",
     "stale_metadata_finding": {
       "workflow_id": "ZZDXWFKiPnzeKtNr",
       "workflow_name": "Tayoca Growth OS | Verified Review & Trust Flywheel",
@@ -140,18 +130,19 @@
     "Git history for all retired deployment and subscription implementations"
   ],
   "quality_gate": {
-    "latest_observed_push_run_number": 3307,
-    "latest_observed_run_id": 156,
-    "latest_observed_sha": "935c23dee50b838fbe49b3155e7e28a896d2c880",
+    "run_number": 3308,
+    "run_id": 157,
+    "sha": "73ce65d381213984ba67499b322afd858d5262a1",
     "status": "success",
-    "duration_seconds": 3
+    "duration_seconds": 4
   },
   "final_gate": {
     "canonical_housekeeping_complete": true,
     "certified_baseline_frozen": true,
     "operating_plan_locked": true,
     "agent_resume_control_locked": true,
-    "github_final_mirror_reconciled": false,
-    "passed": false
+    "github_final_mirror_reconciled": true,
+    "production_deployment_green": true,
+    "passed": true
   }
 }
