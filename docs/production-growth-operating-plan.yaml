@@ -164,7 +164,7 @@ workstreams:
     status: NOT_STARTED
     outcome: >-
       Run narrow problem-led B2B prospecting into assessments or useful diagnostic
-      conversations and stopping rules are needed for the experiment are defined and boundaries. will be compared.
+      conversations; avoid mass unsolicited spam and measure reply, conversation,
       opportunity, and proposal movement.
   - id: W7
     name: operator_brief_nurture
@@ -281,7 +281,7 @@ change_control:
 
 resume_protocol:
   on_continue_or_go:
-    - "Read this file and the latest recored_workstream statuses first."
+    - "Read this file and the latest recorded workstream statuses first."
     - "Confirm the certified baseline has not suffered a critical/high regression."
     - "Continue the highest-priority incomplete workstream whose dependencies are satisfied."
     - "Do not restart completed stages 0-14 unless a verified regression requires it."
