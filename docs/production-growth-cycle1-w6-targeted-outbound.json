@@ -1,10 +1,10 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "plan_id": "tayoca-production-growth-cycle-1",
   "workstream": "W6",
   "name": "targeted_outbound",
-  "status": "WAITING_HUMAN_SEND_APPROVAL",
-  "recorded_at": "2026-08-11T22:21:00Z",
+  "status": "FIRST_WAVE_DELIVERED_MONITORING",
+  "recorded_at": "2026-08-12T03:43:22Z",
   "objective": "Run a narrow, problem-led B2B prospecting motion into the approved Platform Reliability Assessment without creating a parallel CRM, guessing contact data, leaking private evidence, or sending bulk outreach.",
   "canonical_systems": {
     "repository": "temitayocharles/tayoca",
@@ -60,7 +60,9 @@
       "target_problem": "Platform reliability and deployment-control discipline while the Platform Engineering team is scaling highly available services.",
       "offer": "Platform Reliability Assessment",
       "contact_state": "verified",
-      "send_state": "waiting_human_send_approval"
+      "send_state": "delivered",
+      "resend_email_id": "694df839-b73d-4156-b6b3-282159368ae1",
+      "sent_at": "2026-08-12T03:43:21.933Z"
     },
     {
       "rank": 2,
@@ -135,7 +137,9 @@
       "target_problem": "Multi-cloud Kubernetes deployment reliability, service ownership, observability, and delivery-control review discipline.",
       "offer": "Platform Reliability Assessment",
       "contact_state": "verified_executive_contact_lower_level_owner_not_verified",
-      "send_state": "waiting_human_send_approval"
+      "send_state": "delivered",
+      "resend_email_id": "fb597c8e-ab34-472a-b345-0b6f211995aa",
+      "sent_at": "2026-08-12T03:43:22.329Z"
     },
     {
       "rank": 5,
@@ -167,16 +171,14 @@
   ],
   "sender_capability": {
     "provider": "Resend",
-    "account": "resend_capra-astern",
-    "verified_domain": "temitayocharles.online",
-    "proposed_from": "Temitayo Charles | Tayoca <temitayo@temitayocharles.online>",
-    "proposed_reply_to": "tayocharlesaki@gmail.com",
-    "tayoca_domain_state": "not_registered_in_resend",
-    "tayoca_domain_registration_attempt": "blocked_plan_domain_limit",
-    "resend_plan_limit": "one domain",
-    "existing_verified_domain_must_not_be_deleted": true,
-    "gmail_tayoca_send_as_alias_found": false,
-    "linkedin_direct_message_available": false,
+    "account": "resend_shimei-ansate",
+    "verified_domain": "tayoca.com",
+    "from": "Temitayo Charles | Tayoca <temitayo@tayoca.com>",
+    "reply_to": "temitayo@tayoca.com",
+    "inbound_provider": "Cloudflare Email Routing",
+    "inbound_destination": "temitayo_charles@yahoo.com",
+    "tayoca_domain_state": "verified",
+    "cloudflare_routes_verified": true,
     "send_action_requires_explicit_recipient_and_content_confirmation": true
   },
   "contactability_findings": {
@@ -196,9 +198,9 @@
     "leadiq_connected": false,
     "fullenrich_connected": false,
     "wiza_connected": false,
-    "gmail_direct_connector_state": "available_through_composio_but_no_tayoca_send_as_alias",
+    "gmail_direct_connector_state": "not_used_for_tayoca_outbound",
     "safe_authenticated_outbound_sender_verified": true,
-    "rule": "Use the verified owner-led professional domain only with explicit send approval; do not substitute public posting, guessed email patterns, or bulk enrichment."
+    "rule": "Use the verified Tayoca domain with explicit send approval; do not substitute public posting, guessed email patterns, or bulk enrichment."
   },
   "first_wave_drafts": [
     {
@@ -208,7 +210,10 @@
       "subject": "Platform reliability review for SPS",
       "body": "Jamie, I noticed SPS is expanding Platform Engineering around highly available platform services, deployment automation, reliability, and resolving failure risks at source. I run Tayoca's Platform Reliability Assessment, a structured diagnostic for deployment risk, recovery readiness, delivery controls, and operational ownership. Given the scope your platform team is carrying, I thought the framework may be useful as an independent review lens. If it is relevant, I can share the assessment or walk through it with the appropriate platform leader.\n\nhttps://tayoca.com/assessments.html?assessment=Platform%20Reliability%20Assessment&utm_source=outbound&utm_medium=email&utm_campaign=pgc1_platform_kubernetes_reliability&utm_content=w6_sps_commerce#assessment-form",
       "claims_review": "public-signal and Tayoca-offer facts only",
-      "send_state": "waiting_human_send_approval"
+      "send_state": "delivered",
+      "resend_email_id": "694df839-b73d-4156-b6b3-282159368ae1",
+      "last_event": "delivered",
+      "sent_at": "2026-08-12T03:43:21.933Z"
     },
     {
       "account": "MongoDB",
@@ -217,7 +222,10 @@
       "subject": "Independent platform reliability review",
       "body": "Jim, MongoDB's current SRE hiring describes Platform Engineering responsibility across multi-cloud Kubernetes, service mesh, observability, alerting, and Argo-based delivery infrastructure. I run Tayoca's Platform Reliability Assessment, a structured review of deployment risk, recovery readiness, delivery controls, and operational ownership. I am reaching out because the assessment maps closely to the operating surface described publicly by the team, not because I am assuming any internal issue. If useful, I can share the framework or route it to the platform engineering owner you consider the right fit.\n\nhttps://tayoca.com/assessments.html?assessment=Platform%20Reliability%20Assessment&utm_source=outbound&utm_medium=email&utm_campaign=pgc1_platform_kubernetes_reliability&utm_content=w6_mongodb#assessment-form",
       "claims_review": "public-signal and Tayoca-offer facts only; explicitly avoids inferred weakness",
-      "send_state": "waiting_human_send_approval"
+      "send_state": "delivered",
+      "resend_email_id": "fb597c8e-ab34-472a-b345-0b6f211995aa",
+      "last_event": "delivered",
+      "sent_at": "2026-08-12T03:43:22.329Z"
     },
     {
       "account": "Kinaxis",
@@ -249,15 +257,36 @@
     "contact_verification": "GREEN",
     "message_preparation": "GREEN",
     "sender_capability": "GREEN_OWNER_LED_VERIFIED_DOMAIN",
-    "send_execution": "WAITING_HUMAN_APPROVAL",
-    "passed": false,
-    "approval_scope": "Two irreversible one-to-one Resend emails: SPS Commerce and MongoDB, with exact recipients, sender, reply-to, subjects, and bodies recorded above.",
+    "send_execution": "GREEN_DELIVERED",
+    "passed": true,
+    "approval_scope": "Two approved one-to-one Resend emails to SPS Commerce and MongoDB were sent from the verified Tayoca domain and confirmed delivered by Resend.",
     "next_required_evidence": [
-      "explicit human confirmation of both recipients and final email content",
-      "send no more than the two approved first-wave emails",
-      "retrieve Resend email status for each send",
-      "record delivery/reply evidence",
+      "monitor replies to temitayo@tayoca.com via Cloudflare Email Routing to temitayo_charles@yahoo.com",
+      "record reply/conversation evidence",
       "record commercial movement without creating pipeline opportunity IDs before governed assessment intake"
     ]
+  },
+  "send_execution": {
+    "approved_at": "2026-08-12T03:42:51Z",
+    "sender": "Temitayo Charles | Tayoca <temitayo@tayoca.com>",
+    "reply_to": "temitayo@tayoca.com",
+    "messages": [
+      {
+        "account": "SPS Commerce",
+        "recipient": "jamie@thingelstad.com",
+        "resend_email_id": "694df839-b73d-4156-b6b3-282159368ae1",
+        "last_event": "delivered",
+        "created_at": "2026-08-12T03:43:21.933Z"
+      },
+      {
+        "account": "MongoDB",
+        "recipient": "jim.scharf@mongodb.com",
+        "resend_email_id": "fb597c8e-ab34-472a-b345-0b6f211995aa",
+        "last_event": "delivered",
+        "created_at": "2026-08-12T03:43:22.329Z"
+      }
+    ],
+    "message_count": 2,
+    "paid_media_spend": 0
   }
 }

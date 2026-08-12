@@ -131,28 +131,30 @@ workstreams:
   - id: W6
     name: targeted_outbound
     priority: 6
-    status: WAITING_HUMAN_SEND_APPROVAL
+    status: FIRST_WAVE_DELIVERED_MONITORING
     started_at: '2026-08-11T22:02:47Z'
     baseline: docs/production-growth-cycle1-w6-targeted-outbound.json
     contact_verification: GREEN
     message_preparation: GREEN
     sender_capability: GREEN_OWNER_LED_VERIFIED_DOMAIN
-    send_execution: WAITING_HUMAN_APPROVAL
+    send_execution: GREEN_DELIVERED
     email_ready_accounts: 2
     first_wave_email_drafts: 2
-    sender_from: 'Temitayo Charles | Tayoca <temitayo@temitayocharles.online>'
-    sender_reply_to: tayocharlesaki@gmail.com
+    sender_from: 'Temitayo Charles | Tayoca <temitayo@tayoca.com>'
+    sender_reply_to: temitayo@tayoca.com
     current_gate: >
-      Explicit human confirmation is required for the two irreversible one-to-one Resend emails
-      to SPS Commerce and MongoDB, including their exact recipients and final content.
+      The approved first-wave emails to SPS Commerce and MongoDB were sent from the verified Tayoca
+      domain and confirmed delivered by Resend; monitor replies and commercial movement.
+    first_wave_delivered_at: '2026-08-12T03:43:22Z'
+    first_wave_delivery_count: 2
     outcome: >
       Run narrow problem-led B2B prospecting into assessments or useful diagnostic conversations;
       avoid indiscriminate outreach and measure reply, conversation, opportunity, and proposal movement.
   - id: W7
     name: operator_brief_nurture
     priority: 7
-    status: BLOCKED_EXTERNAL
-    blocker: resend_sender_domain_verification
+    status: NOT_STARTED
+    blocker: none
   - id: W8
     name: weekly_revenue_operating_loop
     priority: 8
@@ -201,9 +203,10 @@ measurement:
 
 external_and_continuous_improvement_items:
   - id: resend_sender_domain_verification
-    severity: medium
-    blocking_scope: operator_brief_email_delivery_only
-    rule: Keep production email fail-closed until tayoca.com is verified in Resend.
+    severity: resolved
+    blocking_scope: none
+    resolved_at: '2026-08-12T02:55:10Z'
+    rule: tayoca.com is verified in Resend; production outbound uses temitayo@tayoca.com and inbound replies route through Cloudflare Email Routing.
   - id: assistive_technology_audit
     severity: medium
     blocking_scope: none
