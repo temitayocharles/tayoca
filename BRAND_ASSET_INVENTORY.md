@@ -3,6 +3,8 @@
 **Scope:** /Users/charlie/Downloads/ directory  
 **Purpose:** Catalog all brand assets, products, and revenue opportunities for tayoca.com
 
+> **Current brand authority:** Canonical Brand System v1 supersedes the July discovery notes below wherever they say the palette, typography, email signature, business card, or social/client templates are missing. See `docs/brand-founder-identity.md` and the certified public CSS for the active system.
+
 ---
 
 ## 📋 EXECUTIVE SUMMARY

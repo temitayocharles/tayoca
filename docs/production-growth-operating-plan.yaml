@@ -47,7 +47,7 @@ locked_cross_stage_controls:
 
 cycle:
   horizon_days: 30
-  phase: TARGETED_OUTBOUND
+  phase: OPERATOR_BRIEF_NURTURE
   objective: >
     Prove that Tayoca can repeatedly convert qualified attention into commercial intent,
     leads, opportunities, conversations, proposals, and verified revenue using the certified platform.
@@ -153,8 +153,14 @@ workstreams:
   - id: W7
     name: operator_brief_nurture
     priority: 7
-    status: NOT_STARTED
-    blocker: none
+    status: ACTIVE_BLOCKED_DEPENDENCIES
+    started_at: '2026-08-12T06:32:39.968Z'
+    blocker: approved_editorial_opportunities_and_n8n_resend_runtime_credential
+    approved_editorial_opportunities: 2
+    required_editorial_opportunities: 8
+    operator_brief_workflow_id: Ug7hA8cXrrCIVYkI
+    sender_from: 'Temitayo Charles | Tayoca <temitayo@tayoca.com>'
+    sender_reply_to: temitayo@tayoca.com
   - id: W8
     name: weekly_revenue_operating_loop
     priority: 8
@@ -231,6 +237,11 @@ external_and_continuous_improvement_items:
     rule: >
       Keep booking reconciliation operator-controlled until the existing credential-bound Revenue
       Pipeline path can be extended safely. Never infer assessment_scheduled from a CTA click or presumed booking.
+
+  - id: n8n_resend_runtime_credential
+    severity: high
+    blocking_scope: operator_brief_email_delivery
+    rule: Mount a Tayoca-domain-restricted Resend sending credential into the production n8n runtime without hardcoding the token in workflow JSON or source control.
 
 change_control:
   plan_revision_required_when:

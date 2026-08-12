@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "plan_id": "tayoca-production-growth-cycle-1",
+  "workstream": "W7",
+  "name": "operator_brief_nurture",
+  "status": "ACTIVE_BLOCKED_DEPENDENCIES",
+  "recorded_at": "2026-08-12T06:32:39.968Z",
+  "objective": "Operate The Tayoca Operator Brief as a governed evidence-backed nurture channel while W6 outbound responses mature.",
+  "workflow": {
+    "id": "Ug7hA8cXrrCIVYkI",
+    "name": "Tayoca Growth OS | Operator Brief",
+    "whole_issue_publication_approval_required": true,
+    "correction_reapproval_required": true
+  },
+  "editorial_gate": {
+    "required_distinct_approved_public_opportunities": 8,
+    "observed_approved_opportunities": 2,
+    "remaining": 6,
+    "last_gate_execution": "76430",
+    "last_gate_result": "blocked_insufficient_approved_opportunities"
+  },
+  "email_delivery": {
+    "provider": "Resend",
+    "domain": "tayoca.com",
+    "domain_state": "verified",
+    "from": "Temitayo Charles | Tayoca <temitayo@tayoca.com>",
+    "reply_to": "temitayo@tayoca.com",
+    "signature_source": "/assets/email/tayoca-founder-signature.html",
+    "n8n_runtime_environment_variable": "RESEND_API_KEY",
+    "runtime_credential_state": "not_mounted",
+    "delivery_state": "blocked_runtime_credential"
+  },
+  "brand": {
+    "identity_standard": "docs/brand-founder-identity.md",
+    "digital_business_card": "/temitayo.html",
+    "client_facing_system": "Tayoca Brand System v1"
+  },
+  "active_approval": {
+    "execution_id": "76431",
+    "opportunity_id": "pgc1:ai-automation:editorial-cluster",
+    "state": "WAITING_HUMAN_DRAFT_APPROVAL"
+  },
+  "controls": {
+    "paid_media_spend": 0,
+    "private_source_firewall": "binding",
+    "publication_without_explicit_issue_approval": "forbidden",
+    "bulk_email_without_subscription": "forbidden"
+  },
+  "next_actions": [
+    "obtain governed approval decisions until eight distinct opportunities are approved",
+    "mount restricted Resend credential into production n8n runtime",
+    "assemble first complete issue only after the editorial gate passes",
+    "request separate whole-issue publication approval before archive publication or email delivery"
+  ]
+}

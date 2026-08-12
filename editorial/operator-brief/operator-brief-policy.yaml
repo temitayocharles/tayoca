@@ -1,0 +1,173 @@
+version: 1
+stage: 9
+name: Tayoca Operator Brief
+status: locked
+
+identity:
+  title: The Tayoca Operator Brief
+  positioning: Practical intelligence for leaders responsible for cloud, platforms, reliability, AI infrastructure and technology economics.
+  audience:
+    - cloud leaders
+    - platform leaders
+    - reliability leaders
+    - AI infrastructure leaders
+    - technology economics leaders
+  prohibited_identity:
+    - formatted_commit_digest
+    - repository_release_log
+    - fully_automated_thought_leadership
+
+recurring_structure:
+  - key: operating_signal
+    label: The operating signal
+    purpose: The most important approved development and why it matters.
+  - key: from_the_field
+    label: From the field
+    purpose: A lesson grounded in real engineering work, sanitized and approved.
+  - key: technology_value
+    label: Technology value
+    purpose: A cost, reliability, security or operational-economics insight.
+  - key: decision_memo
+    label: Decision memo
+    purpose: A concise architecture or leadership trade-off.
+  - key: build_log
+    label: Build log
+    purpose: One selected Tayoca product or engineering development translated into customer value.
+  - key: evidence
+    label: Evidence
+    purpose: A metric, case study, verified review or controlled demonstration with an approved source.
+  - key: operator_action
+    label: Operator action
+    purpose: One practical action readers can apply.
+  - key: tayoca_update
+    label: Tayoca update
+    purpose: One product, service, event, guide or assessment CTA.
+
+canonical_ledger:
+  spreadsheet: Tayoca Growth OS Ledger
+  opportunity_tab: Editorial Opportunities
+  issues_tab: Operator Brief Issues
+  sections_tab: Operator Brief Sections
+  calendar_tab: Operator Brief Calendar
+  corrections_tab: Operator Brief Corrections
+
+source_rules:
+  canonical_input: Stage_8_editorial_opportunity
+  required_opportunity_state: approved_for_drafting
+  required_disclosure_classification: public_verified
+  minimum_disclosure_safety_score: 80
+  required_draft_eligibility: eligible_after_approval
+  evidence_required: true
+  raw_commit_log_copying: forbidden
+  raw_private_repository_body_in_issue: forbidden
+  repository_activity_role: internal_signal_only
+  stage7_restricted_material:
+    automatic_issue_input: false
+    automatic_public_draft: false
+    automatic_publication: false
+    external_use_requires:
+      - human_disclosure_approval
+      - separate_approved_public_fact_source
+
+issue_lifecycle:
+  states:
+    - planned
+    - draft_review
+    - rejected
+    - approved_for_publication
+    - published
+    - correction_pending
+    - superseded
+  rules:
+    - every_issue_contains_all_eight_sections
+    - every_section_references_an_approved_opportunity
+    - every_section_retains_fact_and_evidence_traceability
+    - issue_approval_is_separate_from_stage8_opportunity_approval
+    - no_publication_without_explicit_issue_approval
+    - approval_of_one_issue_does_not_approve_future_issues
+    - publication_failure_does_not_mark_issue_published
+
+publication:
+  public_archive: /operator-brief-archive.html
+  method: atomic_archive_file_update_after_approval
+  archive_marker: OPERATOR_BRIEF_ARCHIVE_INSERT
+  archive_url_pattern: /operator-brief-archive.html#<issue_id>
+  production_email_send:
+    status: runtime_credential_pending
+    provider: Resend
+    audience_name: Tayoca Insiders
+    audience_id: c31a4a87-565c-4486-ac7c-c7ab20185836
+    required_sender_domain: tayoca.com
+    sender_domain_state: verified
+    sender_from: 'Temitayo Charles | Tayoca <temitayo@tayoca.com>'
+    sender_reply_to: temitayo@tayoca.com
+    brand_signature_source: /assets/email/tayoca-founder-signature.html
+    runtime_credential:
+      environment_variable: RESEND_API_KEY
+      state: not_mounted_in_n8n_runtime
+    delivery_rule: approved_published_issues_to_active_subscribers_only
+    wrong_brand_domain_fallback: forbidden
+    paid_provider_fallback: forbidden_without_explicit_approval
+
+subscription_governance:
+  intake_workflow_id: V28T575q7GSRFOti
+  canonical_lead_store: tayoca_growth_leads
+  signup:
+    explicit_consent_required: true
+    deterministic_deduplication: true
+    allowed_origins:
+      - https://tayoca.com
+      - https://www.tayoca.com
+    honeypot_required: true
+  status_values:
+    - subscribed
+    - unsubscribed
+    - suppressed
+  unsubscribe:
+    must_be_available: true
+    idempotent_response: true
+    address_enumeration: forbidden
+  delivery_eligibility:
+    requires_status: subscribed
+    requires_verified_sender_domain: tayoca.com
+    bounce_or_suppression_override: mandatory
+
+corrections:
+  ledger: Operator Brief Corrections
+  request_policy: append_only
+  rules:
+    - original_published_issue_is_never_silently_overwritten
+    - correction_requires_reason_and_requester
+    - corrected_section_requires_corrected_body_and_evidence
+    - corrected_issue_returns_to_review_required
+    - corrected_issue_never_inherits_previous_publication_approval
+    - public_notice_required_when_a_published_factual_claim_changes
+
+analytics:
+  first_party_events:
+    - operator_brief_signup
+    - operator_brief_unsubscribe
+    - operator_brief_archive_view
+    - operator_brief_issue_view
+    - operator_brief_cta_click
+  attribution_fields:
+    - source_page
+    - interest
+    - issue_id
+    - opportunity_id
+    - cta
+  stage12_note: Executive newsletter-assisted conversion reporting is certified in Stage 12.
+
+stage_gate:
+  newsletter_identity: required
+  issue_template: required
+  signup_flow: required
+  archive: required
+  editorial_calendar: required
+  draft_review_publish_workflow: required
+  analytics: required
+  subscription_governance: required
+  deliverability_controls: required
+  corrections: required
+  complete_evidence_backed_issue_without_raw_commit_copying: required
+  publication_without_approval: forbidden
