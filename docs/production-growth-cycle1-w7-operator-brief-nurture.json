@@ -1,10 +1,10 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "plan_id": "tayoca-production-growth-cycle-1",
   "workstream": "W7",
   "name": "operator_brief_nurture",
   "status": "ACTIVE_BLOCKED_DEPENDENCIES",
-  "recorded_at": "2026-08-12T06:32:39.968Z",
+  "recorded_at": "2026-08-13T21:20:10.538Z",
   "objective": "Operate The Tayoca Operator Brief as a governed evidence-backed nurture channel while W6 outbound responses mature.",
   "workflow": {
     "id": "Ug7hA8cXrrCIVYkI",
@@ -14,10 +14,22 @@
   },
   "editorial_gate": {
     "required_distinct_approved_public_opportunities": 8,
-    "observed_approved_opportunities": 2,
-    "remaining": 6,
-    "last_gate_execution": "76430",
-    "last_gate_result": "blocked_insufficient_approved_opportunities"
+    "observed_approved_opportunities": 3,
+    "remaining": 5,
+    "review_required_safe_public_opportunities": 8,
+    "approved_opportunity_ids": [
+      "pgc1:ai-automation:editorial-cluster",
+      "pgc1:platform-reliability:editorial-cluster",
+      "product:ai-automation-career-playbook"
+    ],
+    "last_completed_approval_execution": "76431",
+    "last_completed_approval_opportunity": "pgc1:ai-automation:editorial-cluster",
+    "last_completed_approval_result": "success"
+  },
+  "operator_brief_issue_state": {
+    "issue_count": 0,
+    "assembled_issue": false,
+    "whole_issue_approval_pending": false
   },
   "email_delivery": {
     "provider": "Resend",
@@ -28,17 +40,18 @@
     "signature_source": "/assets/email/tayoca-founder-signature.html",
     "n8n_runtime_environment_variable": "RESEND_API_KEY",
     "runtime_credential_state": "not_mounted",
+    "runtime_checked_at": "2026-08-13T21:20:10.538Z",
     "delivery_state": "blocked_runtime_credential"
+  },
+  "runtime": {
+    "resend_api_key_present": false,
+    "composio_api_key_present": false,
+    "evidence": "docs/production-growth-cycle1-w7-runtime-snapshot.json"
   },
   "brand": {
     "identity_standard": "docs/brand-founder-identity.md",
     "digital_business_card": "/temitayo.html",
     "client_facing_system": "Tayoca Brand System v1"
-  },
-  "active_approval": {
-    "execution_id": "76431",
-    "opportunity_id": "pgc1:ai-automation:editorial-cluster",
-    "state": "WAITING_HUMAN_DRAFT_APPROVAL"
   },
   "controls": {
     "paid_media_spend": 0,
@@ -47,9 +60,9 @@
     "bulk_email_without_subscription": "forbidden"
   },
   "next_actions": [
-    "obtain governed approval decisions until eight distinct opportunities are approved",
-    "mount restricted Resend credential into production n8n runtime",
-    "assemble first complete issue only after the editorial gate passes",
-    "request separate whole-issue publication approval before archive publication or email delivery"
+    "obtain five more governed editorial approval decisions until eight distinct opportunities are approved",
+    "reconcile the existing Vault/ExternalSecret projection until RESEND_API_KEY is present in the production n8n runtime",
+    "assemble the first complete issue only after the editorial gate passes",
+    "request separate whole-issue publication approval before archive publication or subscriber email delivery"
   ]
 }
