@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "workstream": "W7",
+  "certified_at": "2026-08-13T21:20:10.538Z",
+  "source": "live_tayoca_n8n_bound_credentials",
+  "editorial_gate": {
+    "required": 8,
+    "approved_safe_public": 3,
+    "remaining": 5,
+    "review_required_safe_public": 8,
+    "approved_opportunity_ids": [
+      "pgc1:ai-automation:editorial-cluster",
+      "pgc1:platform-reliability:editorial-cluster",
+      "product:ai-automation-career-playbook"
+    ],
+    "review_required_opportunity_ids": [
+      "pgc1:cloud-ai-cost:editorial-cluster",
+      "product:aws-cost-optimization",
+      "product:build-break-fix-devops",
+      "product:devops-incident-runbook",
+      "product:gitops-field-guide",
+      "product:kubernetes-operators-workbook",
+      "product:kubernetes-production-readiness",
+      "product:n8n-mcp-kubernetes-teaching-pack"
+    ]
+  },
+  "existing_approval": {
+    "execution_id": "76431",
+    "opportunity_id": "pgc1:ai-automation:editorial-cluster",
+    "status": "success"
+  },
+  "operator_brief": {
+    "issue_count": 0,
+    "latest_issue": null
+  },
+  "runtime": {
+    "resend_api_key_present": false,
+    "composio_api_key_present": false
+  },
+  "controls": {
+    "paid_media_spend": 0,
+    "private_source_firewall": "binding",
+    "publication_without_exact_issue_approval": "forbidden",
+    "subscriber_pii_in_snapshot": false
+  }
+}
