@@ -1,37 +1,56 @@
 {
-  "schema_version": 2,
+  "schema_version": 4,
   "plan_id": "tayoca-production-growth-cycle-1",
   "workstream": "W7",
   "name": "operator_brief_nurture",
-  "status": "WAITING_HUMAN_EDITORIAL_APPROVAL_AND_RUNTIME_CREDENTIAL",
-  "recorded_at": "2026-08-13T22:42:46.539Z",
+  "status": "PUBLISHED_ARCHIVE_EMAIL_BLOCKED",
+  "recorded_at": "2026-08-14T06:53:10Z",
   "objective": "Operate The Tayoca Operator Brief as a governed evidence-backed nurture channel while W6 outbound responses mature.",
   "workflow": {
     "id": "Ug7hA8cXrrCIVYkI",
     "name": "Tayoca Growth OS | Operator Brief",
     "whole_issue_publication_approval_required": true,
-    "correction_reapproval_required": true
+    "correction_reapproval_required": true,
+    "source_execution": "82601",
+    "source_execution_note": "Draft generation execution created Issue 1 and reached the Slack whole-issue gate. Exact publication approval was subsequently recorded in ChatGPT and applied directly to the authoritative ledger and archive; the stale Slack wait must not be treated as pending authority."
   },
   "editorial_gate": {
     "required_distinct_approved_public_opportunities": 8,
-    "observed_approved_opportunities": 4,
-    "remaining": 4,
+    "observed_approved_opportunities": 8,
+    "remaining": 0,
+    "state": "PASSED",
+    "approval_channel": "human approval recorded through ChatGPT and prior Slack decisions",
     "approved_opportunity_ids": [
       "pgc1:ai-automation:editorial-cluster",
       "pgc1:cloud-ai-cost:editorial-cluster",
       "pgc1:platform-reliability:editorial-cluster",
-      "product:ai-automation-career-playbook"
+      "product:ai-automation-career-playbook",
+      "product:build-break-fix-devops",
+      "product:devops-incident-runbook",
+      "product:gitops-field-guide",
+      "product:n8n-mcp-kubernetes-teaching-pack"
     ],
-    "last_completed_approval_execution": "81347",
-    "last_completed_approval_opportunity": "pgc1:cloud-ai-cost:editorial-cluster",
-    "last_completed_approval_result": "success",
-    "active_approval_execution": "81449",
-    "active_approval_state": "WAITING_HUMAN_EDITORIAL_APPROVAL"
+    "blanket_editorial_approval_recorded_at": "2026-08-14T06:40:03Z",
+    "blanket_editorial_approval_scope": "remaining W7 editorial drafting gates only"
   },
   "operator_brief_issue_state": {
-    "issue_count": 0,
-    "assembled_issue": false,
-    "whole_issue_approval_pending": false
+    "issue_count": 1,
+    "assembled_issue": true,
+    "issue_id": "operator-brief-2026-08-17",
+    "issue_number": 1,
+    "period_start": "2026-08-17",
+    "period_end": "2026-08-23",
+    "status": "published",
+    "approval_state": "approved_for_publication",
+    "approval_requested_at": "2026-08-14T06:42:07.306Z",
+    "approved_at": "2026-08-14T06:50:15Z",
+    "published_at": "2026-08-14T06:53:10Z",
+    "archive_url": "https://tayoca.com/operator-brief-archive.html#operator-brief-2026-08-17",
+    "archive_commit": "334cdea00536952672668082f9e243cd598fa068",
+    "whole_issue_approval_pending": false,
+    "section_count": 8,
+    "private_repository_material_detected": false,
+    "subscriber_count": 0
   },
   "email_delivery": {
     "provider": "Resend",
@@ -42,13 +61,14 @@
     "signature_source": "/assets/email/tayoca-founder-signature.html",
     "n8n_runtime_environment_variable": "RESEND_API_KEY",
     "runtime_credential_state": "not_mounted",
-    "runtime_checked_at": "2026-08-13T22:42:46.539Z",
-    "delivery_state": "blocked_runtime_credential"
+    "runtime_checked_at": "2026-08-14T06:31:29.053Z",
+    "delivery_state": "blocked_runtime_credential_and_no_subscribers",
+    "subscriber_count": 0,
+    "send_occurred": false
   },
   "runtime": {
     "resend_api_key_present": false,
-    "composio_api_key_present": false,
-    "evidence": "docs/production-growth-cycle1-w7-runtime-snapshot.json"
+    "composio_api_key_present": false
   },
   "brand": {
     "identity_standard": "docs/brand-founder-identity.md",
@@ -62,10 +82,9 @@
     "bulk_email_without_subscription": "forbidden"
   },
   "next_actions": [
-    "complete the active governed editorial approval decision in execution 81449",
-    "continue one approval at a time until eight distinct opportunities are approved",
     "reconcile the existing Vault/ExternalSecret projection until RESEND_API_KEY is present in the production n8n runtime",
-    "assemble the first complete issue only after the editorial gate passes",
-    "request separate whole-issue publication approval before archive publication or subscriber email delivery"
+    "keep subscriber email delivery blocked until the runtime credential is present and there are active subscribed recipients",
+    "advance the next Operator Brief calendar slot without regenerating operator-brief-2026-08-17",
+    "continue W8 Revenue Command Center provenance-safe reporting promotion through the protected Forgejo review path"
   ]
 }

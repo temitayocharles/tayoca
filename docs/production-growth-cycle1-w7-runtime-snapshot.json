@@ -1,26 +1,50 @@
 {
-  "schema_version": 1,
-  "certified_at": "2026-08-13T22:42:46.539Z",
+  "schema_version": 3,
+  "certified_at": "2026-08-14T06:53:10Z",
   "required": 8,
-  "approved_safe_public": 4,
-  "remaining": 4,
+  "approved_safe_public": 8,
+  "remaining": 0,
+  "editorial_gate_state": "PASSED",
   "approved_opportunity_ids": [
     "pgc1:ai-automation:editorial-cluster",
     "pgc1:cloud-ai-cost:editorial-cluster",
     "pgc1:platform-reliability:editorial-cluster",
-    "product:ai-automation-career-playbook"
-  ],
-  "review_required_opportunity_ids": [
-    "product:aws-cost-optimization",
+    "product:ai-automation-career-playbook",
     "product:build-break-fix-devops",
     "product:devops-incident-runbook",
     "product:gitops-field-guide",
-    "product:kubernetes-operators-workbook",
-    "product:kubernetes-production-readiness",
     "product:n8n-mcp-kubernetes-teaching-pack"
   ],
+  "operator_brief": {
+    "issue_id": "operator-brief-2026-08-17",
+    "issue_number": 1,
+    "assembled": true,
+    "section_count": 8,
+    "approval_state": "approved_for_publication",
+    "approved_at": "2026-08-14T06:50:15Z",
+    "publication_state": "published",
+    "published_at": "2026-08-14T06:53:10Z",
+    "archive_url": "https://tayoca.com/operator-brief-archive.html#operator-brief-2026-08-17",
+    "archive_commit": "334cdea00536952672668082f9e243cd598fa068",
+    "private_repository_material_detected": false,
+    "subscriber_count": 0,
+    "email_delivery_state": "blocked_runtime_credential_and_no_subscribers"
+  },
+  "approval_audit": {
+    "blanket_editorial_approval_recorded_at": "2026-08-14T06:40:03Z",
+    "blanket_editorial_scope": "remaining W7 editorial drafting gates only",
+    "whole_issue_publication_approval_recorded_at": "2026-08-14T06:50:15Z",
+    "whole_issue_publication_channel": "ChatGPT"
+  },
   "runtime": {
     "resend_api_key_present": false,
-    "composio_api_key_present": false
+    "composio_api_key_present": false,
+    "runtime_last_checked_at": "2026-08-14T06:31:29.053Z"
+  },
+  "controls": {
+    "paid_media_spend": 0,
+    "publication_without_exact_issue_approval": "forbidden",
+    "subscriber_email_without_active_subscription": "forbidden",
+    "send_occurred": false
   }
 }
