@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "plan_id": "tayoca-production-growth-cycle-1",
+  "workstream": "W8",
+  "name": "weekly_revenue_operating_loop",
+  "status": "GREEN",
+  "objective": "Run a provenance-safe weekly revenue operating loop that distinguishes measured zero from unavailable data and preserves verified commercial lineage.",
+  "workflow": {
+    "id": "MRaoY2aHm85q3QWG",
+    "name": "Tayoca Growth OS | Demand Engine & Revenue Command Center",
+    "active": true,
+    "live_version": "5b0fa88c-fbfd-4099-8ac6-bfdce65f9723",
+    "previous_version": "3fe622a1-5b5e-4e6f-a9a5-95ae99e5f26b",
+    "live_updated_at": "2026-08-17T13:45:38.287Z",
+    "trigger_count": 3
+  },
+  "canonical_source": {
+    "repository": "temitayocharles/n8n-control-plane",
+    "path": "workflows/tayoca-growth-os-demand-engine-revenue-command-center--MRaoY2aHm85q3QWG.json",
+    "blob_sha": "04d363cd53d581e5df1da2ba218633e45853433a",
+    "review_pr": 5,
+    "review_title": "fix(w8): preserve missing Search Console metrics as unavailable"
+  },
+  "certification": {
+    "pinned_production_branch_test": {
+      "execution_id": "88780",
+      "status": "success",
+      "external_io": "pinned_or_simulated"
+    },
+    "exact_live_code_certifier": {
+      "workflow_id": "Qc2ZELgRWIxTzTLU",
+      "execution_id": "88781",
+      "status": "success",
+      "production_version_asserted": "5b0fa88c-fbfd-4099-8ac6-bfdce65f9723"
+    },
+    "assertions": {
+      "missing_search_console_clicks": "null_unavailable",
+      "missing_search_console_impressions": "null_unavailable",
+      "missing_average_position": "null_unavailable",
+      "genuine_zero_clicks": 0,
+      "genuine_zero_impressions": 0,
+      "genuine_zero_average_position": 0,
+      "sessions_without_authoritative_source": null,
+      "engaged_sessions_without_authoritative_source": null,
+      "zero_spend_roas": null,
+      "zero_spend_roas_provenance": "unavailable_zero_spend",
+      "pageviews_source": "first_party_analytics",
+      "brand_system": "Tayoca Brand System v1"
+    }
+  },
+  "controls": {
+    "analytics_provenance": "binding",
+    "verified_revenue_authority": "binding",
+    "first_party_measurement_authority": "binding",
+    "paid_media_spend": 0,
+    "missing_metrics_may_be_coerced_to_zero": false
+  },
+  "resolved_blocker": "revenue_command_center_placeholder_metrics",
+  "next_actions": [
+    "operate the Friday weekly report with the certified provenance-safe semantics",
+    "use live observations to decide whether any W9 controlled experiment has sufficient evidence to start",
+    "keep paid-media spend at zero unless a bounded experiment receives explicit approval"
+  ]
+}
