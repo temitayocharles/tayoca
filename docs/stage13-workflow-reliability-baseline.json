@@ -4,6 +4,7 @@
   "stage_name": "Workflow reliability and recovery",
   "status": "GREEN",
   "certified_at": "2026-08-11T00:13:30Z",
+  "recertified_at": "2026-08-17T15:46:34.583Z",
   "acceptance_gate": "all production workflows have tested failure and recovery paths",
   "production_workflows": [
     {"id":"W4aE4hNuFgwAxL02","version":"593d0b9e-9821-4361-8141-a0ee72fb445b"},
@@ -22,19 +23,33 @@
     "query_limit_per_workflow": 25,
     "external_effects": ["idempotent_reliability_ledger_upsert", "sanitized_slack_alert"],
     "privacy": "execution index metadata only",
+    "role": "defense_in_depth",
     "pinned_failure_routing_test": {"execution":"73570","status":"PASS"},
     "live_execution_index_test": {"execution":"73571","status":"PASS","new_failures":0,"false_alerts":0},
     "sanitizer_test": {"execution":"72235","status":"PASS","pii_or_secret_leak":false},
     "backup_refresh": {"execution":"73573","status":"BACKED_UP","content_hash":"fc766705310aeb56"}
   },
   "native_error_workflow_finding": {
-    "severity": "medium",
-    "status": "mitigated",
+    "severity": "resolved",
+    "status": "resolved",
     "configured": true,
-    "certified_as_primary_control": false,
-    "real_webhook_probe_executions": ["73098", "73273"],
-    "handler_dispatches_observed": 0,
-    "mitigation": "The scheduled execution monitor is the certified failure path; native errorWorkflow remains best-effort only."
+    "certified_automatic_dispatch": true,
+    "certified_at": "2026-08-17T15:46:34.583Z",
+    "current_probe": {
+      "invoker_execution": "88874",
+      "automatic_failure_execution": "88875",
+      "probe_workflow_id": "xmGa90oEkF6BJmyl",
+      "mode": "webhook",
+      "dispatch_observed": true,
+      "record_source": "n8n_error_trigger_controlled_probe",
+      "raw_payload_persisted": false,
+      "stack_persisted": false,
+      "credential_material_persisted": false,
+      "cleanup": "diagnostic row deleted and both disposable workflows archived"
+    },
+    "historical_probe_executions": ["73098", "73273"],
+    "historical_handler_dispatches_observed": 0,
+    "resolution": "A true automatic webhook-mode failure on the current n8n instance triggered the native Error Trigger. Earlier non-dispatch probes are retained as historical evidence only; manual executions are not valid Error Trigger certification. The five-minute metadata monitor remains active as defense in depth."
   },
   "infobip": {
     "durability": "persist_before_ack",
@@ -86,10 +101,12 @@
   "cleanup": {
     "temporary_control_relay": {"id":"9Ei2YDcgJVNTIhXk","archived":true},
     "disposable_error_probe": {"id":"1xJ3IlbkMED9HOUJ","archived":true},
-    "disposable_error_handler": {"id":"LSsC4wjBaTf65VXj","archived":true}
+    "disposable_error_handler": {"id":"LSsC4wjBaTf65VXj","archived":true},
+    "native_error_dispatch_probe": {"id":"xmGa90oEkF6BJmyl","archived":true},
+    "native_error_dispatch_invoker": {"id":"GqUSd3QGmQ5zoaky","archived":true},
+    "native_error_probe_ledger_row_deleted": true
   },
   "accepted_medium_findings": [
-    "Native n8n errorWorkflow dispatch did not execute during isolated real-webhook probes; mitigated by the tested five-minute execution monitor.",
     "Full-instance backup orchestration can exceed connector/manual execution boundaries; mitigated by the existing bounded sanitized backup worker and six-of-six restore drill."
   ],
   "critical_findings": 0,
