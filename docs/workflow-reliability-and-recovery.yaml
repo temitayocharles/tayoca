@@ -36,13 +36,26 @@ failure_detection:
     privacy: "Execution index metadata only; no full execution payload, stack, credentials, message bodies or PII are fetched."
     test_execution: '73570'
     live_read_execution: '73571'
+    role: defense_in_depth
   native_error_workflow:
     configured_on_all_production_workflows: true
     workflow_id: iX0ehWNElYUfdCQZ
-    certification_state: best_effort_only
-    finding: "On this n8n instance, real disposable webhook failures were recorded but did not dispatch the configured Error Trigger workflow in either published or unpublished handler state. Stage 13 therefore does not rely on native errorWorkflow dispatch."
-    probe_error_executions: ['73098', '73273']
-    isolated_handler_execution_count: 0
+    certification_state: certified_automatic_dispatch
+    certified_at: '2026-08-17T15:46:34.583Z'
+    current_probe:
+      invoker_execution: '88874'
+      automatic_failure_execution: '88875'
+      probe_workflow_id: xmGa90oEkF6BJmyl
+      mode: webhook
+      dispatch_observed: true
+      marker_source: n8n_error_trigger_controlled_probe
+      raw_payload_persisted: false
+      stack_persisted: false
+      credential_material_persisted: false
+      cleanup_complete: true
+    historical_probe_error_executions: ['73098', '73273']
+    historical_isolated_handler_execution_count: 0
+    resolution: "A current-instance automatic webhook-mode failure triggered the native Error Trigger successfully. Earlier non-dispatch probes remain historical evidence only; manual executions are not valid native Error Trigger certification. The five-minute metadata-only monitor remains active as defense in depth."
 
 reliability_ledgers:
   spreadsheet_id: 1JkW4DUTkjBTQNXlWMQdaVHlw-nFU1to8-cf9HMKXcQU
@@ -121,15 +134,13 @@ regression:
 
 accepted_non_blocking_findings:
   - severity: medium
-    finding: "Native n8n errorWorkflow dispatch did not execute during isolated real-webhook probes."
-    mitigation: "Active five-minute metadata-only execution monitor is the certified failure path and passed both pinned failure routing and live index reads."
-  - severity: medium
     finding: "Full-instance backup orchestration can exceed the connector/manual execution boundary."
     mitigation: "Existing bounded sanitized backup worker is used directly for Tayoca production workflows; six-of-six restore drill passed."
 
 fail_closed_controls:
   - "No workflow failure is considered recovered merely because an HTTP trigger acknowledged receipt."
   - "Infobip callback batches above 100 fail before acknowledgement instead of being truncated."
+  - "Native automatic Error Trigger dispatch and the five-minute metadata-only execution monitor operate as layered controls."
   - "Failure monitoring does not fetch raw execution data."
   - "Backups exclude credentials and require deliberate rebind before activation."
   - "Stage 7 private-source, Stage 8 publication, Stage 11 revenue, and Stage 12 measurement authority remain binding."
