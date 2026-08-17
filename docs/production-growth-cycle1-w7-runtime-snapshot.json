@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "certified_at": "2026-08-14T06:53:10Z",
+  "certified_at": "2026-08-17T13:30:41Z",
   "required": 8,
   "approved_safe_public": 8,
   "remaining": 0,
@@ -28,7 +28,7 @@
     "archive_commit": "334cdea00536952672668082f9e243cd598fa068",
     "private_repository_material_detected": false,
     "subscriber_count": 0,
-    "email_delivery_state": "blocked_runtime_credential_and_no_subscribers"
+    "email_delivery_state": "blocked_no_active_subscribers"
   },
   "approval_audit": {
     "blanket_editorial_approval_recorded_at": "2026-08-14T06:40:03Z",
@@ -37,9 +37,10 @@
     "whole_issue_publication_channel": "ChatGPT"
   },
   "runtime": {
-    "resend_api_key_present": false,
-    "composio_api_key_present": false,
-    "runtime_last_checked_at": "2026-08-14T06:31:29.053Z"
+    "resend_api_key_present": true,
+    "composio_api_key_present": true,
+    "runtime_last_checked_at": "2026-08-17T13:30:41Z",
+    "projection_gitops_commit": "37ee294cc58bc3bb7388fea040d402b330ad881b"
   },
   "controls": {
     "paid_media_spend": 0,
