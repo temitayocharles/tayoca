@@ -47,7 +47,7 @@ locked_cross_stage_controls:
 
 cycle:
   horizon_days: 30
-  phase: WEEKLY_REVENUE_OPERATING_LOOP
+  phase: CONTROLLED_EXPERIMENTS
   objective: >
     Prove that Tayoca can repeatedly convert qualified attention into commercial intent,
     leads, opportunities, conversations, proposals, and verified revenue using the certified platform.
@@ -189,7 +189,21 @@ workstreams:
   - id: W9
     name: controlled_experiments
     priority: 9
-    status: NOT_STARTED
+    status: RUNNING_SINGLE_ARM_DISTRIBUTION
+    started_at: '2026-08-17T14:06:15Z'
+    baseline: docs/production-growth-cycle1-w9-controlled-experiments.json
+    experiment_id: w9-exp-001-platform-reliability-linkedin-organic
+    experiment_type: single_arm_instrumented_rollout
+    channel: linkedin
+    distribution: organic
+    content_id: tayoca_20260810_pgc1_platform_reli_linkedin
+    parent_campaign_id: pgc1_platform_kubernetes_reliability
+    distribution_approval_execution: '75860'
+    linkedin_share_urn: urn:li:share:7495118544695635969
+    causal_lift_claim_allowed: false
+    observation_window_days: 7
+    evaluation_not_before: '2026-08-24T14:06:15Z'
+    paid_spend_released: false
   - id: W10
     name: non_blocking_operational_debt
     priority: 10
@@ -205,6 +219,7 @@ measurement:
   targeted_outbound_baseline: docs/production-growth-cycle1-w6-targeted-outbound.json
   operator_brief_baseline: docs/production-growth-cycle1-w7-operator-brief-nurture.json
   weekly_revenue_operating_loop_baseline: docs/production-growth-cycle1-w8-revenue-operating-loop.json
+  controlled_experiments_baseline: docs/production-growth-cycle1-w9-controlled-experiments.json
   forecast_rule: >
     Do not invent revenue, CAC, conversion, or pipeline targets before sufficient live production
     observations exist. Use the first 7-14 days to establish defensible baselines.
