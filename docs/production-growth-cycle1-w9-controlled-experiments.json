@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "plan_id": "tayoca-production-growth-cycle-1",
+  "workstream": "W9",
+  "name": "controlled_experiments",
+  "status": "RUNNING_SINGLE_ARM_DISTRIBUTION",
+  "recorded_at": "2026-08-17T14:06:15Z",
+  "objective": "Create attributable qualified-attention evidence before attempting a traffic-splitting experiment, while preserving zero paid spend and all publication, provenance, and revenue controls.",
+  "experiment": {
+    "id": "w9-exp-001-platform-reliability-linkedin-organic",
+    "type": "single_arm_instrumented_rollout",
+    "causal_lift_claim_allowed": false,
+    "reason_not_ab_split": "The current baseline is too sparse for a useful traffic split: 25 recent unique users, no recorded sales, no revenue-pipeline opportunities, no proposals, no attributed-revenue records, and approved campaign content had not yet been distributed. The first experiment therefore creates measurable distribution rather than dividing an already-small sample.",
+    "campaign_id": "tayoca_20260810_pgc1_platform_reli",
+    "parent_campaign_id": "pgc1_platform_kubernetes_reliability",
+    "content_id": "tayoca_20260810_pgc1_platform_reli_linkedin",
+    "opportunity_id": "pgc1:platform-reliability:editorial-cluster",
+    "channel": "linkedin",
+    "distribution": "organic",
+    "linkedin_share_urn": "urn:li:share:7495118544695635969",
+    "linkedin_url": "https://www.linkedin.com/feed/update/urn:li:share:7495118544695635969/",
+    "target_url": "https://tayoca.com/assessments.html?assessment=Platform%20Reliability%20Assessment&utm_source=linkedin&utm_medium=organic_social&utm_campaign=pgc1_platform_kubernetes_reliability&utm_content=linkedin#assessment-form",
+    "utm_source": "linkedin",
+    "utm_medium": "organic_social",
+    "utm_campaign": "pgc1_platform_kubernetes_reliability",
+    "utm_content": "linkedin",
+    "distribution_approval_execution": "75860",
+    "distribution_approval_state": "approved_and_completed",
+    "publication_recorded_at": "2026-08-17T14:06:15Z",
+    "linkedin_creation_state": "success",
+    "linkedin_readback_state": "forbidden_403_after_successful_creation",
+    "duplicate_publication_prohibited": true,
+    "paid_spend": 0
+  },
+  "baseline": {
+    "kpi_period_start": "2026-08-07",
+    "kpi_period_end": "2026-08-14",
+    "kpi_generated_at": "2026-08-14T21:00:07.276Z",
+    "website_users": 25,
+    "sessions": null,
+    "engaged_sessions": null,
+    "organic_clicks": 0,
+    "organic_impressions": 12,
+    "average_position": 24.166666666666668,
+    "gumroad_sales": 0,
+    "gumroad_revenue": 0,
+    "email_subscribers": 0,
+    "consultation_bookings": 0,
+    "ad_spend": 0,
+    "sales_rows": 0,
+    "revenue_pipeline_opportunities": 0,
+    "proposals": 0,
+    "revenue_attribution_records": 0
+  },
+  "pre_rollout_distribution_state": {
+    "approved_content_assets": 42,
+    "published_content_assets": 0,
+    "platform_reliability_linkedin_asset_state": "approved_ready_for_distribution"
+  },
+  "ledger_record": {
+    "spreadsheet": "Tayoca Growth OS Ledger",
+    "content_queue_state": "published",
+    "campaign_launch_recorded": true,
+    "performance_metrics_mutated_at_launch": false,
+    "unobserved_metrics_remain_unchanged": true
+  },
+  "measurement": {
+    "primary": [
+      "linkedin_post_clicks_when_authoritatively_available",
+      "utm_attributed_visits_to_platform_reliability_assessment",
+      "platform_reliability_assessment_starts",
+      "platform_reliability_assessment_completions"
+    ],
+    "secondary": [
+      "qualified_leads",
+      "opportunities",
+      "conversations",
+      "proposals",
+      "verified_revenue"
+    ],
+    "observation_window_days": 7,
+    "evaluation_not_before": "2026-08-24T14:06:15Z",
+    "evaluation_rule": "Evaluate at the first weekly revenue report after a full seven-day observation window. Do not infer lift from this single-arm rollout.",
+    "minimum_next_experiment_requirement": "Only introduce a split variant after observed event volume supports explicit power/sample-size planning.",
+    "no_statistical_lift_claim": true
+  },
+  "controls": {
+    "paid_media_spend": 0,
+    "paid_spend_released": false,
+    "private_source_firewall": "binding",
+    "human_distribution_approval": "satisfied_execution_75860",
+    "verified_revenue_authority": "binding",
+    "analytics_provenance": "binding",
+    "first_party_measurement_authority": "binding"
+  },
+  "next_actions": [
+    "observe the exact LinkedIn UTM and assessment lineage through a full seven-day window",
+    "do not publish a duplicate of the LinkedIn asset when post readback is forbidden after successful creation",
+    "do not split traffic into A/B variants until baseline event volume can support power planning",
+    "do not release paid spend without explicit approval"
+  ]
+}
