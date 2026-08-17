@@ -1,395 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <!-- Google Analytics 4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-G4QC90QNXW"></script>
-  <script src="/ga4.js"></script>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AWS Cloud Cost Optimization Playbook - How We Saved $216K in 90 Days | Temitayo Charles Akinniranye</title>
-    <meta name="description" content="Complete AWS cost optimization strategy that saved $216K in 90 days. Real-world FinOps tactics, right-sizing, reserved instances, and automated governance.">
-    <meta name="keywords" content="AWS cost optimization, FinOps, cloud cost reduction, DevOps consulting, AWS savings, cloud financial management">
-    <meta property="og:title" content="AWS Cloud Cost Optimization Playbook - $216K Saved in 90 Days">
-    <meta property="og:description" content="Complete AWS cost optimization strategy that saved $216K in 90 days. Real-world FinOps tactics and automated governance.">
-    <meta property="og:type" content="article">
-    <meta property="og:url" content="https://tayoca.com/blog/cloud-cost-optimization-playbook.html">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="AWS Cloud Cost Optimization Playbook - $216K Saved in 90 Days">
-    <meta name="twitter:description" content="Complete AWS cost optimization strategy that saved $216K in 90 days. Real-world FinOps tactics.">
-
-    <!-- Tailwind CSS via UNPKG CDN -->
-    <script src="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.js"></script>
-    
-    <!-- InsForge Analytics -->
-    <script defer src="https://v7mhrspk.function2.insforge.app/c.js"></script>
-    
-    <style>
-        body { background-color: #0d0d0d; color: #e5e7eb; }
-        .prose { @apply text-[var(--fg-muted)]; }
-        .prose h1 { @apply text-3xl font-bold text-white mb-6; }
-        .prose h2 { @apply text-2xl font-bold text-[var(--accent)] mt-10 mb-4; }
-        .prose h3 { @apply text-xl font-medium text-white mt-8 mb-3; }
-        .prose p { @apply mb-4 leading-relaxed; }
-        .prose ul { @apply list-disc list-inside mb-4 space-y-2; }
-        .prose ol { @apply list-decimal list-inside mb-4 space-y-2; }
-        .prose code { @apply bg-[var(--card-bg)] text-orange-400 px-1.5 py-0.5 rounded text-sm font-mono; }
-        .prose pre { @apply bg-[var(--bg-elevated)] border border-[var(--border)] rounded-lg p-4 overflow-x-auto mb-6; }
-        .prose pre code { @apply bg-transparent text-gray-200 p-0 text-sm; }
-        .prose a { @apply text-[var(--accent)] hover:text-orange-400 underline; }
-        .prose blockquote { @apply border-l-4 border-[var(--accent)] pl-4 italic text-[var(--fg-muted)] my-4; }
-        .prose img { @apply rounded-lg border border-[var(--border)] my-6 max-w-full; }
-        .prose strong { @apply text-white; }
-    
-    <style>
-        :root { --bg: #0d0d0d; --bg-elevated: #1a1a1a; --fg: #e5e7eb; --fg-muted: #9ca3af; --accent: #f97316; --accent-hover: #ea580c; --border: #374151; --border-hover: #4b5563; --card-bg: #111827; --focus-ring: #f97316; --header-height: 64px; }
-        * { box-sizing: border-box; } html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-        @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; } }
-        body { background-color: var(--bg); color: var(--fg); font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif; line-height: 1.6; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-        .skip-link { position: absolute; top: -100%; left: 50%; transform: translateX(-50%); background: var(--accent); color: white; padding: 0.75rem 1.5rem; border-radius: 0.5rem; z-index: 10000; font-weight: 600; text-decoration: none; }
-        .skip-link:focus { top: 1rem; } :focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 2px; }
-        .mobile-menu { position: fixed; top: 0; right: 0; bottom: 0; width: 100%; max-width: 320px; background: var(--bg); border-left: 1px solid var(--border); z-index: 100; transform: translateX(100%); transition: transform 0.3s ease-out; padding: calc(var(--header-height) + 1rem) 1.5rem 2rem; display: flex; flex-direction: column; gap: 1rem; overflow-y: auto; }
-        .mobile-menu.open { transform: translateX(0); }
-        .mobile-menu-overlay { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.5); z-index: 99; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; }
-        .mobile-menu-overlay.open { opacity: 1; visibility: visible; }
-        .mobile-menu a { display: block; padding: 1rem; color: var(--fg); text-decoration: none; border-radius: 0.5rem; font-size: 1.125rem; font-weight: 500; transition: background 0.2s ease, color 0.2s ease; touch-action: manipulation; }
-        .mobile-menu a:hover, .mobile-menu a:focus { background: var(--bg-elevated); color: var(--accent); }
-        .mobile-menu a[aria-current="page"] { color: var(--accent); background: rgba(249, 115, 22, 0.1); }
-        .mobile-menu-close { position: absolute; top: 1rem; right: 1rem; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 0.5rem; color: var(--fg); cursor: pointer; touch-action: manipulation; }
-        .mobile-menu-close:hover, .mobile-menu-close:focus { background: var(--border); }
-        .hamburger { display: flex; flex-direction: column; justify-content: space-between; width: 28px; height: 20px; background: transparent; border: none; cursor: pointer; padding: 0; touch-action: manipulation; }
-        .hamburger span { display: block; width: 100%; height: 3px; background: var(--fg); border-radius: 2px; transition: transform 0.3s ease, opacity 0.3s ease; }
-        .hamburger[aria-expanded="true"] span:nth-child(1) { transform: translateY(8.5px) rotate(45deg); }
-        .hamburger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
-        .hamburger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-8.5px) rotate(-45deg); }
-        @media (min-width: 768px) { .hamburger { display: none; } }
-        .hero-title { font-size: clamp(2rem, 8vw, 3.5rem); line-height: 1.1; }
-        .hero-subtitle { font-size: clamp(1rem, 3vw, 1.25rem); }
-        .section-title { font-size: clamp(1.75rem, 5vw, 2.5rem); line-height: 1.2; }
-        .card { transition: border-color 0.2s ease, transform 0.2s ease; }
-        @media (prefers-reduced-motion: no-preference) { .card:hover { border-color: var(--accent); transform: translateY(-2px); } }
-        .card:focus-within { border-color: var(--focus-ring); }
-        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.875rem 1.5rem; font-size: 1rem; font-weight: 600; border-radius: 0.5rem; text-decoration: none; border: 2px solid transparent; cursor: pointer; touch-action: manipulation; min-height: 48px; transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease; }
-        .btn-primary { background: var(--accent); color: white; border-color: var(--accent); }
-        .btn-primary:hover, .btn-primary:focus { background: var(--accent-hover); border-color: var(--accent-hover); }
-        .btn-secondary { background: transparent; color: var(--accent); border-color: var(--accent); }
-        .btn-secondary:hover, .btn-secondary:focus { background: rgba(249, 115, 22, 0.1); }
-        .form-input { width: 100%; padding: 0.875rem 1rem; font-size: 1rem; background: var(--bg-elevated); border: 2px solid var(--border); border-radius: 0.5rem; color: var(--fg); min-height: 48px; transition: border-color 0.2s ease, box-shadow 0.2s ease; }
-        .form-input::placeholder { color: var(--fg-muted); }
-        .form-input:focus { outline: none; border-color: var(--focus-ring); box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.2); }
-        .newsletter-form { display: flex; flex-direction: column; gap: 0.75rem; }
-        @media (min-width: 640px) { .newsletter-form { flex-direction: row; } }
-        .footer-link { color: var(--fg-muted); transition: color 0.2s ease; }
-        .footer-link:hover, .footer-link:focus { color: var(--fg); }
-        @supports (padding: max(0px)) { .mobile-menu { padding-right: max(1.5rem, env(safe-area-inset-right)); padding-left: max(1.5rem, env(safe-area-inset-left)); padding-bottom: max(2rem, env(safe-area-inset-bottom)); } }
-        @media print { .mobile-menu, .hamburger, .newsletter-form, footer { display: none !important; } body { background: white; color: black; } }
-        .blog-card-image { width: 100%; aspect-ratio: 16/10; object-fit: cover; border-radius: 0.5rem; }
-        @media (min-width: 768px) { .blog-card-image { width: 100%; height: 192px; } }
-        .table-wrapper { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 1.5rem 0; }
-        .table-wrapper::-webkit-scrollbar { height: 8px; }
-        .table-wrapper::-webkit-scrollbar-track { background: var(--bg); }
-        .table-wrapper::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
-        .table-wrapper::-webkit-scrollbar-thumb:hover { background: var(--border-hover); }
-        table { width: 100%; min-width: 600px; border-collapse: collapse; font-size: 0.875rem; }
-        th, td { padding: 0.75rem 1rem; text-align: left; border-bottom: 1px solid var(--border); }
-        th { background: var(--bg-elevated); color: var(--fg-muted); font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; position: sticky; top: 0; z-index: 1; }
-        tr:hover td { background: var(--bg-elevated); }
-        .code-block, pre { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 0.5rem; padding: 1.5rem; overflow-x: auto; margin: 1.5rem 0; font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace; font-size: 0.875rem; line-height: 1.7; -webkit-overflow-scrolling: touch; }
-        .code-block code, pre code { background: transparent; padding: 0; font-size: inherit; color: var(--fg); }
-        img { max-width: 100%; height: auto; display: block; }
-    </style>
-</style>
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://tayoca.com/blog/cloud-cost-optimization-playbook.html">
-<meta property="og:image" content="https://tayoca.com/assets/og-image.png">
-<meta name="twitter:image" content="https://tayoca.com/assets/og-image.png">
-<!-- InsForge Analytics -->
-<script>(function(){var e='https://v7mhrspk.function2.insforge.app/analytics-event',d='tayoca.com';function s(n,p){var r={domain:d,name:n,url:location.href,path:location.pathname,referrer:document.referrer||null,screen_width:screen.width,screen_height:screen.height,props:p||{}};navigator.sendBeacon&&navigator.sendBeacon(e,JSON.stringify(r))||fetch(e,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(r),keepalive:!0})}document.readyState==='loading'?document.addEventListener('DOMContentLoaded',function(){s('pageview')}):s('pageview');window.tayocaAnalytics={sendEvent:s}})()</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "AWS Cloud Cost Optimization Playbook - How We Saved $216K in 90 Days | Temitayo Charles Akinniranye",
-  "description": "Complete AWS cost optimization strategy that saved $216K in 90 days. Real-world FinOps tactics, right-sizing, reserved instances, and automated governance.",
-  "url": "https://tayoca.com/blog/cloud-cost-optimization-playbook.html",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://tayoca.com/blog/cloud-cost-optimization-playbook.html"
-  },
-  "image": [
-    "https://tayoca.com/assets/og-image.png"
-  ],
-  "author": {
-    "@type": "Person",
-    "name": "Temitayo Charles Akinniranye"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Tayoca",
-    "url": "https://tayoca.com/"
-  },
-  "datePublished": "2026-07-24"
-}
-</script>
-</head>
-<a href="#main-content" class="skip-link">Skip to main content</a>
-<body class="min-h-screen">
-    <!-- Navigation -->
-    
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-[var(--bg)] border-b border-[var(--border)]" style="height: var(--header-height);" role="navigation" aria-label="Main navigation">
-        <div class="flex items-center justify-between h-full px-4 md:px-6">
-            <div class="flex items-center space-x-3">
-                <a href="../index.html" class="text-xl font-semibold text-[var(--accent)] nav-link flex items-center" aria-label="Temitayo Charles Akinniranye - Home">
-                 <svg class="w-6 h-6 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 3L4 14h7v7l9-9h-7V3z"/></svg>
-                 <span class="hidden sm:inline">temitayo</span>
-                 </a>
-            </div>
-            <div class="hidden md:flex items-center space-x-1">
-                <a href="../index.html" class="nav-link px-4 py-2 rounded-lg text-sm font-medium text-[var(--fg)] hover:text-[var(--accent)] hover:bg-[var(--bg-elevated)] transition-colors">Home</a>
-                <a href="../services.html" class="nav-link px-4 py-2 rounded-lg text-sm font-medium text-[var(--fg)] hover:text-[var(--accent)] hover:bg-[var(--bg-elevated)] transition-colors">Services</a>
-                <a href="/products.html" class="nav-link px-4 py-2 rounded-lg text-sm font-medium text-[var(--fg)] hover:text-[var(--accent)] hover:bg-[var(--bg-elevated)] transition-colors">Products</a>
-                <a href="/blog/" class="nav-link px-4 py-2 rounded-lg text-sm font-medium text-[var(--fg)] hover:text-[var(--accent)] hover:bg-[var(--bg-elevated)] transition-colors">Blog</a>
-                <a href="../about.html" class="nav-link px-4 py-2 rounded-lg text-sm font-medium text-[var(--fg)] hover:text-[var(--accent)] hover:bg-[var(--bg-elevated)] transition-colors">About</a>
-            </div>
-            <button class="hamburger md:hidden p-2 rounded-lg border border-[var(--border)] bg-[var(--bg-elevated)]" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu" type="button">
-                <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
-            </button>
-        </div>
-    </nav>
-    <div class="mobile-menu-overlay" id="mobile-menu-overlay" aria-hidden="true"></div>
-    <aside class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Navigation menu" aria-modal="true">
-        <button class="mobile-menu-close" aria-label="Close navigation menu" type="button">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-        </button>
-        <nav>
-            <a href="../index.html" class="nav-link">Home</a>
-            <a href="../services.html" class="nav-link">Services</a>
-            <a href="/products.html" class="nav-link">Products</a>
-            <a href="/blog/" class="nav-link">Blog</a>
-            <a href="../about.html" class="nav-link">About</a>
-        </nav>
-    </aside>
-    
-    <!-- Article Header -->
-    <header class="container mx-auto px-6 py-16 md:py-24">
-        <div class="max-w-3xl mx-auto text-center">
-            <span class="inline-block px-3 py-1 bg-[var(--accent)]/20 text-[var(--accent)] text-sm font-medium rounded-full mb-6">FinOps & Cloud Economics</span>
-            <h1 class="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-                AWS Cloud Cost Optimization Playbook: How We Saved $216K in 90 Days
-            </h1>
-            <p class="text-lg text-[var(--fg-muted)] mb-8">
-                A production-grade FinOps strategy combining right-sizing, reserved instance arbitrage, automated governance, and cultural adoption — deployed at a mid-market e-commerce company.
-            </p>
-            <div class="flex flex-wrap justify-center gap-4 text-sm text-gray-500">
-                <span>By <strong class="text-white">Temitayo Charles Akinniranye</strong></span>
-                <span>•</span>
-                <time datetime="2026-07-24">July 24, 2026</time>
-                <span>•</span>
-                <span>12 min read</span>
-            </div>
-        </div>
-    </header>
-
-    <!-- Article Content -->
-    <article class="container mx-auto px-6 pb-16">
-        <div class="max-w-3xl mx-auto">
-            <div class="prose">
-                <p class="lead text-lg text-[var(--fg-muted)] mb-8">
-                    Most teams don't have a cost problem — they have a <strong>visibility and accountability problem</strong>. This playbook documents the exact framework we used to reduce AWS spend from $240K/month to $24K/month (90% reduction) for a Series B e-commerce client in Q2 2026.
-                </p>
-
-                <h2>The Problem: Invisible Waste at Scale</h2>
-                <p>The client ran 200+ EC2 instances across 3 regions, 40+ RDS databases, and a sprawling S3 footprint with no lifecycle policies. Their monthly bill: <strong>$240,000</strong>. Engineering viewed cost as "finance's problem"; finance viewed it as "engineering's black box." No one owned the number.</p>
-                
-                <blockquote>
-                    "We knew we were overspending, but every attempt to cut costs broke something in production. We needed a framework, not a one-time cleanup."
-                </blockquote>
-
-                <h2>Phase 1: Establish Visibility (Week 1-2)</h2>
-                <h3>1.1 Cost Allocation Tags — Mandatory, Not Optional</h3>
-                <p>Enforced tagging policy via AWS Config Rules + Service Control Policies:</p>
-                <pre><code># Required tags on ALL resources
-Environment: prod|staging|dev
-Team: platform|payments|search|analytics
-Owner: slack-handle
-CostCenter: CC-001|CC-002
-Project: revenue|internal|experiment</code></pre>
-                <p>Non-compliant resources auto-terminated after 72-hour grace period via Lambda + EventBridge.</p>
-
-                <h3>1.2 CUR + Athena + QuickSight Dashboard</h3>
-                <p>Enabled Cost and Usage Reports (CUR) to S3, built Athena tables, created QuickSight dashboards per team. Each team now sees their <strong>daily, weekly, monthly spend</strong> with drill-down to resource level.</p>
-
-                <h3>1.3 Anomaly Detection</h3>
-                <p>Configured AWS Cost Anomaly Detection with 15% threshold per team. Alerts route to team Slack + PagerDuty for immediate triage.</p>
-
-                <h2>Phase 2: Right-Sizing & Waste Elimination (Week 3-6)</h2>
-                <h3>2.1 Compute Right-Sizing (EC2, RDS, ECS)</h3>
-                <ul>
-                    <li>Used Compute Optimizer + CloudWatch metrics (CPU, Memory, Network, Disk) over 14-day windows</li>
-                    <li>Downsized 142/200 EC2 instances (avg 65% CPU over-provision)</li>
-                    <li>Migrated 18 RDS instances to smaller classes + Aurora Serverless v2 for variable workloads</li>
-                    <li><strong>Savings: $78K/month</strong></li>
-                </ul>
-
-                <h3>2.2 Reserved Instances & Savings Plans</h3>
-                <ul>
-                    <li>Analyzed 90-day steady-state usage → purchased 3-year All Upfront RIs for baseline</li>
-                    <li>Applied Compute Savings Plans for flexible workloads (EC2 + Fargate + Lambda)</li>
-                    <li>Leveraged RI Marketplace to offload unused reservations</li>
-                    <li><strong>Savings: $62K/month</strong></li>
-                </ul>
-
-                <h3>2.3 Storage Lifecycle & Cleanup</h3>
-                <ul>
-                    <li>S3 Intelligent-Tiering for unknown access patterns</li>
-                    <li>Lifecycle rules: Standard → IA (30d) → Glacier (90d) → Deep Archive (365d)</li>
-                    <li>Deleted 47TB of unattached EBS snapshots & orphaned volumes</li>
-                    <li><strong>Savings: $14K/month</strong></li>
-                </ul>
-
-                <h3>2.4 Zombie Resource Hunt</h3>
-                <p>Automated discovery via AWS Resource Groups + custom Lambda:</p>
-                <pre><code># Finds: stopped instances > 7d, unattached ENIs, idle ALBs, 
-# unused NAT Gateways, orphaned EIPs, dead CloudWatch log groups</code></pre>
-                <li><strong>Savings: $8K/month</strong></li>
-
-                <h2>Phase 3: Architecture-Level Optimization (Week 7-10)</h2>
-                <h3>3.1 Graviton Migration (ARM)</h3>
-                <p>Migrated 89 eligible workloads to Graviton2/3 — 20-40% price/performance gain. Used EKS node groups with mixed instances for zero-downtime rollout.</p>
-
-                <h3>3.2 Data Transfer Optimization</h3>
-                <ul>
-                    <li>Cross-AZ → Cross-region traffic reduced via Regional endpoints</li>
-                    <li>CloudFront for static assets (reduced S3 egress 87%)</li>
-                    <li>VPC Endpoints (Gateway + Interface) for S3/DynamoDB — eliminated NAT Gateway charges</li>
-                    <li><strong>Savings: $18K/month</strong></li>
-                </ul>
-
-                <h3>3.3 Serverless Where It Fits</h3>
-                <p>Refactored 12 cron/batch jobs to EventBridge + Lambda (from EC2 + Airflow). Eliminated idle compute entirely.</p>
-
-                <h2>Phase 4: Governance & Culture (Week 11-12)</h2>
-                <h3>4.1 Budget Guardrails per Team</h3>
-                <p>AWS Budgets + SNS → Slack per team. Hard limit at 110% of forecast; soft alert at 90%. Teams own their forecasts.</p>
-
-                <h3>4.2 FinOps Champions Program</h3>
-                <p>Appointed 1 engineer per team as "FinOps Champion" — 2hrs/week dedicated to cost hygiene. Champions review anomalies, optimize their team's resources, report in weekly standup.</p>
-
-                <h3>4.3 Monthly Cost Review Ritual</h3>
-                <p>30-min cross-functional meeting: Engineering leads + Finance + Platform. Review top 10 cost drivers, anomalies, optimization wins, upcoming capacity changes.</p>
-
-                <h2>Results Summary</h2>
-                <table class="w-full border-collapse mb-8">
-                    <thead>
-                        <tr class="border-b border-[var(--border)]">
-                            <th class="text-left p-3 text-[var(--fg-muted)]">Category</th>
-                            <th class="text-right p-3 text-[var(--fg-muted)]">Monthly Savings</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="border-b border-[var(--border)]"><td class="p-3">Right-Sizing Compute</td><td class="text-right p-3 text-green-400">$78,000</td></tr>
-                        <tr class="border-b border-[var(--border)]"><td class="p-3">RI / Savings Plans</td><td class="text-right p-3 text-green-400">$62,000</td></tr>
-                        <tr class="border-b border-[var(--border)]"><td class="p-3">Storage Lifecycle</td><td class="text-right p-3 text-green-400">$14,000</td></tr>
-                        <tr class="border-b border-[var(--border)]"><td class="p-3">Zombie Resources</td><td class="text-right p-3 text-green-400">$8,000</td></tr>
-                        <tr class="border-b border-[var(--border)]"><td class="p-3">Data Transfer / VPC Endpoints</td><td class="text-right p-3 text-green-400">$18,000</td></tr>
-                        <tr class="border-b border-[var(--border)]"><td class="p-3">Serverless Migration</td><td class="text-right p-3 text-green-400">$12,000</td></tr>
-                        <tr class="font-bold text-white"><td class="p-3">Total</td><td class="text-right p-3 text-green-400">$192,000/month</td></tr>
-                    </tbody>
-                </table>
-                <p class="text-[var(--fg-muted)] text-sm">Additional one-time savings from RI marketplace sales: ~$24K. Total 90-day impact: <strong>$216K</strong>.</p>
-
-                <h2>Reusable Artifacts (Open Source)</h2>
-                <p>We've packaged the automation as <strong>AWS Cost Optimization Playbook</strong> — available as a digital product:</p>
-                <ul>
-                    <li>Terraform modules for tagging enforcement, CUR pipeline, anomaly detection</li>
-                    <li>Lambda functions for zombie hunting, right-sizing recommendations</li>
-                    <li>QuickSight dashboard templates (JSON export)</li>
-                    <li>FinOps Champions runbook + monthly review agenda</li>
-                </ul>
-                <p class="text-center mt-6">
-                    <a href="/products.html" class="inline-block px-6 py-3 bg-[var(--accent)] text-white rounded-lg hover:bg-[var(--accent-hover)] transition-colors font-medium">
-                        Get the Playbook → $49
-                    </a>
-                </p>
-
-                <h2>Want This for Your Organization?</h2>
-                <p>We run a <strong>$5K Cloud Cost Audit</strong> — 2-week engagement, deliverable is a prioritized optimization roadmap with projected savings. Book a free discovery call:</p>
-                <p class="text-center mt-4">
-                    <a href="https://calendly.com/d/d2d5-67k-mws" class="inline-block px-6 py-3 bg-[var(--accent)] text-white rounded-lg hover:bg-[var(--accent-hover)] transition-colors font-medium" target="_blank">
-                        Schedule Free Cloud Audit Discovery →
-                    </a>
-                </p>
-            </div>
-        </div>
-    </article>
-
-    <!-- Footer -->
-        <footer class="border-t border-[var(--border)] mt-16 py-8 px-4">
-        <main id="main-content" class="flex-1 pt-[var(--header-height)]"><div class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-            <p class="text-[var(--fg-muted)] text-sm">© 2025 Temitayo Charles Akinniranye. All rights reserved.</p>
-            <a href="#" class="footer-link text-sm">Privacy Policy</a>
-        </div>
-    </footer>
-
-    <!-- Newsletter Signup Section -->
-    <div class="container mx-auto px-6 pb-16">
-        <div class="max-w-4xl mx-auto bg-[var(--card-bg)] rounded-lg p-6 border border-[var(--accent)]/30 text-center">
-            <h3 class="text-lg font-medium text-white mb-2">Stay Updated</h3>
-            <p class="text-[var(--fg-muted)] text-sm mb-4">Get weekly insights on DevOps, AI automation, and technical playbooks. No spam, unsubscribe anytime.</p>
-            <form id="newsletter-form" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-                <input 
-                    type="email" 
-                    name="email" 
-                    placeholder="your@email.com" 
-                    required
-                    class="form-input"
-                >
-                <button 
-                    type="submit" 
-                    class="btn btn-primary whitespace-nowrap"
-                >
-                    Subscribe
-                </button>
-            </form>
-        </div>
-    </div>
-
-    <script>
-        document.getElementById('newsletter-form').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const email = e.target.email.value;
-            const btn = e.target.querySelector('button');
-            btn.textContent = 'Subscribing...';
-            btn.disabled = true;
-            
-            try {
-                const res = await fetch('https://v7mhrspk.function2.insforge.app/newsletter-subscribe', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ email, source: 'blog-cloud-cost-optimization' })
-                });
-                if (res.ok) {
-                    btn.textContent = 'Subscribed!';
-                    btn.classList.remove('bg-text-[var(--accent)]');
-                    btn.classList.add('bg-green-500');
-                    e.target.reset();
-                } else {
-                    throw new Error('Failed');
-                }
-            } catch {
-                btn.textContent = 'Error — Try Again';
-                btn.classList.remove('bg-text-[var(--accent)]');
-                btn.classList.add('bg-red-500');
-            }
-            setTimeout(() => {
-                btn.textContent = 'Subscribe';
-                btn.disabled = false;
-                btn.classList.remove('bg-green-500', 'bg-red-500');
-                btn.classList.add('bg-text-[var(--accent)]');
-            }, 3000);
-        });
-    </script>
-
-    <script src="/shared-mobile.js"></script>
-</body>
-</html>
+<!doctype html>
+<html lang="en"><head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4QC90QNXW"></script><script src="/ga4.js"></script>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AWS Cloud Cost Optimization Playbook | Tayoca Insights</title>
+<meta name="description" content="A practical evidence-first FinOps playbook for finding AWS cost drivers, validating optimization hypotheses, assigning ownership and measuring realized savings safely.">
+<meta name="robots" content="index,follow"><link rel="canonical" href="https://tayoca.com/blog/cloud-cost-optimization-playbook.html"><link rel="icon" href="/favicon.ico">
+<meta property="og:title" content="AWS Cloud Cost Optimization Playbook | Tayoca"><meta property="og:description" content="Evidence-first FinOps tactics for turning AWS cost data into prioritized, measurable optimization work."><meta property="og:type" content="article"><meta property="og:url" content="https://tayoca.com/blog/cloud-cost-optimization-playbook.html"><meta property="og:site_name" content="Tayoca"><meta property="og:image" content="https://tayoca.com/cover_aws-cost-optimization.png">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="AWS Cloud Cost Optimization Playbook | Tayoca"><meta name="twitter:description" content="A practical evidence-first FinOps workflow for AWS cost optimization."><meta name="twitter:image" content="https://tayoca.com/cover_aws-cost-optimization.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="/assets/css/growth-os.css">
+<style>.article{max-width:860px;margin:auto}.article h2{margin-top:2.4rem}.article h3{font-family:Sora,Inter,sans-serif;color:#fff;margin-top:1.8rem}.article p,.article li{color:#d4d4d4}.article code{font-family:JetBrains Mono,monospace;background:#262626;padding:.12rem .35rem;border-radius:.25rem}.article .callout{border-left:4px solid var(--accent);background:var(--surface);padding:1rem 1.2rem;margin:1.5rem 0;border-radius:.4rem}.article table{width:100%;border-collapse:collapse;margin:1.5rem 0}.article th,.article td{text-align:left;padding:.75rem;border-bottom:1px solid var(--line);vertical-align:top}.article th{color:#fff}.article td{color:#d4d4d4}@media(max-width:680px){.article-table{overflow-x:auto}.article table{min-width:620px}}</style>
+</head><body><a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner"><a class="brand" href="/" aria-label="Tayoca home">TAYOCA</a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button><nav class="primary-nav" id="primary-nav" aria-label="Primary navigation"><a href="/services.html">Services</a><a href="/assessments.html">Assessments</a><a href="/results.html">Results</a><a href="/products.html">Products</a><a href="/insights.html" aria-current="page">Insights</a><a href="/about.html">About</a></nav><a class="button small header-cta" href="/assessments.html">Start an Assessment</a></div></header>
+<main id="main"><section class="hero"><div class="hero-inner"><p class="eyebrow">Insights · FinOps</p><h1>AWS cloud cost optimization, <span class="accent">without fictional savings.</span></h1><p class="lede">A practical workflow for moving from billing evidence to optimization hypotheses, implementation decisions and measured outcomes—without confusing modeled opportunity with realized savings.</p><div class="actions"><a class="button" href="/assessments.html">Start an Assessment</a><a class="button secondary" href="/results.html">See Client Results</a></div></div></section><div class="amber-rule"></div>
+<section class="section"><article class="container article">
+<p class="microcopy">Editorial standard: examples in this article are methodological, not claims about a specific client outcome. Any future quantified Tayoca case study must pass the evidence and disclosure gate documented in the Trust Center.</p>
+<h2>1. Establish the cost baseline before optimizing</h2>
+<p>Start with source billing data for an agreed period. Define the accounts, services, regions, tags, business units and workloads inside the analysis boundary. Record whether credits, taxes, support charges, commitments and shared-platform costs are included. Without a stable boundary, a later “saving” can simply be a change in what was counted.</p>
+<p>Capture the baseline in a reproducible artifact: query, export, dashboard definition or calculation workbook. The goal is not a prettier chart; it is a result another operator can re-check.</p>
+<h2>2. Separate cost drivers from optimization ideas</h2>
+<p>Rank the material cost drivers first. Typical categories include compute, databases, block/object storage, data transfer, managed Kubernetes, observability, backup, idle development capacity and commitment coverage. Only after the driver is visible should the team form an optimization hypothesis.</p>
+<div class="article-table"><table><thead><tr><th>Evidence</th><th>Question</th><th>Possible action</th><th>Validation</th></tr></thead><tbody>
+<tr><td>Utilization + instance inventory</td><td>Is capacity persistently over-provisioned?</td><td>Right-size or schedule non-production capacity</td><td>Compare post-change utilization, error rate and bill</td></tr>
+<tr><td>Storage inventory + access pattern</td><td>Is data retained in an unnecessarily expensive tier?</td><td>Lifecycle, tier or delete under policy</td><td>Check retrieval requirements and storage bill</td></tr>
+<tr><td>Commitment coverage</td><td>Is stable usage paid mostly on-demand?</td><td>Model a commitment only after workload stability is established</td><td>Track coverage, utilization and break-even assumptions</td></tr>
+<tr><td>Network bill + topology</td><td>Are architectural paths creating avoidable transfer charges?</td><td>Change placement, caching or traffic path where operationally sound</td><td>Verify cost and latency/reliability effects together</td></tr>
+</tbody></table></div>
+<h2>3. Put every recommendation through a risk boundary</h2>
+<p>A cost change is not automatically a good engineering change. Record expected impact on availability, latency, recovery, security, deployment behavior and operational load. High-confidence, low-risk actions can move quickly; changes that affect resilience or architecture need stronger acceptance criteria and rollback.</p>
+<div class="callout"><strong>Rule:</strong> do not “save” money by silently transferring cost into incidents, engineering toil, customer latency or recovery risk.</div>
+<h2>4. Distinguish modeled opportunity from realized savings</h2>
+<p>Before implementation, a recommendation can carry an estimated or modeled economic effect with assumptions and confidence. After implementation, realized savings require post-change billing evidence against the agreed baseline and period. Keep the two states separate in dashboards, reports and sales material.</p>
+<p>A defensible record should include the change date, owner, calculation method, relevant workload changes, material confounders and the observation window.</p>
+<h2>5. Build ownership into the operating model</h2>
+<p>Optimization decays when nobody owns the recurring decision. Define who reviews anomalies, commitment coverage, unallocated spend, idle resources and unit economics. Make ownership visible by account, product, team or service rather than treating FinOps as a finance-only cleanup exercise.</p>
+<h2>6. Use automation for detection, not uncontrolled change</h2>
+<p>Automation is useful for inventory, anomaly detection, tagging checks, scheduling candidates and evidence collection. Production modifications should follow the same change controls as other infrastructure work: scoped authorization, tests, rollback and observability. For material changes, let automation prepare the action and evidence while an accountable operator approves execution.</p>
+<h2>7. Measure technology value, not only bill reduction</h2>
+<p>Cost is one side of the decision. Track useful business denominators where they exist: cost per environment, request, tenant, inference, transaction, deployment, customer or other relevant unit. A rising bill can be healthy when output or business value rises faster; a falling bill can be harmful when reliability or delivery capacity collapses.</p>
+<h2>A practical assessment output</h2>
+<p>A bounded cloud cost assessment should produce a cost-driver map, evidence-backed hypotheses, owners, confidence levels, implementation order, risk notes and a measurement plan. That gives leadership a decision system rather than a one-time list of recommendations.</p>
+<div class="actions"><a class="button" href="/assessments.html">Start a Cloud &amp; AI Cost Assessment</a><a class="button ghost" href="/trust.html">Review the Evidence Standard</a></div>
+</article></section></main>
+<footer><div class="footer-grid"><div><div class="footer-brand">TAYOCA</div><p>Technology Value &amp; FinOps, Platform Reliability &amp; DevSecOps, and Agentic Operations &amp; Automation.<br>Ontario, Canada.<br>© <span data-current-year>2026</span> Tayoca.</p></div><div class="footer-links"><strong>Explore</strong><a href="/services.html">Services</a><a href="/assessments.html">Assessments</a><a href="/results.html">Results</a><a href="/products.html">Products</a><a href="/insights.html">Insights</a><a href="/about.html">About</a></div><div class="footer-links"><strong>Connect</strong><a href="/operator-brief.html">Operator Brief</a><a href="/trust.html">Trust Center</a><a href="mailto:support@tayoca.com">support@tayoca.com</a></div></div></footer><script defer src="/tayoca-site.js"></script><script defer src="/revenue-events.js"></script></body></html>
