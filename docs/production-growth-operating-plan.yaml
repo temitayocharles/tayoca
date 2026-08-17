@@ -47,7 +47,7 @@ locked_cross_stage_controls:
 
 cycle:
   horizon_days: 30
-  phase: OPERATOR_BRIEF_NURTURE
+  phase: WEEKLY_REVENUE_OPERATING_LOOP
   objective: >
     Prove that Tayoca can repeatedly convert qualified attention into commercial intent,
     leads, opportunities, conversations, proposals, and verified revenue using the certified platform.
@@ -153,19 +153,39 @@ workstreams:
   - id: W7
     name: operator_brief_nurture
     priority: 7
-    status: ACTIVE_BLOCKED_DEPENDENCIES
+    status: PUBLISHED_ARCHIVE_EMAIL_BLOCKED_NO_SUBSCRIBERS
     started_at: '2026-08-12T06:32:39.968Z'
-    blocker: approved_editorial_opportunities_and_n8n_resend_runtime_credential
-    approved_editorial_opportunities: 2
+    baseline: docs/production-growth-cycle1-w7-operator-brief-nurture.json
+    runtime_snapshot: docs/production-growth-cycle1-w7-runtime-snapshot.json
+    editorial_gate: PASSED
+    approved_editorial_opportunities: 8
     required_editorial_opportunities: 8
     operator_brief_workflow_id: Ug7hA8cXrrCIVYkI
+    issue_id: operator-brief-2026-08-17
+    issue_number: 1
+    issue_state: published
+    archive_url: https://tayoca.com/operator-brief-archive.html#operator-brief-2026-08-17
+    archive_commit: 334cdea00536952672668082f9e243cd598fa068
+    subscriber_count: 0
+    email_delivery_state: blocked_no_active_subscribers
+    runtime_credential_state: mounted
     sender_from: 'Temitayo Charles | Tayoca <temitayo@tayoca.com>'
     sender_reply_to: temitayo@tayoca.com
+    paid_spend_released: false
   - id: W8
     name: weekly_revenue_operating_loop
     priority: 8
-    status: BLOCKED_INTERNAL
-    blocker: revenue_command_center_placeholder_metrics
+    status: GREEN
+    certified_at: '2026-08-17T13:50:59Z'
+    baseline: docs/production-growth-cycle1-w8-revenue-operating-loop.json
+    revenue_command_center_workflow_id: MRaoY2aHm85q3QWG
+    canonical_source_blob: 04d363cd53d581e5df1da2ba218633e45853433a
+    live_version: 5b0fa88c-fbfd-4099-8ac6-bfdce65f9723
+    exact_semantics_certification_execution: '88781'
+    missing_metrics_semantics: null_unavailable
+    genuine_zero_semantics: preserved
+    zero_spend_roas: null_unavailable
+    paid_spend_released: false
   - id: W9
     name: controlled_experiments
     priority: 9
@@ -183,6 +203,8 @@ measurement:
   assessment_b2b_baseline: docs/production-growth-cycle1-w4-assessment-b2b-engine.json
   content_distribution_baseline: docs/production-growth-cycle1-w5-content-distribution.json
   targeted_outbound_baseline: docs/production-growth-cycle1-w6-targeted-outbound.json
+  operator_brief_baseline: docs/production-growth-cycle1-w7-operator-brief-nurture.json
+  weekly_revenue_operating_loop_baseline: docs/production-growth-cycle1-w8-revenue-operating-loop.json
   forecast_rule: >
     Do not invent revenue, CAC, conversion, or pipeline targets before sufficient live production
     observations exist. Use the first 7-14 days to establish defensible baselines.
@@ -226,22 +248,25 @@ external_and_continuous_improvement_items:
     blocking_scope: none
     rule: Treat native errorWorkflow as best-effort; the tested metadata-only failure monitor remains authoritative.
   - id: revenue_command_center_placeholder_metrics
-    severity: medium
-    blocking_scope: weekly_revenue_operating_loop
+    severity: resolved
+    blocking_scope: none
+    resolved_at: '2026-08-17T13:50:59Z'
     rule: >
-      Patch the existing Revenue Command Center before W8 becomes GREEN; unavailable values may not
-      be hardcoded as zero and pageviews may not be mislabeled as sessions.
+      The existing Revenue Command Center is certified provenance-safe: missing values remain null/unavailable,
+      genuine measured zeros remain zero, pageviews are not mislabeled as sessions, and ROAS is unavailable when spend is zero.
   - id: cal_booking_pipeline_sync
     severity: medium
     blocking_scope: none
     rule: >
       Keep booking reconciliation operator-controlled until the existing credential-bound Revenue
       Pipeline path can be extended safely. Never infer assessment_scheduled from a CTA click or presumed booking.
-
   - id: n8n_resend_runtime_credential
-    severity: high
-    blocking_scope: operator_brief_email_delivery
-    rule: Mount a Tayoca-domain-restricted Resend sending credential into the production n8n runtime without hardcoding the token in workflow JSON or source control.
+    severity: resolved
+    blocking_scope: none
+    resolved_at: '2026-08-17T13:30:41Z'
+    rule: >
+      Production n8n now exposes RESEND_API_KEY and COMPOSIO_API_KEY through the Vault-backed
+      n8n-runtime-vault-shadow projection without storing secret values in workflow JSON or source control.
 
 change_control:
   plan_revision_required_when:
