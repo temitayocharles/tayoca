@@ -5,10 +5,10 @@
 .site-header .primary-nav{margin-left:auto;display:flex;align-items:center;gap:1.15rem}
 .site-header .primary-nav a{font-family:Inter,system-ui,sans-serif;color:#d7d7d7;text-decoration:none;font-size:.92rem;font-weight:600;line-height:1.2}
 .site-header .primary-nav a:hover,.site-header .primary-nav a:focus-visible,.site-header .primary-nav a[aria-current="page"]{color:#f97316}
-.site-header .header-cta{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:.68rem 1rem;border-radius:.45rem;background:#f97316;color:#fff!important;text-decoration:none!important;font-family:Inter,system-ui,sans-serif;font-size:.88rem;font-weight:800;white-space:nowrap}
+.site-header .header-cta{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:.68rem 1rem;border-radius:.45rem;background:#f97316;color:#111!important;text-decoration:none!important;font-family:Inter,system-ui,sans-serif;font-size:.88rem;font-weight:800;white-space:nowrap}
 .site-header .header-cta:hover,.site-header .header-cta:focus-visible{background:#ea580c}
 .site-header .menu-toggle{display:none;margin-left:auto;min-height:42px;padding:.55rem .8rem;border:1px solid #3a3a3a;border-radius:.45rem;background:#171717;color:#fff;font:700 .9rem/1 Inter,system-ui,sans-serif;cursor:pointer}
-.skip-link{position:fixed;left:1rem;top:-5rem;z-index:2000;padding:.7rem 1rem;border-radius:.4rem;background:#f97316;color:#fff!important;font:700 .9rem/1.2 Inter,system-ui,sans-serif;text-decoration:none}
+.skip-link{position:fixed;left:1rem;top:-5rem;z-index:2000;padding:.7rem 1rem;border-radius:.4rem;background:#f97316;color:#111!important;font:700 .9rem/1.2 Inter,system-ui,sans-serif;text-decoration:none}
 .skip-link:focus{top:1rem}
 
 /* Stage 10 — Product ecosystem. Deliberately prefixed so legacy article/product layouts stay intact. */
@@ -34,8 +34,8 @@
 .stage10-control{margin:0;padding:1rem;background:#111;border:1px solid #303030;border-radius:.6rem}
 .stage10-control dt{margin:0 0 .35rem;color:#f97316;font-size:.76rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
 .stage10-control dd{margin:0;color:#dededa;line-height:1.58}
-.stage10-next{display:inline-flex;align-items:center;justify-content:center;margin-top:1.25rem;padding:.75rem 1rem;border-radius:.45rem;background:#f97316;color:#fff!important;text-decoration:none!important;font-weight:800;line-height:1.2}
-.stage10-next:hover,.stage10-next:focus-visible{background:#ea580c;outline:none}
+.stage10-next{display:inline-flex;align-items:center;justify-content:center;margin-top:1.25rem;padding:.75rem 1rem;border-radius:.45rem;background:#f97316;color:#111!important;text-decoration:none!important;font-weight:800;line-height:1.2}
+.stage10-next:hover{background:#ea580c}.stage10-next:focus-visible{background:#ea580c;outline:3px solid #f5f5f4;outline-offset:3px}
 .stage10-next-copy{margin:.75rem 0 0;color:#dededa;font-weight:700}
 .stage10-assessment-control{margin-top:1rem;padding-top:1rem;border-top:1px solid #343434}
 .stage10-assessment-control .stage10-control-grid{grid-template-columns:1fr}

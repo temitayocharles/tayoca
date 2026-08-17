@@ -42,7 +42,7 @@
       --accent: #f97316;
       --text-base: #e5e7eb;
       --text-dark: #e5e7eb;
-      --text-light: #374151;
+      --text-light: #a3a3a3;
     }
 
     html { font-size: 16px; }
@@ -98,7 +98,7 @@
       display: inline-block;
       padding: .75rem 1.5rem;
       background: var(--accent);
-      color: white;
+      color: #111111;
       border-radius: .5rem;
       font-weight: 600;
       text-decoration: none;
@@ -160,6 +160,7 @@
       overflow-x: auto;
       border: 1px solid #262626;
     }
+    .code-bg:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
     .code-bg pre {
       margin: 0;
       font-family: 'JetBrains Mono', monospace;
@@ -169,7 +170,7 @@
       white-space: pre;
     }
     .code-bg .c-keyword { color: #f97316; }
-    .code-bg .c-comment { color: #6b7280; }
+    .code-bg .c-comment { color: #a3a3a3; }
     .code-bg .c-string { color: #a3e635; }
     .code-bg code {
       background: transparent;
@@ -231,10 +232,10 @@
       font-family: inherit;
       font-size: .95rem;
     }
-    .email-form input::placeholder { color: #6b7280; }
+    .email-form input::placeholder { color: #a3a3a3; }
     .email-form button {
       background: var(--accent);
-      color: white;
+      color: #111111;
       padding: .75rem 1rem;
       border-radius: 0 .5rem .5rem 0;
       cursor: pointer;
@@ -372,7 +373,7 @@
 
         <h3>The configuration we ship</h3>
         <p>Three settings, always together, in the Argo CD Application:</p>
-        <div class="code-bg"><pre><span class="c-comment"># gitops/apps/&lt;svc&gt;/argocd-app.yaml</span>
+        <div class="code-bg" tabindex="0"><pre><span class="c-comment"># gitops/apps/&lt;svc&gt;/argocd-app.yaml</span>
 <span class="c-keyword">apiVersion:</span> argoproj.io/v1alpha1
 <span class="c-keyword">kind:</span> Application
 <span class="c-keyword">metadata:</span>
@@ -411,7 +412,7 @@
 
         <h3>Externally validating the chart before Argo CD touches it</h3>
         <p>The most reliable corruption check is one Argo CD never runs. We add a CI step that renders the chart and diffs it against the last-known-good release:</p>
-        <div class="code-bg"><pre><span class="c-comment"># .github/workflows/chart-validate.yml (excerpt)</span>
+        <div class="code-bg" tabindex="0"><pre><span class="c-comment"># .github/workflows/chart-validate.yml (excerpt)</span>
 - <span class="c-keyword">name:</span> Render &amp; diff against last-good release
   <span class="c-keyword">run:</span> <span class="c-string">|</span>
     <span class="c-string">helm template payments-api ./chart -f values/staging.yaml \
@@ -441,7 +442,7 @@
         </p>
 
         <h3>Signing the image in CI</h3>
-        <div class="code-bg"><pre><span class="c-comment"># CI pipeline, after docker build/push</span>
+        <div class="code-bg" tabindex="0"><pre><span class="c-comment"># CI pipeline, after docker build/push</span>
 <span class="c-keyword">cosign</span> sign --yes \
   --identity-token <span class="c-string">"$OIDC_TOKEN"</span> \
   <span class="c-string">--certificate-identity "$REGISTRY/$REPO@$DIGEST"</span> \
@@ -462,7 +463,7 @@
         <p>
           Argo CD will still happily apply a deployment referencing an unsigned image. We stop it with an admission policy:
         </p>
-        <div class="code-bg"><pre><span class="c-comment"># gitops/policies/verify-image.yaml</span>
+        <div class="code-bg" tabindex="0"><pre><span class="c-comment"># gitops/policies/verify-image.yaml</span>
 <span class="c-keyword">apiVersion:</span> kyverno.io/v1
 <span class="c-keyword">kind:</span> ClusterPolicy
 <span class="c-keyword">metadata:</span> { <span class="c-keyword">name:</span> <span class="c-string">require-signed-images</span> }
@@ -506,7 +507,7 @@
         </p>
 
         <h3>The ApplicationSet</h3>
-        <div class="code-bg"><pre><span class="c-comment"># gitops/appset/services.yaml</span>
+        <div class="code-bg" tabindex="0"><pre><span class="c-comment"># gitops/appset/services.yaml</span>
 <span class="c-keyword">apiVersion:</span> argoproj.io/v1alpha1
 <span class="c-keyword">kind:</span> ApplicationSet
 <span class="c-keyword">metadata:</span> { <span class="c-keyword">name:</span> <span class="c-string">services</span> }
@@ -545,7 +546,7 @@
       </p>
       <div style="display:flex;gap:1rem;align-items:center;justify-content:center;margin-top:2rem;flex-wrap:wrap;">
         <a href="https://cal.com/tayoca/platform-engineering-consultation" class="btn" target="_blank" rel="noopener">Book Consultation →</a>
-        <a href="https://gum.co/gitops-guide" class="btn" target="_blank" rel="noopener" style="background:#374151;">GitOps Field Guide →</a>
+        <a href="https://gum.co/gitops-guide" class="btn" target="_blank" rel="noopener" style="background:#1f2937;color:#ffffff;">GitOps Field Guide →</a>
       </div>
     </section>
 
