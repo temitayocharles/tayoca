@@ -3,8 +3,8 @@
   "plan_id": "tayoca-production-growth-cycle-1",
   "workstream": "W7",
   "name": "operator_brief_nurture",
-  "status": "PUBLISHED_ARCHIVE_EMAIL_BLOCKED",
-  "recorded_at": "2026-08-14T06:53:10Z",
+  "status": "PUBLISHED_ARCHIVE_EMAIL_BLOCKED_NO_SUBSCRIBERS",
+  "recorded_at": "2026-08-17T13:30:41Z",
   "objective": "Operate The Tayoca Operator Brief as a governed evidence-backed nurture channel while W6 outbound responses mature.",
   "workflow": {
     "id": "Ug7hA8cXrrCIVYkI",
@@ -60,15 +60,17 @@
     "reply_to": "temitayo@tayoca.com",
     "signature_source": "/assets/email/tayoca-founder-signature.html",
     "n8n_runtime_environment_variable": "RESEND_API_KEY",
-    "runtime_credential_state": "not_mounted",
-    "runtime_checked_at": "2026-08-14T06:31:29.053Z",
-    "delivery_state": "blocked_runtime_credential_and_no_subscribers",
+    "runtime_credential_state": "mounted",
+    "runtime_checked_at": "2026-08-17T13:30:41Z",
+    "delivery_state": "blocked_no_active_subscribers",
     "subscriber_count": 0,
     "send_occurred": false
   },
   "runtime": {
-    "resend_api_key_present": false,
-    "composio_api_key_present": false
+    "resend_api_key_present": true,
+    "composio_api_key_present": true,
+    "certified_at": "2026-08-17T13:30:41Z",
+    "projection_gitops_commit": "37ee294cc58bc3bb7388fea040d402b330ad881b"
   },
   "brand": {
     "identity_standard": "docs/brand-founder-identity.md",
@@ -82,8 +84,7 @@
     "bulk_email_without_subscription": "forbidden"
   },
   "next_actions": [
-    "reconcile the existing Vault/ExternalSecret projection until RESEND_API_KEY is present in the production n8n runtime",
-    "keep subscriber email delivery blocked until the runtime credential is present and there are active subscribed recipients",
+    "keep subscriber email delivery blocked until there are active subscribed recipients",
     "advance the next Operator Brief calendar slot without regenerating operator-brief-2026-08-17",
     "continue W8 Revenue Command Center provenance-safe reporting promotion through the protected Forgejo review path"
   ]
