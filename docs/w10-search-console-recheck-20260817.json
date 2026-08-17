@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "workstream": "W10",
+  "finding": "search_console_sitemap_processing_lag",
+  "severity": "low",
+  "status": "OBSERVED_PROPAGATION_LAG",
+  "observed_at": "2026-08-17T16:17:11.920Z",
+  "property": "https://tayoca.com/",
+  "sitemap": {
+    "url": "https://tayoca.com/sitemap.xml",
+    "is_pending": false,
+    "errors": 0,
+    "warnings": 0,
+    "last_submitted": "2026-08-11T00:16:58.835Z",
+    "last_downloaded": "2026-08-16T17:06:13.269Z",
+    "search_console_reported_submitted": 33,
+    "search_console_reported_indexed": 0,
+    "canonical_current_url_count": 34,
+    "canonical_sitemap_path": "public/sitemap.xml",
+    "includes_operator_brief_archive": true
+  },
+  "priority_url_inspections": [
+    {
+      "url": "https://tayoca.com/",
+      "verdict": "PASS",
+      "coverage_state": "Submitted and indexed",
+      "indexing_state": "INDEXING_ALLOWED",
+      "page_fetch_state": "SUCCESSFUL",
+      "crawled_as": "MOBILE",
+      "last_crawl_time": "2026-08-02T08:18:11Z"
+    },
+    {
+      "url": "https://tayoca.com/assessments.html",
+      "verdict": "PASS",
+      "coverage_state": "Submitted and indexed",
+      "indexing_state": "INDEXING_ALLOWED",
+      "page_fetch_state": "SUCCESSFUL",
+      "crawled_as": "MOBILE",
+      "last_crawl_time": "2026-08-06T00:38:08Z"
+    },
+    {
+      "url": "https://tayoca.com/operator-brief-archive.html",
+      "verdict": "NEUTRAL",
+      "coverage_state": "URL is unknown to Google",
+      "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+      "page_fetch_state": "PAGE_FETCH_STATE_UNSPECIFIED"
+    }
+  ],
+  "interpretation": "Search Console's sitemap-level indexed=0 counter is stale and must not be treated as site-wide non-indexing because direct URL inspection proves the homepage and assessments page are submitted and indexed. The reported 33 submitted URLs reflect Google's August 16 download, while the canonical sitemap now contains 34 URLs including the Operator Brief archive published August 17. The archive is therefore awaiting the next Google crawl/download cycle.",
+  "action": "No forced sitemap resubmission. Preserve the observed low-severity lag and recheck after Google next downloads the current 34-URL sitemap or the archive becomes known/indexed.",
+  "controls": {
+    "no_fabricated_index_count": true,
+    "no_resubmission_for_dashboard_cosmetics": true,
+    "paid_spend": 0
+  }
+}
