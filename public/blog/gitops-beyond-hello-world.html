@@ -287,22 +287,11 @@
   }
 }
 </script>
-</head>
-<body>
-  <header>
-    <nav>
-      <a href="../index.html" class="nav-brand">tayoca</a>
-      <div class="nav-links">
-        <a href="../services.html">Services</a>
-        <a href="/products.html">Products</a>
-        <a href="/blog/" class="active">Writing</a>
-        <a href="../about.html">About</a>
-      </div>
-      <a href="../services.html" class="btn">Book an Audit →</a>
-    </nav>
-  </header>
+<link rel="stylesheet" href="/assets/css/site-shell.css"></head>
+<body><a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header"><div class="header-inner"><a class="brand" href="/" aria-label="Tayoca home">TAYOCA</a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button><nav class="primary-nav" id="primary-nav" aria-label="Primary navigation"><a href="/services.html">Services</a><a href="/assessments.html">Assessments</a><a href="/results.html">Results</a><a href="/products.html">Products</a><a href="/insights.html" aria-current="page">Insights</a><a href="/about.html">About</a></nav><a class="header-cta" href="/assessments.html">Start an Assessment</a></div></header>
 
-  <main>
+  <main id="main">
     <section id="hero" style="min-height:42vh;display:flex;align-items:center;padding-top:3rem;">
       <div style="max-width:800px;margin:auto;text-align:left;">
         <div class="byline" style="justify-content:flex-start;">
@@ -331,7 +320,7 @@
         </p>
         <p>
           We have hardened GitOps for fintech and SaaS platforms running dozens of services across multiple clusters.
-          The four patterns below are not theory — they are the configurations we keep rebuilding on every engagement.
+          The patterns below are configurations we use to reason about production GitOps controls.
           Skip to the one that hurts:
         </p>
 
@@ -537,14 +526,14 @@
         namespace:</span> <span class="c-string">'{{path[1]}}-{{path[2]}}'</span>              <span class="c-comment"># e.g. payments-api-staging</span>
       <span class="c-keyword">syncPolicy:
         automated:</span> { <span class="c-keyword">prune:</span> <span class="c-keyword">true</span>, <span class="c-keyword">selfHeal:</span> <span class="c-keyword">true</span> }
-      <span class="c-keyword">source:</n>
-        repoURL:</span> <span class="c-string">https://github.com/org/gitops</span>
+      <span class="c-keyword">source:</span>
+        <span class="c-keyword">repoURL:</span> <span class="c-string">https://github.com/org/gitops</span>
         <span class="c-keyword">targetRevision:</span> <span class="c-keyword">HEAD</span>
-        <span class="c-keyword">path:</span> <span class="c-string">'{{path}}'</span></arg_value></tool_call><tool_call>patch<arg_key>mode</arg_key><arg_value>replace</arg_value><arg_key>path</arg_key><arg_value>/Volumes/512-B/Documents/Hermes/AGENTS/workspace/tayoca-www/public/sitemap.xml</arg_value><arg_key>old_string</arg_key><arg_value>  <url>
-    <loc>https://tayoca.com/about.html</loc></arg_value><arg_key>new_string</arg_key><arg_value>  <url>
-    <loc>https://tayoca.com/blog/how-we-saved-216k-aws.html</loc></arg_value></tool_call><tool_call>patch<arg_key>mode</arg_key><arg_value>replace</arg_value><arg_key>path</arg_key><arg_value>/Volumes/512-B/Documents/Hermes/AGENTS/workspace/tayoca-www/public/sitemap.xml</arg_value><arg_key>old_string</arg_key><arg_value>    <loc>https://tayoca.com/about.html</loc></arg_value><arg_key>new_string</arg_key><arg_value>    <loc>https://tayoca.com/blog/gitops-beyond-hello-world.html</loc></arg_value></tool_call><tool_call>patch<arg_key>mode</arg_key><arg_value>replace</arg_value><arg_key>path</arg_key><arg_value>/Volumes/512-B/Documents/Hermes/AGENTS/workspace/tayoca-www/public/sitemap.xml</arg_value><arg_key>old_string</arg_key><arg_value>  <url>
-    <loc>https://tayoca.com/blog/gitops-beyond-hello-world.html</loc></arg_value><arg_key>new_string</arg_key><arg_value>  <url>
-    <loc>https://tayoca.com/about.html</loc></arg_value></tool_call><tool_call>write_file<arg_key>path</arg_key><arg_value>/Volumes/512-B/Documents/Hermes/AGENTS/workspace/tayoca-www/.sitemap-backup-marker.txt</arg_value><arg_key>content</arg_key><arg_value>placeholder</arg_value></tool_call><tool_call>process<arg_key>action</arg_key><arg_value>list</arg_value></tool_call><tool_call>read_file<arg_key>path</arg_key><arg_value>/Volumes/512-B/Documents/Hermes/AGENTS/workspace/tayoca-www/public/sitemap.xml</arg_value></tool_call><tool_call>read_file<arg_key>path</arg_key><arg_value>/Volumes/512-B/Documents/Hermes/AGENTS/workspace/tayoca-www/public/blog/gitops-beyond-hello-world.html</arg_value><arg_key>offset</arg_key><arg_value>1</arg_value><arg_key>limit</arg_key><arg_value>10</arg_value></tool_call><tool_call>terminal<arg_key>command</arg_key><arg_value>ls -la /Volumes/512-B/Documents/Hermes/AGENTS/workspace/tayoca-www/public/blog/gitops-beyond-hello-world.html 2>&1 | head -5</arg_value></tool_call><tool_call>terminal<arg_key>command</arg_key><arg_value>grep -c 
+        <span class="c-keyword">path:</span> <span class="c-string">'{{path}}'</span></pre></div>
+        <p>CI promotes changes by updating the namespace-scoped declaration in Git. Argo CD remains the reconciler, so deployment state stays reviewable and recoverable from version control.</p>
+      </div>
+    </section>
+
       <div class="amber-accent"></div>
 
     <section id="cta" style="padding:4rem 0;text-align:center;">
@@ -577,14 +566,8 @@
         <a href="../about.html" style="color:#e5e7eb;text-decoration:none">About Us</a>
       </div>
     </div>
-    <div class="footer-certs">
-      <strong style="display:block;margin-bottom:.5rem;">Attestations</strong>
-      <span style="font-family:'JetBrains Mono',monospace;font-size:.8rem;background:#111827;padding:.25rem .5rem;border-radius:.25rem;margin:.125rem 0;display:block;">PMP</span>
-      <span style="font-family:'JetBrains Mono',monospace;font-size:.8rem;background:#111827;padding:.25rem .5rem;border-radius:.25rem;margin:.125rem 0;display:block;">CSM</span>
-      <span style="font-family:'JetBrains Mono',monospace;font-size:.8rem;background:#111827;padding:.25rem .5rem;border-radius:.25rem;margin:.125rem 0;display:block;">Terraform Associate</span>
-      <span style="font-family:'JetBrains Mono',monospace;font-size:.8rem;background:#111827;padding:.25rem .5rem;border-radius:.25rem;margin:.125rem 0;display:block;">AWS Solutions Architect</span>
-    </div>
+    
   </footer>
 
-</body>
+<script defer src="/tayoca-site.js"></script></body>
 </html>
