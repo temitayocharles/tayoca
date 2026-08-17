@@ -1,196 +1,30 @@
-<!DOCTYPE html>
-
+<!doctype html>
 <html lang="en">
 <head>
-<!-- Google Analytics 4 -->
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-G4QC90QNXW"></script>
-<script src="/ga4.js"></script>
-<meta charset="utf-8"/>
-<title>Tayoca – Services &amp; Pricing</title>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<meta content="Flat-fee engagements: FinOps cost audits, GitOps platform engineering, and AI automation that pays for itself" name="description"/>
-<meta content="FinOps, AWS cost optimization, cloud cost audit, GitOps, platform engineering, AI automation, RAG, LLMOps, pricing, services" name="keywords"/>
-<meta content="Tayoca" name="author"/>
-<meta content="index, follow" name="robots"/>
-<link href="https://tayoca.com/services.html" rel="canonical"/>
-<link href="favicon.ico" rel="icon" type="image/x-icon"/>
-<!-- Open Graph -->
-<meta content="Tayoca – Services &amp; Pricing" property="og:title"/>
-<meta content="Flat-fee engagements: FinOps cost audits, GitOps platform engineering, and AI automation that pays for itself" property="og:description"/>
-<meta content="website" property="og:type"/>
-<meta content="https://tayoca.com/services.html" property="og:url"/>
-<meta content="Tayoca" property="og:site_name"/>
-<meta content="https://tayoca.com/assets/og-image.png" property="og:image"/>
-<!-- Twitter Card -->
-<meta content="summary_large_image" name="twitter:card"/>
-<meta content="Tayoca – Services &amp; Pricing" name="twitter:title"/>
-<meta content="Flat-fee engagements: FinOps cost audits, GitOps platform engineering, and AI automation that pays for itself" name="twitter:description"/>
-<meta content="https://tayoca.com/assets/og-image.png" name="twitter:image"/>
-<!-- InsForge Analytics (Plausible-compatible, self-hosted) -->
-<script>
-  (function() {
-  var endpoint = 'https://v7mhrspk.function2.insforge.app/analytics-event';
-  var domain = 'tayoca.com';
-  function sendEvent(name, props) {
-  var data = {
-  	domain: domain,
-  	name: name,
-  	url: window.location.href,
-  	path: window.location.pathname,
-  	referrer: document.referrer || null,
-  	screen_width: window.screen.width,
-  	screen_height: window.screen.height,
-  	props: props || {}
-  };
-  navigator.sendBeacon && navigator.sendBeacon(endpoint, JSON.stringify(data)) ||
-  fetch(endpoint, { method: 'POST', body: JSON.stringify(data), keepalive: true });
-  }
-  if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', function() { sendEvent('pageview'); });
-  } else {
-  sendEvent('pageview');
-  }
-  // Expose for custom events
-  window.tayocaAnalytics = { sendEvent: sendEvent };
-  })();
-  </script>
-<!-- Vermason analytics -->
-<script defer="" src="https://vermason.com/analytics/id.js"></script>
-<link href="https://fonts.googleapis.com" rel="preconnect">
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700&amp;family=Playfair+Display:wght@700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet"/>
-<style>
-    body{background:#0d0d0d;color:#e5e5e5;font-family:system-ui,-apple-system,BlinkMacSystemFont,Inter,sans-serif;}
-    main{max-width:1200px;margin:auto;padding:0 2rem;}
-    section{padding:4rem 0;}
-    .amber-accent{width:100%;height:6px;background:#f97316;margin-top:-3px}
-    .card{background:#1a1a1a;color:#e5e5e5;padding:1.5rem;border:1px solid #333333;border-radius:.875rem;box-shadow:0 4px 20px rgba(0,0,0,.18);transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
-    .card p,.card li{color:#d4d4d4!important}.card h2,.card h3{color:#fff}.card.is-clickable{cursor:pointer}.card.is-clickable:hover,.card.is-clickable:focus-visible{transform:translateY(-4px);border-color:#f97316;box-shadow:0 12px 28px rgba(0,0,0,.32);outline:none}
-    .btn{background:#f97316;color:#fff;padding:.75rem 1.5rem;border-radius:.5rem;font-weight:600;text-decoration:none;display:inline-block}
-    footer{font-size:.875rem;color:#a3a3a3;border-top:1px solid #333333;padding-top:2rem;display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem;max-width:1200px;margin:auto;padding-left:2rem;padding-right:2rem}
-    @media(max-width:768px){footer{grid-template-columns:1fr;margin:2rem 0}}
-    .nav-links a.active { color: #f97316 !important; font-weight: 600; }
-  
-.card.finops-featured{overflow:visible;margin-bottom:1.5rem}.card.finops-featured .btn{transform:translateY(1.6rem);box-shadow:0 10px 24px rgba(249,115,22,.22)}.card.finops-featured .btn:hover,.card.finops-featured .btn:focus-visible{transform:translateY(1.45rem)}@media(max-width:760px){.card.finops-featured{margin-bottom:1rem}.card.finops-featured .btn{transform:translateY(1.15rem)}.card.finops-featured .btn:hover,.card.finops-featured .btn:focus-visible{transform:translateY(1rem)}}
-</style>
-<!-- Vermason Analytics -->
-<script defer="" src="https://vermason.com/analytics/id.js"></script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Service",
-  "name": "Tayoca Engineering Services",
-  "url": "https://tayoca.com/services.html",
-  "provider": {
-    "@type": "Organization",
-    "name": "Tayoca",
-    "url": "https://tayoca.com/"
-  },
-  "serviceType": [
-    "FinOps cost optimization",
-    "Platform engineering",
-    "GitOps implementation",
-    "AI automation"
-  ],
-  "areaServed": [
-    "Canada",
-    "Worldwide"
-  ]
-}
-</script>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@800&amp;display=swap" rel="stylesheet"/>
-</link></link><link rel="stylesheet" href="/assets/css/site-shell.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-G4QC90QNXW"></script><script src="/ga4.js"></script>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Tayoca | Services & Pricing</title>
+  <meta name="description" content="Fixed-scope FinOps, platform reliability and AI automation engagements built around explicit evidence, acceptance criteria and measurable business decisions.">
+  <meta name="robots" content="index,follow"><link rel="canonical" href="https://tayoca.com/services.html"><link rel="icon" href="/favicon.ico">
+  <meta property="og:title" content="Tayoca | Services & Pricing"><meta property="og:description" content="FinOps, platform reliability and AI automation engagements with explicit scope, evidence and acceptance criteria."><meta property="og:type" content="website"><meta property="og:url" content="https://tayoca.com/services.html"><meta property="og:site_name" content="Tayoca"><meta property="og:image" content="https://tayoca.com/assets/og-image.png">
+  <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Tayoca | Services & Pricing"><meta name="twitter:description" content="FinOps, platform reliability and AI automation engagements with explicit scope, evidence and acceptance criteria."><meta name="twitter:image" content="https://tayoca.com/assets/og-image.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="/assets/css/growth-os.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Tayoca Engineering Services","url":"https://tayoca.com/services.html","provider":{"@type":"Organization","name":"Tayoca","url":"https://tayoca.com/"},"serviceType":["Technology Value and FinOps","Platform Reliability and DevSecOps","Agentic Operations and Automation"],"areaServed":["Canada","Worldwide"]}</script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
-<header class="site-header"><div class="header-inner"><a class="brand" href="/" aria-label="Tayoca home">TAYOCA</a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button><nav class="primary-nav" id="primary-nav" aria-label="Primary navigation"><a href="/services.html" aria-current="page">Services</a><a href="/assessments.html">Assessments</a><a href="/results.html">Results</a><a href="/products.html">Products</a><a href="/insights.html">Insights</a><a href="/about.html">About</a></nav><a class="header-cta" href="/assessments.html">Start an Assessment</a></div></header>
+<header class="site-header"><div class="header-inner"><a class="brand" href="/" aria-label="Tayoca home">TAYOCA</a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button><nav class="primary-nav" id="primary-nav" aria-label="Primary navigation"><a href="/services.html" aria-current="page">Services</a><a href="/assessments.html">Assessments</a><a href="/results.html">Results</a><a href="/products.html">Products</a><a href="/insights.html">Insights</a><a href="/about.html">About</a></nav><a class="button small header-cta" href="/assessments.html">Start an Assessment</a></div></header>
 <main id="main">
-<section style="padding-top:2rem;padding-bottom:2rem;text-align:left">
-<a href="/" style="color:#e5e5e5;text-decoration:none;font-weight:600;">← Back to Home</a>
-</section>
-<section id="services" style="text-align:center">
-<h1 style="font-size:clamp(2.5rem,6vw,3.25rem);margin-bottom:1rem;">Services &amp; Pricing</h1>
-<p style="font-size:1.1rem;max-width:700px;margin:1.5rem auto;">Choose the result you need. We scope it, price it, and deliver it.</p>
-<div style="max-width:900px;margin:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;text-align:left">
-<!-- FinOps Audit 5K Payment Link Flow -->
-<div class="card finops-featured">
-<span style="color:#f97316;font-weight:600;font-size:.875rem;">FinOps Audit</span>
-<h3 style="font-size:1.5rem;margin-top:.75rem;">Cloud Cost Optimization <strong style="color:#f97316;">$5,000 Flat Fee</strong></h3>
-<p style="margin:.75rem 0;color:#525252">Send your AWS bill. We find the waste and show the savings. $0 saved → $0 paid.</p>
-<ul style="margin:.5rem 0;font-size:.875rem;list-style:none;padding:0">
-<li style="margin-bottom:.25rem;display:flex;align-items:center;gap:.5rem"><svg fill="none" height="16" stroke="currentColor" stroke-width="2" style="color:#f97316" viewbox="0 0 24 24" width="16"><polyline points="20 6 9 17 4 12"></polyline></svg>90-minute deep-dive call</li>
-<li style="margin-bottom:.25rem;display:flex;align-items:center;gap:.5rem"><svg fill="none" height="16" stroke="currentColor" stroke-width="2" style="color:#f97316" viewbox="0 0 24 24" width="16"><polyline points="20 6 9 17 4 12"></polyline></svg>Prioritized 15-item remediation plan and ROI calc</li>
-<li style="margin-bottom:.25rem;display:flex;align-items:center;gap:.5rem"><svg fill="none" height="16" stroke="currentColor" stroke-width="2" style="color:#f97316" viewbox="0 0 24 24" width="16"><polyline points="20 6 9 17 4 12"></polyline></svg>$5K flat. 30-day money-back guarantee.</li>
-</ul>
-<a class="btn" data-event="service_cta" href="https://cal.com/tayoca/finops-audit" rel="noopener" style="margin-top:1rem; width:100%;" target="_blank">Book Discovery Call →</a>
-<p style="margin-top:.75rem; font-size:.75rem; color:#737373;">Free 15-minute call. Pay after delivery.</p>
-</div>
-<script>
-          // Cal.com booking links wired directly in HTML
-        </script>
-<div class="card">
-<span style="color:#f97316;font-weight:600;font-size:.875rem;">Platform Engineering</span>
-<h3 style="font-size:1.5rem;margin-top:.75rem;">GitOps &amp; DevSecOps Platform</h3>
-<p style="margin:.75rem 0;color:#525252">We build a platform your team can ship on safely from day one.</p>
-<ul style="margin:.5rem 0;font-size:.875rem;list-style:none;padding:0">
-<li style="margin-bottom:.25rem;display:flex;align-items:center;gap:.5rem"><svg fill="none" height="16" stroke="currentColor" stroke-width="2" style="color:#f97316" viewbox="0 0 24 24" width="16"><polyline points="20 6 9 17 4 12"></polyline></svg>Production clusters by day 15</li>
-<li style="margin-bottom:.25rem;display:flex;align-items:center;gap:.5rem"><svg fill="none" height="16" stroke="currentColor" stroke-width="2" style="color:#f97316" viewbox="0 0 24 24" width="16"><polyline points="20 6 9 17 4 12"></polyline></svg>Platform SLA ≥99.95%</li>
-<li style="margin-bottom:.25rem;display:flex;align-items:center;gap:.5rem"><svg fill="none" height="16" stroke="currentColor" stroke-width="2" style="color:#f97316" viewbox="0 0 24 24" width="16"><polyline points="20 6 9 17 4 12"></polyline></svg>$8K+ fixed scope, milestone payments</li>
-</ul>
-<a class="btn" data-event="service_cta" href="https://cal.com/tayoca/platform-engineering-consultation" rel="noopener" style="margin-top:1rem;display:inline-block" target="_blank">Book Consultation →</a>
-</div>
-<div class="card">
-<span style="color:#f97316;font-weight:600;font-size:.875rem;">AI &amp; Automation</span>
-<h3 style="font-size:1.5rem;margin-top:.75rem;">RAG/LLMOps</h3>
-<p style="margin:.75rem 0;color:#525252">We build AI automation that works, stays visible, and knows when to hand off.</p>
-<ul style="margin:.5rem 0;font-size:.875rem;list-style:none;padding:0">
-<li style="margin-bottom:.25rem;display:flex;align-items:center;gap:.5rem"><svg fill="none" height="16" stroke="currentColor" stroke-width="2" style="color:#f97316" viewbox="0 0 24 24" width="16"><polyline points="20 6 9 17 4 12"></polyline></svg>Up-front engineered models &amp; costs</li>
-<li style="margin-bottom:.25rem;display:flex;align-items:center;gap:.5rem"><svg fill="none" height="16" stroke="currentColor" stroke-width="2" style="color:#f97316" viewbox="0 0 24 24" width="16"><polyline points="20 6 9 17 4 12"></polyline></svg>Runbooks &amp; alerting out of the box</li>
-<li style="margin-bottom:.25rem;display:flex;align-items:center;gap:.5rem"><svg fill="none" height="16" stroke="currentColor" stroke-width="2" style="color:#f97316" viewbox="0 0 24 24" width="16"><polyline points="20 6 9 17 4 12"></polyline></svg>$5K package, 30-day acceptance</li>
-</ul>
-<a class="btn" data-event="service_cta" href="https://cal.com/tayoca/platform-engineering-consultation" rel="noopener" style="margin-top:1rem;display:inline-block" target="_blank">Book AI Pilot →</a>
-</div>
-</div>
-<h3 style="margin-top:4rem;font-size:1.5rem">FAQ</h3>
-<details style="max-width:700px;margin:2rem auto;color:#d4d4d4;text-align:left">
-<summary style="color:#333333;font-weight:600;margin-bottom:.5rem;cursor:pointer">Do you do retainers?</summary>
-<p style="font-size:.875rem;color:#a3a3a3">Clear milestones. Clear invoice. No surprise billing.</p>
-</details>
-<details style="max-width:700px;margin:2rem auto;color:#d4d4d4;text-align:left">
-<summary style="color:#333333;font-weight:600;margin-bottom:.5rem;cursor:pointer">What if a client doesn't pay?</summary>
-<p style="font-size:.875rem;color:#a3a3a3">If we miss the agreed outcome, the guarantee protects you.</p>
-</details>
-</section>
-<section class="section-header" style="max-width:900px;margin:auto;">
-<h2>Ready to move now?</h2>
-<p>Skip the form. Tell our WhatsApp AI what is costing you money.</p>
-<a class="btn" data-revenue-event="whatsapp_services_click" href="https://wa.me/2348113980135?text=Hi%20Tayoca%2C%20I%20want%20help%20solving%20a%20business%20or%20engineering%20problem." rel="noopener noreferrer" target="_blank">Chat with Tayoca AI on WhatsApp</a>
-</section>
+<section class="hero center"><div class="hero-inner"><p class="eyebrow">Services &amp; pricing</p><h1>Scope the problem. <span class="accent">Measure the result.</span></h1><p class="lede">Tayoca starts with the business decision and evidence boundary, then defines the smallest useful engagement with explicit inclusions, exclusions and acceptance criteria.</p><div class="actions"><a class="button" href="/assessments.html">Start an Assessment</a><a class="button ghost" href="/trust.html">Review Evidence Policy</a></div></div></section>
+<div class="amber-rule"></div>
+<section class="section"><div class="container"><div class="grid">
+<div class="card"><span class="tag">Technology Value &amp; FinOps</span><h3>Cloud Cost Optimization</h3><div class="price">$5,000 flat fee</div><p>For teams that need a defensible view of cloud cost drivers, waste hypotheses, ownership and the remediation order that matters most.</p><ul><li>90-minute deep-dive and evidence framing</li><li>Billing/workload evidence review</li><li>Prioritized optimization backlog with owners</li><li>Expected impact, assumptions and validation method</li></ul><p class="microcopy">Savings remain modeled or estimated until implemented and validated against an agreed baseline. Implementation is separately scoped unless included in the signed engagement.</p><div class="actions"><a class="button full" data-event="service_cta" href="https://cal.com/tayoca/finops-audit" rel="noopener" target="_blank">Book Discovery Call</a></div></div>
+<div class="card"><span class="tag">Platform Reliability &amp; DevSecOps</span><h3>GitOps &amp; DevSecOps Platform</h3><div class="price">$8,000+ fixed scope</div><p>For engineering teams that need a reliable, observable and secure delivery/platform capability with documented controls and operable handover.</p><ul><li>Discovery and target architecture</li><li>Agreed implementation and delivery controls</li><li>Testable reliability/recovery acceptance criteria</li><li>Runbooks, validation evidence and handover</li></ul><p class="microcopy">Milestones are tied to agreed deliverables and acceptance evidence. Delivery-time or SLA commitments apply only when explicitly defined in the signed scope.</p><div class="actions"><a class="button full" data-event="service_cta" href="https://cal.com/tayoca/platform-engineering-consultation" rel="noopener" target="_blank">Book Consultation</a></div></div>
+<div class="card"><span class="tag">Agentic Operations &amp; Automation</span><h3>AI Automation / RAG / LLMOps Pilot</h3><div class="price">From $5,000</div><p>For a bounded workflow where automation must be measurable, observable and able to fail safely with human handoff where judgment is required.</p><ul><li>Workflow and model/integration design</li><li>Pilot implementation with acceptance tests</li><li>Quality, failure, cost/latency controls where relevant</li><li>Observability, runbooks and handover</li></ul><p class="microcopy">Final scope and price depend on evidence access, integrations, operating risk and acceptance criteria. Production scale-out is separately scoped unless explicitly included.</p><div class="actions"><a class="button full" data-event="service_cta" href="https://cal.com/tayoca/platform-engineering-consultation" rel="noopener" target="_blank">Book AI Pilot</a></div></div>
+</div></div></section>
+<section class="section band"><div class="container"><div class="section-heading"><p class="eyebrow">Engagement model</p><h2>Commercial terms follow the evidence boundary.</h2><p>Fixed scope is preferred where inputs and acceptance criteria can be bounded. Larger implementations use milestones; managed work starts only after a measurable baseline and service boundary exist.</p></div><div class="grid four"><div class="card"><h3>Diagnose first</h3><p>A fit call or assessment identifies the decision and evidence needed before implementation expands.</p></div><div class="card"><h3>Explicit scope</h3><p>Inclusions, exclusions, acceptance criteria and change control are written down.</p></div><div class="card"><h3>Evidence-backed outcomes</h3><p>Estimates and modeled savings state assumptions; realized results require validation.</p></div><div class="card"><h3>No hidden guarantees</h3><p>Refunds, SLAs, timing and performance commitments exist only when their conditions are in the approved scope.</p></div></div></div></section>
+<section class="section"><div class="container"><div class="section-heading"><h2>Not sure which engagement fits?</h2><p>Use the assessment ladder to separate a cost problem, reliability problem or automation opportunity before committing to implementation.</p></div><div class="actions" style="justify-content:center"><a class="button" href="/assessments.html">Choose an Assessment</a><a class="button ghost" data-revenue-event="whatsapp_services_click" href="https://wa.me/2348113980135?text=Hi%20Tayoca%2C%20I%20want%20help%20solving%20a%20business%20or%20engineering%20problem." rel="noopener noreferrer" target="_blank">Chat with Tayoca on WhatsApp</a></div></div></section>
 </main>
-<div class="amber-accent"></div>
-<footer>
-<div><strong style="color:#ffffff;display:block;margin-bottom:.5rem;">TAYOCA</strong><small style="color:#a3a3a3;display:block;">AI Automation, FinOps, and Platform Engineering.<br/>Founded by Temitayo Charles Akinniranye.<br/>Ontario, Canada.<br/>© 2026 Tayoca.</small></div>
-<div class="footer-links">
-<strong style="display:block;margin-bottom:.5rem;">Company</strong>
-<div style="display:flex;flex-direction:column;gap:.25rem;">
-<a href="services.html" style="color:#e5e5e5;text-decoration:none">Services</a>
-<a href="products.html" style="color:#e5e5e5;text-decoration:none">Products</a>
-<a href="/blog/" style="color:#e5e5e5;text-decoration:none">Writing</a>
-<a href="about.html" style="color:#e5e5e5;text-decoration:none">About Us</a>
-</div>
-</div>
-<div>
-<strong style="display:block;margin-bottom:.5rem;">Attestations</strong>
-<span style="font-family:'JetBrains Mono',monospace;font-size:.8rem;background:#262626;padding:.25rem .5rem;border-radius:.25rem;margin:.125rem 0;display:block;">PMP</span>
-<span style="font-family:'JetBrains Mono',monospace;font-size:.8rem;background:#262626;padding:.25rem .5rem;border-radius:.25rem;margin:.125rem 0;display:block;">CSM</span>
-<span style="font-family:'JetBrains Mono',monospace;font-size:.8rem;background:#262626;padding:.25rem .5rem;border-radius:.25rem;margin:.125rem 0;display:block;">Terraform Associate</span>
-<span style="font-family:'JetBrains Mono',monospace;font-size:.8rem;background:#262626;padding:.25rem .5rem;border-radius:.25rem;margin:.125rem 0;display:block;">AWS Solutions Architect</span>
-</div>
-</footer>
-<script defer="" src="/revenue-events.js"></script>
-<script defer="" src="/card-interactions.js"></script>
-<script defer src="/tayoca-site.js"></script>
-</body>
-</html>
+<footer><div class="footer-grid"><div><div class="footer-brand">TAYOCA</div><p>Technology Value &amp; FinOps, Platform Reliability &amp; DevSecOps, and Agentic Operations &amp; Automation.<br>Ontario, Canada.<br>© <span data-current-year>2026</span> Tayoca.</p></div><div class="footer-links"><strong>Explore</strong><a href="/services.html">Services</a><a href="/assessments.html">Assessments</a><a href="/results.html">Results</a><a href="/products.html">Products</a><a href="/insights.html">Insights</a><a href="/about.html">About</a></div><div class="footer-links"><strong>Connect</strong><a href="/operator-brief.html">Operator Brief</a><a href="/trust.html">Trust Center</a><a href="mailto:support@tayoca.com">support@tayoca.com</a></div></div></footer>
+<script defer src="/growth-os.js"></script><script defer src="/revenue-events.js"></script><script defer src="/card-interactions.js"></script><script defer src="/tayoca-site.js"></script>
+</body></html>
