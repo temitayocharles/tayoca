@@ -259,9 +259,12 @@ external_and_continuous_improvement_items:
     blocking_scope: none
     rule: Preserve observed Search Console metadata until Google reprocesses the canonical sitemap.
   - id: native_n8n_errorworkflow_dispatch
-    severity: medium
+    severity: resolved
     blocking_scope: none
-    rule: Treat native errorWorkflow as best-effort; the tested metadata-only failure monitor remains authoritative.
+    resolved_at: '2026-08-17T15:46:34.583Z'
+    rule: >
+      A controlled automatic webhook-mode failure (execution 88875) triggered the native n8n Error Trigger and emitted only a sanitized diagnostic marker.
+      Manual executions are not valid native Error Trigger certification. The five-minute metadata-only failure monitor remains active as defense in depth.
   - id: revenue_command_center_placeholder_metrics
     severity: resolved
     blocking_scope: none
@@ -271,17 +274,41 @@ external_and_continuous_improvement_items:
       genuine measured zeros remain zero, pageviews are not mislabeled as sessions, and ROAS is unavailable when spend is zero.
   - id: cal_booking_pipeline_sync
     severity: medium
-    blocking_scope: none
+    blocking_scope: automatic_booking_reconciliation
+    status: BLOCKED_RUNTIME_CREDENTIAL_INVALID
+    observed_at: '2026-08-17T16:03:49.408Z'
+    authority:
+      provider: Cal.com
+      connected_account: cal_batak-modal
+      username: tayoca
+      event_types:
+        platform_engineering_consultation: 6432034
+        finops_audit: 6432033
+      current_booking_count: 0
+      revenue_pipeline_data_rows: 0
+    runtime_probe:
+      n8n_execution: '88971'
+      composio_endpoint: /api/v3.1/tools/execute/CAL_FETCH_ALL_BOOKINGS
+      http_status: 401
+      provider_error_code: '801'
+      api_key_present_in_process: true
+      api_key_valid_for_tool_execution: false
+      secret_value_persisted: false
+      probe_workflows_archived: true
+      diagnostic_row_deleted: true
     rule: >
-      Keep booking reconciliation operator-controlled until the existing credential-bound Revenue
-      Pipeline path can be extended safely. Never infer assessment_scheduled from a CTA click or presumed booking.
+      Keep booking reconciliation operator-controlled until the Vault-mounted COMPOSIO_API_KEY is rotated to a valid
+      Composio project key and the authenticated Cal read is recertified from inside n8n. Only provider-confirmed bookings
+      may advance an existing Revenue Pipeline opportunity; correlate by attendee email plus assessment/event type and retain
+      the Cal booking UID as provider evidence. Never infer assessment_scheduled from a CTA click or presumed booking.
   - id: n8n_resend_runtime_credential
     severity: resolved
     blocking_scope: none
     resolved_at: '2026-08-17T13:30:41Z'
     rule: >
-      Production n8n now exposes RESEND_API_KEY and COMPOSIO_API_KEY through the Vault-backed
-      n8n-runtime-vault-shadow projection without storing secret values in workflow JSON or source control.
+      Production n8n projects RESEND_API_KEY and COMPOSIO_API_KEY through the Vault-backed n8n-runtime-vault-shadow without
+      storing secret values in workflow JSON or source control. Projection/presence is certified; the separate Cal booking
+      item records that the currently mounted Composio key fails API execution and must not be treated as validity proof.
 
 change_control:
   plan_revision_required_when:
