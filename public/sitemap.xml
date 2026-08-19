@@ -1,38 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://tayoca.com/</loc></url>
-  <url><loc>https://tayoca.com/services.html</loc></url>
-  <url><loc>https://tayoca.com/assessments.html</loc></url>
-  <url><loc>https://tayoca.com/results.html</loc></url>
-  <url><loc>https://tayoca.com/products.html</loc></url>
-  <url><loc>https://tayoca.com/about.html</loc></url>
-  <url><loc>https://tayoca.com/trust.html</loc></url>
-  <url><loc>https://tayoca.com/operator-brief.html</loc></url>
-  <url><loc>https://tayoca.com/reviews.html</loc></url>
-  <url><loc>https://tayoca.com/sivanta.html</loc></url>
-  <url><loc>https://tayoca.com/blog/</loc></url>
-  <url><loc>https://tayoca.com/blog/ai-automation-career-roadmap.html</loc></url>
-  <url><loc>https://tayoca.com/blog/cka-practice-beyond-memorization.html</loc></url>
-  <url><loc>https://tayoca.com/blog/cloud-cost-optimization-playbook.html</loc></url>
-  
-  <url><loc>https://tayoca.com/blog/etcd-backup-restore-lab.html</loc></url>
-  <url><loc>https://tayoca.com/blog/gitops-beyond-hello-world.html</loc></url>
-  <url><loc>https://tayoca.com/blog/kubernetes-incident-response-practice.html</loc></url>
-  <url><loc>https://tayoca.com/blog/kubernetes-interview-scenarios.html</loc></url>
-  <url><loc>https://tayoca.com/blog/kubernetes-production-checklist.html</loc></url>
-  <url><loc>https://tayoca.com/blog/kubernetes-production-readiness-checklist-for-2026.html</loc></url>
-  <url><loc>https://tayoca.com/blog/kubernetes-troubleshooting-labs.html</loc></url>
-  <url><loc>https://tayoca.com/blog/n8n-mcp-kubernetes.html</loc></url>
-  <url><loc>https://tayoca.com/products/kubernetes-operators-workbook.html</loc></url>
-  <url><loc>https://tayoca.com/products/ai-automation-career-playbook.html</loc></url>
-  <url><loc>https://tayoca.com/products/n8n-mcp-kubernetes-teaching-pack.html</loc></url>
-  <url><loc>https://tayoca.com/products/build-break-fix-devops-lab-pack.html</loc></url>
-  <url><loc>https://tayoca.com/products/aws-cost-optimization-playbook.html</loc></url>
-  <url><loc>https://tayoca.com/products/devops-incident-runbook-template.html</loc></url>
-  <url><loc>https://tayoca.com/products/kubernetes-production-readiness-checklist.html</loc></url>
-  <url><loc>https://tayoca.com/products/gitops-field-guide.html</loc></url>
-  <url><loc>https://tayoca.com/segments/growth-stage-technology.html</loc></url>
-  <url><loc>https://tayoca.com/segments/regulated-operations.html</loc></url>
-  <url><loc>https://tayoca.com/segments/ai-enabled-engineering.html</loc></url>
-  <url><loc>https://tayoca.com/blog/sitesupply-construction-procurement-marketplace.html</loc></url>
+  <url><loc>https://tayoca.com/</loc></url><url><loc>https://tayoca.com/services.html</loc></url><url><loc>https://tayoca.com/assessments.html</loc></url><url><loc>https://tayoca.com/results.html</loc></url><url><loc>https://tayoca.com/products.html</loc></url><url><loc>https://tayoca.com/about.html</loc></url><url><loc>https://tayoca.com/trust.html</loc></url><url><loc>https://tayoca.com/operator-brief.html</loc></url><url><loc>https://tayoca.com/operator-brief-archive.html</loc></url><url><loc>https://tayoca.com/reviews.html</loc></url><url><loc>https://tayoca.com/sivanta.html</loc></url><url><loc>https://tayoca.com/community/websites</loc></url><url><loc>https://tayoca.com/blog/</loc></url><url><loc>https://tayoca.com/blog/ai-automation-career-roadmap.html</loc></url><url><loc>https://tayoca.com/blog/cka-practice-beyond-memorization.html</loc></url><url><loc>https://tayoca.com/blog/cloud-cost-optimization-playbook.html</loc></url><url><loc>https://tayoca.com/blog/etcd-backup-restore-lab.html</loc></url><url><loc>https://tayoca.com/blog/gitops-beyond-hello-world.html</loc></url><url><loc>https://tayoca.com/blog/kubernetes-incident-response-practice.html</loc></url><url><loc>https://tayoca.com/blog/kubernetes-interview-scenarios.html</loc></url><url><loc>https://tayoca.com/blog/kubernetes-production-checklist.html</loc></url><url><loc>https://tayoca.com/blog/kubernetes-production-readiness-checklist-for-2026.html</loc></url><url><loc>https://tayoca.com/blog/kubernetes-troubleshooting-labs.html</loc></url><url><loc>https://tayoca.com/blog/n8n-mcp-kubernetes.html</loc></url><url><loc>https://tayoca.com/products/kubernetes-operators-workbook.html</loc></url><url><loc>https://tayoca.com/products/ai-automation-career-playbook.html</loc></url><url><loc>https://tayoca.com/products/n8n-mcp-kubernetes-teaching-pack.html</loc></url><url><loc>https://tayoca.com/products/build-break-fix-devops-lab-pack.html</loc></url><url><loc>https://tayoca.com/products/aws-cost-optimization-playbook.html</loc></url><url><loc>https://tayoca.com/products/devops-incident-runbook-template.html</loc></url><url><loc>https://tayoca.com/products/kubernetes-production-readiness-checklist.html</loc></url><url><loc>https://tayoca.com/products/gitops-field-guide.html</loc></url><url><loc>https://tayoca.com/segments/growth-stage-technology.html</loc></url><url><loc>https://tayoca.com/segments/regulated-operations.html</loc></url><url><loc>https://tayoca.com/segments/ai-enabled-engineering.html</loc></url>
 </urlset>
