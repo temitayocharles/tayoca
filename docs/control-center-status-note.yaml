@@ -1,0 +1,18 @@
+control_center:
+  status: completed_production_deployed
+  production_url: https://control.tayoca.com
+  production_line_commit: 6cae0f71d7b60cec62c783de925780835075e96c
+  deployment_id: dpl_5xGR3Lm58YdNKU3vUJD5Ds8ZudsJ
+  deployment_status: READY_PROMOTED
+  gateway:
+    workflow_id: gif5P0MDI6WrceAP
+    name: Tayoca Control Center | Unified Gateway v6.1
+  authentication:
+    boundary: cloudflare_access_only
+    browser_credentials_exposed: false
+  recovery:
+    global_site_settings_restore_exercised: true
+    final_exact_original_blob_restored: true
+  program_rule: do_not_reopen_without_specific_defect_or_new_feature
+  lm_arena_rule: preserve_compatibility_but_do_not_redesign_or_replace_control_center
+  handoff: docs/control-center-production-handoff-20260828.md
