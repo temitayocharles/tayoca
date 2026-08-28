@@ -61,9 +61,14 @@ FREE DEVOPS PRACTICE PACK
 
 **AI can write the script. Can you tell when it will fail or when it's doing too much?**
 
+The headline intentionally covers two risk classes:
+
+- **Failure:** the script crashes, hangs, reports the wrong status, misses data, or fails to complete its intended job.
+- **Overreach:** the script technically runs but deletes too broadly, retries too aggressively, fans out without bounds, waits indefinitely, exposes secrets, or touches more state than intended.
+
 ### Subhead
 
-Get 10 broken-on-purpose Python and Bash labs that train you to debug, test, and harden AI-generated DevOps automation before it reaches production.
+Get 10 broken-on-purpose Python and Bash labs that train you to debug, test, bound, and harden AI-generated DevOps automation before it reaches production.
 
 ### What is inside
 
@@ -97,6 +102,10 @@ No spam. No daily sales sequence. Practical engineering notes and an unsubscribe
 7. Paid-product recommendations are contextual, not attached to every email.
 
 ## Required runtime contract
+
+Canonical implementation contract:
+
+`automation/n8n/lead-magnet-ai-script-debugging-runtime-contract.md`
 
 Do not publish the public CTA until all of the following are verified against the running system:
 
