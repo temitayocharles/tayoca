@@ -408,38 +408,23 @@ Its current scope is 76 changed files, 9 commits, 4,377 additions and 1,625 dele
 - imagery/artwork assets;
 - contract-preservation validation for forms, Operator Brief archive marker, community Google Form markers, product registry, analytics and redirects.
 
-### 15.3 LM Arena quality verdict
+### 15.3 LM Arena production verdict
 
-**Historical PR #13 verdict:** useful and substantial, but not production-complete and not safe to merge wholesale.
+GitHub PR #15 (`arena/01a04a44-tayoca`, reviewed head `0f67039f7276ea7c932f1f2f97d0013f7832f029`) is the accepted external design source for the company-platform modernization. Final acceptance occurred through canonical Forgejo, not through a GitHub merge.
 
-**Current reconciled candidate:** GitHub PR #15 (`arena/01a04a44-tayoca`, head `0f67039f7276ea7c932f1f2f97d0013f7832f029`) was reconstructed from the GitHub mirror of canonical Forgejo `917bbb733c877bbdf4e64e3fac91cc8e07131fab`. Its reviewed 72-file design delta is now imported into canonical Forgejo branch `integrate/lm-arena-v2-20260828`, with one canonical whitespace-hygiene correction. It remains pending protected-PR, browser/accessibility and production-parity certification before this modernization is complete.**
+The reviewed design was reconciled onto current canonical contracts and certified through Forgejo PR #41. The pre-merge canonical head `3e57d58afa9df0e145daf38d1911534e9ba0e470` passed static-quality run #17675 and the self-hosted Chromium/Axe gate #17677 after seven real color-contrast regressions were corrected without changing the accepted visual direction.
 
-Strengths:
+Forgejo PR #41 was then merged to canonical `main` as `9b1f2ec0c928652d7868b4057126ec686b8d7f28`. Automatic push run #17682 succeeded and mirrored the canonical result to GitHub commit `046441d27e3a97bed5253c21cb0dfc49f3e36b52` with trailer `Canonical-Forgejo-Commit: 9b1f2ec0c928652d7868b4057126ec686b8d7f28` and canonical tree `d3f5eb5b2241ff44079b5e6652afc1035c753473`.
 
-- correctly reframes Tayoca as a company/builder rather than only an assessment funnel;
-- introduces company-level IA and portfolio/content modelling;
-- makes Operator Brief, community, products and work visible;
-- recognizes stable website-to-n8n contracts;
-- preserves the locked commercial product model additively;
-- removes unsupported About metrics and stops using the withdrawn $216K narrative as proof;
-- includes migration, QA, owner-confirmation and control-plane documentation;
-- identifies the embedded Control Center authorization material without exposing it;
-- avoids fake clients/metrics and generic AI visual tropes;
-- validates a broad set of links/metadata/contracts in its own branch.
+Vercel production project `tayoca-com-static` promoted deployment `dpl_BifRiqN4R7bMbY64nZTnhd1waJKY` from that GitHub mirror commit. `tayoca.com` is assigned directly to the promoted deployment and `www.tayoca.com` permanently redirects to it.
 
-Deficiencies / reasons it is not complete:
+Post-deployment parity initially reported 49/50 because the verifier treated the intentionally declared permanent redirect for `/blog/devops-incident-response-runbook.html` as content drift. Diagnostic run #17707 isolated that contract mismatch. The verifier was made redirect-aware, retaining byte-exact comparison for ordinary HTML while validating declared Vercel redirects as redirect contracts. Production parity run #17715 then passed.
 
-1. **Stale base:** PR #13 is based on GitHub mirror SHA `5ff90fb683a17f26b055c42795ed53bef36b548a`, while canonical Forgejo has advanced substantially. It requires reconstruction/rebase by intent, not blind merge.
-2. **Source-authority boundary:** final acceptance must originate in Forgejo, not GitHub PR #13.
-3. **Internal inventory inconsistency:** `00-discovery-audit.md` still describes a five-active-workflow repository view even though later `10-company-discovery-inventory.md` correctly states the live n8n estate is materially broader. The final canonical documentation must use live runtime inventory.
-4. **Creator Prompter discovery failure:** LM Arena stated Creator Prompter could not be found. Forgejo currently proves `temitayocharles/creator-prompter-studio` exists, with canonical main `e7299c284d2fb5ca4f69df8b4aa47c902d963261`. This must be classified for public disclosure rather than treated as nonexistent.
-5. **Portfolio completeness:** several company/project relationships remain in an owner-confirmation register, including SiteSupply ownership/classification, Sivanta disclosure/deployment claims and other ecosystem projects. They cannot simply be omitted forever if they are material to company identity; they must be resolved deliberately.
-6. **Control-plane implementation:** LM Arena documented the CMS/security migration but did not have authority to execute live n8n remediation. Those items remain separate implementation work.
-7. **Design direction still risks monotony:** its `night workshop` direction keeps near-black + amber as the dominant surface. It is materially better than the old site, but the final design must specifically address the owner's complaint that Tayoca looks bland/boring. More sectional variety, imagery, product/interface artefacts, editorial composition, light/dark contrast moments and human/community texture are required. The black/orange token set cannot become another uniform dark-card system.
-8. **No automatic adoption of generated imagery:** generated editorial/project images must be reviewed for truthfulness, quality, non-deception and visual fit before production.
-9. **Later canonical changes:** site-settings recovery, Forgejo/mirror changes, current content and any newer Growth OS/control-plane work must be reconciled into the redesign.
+The durable certification record is `docs/public-company-platform-production-certification-20260828.md`.
 
-Therefore LM Arena is a **design and implementation candidate**, not the final canonical redesign.
+**Verdict: the LM Arena company-platform redesign is reconciled, certified and production-deployed through canonical Forgejo.** GitHub PR #15 remains design provenance only and must not be merged independently as a second authority.
+
+The modernization preserves the completed Control Center, Global Site Settings, locked product contracts, evidence/disclosure boundaries and conservative treatment of unresolved project ownership/public-disclosure decisions. Those separate disclosure decisions do not retroactively block the website deployment.
 
 ## 16. Current source-drift warning
 
@@ -455,8 +440,8 @@ For broad Tayoca work, use this order unless an incident overrides it:
 2. fix security/safety correctness;
 3. fix data-integrity, recovery and source-authority issues;
 4. complete product/runtime behavior and stable contracts;
-5. modernize control-plane/CMS experience;
-6. integrate the public company-platform redesign;
+5. preserve the completed Control Center and stable publishing/configuration contracts;
+6. integrate public company-platform changes through Forgejo;
 7. certify production parity, accessibility, analytics, links and rollback.
 
 A production incident may temporarily interrupt this sequence. Record the interruption, resolve it, then return to the current program workstream.
@@ -480,23 +465,21 @@ A production incident may temporarily interrupt this sequence. Record the interr
 | Review/trust system | SUBSTANTIAL IMPLEMENTATION | Preserve fail-closed verification |
 | Workflow live-estate reconciliation | OPEN / NEEDS CURRENT LIVE PASS | Runtime inventory wins over stale registry |
 | Backup ledger/snapshot reconciliation | OPEN / NEEDS CURRENT LIVE PASS | Do not rely on old counts |
-| LM Arena company-platform redesign | RECONCILED FORGEJO INTEGRATION CANDIDATE | GitHub PR #15 imported by exact reviewed head; certify before merge |
-| Full public visual/company-platform modernization | INTEGRATION / CERTIFICATION | Preserve LM Arena v2 styling and certify canonical production deployment |
+| LM Arena company-platform redesign | VERIFIED COMPLETE / PRODUCTION-DEPLOYED | GitHub PR #15 is design provenance; Forgejo PR #41 is canonical acceptance |
+| Full public visual/company-platform modernization | VERIFIED COMPLETE / PRODUCTION-DEPLOYED | Reopen only for a specific defect or new feature |
 
-## 19. Required reconciliation before the next autonomous wave
+## 19. Current remaining-work register
 
-Before resuming implementation, produce a fresh evidence-backed remaining-work register by:
+The public company-platform modernization is complete and production-deployed. Do not reopen it broadly unless current evidence identifies a specific defect or a new feature is requested.
 
-1. diffing current Forgejo `main` against all newer canonical changes since the LM Arena base;
-2. reviewing PR #13/`arena/01a04553-tayoca` by feature/intent rather than line-by-line merge;
-3. reconciling Creator Prompter and other known project repositories into a truthful company-project inventory;
-4. querying the live Tayoca-related n8n estate, not only the repo registry;
-5. verifying whether the embedded Control Center authorization material still exists;
-6. reconciling live workflows against backup ledger/snapshots and classifying differences;
-7. checking current Project Intelligence, Growth OS, Operator Brief, community and trust runtimes;
-8. checking current public production site vs canonical Forgejo and GitHub deployment mirror;
-9. resolving or explicitly deferring owner-confirmation/disclosure items;
-10. creating a staged Forgejo-native redesign/control-plane implementation plan with rollback and certification.
+Separate cross-platform workstreams remain open and must not be conflated with the completed website modernization:
+
+1. query and reconcile the current live Tayoca-related n8n estate against repository declarations;
+2. reconcile the backup ledger and stored workflow snapshots against current live runtime state;
+3. recheck Project Intelligence Hub, Growth OS, Operator Brief, community and trust runtimes when a change requires current runtime evidence;
+4. resolve or explicitly defer project/ownership/public-disclosure items before making stronger public claims about Creator Prompter Studio, SiteSupply, Zernio/9Drive, Abiding Place Fellowship or other unresolved relationships.
+
+The completed Control Center is not in this remaining-work register unless a specific evidenced defect or new feature is raised.
 
 ## 20. Completion standard
 
