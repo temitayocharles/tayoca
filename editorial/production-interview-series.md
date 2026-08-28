@@ -73,9 +73,9 @@ Use the free pack only when the episode naturally concerns generated scripts, au
 
 Default CTA:
 
-> **AI can write the script. Can you tell when it will fail or when it's doing too much?** Get the free **Debugging AI-Generated DevOps Scripts** practice pack: 10 Python and Bash failure labs for testing, bounding, and hardening generated automation before production.
+> AI can write the script. Can you tell when it will fail or when it's doing too much? Get the free **Debugging AI-Generated DevOps Scripts** practice pack: 10 Python and Bash labs for catching failure, unsafe scope, unbounded behavior, and false success before production.
 
-The phrase **doing too much** deliberately covers scripts that do not crash but still exceed their safe operating boundary: deleting too broadly, retrying too aggressively, waiting without bounds, fanning out too widely, touching unexpected state, or reporting success while doing the wrong amount of work.
+“Doing too much” is not marketing filler. It means overreach: deletion scope that is too broad, retries or concurrency without a bound, indefinite waits, unexpected state mutation, or any other automation behavior that exceeds the intended operating boundary.
 
 Do not attach this CTA mechanically to every Tayoca piece. The goal is relevant subscriber acquisition, not maximum impressions.
 
