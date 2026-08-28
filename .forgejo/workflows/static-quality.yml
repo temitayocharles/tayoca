@@ -145,8 +145,8 @@ jobs:
             https://github.com/temitayocharles/tayoca.git "$mirror_root/github"
           test "$(git -C "$mirror_root/github" rev-parse HEAD)" = "$remote_head"
 
-          git -C "$mirror_root/github" config user.name "Tayoca Canonical Mirror"
-          git -C "$mirror_root/github" config user.email "tayoca-canonical-mirror@users.noreply.github.com"
+          git -C "$mirror_root/github" config user.name "Temitayo"
+          git -C "$mirror_root/github" config user.email "temitayo_charles@yahoo.com"
           git -C "$mirror_root/github" rm -r -q --ignore-unmatch .
           git -C "$mirror_root/github" clean -fdx -q
 
