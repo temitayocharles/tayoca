@@ -69,11 +69,13 @@ Every episode/post follows the same structure:
 
 ## Lead-magnet bridge
 
-Use the free pack only when the episode naturally concerns generated scripts, automation failure, evidence, or review discipline.
+Use the free pack only when the episode naturally concerns generated scripts, automation failure, overreach, evidence, or review discipline.
 
 Default CTA:
 
-> AI can write the script. Can you tell when it will fail? Get the free **Debugging AI-Generated DevOps Scripts** practice pack: 10 Python and Bash failure labs for testing and hardening generated automation before production.
+> **AI can write the script. Can you tell when it will fail or when it's doing too much?** Get the free **Debugging AI-Generated DevOps Scripts** practice pack: 10 Python and Bash failure labs for testing, bounding, and hardening generated automation before production.
+
+The phrase **doing too much** deliberately covers scripts that do not crash but still exceed their safe operating boundary: deleting too broadly, retrying too aggressively, waiting without bounds, fanning out too widely, touching unexpected state, or reporting success while doing the wrong amount of work.
 
 Do not attach this CTA mechanically to every Tayoca piece. The goal is relevant subscriber acquisition, not maximum impressions.
 
