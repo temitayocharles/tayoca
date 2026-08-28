@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <!-- Google Analytics 4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-G4QC90QNXW"></script>
   <script src="/ga4.js"></script>
   <meta charset="utf-8">
@@ -24,6 +23,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/growth-os.css">
+  <link rel="stylesheet" href="/assets/css/site-shell.css">
   <link rel="stylesheet" href="/assets/css/community-websites.css">
 </head>
 <body>
@@ -32,17 +32,16 @@
   <a class="brand" href="/" aria-label="Tayoca home">TAYOCA</a>
   <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button>
   <nav class="primary-nav" id="primary-nav" aria-label="Primary navigation">
-    <a href="/services.html">Services</a><a href="/assessments.html">Assessments</a><a href="/results.html">Results</a><a href="/products.html">Products</a><a href="/insights.html">Insights</a><a href="/about.html">About</a>
+    <a href="/services.html">Services</a><a href="/work.html">Work</a><a href="/products.html">Products</a><a href="/blog/">Insights</a><a href="/community/websites" aria-current="page">Community</a><a href="/about.html">About</a>
   </nav>
-  <a class="button small header-cta" href="/assessments.html">Start an Assessment</a>
+  <a class="button small header-cta" data-event="header_assessment" href="/assessments.html">Start an Assessment</a>
 </div></header>
-
 <main id="main">
   <section class="community-hero">
     <div class="community-hero__grid">
       <div class="community-hero__copy">
         <p class="eyebrow">Free Website Initiative · First round</p>
-        <h1>Free websites for 10 local Ontario businesses. <span>A better front door.</span></h1>
+        <h1>Free websites for 10 local Ontario businesses. <span class="accent">A better front door.</span></h1>
         <p class="community-lede">If your Ontario small business has no website, relies mainly on social media, or has a website that no longer represents the business well, Tayoca is opening ten build spots for this first community round across Shelburne, Orangeville, Alliston, Dufferin County, Simcoe County and nearby communities.</p>
         <div class="community-hero__actions">
           <a class="button" href="https://docs.google.com/forms/d/e/1FAIpQLSeTyWlIZzI8uz4zNRiLXaNdIAw3NuPDIRxnuemwIb7c-IW64Q/viewform" target="_blank" rel="noopener" data-google-form-cta="hero">Apply on Google Forms</a>
@@ -86,27 +85,29 @@
     </div>
   </div></section>
 
-  <section class="section community-boundary"><div class="container community-boundary__grid">
-    <div>
-      <div class="community-section-label">02 · Clear boundaries</div>
+  <section class="section band"><div class="container">
+    <div class="community-section-label">02 · Clear boundaries</div>
+    <div class="community-scope__intro">
       <h2>Free should mean free.</h2>
       <p>If you are selected, the promised core build does not suddenly become conditional on purchasing something else.</p>
     </div>
-    <div class="boundary-card">
-      <p class="boundary-card__label">Discussed separately only when useful</p>
-      <ul>
-        <li>Domain or long-term hosting costs</li>
-        <li>Secure owner CMS or <code>/admin</code> capability</li>
-        <li>Ongoing maintenance and security updates</li>
-        <li>Managed local SEO and reporting</li>
-        <li>E-commerce or custom application features</li>
-        <li>Booking, payment, CRM and automation systems</li>
-      </ul>
-      <p class="boundary-card__foot">You can decline every optional add-on and still receive the agreed free core build.</p>
+    <div class="grid two">
+      <div class="ledger-panel"><h3>Discussed separately only when useful</h3>
+        <p class="ledger-check">Domain or long-term hosting costs</p>
+        <p class="ledger-check">Secure owner CMS or /admin capability</p>
+        <p class="ledger-check">Ongoing maintenance and security updates</p>
+        <p class="ledger-check">Managed local SEO and reporting</p>
+        <p class="ledger-check">E-commerce or custom application features</p>
+        <p class="ledger-check">Booking, payment, CRM and automation systems</p>
+      </div>
+      <div class="ledger-panel"><h3>The promise</h3>
+        <p>You can decline every optional add-on and still receive the agreed free core build.</p>
+        <div class="actions"><a class="button small" href="https://docs.google.com/forms/d/e/1FAIpQLSeTyWlIZzI8uz4zNRiLXaNdIAw3NuPDIRxnuemwIb7c-IW64Q/viewform" target="_blank" rel="noopener" data-google-form-cta="apply_section">Apply for a spot</a></div>
+      </div>
     </div>
   </div></section>
 
-  <section class="section" id="process"><div class="container">
+  <section class="section"><div class="container">
     <div class="community-section-label">03 · How selection works</div>
     <div class="process-rail">
       <div><span>Apply</span><p>Complete the short application on Google Forms.</p></div>
@@ -117,20 +118,41 @@
     </div>
   </div></section>
 
-  <section class="section community-apply" id="apply"><div class="container community-apply__grid"><div class="community-apply__intro"><div class="community-section-label">04 · Apply</div><h2>A familiar two-minute application.</h2><p>To make the first step feel safer and more familiar, applications now open in Google Forms. You do not need to create a Tayoca account or enter payment information.</p><div class="privacy-note"><strong>Your choices stay separate.</strong><p>Submitting allows Tayoca to assess and contact you about this initiative. Newsletter permission and public case-study permission remain optional.</p></div></div><div class="form-card community-form-card"><p class="community-section-label">GOOGLE FORM · EXTERNAL</p><h3>Apply for one of the first 10 website spots</h3><p>Google Forms is the application surface. Tayoca remains the initiative home, eligibility guide, and source of updates.</p><a class="button full" href="https://docs.google.com/forms/d/e/1FAIpQLSeTyWlIZzI8uz4zNRiLXaNdIAw3NuPDIRxnuemwIb7c-IW64Q/viewform" target="_blank" rel="noopener" data-google-form-cta="apply_section">Open the application on Google Forms</a><p class="form-disclaimer">Submitting is an application, not a guarantee of selection. The first round is limited to 10 businesses.</p></div></div></section>
+  <section class="section band"><div class="container community-apply">
+    <div class="community-section-label">04 · Apply</div>
+    <div class="community-scope__intro">
+      <h2>A familiar two-minute application.</h2>
+      <p>To make the first step feel safer and more familiar, applications now open in Google Forms. You do not need to create a Tayoca account or enter payment information.</p>
+      <p style="color:var(--muted)">Your choices stay separate. Submitting allows Tayoca to assess and contact you about this initiative. Newsletter permission and public case-study permission remain optional.</p>
+    </div>
+    <div class="ledger-panel">
+      <span class="chip chip--neutral">Google Form · External</span>
+      <h3 style="margin-top:.8rem">Apply for one of the first 10 website spots</h3>
+      <p>Google Forms is the application surface. Tayoca remains the initiative home, eligibility guide and source of updates.</p>
+      <div class="actions"><a class="button" href="https://docs.google.com/forms/d/e/1FAIpQLSeTyWlIZzI8uz4zNRiLXaNdIAw3NuPDIRxnuemwIb7c-IW64Q/viewform" target="_blank" rel="noopener" data-google-form-cta="apply_section">Open the application on Google Forms</a></div>
+    </div>
+  </div></section>
 
-  <section class="section community-faq"><div class="container"><div class="community-section-label">05 · Common questions</div><div class="community-scope__intro"><h2>Free website help for local Ontario businesses.</h2><p>The initiative is designed for small businesses that need a credible web presence without turning the free build into a sales trap.</p></div><div class="scope-list" role="list"><div role="listitem"><span>01</span><div><strong>Which Ontario communities are included?</strong><p>Shelburne, Orangeville, Alliston, Dufferin County, Simcoe County and nearby Ontario communities are part of the first-round focus.</p></div></div><div role="listitem"><span>02</span><div><strong>Is the website core build really free?</strong><p>Yes. Selected businesses pay $0 for the agreed core build. Hosting, domains, maintenance, e-commerce or other optional services are separate and never required to receive the promised core build.</p></div></div><div role="listitem"><span>03</span><div><strong>Why does the application open in Google Forms?</strong><p>It gives applicants a familiar, recognizable application surface. Tayoca.com remains the canonical initiative page and the place to understand eligibility, scope and process.</p></div></div><div role="listitem"><span>04</span><div><strong>What happens after I apply?</strong><p>Tayoca reviews fit and available capacity first. Approved applications then move into business research, website planning, build, review and source handoff.</p></div></div></div></div></section><section class="community-close"><div class="container">
+  <section class="section"><div class="container"><div class="community-section-label">05 · Common questions</div><div class="community-scope__intro"><h2>Free website help for local Ontario businesses.</h2><p>The initiative is designed for small businesses that need a credible web presence without turning the free build into a sales trap.</p></div><div class="scope-list" role="list"><div role="listitem"><span>01</span><div><strong>Which Ontario communities are included?</strong><p>Shelburne, Orangeville, Alliston, Dufferin County, Simcoe County and nearby Ontario communities are part of the first-round focus.</p></div></div><div role="listitem"><span>02</span><div><strong>Is the website core build really free?</strong><p>Yes. Selected businesses pay $0 for the agreed core build. Hosting, domains, maintenance, e-commerce or other optional services are separate and never required to receive the promised core build.</p></div></div><div role="listitem"><span>03</span><div><strong>Why does the application open in Google Forms?</strong><p>It gives applicants a familiar, recognizable application surface. Tayoca.com remains the canonical initiative page and the place to understand eligibility, scope and process.</p></div></div><div role="listitem"><span>04</span><div><strong>What happens after I apply?</strong><p>Tayoca reviews fit and available capacity first. Approved applications then move into business research, website planning, build, review and source handoff.</p></div></div></div></div></section>
+
+  <section class="community-close">
     <p class="eyebrow">A Tayoca community give-back</p>
     <h2>Good local businesses deserve a web presence that reflects the work they already do.</h2>
-  </div></section>
+    <div class="actions" style="justify-content:center"><a class="button" href="https://docs.google.com/forms/d/e/1FAIpQLSeTyWlIZzI8uz4zNRiLXaNdIAw3NuPDIRxnuemwIb7c-IW64Q/viewform" target="_blank" rel="noopener" data-google-form-cta="apply_section">Apply on Google Forms</a><a class="button ghost" href="/work.html">See more of what Tayoca builds</a></div>
+  </section>
 </main>
-
-<footer><div class="footer-grid">
-  <div><div class="footer-brand">TAYOCA</div><p>AI Automation, FinOps, and Platform Engineering.<br>Founded by Temitayo Charles Akinniranye.<br>Ontario, Canada.<br>© <span data-current-year>2026</span> Tayoca.</p></div>
-  <div class="footer-links"><strong>Explore</strong><a href="/services.html">Services</a><a href="/assessments.html">Assessments</a><a href="/results.html">Results</a><a href="/products.html">Products</a><a href="/insights.html">Insights</a><a href="/about.html">About</a></div>
-  <div class="footer-links"><strong>Connect</strong><a href="/operator-brief.html">Operator Brief</a><a href="/trust.html">Trust Center</a><a href="mailto:support@tayoca.com">support@tayoca.com</a></div>
-</div></footer>
-<script>window.addEventListener('DOMContentLoaded',()=>{if(typeof window.gtag==='function')window.gtag('event','community_initiative_view',{initiative:'community_websites',application_surface:'google_forms'});document.querySelectorAll('[data-google-form-cta]').forEach(a=>a.addEventListener('click',()=>{if(typeof window.gtag==='function')window.gtag('event','community_google_form_click',{placement:a.getAttribute('data-google-form-cta')||'unknown',initiative:'community_websites'});}));});</script>
+<footer class="site-footer"><div class="footer-inner">
+  <div class="footer-brand-col"><div class="footer-brand">TAYOCA</div><p>An engineering-led technology company building software, systems and knowledge for reliable, accountable technology operations. Founded by Temitayo Charles Akinniranye. Ontario, Canada.</p></div>
+  <div class="footer-col"><strong>Company</strong><a href="/about.html">About</a><a href="/work.html">Work</a><a href="/results.html">Results</a><a href="/trust.html">Trust Center</a><a href="/reviews.html">Verified Reviews</a></div>
+  <div class="footer-col"><strong>Services</strong><a href="/services.html">Services &amp; Pricing</a><a href="/assessments.html">Assessments</a><a href="/segments/growth-stage-technology.html">Growth-stage</a><a href="/segments/regulated-operations.html">Regulated operations</a><a href="/segments/ai-enabled-engineering.html">AI-enabled teams</a></div>
+  <div class="footer-col"><strong>Build &amp; Buy</strong><a href="/products.html">Products</a><a href="/sivanta.html">Sivanta</a><a href="/products.html#operator-playbooks">Operator Playbooks</a></div>
+  <div class="footer-col"><strong>Publishing &amp; Community</strong><a href="/blog/">Insights</a><a href="/operator-brief.html">Operator Brief</a><a href="/operator-brief-archive.html">Brief Archive</a><a href="/community/websites">Community Initiative</a></div>
+  <div class="footer-col"><strong>Connect</strong><a href="mailto:temitayo@tayoca.com">temitayo@tayoca.com</a><a href="mailto:support@tayoca.com">support@tayoca.com</a><a href="/assets/contact/temitayo-charles.vcf">Founder contact card</a></div>
+</div>
+<div class="footer-legal"><span>© <span data-current-year>2026</span> Tayoca · Ontario, Canada</span><a href="/trust.html">Evidence &amp; disclosure policy</a></div>
+</footer>
+<script defer src="/community-websites.js"></script>
+<script defer src="/growth-os.js"></script>
+<script defer src="/revenue-events.js"></script>
 <script defer src="/tayoca-site.js"></script>
-</body>
-</html>
+</body></html>

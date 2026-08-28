@@ -1,154 +1,138 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <!-- Google Analytics 4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-G4QC90QNXW"></script>
-  <script src="/ga4.js"></script>
-
-  <meta charset="UTF-8">
-  <title>Tayoca – About</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Tayoca is an AI automation, FinOps, and platform-engineering practice founded by Temitayo Charles Akinniranye. We provide consulting, implementation, training, and practical technical products.">
-  <meta name="keywords" content="Tayoca, about, FinOps, platform engineering, AI automation, AWS, Kubernetes, GitOps, DevSecOps, Ontario, Canada">
-  <meta name="author" content="Tayoca">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://tayoca.com/about.html">
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Tayoca – About">
-  <meta property="og:description" content="Tayoca is an AI automation, FinOps, and platform-engineering practice founded by Temitayo Charles Akinniranye. We provide consulting, implementation, training, and practical technical products.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://tayoca.com/about.html">
-  <meta property="og:site_name" content="Tayoca">
-  <meta property="og:image" content="https://tayoca.com/assets/og-image.png">
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Tayoca – About">
-  <meta name="twitter:description" content="Tayoca is an AI automation, FinOps, and platform-engineering practice founded by Temitayo Charles Akinniranye. We provide consulting, implementation, training, and practical technical products.">
-  <meta name="twitter:image" content="https://tayoca.com/assets/og-image.png">
-
-  <!-- InsForge Analytics (Plausible-compatible, self-hosted) -->
-  <script>
-    (function() {
-      var endpoint = 'https://v7mhrspk.function2.insforge.app/analytics-event';
-      var domain = 'tayoca.com';
-      function sendEvent(name, props) {
-        var data = {
-          domain: domain,
-          name: name,
-          url: window.location.href,
-          path: window.location.pathname,
-          referrer: document.referrer || null,
-          screen_width: window.screen.width,
-          screen_height: window.screen.height,
-          props: props || {}
-        };
-        navigator.sendBeacon && navigator.sendBeacon(endpoint, JSON.stringify(data)) ||
-          fetch(endpoint, { method: 'POST', body: JSON.stringify(data), keepalive: true });
-      }
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', function() { sendEvent('pageview'); });
-      } else {
-        sendEvent('pageview');
-      }
-      window.tayocaAnalytics = { sendEvent: sendEvent };
-    })();
-  </script>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@700&family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
-  <style>
-    body{background:#0d0d0d;color:#e5e5e5;font-family:system-ui,-apple-system,BlinkMacSystemFont,Inter,sans-serif;}
-    main{max-width:1000px;margin:auto;padding:0 2rem;}
-    .amber-accent{width:100%;height:6px;background:#f97316;margin-top:-3px}
-    .card{background:#fff;color:#111;padding:2rem;border-radius:.875rem;box-shadow:0 4px 20px rgba(0,0,0,.08);margin-bottom:2rem}
-    footer{font-size:.875rem;color:#a3a3a3;border-top:1px solid #333333;padding-top:2rem;display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem;max-width:1000px;margin:auto;padding-left:2rem;padding-right:2rem}
-    @media(max-width:768px){footer{grid-template-columns:1fr;margin:2rem 0}}
-    .nav-links a.active { color: #f97316 !important; font-weight: 600; }
-  </style>
-<!-- Vermason Analytics -->
-<script defer src="https://vermason.com/analytics/id.js"></script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "AboutPage",
-  "name": "About Tayoca",
-  "url": "https://tayoca.com/about.html",
-  "mainEntity": {
-    "@type": "Organization",
-    "name": "Tayoca",
-    "url": "https://tayoca.com/",
-    "founder": {
-      "@type": "Person",
-      "name": "Temitayo Charles Akinniranye"
-    }
-  }
-}
-</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@800&display=swap" rel="stylesheet">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-G4QC90QNXW"></script><script src="/ga4.js"></script>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>About Tayoca | An Engineering-Led Technology Company</title>
+  <meta name="description" content="Tayoca is an engineering-led technology company founded by Temitayo Charles Akinniranye: client delivery, owned software like Sivanta, operator publications, a newsletter, community programmes and a governed operating system."><meta name="robots" content="index,follow"><link rel="canonical" href="https://tayoca.com/about.html"><link rel="icon" href="/favicon.ico">
+  <meta property="og:title" content="About Tayoca | An Engineering-Led Technology Company"><meta property="og:description" content="Who Tayoca is, what it builds, how it operates and where it is going — from the founder's own record."><meta property="og:type" content="website"><meta property="og:url" content="https://tayoca.com/about.html"><meta property="og:site_name" content="Tayoca"><meta property="og:image" content="https://tayoca.com/assets/og-image.png">
+  <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="About Tayoca"><meta name="twitter:description" content="Who Tayoca is, what it builds, how it operates and where it is going."><meta name="twitter:image" content="https://tayoca.com/assets/og-image.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/growth-os.css">
+  <link rel="stylesheet" href="/assets/css/site-shell.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"AboutPage","name":"About Tayoca","url":"https://tayoca.com/about.html","mainEntity":{"@type":"Organization","name":"Tayoca","url":"https://tayoca.com/","founder":{"@type":"Person","name":"Temitayo Charles Akinniranye"},"address":{"@type":"PostalAddress","addressRegion":"Ontario","addressCountry":"CA"}}}</script>
 </head>
 <body>
-  <header style="position:sticky;top:0;z-index:999;background:rgba(13,13,13,.8);backdrop-filter:blur(8px)">
-    <nav style="max-width:1000px;margin:auto;padding:0 2rem;display:flex;justify-content:space-between;align-items:center;padding-top:.75rem;padding-bottom:.75rem">
-      <a style="text-decoration:none;color:#ffffff;font-size:1.5rem;font-family:Sora,sans-serif;font-weight:800;letter-spacing:.15em" href="index.html">TAYOCA</a>
-      <div style="display:flex;gap:2rem">
-        <a style="color:#e5e5e5;text-decoration:none" href="services.html">Services</a>
-        <a style="color:#e5e5e5;text-decoration:none" href="products.html">Products</a>
-        <a style="color:#e5e5e5;text-decoration:none" href="/blog/">Writing</a>
-        <a style="color:#f97316!important;text-decoration:none;font-weight:600" href="about.html" aria-current="page">About</a>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner"><a class="brand" href="/" aria-label="Tayoca home">TAYOCA</a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button><nav class="primary-nav" id="primary-nav" aria-label="Primary navigation"><a href="/services.html">Services</a><a href="/work.html">Work</a><a href="/products.html">Products</a><a href="/blog/">Insights</a><a href="/community/websites">Community</a><a href="/about.html" aria-current="page">About</a></nav><a class="button small header-cta" data-event="header_assessment" href="/assessments.html">Start an Assessment</a></div></header>
+<main id="main">
+<section class="hero"><div class="hero-inner">
+  <p class="eyebrow">About · The company</p>
+  <h1>An engineering-led company that <span class="accent">builds, operates and teaches.</span></h1>
+  <p class="lede">Tayoca is a technology company, not a single consulting funnel. Its work spans client delivery, owned software, publications, a newsletter and community programmes — all operating under one evidence standard.</p>
+</div></section>
+<div class="amber-rule"></div>
+
+<section class="section"><div class="container">
+  <div class="grid two" style="align-items:start">
+    <div>
+      <p class="ledger-label">01 / Who we are</p>
+      <h2>A builder's company.</h2>
+      <p>Tayoca was founded by Temitayo Charles Akinniranye — an engineer, writer and builder — to make complex technology <strong>reliable, economically accountable, secure and operationally scalable</strong>. That sentence is not a slogan; it is the operating contract behind every service, product and publication on this site.</p>
+      <p>The company does its own engineering on its own systems. It runs a real operating stack behind the public site — intake, editorial, newsletter, trust and revenue workflows with human approval gates — and it publishes the playbooks and briefings it learns from. What visitors see is not a marketing facade; it is the front door of a working platform.</p>
+    </div>
+    <div class="hero-media">
+      <div class="frame"><img src="/assets/img/workshop-detail.jpg" alt="A server rack and checklist on a dark workbench" loading="lazy"></div>
+      <div class="frame-caption"><strong>THE WORKSHOP</strong><span>Built, operated and taught here</span></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="section band-warm"><div class="container">
+  <p class="ledger-label">02 / What we do</p>
+  <div class="section-heading">
+    <h2>Three practices. One standard.</h2>
+  </div>
+  <div class="grid">
+    <a class="card interactive" href="/services.html"><span class="tag">Technology Value &amp; FinOps</span><h3>Making technology spend accountable</h3><p>Cost drivers, unit economics and value decisions with explicit evidence boundaries. Savings are modeled until implemented and validated against an agreed baseline.</p><span class="card-cta">Explore the practice</span></a>
+    <a class="card interactive" href="/services.html"><span class="tag">Platform Reliability &amp; DevSecOps</span><h3>Making platforms trustworthy</h3><p>Delivery controls, observability, recovery, Kubernetes, GitOps and security — with testable acceptance criteria and operable handover, not architecture claims alone.</p><span class="card-cta">Explore the practice</span></a>
+    <a class="card interactive" href="/services.html"><span class="tag">Agentic Operations &amp; Automation</span><h3>Making automation governable</h3><p>Bounded AI and workflow automation with defined quality, failure behavior, observability and human escalation before scale.</p><span class="card-cta">Explore the practice</span></a>
+  </div>
+</div></section>
+
+<section class="section"><div class="container">
+  <p class="ledger-label">03 / What we build</p>
+  <div class="section-heading">
+    <h2>Real artefacts, honest status.</h2>
+  </div>
+  <div class="grid">
+    <a class="card interactive" href="/sivanta.html"><span class="tag">Owned software · Active</span><h3>Sivanta</h3><p>Conversation-led commerce automation: governed multi-channel conversation flows with a skill registry, policy layer, checkout and human handoff.</p><span class="card-cta">Review Sivanta →</span></a>
+    <a class="card interactive" href="/blog/sitesupply-construction-procurement-marketplace.html"><span class="tag">Venture · In market</span><h3>SiteSupply</h3><p>A B2B construction procurement marketplace built around comparable quotes for buyers and suppliers across Canada and the United States.</p><span class="card-cta">Read the build story →</span></a>
+    <a class="card interactive" href="/products.html"><span class="tag">Publications · 8 items</span><h3>Operator Playbooks</h3><p>Workbooks, lab packs, guides and checklists for Kubernetes, AI automation, cloud cost management, GitOps and DevOps operations.</p><span class="card-cta">Browse the catalogue →</span></a>
+    <a class="card interactive" href="/operator-brief.html"><span class="tag">Newsletter · Weekly</span><h3>The Operator Brief</h3><p>Eight sections per issue, assembled from approved evidence and written for an operating decision, with a public archive that preserves corrections.</p><span class="card-cta">Subscribe →</span></a>
+    <a class="card interactive" href="/community/websites"><span class="tag">Community · Round 01</span><h3>Free Website Initiative</h3><p>Ten free, research-first website core builds for local Ontario small businesses. No required paid add-ons.</p><span class="card-cta">See the initiative →</span></a>
+    <a class="card interactive" href="/work.html"><span class="tag">The full ledger</span><h3>Everything we build</h3><p>One portfolio page with kinds and statuses — owned products, ventures, publications, community initiatives and internal systems.</p><span class="card-cta">Open the portfolio →</span></a>
+  </div>
+</div></section>
+
+<section class="section band-warm"><div class="container">
+  <div class="grid two" style="align-items:start">
+    <div>
+      <p class="ledger-label">04 / How we operate</p>
+      <h2>Evidence is the culture, not the compliance department.</h2>
+      <p>Tayoca's public standard is simple: <strong>claims carry a baseline, an intervention record, a measurement method, known limits and an approval</strong>. That is why the Results Standard exists, why a previously published quantified case narrative is <em>withdrawn from proof use</em> while its evidence is re-verified, and why reviews are purchase-verified and human-approved before publication.</p>
+      <p style="color:var(--muted)">This discipline also powers the internal system: editorial campaigns need human approval before anything is published; corrections are recorded as revisions, never silent rewrites; failures are observable through a monitored dead-letter path.</p>
+    </div>
+    <div>
+      <p class="ledger-label">05 / Evolution</p>
+      <h2>How the company grew.</h2>
+      <div class="steps" style="grid-template-columns:1fr">
+        <div class="step"><h3>Teaching first</h3><p>Tayoca began by publishing practical learning material — lab packs and playbooks born from real operating work.</p></div>
+        <div class="step"><h3>Client delivery</h3><p>Fixed-scope FinOps, platform and automation engagements with explicit evidence and acceptance criteria.</p></div>
+        <div class="step"><h3>Owned software</h3><p>Sivanta grew from automation work into a subscription product with a governed channel model.</p></div>
+        <div class="step"><h3>An operating company</h3><p>Editorial, newsletter, trust and revenue workflows became a real control plane behind the public site.</p></div>
+        <div class="step"><h3>Community</h3><p>The Free Website Initiative turned the company's building skills toward local Ontario small businesses.</p></div>
       </div>
-      <a href="index.html#contact" class="btn" style="margin-left:2rem;background:#f97316;color:#fff;padding:.75rem 1.5rem;border-radius:.5rem;font-weight:600;text-decoration:none;display:inline-block">Book a Call</a>
-    </nav>
-  </header>
-  <main>
-    <section style="padding-top:2rem;padding-bottom:2rem;text-align:left">
-      <a style="color:#e5e5e5;text-decoration:none;font-weight:600;" href="/">&larr; Back to Home</a>
-    </section>
-    <section id="about" style="text-align:center">
-      <h1 style="font-size:clamp(2.2rem,5vw,2.8rem);margin-bottom:1.5rem;">About Tayoca</h1>
-      <p style="font-size:1.25rem;max-width:800px;margin:1rem auto;color:#d4d4d4;">We build solutions that save money, remove friction, and pay for themselves.</p>
-      <h3 style="margin-top:3rem;margin-bottom:1rem;font-size:1.375rem;">Our Metrics</h3>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;text-align:center;margin:2rem 0;">
-        <div><div style="font-size:2.5rem;font-weight:600;">Deploy to prod</div><div style="color:#a3a3a3;">≤15 min</div></div>
-        <div><div style="font-size:2.5rem;font-weight:600;">MTTR</div><div style="color:#a3a3a3;">≤5 min</div></div>
-        <div><div style="font-size:2.5rem;font-weight:600;">Cloud bill</div><div style="color:#a3a3a3;">≤80% baseline</div></div>
-      </div>
-      <h3 style="margin-top:3rem;margin-bottom:1rem;font-size:1.375rem;">Engineering Attestations</h3>
-      <div style="font-family:'JetBrains Mono',monospace;display:grid;grid-template-columns:repeat(2,1fr);gap:.25rem;max-width:600px;margin:auto">
-        <span style="background:#262626;border-radius:.25rem;padding:.375rem .625rem;white-space:nowrap">PMP</span>
-        <span style="background:#262626;border-radius:.25rem;padding:.375rem .625rem;white-space:nowrap">CSM</span>
-        <span style="background:#262626;border-radius:.25rem;padding:.375rem .625rem;white-space:nowrap">Terraform Associate</span>
-        <span style="background:#262626;border-radius:.25rem;padding:.375rem .625rem;white-space:nowrap">AWS Solutions Architect</span>
-      </div>
-      <h3 style="margin-top:4rem;margin-bottom:.5rem;font-size:1.375rem;">Let's build reliable things together</h3>
-      <p style="color:#d4d4d4;margin-bottom:2rem;">We know production. We build systems your team can trust. <a style="color:#f97316;text-decoration:none" href="index.html#contact">Book a call →</a></p>
-    </section>
-  </main>
-  <div class="amber-accent"></div>
-  <footer>
-    <div><strong style="color:#ffffff;display:block;margin-bottom:.5rem;">TAYOCA</strong><small style="color:#a3a3a3;display:block;">AI Automation, FinOps, and Platform Engineering.<br>Founded by Temitayo Charles Akinniranye.<br>Ontario, Canada.<br>&copy; 2026 Tayoca.</small></div>
-    <div class="footer-links">
-      <strong style="display:block;margin-bottom:.5rem;">Company</strong>
-      <div style="display:flex;flex-direction:column;gap:.25rem;">
-        <a href="services.html" style="color:#e5e5e5;text-decoration:none">Services</a>
-        <a href="products.html" style="color:#e5e5e5;text-decoration:none">Products</a>
-        <a href="/blog/" style="color:#e5e5e5;text-decoration:none">Writing</a>
-        <a href="about.html" style="color:#e5e5e5;text-decoration:none">About Us</a>
+    </div>
+  </div>
+</div></section>
+
+<section class="section"><div class="container">
+  <div class="grid two" style="align-items:start">
+    <div>
+      <p class="ledger-label">06 / The founder</p>
+      <h2>Temitayo Charles</h2>
+      <p>Temitayo Charles Akinniranye is the founder of Tayoca: engineer, writer and builder, based in Ontario, Canada. He is the author of the operator publications in this catalogue and the editor behind The Operator Brief.</p>
+      <p style="color:var(--muted)">The founder's digital business card is a contact utility, deliberately kept out of search indexes.</p>
+      <div class="actions">
+        <a class="button small" href="/temitayo.html">Digital business card</a>
+        <a class="button ghost small" href="/assets/contact/temitayo-charles.vcf">Save contact (.vcf)</a>
       </div>
     </div>
     <div>
-      <strong style="display:block;margin-bottom:.5rem;">Attestations</strong>
-      <span style="font-family:'JetBrains Mono',monospace;font-size:.8rem;background:#262626;padding:.25rem .5rem;border-radius:.25rem;margin:.125rem 0;display:block;">PMP</span>
-      <span style="font-family:'JetBrains Mono',monospace;font-size:.8rem;background:#262626;padding:.25rem .5rem;border-radius:.25rem;margin:.125rem 0;display:block;">CSM</span>
-      <span style="font-family:'JetBrains Mono',monospace;font-size:.8rem;background:#262626;padding:.25rem .5rem;border-radius:.25rem;margin:.125rem 0;display:block;">Terraform Associate</span>
-      <span style="font-family:'JetBrains Mono',monospace;font-size:.8rem;background:#262626;padding:.25rem .5rem;border-radius:.25rem;margin:.125rem 0;display:block;">AWS Solutions Architect</span>
+      <p class="ledger-label">Credentials</p>
+      <h3>Professional certifications</h3>
+      <p style="color:var(--muted)">Certifications shown are the founder's own published credentials:</p>
+      <div>
+        <span class="attestation">PMP</span><span class="attestation">CSM</span><span class="attestation">Terraform Associate</span><span class="attestation">AWS Solutions Architect</span>
+      </div>
+      <div class="ledger-panel" style="margin-top:1.6rem">
+        <p class="ledger-check">Credentials are stated as claims by the founder; verification records are maintained privately.</p>
+      </div>
     </div>
-  </footer>
-<script defer src="/card-interactions.js"></script>
-</body>
-</html>
+  </div>
+</div></section>
+
+<section class="section compact"><div class="container">
+  <div class="section-heading center">
+    <h2>Let's build reliable things together.</h2>
+    <div class="actions" style="justify-content:center">
+      <a class="button" data-event="about_contact" href="/assessments.html">Start an Assessment</a>
+      <a class="button secondary" href="/work.html">See the portfolio</a>
+      <a class="button ghost" data-event="about_email" href="mailto:temitayo@tayoca.com">Email the founder</a>
+    </div>
+  </div>
+</div></section>
+</main>
+<footer class="site-footer"><div class="footer-inner">
+  <div class="footer-brand-col"><div class="footer-brand">TAYOCA</div><p>An engineering-led technology company building software, systems and knowledge for reliable, accountable technology operations. Founded by Temitayo Charles Akinniranye. Ontario, Canada.</p></div>
+  <div class="footer-col"><strong>Company</strong><a href="/about.html">About</a><a href="/work.html">Work</a><a href="/results.html">Results</a><a href="/trust.html">Trust Center</a><a href="/reviews.html">Verified Reviews</a></div>
+  <div class="footer-col"><strong>Services</strong><a href="/services.html">Services &amp; Pricing</a><a href="/assessments.html">Assessments</a><a href="/segments/growth-stage-technology.html">Growth-stage</a><a href="/segments/regulated-operations.html">Regulated operations</a><a href="/segments/ai-enabled-engineering.html">AI-enabled teams</a></div>
+  <div class="footer-col"><strong>Build &amp; Buy</strong><a href="/products.html">Products</a><a href="/sivanta.html">Sivanta</a><a href="/products.html#operator-playbooks">Operator Playbooks</a></div>
+  <div class="footer-col"><strong>Publishing &amp; Community</strong><a href="/blog/">Insights</a><a href="/operator-brief.html">Operator Brief</a><a href="/operator-brief-archive.html">Brief Archive</a><a href="/community/websites">Community Initiative</a></div>
+  <div class="footer-col"><strong>Connect</strong><a href="mailto:temitayo@tayoca.com">temitayo@tayoca.com</a><a href="mailto:support@tayoca.com">support@tayoca.com</a><a href="/assets/contact/temitayo-charles.vcf">Founder contact card</a></div>
+</div>
+<div class="footer-legal"><span>© <span data-current-year>2026</span> Tayoca · Ontario, Canada</span><a href="/trust.html">Evidence &amp; disclosure policy</a></div>
+</footer>
+<script defer src="/growth-os.js"></script><script defer src="/revenue-events.js"></script><script defer src="/tayoca-site.js"></script>
+</body></html>
