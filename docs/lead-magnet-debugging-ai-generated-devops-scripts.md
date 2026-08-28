@@ -59,7 +59,7 @@ FREE DEVOPS PRACTICE PACK
 
 ### Headline
 
-**AI can write the script. Can you tell when it will fail?**
+**AI can write the script. Can you tell when it will fail or when it's doing too much?**
 
 ### Subhead
 
