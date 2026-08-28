@@ -10,7 +10,9 @@
     { "label": "Results", "href": "/results.html", "visible": true },
     { "label": "Products", "href": "/products.html", "visible": true },
     { "label": "Insights", "href": "/insights.html", "visible": true },
-    { "label": "About", "href": "/about.html", "visible": true }
+    { "label": "About", "href": "/about.html", "visible": true },
+    { "label": "Work", "href": "/work.html", "visible": true },
+    { "label": "Community", "href": "/community/websites", "visible": true }
   ],
   "headerCta": {
     "label": "Start an Assessment",
@@ -18,7 +20,7 @@
     "visible": true
   },
   "footer": {
-    "description": "Technology Value & FinOps, Platform Reliability & DevSecOps, and Agentic Operations & Automation.",
+    "description": "An engineering-led technology company: software, platforms, automation and publications for technology that has to be reliable, accountable and economically understood.",
     "location": "Ontario, Canada.",
     "copyrightName": "Tayoca",
     "explore": [
@@ -27,12 +29,16 @@
       { "label": "Results", "href": "/results.html" },
       { "label": "Products", "href": "/products.html" },
       { "label": "Insights", "href": "/insights.html" },
-      { "label": "About", "href": "/about.html" }
+      { "label": "About", "href": "/about.html" },
+      { "label": "Work", "href": "/work.html" },
+      { "label": "Community", "href": "/community/websites" }
     ],
     "connect": [
       { "label": "Operator Brief", "href": "/operator-brief.html" },
+      { "label": "Brief Archive", "href": "/operator-brief-archive.html" },
       { "label": "Trust Center", "href": "/trust.html" },
-      { "label": "support@tayoca.com", "href": "mailto:support@tayoca.com" }
+      { "label": "support@tayoca.com", "href": "mailto:support@tayoca.com" },
+      { "label": "temitayo@tayoca.com", "href": "mailto:temitayo@tayoca.com" }
     ]
   },
   "contact": {

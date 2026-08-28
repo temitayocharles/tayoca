@@ -1,13 +1,55 @@
 (function(){
   'use strict';
+  /* ---------- Scroll reveal (progressive enhancement) ----------
+     The hidden state is only applied once JS is running, so a
+     no-JS or failed-script visitor still sees the full content. */
+  var reduceMotion=false;
+  try{reduceMotion=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;}catch(e){}
+  if(!reduceMotion&&'IntersectionObserver' in window){
+    var revealTargets=document.querySelectorAll('.reveal');
+    if(revealTargets.length){
+      document.documentElement.classList.add('has-reveal');
+      var revealObserver=new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(entry.isIntersecting){entry.target.classList.add('is-visible');revealObserver.unobserve(entry.target);}
+        });
+      },{rootMargin:'0px 0px -8% 0px',threshold:0.08});
+      revealTargets.forEach(function(node){revealObserver.observe(node);});
+    }
+  }
+
   var header=document.querySelector('.site-header');
   var toggle=document.querySelector('.menu-toggle');
   var nav=document.querySelector('.primary-nav');
-  function closeMenu(){if(!header||!toggle)return;header.classList.remove('nav-open');toggle.setAttribute('aria-expanded','false');}
+  function closeMenu(){
+    if(!header||!toggle)return;
+    header.classList.remove('nav-open');
+    toggle.setAttribute('aria-expanded','false');
+    toggle.setAttribute('aria-label','Open navigation');
+  }
   if(header&&toggle&&nav){
-    toggle.addEventListener('click',function(){var open=header.classList.toggle('nav-open');toggle.setAttribute('aria-expanded',String(open));});
+    toggle.setAttribute('aria-label','Open navigation');
+    toggle.addEventListener('click',function(){
+      var open=header.classList.toggle('nav-open');
+      toggle.setAttribute('aria-expanded',String(open));
+      toggle.setAttribute('aria-label',open?'Close navigation':'Open navigation');
+    });
     nav.addEventListener('click',function(e){if(e.target&&e.target.closest&&e.target.closest('a'))closeMenu();});
     document.addEventListener('keydown',function(e){if(e.key==='Escape')closeMenu();});
+    document.addEventListener('click',function(e){
+      if(header.classList.contains('nav-open')&&!header.contains(e.target))closeMenu();
+    });
+    /* Collapse the secondary company-map rail once the page is scrolled. */
+    var scrollRaf=0;
+    function syncHeaderScroll(){
+      if(window.scrollY>80)header.classList.add('is-scrolled');
+      else header.classList.remove('is-scrolled');
+    }
+    window.addEventListener('scroll',function(){
+      if(scrollRaf)return;
+      scrollRaf=window.requestAnimationFrame(function(){scrollRaf=0;syncHeaderScroll();});
+    },{passive:true});
+    syncHeaderScroll();
   }
   document.querySelectorAll('[data-assessment]').forEach(function(card){
     card.addEventListener('click',function(){

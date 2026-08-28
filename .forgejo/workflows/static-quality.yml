@@ -36,6 +36,7 @@ jobs:
             scripts/validate_static_site.py \
             scripts/validate_analytics_coverage.py \
             scripts/validate_product_ecosystem.py \
+            scripts/validate_company_ecosystem.py \
             scripts/verify_production_parity.py \
             scripts/scan_tracked_secrets.py \
             scripts/validate_editorial_copy_quality.py \
@@ -44,6 +45,7 @@ jobs:
           python3 scripts/validate_static_site.py
           python3 scripts/validate_analytics_coverage.py
           python3 scripts/validate_product_ecosystem.py
+          python3 scripts/validate_company_ecosystem.py
           python3 scripts/validate_editorial_copy_quality.py
           python3 scripts/validate_media_distribution_policy.py
 
