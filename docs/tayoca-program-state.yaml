@@ -1,0 +1,209 @@
+version: 1
+last_reconciled_utc: "2026-08-28T21:05:26Z"
+authority:
+  canonical_repo: temitayocharles/tayoca
+  canonical_platform: forgejo
+  canonical_checkpoint_at_anchor_creation: 0b301b8653caa982f2a828dd536246f094a6b463
+  program_anchor: docs/TAYOCA_PROGRAM_AUTHORITY.md
+  growth_plan: docs/production-growth-operating-plan.yaml
+  conversational_memory_authoritative: false
+  github_independent_authority: false
+
+company:
+  identity: engineering_led_technology_company_and_builder
+  public_founder: Temitayo Charles
+  positioning_frame: "Make complex technology reliable, economically accountable and operationally scalable."
+  business_expressions:
+    - client_delivery_and_application_development
+    - ai_agents_automation_rag_llmops
+    - finops_and_technology_value
+    - platform_reliability_devsecops_kubernetes_gitops
+    - software_products_ventures_projects
+    - publications_books_labs_guides
+    - technical_editorial_and_operator_brief
+    - community_initiatives
+    - teaching_and_enablement
+    - internal_operating_systems
+
+design:
+  status: open
+  goal: coherent_living_company_platform
+  owner_feedback:
+    - current_site_too_bland
+    - current_site_too_boring
+    - visual_appeal_does_not_match_company_breadth
+    - too_text_heavy_and_formal
+    - assessment_governance_language_overdominant
+  must_show:
+    - real_products_and_covers
+    - software_and_project_work
+    - publications_and_editorial
+    - operator_brief
+    - community_work
+    - company_story
+    - human_and_workshop_context
+    - credible_visual_artifacts
+  avoid:
+    - generic_navy_ai_saas
+    - blue_purple_glow_blobs
+    - neural_network_decoration
+    - fake_dashboards
+    - circuit_board_decoration
+    - excessive_glassmorphism
+    - endless_identical_cards
+    - fake_team_or_client_photography
+  existing_brand_reference:
+    near_black: "#0d0d0d"
+    surface: "#171717"
+    orange: "#f97316"
+    light_text: "#e5e5e5"
+    muted: "#a3a3a3"
+    typography:
+      - Sora
+      - Inter
+      - JetBrains Mono
+  rule: brand_tokens_do_not_substitute_for_art_direction
+
+architecture:
+  forgejo: engineering_policy_public_content_and_change_authority
+  notion: human_readable_cross_project_intelligence
+  n8n: orchestration_fabric
+  github: downstream_mirror_and_external_agent_workspace
+  source_systems: raw_evidence_remains_authoritative_in_origin
+
+workstreams:
+  forgejo_actions_eventing:
+    status: verified_complete
+    reopen_only_on_regression: true
+  shared_workflows_forgejo16_compatibility:
+    status: verified_known_defect_fixed
+    constraint: private_cross_repo_reusable_workflow_limit_remains
+  runner_keda_convergence:
+    status: verified_complete
+    evidence:
+      - homelab-gitops_pr_620
+      - homelab-gitops_pr_622
+  forgejo_github_mirror:
+    status: verified_complete
+    evidence:
+      - tayoca_pr_37
+  vercel_mirror_attribution:
+    status: verified_complete
+    evidence:
+      - tayoca_pr_38
+      - 33d2586d3f7be93a45ce9b7db6e24a4fea8085ac
+  global_site_settings:
+    status: implemented_recovery_recently_certified
+    evidence:
+      - 010c79f6dbd28fadde150b0869bb09f476f132f6
+      - 0b301b8653caa982f2a828dd536246f094a6b463
+    next_gate: verify_current_live_production_before_modification
+  project_intelligence_hub:
+    status: implemented_to_materializer_v8_checkpoint
+    policy: intelligence/project-intelligence-hub-policy.yaml
+    evidence:
+      - tayoca_pr_24
+      - tayoca_pr_26
+      - tayoca_pr_27
+      - tayoca_pr_28
+    next_gate: live_recheck
+  control_center_cms:
+    status: partial
+    target: structured_internal_operating_product
+  control_center_embedded_auth_material:
+    status: open_needs_live_certification
+    priority: critical_if_still_present
+    rule: never_copy_secret_value
+  community_google_form_bridge:
+    status: implemented_checkpoint
+    next_gate: verify_live_before_intake_change
+  growth_os:
+    status: substantial_implementation
+    authority: docs/production-growth-operating-plan.yaml
+  operator_brief:
+    status: implemented_architecture_runtime_checkpoint
+    authority: editorial/operator-brief/operator-brief-policy.yaml
+  reviews_trust:
+    status: substantial_implementation
+    invariant: unverified_events_fail_closed
+  workflow_live_estate_reconciliation:
+    status: open_needs_current_live_pass
+    invariant: live_runtime_inventory_overrides_stale_repo_registry
+  backup_ledger_snapshot_reconciliation:
+    status: open_needs_current_live_pass
+    invariant: do_not_rely_on_historical_counts
+  public_company_platform_modernization:
+    status: open
+    constraint: solve_blandness_and_company_breadth
+
+lm_arena:
+  brief_branch: lm-arena/company-platform-rebuild
+  brief_branch_head: e4d02bb92a8792b9665b66880aadf82024857e8d
+  historical_patch: 01a04553-bda5-7775-a3a7-c7d0f5b4f0c5.patch
+  github_review_pr: 13
+  github_review_branch: arena/01a04553-tayoca
+  reviewed_head: 942e4a57f61c66337adef2b851f5bd4b18096e3e
+  review_scope:
+    changed_files: 76
+    commits: 9
+    additions: 4377
+    deletions: 1625
+  verdict: substantial_candidate_not_canonical
+  strengths:
+    - company_builder_reframe
+    - company_level_information_architecture
+    - portfolio_surface
+    - additive_company_ecosystem_model
+    - operator_brief_community_products_visibility
+    - website_n8n_contract_awareness
+    - unsupported_claim_cleanup
+    - migration_qa_owner_confirmation_docs
+    - embedded_auth_material_identified_without_exposure
+  blockers_or_gaps:
+    - stale_base_vs_current_forgejo
+    - must_reconcile_through_forgejo
+    - internal_workflow_inventory_inconsistency
+    - creator_prompter_discovery_failed
+    - unresolved_portfolio_disclosure_items
+    - live_control_plane_remediation_not_executed
+    - night_workshop_dark_amber_direction_can_still_be_monotonous
+    - generated_imagery_requires_human_truthfulness_quality_review
+    - later_canonical_changes_must_be_integrated
+
+known_project_discovery_correction:
+  creator_prompter_studio:
+    repo: temitayocharles/creator-prompter-studio
+    forgejo_main_verified: e7299c284d2fb5ca4f69df8b4aa47c902d963261
+    public_disclosure_status: unresolved
+    note: LM_Arena_reported_not_found_but_canonical_Forgejo_proves_repo_exists
+
+source_drift:
+  github_direct_content_changes_detected: true
+  accepted_as_canonical: false
+  rule: reconcile_intent_through_forgejo_before_reuse
+
+next_reconciliation_wave:
+  - compare_current_forgejo_main_with_lm_arena_candidate_by_intent
+  - build_verified_company_project_inventory_including_private_canonical_repos_without_exposing_private_details
+  - query_live_tayoca_related_n8n_estate
+  - verify_embedded_control_center_authorization_material_remediation_state
+  - reconcile_workflows_with_backup_ledger_and_snapshots
+  - verify_project_intelligence_growth_os_operator_brief_community_and_trust_runtime
+  - verify_public_production_vs_forgejo_and_github_mirror
+  - resolve_or_explicitly_defer_disclosure_items
+  - stage_forgejo_native_public_redesign_and_control_plane_changes
+  - certify_accessibility_responsive_analytics_links_parity_and_rollback
+
+completion_standard:
+  require_as_applicable:
+    - current_source_of_truth_state
+    - automated_validation
+    - runtime_execution_evidence
+    - idempotency
+    - security_boundary_proof
+    - live_parity
+    - rollback
+    - observability_and_failure_behavior
+    - truthful_disclosure
+    - accessibility_and_responsive_qa
+    - changed_contract_ownership

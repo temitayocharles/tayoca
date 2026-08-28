@@ -21,23 +21,43 @@ Key patterns:
 - For storage uploads, persist both the returned `url` and `key`.
 <!-- INSFORGE:END -->
 
+## Tayoca program authority
+
+The durable cross-program source for Tayoca scope, architecture, design intent, safety boundaries, workstream status and reconciliation rules is:
+
+`docs/TAYOCA_PROGRAM_AUTHORITY.md`
+
+The machine-readable companion state is:
+
+`docs/tayoca-program-state.yaml`
+
+Before starting, resuming, reviewing, or modifying any Tayoca work:
+
+1. Read `docs/TAYOCA_PROGRAM_AUTHORITY.md` first.
+2. Read `docs/tayoca-program-state.yaml` second.
+3. Query current canonical Forgejo `main`, recent commits, open pull requests and any live runtime state relevant to the requested work. Do not use conversational recollection as operational authority.
+4. Read the workstream-specific policy or plan referenced by the program anchor, including `docs/production-growth-operating-plan.yaml` for Growth OS work.
+5. Where sources disagree, use the precedence defined in the program anchor. Verified live runtime facts and current canonical Forgejo state take priority over historical branches, patches, mirrors and conversation artifacts.
+6. Update the program anchor/state when a material cross-program decision, source-authority change or verified workstream completion changes the operating picture.
+7. Forgejo is canonical. GitHub is downstream for deployment/external-agent work and is not an independent production authority.
+8. Preserve truthfulness, private-source isolation, human approval, verified revenue, analytics provenance, workflow recovery and rollback controls.
+
 ## Tayoca post-certification operating control
 
-The certified transformation roadmap is complete. The authoritative post-certification operating plan is:
+The certified transformation roadmap is complete. The authoritative post-certification Growth OS operating plan is:
 
 `docs/production-growth-operating-plan.yaml`
 
-Before starting, resuming, or modifying Tayoca work:
+For Growth OS and post-certification operating work:
 
-1. Read `docs/production-growth-operating-plan.yaml` first.
-2. Treat the plan's current cycle, workstream priority, gates, change-control rules, and resume protocol as authoritative.
+1. Read `docs/production-growth-operating-plan.yaml` after the Tayoca program authority files above.
+2. Treat the plan's current cycle, workstream priority, gates, change-control rules, and resume protocol as authoritative for that workstream.
 3. Continue the highest-priority incomplete workstream whose dependencies are satisfied. Do not invent or silently start unrelated workstreams.
 4. Do not reopen completed Stages 0-14 unless a verified critical/high regression, production incident, security issue, compliance requirement, or recovery need requires it.
 5. Patch or extend existing application/workflow/data/analytics/editorial/revenue layers before creating new parallel code, workflows, databases, or services.
 6. Preserve the immutable certified baseline tag `tayoca-certified-2026-08-10` and all certified rollback/evidence artifacts.
-7. Forgejo is canonical. GitHub is the deployment mirror only. Canonical changes must originate in Forgejo and be mirrored exactly.
-8. Preserve the binding controls for claim integrity, private-source isolation, human publication approval, verified revenue, analytics provenance, and workflow recovery.
-9. A documentation-only plan change must not mutate production runtime.
-10. If requested work falls outside the locked plan, revise the canonical plan deliberately before implementation rather than improvising scope.
+7. Preserve the binding controls for claim integrity, private-source isolation, human publication approval, verified revenue, analytics provenance, and workflow recovery.
+8. A documentation-only plan change must not mutate production runtime.
+9. If requested work falls outside the locked plan, revise the canonical plan deliberately before implementation rather than improvising scope.
 
-Production incidents override growth sequencing only for the duration of the incident. Record the interruption, resolve it safely, then return to the current growth workstream.
+Production incidents override growth sequencing only for the duration of the incident. Record the interruption, resolve it safely, then return to the current program workstream.
