@@ -38,7 +38,9 @@ jobs:
           python3 -m py_compile \
             scripts/validate_static_site.py \
             scripts/validate_analytics_coverage.py \
-            scripts/validate_product_ecosystem.py
+            scripts/validate_product_ecosystem.py \
+            scripts/validate_company_ecosystem.py
           python3 scripts/validate_static_site.py
           python3 scripts/validate_analytics_coverage.py
           python3 scripts/validate_product_ecosystem.py
+          python3 scripts/validate_company_ecosystem.py

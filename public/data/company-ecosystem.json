@@ -1,0 +1,465 @@
+{
+  "schema_version": 1,
+  "name": "Tayoca Company Ecosystem",
+  "description": "Company-level registry: identity, practices, services, portfolio, publications, insights, newsletter, community and evidence surfaces. Additive to the locked commercial catalogue (product-ecosystem.json).",
+  "updated_at": "2026-08-27",
+  "source_of_truth": "Forgejo temitayocharles/tayoca (public/** is canonical content; this file is the metadata registry)",
+  "company": {
+    "name": "Tayoca",
+    "tagline": "An engineering-led technology company that builds software, systems and knowledge for reliable, accountable technology operations.",
+    "positioning": "Tayoca helps organizations make complex technology reliable, economically accountable, secure and operationally scalable.",
+    "founder": {
+      "public_name": "Temitayo Charles",
+      "full_name": "Temitayo Charles Akinniranye",
+      "role": "Founder, Tayoca",
+      "email": "temitayo@tayoca.com",
+      "location": "Ontario, Canada"
+    },
+    "location": "Ontario, Canada",
+    "serves": [
+      "Canada",
+      "Worldwide"
+    ],
+    "wordmark": "TAYOCA"
+  },
+  "practices": [
+    {
+      "id": "technology-value-finops",
+      "name": "Technology Value & FinOps",
+      "summary": "Cloud economics, cost visibility, unit economics and technology-value decisions with explicit evidence boundaries.",
+      "surface": "/services.html"
+    },
+    {
+      "id": "platform-reliability-devsecops",
+      "name": "Platform Reliability & DevSecOps",
+      "summary": "Platform engineering, reliability, recovery, Kubernetes, GitOps, observability and delivery controls.",
+      "surface": "/services.html"
+    },
+    {
+      "id": "agentic-operations-automation",
+      "name": "Agentic Operations & Automation",
+      "summary": "Bounded AI and workflow automation with quality boundaries, failure behavior, observability and human escalation.",
+      "surface": "/services.html"
+    }
+  ],
+  "services": [
+    {
+      "id": "cloud-cost-optimization",
+      "name": "Cloud Cost Optimization",
+      "price": "$5,000 flat fee",
+      "practice": "technology-value-finops",
+      "surface": "/services.html"
+    },
+    {
+      "id": "gitops-devsecops-platform",
+      "name": "GitOps & DevSecOps Platform",
+      "price": "$8,000+ fixed scope",
+      "practice": "platform-reliability-devsecops",
+      "surface": "/services.html"
+    },
+    {
+      "id": "ai-automation-pilot",
+      "name": "AI Automation Pilot",
+      "price": "From $5,000",
+      "practice": "agentic-operations-automation",
+      "surface": "/services.html"
+    },
+    {
+      "id": "technology-value-assessment",
+      "name": "Technology Value Assessment",
+      "kind": "assessment",
+      "surface": "/assessments.html"
+    },
+    {
+      "id": "cloud-ai-cost-assessment",
+      "name": "Cloud & AI Cost Assessment",
+      "kind": "assessment",
+      "surface": "/assessments.html"
+    },
+    {
+      "id": "platform-reliability-assessment",
+      "name": "Platform Reliability Assessment",
+      "kind": "assessment",
+      "surface": "/assessments.html"
+    }
+  ],
+  "segments": [
+    {
+      "id": "growth-stage-technology",
+      "name": "Growth-stage technology",
+      "surface": "/segments/growth-stage-technology.html"
+    },
+    {
+      "id": "regulated-operations",
+      "name": "Regulated & operationally sensitive",
+      "surface": "/segments/regulated-operations.html"
+    },
+    {
+      "id": "ai-enabled-engineering",
+      "name": "AI-enabled teams",
+      "surface": "/segments/ai-enabled-engineering.html"
+    }
+  ],
+  "portfolio": [
+    {
+      "id": "sivanta",
+      "name": "Sivanta",
+      "kind": "owned_product",
+      "status": "active",
+      "summary": "Conversation-led commerce automation: governed multi-channel conversation flows for commerce, customer-operations and growth teams.",
+      "evidence": [
+        "/sivanta.html",
+        "product-ecosystem.json#operator-tools"
+      ],
+      "surface": "/sivanta.html",
+      "classification": "public_verified"
+    },
+    {
+      "id": "sitesupply",
+      "name": "SiteSupply",
+      "kind": "venture",
+      "status": "in_market",
+      "summary": "B2B construction procurement marketplace built around comparable quotes, for buyers and suppliers across Canada and the United States.",
+      "evidence": [
+        "/blog/sitesupply-construction-procurement-marketplace.html"
+      ],
+      "surface": "/blog/sitesupply-construction-procurement-marketplace.html",
+      "disclosure_note": "Disclosure status (client build vs Tayoca venture) pending owner confirmation; presented from the published article only.",
+      "classification": "public_verified"
+    },
+    {
+      "id": "operator-brief",
+      "name": "The Operator Brief",
+      "kind": "publication",
+      "status": "active",
+      "summary": "Tayoca's newsletter: eight-section weekly briefings for leaders responsible for cloud, platforms, reliability, AI infrastructure and technology economics.",
+      "evidence": [
+        "/operator-brief.html",
+        "/operator-brief-archive.html"
+      ],
+      "surface": "/operator-brief.html",
+      "classification": "public_verified"
+    },
+    {
+      "id": "community-websites",
+      "name": "Free Website Initiative",
+      "kind": "community_initiative",
+      "status": "open_intake",
+      "summary": "Round 01: ten free, research-first website core builds for local Ontario small businesses, with no required paid add-ons.",
+      "evidence": [
+        "/community/websites",
+        "community/websites/index.html"
+      ],
+      "surface": "/community/websites",
+      "classification": "public_verified"
+    },
+    {
+      "id": "operator-playbooks-catalogue",
+      "name": "Operator Playbooks catalogue",
+      "kind": "publication",
+      "status": "published",
+      "summary": "Eight implementation-focused books, workbooks, lab packs and checklists for Kubernetes, AI automation, cloud cost, GitOps and DevOps operations.",
+      "evidence": [
+        "/products.html",
+        "product-ecosystem.json#operator-playbooks"
+      ],
+      "surface": "/products.html",
+      "classification": "public_verified"
+    },
+    {
+      "id": "tayoca-control-plane",
+      "name": "Tayoca control plane",
+      "kind": "internal_system",
+      "status": "active",
+      "summary": "The n8n-based operating system behind the public platform: intake, editorial, newsletter, trust and revenue operations with human approval gates.",
+      "evidence": [
+        "automation/n8n/workflow-registry.yaml",
+        "docs/workflow-reliability-and-recovery.yaml"
+      ],
+      "surface": "/trust.html",
+      "public_disclosure": "Referenced publicly only as the Trust Center operating controls; workflow internals are not published.",
+      "classification": "private_internal"
+    }
+  ],
+  "products": {
+    "registry": "/data/product-ecosystem.json",
+    "catalogue_surface": "/products.html",
+    "owned_software": [
+      "sivanta"
+    ],
+    "note": "Commercial families, pricing and next actions are governed by the locked stage-10 registry."
+  },
+  "publications": [
+    {
+      "id": "kubernetes-operators-workbook",
+      "name": "Kubernetes Operator's Workbook, Second Edition",
+      "kind": "workbook",
+      "surface": "/products/kubernetes-operators-workbook.html"
+    },
+    {
+      "id": "ai-automation-career-playbook",
+      "name": "AI Automation Career Playbook",
+      "kind": "playbook",
+      "surface": "/products/ai-automation-career-playbook.html"
+    },
+    {
+      "id": "n8n-mcp-kubernetes-teaching-pack",
+      "name": "n8n MCP Kubernetes Teaching Pack",
+      "kind": "teaching_pack",
+      "surface": "/products/n8n-mcp-kubernetes-teaching-pack.html"
+    },
+    {
+      "id": "build-break-fix-devops-lab-pack",
+      "name": "Build, Break, Fix: DevOps Practice Lab Pack",
+      "kind": "lab_pack",
+      "surface": "/products/build-break-fix-devops-lab-pack.html"
+    },
+    {
+      "id": "aws-cost-optimization-playbook",
+      "name": "AWS Cost Optimization Playbook",
+      "kind": "playbook",
+      "surface": "/products/aws-cost-optimization-playbook.html"
+    },
+    {
+      "id": "devops-incident-runbook-template",
+      "name": "DevOps Incident Runbook Template",
+      "kind": "template",
+      "surface": "/products/devops-incident-runbook-template.html"
+    },
+    {
+      "id": "kubernetes-production-readiness-checklist",
+      "name": "Kubernetes Production Readiness Checklist",
+      "kind": "checklist",
+      "surface": "/products/kubernetes-production-readiness-checklist.html"
+    },
+    {
+      "id": "gitops-field-guide",
+      "name": "GitOps Field Guide",
+      "kind": "guide",
+      "surface": "/products/gitops-field-guide.html"
+    }
+  ],
+  "insights": {
+    "surface": "/blog/",
+    "categories": {
+      "finops": "FinOps & cloud economics",
+      "kubernetes-platform": "Kubernetes & platform operations",
+      "ai-automation": "AI & automation",
+      "gitops-delivery": "GitOps & delivery",
+      "company-community": "Company & community"
+    },
+    "articles": [
+      {
+        "url": "/blog/sitesupply-construction-procurement-marketplace.html",
+        "category": "company-community",
+        "title": "SiteSupply: construction procurement built around comparable quotes"
+      },
+      {
+        "url": "/blog/kubernetes-troubleshooting-labs.html",
+        "category": "kubernetes-platform",
+        "title": "Kubernetes troubleshooting labs that build real operator judgment"
+      },
+      {
+        "url": "/blog/ai-automation-career-roadmap.html",
+        "category": "ai-automation",
+        "title": "AI Automation Career Roadmap: From DevOps Engineer to AI Solutions Architect"
+      },
+      {
+        "url": "/blog/cloud-cost-optimization-playbook.html",
+        "category": "finops",
+        "title": "AWS Cloud Cost Optimization Playbook"
+      },
+      {
+        "url": "/blog/cka-practice-beyond-memorization.html",
+        "category": "kubernetes-platform",
+        "title": "CKA practice beyond memorization"
+      },
+      {
+        "url": "/blog/devops-incident-response-runbook.html",
+        "category": "kubernetes-platform",
+        "title": "DevOps Incident Response Runbook"
+      },
+      {
+        "url": "/blog/etcd-backup-restore-lab.html",
+        "category": "kubernetes-platform",
+        "title": "etcd backup and restore lab for Kubernetes administrators"
+      },
+      {
+        "url": "/blog/gitops-beyond-hello-world.html",
+        "category": "gitops-delivery",
+        "title": "GitOps Beyond Hello World"
+      },
+      {
+        "url": "/blog/how-we-saved-216k-on-aws-in-90-days.html",
+        "category": "finops",
+        "title": "How We Saved $216K on AWS in 90 Days",
+        "proof_status": "withdrawn_pending_verification"
+      },
+      {
+        "url": "/blog/how-we-saved-216k-aws.html",
+        "category": "finops",
+        "title": "How We Saved a Client $216K/yr on AWS",
+        "proof_status": "withdrawn_pending_verification"
+      },
+      {
+        "url": "/blog/kubernetes-incident-response-practice.html",
+        "category": "kubernetes-platform",
+        "title": "Kubernetes incident response practice"
+      },
+      {
+        "url": "/blog/kubernetes-interview-scenarios.html",
+        "category": "kubernetes-platform",
+        "title": "Kubernetes interview scenarios that reveal operational judgment"
+      },
+      {
+        "url": "/blog/kubernetes-production-checklist.html",
+        "category": "kubernetes-platform",
+        "title": "Kubernetes Production Checklist"
+      },
+      {
+        "url": "/blog/kubernetes-production-readiness-checklist-for-2026.html",
+        "category": "kubernetes-platform",
+        "title": "Kubernetes Production Readiness Checklist for 2026"
+      },
+      {
+        "url": "/blog/n8n-mcp-kubernetes.html",
+        "category": "ai-automation",
+        "title": "n8n + MCP on Kubernetes: production-grade self-hosted AI agent infrastructure"
+      }
+    ]
+  },
+  "newsletter": {
+    "name": "The Tayoca Operator Brief",
+    "surface": "/operator-brief.html",
+    "archive_surface": "/operator-brief-archive.html",
+    "cadence": "Weekly",
+    "sections": 8,
+    "published_issues": 1,
+    "latest_issue": "operator-brief-2026-08-17",
+    "intake_contract": "POST /webhook/tayoca/growth/operator-brief (email, interest, consent, website honeypot) via growth-os.js"
+  },
+  "community": [
+    {
+      "id": "free-website-initiative",
+      "name": "Free Website Initiative for Local Ontario Small Businesses",
+      "round": "01",
+      "status": "open_intake",
+      "slots": 10,
+      "build_fee": "$0 core build",
+      "approach": "Research first; business-specific design; no required paid add-ons",
+      "intake": "Google Form (bridged by n8n Community Website Initiative Intake workflow)",
+      "surface": "/community/websites"
+    }
+  ],
+  "evidence": {
+    "results_standard": "/results.html",
+    "trust_center": "/trust.html",
+    "reviews": {
+      "surface": "/reviews.html",
+      "endpoint": "GET /webhook/tayoca/reviews/public",
+      "verification": "Purchase-verified; human-approved publication"
+    },
+    "policy": "Public claims require traceable source, approval, disclosure classification and correction path (docs/evidence-policy.md).",
+    "note": "The quantified AWS case-study narrative remains withdrawn from proof use pending re-verification; articles remain published, results surface does not cite them as evidence."
+  },
+  "ctas": {
+    "assessment": {
+      "label": "Start an Assessment",
+      "href": "/assessments.html",
+      "event": "header_assessment"
+    },
+    "consultation": {
+      "label": "Book a Consultation",
+      "href": "https://cal.com/tayoca/finops-audit"
+    },
+    "operator_brief": {
+      "label": "Join the Operator Brief",
+      "href": "/operator-brief.html"
+    },
+    "community_apply": {
+      "label": "Apply on Google Forms",
+      "href": "https://docs.google.com/forms/d/e/1FAIpQLSeTyWlIZzI8uz4zNRiLXaNdIAw3NuPDIRxnuemwIb7c-IW64Q/viewform"
+    }
+  },
+  "related_ecosystem": [
+    {
+      "id": "zernio",
+      "name": "Zernio (ZernFlow and API family)",
+      "kind": "separate_venture",
+      "classification": "owner_confirmation_required",
+      "published_on_site": false,
+      "summary": "Public social & messaging platform for developers and AI agents (zernio.com): scheduling API across 16 platforms, visual flow builder (zernflow), SDKs, CLI, MCP servers, n8n nodes, unified inbox. The founder's GitHub account mirrors zernflow as a fork.",
+      "evidence": [
+        "https://github.com/zernio-dev/zernflow",
+        "https://zernio.com",
+        "https://zernflow.com"
+      ],
+      "note": "Not presented as a Tayoca product; branding relationship unconfirmed."
+    },
+    {
+      "id": "9drive",
+      "name": "9Drive",
+      "kind": "separate_venture",
+      "classification": "owner_confirmation_required",
+      "published_on_site": false,
+      "summary": "Storage gateway web app connecting multiple Google Drive accounts into one virtual dashboard, with S3-compatible endpoints and upload routing (live preview 9drive.zenhosta.com). Source repo under zenhosta; mirrored as a fork on the founder's account.",
+      "evidence": [
+        "https://github.com/zenhosta/9drive",
+        "https://9drive.zenhosta.com"
+      ],
+      "note": "Relationship to Tayoca unconfirmed; not published."
+    },
+    {
+      "id": "zenhosta-storefronts",
+      "name": "zenhosta storefront products",
+      "kind": "separate_venture",
+      "classification": "owner_confirmation_required",
+      "published_on_site": false,
+      "summary": "Indonesian-market e-commerce applications (niagakita-digital, niagakita-toko-online) and a WordPress content API plugin (zen-content-api) under the zenhosta account.",
+      "evidence": [
+        "https://github.com/zenhosta/niagakita-digital",
+        "https://github.com/zenhosta/niagakita-toko-online",
+        "https://github.com/zenhosta/zen-content-api"
+      ],
+      "note": "Relationship to Tayoca unconfirmed; not published."
+    },
+    {
+      "id": "abiding-place-fellowship",
+      "name": "Abiding Place Fellowship website",
+      "kind": "community_or_client_build",
+      "classification": "client_disclosure_unknown",
+      "published_on_site": false,
+      "summary": "Public website source for a Shelburne, Ontario fellowship with a verified content layer (legacy site, Town of Shelburne records, local reporting). Shelburne is within the Free Website Initiative geography.",
+      "evidence": [
+        "https://github.com/Emife1/abiding-place-fellowship-cms",
+        "https://abidingplace.vercel.app"
+      ],
+      "note": "Church context: no reference on tayoca.com without explicit consent; ownership (Tayoca vs personal/client) unconfirmed."
+    },
+    {
+      "id": "hermes-agent-workspace",
+      "name": "Hermes agent workspace",
+      "kind": "experiment",
+      "classification": "owner_confirmation_required",
+      "published_on_site": false,
+      "summary": "Public placeholder workspace described as a curated collection of AI agent projects, research and automation tools developed by the founder. Repositories are empty; no content is publishable.",
+      "evidence": [
+        "https://github.com/Emife1/hermes-agent-workspace",
+        "https://github.com/Emife1/hermes-cloud-agent"
+      ],
+      "note": "No publishable content; confirm what Hermes is before any mention."
+    },
+    {
+      "id": "n8n-render-python-runtime",
+      "name": "n8n Render Python runtime",
+      "kind": "internal_tooling",
+      "classification": "owner_confirmation_required",
+      "published_on_site": false,
+      "summary": "Custom n8n Docker image (current n8n release line plus Python 3.12 for Code-node task runners) used by a live n8n Render service. Public infra tooling; internal by purpose.",
+      "evidence": [
+        "https://github.com/Emife1/n8n-render-python-runtime"
+      ],
+      "note": "Demonstrates internal capability; not needed on the public site."
+    }
+  ]
+}
