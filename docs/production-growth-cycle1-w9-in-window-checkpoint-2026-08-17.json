@@ -1,0 +1,74 @@
+{
+  "program": "Tayoca Production Growth Cycle 1",
+  "checkpoint": "W9_IN_WINDOW_2026_08_17",
+  "recorded_on": "2026-08-17",
+  "state": "OBSERVATION_WINDOW_ACTIVE",
+  "w9": {
+    "experiment_id": "w9-exp-001-platform-reliability-linkedin-organic",
+    "linkedin_share_urn": "urn:li:share:7495118544695635969",
+    "evaluation_not_before": "2026-08-24T14:06:15Z",
+    "controls": {
+      "duplicate_linkedin_publication": false,
+      "paid_spend_authorized": false,
+      "early_causal_claims_allowed": false
+    },
+    "attribution_lineage": {
+      "browser_utm_capture": "CERTIFIED",
+      "production_intake_workflow": "V28T575q7GSRFOti",
+      "production_intake_active_version": "13baa554-302b-49f8-9804-e3a52c54a9e7",
+      "revenue_pipeline_utm_persistence": "CERTIFIED",
+      "result": "ATTRIBUTION_LINEAGE_CERTIFIED"
+    }
+  },
+  "w6_outbound_monitor": {
+    "resend": [
+      {
+        "id": "fb597c8e-ab34-472a-b345-0b6f211995aa",
+        "recipient": "jim.scharf@mongodb.com",
+        "subject": "Independent platform reliability review",
+        "delivery_state": "delivered"
+      },
+      {
+        "id": "694df839-b73d-4156-b6b3-282159368ae1",
+        "recipient": "jamie@thingelstad.com",
+        "subject": "Platform reliability review for SPS",
+        "delivery_state": "delivered"
+      }
+    ],
+    "reply_check": {
+      "checked_at": "2026-08-17T15:41:31.909Z",
+      "connected_gmail_accounts_checked": 6,
+      "matching_threads": 0,
+      "scope_note": "No matching reply signal was found in the connected Gmail inboxes; this does not assert absence outside connected coverage."
+    },
+    "result": "DELIVERED_NO_MATCHING_REPLY_SIGNAL_IN_CONNECTED_INBOXES",
+    "commercial_stage_advanced": false
+  },
+  "w10_operations": {
+    "completed": [
+      {
+        "workflow_id": "eFFgErylD6yyMFXG",
+        "workflow_name": "Temporary Tayoca Runtime Diagnostic Sink",
+        "action": "UNPUBLISHED",
+        "reason": "Single-use runtime/secret diagnostic was no longer needed after certification; deactivation removes an unnecessary unauthenticated production webhook surface."
+      }
+    ],
+    "identified_debt": [
+      {
+        "workflow_id": "MRaoY2aHm85q3QWG",
+        "area": "editorial_approval_request_idempotency",
+        "symptom": "Recent Slack evidence shows repeated review requests for the same editorial opportunity.",
+        "root_cause": "The demand workflow records approval_requested_at but leaves approval_state as review_required, so a later eligible run can select the same opportunity again before a decision.",
+        "remediation": "Add a validated idempotency/retry-window guard that preserves the human approval gate and prevents duplicate review DMs without changing publication behavior.",
+        "live_patch_applied": false,
+        "reason_not_patched_live": "A safe change requires validated full-workflow SDK reconstruction/testing; no high-blast-radius live mutation is justified during the W9 observation window."
+      }
+    ]
+  },
+  "next_actions": [
+    "Keep W9 in the full seven-day observation window without duplicate publication or paid amplification.",
+    "Continue first-party attribution and revenue monitoring.",
+    "Stage and validate the editorial approval idempotency guard before any live workflow update.",
+    "Do not advance W6 commercial state without a real reply or other verified commercial signal."
+  ]
+}

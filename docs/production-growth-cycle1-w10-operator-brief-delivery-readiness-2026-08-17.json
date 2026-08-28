@@ -1,0 +1,101 @@
+{
+  "program": "Tayoca Production Growth Cycle 1",
+  "workstream": "W10_OPERATIONS",
+  "recorded_on": "2026-08-17",
+  "capability": "OPERATOR_BRIEF_PRODUCTION_DELIVERY_READINESS",
+  "status": "READY_BLOCKED_NO_ACTIVE_SUBSCRIBERS",
+  "subscription_bridge": {
+    "workflow_id": "V28T575q7GSRFOti",
+    "prior_version_id": "13baa554-302b-49f8-9804-e3a52c54a9e7",
+    "active_version_id": "db1ebbea-dc12-45d2-815b-c8608a7ee4a0",
+    "resend_segment_id": "c31a4a87-565c-4486-ac7c-c7ab20185836",
+    "resend_segment_name": "Tayoca Insiders",
+    "behaviour": {
+      "explicit_consent_required": true,
+      "internal_pending_state_before_provider_sync": true,
+      "missing_contact_created": true,
+      "segment_membership_required_before_subscribed_state": true,
+      "globally_unsubscribed_contact_automatically_reactivated": false,
+      "provider_failure_claims_success": false,
+      "unsubscribe_removes_only_operator_brief_segment_membership": true,
+      "unsubscribe_sets_global_resend_unsubscribe": false,
+      "email_sent_during_subscription_sync": false
+    }
+  },
+  "broadcast_delivery": {
+    "workflow_id": "Ug7hA8cXrrCIVYkI",
+    "prior_version_id": "806b94fe-b31d-4e96-b566-e91717b4609f",
+    "active_version_id": "9ec11001-24a8-47e9-920d-14d9a5bc78b9",
+    "resend_segment_id": "c31a4a87-565c-4486-ac7c-c7ab20185836",
+    "resend_topic_id": "d98d0294-bcb4-4949-9765-69a3558351c6",
+    "sender": "Temitayo Charles | Tayoca <temitayo@tayoca.com>",
+    "sender_domain": "tayoca.com",
+    "sender_domain_verified": true,
+    "delivery_guard": {
+      "archive_before_delivery_evaluation": true,
+      "exact_internal_to_resend_email_set_comparison": true,
+      "provider_inventory_failure_fails_closed": true,
+      "membership_mismatch_fails_closed": true,
+      "globally_unsubscribed_segment_contact_fails_closed": true,
+      "zero_internal_and_zero_external_contacts_creates_broadcast": false,
+      "only_exact_nonzero_membership_match_may_send": true,
+      "send_true_only_after_guard": true,
+      "archive_rolled_back_on_email_failure": false
+    },
+    "delivery_states": {
+      "zero_subscribers": "blocked_no_active_subscribers",
+      "provider_inventory_failure": "delivery_failed_provider_inventory",
+      "membership_mismatch": "delivery_blocked_membership_mismatch",
+      "provider_send_failure": "delivery_failed",
+      "provider_acceptance": "broadcast_accepted"
+    },
+    "corrections": {
+      "automatic_correction_broadcast_enabled": false,
+      "state": "correction_archive_only",
+      "future_broadcast_requires_separate_governed_rollout": true
+    }
+  },
+  "preflight_evidence": {
+    "topic_and_segment_scoped_broadcast_draft": {
+      "create_status": 200,
+      "get_status": 200,
+      "topic_scoped": true,
+      "segment_scoped": true,
+      "draft_status": "draft",
+      "delete_status": 200,
+      "deleted": true,
+      "email_sent": false
+    },
+    "subscription_contact_segment_round_trip": "PASS",
+    "disposable_contact_deleted": true,
+    "disposable_broadcast_deleted": true
+  },
+  "independent_post_rollout_resend_audit": {
+    "global_contacts": 0,
+    "tayoca_insiders_contacts": 0,
+    "broadcasts": 0,
+    "synthetic_subscriber_retained": false,
+    "test_broadcast_retained": false,
+    "test_email_sent": false
+  },
+  "rollback": {
+    "subscription_bridge": "n8n-control-plane/programs/tayoca-growth-os/patches/w10-operator-brief-resend-subscription-sync-rollback.json",
+    "broadcast_delivery": "n8n-control-plane/programs/tayoca-growth-os/patches/w10-operator-brief-resend-broadcast-rollback.json",
+    "complete_pre_change_payloads_captured_before_mutation": true
+  },
+  "controls_preserved": {
+    "whole_issue_human_publication_approval": true,
+    "atomic_forgejo_archive_publication": true,
+    "public_verified_evidence_firewall": true,
+    "assessment_revenue_route": true,
+    "error_workflow": true,
+    "w9_distribution_changed": false,
+    "w9_attribution_changed": false,
+    "paid_spend_changed": false
+  },
+  "current_operating_state": {
+    "subscriber_count": 0,
+    "delivery_state": "blocked_no_active_subscribers",
+    "next_real_delivery_trigger": "A real user explicitly consents and is successfully synchronized into Tayoca Insiders; a subsequently approved Operator Brief issue passes exact membership parity after archive publication."
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "schema_version": 2,
+  "workstream": "W10_OPERATIONS",
+  "recorded_at": "2026-08-17T20:55:00Z",
+  "status": "CANONICAL_AND_GITHUB_ACCESSIBILITY_PARITY_GREEN_PRODUCTION_STALE_QUOTA_BLOCKED_RETRY_UPDATED",
+  "canonical": {
+    "platform": "Forgejo",
+    "repository": "temitayocharles/tayoca",
+    "authority": "primary",
+    "main_sha": "e0a097568f7f25746603913e71adc0307cc7bf3f",
+    "accessibility_pr": 17,
+    "post_merge_static_quality": {"run": 6976, "status": "success"},
+    "final_browser_audit": {
+      "workflow": ".forgejo/workflows/selfhosted-accessibility-audit.yml",
+      "run": 6965,
+      "status": "success",
+      "playwright": "1.62.1",
+      "axe_playwright": "4.13.0",
+      "checks": 10,
+      "failed": 0,
+      "axe_violations": 0,
+      "scope": "5 representative pages x desktop/mobile"
+    }
+  },
+  "github_deployment_mirror": {
+    "repository": "temitayocharles/tayoca",
+    "branch": "main",
+    "head_sha_after_accessibility_sync": "43375ba14e1945314e7df0a10b971bf2e0a0a976",
+    "sync_method": "atomic GITHUB_COMMIT_MULTIPLE_FILES after pre-write Git blob SHA verification",
+    "pre_write_hash_gate_passed": true,
+    "fresh_post_write_reread_passed": true,
+    "accessibility_files": {
+      "public/assets/css/growth-os.css": "5ea40b0abb8943fa71b7dd8bad43b872d62c77bf",
+      "public/assets/css/site-shell.css": "0af7bbba1f179dc958f20fbf657bb55e3afaa294",
+      "public/growth-os.js": "71feab9769a80017bd32854c4c32df2b2f707efb",
+      "public/services.html": "3b6bafba7a951d4381a494e7be5edaf00ac826e2",
+      "public/operator-brief.html": "719504f2859d65dfc879f9e0ba77891d8b94da5b",
+      "public/blog/gitops-beyond-hello-world.html": "09fcd30e1f40a4072c2d0eb38ec0bdf828560a1d"
+    },
+    "previous_audit_set_still_expected_at_current_canonical": {
+      "public/blog/ai-automation-career-roadmap.html": "aadfaed1edcf8fca1cb5104d123c148ee9f1c7a8",
+      "public/blog/kubernetes-production-checklist.html": "8bec0fe1408ae094969514d35ae5a1e53af7206f",
+      "public/blog/cloud-cost-optimization-playbook.html": "6a6e8fe0893829ce7db4caaaf73500f0c13c23f9",
+      "public/blog/n8n-mcp-kubernetes.html": "0138d37b695018049f9e60a04b8474f05447e49d"
+    }
+  },
+  "production": {
+    "domain": "https://tayoca.com/",
+    "vercel_project": "tayoca-com-static",
+    "vercel_project_id": "prj_3HzkrxM828WThQD1lOdFjL0jdC8o",
+    "git_auto_deploy": "enabled",
+    "latest_verified_deployed_git_sha_before_quota_block": "26c56292e3baa6d34ef5dd31c601c55c9c9e700d",
+    "current_canonical_parity": false,
+    "blocker": {
+      "provider": "Vercel",
+      "description": "Deployment rate limited — retry in 24 hours.",
+      "manual_api_status": 402,
+      "resource": "api-deployments-free-per-day",
+      "limit_total": 100,
+      "limit_remaining": 0,
+      "reset_at_utc": "2026-08-18T18:12:41.578Z",
+      "reset_at_toronto": "2026-08-18T14:12:41.578-04:00"
+    },
+    "retry": {
+      "automation_id": "6a8350638c9881919d0528cd9f0a984f",
+      "scheduled_for_toronto": "2026-08-18T14:15:00-04:00",
+      "updated_at": "2026-08-17T20:55:00Z",
+      "intent": "resolve current Forgejo main at execution time, verify current GitHub mirror parity, deploy verified current GitHub main, poll READY/alias, verify production hashes and focused semantics, then rerun reusable self-hosted accessibility audit when the runner is available"
+    }
+  },
+  "accessibility": {
+    "automated_browser_status": "verified_green",
+    "manual_screen_reader_status": "pending",
+    "wcag_certification_claim_allowed": false,
+    "remaining_manual_activity": [
+      "VoiceOver screen-reader testing",
+      "NVDA or JAWS testing in an appropriate Windows environment",
+      "manual assistive-technology interaction review beyond automated Axe/keyboard coverage"
+    ]
+  },
+  "durable_drift_control": {
+    "status": "merged",
+    "workflow": ".forgejo/workflows/deployment-parity.yml",
+    "verifier": "scripts/verify_production_parity.py",
+    "schedule_utc": "30 19 * * *",
+    "credential_free": true,
+    "comparison_scope": "all canonical public/**/*.html against tayoca.com byte-for-byte"
+  },
+  "controls": {
+    "w9_distribution_changed": false,
+    "w9_attribution_changed": false,
+    "w9_experiment_configuration_changed": false,
+    "paid_spend_changed": false,
+    "wcag_certification_claimed": false,
+    "vercel_manual_redeploy_attempted_after_accessibility_merge": false
+  }
+}

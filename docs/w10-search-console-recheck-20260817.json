@@ -1,10 +1,10 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "workstream": "W10",
-  "finding": "search_console_sitemap_processing_lag",
+  "finding": "search_console_sitemap_counter_lag_with_selective_new_page_indexing_delay",
   "severity": "low",
-  "status": "OBSERVED_PROPAGATION_LAG",
-  "observed_at": "2026-08-17T16:17:11.920Z",
+  "status": "OBSERVED_PROPAGATION_LAG_NO_SITEMAP_DEFECT",
+  "observed_at": "2026-08-17T19:47:00Z",
   "property": "https://tayoca.com/",
   "sitemap": {
     "url": "https://tayoca.com/sitemap.xml",
@@ -15,9 +15,7 @@
     "last_downloaded": "2026-08-16T17:06:13.269Z",
     "search_console_reported_submitted": 33,
     "search_console_reported_indexed": 0,
-    "canonical_current_url_count": 34,
-    "canonical_sitemap_path": "public/sitemap.xml",
-    "includes_operator_brief_archive": true
+    "interpretation": "The aggregate indexed=0 counter is stale/incomplete because direct URL Inspection proves multiple sitemap URLs are indexed. There is no sitemap processing error, warning, pending state, robots block, or site-wide fetch failure to remediate."
   },
   "priority_url_inspections": [
     {
@@ -26,8 +24,21 @@
       "coverage_state": "Submitted and indexed",
       "indexing_state": "INDEXING_ALLOWED",
       "page_fetch_state": "SUCCESSFUL",
+      "robots_txt_state": "ALLOWED",
       "crawled_as": "MOBILE",
-      "last_crawl_time": "2026-08-02T08:18:11Z"
+      "last_crawl_time": "2026-08-02T08:18:11Z",
+      "canonical_match": true
+    },
+    {
+      "url": "https://tayoca.com/services.html",
+      "verdict": "PASS",
+      "coverage_state": "Submitted and indexed",
+      "indexing_state": "INDEXING_ALLOWED",
+      "page_fetch_state": "SUCCESSFUL",
+      "robots_txt_state": "ALLOWED",
+      "crawled_as": "MOBILE",
+      "last_crawl_time": "2026-08-04T07:15:04Z",
+      "canonical_match": true
     },
     {
       "url": "https://tayoca.com/assessments.html",
@@ -35,22 +46,50 @@
       "coverage_state": "Submitted and indexed",
       "indexing_state": "INDEXING_ALLOWED",
       "page_fetch_state": "SUCCESSFUL",
+      "robots_txt_state": "ALLOWED",
       "crawled_as": "MOBILE",
-      "last_crawl_time": "2026-08-06T00:38:08Z"
+      "last_crawl_time": "2026-08-06T00:38:08Z",
+      "canonical_match": true
     },
     {
-      "url": "https://tayoca.com/operator-brief-archive.html",
+      "url": "https://tayoca.com/operator-brief.html",
       "verdict": "NEUTRAL",
-      "coverage_state": "URL is unknown to Google",
+      "coverage_state": "Discovered - currently not indexed",
       "indexing_state": "INDEXING_STATE_UNSPECIFIED",
-      "page_fetch_state": "PAGE_FETCH_STATE_UNSPECIFIED"
+      "page_fetch_state": "PAGE_FETCH_STATE_UNSPECIFIED",
+      "robots_txt_state": "ROBOTS_TXT_STATE_UNSPECIFIED",
+      "sitemap_discovered": true,
+      "interpretation": "Google has discovered the URL from the sitemap but has not yet crawled/indexed it. No URL Inspection evidence identifies a blocking robots, fetch, canonical, or sitemap defect."
+    },
+    {
+      "url": "https://tayoca.com/blog/gitops-beyond-hello-world.html",
+      "verdict": "PASS",
+      "coverage_state": "Submitted and indexed",
+      "indexing_state": "INDEXING_ALLOWED",
+      "page_fetch_state": "SUCCESSFUL",
+      "robots_txt_state": "ALLOWED",
+      "crawled_as": "MOBILE",
+      "last_crawl_time": "2026-08-04T05:31:46Z",
+      "canonical_match": true
     }
   ],
-  "interpretation": "Search Console's sitemap-level indexed=0 counter is stale and must not be treated as site-wide non-indexing because direct URL inspection proves the homepage and assessments page are submitted and indexed. The reported 33 submitted URLs reflect Google's August 16 download, while the canonical sitemap now contains 34 URLs including the Operator Brief archive published August 17. The archive is therefore awaiting the next Google crawl/download cycle.",
-  "action": "No forced sitemap resubmission. Preserve the observed low-severity lag and recheck after Google next downloads the current 34-URL sitemap or the archive becomes known/indexed.",
+  "summary": {
+    "representative_urls_inspected": 5,
+    "submitted_and_indexed": 4,
+    "discovered_not_indexed": 1,
+    "blocking_technical_defects_observed": 0,
+    "sitewide_non_indexing_claim_allowed": false
+  },
+  "action": {
+    "sitemap_resubmitted": false,
+    "reason": "The sitemap is healthy and recently downloaded; resubmission would add churn without evidence of a sitemap defect.",
+    "next_check": "Re-inspect operator-brief.html after Google recrawls the current sitemap or after the pending Vercel production promotion, while continuing to treat aggregate sitemap indexed counts as lagging telemetry rather than authoritative site-wide index state."
+  },
   "controls": {
     "no_fabricated_index_count": true,
     "no_resubmission_for_dashboard_cosmetics": true,
+    "w9_distribution_changed": false,
+    "w9_attribution_changed": false,
     "paid_spend": 0
   }
 }

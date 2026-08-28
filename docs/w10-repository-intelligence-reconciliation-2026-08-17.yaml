@@ -1,0 +1,81 @@
+schema_version: 1
+program: Tayoca Production Growth Cycle 1
+workstream: W10_OPERATIONS
+reconciliation_date: "2026-08-17"
+status: GREEN_WITH_FAIL_CLOSED_DELTAS
+
+baseline:
+  source: docs/repository-source-of-truth.yaml
+  reconciled_at: "2026-08-09T19:29:00Z"
+  github_owned_repositories: 101
+  forgejo_owned_repositories: 103
+  shared_exact_name: 93
+  github_only: 8
+  forgejo_only: 10
+
+current_inventory:
+  github:
+    authenticated_owner: temitayocharles
+    total_owned_repositories: 101
+    pagination:
+      page_size: 100
+      page_counts: [100, 1, 0]
+      exhausted: true
+  forgejo:
+    authenticated_owner: temitayocharles
+    total_owned_repositories: 105
+    pagination:
+      page_size_validation: 10
+      terminal_page: 11
+      terminal_page_count: 5
+      page_12_empty: true
+      exhausted: true
+
+net_change_from_baseline:
+  github: 0
+  forgejo: 2
+
+new_forgejo_only_repositories:
+  - name: forgejo-mcp
+    created_at: "2026-08-13T19:47:08Z"
+    visibility: public
+    exact_name_github_lookup: 404
+    classification: forgejo_only_platform_tool_pending_authority
+    tayoca_ingest: false
+    tayoca_publishable: false
+    rationale: "Public visibility is not publication approval. No exact-name GitHub repository exists and no explicit Tayoca source-authority classification has been granted."
+  - name: rag-system
+    created_at: "2026-08-15T22:13:16Z"
+    visibility: private
+    exact_name_github_lookup: 404
+    classification: forgejo_only_operational_pending_authority
+    tayoca_ingest: false
+    tayoca_publishable: false
+    rationale: "Private Forgejo-only knowledge infrastructure remains excluded from Tayoca ingestion and publication until explicit authority is defined."
+
+fail_closed_effect:
+  - "Neither new repository is eligible for Tayoca ingestion, evidence generation, marketing claims, or public disclosure."
+  - "The existing PRIVATE_NOT_PUBLISHABLE and PUBLIC_IS_NOT_APPROVAL rules remain binding."
+  - "No existing source authority was broadened by this reconciliation."
+
+reconciled_counts:
+  github_owned_repositories: 101
+  forgejo_owned_repositories: 105
+  github_only: 8
+  forgejo_only: 12
+  shared_exact_name: 93
+  equations:
+    github: "93 + 8 = 101"
+    forgejo: "93 + 12 = 105"
+
+verification_notes:
+  - "GitHub pagination was exhausted using the authenticated temitayocharles account."
+  - "Forgejo pagination was exhausted; page 11 contained five repositories and page 12 was empty."
+  - "The only repositories created after the 2026-08-09 baseline are forgejo-mcp and rag-system."
+  - "Both exact-name GitHub repository lookups returned HTTP 404."
+
+controls_preserved:
+  w9_distribution_changed: false
+  w9_attribution_changed: false
+  paid_spend_changed: false
+  publication_authority_changed: false

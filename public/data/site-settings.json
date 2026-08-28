@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "brand": {
+    "name": "TAYOCA",
+    "homeHref": "/"
+  },
+  "navigation": [
+    { "label": "Services", "href": "/services.html", "visible": true },
+    { "label": "Assessments", "href": "/assessments.html", "visible": true },
+    { "label": "Results", "href": "/results.html", "visible": true },
+    { "label": "Products", "href": "/products.html", "visible": true },
+    { "label": "Insights", "href": "/insights.html", "visible": true },
+    { "label": "About", "href": "/about.html", "visible": true }
+  ],
+  "headerCta": {
+    "label": "Start an Assessment",
+    "href": "/assessments.html",
+    "visible": true
+  },
+  "footer": {
+    "description": "Technology Value & FinOps, Platform Reliability & DevSecOps, and Agentic Operations & Automation.",
+    "location": "Ontario, Canada.",
+    "copyrightName": "Tayoca",
+    "explore": [
+      { "label": "Services", "href": "/services.html" },
+      { "label": "Assessments", "href": "/assessments.html" },
+      { "label": "Results", "href": "/results.html" },
+      { "label": "Products", "href": "/products.html" },
+      { "label": "Insights", "href": "/insights.html" },
+      { "label": "About", "href": "/about.html" }
+    ],
+    "connect": [
+      { "label": "Operator Brief", "href": "/operator-brief.html" },
+      { "label": "Trust Center", "href": "/trust.html" },
+      { "label": "support@tayoca.com", "href": "mailto:support@tayoca.com" }
+    ]
+  },
+  "contact": {
+    "supportEmail": "support@tayoca.com",
+    "bookingUrl": "https://cal.com/tayoca/finops-audit",
+    "whatsappUrl": "https://wa.me/2348113980135"
+  }
+}

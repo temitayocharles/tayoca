@@ -83,6 +83,17 @@ priority_campaigns:
       Sivanta remains a smallest-fit route for a specifically conversation-commerce automation
       problem; it is not a competing primary CTA in this campaign.
 
+  - campaign_key: community_websites
+    campaign_id: pgc1_community_websites_20260819
+    primary_entry_asset: Tayoca Community Website Initiative
+    primary_cta: Apply for one of 10 community website builds
+    commercial_destination: Website Services and optional managed add-ons
+    owned_launch_surface: /community/websites
+    distribution: organic_local_community
+    pilot_capacity: 10
+    free_core_build: true
+    approval_gate: operator_review_before_research_or_build
+
 workstreams:
   - id: W1
     name: production_baseline
@@ -209,6 +220,34 @@ workstreams:
     priority: 10
     status: ACTIVE_BACKGROUND
 
+  - id: W11
+    name: community_website_initiative
+    priority: 9.5
+    status: READY_FOR_TRAFFIC
+    started_at: '2026-08-19T18:21:48Z'
+    campaign_id: pgc1_community_websites_20260819
+    capacity: 10
+    dependencies:
+      - existing_growth_os_intake_and_revenue_pipeline
+      - verified_resend_sender
+      - operator_approval_channel
+    delivery_rules:
+      - application_form_is_system_of_record
+      - facebook_comments_route_to_application_form
+      - no_research_or_build_before_operator_approval
+      - free_core_scope_must_remain_genuine
+      - owner_cms_admin_hosting_maintenance_and_growth_services_are_optional_add_ons
+      - preview_may_use_vercel_but_client_owns_final_repository_and_production_destination
+      - business_specific_design_research_required_no_generic_ai_template
+      - review_requests_must_be_honest_non_gated_and_reuse_tayoca_reputation_controls
+    readiness_gate:
+      - community_landing_live
+      - intake_workflow_active
+      - acknowledgement_active
+      - approval_gate_active
+      - comment_routing_active_for_connected_facebook_page
+      - analytics_instrumented
+
 measurement:
   baseline_period_days: '7-14'
   day0_baseline: docs/production-growth-cycle1-w1-day0-baseline.json
@@ -252,8 +291,15 @@ external_and_continuous_improvement_items:
     rule: tayoca.com is verified in Resend; production outbound uses temitayo@tayoca.com and inbound replies route through Cloudflare Email Routing.
   - id: assistive_technology_audit
     severity: medium
-    blocking_scope: none
-    rule: Do not claim full WCAG certification until full browser/assistive-technology testing is completed.
+    blocking_scope: manual_screen_reader_validation
+    status: AUTOMATED_BROWSER_VERIFIED_MANUAL_ASSISTIVE_TECHNOLOGY_PENDING
+    automated_browser_verified_at: '2026-08-17T20:40:02.204Z'
+    evidence: docs/w10-selfhosted-browser-accessibility-remediation-2026-08-17.json
+    regression_workflow: .forgejo/workflows/selfhosted-accessibility-audit.yml
+    rule: >
+      Self-hosted Chromium/Axe plus keyboard validation passes the representative 5-page desktop/mobile matrix.
+      Do not claim full WCAG certification until manual screen-reader and broader assistive-technology testing is completed;
+      VoiceOver plus an appropriate Windows screen-reader environment remain explicit manual activities.
   - id: search_console_sitemap_processing_lag
     severity: low
     blocking_scope: none

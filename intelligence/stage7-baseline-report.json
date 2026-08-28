@@ -1,0 +1,209 @@
+{
+  "stage": 7,
+  "name": "Private Repository Intelligence",
+  "status": "GREEN",
+  "generated_at": "2026-08-10T05:04:13Z",
+  "initial_watermark": "2026-08-09T19:29:00Z",
+  "authority": {
+    "github_inventory": 101,
+    "forgejo_inventory": 103,
+    "github_inventory_pages": [100, 1, 0],
+    "forgejo_inventory_pages": [50, 50, 3],
+    "github_primary_exact_mirrors": 77,
+    "forgejo_primary": 7,
+    "governed_sources": 84,
+    "ambiguous_shared_quarantined": 9,
+    "github_only_excluded": 8,
+    "forgejo_only_excluded": 10,
+    "stale_exact_mirrors_over_30_minutes": 0
+  },
+  "github_primary_baseline": {
+    "sources": 77,
+    "post_watermark_commits": 0,
+    "post_watermark_pull_requests": 0,
+    "post_watermark_issues": 0,
+    "post_watermark_releases": 0,
+    "post_watermark_workflow_runs": 2,
+    "workflow_runs": [
+      {
+        "repository": "cila-health-microservices",
+        "occurred_at": "2026-08-10T03:40:40Z",
+        "state": "failure",
+        "title": ".github/workflows/ci.yaml",
+        "private_repository": true,
+        "restricted": true,
+        "auto_public_draft": false
+      },
+      {
+        "repository": "healthcare_naija",
+        "occurred_at": "2026-08-10T04:26:32Z",
+        "state": "failure",
+        "title": "Nightly E2E Smoke",
+        "private_repository": true,
+        "restricted": true,
+        "auto_public_draft": false
+      }
+    ],
+    "event_ledger_sha256": "508cfe3eee36ac1d25a4a3f71753648531739815720d4010744188dd2a7cd89d",
+    "release_boundary": "76 repositories had no official release; terraform-module v1.0.0 was published 2026-02-18 and is pre-watermark.",
+    "final_actions_delta": {
+      "since": "2026-08-10T04:45:00Z",
+      "sources_checked": 77,
+      "events": 0
+    },
+    "final_change_request_reconciliation": {
+      "account_pull_requests_updated_since_watermark": 19,
+      "account_issues_updated_since_watermark": 0,
+      "governed_github_primary_pull_requests": 0,
+      "governed_github_primary_issues": 0,
+      "note": "All 19 pull requests belonged to excluded, ambiguous, or Forgejo-primary repositories."
+    }
+  },
+  "forgejo_primary_baseline": {
+    "sources": 7,
+    "repositories": [
+      "ai-builders-academy",
+      "helm-charts",
+      "homelab-gitops",
+      "sivanta-ui-handoff",
+      "tayoca",
+      "vault-ops",
+      "zernflow"
+    ],
+    "endpoint_checks": 35,
+    "coverage_complete": true,
+    "events_ingested": 348,
+    "unique_event_ids": 348,
+    "duplicates": 0,
+    "failures": 0,
+    "event_ledger_sha256": "b14f74ce2e6e1b71e04ad37537c9f596b4593316fb5008fe6154a41899062e60",
+    "not_applicable_features": [
+      "ai-builders-academy:pull_requests",
+      "ai-builders-academy:releases",
+      "homelab-gitops:releases",
+      "vault-ops:releases"
+    ],
+    "not_applicable_basis": "Forgejo repository feature flags explicitly disable these features."
+  },
+  "combined_baseline": {
+    "governed_sources": 84,
+    "unique_events_ingested": 350,
+    "canonical_cross_source_duplicates": 0,
+    "coverage_failures": 0,
+    "automatic_public_drafts": 0,
+    "publication_firewall_passed": true
+  },
+  "development_clusters": [
+    {
+      "cluster_id": "alfie-runner-bootstrap-and-forensics",
+      "repositories": ["homelab-gitops"],
+      "event_count": 35,
+      "content_opportunity_score": 93,
+      "disclosure_safety_score": 10,
+      "publication_state": "review_required"
+    },
+    {
+      "cluster_id": "runner-vault-credential-boundary",
+      "repositories": ["vault-ops"],
+      "event_count": 16,
+      "content_opportunity_score": 92,
+      "disclosure_safety_score": 0,
+      "publication_state": "review_required"
+    },
+    {
+      "cluster_id": "forgejo-runner-control-plane-recovery",
+      "repositories": ["homelab-gitops"],
+      "event_count": 120,
+      "content_opportunity_score": 91,
+      "disclosure_safety_score": 10,
+      "publication_state": "review_required"
+    },
+    {
+      "cluster_id": "tayoca-trust-and-commercial-governance",
+      "repositories": ["tayoca"],
+      "event_count": 50,
+      "content_opportunity_score": 88,
+      "disclosure_safety_score": 0,
+      "publication_state": "review_required"
+    },
+    {
+      "cluster_id": "sivanta-voice-ui-refinement",
+      "repositories": ["sivanta-ui-handoff"],
+      "event_count": 46,
+      "content_opportunity_score": 87,
+      "disclosure_safety_score": 0,
+      "publication_state": "review_required"
+    },
+    {
+      "cluster_id": "tayoca-public-shell",
+      "repositories": ["tayoca"],
+      "event_count": 56,
+      "content_opportunity_score": 85,
+      "disclosure_safety_score": 0,
+      "publication_state": "review_required"
+    },
+    {
+      "cluster_id": "zernflow-vault-handoff",
+      "repositories": ["vault-ops"],
+      "event_count": 11,
+      "content_opportunity_score": 70,
+      "disclosure_safety_score": 0,
+      "publication_state": "review_required"
+    },
+    {
+      "cluster_id": "sivanta-database-transport",
+      "repositories": ["homelab-gitops"],
+      "event_count": 11,
+      "content_opportunity_score": 66,
+      "disclosure_safety_score": 10,
+      "publication_state": "review_required"
+    },
+    {
+      "cluster_id": "tayoca-conversion-system",
+      "repositories": ["tayoca"],
+      "event_count": 2,
+      "content_opportunity_score": 53,
+      "disclosure_safety_score": 0,
+      "publication_state": "review_required"
+    },
+    {
+      "cluster_id": "ai-builders-ci-state",
+      "repositories": ["ai-builders-academy"],
+      "event_count": 1,
+      "content_opportunity_score": 32,
+      "disclosure_safety_score": 0,
+      "publication_state": "review_required"
+    },
+    {
+      "cluster_id": "healthcare-naija-nightly-e2e-failure",
+      "repositories": ["healthcare_naija"],
+      "event_count": 1,
+      "content_opportunity_score": 28,
+      "disclosure_safety_score": 0,
+      "publication_state": "review_required"
+    },
+    {
+      "cluster_id": "cila-health-scheduled-ci-failure",
+      "repositories": ["cila-health-microservices"],
+      "event_count": 1,
+      "content_opportunity_score": 28,
+      "disclosure_safety_score": 0,
+      "publication_state": "review_required"
+    }
+  ],
+  "clustering_correction": "Policy v1 precedence was applied to move the Tayoca trust-related assessment cleanup pair from conversion into trust-and-commercial-governance.",
+  "gate": {
+    "complete_activity_ingestion": true,
+    "canonical_deduplication": true,
+    "development_clustering": true,
+    "disclosure_scoring": true,
+    "content_opportunity_scoring": true,
+    "coverage_failure_reporting": true,
+    "no_restricted_source_to_public_draft": true
+  },
+  "limitations": [
+    "Nine ambiguous shared repositories remain quarantined until source authority is explicit.",
+    "Excluded repositories were intentionally not ingested; exclusion is policy, not omission.",
+    "This baseline stores aggregate evidence and digests rather than raw private event bodies to minimize sensitive-data persistence."
+  ]
+}

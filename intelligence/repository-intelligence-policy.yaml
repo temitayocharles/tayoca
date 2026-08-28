@@ -1,0 +1,83 @@
+version: 1
+stage: 7
+name: Private Repository Intelligence
+status: locked
+
+watermark:
+  initial_since: "2026-08-09T19:29:00Z"
+  basis: "Stage 2 repository authority reconciliation"
+
+source_authority:
+  github_primary_exact_mirrors: 77
+  forgejo_primary: 7
+  ambiguous_shared_quarantined: 9
+  github_only_excluded: 8
+  forgejo_only_excluded: 10
+  governed_sources: 84
+  rules:
+    - "Exact Forgejo mirror of https://github.com/temitayocharles/<repo>.git is GitHub-primary unless explicitly overridden."
+    - "Explicit Forgejo canonical/desired-state/permanent-CI declarations override mirror heuristics."
+    - "Ambiguous shared repositories fail closed and are excluded until authority is explicit."
+    - "Backup, test, legacy, archived, and platform-only pending repositories are excluded."
+    - "Repository visibility is not publication approval."
+
+coverage:
+  requirements:
+    - commits
+    - pull_requests
+    - issues
+    - releases
+    - workflow_runs
+  pagination: exhaustive_to_watermark
+  optional_features: "Feature-disabled endpoints are recorded as not_applicable, never silently omitted."
+  partial_success: forbidden
+  failures: explicit
+
+canonical_deduplication:
+  rule: "Read each repository from one governed authority only; never ingest both an origin and its mirror as independent sources."
+  event_key: "<repository>:<event_type>:<provider_event_id>"
+  duplicate_policy: fail_closed
+
+clustering:
+  unit: coherent_development
+  principles:
+    - "Cluster related commits, pull requests, and workflow runs into one development rather than one story per event."
+    - "Workflow runs attach to the nearest same-repository meaningful event when temporally bounded."
+    - "Trust/evidence/claims semantics take precedence over generic assessment/conversion keywords."
+    - "Cross-repository clusters are allowed only when the operational development is demonstrably shared."
+
+scoring:
+  content_opportunity_score:
+    range: "0-100"
+    factors:
+      - evidence_density
+      - development_relevance
+      - implementation_signal
+      - workflow_stability
+    purpose: "Internal prioritization only; never publication authorization."
+  disclosure_safety_score:
+    range: "0-100"
+    private_repository: 0
+    public_sensitive_infrastructure_max: 10
+    public_non_sensitive_internal_max: 30
+    rule: "Public visibility does not imply approval."
+
+publication_firewall:
+  restricted_by_default: true
+  private_repository_nonpublishable_by_default: true
+  automatic_public_draft: false
+  production_publication_requires_human_approval: true
+  allowed_state_from_stage_7: review_required
+  forbidden_transitions:
+    - "restricted_source -> public_draft"
+    - "private_repository -> automatic_publication"
+    - "score_threshold -> automatic_publication"
+
+stage_gate:
+  complete_activity_ingestion: required
+  canonical_deduplication: required
+  development_clustering: required
+  disclosure_scoring: required
+  content_opportunity_scoring: required
+  coverage_failure_report: required
+  no_restricted_source_to_public_draft: required

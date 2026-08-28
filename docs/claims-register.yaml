@@ -1,0 +1,240 @@
+schema_version: 1
+stage: 4
+status: GREEN
+updated_at: "2026-08-09T20:03:00Z"
+policy: docs/evidence-policy.md
+source_registry: docs/repository-source-of-truth.yaml
+commercial_authority: docs/positioning.md
+
+publication_rule: "Only approval_state=approved or explicitly scoped conditional claims may be asserted publicly. blocked/pending/retired claims must be absent, withdrawn, or explicitly described as unverified rather than asserted as proof."
+ci_enforcement: scripts/validate_static_site.py
+
+claims:
+  - claim_id: FINOPS_216K_SERIES_B
+    claim_type: quantified_outcome
+    normalized_claim: "A Series B fintech reduced annual AWS spend from $840K to $624K, saving $216K/26% in 90 days while preserving 99.99% uptime."
+    approval_state: blocked
+    public_surface_status: withdrawn
+    source_class: none
+    evidence_refs: []
+    disclosure_class: permission_required
+    historical_surfaces:
+      - public/index.html
+      - public/results.html
+      - public/blog/how-we-saved-216k-on-aws-in-90-days.html
+      - public/blog/how-we-saved-216k-aws.html
+    current_surface_treatment:
+      - "Homepage and Results page state that the prior quantified narrative was withdrawn from proof use."
+      - "Both historical article routes are retained as noindex evidence-review notices and do not assert the blocked figures."
+    reason: "No retained baseline, source-system evidence, calculation record, client disclosure approval, or reliability evidence is attached in the canonical repository."
+    reuse_rule: "Do not cite, summarize, republish, or derive quantified/client-result claims from the historical narrative unless evidence and disclosure approval are later attached."
+    gate_blocker: false
+
+  - claim_id: PLATFORM_DAY15
+    claim_type: performance
+    normalized_claim: "Production clusters by day 15."
+    approval_state: blocked
+    public_surface_status: removed
+    source_class: none
+    evidence_refs: []
+    historical_surfaces: [public/services.html]
+    current_surfaces: []
+    reason: "No delivery conditions, baseline, acceptance definition, or evidence record attached."
+    gate_blocker: false
+
+  - claim_id: PLATFORM_SLA_9995
+    claim_type: performance
+    normalized_claim: "Platform SLA >=99.95%."
+    approval_state: blocked
+    public_surface_status: removed
+    source_class: none
+    evidence_refs: []
+    historical_surfaces: [public/services.html]
+    current_surfaces: []
+    reason: "No service boundary, measurement method, observation period, or approved SLA record attached."
+    gate_blocker: false
+
+  - claim_id: FINOPS_ZERO_SAVED_ZERO_PAID
+    claim_type: guarantee
+    normalized_claim: "$0 saved -> $0 paid."
+    approval_state: blocked
+    public_surface_status: removed
+    source_class: first_party_commercial
+    evidence_refs: [docs/positioning.md]
+    historical_surfaces: [public/services.html]
+    current_surfaces: []
+    reason: "No approved guarantee conditions, attribution boundary, or measurement method."
+    gate_blocker: false
+
+  - claim_id: FINOPS_30_DAY_MONEY_BACK
+    claim_type: guarantee
+    normalized_claim: "30-day money-back guarantee."
+    approval_state: blocked
+    public_surface_status: removed
+    source_class: first_party_commercial
+    evidence_refs: [docs/positioning.md]
+    historical_surfaces: [public/services.html]
+    current_surfaces: []
+    reason: "Guarantee conditions and measurement method are not attached to the approved offer."
+    gate_blocker: false
+
+  - claim_id: AI_30_DAY_ACCEPTANCE
+    claim_type: guarantee
+    normalized_claim: "AI/RAG/LLMOps package has 30-day acceptance."
+    approval_state: blocked
+    public_surface_status: removed
+    source_class: first_party_commercial
+    evidence_refs: [docs/positioning.md]
+    historical_surfaces: [public/services.html]
+    current_surfaces: []
+    reason: "Acceptance criteria and contractual conditions are absent from the historical claim."
+    gate_blocker: false
+
+  - claim_id: PAY_FOR_ITSELF
+    claim_type: positioning
+    normalized_claim: "AI automation and cloud platforms pay for themselves."
+    approval_state: retired
+    public_surface_status: removed
+    source_class: first_party_commercial
+    evidence_refs: [docs/positioning.md]
+    historical_surfaces: [public/index.html]
+    current_surfaces: []
+    reason: "Canonical conversion copy now uses measurable-business-value wording and does not imply guaranteed ROI."
+    gate_blocker: false
+
+  - claim_id: CREDENTIAL_PMP
+    claim_type: credential
+    normalized_claim: "PMP"
+    approval_state: pending
+    public_surface_status: removed
+    source_class: none
+    evidence_refs: []
+    historical_surfaces: [public/trust.html]
+    current_surfaces: []
+    required_action: "Attach current credential evidence and publication approval before any future public display."
+    gate_blocker: false
+
+  - claim_id: CREDENTIAL_CSM
+    claim_type: credential
+    normalized_claim: "CSM"
+    approval_state: pending
+    public_surface_status: removed
+    source_class: none
+    evidence_refs: []
+    historical_surfaces: [public/trust.html]
+    current_surfaces: []
+    required_action: "Attach current credential evidence and publication approval before any future public display."
+    gate_blocker: false
+
+  - claim_id: CREDENTIAL_TERRAFORM
+    claim_type: credential
+    normalized_claim: "Terraform Associate"
+    approval_state: pending
+    public_surface_status: removed
+    source_class: none
+    evidence_refs: []
+    historical_surfaces: [public/trust.html]
+    current_surfaces: []
+    required_action: "Attach current credential evidence and publication approval before any future public display."
+    gate_blocker: false
+
+  - claim_id: CREDENTIAL_AWS_SA
+    claim_type: credential
+    normalized_claim: "AWS Solutions Architect"
+    approval_state: pending
+    public_surface_status: removed
+    source_class: none
+    evidence_refs: []
+    historical_surfaces: [public/trust.html]
+    current_surfaces: []
+    required_action: "Attach current credential evidence and publication approval before any future public display."
+    gate_blocker: false
+
+  - claim_id: VERIFIED_BUYER_REVIEW_PIPELINE
+    claim_type: policy
+    normalized_claim: "Reviews displayed as verified buyer reviews are purchase-verified, buyer-email matched, consented, privacy-sanitized, and human-approved."
+    surfaces:
+      - public/reviews.html
+      - public/trust.html
+    source_class: first_party_operational
+    evidence_refs:
+      - "n8n:ZZDXWFKiPnzeKtNr"
+      - docs/evidence-policy.md
+    disclosure_class: public
+    approval_state: conditional
+    public_surface_status: active_scoped
+    controls_observed:
+      - "Server-side Gumroad sale-detail API verification using the configured Gumroad access token."
+      - "Exact requested sale ID must match the provider-returned sale."
+      - "Allowed-product list is enforced."
+      - "Refund/dispute/chargeback and buyer contact-eligibility checks are enforced."
+      - "Submitted buyer email must match the verified purchase record."
+      - "Explicit publication consent is required."
+      - "Human Slack publication approval is required."
+      - "Public feed requires published + consent + verified_buyer."
+      - "Public feed strips buyer email and payment fields."
+      - "Critical sentiment alone is not a moderation rejection criterion."
+    limitations:
+      - "Sale-ingestion webhook itself has no provider-authenticated ingress; server-side provider lookup is the compensating verification control."
+      - "Review invitation token is deterministically derived from the sale ID and is an outstanding hardening item; the buyer-email match and authoritative purchase lookup remain required before verified_buyer=true."
+      - "Do not describe the review flywheel as fully hardened or claim webhook authentication that does not exist."
+    conditions: "The public 'verified buyer' label is approved only for rows that satisfy the currently observed provider verification, buyer-email match, explicit consent, human approval, and public-feed filters. Any change that removes one of those controls invalidates this conditional approval until re-reviewed."
+    correction_path: "Disable affected public review output, move the claim to pending/blocked, and correct public wording if the control chain changes."
+    gate_blocker: false
+
+  - claim_id: PRIVATE_BY_DEFAULT
+    claim_type: policy
+    normalized_claim: "Private repositories and sensitive client/payment/security data are excluded from public evidence by default."
+    surfaces: [public/trust.html]
+    source_class: policy_record
+    evidence_refs:
+      - docs/evidence-policy.md
+      - docs/repository-source-of-truth.yaml
+    disclosure_class: public
+    approval_state: approved
+    approval_record: "Tayoca Stage 2 repository-source authority plus Stage 4 trust policy."
+    gate_blocker: false
+
+  - claim_id: HUMAN_APPROVAL_BOUNDARY
+    claim_type: policy
+    normalized_claim: "Sensitive communications and material public publication remain human approval-gated."
+    surfaces: [public/trust.html]
+    source_class: policy_record
+    evidence_refs:
+      - docs/evidence-policy.md
+      - "n8n:8A5kPFbbXCgHK5dp"
+    disclosure_class: public
+    approval_state: approved
+    approval_record: "Locked Tayoca master execution plan plus Stage 4 policy."
+    gate_blocker: false
+
+  - claim_id: AI_ASSISTANCE_DISCLOSURE
+    claim_type: policy
+    normalized_claim: "AI may assist research, analysis, drafting and automation; human accountability remains with Tayoca."
+    surfaces: [public/trust.html]
+    source_class: policy_record
+    evidence_refs: [docs/evidence-policy.md]
+    disclosure_class: public
+    approval_state: approved
+    approval_record: "Tayoca Stage 4 evidence and AI policy."
+    gate_blocker: false
+
+  - claim_id: CREDENTIAL_PUBLICATION_POLICY
+    claim_type: policy
+    normalized_claim: "Professional credentials, certifications, customer logos and similar attestations are displayed only when a current evidence record and publication approval are retained."
+    surfaces: [public/trust.html]
+    source_class: policy_record
+    evidence_refs: [docs/evidence-policy.md]
+    disclosure_class: public
+    approval_state: approved
+    approval_record: "Stage 4 trust remediation commit 251cef89e30ae55717f5511aa833047e219f1942."
+    gate_blocker: false
+
+gate:
+  required: "Every material public claim is traceable and approved within scope, or removed/withdrawn/qualified from public surfaces; blocked legacy claims are prevented from silently returning."
+  passed: true
+  blockers: []
+  enforcement:
+    - "Blocked/pending legacy claims are absent or explicitly withdrawn from current public assertion surfaces."
+    - "scripts/validate_static_site.py scans every public HTML file for the blocked legacy claim patterns and fails CI on reintroduction."
+    - "Verified-buyer wording is conditional on the exact observed review-control chain and does not claim full security hardening."

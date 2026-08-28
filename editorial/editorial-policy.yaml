@@ -1,0 +1,146 @@
+version: 2
+stage: 8
+name: Unified Editorial Operating System
+status: locked
+
+principles:
+  - one_fact_and_evidence_ledger_feeds_every_channel
+  - security_and_confidentiality_before_publicity
+  - private_repositories_nonpublishable_by_default
+  - no_production_publication_without_human_approval
+  - corrections_create_revision_history_instead_of_silent_overwrite
+  - no_silent_source_omission_or_partial_success
+  - public_copy_must_not_repeat_hook_language_inside_the_body
+
+canonical_ledger:
+  spreadsheet: Tayoca Growth OS Ledger
+  opportunity_tab: Editorial Opportunities
+  correction_tab: Editorial Corrections
+  campaign_tab: Campaigns
+  content_tab: Content Queue
+  opportunity_schema: editorial/editorial-opportunity.schema.json
+
+media_distribution:
+  policy: editorial/media-distribution-policy.yaml
+  policy_id: tayoca-social-media-distribution-v1
+  enforcement: required
+  rule: media_policy_is_lane_specific_not_platform_global
+
+required_opportunity_fields:
+  - source
+  - fact
+  - evidence
+  - commercial_significance
+  - audience
+  - story_angle
+  - recommended_format
+  - disclosure_classification
+  - redaction_requirements
+  - approval_state
+  - cta
+  - campaign_association
+  - performance_record
+
+supported_formats:
+  - newsletter
+  - technical_article
+  - executive_brief
+  - case_study
+  - product_update
+  - linkedin_post
+  - short_form_social_content
+  - sales_enablement_asset
+  - no_publication
+
+routing:
+  public_draft_eligibility:
+    required_source_classification: public_verified
+    minimum_disclosure_safety_score: 80
+    required_draft_eligibility: eligible_after_approval
+    required_approval_state: approved_for_drafting
+    forbidden_formats:
+      - no_publication
+  restricted_sources:
+    draft_eligibility: blocked_restricted_source
+    recommended_format: no_publication
+    approval_state: review_required
+    automatic_llm_input: false
+    automatic_publication: false
+    external_use_requires:
+      - human_disclosure_approval
+      - separate_approved_public_fact_source
+
+approval_lifecycle:
+  initial: review_required
+  approved_for_drafting: approved_for_drafting
+  rejected: rejected
+  corrected_source: review_required
+  superseded: superseded
+  rules:
+    - editorial_approval_precedes_any_llm_drafting
+    - campaign_distribution_approval_remains_separate_from_editorial_approval
+    - approval_of_one_opportunity_does_not_approve_other_opportunities
+    - no_score_threshold_can_grant_approval
+
+channel_adaptation:
+  canonical_input: editorial_opportunity
+  output_rule: one_approved_opportunity_can_be_adapted_for_multiple_channels
+  fact_rule: channel_adaptation_must_not_introduce_new_factual_claims
+  evidence_rule: every_asset_retains_opportunity_id_and_evidence_reference
+  cta_rule: every_asset_has_one_primary_conversion_action
+  canonical_rule: duplicate_cross_posting_requires_canonical_attribution_when_applicable
+
+copy_quality:
+  scope: every_public_channel_asset_before_distribution_approval
+  hook_body_rule: hook_language_must_not_be_repeated_or_near_repeated_in_body
+  exact_duplicate_sentence: blocked
+  normalized_hook_contained_in_body: blocked
+  near_duplicate_sentence_similarity_threshold: 0.82
+  repeated_contiguous_phrase_minimum_tokens: 5
+  repeated_contiguous_phrase: blocked
+  safe_remediation:
+    - remove_redundant_words_extractively_from_hook_or_body
+    - preserve_fact_evidence_and_cta_meaning
+    - do_not_invent_replacement_claims_during_deduplication
+    - fail_closed_to_review_required_when_extractive_deduplication_cannot_resolve_repetition
+  regression_fixture: automation/n8n/fixtures/editorial-copy-repetition-w9.json
+  production_boundary:
+    - quality_remediation_applies_to_future_drafts_only
+    - published_content_is_not_retroactively_mutated_without_separate_distribution_action
+
+corrections:
+  ledger: Editorial Corrections
+  mutation_policy: append_only_request_plus_superseding_revision
+  required_request_fields:
+    - correction_id
+    - opportunity_id
+    - reason
+    - requested_by
+  application_rules:
+    - incomplete_correction_requests_fail_closed
+    - original_opportunity_is_marked_superseded_after_successful_revision
+    - corrected_opportunity_returns_to_review_required
+    - corrected_opportunity_never_inherits_previous_approval
+    - correction_does_not_retroactively_edit_published_content_without_separate_distribution_action
+
+stage7_boundary:
+  source_report: intelligence/stage7-baseline-report.json
+  imported_clusters: 12
+  rule: Stage_7_repository_intelligence_is_editorial_signal_not_public_evidence
+  raw_private_event_persistence: forbidden
+  restricted_to_public_draft_transition: forbidden
+
+stage_gate:
+  content_opportunity_queue: required
+  format_routing: required
+  approval_lifecycle: required
+  fact_ledger: required
+  channel_adaptation: required
+  copy_quality: required
+  media_distribution_policy: required
+  correction_workflow: required
+  recommendation_has_evidence: required
+  recommendation_has_audience: required
+  recommendation_has_risk: required
+  recommendation_has_cta: required
+  recommendation_has_approval_state: required

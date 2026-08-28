@@ -1,0 +1,56 @@
+{
+  "program": "Tayoca Production Growth Cycle 1",
+  "workstream": "W10_OPERATIONS",
+  "recorded_on": "2026-08-17",
+  "remediation": "EDITORIAL_APPROVAL_REQUEST_IDEMPOTENCY",
+  "status": "PRODUCTION_APPLIED_AND_VERIFIED",
+  "problem": {
+    "workflow_id": "MRaoY2aHm85q3QWG",
+    "workflow_name": "Tayoca Growth OS | Demand Engine & Revenue Command Center",
+    "target_node": "Choose Weekly Editorial Opportunity",
+    "observed_pattern": "Two recent identical editorial approval requests were sequential, approximately 3h05m40s apart.",
+    "root_cause": "The selector recorded approval_requested_at but left approval_state as review_required, so a later eligible run could select the same opportunity again before a decision."
+  },
+  "change": {
+    "retry_window_days": 5,
+    "in_flight_state": "approval_pending",
+    "behaviour": "A fresh request becomes in-flight before the approval wait; review_required and approval_pending rows are eligible again only after the five-day retry window where applicable.",
+    "human_editorial_approval_required": true,
+    "publication_gate_unchanged": true,
+    "paid_spend_gate_unchanged": true
+  },
+  "verification": {
+    "edge_case_tests": "9/9_PASS",
+    "prior_workflow_version": "5b0fa88c-fbfd-4099-8ac6-bfdce65f9723",
+    "active_workflow_version": "05324cb4-d67e-4737-98bc-c537a86ba579",
+    "workflow_active": true,
+    "settings_preserved": [
+      "executionOrder",
+      "availableInMCP",
+      "callerPolicy",
+      "errorWorkflow"
+    ]
+  },
+  "rollback": {
+    "control_plane_path": "programs/tayoca-growth-os/patches/w10-editorial-approval-idempotency-rollback.json",
+    "captured_before_mutation": true,
+    "control_plane_pr": "temitayocharles/n8n-control-plane#7",
+    "control_plane_main_checkpoint": "programs/tayoca-growth-os/checkpoint.json"
+  },
+  "cleanup": {
+    "temporary_runtime_diagnostic_workflow": "UNPUBLISHED",
+    "temporary_patch_workflows": "ARCHIVED",
+    "obsolete_control_plane_pr": "CLOSED",
+    "obsolete_control_plane_branch": "DELETED"
+  },
+  "residual_risk": "The observed sequential duplicate-request defect is remediated. An exact simultaneous pre-claim race remains theoretically possible with the current sheet-backed claim update; no such concurrent pattern was observed, so a separate atomic claim store is deferred until evidence warrants it.",
+  "w9_measurement_controls": {
+    "experiment_id": "w9-exp-001-platform-reliability-linkedin-organic",
+    "evaluation_not_before": "2026-08-24T14:06:15Z",
+    "duplicate_publication": false,
+    "paid_spend_authorized": false,
+    "early_causal_claims_allowed": false,
+    "measurement_contaminated_by_remediation": false
+  },
+  "next_state": "Continue W9 observation and W6 commercial monitoring; no user-action blocker exists."
+}

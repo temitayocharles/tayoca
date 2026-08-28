@@ -2,13 +2,10 @@ name: Tayoca static quality
 
 on:
   push:
-    branches:
-      - main
   pull_request:
+  schedule:
+    - cron: "17 3 * * 1"
   workflow_dispatch:
-
-permissions:
-  contents: read
 
 concurrency:
   group: tayoca-static-quality-${{ forgejo.ref }}
@@ -38,7 +35,188 @@ jobs:
           python3 -m py_compile \
             scripts/validate_static_site.py \
             scripts/validate_analytics_coverage.py \
-            scripts/validate_product_ecosystem.py
+            scripts/validate_product_ecosystem.py \
+            scripts/verify_production_parity.py \
+            scripts/scan_tracked_secrets.py \
+            scripts/validate_editorial_copy_quality.py \
+            scripts/validate_media_distribution_policy.py
+          python3 scripts/scan_tracked_secrets.py
           python3 scripts/validate_static_site.py
           python3 scripts/validate_analytics_coverage.py
           python3 scripts/validate_product_ecosystem.py
+          python3 scripts/validate_editorial_copy_quality.py
+          python3 scripts/validate_media_distribution_policy.py
+
+  mirror_github:
+    name: Certify or publish canonical tree snapshot to GitHub
+    needs: validate
+    if: ${{ (forgejo.event_name == 'push' && forgejo.ref == 'refs/heads/main') || forgejo.event_name == 'workflow_dispatch' }}
+    runs-on: forgejo-general
+    timeout-minutes: 15
+    steps:
+      - name: Check out canonical tree
+        uses: https://data.forgejo.org/actions/checkout@v6
+
+      - name: Build, certify and optionally publish snapshot
+        shell: bash
+        env:
+          APP_ID: ${{ secrets.CANONICAL_GITHUB_APP_ID }}
+          APP_PRIVATE_KEY: ${{ secrets.CANONICAL_GITHUB_APP_PRIVATE_KEY }}
+        run: |
+          set -euo pipefail
+          echo "mirror_checkpoint=toolchain"
+          command -v curl >/dev/null
+          command -v git >/dev/null
+          command -v node >/dev/null
+          command -v python3 >/dev/null
+          command -v base64 >/dev/null
+          test -n "$APP_ID"
+          test -n "$APP_PRIVATE_KEY"
+          echo "mirror_secret_contract=present"
+
+          source_root="$PWD"
+          canonical_commit="$(git rev-parse HEAD)"
+          canonical_tree="$(git rev-parse 'HEAD^{tree}')"
+          test -n "$canonical_commit"
+          test -n "$canonical_tree"
+          echo "mirror_checkpoint=canonical_tree"
+          if git ls-files -s | awk '$1 == "160000" { found=1 } END { exit found ? 0 : 1 }'; then
+            echo "::error::Git submodules are not supported by the public snapshot mirror"
+            exit 1
+          fi
+
+          jwt="$(node <<'JS'
+          const crypto = require('crypto');
+          const enc = value => Buffer.from(JSON.stringify(value)).toString('base64url');
+          const now = Math.floor(Date.now() / 1000);
+          const unsigned = `${enc({alg:'RS256',typ:'JWT'})}.${enc({iat:now-60,exp:now+540,iss:Number(process.env.APP_ID)})}`;
+          const key = process.env.APP_PRIVATE_KEY.replace(/\\n/g, '\n');
+          const signature = crypto.sign('RSA-SHA256', Buffer.from(unsigned), key).toString('base64url');
+          process.stdout.write(`${unsigned}.${signature}`);
+          JS
+          )"
+          test -n "$jwt"
+
+          echo "mirror_checkpoint=github_installation_lookup"
+          installation_id="$(curl -fsSL \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer $jwt" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            https://api.github.com/repos/temitayocharles/tayoca/installation \
+            | python3 -c 'import json,sys; print(json.load(sys.stdin)["id"])')"
+          test -n "$installation_id"
+
+          echo "mirror_checkpoint=github_installation_token"
+          token_json="$(curl -fsS -X POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer $jwt" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            -H "Content-Type: application/json" \
+            -d '{"repositories":["tayoca"]}' \
+            "https://api.github.com/app/installations/${installation_id}/access_tokens")"
+          echo "mirror_checkpoint=github_token_response"
+          token="$(printf '%s' "$token_json" | python3 -c 'import json,sys; print(json.load(sys.stdin)["token"])')"
+          contents_permission="$(printf '%s' "$token_json" | python3 -c 'import json,sys; print((json.load(sys.stdin).get("permissions") or {}).get("contents", ""))')"
+          unset token_json
+          test -n "$token"
+          echo "::add-mask::$token"
+          echo "mirror_checkpoint=github_token_parsed"
+          if [[ "$contents_permission" != "write" ]]; then
+            echo "::error::GitHub App installation token lacks contents:write"
+            exit 1
+          fi
+          echo "mirror_checkpoint=github_contents_write"
+
+          echo "mirror_checkpoint=github_head"
+          remote_head="$(curl -fsSL \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer $token" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            https://api.github.com/repos/temitayocharles/tayoca/git/ref/heads/main \
+            | python3 -c 'import json,sys; print(json.load(sys.stdin)["object"]["sha"])')"
+          test -n "$remote_head"
+
+          auth="$(printf 'x-access-token:%s' "$token" | base64 | tr -d '\n')"
+          mirror_root="$(mktemp -d)"
+          trap 'rm -rf "$mirror_root"' EXIT
+          echo "mirror_checkpoint=github_clone"
+          git -c "http.https://github.com/.extraheader=AUTHORIZATION: basic $auth" \
+            clone --quiet --single-branch --branch main \
+            https://github.com/temitayocharles/tayoca.git "$mirror_root/github"
+          test "$(git -C "$mirror_root/github" rev-parse HEAD)" = "$remote_head"
+
+          git -C "$mirror_root/github" config user.name "Tayoca Canonical Mirror"
+          git -C "$mirror_root/github" config user.email "tayoca-canonical-mirror@users.noreply.github.com"
+          git -C "$mirror_root/github" rm -r -q --ignore-unmatch .
+          git -C "$mirror_root/github" clean -fdx -q
+
+          SOURCE_ROOT="$source_root" MIRROR_ROOT="$mirror_root/github" python3 <<'PY'
+          import os
+          import pathlib
+          import shutil
+          import subprocess
+
+          source = pathlib.Path(os.environ["SOURCE_ROOT"])
+          target = pathlib.Path(os.environ["MIRROR_ROOT"])
+          raw = subprocess.check_output(["git", "-C", str(source), "ls-files", "-z"])
+          for item in raw.split(b"\0"):
+              if not item:
+                  continue
+              rel = pathlib.Path(os.fsdecode(item))
+              src = source / rel
+              dst = target / rel
+              dst.parent.mkdir(parents=True, exist_ok=True)
+              if src.is_symlink():
+                  if dst.exists() or dst.is_symlink():
+                      dst.unlink()
+                  dst.symlink_to(os.readlink(src))
+              elif src.is_file():
+                  shutil.copy2(src, dst)
+              else:
+                  raise SystemExit(f"Unsupported tracked path type: {rel}")
+          PY
+
+          git -C "$mirror_root/github" add -A
+          snapshot_tree="$(git -C "$mirror_root/github" write-tree)"
+          test "$snapshot_tree" = "$canonical_tree"
+          echo "mirror_checkpoint=snapshot_tree"
+
+          if git -C "$mirror_root/github" diff --cached --quiet; then
+            echo "GitHub deployment mirror already has the exact canonical tree ${canonical_tree}."
+            exit 0
+          fi
+
+          git -C "$mirror_root/github" commit --quiet \
+            -m "mirror: sync canonical Forgejo ${canonical_commit:0:12}" \
+            -m "Canonical-Forgejo-Commit: ${canonical_commit}" \
+            -m "Canonical-Tree: ${canonical_tree}"
+          test "$(git -C "$mirror_root/github" rev-parse 'HEAD^{tree}')" = "$canonical_tree"
+
+          if [[ "${FORGEJO_EVENT_NAME:-}" == "workflow_dispatch" ]]; then
+            echo "Dry-run certified an exact GitHub snapshot tree; no mutation performed."
+            exit 0
+          fi
+
+          test "${FORGEJO_EVENT_NAME:-}" = "push"
+          test "${FORGEJO_REF:-}" = "refs/heads/main"
+          lease_head="$(curl -fsSL \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer $token" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            https://api.github.com/repos/temitayocharles/tayoca/git/ref/heads/main \
+            | python3 -c 'import json,sys; print(json.load(sys.stdin)["object"]["sha"])')"
+          test "$lease_head" = "$remote_head"
+
+          git -C "$mirror_root/github" \
+            -c "http.https://github.com/.extraheader=AUTHORIZATION: basic $auth" \
+            push --quiet origin HEAD:refs/heads/main
+
+          pushed_head="$(curl -fsSL \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer $token" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            https://api.github.com/repos/temitayocharles/tayoca/git/ref/heads/main \
+            | python3 -c 'import json,sys; print(json.load(sys.stdin)["object"]["sha"])')"
+          test "$pushed_head" = "$(git -C "$mirror_root/github" rev-parse HEAD)"
+          test "$(git -C "$mirror_root/github" rev-parse 'HEAD^{tree}')" = "$canonical_tree"
+          echo "Published exact canonical tree ${canonical_tree} to GitHub deployment mirror."

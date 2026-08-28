@@ -1,0 +1,184 @@
+schema_version: 1
+stage: 2
+stage_name: repository_source_of_truth
+status: GREEN
+reconciled_at: "2026-08-09T19:29:00Z"
+
+scope:
+  github_owner: temitayocharles
+  forgejo_owner: temitayocharles
+  purpose: "Fail-closed source authority and ingestion classification for Tayoca."
+
+inventory:
+  github:
+    total_owned_repositories: 101
+    pagination:
+      page_size: 100
+      page_counts: [100, 1]
+      exhausted: true
+  forgejo:
+    total_owned_repositories: 103
+    pagination:
+      page_size: 20
+      page_counts: [20, 20, 20, 20, 20, 3]
+      exhausted: true
+  exact_name_reconciliation:
+    shared: 93
+    github_only: 8
+    forgejo_only: 10
+    github_equation: "93 + 8 = 101"
+    forgejo_equation: "93 + 10 = 103"
+    reconciled: true
+
+fail_closed_rules:
+  - id: PRIVATE_NOT_PUBLISHABLE
+    rule: "Private repositories are not publishable and are not eligible for public Tayoca disclosure by default."
+  - id: MIRROR_EXACT_ORIGIN
+    rule: "A Forgejo repository with mirror=true and a same-name GitHub original_url is classified as GitHub-source / Forgejo-mirror unless an explicit canonical override exists."
+  - id: FORGEJO_CANONICAL_OVERRIDE
+    rule: "Explicit repository metadata declaring Forgejo canonical, desired-state, permanent CI authority, or canonical source overrides the generic mirror rule."
+  - id: AMBIGUOUS_AUTHORITY_EXCLUDED
+    rule: "Shared non-mirror repositories without an explicit authority declaration remain excluded from Tayoca ingestion until authority is explicitly classified."
+  - id: BACKUP_TEST_LEGACY_EXCLUDED
+    rule: "Backup, precutover, recovery, CI-validation, rename-alias, and orphaned-mirror repositories are excluded from active Tayoca sources."
+  - id: ARCHIVED_EXCLUDED
+    rule: "Archived repositories are excluded from active Tayoca sources unless explicitly promoted."
+  - id: PLATFORM_ONLY_PENDING
+    rule: "A repository present on only one platform remains excluded from Tayoca ingestion until its source authority and intended lifecycle are explicitly classified."
+  - id: PUBLIC_IS_NOT_APPROVAL
+    rule: "Public repository visibility alone does not authorize Tayoca publication, reuse, or external disclosure."
+  - id: NO_SILENT_OMISSION
+    rule: "Inventory or reconciliation is invalid if pagination is not exhausted or if a platform inventory cannot be completed."
+
+github_only:
+  - name: celyven
+    visibility: private
+    classification: github_only_pending_import
+    tayoca_ingest: false
+    tayoca_publishable: false
+  - name: meetily-cloud
+    visibility: private
+    classification: github_only_pending_import
+    tayoca_ingest: false
+    tayoca_publishable: false
+  - name: 9drive
+    visibility: public
+    classification: github_only_pending_import
+    tayoca_ingest: false
+    tayoca_publishable: false
+  - name: personal-budget-tracker
+    visibility: private
+    classification: github_only_pending_import
+    tayoca_ingest: false
+    tayoca_publishable: false
+  - name: LLM-Wiki
+    visibility: private
+    classification: github_only_pending_import
+    tayoca_ingest: false
+    tayoca_publishable: false
+  - name: omni-chief-platform
+    visibility: private
+    classification: github_only_pending_import
+    tayoca_ingest: false
+    tayoca_publishable: false
+  - name: omni-chief-of-staff
+    visibility: private
+    classification: github_only_pending_import
+    tayoca_ingest: false
+    tayoca_publishable: false
+  - name: al-rawabi-school-clone
+    visibility: private
+    classification: github_only_pending_import
+    tayoca_ingest: false
+    tayoca_publishable: false
+
+forgejo_only:
+  - name: apexpredict-platform-ci-validation
+    visibility: private
+    classification: ci_validation_excluded
+    tayoca_ingest: false
+    tayoca_publishable: false
+  - name: cluster-agent-gateway
+    visibility: private
+    classification: forgejo_only_operational_pending_authority
+    tayoca_ingest: false
+    tayoca_publishable: false
+  - name: n8n-control-plane
+    visibility: private
+    classification: forgejo_canonical_operational
+    tayoca_ingest: false
+    tayoca_publishable: false
+  - name: sivanta-knowledge-stack
+    visibility: private
+    classification: forgejo_only_operational_pending_authority
+    tayoca_ingest: false
+    tayoca_publishable: false
+  - name: tca-newsletter
+    visibility: private
+    classification: forgejo_only_inactive_empty
+    tayoca_ingest: false
+    tayoca_publishable: false
+  - name: the-devops-incident-lab
+    visibility: private
+    classification: forgejo_only_standalone_project
+    tayoca_ingest: false
+    tayoca_publishable: false
+  - name: helm-charts-legacy-precutover-20260719
+    visibility: private
+    classification: recovery_backup_excluded
+    successor: helm-charts
+    tayoca_ingest: false
+    tayoca_publishable: false
+  - name: hermes-agent-hub-pull-mirror-backup-20260716
+    visibility: private
+    classification: recovery_backup_excluded
+    successor: hermes-agent-hub
+    tayoca_ingest: false
+    tayoca_publishable: false
+  - name: ai-football-prediction-intelligence-platform
+    visibility: private
+    classification: orphaned_mirror_pending_reconciliation
+    note: "Forgejo mirror exists but the same-name GitHub repository currently returns 404."
+    tayoca_ingest: false
+    tayoca_publishable: false
+  - name: project-iris
+    visibility: private
+    classification: rename_alias_excluded
+    successor: alfie
+    note: "GitHub resolves the historical project-iris path to alfie; project-iris is not an exact current GitHub repository name."
+    tayoca_ingest: false
+    tayoca_publishable: false
+
+canonical_overrides:
+  - name: tayoca
+    primary: forgejo
+    secondary: github
+    reason: "Forgejo repository metadata declares permanent CI authority; GitHub is source mirror/fallback."
+  - name: helm-charts
+    primary: forgejo
+    secondary: github
+    reason: "Forgejo repository metadata declares canonical Helm charts repository."
+  - name: homelab-gitops
+    primary: forgejo
+    secondary: github
+    reason: "Forgejo repository metadata declares canonical Argo CD desired-state source."
+  - name: vault-ops
+    primary: forgejo
+    secondary: github
+    reason: "Forgejo repository metadata declares canonical source on Forgejo."
+  - name: n8n-control-plane
+    primary: forgejo
+    secondary: none
+    reason: "Forgejo-only private operational governance and recovery repository."
+  - name: sivanta-ui-handoff
+    primary: forgejo
+    secondary: github
+    reason: "Forgejo repository metadata declares canonical CI on Forgejo self-hosted runners."
+  - name: zernflow
+    primary: forgejo
+    secondary: github
+    reason: "Forgejo repository is the controlled internal fork; GitHub repository is an upstream-derived public fork."
+
+gate:
+  requirement: "Repository totals and exact-name deltas reconcile across both platforms, with active/excluded source rules explicit and fail-closed."
+  passed: true

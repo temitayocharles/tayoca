@@ -1,0 +1,60 @@
+version: 1
+policy: tayoca-global-site-settings
+status: enforced
+
+source_of_truth:
+  repository: temitayocharles/tayoca
+  branch: main
+  path: public/data/site-settings.json
+  cms_surface: Tayoca Control Center / Website CMS / Site settings
+
+runtime:
+  consumer: public/tayoca-site.js
+  behavior:
+    - fetch settings with cache disabled
+    - validate schemaVersion before applying any mutation
+    - retain static HTML shell when settings are missing, unavailable, or invalid
+    - never execute settings values as code or HTML
+    - apply text through textContent and destinations through validated href values only
+
+allowed_destinations:
+  internal: '^/(?!/)'
+  external_https: '^https://'
+  external_http: '^http://'
+  email: '^mailto:'
+  prohibited:
+    - javascript URLs
+    - data URLs
+    - protocol-relative URLs
+
+limits:
+  navigation_links: 12
+  footer_explore_links: 12
+  footer_connect_links: 12
+
+managed_fields:
+  - brand.name
+  - brand.homeHref
+  - navigation
+  - headerCta
+  - footer.description
+  - footer.location
+  - footer.copyrightName
+  - footer.explore
+  - footer.connect
+  - contact.supportEmail
+  - contact.bookingUrl
+  - contact.whatsappUrl
+
+change_control:
+  normal_path: Control Center structured editor
+  persistence: guarded CMS update to canonical Forgejo main
+  revisions: Forgejo commit history
+  rollback: Control Center settings history and restore
+  raw_data_editor_exposure: prohibited
+
+security:
+  browser_secrets: prohibited
+  direct_forgejo_credentials_in_browser: prohibited
+  direct_n8n_credentials_in_browser: prohibited
+  existing_control_gateway_required: true

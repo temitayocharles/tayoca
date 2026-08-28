@@ -1,0 +1,49 @@
+name: Tayoca self-hosted browser accessibility audit
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: forgejo-container
+    timeout-minutes: 20
+    steps:
+      - name: Check out requested revision
+        uses: https://data.forgejo.org/actions/checkout@v6
+
+      - name: Run pinned Chromium and Axe audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          evidence="w10-accessibility-audit-runtime.json"
+          cid="$(docker create --ipc=host mcr.microsoft.com/playwright:v1.62.1-noble bash -lc '
+            set -euo pipefail
+            mkdir -p /tmp/tayoca-audit
+            cd /tmp/tayoca-audit
+            npm init -y >/dev/null 2>&1
+            npm install --silent --no-audit --no-fund playwright@1.62.1 @axe-core/playwright@4.13.0
+            NODE_PATH=/tmp/tayoca-audit/node_modules node /scripts/accessibility_browser_audit.cjs --output /docs/w10-accessibility-audit-runtime.json
+          ')"
+          cleanup() {
+            docker rm -f "$cid" >/dev/null 2>&1 || true
+            rm -f "$evidence"
+          }
+          trap cleanup EXIT
+          docker cp public "$cid:/public"
+          docker cp scripts "$cid:/scripts"
+          docker start -a "$cid"
+          docker cp "$cid:/docs/w10-accessibility-audit-runtime.json" "$evidence"
+          python3 - "$evidence" <<'PY'
+          import json, sys
+          p=sys.argv[1]
+          data=json.load(open(p))
+          summary={k:data.get(k) for k in ('checks','passed','failed','axe_violation_count')}
+          print(json.dumps(summary, sort_keys=True))
+          if data.get('checks') != 10:
+              raise SystemExit('expected exactly 10 representative page/viewport checks')
+          if data.get('failed') != 0 or data.get('axe_violation_count') != 0:
+              raise SystemExit('browser accessibility regression detected')
+          PY

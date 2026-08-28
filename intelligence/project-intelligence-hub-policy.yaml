@@ -1,0 +1,248 @@
+version: 2
+name: Cross-Project Intelligence Hub
+status: implemented_runtime
+
+purpose:
+  statement: "Continuously convert project activity, conversations, meetings, engineering evidence, decisions, teaching, demos and commercial work into durable operational intelligence and governed content opportunities."
+  principle: "Every meaningful activity produces operational intelligence and, when safe and useful, content intelligence."
+
+canonical_architecture:
+  human_readable_intelligence_hub:
+    system: notion
+    page_id: "3c7c6873-ac64-81ce-88a3-fa293d85d333"
+    page_name: "Project Intelligence Hub"
+    role: canonical_cross_project_intelligence
+  databases:
+    projects:
+      id: "3c7c6873-ac64-8198-b44a-fc13dcf3f08b"
+      role: canonical_project_registry
+    intelligence_events:
+      id: "3c7c6873-ac64-8163-80e7-d9518f1be1bf"
+      role: normalized_activity_and_conversation_ledger
+    decisions_milestones:
+      id: "3c7c6873-ac64-8114-81d5-fa8851f94d9d"
+      role: durable_decision_and_progress_history
+    content_opportunities:
+      id: "3c7c6873-ac64-8101-b36f-f9ba8c4fabc8"
+      role: governed_reusable_content_queue
+  source_system_authority:
+    rule: "Notion stores normalized intelligence and references; raw evidence remains authoritative in the originating system."
+    forgejo: engineering_source_of_truth_where_repository_is_forgejo_primary
+    github: engineering_source_of_truth_where_repository_is_github_primary
+    granola: meeting_notes_and_meeting_query_source
+    fathom: recording_transcript_summary_source
+    n8n: workflow_definition_execution_and_automation_source
+    chatgpt: conversation_source_when_capture_bridge_provides_explicit_conversation_evidence
+
+source_families:
+  - chatgpt_conversations
+  - ai_assisted_work_sessions
+  - granola_meetings
+  - fathom_meetings
+  - forgejo_commits_pull_requests_issues_releases_workflows
+  - github_commits_pull_requests_issues_releases_workflows
+  - n8n_workflow_changes_and_executions
+  - notion_operational_records
+  - teaching_and_live_demos
+  - teleprompter_and_video_production
+  - product_marketing_sales_and_client_activity
+  - incident_and_recovery_work
+
+chatgpt_capture:
+  limitation: "The connected OpenAI toolkit does not provide general ChatGPT application conversation-history access. Stored API chat-completion messages are not equivalent to ChatGPT app history."
+  rule: "Never claim ChatGPT history was ingested unless an explicit capture bridge, export, webhook, connector or conversation artifact supplied that evidence."
+  target_state: "A dedicated conversation capture bridge normalizes approved ChatGPT conversation events into Intelligence Events with project attribution and evidence lineage."
+  interim_state:
+    - capture_high_value_current_session_decisions_when_explicitly_available_to_the_agent
+    - accept_user_supplied_conversation_exports_or_artifacts
+    - retain_project_specific_summaries_from_work_sessions
+
+project_resolution:
+  required: true
+  rules:
+    - "Every intelligence event maps to exactly one primary project when determinable."
+    - "Cross-project events may reference related projects but must still have one primary project for ownership."
+    - "Unknown project assignment fails to an unclassified review queue rather than creating arbitrary project names."
+    - "Project aliases are normalized to a stable Project Key."
+    - "Repository names, product names and brand names are evidence for project resolution, not automatic equivalence."
+
+intelligence_event_contract:
+  required_fields:
+    - project
+    - source_system
+    - event_type
+    - occurred_at
+    - summary
+    - evidence_ref
+    - sensitivity
+    - confidence
+    - fingerprint
+  optional_fields:
+    - evidence_url
+    - content_candidate
+    - commercial_signal
+  derived_content_fields:
+    - content_triage_complete
+    - pre_content_score
+    - pre_commercial_score
+    - content_disposition
+    - content_processed
+  fingerprint_rule: "Stable source-specific fingerprint prevents duplicate ingestion across retries and mirrors."
+
+update_semantics:
+  model: append_and_supersede
+  rules:
+    - "New evidence appends a new intelligence event."
+    - "Decisions and milestones are never silently overwritten."
+    - "Changed decisions create a superseding entry and mark the prior entry superseded."
+    - "Executive project summaries are derived views and may be regenerated from the durable event ledger."
+    - "Raw private payloads are not copied into Notion when a minimal evidence reference is sufficient."
+
+content_intelligence:
+  generation_rule: "Content opportunities are derived from evidence-backed intelligence, not invented from an empty calendar."
+  runtime_pipeline:
+    - canonical_intelligence_event
+    - deterministic_content_triage
+    - deterministic_opportunity_materialization
+    - optional_downstream_ai_editorial_enrichment
+    - channel_specific_quality_gate
+    - publication_firewall
+  deterministic_triage:
+    rule: "Diagnostics, probes, smoke tests, routine noise and weak activity are rejected or deprioritized without invoking an AI model."
+    ai_required: false
+    qualified_disposition: pending
+    diagnostic_disposition: rejected_diagnostic
+    low_value_disposition: deprioritized
+  opportunity_materialization:
+    rule: "Every qualified pending event is idempotently materialized into Content Opportunities using its source fingerprint before any optional AI copywriting."
+    ai_required: false
+    idempotency_key: source_fingerprint
+    source_completion_rule: "Mark Content Processed only after the Content Opportunity upsert is durable."
+    runtime:
+      workflow_name: "Project Intelligence | Content Opportunity Materializer v8"
+      n8n_workflow_id: "y66igtyjeHSJ5ath"
+      processing_model: single_pending_event_per_run
+      notion_ops:
+        workflow_name: "Project Intelligence | Notion Ops v1"
+        n8n_workflow_id: "wV6wtaRIbiXSBinU"
+        account: notion_iban-meal
+        allowed_operations:
+          - NOTION_QUERY_DATABASE_WITH_FILTER
+          - NOTION_UPSERT_ROW_DATABASE
+          - NOTION_UPDATE_ROW_DATABASE
+      certification:
+        source_state_after_replay: opportunity_created
+        content_processed_after_replay: true
+        idempotent_match_count: 1
+  ai_enrichment:
+    role: optional_downstream_editorial_improvement
+    blocking: false
+    rule: "AI failure must never block capture, triage, canonical opportunity creation or durable project intelligence."
+  candidate_types:
+    - technical_lesson
+    - architecture_decision
+    - incident_learning
+    - production_fix
+    - before_after_story
+    - product_progress
+    - teaching_topic
+    - demo_story
+    - case_study
+    - founder_operator_insight
+    - commercial_proof
+    - blog_topic
+    - linkedin_topic
+    - short_form_video_topic
+    - youtube_topic
+    - newsletter_topic
+  scoring:
+    content_score_range: "0-100"
+    commercial_score_range: "0-100"
+    factors:
+      - audience_value
+      - novelty
+      - evidence_strength
+      - technical_authority
+      - teaching_value
+      - commercial_relevance
+      - recency
+      - disclosure_safety
+  rule: "High score prioritizes review; it never grants publication approval."
+
+publication_firewall:
+  inherits:
+    - intelligence/repository-intelligence-policy.yaml
+    - editorial/editorial-policy.yaml
+  rules:
+    - private_or_restricted_sources_nonpublishable_by_default
+    - no_raw_secret_or_credential_material_in_intelligence_or_content
+    - no_client_confidential_information_without_explicit_clearance
+    - no_publication_based_only_on_repository_visibility
+    - public_claims_require_sufficient_approved_evidence
+    - channel_specific_editorial_gate_required_before_production_publication
+
+n8n_automation_contract:
+  role: orchestration_fabric
+  canonical_runtime:
+    durable_capture_owner: n8n_olufunke
+    canonical_notion_promotion_owner: primary_n8n
+    promotion_rule: "Durable inbox rows are marked synced only after the primary canonical bridge acknowledges a successful Notion upsert."
+  required_workflows:
+    - project_intelligence_ingress
+    - project_resolution_and_deduplication
+    - canonical_notion_promotion_bridge
+    - deterministic_content_triage
+    - deterministic_content_opportunity_materializer
+    - editorial_handoff
+    - ingestion_failure_dead_letter
+  requirements:
+    - idempotent_ingestion
+    - deterministic_fingerprints
+    - retry_safe_writes
+    - explicit_source_lineage
+    - project_resolution_fail_closed
+    - restricted_source_publication_firewall
+    - diagnostic_and_probe_quarantine
+    - model_failure_non_blocking_for_canonical_intelligence
+    - observability_and_dead_letter_handling
+    - no_secret_payload_persistence
+
+forgejo_contract:
+  role: policy_as_code_and_engineering_evidence
+  requirements:
+    - "Repository intelligence policy remains authoritative for canonical repo/mirror selection."
+    - "Forgejo events feed the Project Intelligence Hub as evidence-backed engineering developments."
+    - "Meaningful commits, PRs, issues, releases and workflow outcomes may generate content candidates but never automatic public drafts from restricted evidence."
+    - "Changes to intelligence schemas, routing and publication governance are reviewed through Forgejo branches and pull requests."
+
+meeting_contract:
+  granola:
+    role: searchable_meeting_memory
+    outputs:
+      - meeting_summary
+      - decisions
+      - action_items
+      - transcript_reference
+  fathom:
+    role: recording_transcript_and_summary_source
+    outputs:
+      - recording_reference
+      - transcript
+      - summary
+      - action_items
+  rule: "Meeting content is project-attributed before entering durable intelligence."
+
+stage_gate:
+  notion_hub_created: implemented
+  project_registry_created: implemented
+  intelligence_event_ledger_created: implemented
+  decisions_milestones_ledger_created: implemented
+  content_opportunity_ledger_created: implemented
+  forgejo_policy_as_code: implemented
+  n8n_ingress_implemented: implemented
+  canonical_notion_promotion_bridge: implemented
+  deterministic_content_triage: implemented
+  deterministic_content_opportunity_materializer: implemented
+  chatgpt_capture_bridge_implemented: pending
+  initial_cross_project_backfill: pending
+  continuous_ingestion_observability: partial

@@ -1,7 +1,8 @@
-version: 1
+version: 4
 stage: 9
 name: Tayoca Operator Brief
-status: locked
+status: production_ready_blocked_no_active_subscribers
+last_verified_at: '2026-08-17T20:04:10Z'
 
 identity:
   title: The Tayoca Operator Brief
@@ -92,25 +93,75 @@ publication:
   method: atomic_archive_file_update_after_approval
   archive_marker: OPERATOR_BRIEF_ARCHIVE_INSERT
   archive_url_pattern: /operator-brief-archive.html#<issue_id>
+  workflow:
+    n8n_id: Ug7hA8cXrrCIVYkI
+    active_version: 9ec11001-24a8-47e9-920d-14d9a5bc78b9
+    rollback_version: 806b94fe-b31d-4e96-b566-e91717b4609f
   production_email_send:
-    status: runtime_credential_pending
+    status: ready_blocked_no_active_subscribers
     provider: Resend
-    audience_name: Tayoca Insiders
-    audience_id: c31a4a87-565c-4486-ac7c-c7ab20185836
-    required_sender_domain: tayoca.com
-    sender_domain_state: verified
     sender_from: 'Temitayo Charles | Tayoca <temitayo@tayoca.com>'
     sender_reply_to: temitayo@tayoca.com
-    brand_signature_source: /assets/email/tayoca-founder-signature.html
+    required_sender_domain: tayoca.com
+    sender_domain_state: verified
     runtime_credential:
       environment_variable: RESEND_API_KEY
-      state: not_mounted_in_n8n_runtime
-    delivery_rule: approved_published_issues_to_active_subscribers_only
-    wrong_brand_domain_fallback: forbidden
-    paid_provider_fallback: forbidden_without_explicit_approval
+      state: mounted_and_provider_validated
+      secret_source: managed_runtime_secret_projection
+      secret_value_in_repository: forbidden
+    segment:
+      name: Tayoca Insiders
+      id: c31a4a87-565c-4486-ac7c-c7ab20185836
+      role: operator_brief_delivery_scope
+    topic:
+      name: The Tayoca Operator Brief
+      id: d98d0294-bcb4-4949-9765-69a3558351c6
+      default_subscription: opt_out
+      role: broadcast_unsubscribe_preference_scope
+    current_state:
+      internal_active_subscribers: 0
+      resend_global_contacts: 0
+      resend_segment_contacts: 0
+      resend_broadcasts: 0
+      delivery_state: blocked_no_active_subscribers
+    delivery_guard:
+      sequence:
+        - publish_approved_issue_to_atomic_forgejo_archive
+        - persist_published_issue
+        - read_internal_subscribed_email_set
+        - read_resend_tayoca_insiders_contact_set
+        - normalize_and_compare_exact_email_identity_sets
+        - block_on_provider_inventory_failure
+        - block_on_any_membership_mismatch
+        - block_if_resend_segment_contains_globally_unsubscribed_contact
+        - if_both_sets_empty_record_blocked_no_active_subscribers_without_broadcast
+        - only_exact_nonzero_match_may_create_topic_scoped_broadcast
+        - send_true_only_after_all_delivery_guards_pass
+      success_state: broadcast_accepted
+      zero_subscriber_state: blocked_no_active_subscribers
+      provider_inventory_failure_state: delivery_failed_provider_inventory
+      membership_failure_state: delivery_blocked_membership_mismatch
+      send_failure_state: delivery_failed
+      archive_rollback_on_email_failure: false
+    broadcast_contract:
+      segment_scoped: true
+      topic_scoped: true
+      unsubscribe_preference_url_required: true
+      no_wrong_brand_domain_fallback: true
+      paid_provider_fallback: forbidden_without_explicit_approval
+    rollout_verification:
+      topic_and_segment_scoped_draft_create: pass
+      draft_retrieve: pass
+      draft_status: draft
+      draft_delete: pass
+      test_email_sent: false
+      disposable_contact_retained: false
+      disposable_broadcast_retained: false
 
 subscription_governance:
   intake_workflow_id: V28T575q7GSRFOti
+  intake_active_version: db1ebbea-dc12-45d2-815b-c8608a7ee4a0
+  intake_rollback_version: 13baa554-302b-49f8-9804-e3a52c54a9e7
   canonical_lead_store: tayoca_growth_leads
   signup:
     explicit_consent_required: true
@@ -119,22 +170,44 @@ subscription_governance:
       - https://tayoca.com
       - https://www.tayoca.com
     honeypot_required: true
+    initial_internal_state: subscription_pending
+    external_sync:
+      provider: Resend
+      segment: Tayoca Insiders
+      create_missing_contact: true
+      ensure_segment_membership: true
+      globally_unsubscribed_existing_contact: suppressed_no_automatic_reactivation
+      success_internal_state: subscribed
+      provider_failure_internal_state: subscription_sync_failed
+      provider_failure_response: bounded_503
+      email_send_during_sync: forbidden
   status_values:
+    - subscription_pending
     - subscribed
     - unsubscribed
     - suppressed
+    - subscription_sync_failed
   unsubscribe:
     must_be_available: true
+    internal_state_persisted_first: true
     idempotent_response: true
     address_enumeration: forbidden
+    remove_resend_segment_membership: true
+    global_resend_unsubscribe: false
+    provider_sync_failure:
+      internal_state_remains: unsubscribed
+      external_sync_state: pending_retry
   delivery_eligibility:
-    requires_status: subscribed
+    requires_internal_status: subscribed
     requires_verified_sender_domain: tayoca.com
-    bounce_or_suppression_override: mandatory
+    requires_exact_resend_segment_membership: true
+    globally_unsubscribed_contact_allowed: false
+    provider_suppression_override: mandatory
 
 corrections:
   ledger: Operator Brief Corrections
   request_policy: append_only
+  email_delivery: archive_only_no_automatic_correction_broadcast
   rules:
     - original_published_issue_is_never_silently_overwritten
     - correction_requires_reason_and_requester
@@ -142,6 +215,7 @@ corrections:
     - corrected_issue_returns_to_review_required
     - corrected_issue_never_inherits_previous_publication_approval
     - public_notice_required_when_a_published_factual_claim_changes
+    - automatic_correction_broadcast_requires_separate_governed_rollout
 
 analytics:
   first_party_events:
@@ -171,3 +245,4 @@ stage_gate:
   corrections: required
   complete_evidence_backed_issue_without_raw_commit_copying: required
   publication_without_approval: forbidden
+  synthetic_subscriber_for_send_testing: forbidden

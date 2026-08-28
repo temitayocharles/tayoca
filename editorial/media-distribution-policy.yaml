@@ -1,0 +1,226 @@
+version: 1
+policy_id: tayoca-social-media-distribution-v1
+status: enforced
+owner: tayoca
+
+principles:
+  - media_policy_is_lane_specific_not_platform_global
+  - canonical_public_assets_are_reused_across_channels_without_changing_facts
+  - product_campaigns_should_use_rich_media_actively
+  - technical_media_is_used_when_it_materially_improves_explanation
+  - private_or_confidential_material_fails_closed
+  - publication_identity_is_explicit_and_verified
+
+canonical_asset_sources:
+  sivanta:
+    provider: google_drive
+    account: googledrive_swipe-bulker
+    policy: approved_public_campaign_assets
+    video_folder:
+      name: Sivanta Campaign - Video V1
+      folder_id: 18cgYYUlAGI--I_tgVZw8TnNAyIAiUJKc
+    poster_folders:
+      story_9x16:
+        folder_id: 1rGHXSAE7kJyDah4qOsRkjl9_Ep7Jlxdc
+        canonical_count: 62
+      square_1x1:
+        folder_id: 1gnW5O00jjKXJxJeHQvQpNuUtp5JB6trS
+        canonical_count: 62
+      linkedin_4x5:
+        folder_id: 1m9UGJ69htQOCZ03lBNVVCtHFu-kKz7Jn
+        canonical_count: 62
+    cadence:
+      arbitration: deterministic_day_level
+      video_days:
+        - Sun
+        - Mon
+        - Wed
+        - Fri
+      poster_days:
+        - Tue
+        - Thu
+        - Sat
+      same_day_duplicate_prevention: shared_publication_ledger
+      source_audio_only_unless_separately_approved_soundscape: true
+    standalone_soundscape:
+      canonical_drive_asset_present: false
+      rule: preserve_source_audio_or_use_separately_approved_soundscape
+  sitesupply:
+    provider: google_drive
+    account: googledrive_swipe-bulker
+    policy: approved_public_campaign_assets
+    video_folder:
+      name: 12-Video
+      folder_id: 1t8cwAol9MbHtdf_8x9IjYldhL8f73Vvb
+    reviewed_video_inventory:
+      reviewed_at: 2026-08-26
+      canonical_count: 29
+      public_safe: true
+      preferred_resolution: 1080x1920
+      fallback_resolution: 720x1280
+      deduplicate_by_creative_concept: true
+
+linkedin_identity:
+  account: linkedin_navel-milium
+  author_urn: urn:li:person:TmZ1E0fsDJ
+  voice: tayoca_we_our_us
+  site_supply_restricted_identity:
+    forbidden_account: linkedin_frater-palus
+    forbidden_author_urn: urn:li:person:Cb5CPR4rns
+    forbidden_public_attribution:
+      - owner
+      - founder
+      - olufunke
+
+lanes:
+  product_campaign:
+    applies_to:
+      - sivanta
+      - sitesupply
+      - tayoca_product_campaigns
+    linkedin:
+      allowed_formats:
+        - video
+        - image
+        - document
+        - text
+      preferred_media_order:
+        - native_video
+        - poster_or_image
+        - poster_motion_with_soundscape
+        - text
+      video:
+        actively_use: true
+        native_upload: true
+        prefer_vertical_1080x1920: true
+        fallback_vertical_720x1280: true
+      posters:
+        allowed: true
+        mixed_with_video: true
+        cadence: campaign_logic_not_unconditional_daily_double_post
+      audio:
+        source_audio_allowed: true
+        approved_soundscape_allowed: true
+        fail_closed_when_soundscape_rights_or_source_are_unverified: true
+      fallback_to_static_when_video_unavailable: true
+
+  technical_engineering:
+    applies_to:
+      - devops
+      - ai
+      - sre
+      - cloud
+      - kubernetes
+      - terraform
+      - platform_engineering
+      - automation
+      - other_engineering
+    linkedin:
+      default_formats:
+        - text
+        - image
+        - document
+      allowed_formats:
+        - text
+        - image
+        - document
+        - video
+        - gif
+      video:
+        allowed_when_materially_explanatory: true
+        examples:
+          - workflow_demo
+          - system_behavior
+          - before_after
+          - ui_demo
+          - animated_architecture
+          - short_technical_walkthrough
+      gif:
+        allowed_when_materially_explanatory: true
+        mp4_loop_preferred_when_platform_support_is_better: true
+      campaign_style_video_default: false
+
+site_supply_publication_boundary:
+  native_owner_side_channels:
+    - instagram
+    - facebook
+  linkedin_amplification_owner: tayoca
+  linkedin_native_owner_side_publication: forbidden
+  tayoca_builder_language:
+    allowed_examples:
+      - At Tayoca, we built SiteSupply
+      - We built SiteSupply to simplify construction procurement
+    forbidden_claims:
+      - Tayoca owns SiteSupply
+      - Temitayo owns SiteSupply
+      - Olufunke is the owner of SiteSupply
+      - Olufunke is the founder of SiteSupply
+
+safety:
+  fail_closed: true
+  forbidden_public_material:
+    - credentials
+    - secrets
+    - private_repositories
+    - internal_hosts
+    - internal_endpoints
+    - confidential_incidents
+    - unapproved_customer_identifiers
+    - employment_conflict_details
+  source_media_must_be_public_safe: true
+
+workflow_bindings:
+  tayoca_sitesupply_amplification: KVJhvWVTBECuYTjd
+  professional_brand_producer: iFY5iIQSRMVY6zso
+  professional_brand_publisher: 3QVCTmqNTmLAHLUM
+  professional_brand_native_video_publisher: ihm0uhoBkDdhnU29
+  professional_brand_collector: MMzDONqjgzUFHTxC
+  professional_brand_technical_video_builder: 7nyFIuPbdga6obvB
+  sivanta_daily_video_publisher: t9zrvrDClZQ6467e
+  sivanta_story_video_publisher: 5K1qDSHkfe7zkaC3
+  sivanta_native_video_publisher: GDYZhHTV0mrn8R4Y
+  sivanta_story_poster_publisher: IIo1jDtXEszdiISB
+  sivanta_feed_poster_publisher: rcQPnm2ky4iCfcNo
+  sivanta_linkedin_poster_publisher: NnDuT3iZ38zama6Q
+  sitesupply_owner_publisher: Ihdfx8BrhdLAvEHA
+  retired_sitesupply_amplification: tdax4k30XpV2RRjf
+  retired_professional_brand_collector: NWGZc805DCh5p51t
+  retired_technical_video_builder: Ny8nP5lqRg5wI7We
+
+runtime_contract:
+  tayoca_sitesupply_amplification_active: true
+  professional_brand_producer_active: true
+  professional_brand_native_video_publisher_active: true
+  professional_brand_collector_active: true
+  professional_brand_technical_video_builder_active: true
+  sivanta_daily_video_active: true
+  sivanta_story_poster_active: true
+  sivanta_feed_poster_active: true
+  sivanta_linkedin_poster_active: true
+  sivanta_media_rotation_policy: video_sun_mon_wed_fri_poster_tue_thu_sat
+  retired_sitesupply_amplification_active: false
+  retired_professional_brand_collector_active: false
+  retired_technical_video_builder_active: false
+  shared_queue: engineering_linkedin_queue
+  shared_publication_ledger: engineering_linkedin_publication_ledger
+  linkedin_daily_cap: 3
+  linkedin_minimum_spacing_hours: 3
+  video_queue_status: VIDEO_READY
+  static_queue_status: READY
+  publisher_separation:
+    READY: professional_brand_publisher
+    VIDEO_READY: professional_brand_native_video_publisher
+
+regression_rules:
+  forbidden_blanket_rules:
+    - professional LinkedIn video forbidden
+    - non-Sivanta professional LinkedIn may never use video
+    - Sivanta remains the only LinkedIn video lane
+  required_behavior:
+    - product_campaign_video_allowed
+    - sivanta_video_actively_used
+    - sitesupply_video_actively_used
+    - posters_allowed_for_product_campaigns
+    - soundscape_allowed_for_product_campaigns
+    - technical_video_allowed_when_explanatory
+    - technical_gif_allowed_when_explanatory

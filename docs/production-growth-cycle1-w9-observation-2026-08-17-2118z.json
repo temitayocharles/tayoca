@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "workstream": "W9",
+  "experiment_id": "w9-exp-001-platform-reliability-linkedin-organic",
+  "status": "IN_WINDOW_OBSERVATION_ONLY",
+  "observed_at": "2026-08-17T21:18:00Z",
+  "evaluation_not_before": "2026-08-24T14:06:15Z",
+  "experiment": {
+    "campaign_id": "tayoca_20260810_pgc1_platform_reli",
+    "utm_campaign": "pgc1_platform_kubernetes_reliability",
+    "declared_channel": "linkedin_organic",
+    "published_at": "2026-08-17T14:06:15Z",
+    "published_url": "https://www.linkedin.com/feed/update/urn:li:share:7495118544695635969/",
+    "published_share_urn": "urn:li:share:7495118544695635969",
+    "duplicate_linkedin_publication_observed": false,
+    "paid_spend": 0
+  },
+  "distribution_control_check": {
+    "linkedin": "published_exact_declared_experiment_post",
+    "instagram": "approved_ready_for_distribution_not_published",
+    "tiktok": "approved_ready_for_distribution_not_published",
+    "youtube": "approved_ready_for_distribution_not_published",
+    "paid_social": "approved_ready_for_distribution_not_published_zero_spend",
+    "control_state": "PRESERVED"
+  },
+  "commercial_state": {
+    "revenue_pipeline_rows": 0,
+    "revenue_attribution_rows": 0,
+    "proposal_rows": 0,
+    "sales_rows": 0,
+    "upcoming_or_unconfirmed_cal_bookings": 0,
+    "verified_revenue": 0,
+    "commercial_stage_advanced": false
+  },
+  "ga4": {
+    "active_property": "properties/548373018",
+    "duplicate_inactive_property": "properties/548376430",
+    "property_time_zone": "America/Vancouver",
+    "standard_reporting_window_checked": {
+      "start": "2026-08-10",
+      "end": "2026-08-17",
+      "processed_tayoca_com_users": 12,
+      "processed_tayoca_com_sessions": 12,
+      "processed_tayoca_com_pageviews": 12,
+      "processed_vercel_hostname_users": 2,
+      "processed_vercel_hostname_sessions": 2,
+      "processed_vercel_hostname_pageviews": 2,
+      "latest_processed_date_observed": "2026-08-14",
+      "august_17_standard_rows_observed": 0
+    },
+    "realtime": {
+      "window": "last_30_minutes",
+      "active_user_observation": 1,
+      "minutes_ago_bucket": 18,
+      "attribution_known": false
+    },
+    "interpretation": "Same-day standard GA4 reporting has not yet produced an August 17 row. The one realtime active-user observation is directional presence only and is not attributed to W9. No causal or performance conclusion is permitted before the predeclared evaluation gate."
+  },
+  "reliability_observation": {
+    "historical_reliability_ledger_contains_open_or_pending_rows": true,
+    "latest_visible_historical_row_before_current_remediations": {
+      "workflow_id": "Ug7hA8cXrrCIVYkI",
+      "execution_id": "88726",
+      "failed_at": "2026-08-17T13:00:05.056Z",
+      "node": "Approve Operator Brief Issue",
+      "state": "open_pending_in_ledger"
+    },
+    "slack_post_remediation_cutoff": "2026-08-17T19:40:00Z",
+    "post_cutoff_failure_signals": {
+      "production_failure": 0,
+      "delivery_failed": 0,
+      "subscription_sync_failed": 0,
+      "dead_letter": 0
+    },
+    "interpretation": "Historical open ledger rows are not treated as proof of a current incident. No matching Tayoca failure signal was found in connected Slack coverage after the remediation cutoff."
+  },
+  "w6": {
+    "state": "FIRST_WAVE_DELIVERED_MONITORING",
+    "reply_signal_in_connected_gmail_coverage": 0,
+    "current_cal_booking_signal": 0,
+    "follow_up_sent": false,
+    "reason": "The W6 contract forbids repeated outreach without a defined cadence and verified business contact path; no new verified reply or booking signal justifies advancement."
+  },
+  "controls": {
+    "w9_distribution_changed": false,
+    "w9_attribution_changed": false,
+    "w9_experiment_configuration_changed": false,
+    "duplicate_linkedin_publication": false,
+    "paid_spend_changed": false,
+    "early_causal_claim_made": false,
+    "synthetic_pipeline_advancement": false,
+    "sitemap_resubmitted": false
+  },
+  "next_valid_action": "Continue observation only. Reconcile first-party attribution, pipeline, booking, and revenue evidence when new data arrives; evaluate W9 no earlier than 2026-08-24T14:06:15Z."
+}

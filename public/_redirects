@@ -21,3 +21,4 @@
 
 # Unknown legacy /l paths fall back to the Tayoca home page.
 /l/*    /index.html    200
+/blog/devops-incident-response-runbook.html /products/devops-incident-runbook-template.html 301

@@ -1,0 +1,2735 @@
+{
+  "generated_at": "2026-08-17T20:40:02.204Z",
+  "source": "canonical_forgejo_branch_local_static_server",
+  "browser": "chromium_playwright",
+  "pages": 5,
+  "modes": 2,
+  "checks": 10,
+  "passed": 10,
+  "failed": 0,
+  "axe_violation_count": 0,
+  "limitations": [
+    "Automated Chromium/Axe and keyboard checks do not constitute full WCAG certification.",
+    "Manual screen-reader testing with VoiceOver/NVDA/JAWS remains a separate assistive-technology activity.",
+    "Audit serves canonical static files locally and therefore does not validate the currently rate-limited stale Vercel deployment."
+  ],
+  "results": [
+    {
+      "route": "/",
+      "mode": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "httpStatus": 200,
+      "title": "Tayoca | Technology Value, Platform Reliability & AI Automation",
+      "axeViolations": [],
+      "dom": {
+        "duplicateIds": [],
+        "headings": [
+          {
+            "level": 1,
+            "text": "Make technology earn its complexity."
+          },
+          {
+            "level": 2,
+            "text": "Three decisions Tayoca helps teams make."
+          },
+          {
+            "level": 3,
+            "text": "Where is technology spend failing to create enough value?"
+          },
+          {
+            "level": 3,
+            "text": "Where is delivery or recovery creating avoidable risk?"
+          },
+          {
+            "level": 3,
+            "text": "What should be automated—and where must humans stay in control?"
+          },
+          {
+            "level": 2,
+            "text": "Choose the path that matches your organization."
+          },
+          {
+            "level": 3,
+            "text": "Scale without losing economic or operating control."
+          },
+          {
+            "level": 3,
+            "text": "Make reliability, recovery and change evidence explicit."
+          },
+          {
+            "level": 3,
+            "text": "Scale AI workflows with cost and operational control."
+          },
+          {
+            "level": 2,
+            "text": "Diagnose before prescribing."
+          },
+          {
+            "level": 3,
+            "text": "Assess"
+          },
+          {
+            "level": 3,
+            "text": "Implement or pilot"
+          },
+          {
+            "level": 3,
+            "text": "Optimize"
+          },
+          {
+            "level": 2,
+            "text": "Commercial offers built around one accountable outcome."
+          },
+          {
+            "level": 3,
+            "text": "$5,000 flat fee"
+          },
+          {
+            "level": 3,
+            "text": "$8,000+ fixed scope"
+          },
+          {
+            "level": 3,
+            "text": "From $5,000"
+          },
+          {
+            "level": 3,
+            "text": "Results are published only when they are traceable."
+          },
+          {
+            "level": 2,
+            "text": "Reusable tools for operators."
+          },
+          {
+            "level": 3,
+            "text": "Kubernetes Operator's Workbook, Second Edition"
+          },
+          {
+            "level": 3,
+            "text": "AI Automation Career Playbook"
+          },
+          {
+            "level": 3,
+            "text": "AWS Cost Optimization Playbook"
+          },
+          {
+            "level": 2,
+            "text": "Turn a bottleneck into a measurable next step."
+          }
+        ],
+        "headingSkips": [],
+        "unlabeledControls": [],
+        "skipLinks": [
+          {
+            "text": "Skip to content",
+            "href": "#main",
+            "targetExists": true
+          }
+        ],
+        "nestedInteractive": [],
+        "imagesMissingAlt": [],
+        "horizontalOverflowPx": 0,
+        "landmarks": {
+          "main": 1,
+          "nav": 1,
+          "header": 1,
+          "footer": 1
+        },
+        "menuToggles": []
+      },
+      "keyboard": {
+        "sequence": [
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Skip to content",
+            "href": "#main",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "TAYOCA",
+            "href": "/",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Services",
+            "href": "/services.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Assessments",
+            "href": "/assessments.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Results",
+            "href": "/results.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Products",
+            "href": "/products.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Insights",
+            "href": "/insights.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "About",
+            "href": "/about.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Start an Assessment",
+            "href": "/assessments.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Start an Assessment",
+            "href": "/assessments.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Explore Services",
+            "href": "/services.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Chat on WhatsApp",
+            "href": "https://wa.me/2348113980135?text=Hi%20Tayoca%2C%20I%20want%20help%20solving%20a%20business%20or%20engineering%20problem.",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "TECHNOLOGY VALUE & FINOPS Where is technology spend failing to create enough value? Expose cost drivers, ownership gaps,",
+            "href": "/assessments.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "PLATFORM RELIABILITY & DEVSECOPS Where is delivery or recovery creating avoidable risk? Evaluate delivery controls, obse",
+            "href": "/assessments.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "AGENTIC OPERATIONS & AUTOMATION What should be automated—and where must humans stay in control? Identify bounded workflo",
+            "href": "/assessments.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "GROWTH-STAGE TECHNOLOGY Scale without losing economic or operating control. Connect cloud economics, platform reliabilit",
+            "href": "/segments/growth-stage-technology.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "REGULATED & OPERATIONALLY SENSITIVE Make reliability, recovery and change evidence explicit. Strengthen delivery control",
+            "href": "/segments/regulated-operations.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "AI-ENABLED TEAMS Scale AI workflows with cost and operational control. Establish cost visibility, quality boundaries, ob",
+            "href": "/segments/ai-enabled-engineering.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          }
+        ],
+        "hiddenFocused": [],
+        "missingIndicator": []
+      },
+      "menu": {
+        "present": false
+      },
+      "pageErrors": [],
+      "failures": [],
+      "pass": true
+    },
+    {
+      "route": "/services.html",
+      "mode": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "httpStatus": 200,
+      "title": "Tayoca | Services & Pricing",
+      "axeViolations": [],
+      "dom": {
+        "duplicateIds": [],
+        "headings": [
+          {
+            "level": 1,
+            "text": "Scope the problem. Measure the result."
+          },
+          {
+            "level": 2,
+            "text": "Fixed-scope implementation engagements"
+          },
+          {
+            "level": 3,
+            "text": "Cloud Cost Optimization"
+          },
+          {
+            "level": 3,
+            "text": "GitOps & DevSecOps Platform"
+          },
+          {
+            "level": 3,
+            "text": "AI Automation / RAG / LLMOps Pilot"
+          },
+          {
+            "level": 2,
+            "text": "Operate the improvement, not just the project."
+          },
+          {
+            "level": 3,
+            "text": "FinOps Operations"
+          },
+          {
+            "level": 3,
+            "text": "Reliability Operations"
+          },
+          {
+            "level": 3,
+            "text": "Platform Operations"
+          },
+          {
+            "level": 3,
+            "text": "Automation Governance"
+          },
+          {
+            "level": 2,
+            "text": "Commercial terms follow the evidence boundary."
+          },
+          {
+            "level": 3,
+            "text": "Diagnose first"
+          },
+          {
+            "level": 3,
+            "text": "Explicit scope"
+          },
+          {
+            "level": 3,
+            "text": "Evidence-backed outcomes"
+          },
+          {
+            "level": 3,
+            "text": "No hidden guarantees"
+          },
+          {
+            "level": 2,
+            "text": "Not sure which engagement fits?"
+          }
+        ],
+        "headingSkips": [],
+        "unlabeledControls": [],
+        "skipLinks": [
+          {
+            "text": "Skip to content",
+            "href": "#main",
+            "targetExists": true
+          }
+        ],
+        "nestedInteractive": [],
+        "imagesMissingAlt": [],
+        "horizontalOverflowPx": 0,
+        "landmarks": {
+          "main": 1,
+          "nav": 1,
+          "header": 1,
+          "footer": 1
+        },
+        "menuToggles": []
+      },
+      "keyboard": {
+        "sequence": [
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Skip to content",
+            "href": "#main",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "TAYOCA",
+            "href": "/",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Services",
+            "href": "/services.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Assessments",
+            "href": "/assessments.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Results",
+            "href": "/results.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Products",
+            "href": "/products.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Insights",
+            "href": "/insights.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "About",
+            "href": "/about.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Start an Assessment",
+            "href": "/assessments.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Start an Assessment",
+            "href": "/assessments.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Review Evidence Policy",
+            "href": "/trust.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "div",
+            "id": "",
+            "text": "TECHNOLOGY VALUE & FINOPS Cloud Cost Optimization $5,000 flat fee For teams that need a defensible view of cloud cost dr",
+            "href": "",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Book Discovery Call",
+            "href": "https://cal.com/tayoca/finops-audit",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "div",
+            "id": "",
+            "text": "PLATFORM RELIABILITY & DEVSECOPS GitOps & DevSecOps Platform $8,000+ fixed scope For engineering teams that need a relia",
+            "href": "",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Book Consultation",
+            "href": "https://cal.com/tayoca/platform-engineering-consultation",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "div",
+            "id": "",
+            "text": "AGENTIC OPERATIONS & AUTOMATION AI Automation / RAG / LLMOps Pilot From $5,000 For a bounded workflow where automation m",
+            "href": "",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Book AI Pilot",
+            "href": "https://cal.com/tayoca/platform-engineering-consultation",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Start with Cloud & AI Cost Assessment",
+            "href": "/assessments.html?assessment=Cloud%20%26%20AI%20Cost%20Assessment#assessment-form",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          }
+        ],
+        "hiddenFocused": [],
+        "missingIndicator": []
+      },
+      "menu": {
+        "present": false
+      },
+      "pageErrors": [],
+      "failures": [],
+      "pass": true
+    },
+    {
+      "route": "/assessments.html",
+      "mode": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "httpStatus": 200,
+      "title": "Assessments | Tayoca",
+      "axeViolations": [],
+      "dom": {
+        "duplicateIds": [],
+        "headings": [
+          {
+            "level": 1,
+            "text": "Turn uncertainty into an evidence-backed decision."
+          },
+          {
+            "level": 2,
+            "text": "Choose the decision you need to make."
+          },
+          {
+            "level": 3,
+            "text": "Technology Value Assessment"
+          },
+          {
+            "level": 3,
+            "text": "Cloud & AI Cost Assessment"
+          },
+          {
+            "level": 3,
+            "text": "Platform Reliability Assessment"
+          },
+          {
+            "level": 2,
+            "text": "Tell us what is happening now."
+          },
+          {
+            "level": 2,
+            "text": "No generic report. No mystery handoff."
+          },
+          {
+            "level": 3,
+            "text": "Confirm the decision"
+          },
+          {
+            "level": 3,
+            "text": "Collect evidence"
+          },
+          {
+            "level": 3,
+            "text": "Prioritize action"
+          }
+        ],
+        "headingSkips": [],
+        "unlabeledControls": [],
+        "skipLinks": [
+          {
+            "text": "Skip to content",
+            "href": "#main",
+            "targetExists": true
+          }
+        ],
+        "nestedInteractive": [],
+        "imagesMissingAlt": [],
+        "horizontalOverflowPx": 0,
+        "landmarks": {
+          "main": 1,
+          "nav": 1,
+          "header": 1,
+          "footer": 1
+        },
+        "menuToggles": []
+      },
+      "keyboard": {
+        "sequence": [
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Skip to content",
+            "href": "#main",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "TAYOCA",
+            "href": "/",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Services",
+            "href": "/services.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Assessments",
+            "href": "/assessments.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Results",
+            "href": "/results.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Products",
+            "href": "/products.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Insights",
+            "href": "/insights.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "About",
+            "href": "/about.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Start an Assessment",
+            "href": "/assessments.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "EXECUTIVE Technology Value Assessment Best for: leaders who need one view of cost, reliability, delivery and operational",
+            "href": "/assessments.html?assessment=Technology%20Value%20Assessment&utm_campaign=pgc1_ai_automation_operations&utm_source=tayoca_site&utm_medium=internal&utm_content=assessment_catalog_card#assessment-form",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "FINOPS Cloud & AI Cost Assessment Best for: organizations with rising cloud, Kubernetes or AI workload spend. You receiv",
+            "href": "/assessments.html?assessment=Cloud%20%26%20AI%20Cost%20Assessment&utm_campaign=pgc1_cloud_ai_cost&utm_source=tayoca_site&utm_medium=internal&utm_content=assessment_catalog_card#assessment-form",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "RELIABILITY Platform Reliability Assessment Best for: teams facing deployment risk, incidents, weak recovery or governan",
+            "href": "/assessments.html?assessment=Platform%20Reliability%20Assessment&utm_campaign=pgc1_platform_kubernetes_reliability&utm_source=tayoca_site&utm_medium=internal&utm_content=assessment_catalog_card#assessment-form",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "input",
+            "id": "",
+            "text": "email",
+            "href": "",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "input",
+            "id": "",
+            "text": "company",
+            "href": "",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "select",
+            "id": "",
+            "text": "Choose your role Executive / business leader Engineering / platform leader FinOps / cloud economics Engineer / operator ",
+            "href": "",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "select",
+            "id": "",
+            "text": "Choose the closest fit Growth-stage technology company Regulated or operationally sensitive organization AI-enabled busi",
+            "href": "",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "select",
+            "id": "",
+            "text": "Technology Value Assessment Cloud & AI Cost Assessment Platform Reliability Assessment",
+            "href": "",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "select",
+            "id": "",
+            "text": "Choose a timeframe Now / active operating issue Within 30 days This quarter Exploring / no fixed date",
+            "href": "",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          }
+        ],
+        "hiddenFocused": [],
+        "missingIndicator": []
+      },
+      "menu": {
+        "present": false
+      },
+      "pageErrors": [],
+      "failures": [],
+      "pass": true
+    },
+    {
+      "route": "/operator-brief.html",
+      "mode": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "httpStatus": 200,
+      "title": "The Tayoca Operator Brief",
+      "axeViolations": [],
+      "dom": {
+        "duplicateIds": [],
+        "headings": [
+          {
+            "level": 1,
+            "text": "The signal behind reliable, accountable technology."
+          },
+          {
+            "level": 2,
+            "text": "No noise. No repository dumps."
+          },
+          {
+            "level": 2,
+            "text": "Eight sections. One evidence boundary."
+          },
+          {
+            "level": 3,
+            "text": "The operating signal"
+          },
+          {
+            "level": 3,
+            "text": "From the field"
+          },
+          {
+            "level": 3,
+            "text": "Technology value"
+          },
+          {
+            "level": 3,
+            "text": "Decision memo"
+          },
+          {
+            "level": 3,
+            "text": "Build log"
+          },
+          {
+            "level": 3,
+            "text": "Evidence"
+          },
+          {
+            "level": 3,
+            "text": "Operator action"
+          },
+          {
+            "level": 3,
+            "text": "Tayoca update"
+          },
+          {
+            "level": 2,
+            "text": "Draft first. Evidence attached. Human approval required."
+          },
+          {
+            "level": 3,
+            "text": "Unsubscribe"
+          }
+        ],
+        "headingSkips": [],
+        "unlabeledControls": [],
+        "skipLinks": [
+          {
+            "text": "Skip to content",
+            "href": "#main",
+            "targetExists": true
+          }
+        ],
+        "nestedInteractive": [],
+        "imagesMissingAlt": [],
+        "horizontalOverflowPx": 0,
+        "landmarks": {
+          "main": 1,
+          "nav": 1,
+          "header": 1,
+          "footer": 1
+        },
+        "menuToggles": []
+      },
+      "keyboard": {
+        "sequence": [
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Skip to content",
+            "href": "#main",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "TAYOCA",
+            "href": "/",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Services",
+            "href": "/services.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Assessments",
+            "href": "/assessments.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Results",
+            "href": "/results.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Products",
+            "href": "/products.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Insights",
+            "href": "/insights.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "About",
+            "href": "/about.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Start an Assessment",
+            "href": "/assessments.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Read the archive",
+            "href": "/operator-brief-archive.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "input",
+            "id": "",
+            "text": "email",
+            "href": "",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "select",
+            "id": "",
+            "text": "Technology value and FinOps Platform reliability and DevSecOps AI infrastructure and governed automation",
+            "href": "",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "input",
+            "id": "",
+            "text": "consent",
+            "href": "",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "button",
+            "id": "",
+            "text": "Join the Operator Brief",
+            "href": "",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Read Tayoca’s trust and evidence controls",
+            "href": "/trust.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Open the approved issue archive",
+            "href": "/operator-brief-archive.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "input",
+            "id": "",
+            "text": "email",
+            "href": "",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "button",
+            "id": "",
+            "text": "Unsubscribe from the Brief",
+            "href": "",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          }
+        ],
+        "hiddenFocused": [],
+        "missingIndicator": []
+      },
+      "menu": {
+        "present": false
+      },
+      "pageErrors": [],
+      "failures": [],
+      "pass": true
+    },
+    {
+      "route": "/blog/gitops-beyond-hello-world.html",
+      "mode": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "httpStatus": 200,
+      "title": "GitOps Beyond Hello World – Practical Patterns Tayoca Runs in Production – Tayoca",
+      "axeViolations": [],
+      "dom": {
+        "duplicateIds": [],
+        "headings": [
+          {
+            "level": 1,
+            "text": "GitOps Beyond Hello World"
+          },
+          {
+            "level": 2,
+            "text": "1 · Surviving Helm Upgrade Corruption"
+          },
+          {
+            "level": 3,
+            "text": "The configuration we ship"
+          },
+          {
+            "level": 3,
+            "text": "Externally validating the chart before Argo CD touches it"
+          },
+          {
+            "level": 2,
+            "text": "2 · Image Validation Gates Before Sync"
+          },
+          {
+            "level": 3,
+            "text": "Signing the image in CI"
+          },
+          {
+            "level": 3,
+            "text": "Admission policy in the cluster (Kyverno)"
+          },
+          {
+            "level": 2,
+            "text": "3 · Per-Namespace, CI-Driven Deployments"
+          },
+          {
+            "level": 3,
+            "text": "The ApplicationSet"
+          },
+          {
+            "level": 2,
+            "text": "Need GitOps Platform Engineering?"
+          }
+        ],
+        "headingSkips": [],
+        "unlabeledControls": [],
+        "skipLinks": [
+          {
+            "text": "Skip to content",
+            "href": "#main",
+            "targetExists": true
+          }
+        ],
+        "nestedInteractive": [],
+        "imagesMissingAlt": [],
+        "horizontalOverflowPx": 0,
+        "landmarks": {
+          "main": 1,
+          "nav": 1,
+          "header": 1,
+          "footer": 1
+        },
+        "menuToggles": []
+      },
+      "keyboard": {
+        "sequence": [
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Skip to content",
+            "href": "#main",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "TAYOCA",
+            "href": "/",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Services",
+            "href": "/services.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Assessments",
+            "href": "/assessments.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Results",
+            "href": "/results.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Products",
+            "href": "/products.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Insights",
+            "href": "/insights.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "About",
+            "href": "/about.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Start an Assessment",
+            "href": "/assessments.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "div",
+            "id": "",
+            "text": "# gitops/apps/<svc>/argocd-app.yaml apiVersion: argoproj.io/v1alpha1 kind: Application metadata: name: payments-api fina",
+            "href": "",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "div",
+            "id": "",
+            "text": "# .github/workflows/chart-validate.yml (excerpt) - name: Render & diff against last-good release run: | helm template pa",
+            "href": "",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "div",
+            "id": "",
+            "text": "# CI pipeline, after docker build/push cosign sign --yes \\ --identity-token \"$OIDC_TOKEN\" \\ --certificate-identity \"$REG",
+            "href": "",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "div",
+            "id": "",
+            "text": "# gitops/policies/verify-image.yaml apiVersion: kyverno.io/v1 kind: ClusterPolicy metadata: { name: require-signed-image",
+            "href": "",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "div",
+            "id": "",
+            "text": "# gitops/appset/services.yaml apiVersion: argoproj.io/v1alpha1 kind: ApplicationSet metadata: { name: services } spec: g",
+            "href": "",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Book Consultation →",
+            "href": "https://cal.com/tayoca/platform-engineering-consultation",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "GitOps Field Guide →",
+            "href": "https://gum.co/gitops-guide",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Services",
+            "href": "../services.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Products",
+            "href": "/products.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          }
+        ],
+        "hiddenFocused": [],
+        "missingIndicator": []
+      },
+      "menu": {
+        "present": false
+      },
+      "pageErrors": [],
+      "failures": [],
+      "pass": true
+    },
+    {
+      "route": "/",
+      "mode": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "httpStatus": 200,
+      "title": "Tayoca | Technology Value, Platform Reliability & AI Automation",
+      "axeViolations": [],
+      "dom": {
+        "duplicateIds": [],
+        "headings": [
+          {
+            "level": 1,
+            "text": "Make technology earn its complexity."
+          },
+          {
+            "level": 2,
+            "text": "Three decisions Tayoca helps teams make."
+          },
+          {
+            "level": 3,
+            "text": "Where is technology spend failing to create enough value?"
+          },
+          {
+            "level": 3,
+            "text": "Where is delivery or recovery creating avoidable risk?"
+          },
+          {
+            "level": 3,
+            "text": "What should be automated—and where must humans stay in control?"
+          },
+          {
+            "level": 2,
+            "text": "Choose the path that matches your organization."
+          },
+          {
+            "level": 3,
+            "text": "Scale without losing economic or operating control."
+          },
+          {
+            "level": 3,
+            "text": "Make reliability, recovery and change evidence explicit."
+          },
+          {
+            "level": 3,
+            "text": "Scale AI workflows with cost and operational control."
+          },
+          {
+            "level": 2,
+            "text": "Diagnose before prescribing."
+          },
+          {
+            "level": 3,
+            "text": "Assess"
+          },
+          {
+            "level": 3,
+            "text": "Implement or pilot"
+          },
+          {
+            "level": 3,
+            "text": "Optimize"
+          },
+          {
+            "level": 2,
+            "text": "Commercial offers built around one accountable outcome."
+          },
+          {
+            "level": 3,
+            "text": "$5,000 flat fee"
+          },
+          {
+            "level": 3,
+            "text": "$8,000+ fixed scope"
+          },
+          {
+            "level": 3,
+            "text": "From $5,000"
+          },
+          {
+            "level": 3,
+            "text": "Results are published only when they are traceable."
+          },
+          {
+            "level": 2,
+            "text": "Reusable tools for operators."
+          },
+          {
+            "level": 3,
+            "text": "Kubernetes Operator's Workbook, Second Edition"
+          },
+          {
+            "level": 3,
+            "text": "AI Automation Career Playbook"
+          },
+          {
+            "level": 3,
+            "text": "AWS Cost Optimization Playbook"
+          },
+          {
+            "level": 2,
+            "text": "Turn a bottleneck into a measurable next step."
+          }
+        ],
+        "headingSkips": [],
+        "unlabeledControls": [],
+        "skipLinks": [
+          {
+            "text": "Skip to content",
+            "href": "#main",
+            "targetExists": true
+          }
+        ],
+        "nestedInteractive": [],
+        "imagesMissingAlt": [],
+        "horizontalOverflowPx": 0,
+        "landmarks": {
+          "main": 1,
+          "nav": 1,
+          "header": 1,
+          "footer": 1
+        },
+        "menuToggles": [
+          {
+            "tag": "button",
+            "name": "Menu",
+            "expanded": "false",
+            "controls": "primary-nav"
+          }
+        ]
+      },
+      "keyboard": {
+        "sequence": [
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Skip to content",
+            "href": "#main",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "TAYOCA",
+            "href": "/",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "button",
+            "id": "",
+            "text": "Menu",
+            "href": "",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Start an Assessment",
+            "href": "/assessments.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Explore Services",
+            "href": "/services.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Chat on WhatsApp",
+            "href": "https://wa.me/2348113980135?text=Hi%20Tayoca%2C%20I%20want%20help%20solving%20a%20business%20or%20engineering%20problem.",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "TECHNOLOGY VALUE & FINOPS Where is technology spend failing to create enough value? Expose cost drivers, ownership gaps,",
+            "href": "/assessments.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "PLATFORM RELIABILITY & DEVSECOPS Where is delivery or recovery creating avoidable risk? Evaluate delivery controls, obse",
+            "href": "/assessments.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "AGENTIC OPERATIONS & AUTOMATION What should be automated—and where must humans stay in control? Identify bounded workflo",
+            "href": "/assessments.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "GROWTH-STAGE TECHNOLOGY Scale without losing economic or operating control. Connect cloud economics, platform reliabilit",
+            "href": "/segments/growth-stage-technology.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "REGULATED & OPERATIONALLY SENSITIVE Make reliability, recovery and change evidence explicit. Strengthen delivery control",
+            "href": "/segments/regulated-operations.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "AI-ENABLED TEAMS Scale AI workflows with cost and operational control. Establish cost visibility, quality boundaries, ob",
+            "href": "/segments/ai-enabled-engineering.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "CLOUD COST OPTIMIZATION $5,000 flat fee Cost-driver analysis, prioritized optimization backlog, owners, expected impact,",
+            "href": "/services.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "PLATFORM ENGINEERING $8,000+ fixed scope Bounded GitOps/DevSecOps platform delivery with testable controls, validation e",
+            "href": "/services.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "AI AUTOMATION PILOT From $5,000 Workflow/model design, pilot implementation, acceptance tests, failure handling, observa",
+            "href": "/services.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "See Results Standard",
+            "href": "/results.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Open Trust Center",
+            "href": "/trust.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "KUBERNETES WORKBOOK Kubernetes Operator's Workbook, Second Edition Guided labs, production incidents, control-plane reco",
+            "href": "/products/kubernetes-operators-workbook.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          }
+        ],
+        "hiddenFocused": [],
+        "missingIndicator": []
+      },
+      "menu": {
+        "present": true,
+        "before": "false",
+        "after": "true",
+        "controls": "primary-nav",
+        "controlledVisible": true,
+        "keyboardToggleChangedState": true
+      },
+      "pageErrors": [],
+      "failures": [],
+      "pass": true
+    },
+    {
+      "route": "/services.html",
+      "mode": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "httpStatus": 200,
+      "title": "Tayoca | Services & Pricing",
+      "axeViolations": [],
+      "dom": {
+        "duplicateIds": [],
+        "headings": [
+          {
+            "level": 1,
+            "text": "Scope the problem. Measure the result."
+          },
+          {
+            "level": 2,
+            "text": "Fixed-scope implementation engagements"
+          },
+          {
+            "level": 3,
+            "text": "Cloud Cost Optimization"
+          },
+          {
+            "level": 3,
+            "text": "GitOps & DevSecOps Platform"
+          },
+          {
+            "level": 3,
+            "text": "AI Automation / RAG / LLMOps Pilot"
+          },
+          {
+            "level": 2,
+            "text": "Operate the improvement, not just the project."
+          },
+          {
+            "level": 3,
+            "text": "FinOps Operations"
+          },
+          {
+            "level": 3,
+            "text": "Reliability Operations"
+          },
+          {
+            "level": 3,
+            "text": "Platform Operations"
+          },
+          {
+            "level": 3,
+            "text": "Automation Governance"
+          },
+          {
+            "level": 2,
+            "text": "Commercial terms follow the evidence boundary."
+          },
+          {
+            "level": 3,
+            "text": "Diagnose first"
+          },
+          {
+            "level": 3,
+            "text": "Explicit scope"
+          },
+          {
+            "level": 3,
+            "text": "Evidence-backed outcomes"
+          },
+          {
+            "level": 3,
+            "text": "No hidden guarantees"
+          },
+          {
+            "level": 2,
+            "text": "Not sure which engagement fits?"
+          }
+        ],
+        "headingSkips": [],
+        "unlabeledControls": [],
+        "skipLinks": [
+          {
+            "text": "Skip to content",
+            "href": "#main",
+            "targetExists": true
+          }
+        ],
+        "nestedInteractive": [],
+        "imagesMissingAlt": [],
+        "horizontalOverflowPx": 0,
+        "landmarks": {
+          "main": 1,
+          "nav": 1,
+          "header": 1,
+          "footer": 1
+        },
+        "menuToggles": [
+          {
+            "tag": "button",
+            "name": "Menu",
+            "expanded": "false",
+            "controls": "primary-nav"
+          }
+        ]
+      },
+      "keyboard": {
+        "sequence": [
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Skip to content",
+            "href": "#main",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "TAYOCA",
+            "href": "/",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "button",
+            "id": "",
+            "text": "Menu",
+            "href": "",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Start an Assessment",
+            "href": "/assessments.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Start an Assessment",
+            "href": "/assessments.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Review Evidence Policy",
+            "href": "/trust.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "div",
+            "id": "",
+            "text": "TECHNOLOGY VALUE & FINOPS Cloud Cost Optimization $5,000 flat fee For teams that need a defensible view of cloud cost dr",
+            "href": "",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Book Discovery Call",
+            "href": "https://cal.com/tayoca/finops-audit",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "div",
+            "id": "",
+            "text": "PLATFORM RELIABILITY & DEVSECOPS GitOps & DevSecOps Platform $8,000+ fixed scope For engineering teams that need a relia",
+            "href": "",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Book Consultation",
+            "href": "https://cal.com/tayoca/platform-engineering-consultation",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "div",
+            "id": "",
+            "text": "AGENTIC OPERATIONS & AUTOMATION AI Automation / RAG / LLMOps Pilot From $5,000 For a bounded workflow where automation m",
+            "href": "",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Book AI Pilot",
+            "href": "https://cal.com/tayoca/platform-engineering-consultation",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Start with Cloud & AI Cost Assessment",
+            "href": "/assessments.html?assessment=Cloud%20%26%20AI%20Cost%20Assessment#assessment-form",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Start with Platform Reliability Assessment",
+            "href": "/assessments.html?assessment=Platform%20Reliability%20Assessment#assessment-form",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Start with Platform Reliability Assessment",
+            "href": "/assessments.html?assessment=Platform%20Reliability%20Assessment#assessment-form",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Start with Technology Value Assessment",
+            "href": "/assessments.html?assessment=Technology%20Value%20Assessment#assessment-form",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Choose an Assessment",
+            "href": "/assessments.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Chat with Tayoca on WhatsApp",
+            "href": "https://wa.me/2348113980135?text=Hi%20Tayoca%2C%20I%20want%20help%20solving%20a%20business%20or%20engineering%20problem.",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          }
+        ],
+        "hiddenFocused": [],
+        "missingIndicator": []
+      },
+      "menu": {
+        "present": true,
+        "before": "false",
+        "after": "true",
+        "controls": "primary-nav",
+        "controlledVisible": true,
+        "keyboardToggleChangedState": true
+      },
+      "pageErrors": [],
+      "failures": [],
+      "pass": true
+    },
+    {
+      "route": "/assessments.html",
+      "mode": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "httpStatus": 200,
+      "title": "Assessments | Tayoca",
+      "axeViolations": [],
+      "dom": {
+        "duplicateIds": [],
+        "headings": [
+          {
+            "level": 1,
+            "text": "Turn uncertainty into an evidence-backed decision."
+          },
+          {
+            "level": 2,
+            "text": "Choose the decision you need to make."
+          },
+          {
+            "level": 3,
+            "text": "Technology Value Assessment"
+          },
+          {
+            "level": 3,
+            "text": "Cloud & AI Cost Assessment"
+          },
+          {
+            "level": 3,
+            "text": "Platform Reliability Assessment"
+          },
+          {
+            "level": 2,
+            "text": "Tell us what is happening now."
+          },
+          {
+            "level": 2,
+            "text": "No generic report. No mystery handoff."
+          },
+          {
+            "level": 3,
+            "text": "Confirm the decision"
+          },
+          {
+            "level": 3,
+            "text": "Collect evidence"
+          },
+          {
+            "level": 3,
+            "text": "Prioritize action"
+          }
+        ],
+        "headingSkips": [],
+        "unlabeledControls": [],
+        "skipLinks": [
+          {
+            "text": "Skip to content",
+            "href": "#main",
+            "targetExists": true
+          }
+        ],
+        "nestedInteractive": [],
+        "imagesMissingAlt": [],
+        "horizontalOverflowPx": 0,
+        "landmarks": {
+          "main": 1,
+          "nav": 1,
+          "header": 1,
+          "footer": 1
+        },
+        "menuToggles": [
+          {
+            "tag": "button",
+            "name": "Menu",
+            "expanded": "false",
+            "controls": "primary-nav"
+          }
+        ]
+      },
+      "keyboard": {
+        "sequence": [
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Skip to content",
+            "href": "#main",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "TAYOCA",
+            "href": "/",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "button",
+            "id": "",
+            "text": "Menu",
+            "href": "",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Start an Assessment",
+            "href": "/assessments.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "EXECUTIVE Technology Value Assessment Best for: leaders who need one view of cost, reliability, delivery and operational",
+            "href": "/assessments.html?assessment=Technology%20Value%20Assessment&utm_campaign=pgc1_ai_automation_operations&utm_source=tayoca_site&utm_medium=internal&utm_content=assessment_catalog_card#assessment-form",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "FINOPS Cloud & AI Cost Assessment Best for: organizations with rising cloud, Kubernetes or AI workload spend. You receiv",
+            "href": "/assessments.html?assessment=Cloud%20%26%20AI%20Cost%20Assessment&utm_campaign=pgc1_cloud_ai_cost&utm_source=tayoca_site&utm_medium=internal&utm_content=assessment_catalog_card#assessment-form",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "RELIABILITY Platform Reliability Assessment Best for: teams facing deployment risk, incidents, weak recovery or governan",
+            "href": "/assessments.html?assessment=Platform%20Reliability%20Assessment&utm_campaign=pgc1_platform_kubernetes_reliability&utm_source=tayoca_site&utm_medium=internal&utm_content=assessment_catalog_card#assessment-form",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "input",
+            "id": "",
+            "text": "email",
+            "href": "",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "input",
+            "id": "",
+            "text": "company",
+            "href": "",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "select",
+            "id": "",
+            "text": "Choose your role Executive / business leader Engineering / platform leader FinOps / cloud economics Engineer / operator ",
+            "href": "",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "select",
+            "id": "",
+            "text": "Choose the closest fit Growth-stage technology company Regulated or operationally sensitive organization AI-enabled busi",
+            "href": "",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "select",
+            "id": "",
+            "text": "Technology Value Assessment Cloud & AI Cost Assessment Platform Reliability Assessment",
+            "href": "",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "select",
+            "id": "",
+            "text": "Choose a timeframe Now / active operating issue Within 30 days This quarter Exploring / no fixed date",
+            "href": "",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "select",
+            "id": "",
+            "text": "Choose evidence readiness Relevant data and system access are available Some evidence is available Not sure yet",
+            "href": "",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "textarea",
+            "id": "",
+            "text": "context",
+            "href": "",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "button",
+            "id": "",
+            "text": "Start the conversation",
+            "href": "",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Services",
+            "href": "/services.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Assessments",
+            "href": "/assessments.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          }
+        ],
+        "hiddenFocused": [],
+        "missingIndicator": []
+      },
+      "menu": {
+        "present": true,
+        "before": "false",
+        "after": "true",
+        "controls": "primary-nav",
+        "controlledVisible": true,
+        "keyboardToggleChangedState": true
+      },
+      "pageErrors": [],
+      "failures": [],
+      "pass": true
+    },
+    {
+      "route": "/operator-brief.html",
+      "mode": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "httpStatus": 200,
+      "title": "The Tayoca Operator Brief",
+      "axeViolations": [],
+      "dom": {
+        "duplicateIds": [],
+        "headings": [
+          {
+            "level": 1,
+            "text": "The signal behind reliable, accountable technology."
+          },
+          {
+            "level": 2,
+            "text": "No noise. No repository dumps."
+          },
+          {
+            "level": 2,
+            "text": "Eight sections. One evidence boundary."
+          },
+          {
+            "level": 3,
+            "text": "The operating signal"
+          },
+          {
+            "level": 3,
+            "text": "From the field"
+          },
+          {
+            "level": 3,
+            "text": "Technology value"
+          },
+          {
+            "level": 3,
+            "text": "Decision memo"
+          },
+          {
+            "level": 3,
+            "text": "Build log"
+          },
+          {
+            "level": 3,
+            "text": "Evidence"
+          },
+          {
+            "level": 3,
+            "text": "Operator action"
+          },
+          {
+            "level": 3,
+            "text": "Tayoca update"
+          },
+          {
+            "level": 2,
+            "text": "Draft first. Evidence attached. Human approval required."
+          },
+          {
+            "level": 3,
+            "text": "Unsubscribe"
+          }
+        ],
+        "headingSkips": [],
+        "unlabeledControls": [],
+        "skipLinks": [
+          {
+            "text": "Skip to content",
+            "href": "#main",
+            "targetExists": true
+          }
+        ],
+        "nestedInteractive": [],
+        "imagesMissingAlt": [],
+        "horizontalOverflowPx": 0,
+        "landmarks": {
+          "main": 1,
+          "nav": 1,
+          "header": 1,
+          "footer": 1
+        },
+        "menuToggles": [
+          {
+            "tag": "button",
+            "name": "Menu",
+            "expanded": "false",
+            "controls": "primary-nav"
+          }
+        ]
+      },
+      "keyboard": {
+        "sequence": [
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Skip to content",
+            "href": "#main",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "TAYOCA",
+            "href": "/",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "button",
+            "id": "",
+            "text": "Menu",
+            "href": "",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Read the archive",
+            "href": "/operator-brief-archive.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "input",
+            "id": "",
+            "text": "email",
+            "href": "",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "select",
+            "id": "",
+            "text": "Technology value and FinOps Platform reliability and DevSecOps AI infrastructure and governed automation",
+            "href": "",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "input",
+            "id": "",
+            "text": "consent",
+            "href": "",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "button",
+            "id": "",
+            "text": "Join the Operator Brief",
+            "href": "",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Read Tayoca’s trust and evidence controls",
+            "href": "/trust.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Open the approved issue archive",
+            "href": "/operator-brief-archive.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "input",
+            "id": "",
+            "text": "email",
+            "href": "",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "button",
+            "id": "",
+            "text": "Unsubscribe from the Brief",
+            "href": "",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Services",
+            "href": "/services.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Assessments",
+            "href": "/assessments.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Results",
+            "href": "/results.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Products",
+            "href": "/products.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Insights",
+            "href": "/insights.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "About",
+            "href": "/about.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          }
+        ],
+        "hiddenFocused": [],
+        "missingIndicator": []
+      },
+      "menu": {
+        "present": true,
+        "before": "false",
+        "after": "true",
+        "controls": "primary-nav",
+        "controlledVisible": true,
+        "keyboardToggleChangedState": true
+      },
+      "pageErrors": [],
+      "failures": [],
+      "pass": true
+    },
+    {
+      "route": "/blog/gitops-beyond-hello-world.html",
+      "mode": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "httpStatus": 200,
+      "title": "GitOps Beyond Hello World – Practical Patterns Tayoca Runs in Production – Tayoca",
+      "axeViolations": [],
+      "dom": {
+        "duplicateIds": [],
+        "headings": [
+          {
+            "level": 1,
+            "text": "GitOps Beyond Hello World"
+          },
+          {
+            "level": 2,
+            "text": "1 · Surviving Helm Upgrade Corruption"
+          },
+          {
+            "level": 3,
+            "text": "The configuration we ship"
+          },
+          {
+            "level": 3,
+            "text": "Externally validating the chart before Argo CD touches it"
+          },
+          {
+            "level": 2,
+            "text": "2 · Image Validation Gates Before Sync"
+          },
+          {
+            "level": 3,
+            "text": "Signing the image in CI"
+          },
+          {
+            "level": 3,
+            "text": "Admission policy in the cluster (Kyverno)"
+          },
+          {
+            "level": 2,
+            "text": "3 · Per-Namespace, CI-Driven Deployments"
+          },
+          {
+            "level": 3,
+            "text": "The ApplicationSet"
+          },
+          {
+            "level": 2,
+            "text": "Need GitOps Platform Engineering?"
+          }
+        ],
+        "headingSkips": [],
+        "unlabeledControls": [],
+        "skipLinks": [
+          {
+            "text": "Skip to content",
+            "href": "#main",
+            "targetExists": true
+          }
+        ],
+        "nestedInteractive": [],
+        "imagesMissingAlt": [],
+        "horizontalOverflowPx": 0,
+        "landmarks": {
+          "main": 1,
+          "nav": 1,
+          "header": 1,
+          "footer": 1
+        },
+        "menuToggles": [
+          {
+            "tag": "button",
+            "name": "Menu",
+            "expanded": "false",
+            "controls": "primary-nav"
+          }
+        ]
+      },
+      "keyboard": {
+        "sequence": [
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Skip to content",
+            "href": "#main",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "TAYOCA",
+            "href": "/",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "button",
+            "id": "",
+            "text": "Menu",
+            "href": "",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Start an Assessment",
+            "href": "/assessments.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "div",
+            "id": "",
+            "text": "# gitops/apps/<svc>/argocd-app.yaml apiVersion: argoproj.io/v1alpha1 kind: Application metadata: name: payments-api fina",
+            "href": "",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "div",
+            "id": "",
+            "text": "# .github/workflows/chart-validate.yml (excerpt) - name: Render & diff against last-good release run: | helm template pa",
+            "href": "",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "div",
+            "id": "",
+            "text": "# CI pipeline, after docker build/push cosign sign --yes \\ --identity-token \"$OIDC_TOKEN\" \\ --certificate-identity \"$REG",
+            "href": "",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "div",
+            "id": "",
+            "text": "# gitops/policies/verify-image.yaml apiVersion: kyverno.io/v1 kind: ClusterPolicy metadata: { name: require-signed-image",
+            "href": "",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "div",
+            "id": "",
+            "text": "# gitops/appset/services.yaml apiVersion: argoproj.io/v1alpha1 kind: ApplicationSet metadata: { name: services } spec: g",
+            "href": "",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Book Consultation →",
+            "href": "https://cal.com/tayoca/platform-engineering-consultation",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "GitOps Field Guide →",
+            "href": "https://gum.co/gitops-guide",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Services",
+            "href": "../services.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Products",
+            "href": "/products.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Writing",
+            "href": "./index.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "About Us",
+            "href": "../about.html",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "Skip to content",
+            "href": "#main",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          },
+          {
+            "tag": "a",
+            "id": "",
+            "text": "TAYOCA",
+            "href": "/",
+            "visible": true,
+            "focusVisiblePseudo": true,
+            "visibleFocusIndicator": true
+          }
+        ],
+        "hiddenFocused": [],
+        "missingIndicator": []
+      },
+      "menu": {
+        "present": true,
+        "before": "false",
+        "after": "true",
+        "controls": "primary-nav",
+        "controlledVisible": true,
+        "keyboardToggleChangedState": true
+      },
+      "pageErrors": [],
+      "failures": [],
+      "pass": true
+    }
+  ]
+}

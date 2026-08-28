@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "workstream": "W10",
+  "finding": "assistive_technology_audit",
+  "status": "AUTOMATED_BROWSER_REMEDIATION_VERIFIED_MANUAL_SCREEN_READER_PENDING",
+  "verified_at": "2026-08-17T20:40:02.204Z",
+  "authority": {
+    "canonical_repository": "temitayocharles/tayoca",
+    "branch": "ops/w10-selfhosted-accessibility-audit-v2",
+    "forgejo_runner": "forgejo-container",
+    "browser": "Chromium via Playwright 1.62.1",
+    "axe": "@axe-core/playwright 4.13.0",
+    "successful_run": 6939,
+    "evidence": "docs/w10-selfhosted-browser-accessibility-audit.json"
+  },
+  "scope": {
+    "pages": [
+      "/",
+      "/services.html",
+      "/assessments.html",
+      "/operator-brief.html",
+      "/blog/gitops-beyond-hello-world.html"
+    ],
+    "viewports": {
+      "desktop": "1440x1000",
+      "mobile": "390x844"
+    },
+    "checks": 10,
+    "checks_passed": 10,
+    "checks_failed": 0,
+    "axe_violation_count": 0,
+    "additional_checks": [
+      "duplicate IDs",
+      "heading-level skips",
+      "visible form labels",
+      "skip-link target",
+      "nested interactive elements",
+      "image alt attributes",
+      "horizontal overflow",
+      "landmark counts",
+      "keyboard tab sequence and visible focus",
+      "mobile menu keyboard operation",
+      "page JavaScript errors"
+    ]
+  },
+  "remediated_classes": [
+    "shared orange foreground/background contrast",
+    "growth-os duplicate nav-toggle insertion and insertBefore page error",
+    "services heading hierarchy",
+    "visible CTA focus treatment",
+    "Operator Brief explanatory-text contrast",
+    "GitOps code-block keyboard focus and syntax/text contrast",
+    "GitOps Field Guide CTA contrast"
+  ],
+  "controls": {
+    "w9_distribution_changed": false,
+    "w9_attribution_changed": false,
+    "paid_spend": 0,
+    "production_form_submissions_performed": false,
+    "wcag_certification_claim_allowed": false
+  },
+  "remaining_manual_activity": [
+    "VoiceOver screen-reader testing",
+    "NVDA or JAWS screen-reader testing where an appropriate Windows test environment is available",
+    "manual assistive-technology interaction review beyond automated Axe/keyboard coverage"
+  ],
+  "deployment_note": "The successful audit served canonical Forgejo static files locally. The current production Vercel deployment remains subject to the separately recorded deployment-rate-limit reconciliation, so this evidence does not assert production-byte parity until that promotion completes."
+}

@@ -1,4 +1,3 @@
-
 # InsForge & AI agent skills
 .insforge
 .agent
@@ -14,10 +13,19 @@
 .trae
 .windsurf
 
-# Put environment files outside repo to avoid leaking secrets in fork workflow
-.env.local
+# Environment and credential files stay outside the repository.
 .env
-.env.development
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+credentials.json
+service-account.json
+service_account.json
+id_rsa
+id_ed25519
 
 # Build
 node_modules/

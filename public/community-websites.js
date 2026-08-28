@@ -1,1 +1,68 @@
-(function(){function track(name,props){try{if(window.TayocaAnalytics&&typeof window.TayocaAnalytics.emit==='function')return window.TayocaAnalytics.emit(name,props||{});if(typeof window.gtag==='function')window.gtag('event',name,props||{})}catch(e){}}function setYear(){document.querySelectorAll('[data-current-year]').forEach(function(el){el.textContent=String(new Date().getFullYear())})}setYear();var header=document.querySelector('.site-header');var menu=document.querySelector('.menu-toggle');if(header&&menu){menu.addEventListener('click',function(){var open=header.classList.toggle('nav-open');menu.setAttribute('aria-expanded',String(open));menu.textContent=open?'Close':'Menu'})}var form=document.getElementById('community-website-form');if(!form)return;var state=document.getElementById('current-site-state');var urlField=document.getElementById('website-url-field');var urlInput=document.getElementById('website-url');var status=document.getElementById('community-form-status');var started=false;var q=new URLSearchParams(location.search);function syncWebsiteField(){var hasSite=state&&state.value==='has_site';if(urlField)urlField.hidden=!hasSite;if(urlInput){urlInput.required=hasSite;if(!hasSite)urlInput.value=''}}if(state){state.addEventListener('change',syncWebsiteField);syncWebsiteField()}function startOnce(){if(started)return;started=true;track('community_initiative_start',{source_page:location.pathname,utm_source:q.get('utm_source')||'',utm_campaign:q.get('utm_campaign')||''})}form.addEventListener('input',startOnce,{once:true});form.addEventListener('change',startOnce,{once:true});track('community_initiative_view',{source_page:location.pathname,utm_source:q.get('utm_source')||'',utm_campaign:q.get('utm_campaign')||''});form.addEventListener('submit',async function(e){e.preventDefault();status.innerHTML='';if(!form.checkValidity()){form.reportValidity();return}var button=form.querySelector('button[type="submit"]');var old=button?button.textContent:'';if(button){button.disabled=true;button.textContent='Submitting…'}try{var data=new FormData(form);var payload={};data.forEach(function(value,key){payload[key]=value});payload.source_page=location.pathname;['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].forEach(function(key){var value=q.get(key);if(value)payload[key]=String(value).slice(0,240)});payload.referrer=String(document.referrer||'').slice(0,1000);track('community_initiative_submit',{business_category:payload.business_category||'',location:payload.location||'',current_site_state:payload.current_site_state||'',website_need:payload.website_need||''});var response=await fetch(form.action,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});var body=await response.json().catch(function(){return {}});if(!response.ok)throw new Error(body.error||'submission_failed');track('generate_lead',{form_name:'community_website',lead_status:body.status||'awaiting_operator_review',campaign_id:payload.utm_campaign||'pgc1_community_websites_20260819'});track('community_initiative_success',{lead_status:body.status||'awaiting_operator_review',location:payload.location||'',website_need:payload.website_need||''});form.reset();syncWebsiteField();var p=document.createElement('p');p.className='form-success';p.setAttribute('role','status');p.textContent=body.next||'Thank you. Your application has been received.';status.appendChild(p);status.scrollIntoView({behavior:'smooth',block:'nearest'})}catch(err){track('community_initiative_error',{error:String(err&&err.message||'submission_failed').slice(0,120)});var p=document.createElement('p');p.className='form-error';p.setAttribute('role','alert');p.textContent='We could not submit the application right now. Please email support@tayoca.com and we will make sure you are not missed.';status.appendChild(p)}finally{if(button){button.disabled=false;button.textContent=old}}})})();
+(function(){
+  function track(name,props){
+    try{
+      if(window.TayocaAnalytics&&typeof window.TayocaAnalytics.emit==='function')return window.TayocaAnalytics.emit(name,props||{});
+      if(typeof window.gtag==='function')window.gtag('event',name,props||{});
+    }catch(e){}
+  }
+
+  function setYear(){document.querySelectorAll('[data-current-year]').forEach(function(el){el.textContent=String(new Date().getFullYear())})}
+  setYear();
+
+  var header=document.querySelector('.site-header');
+  var menu=document.querySelector('.menu-toggle');
+  if(header&&menu){menu.addEventListener('click',function(){var open=header.classList.toggle('nav-open');menu.setAttribute('aria-expanded',String(open));menu.textContent=open?'Close':'Menu'})}
+
+  var form=document.getElementById('community-website-form');
+  if(!form)return;
+  var state=document.getElementById('current-site-state');
+  var urlField=document.getElementById('website-url-field');
+  var urlInput=document.getElementById('website-url');
+  var status=document.getElementById('community-form-status');
+  var started=false;
+  var q=new URLSearchParams(location.search);
+
+  function syncWebsiteField(){
+    var hasSite=state&&state.value==='has_site';
+    if(urlField)urlField.hidden=!hasSite;
+    if(urlInput){urlInput.required=hasSite;if(!hasSite)urlInput.value=''}
+  }
+  if(state){state.addEventListener('change',syncWebsiteField);syncWebsiteField()}
+
+  function startOnce(){
+    if(started)return;started=true;
+    track('community_initiative_start',{source_page:location.pathname,utm_source:q.get('utm_source')||'',utm_campaign:q.get('utm_campaign')||''});
+  }
+  form.addEventListener('input',startOnce,{once:true});
+  form.addEventListener('change',startOnce,{once:true});
+  track('community_initiative_view',{source_page:location.pathname,utm_source:q.get('utm_source')||'',utm_campaign:q.get('utm_campaign')||''});
+
+  form.addEventListener('submit',async function(e){
+    e.preventDefault();
+    status.innerHTML='';
+    if(!form.checkValidity()){form.reportValidity();return}
+    var button=form.querySelector('button[type="submit"]');
+    var old=button?button.textContent:'';
+    if(button){button.disabled=true;button.textContent='Submitting…'}
+    try{
+      var data=new FormData(form);
+      var payload={};
+      data.forEach(function(value,key){payload[key]=value});
+      payload.source_page=location.pathname;
+      ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].forEach(function(key){var value=q.get(key);if(value)payload[key]=String(value).slice(0,240)});
+      payload.referrer=String(document.referrer||'').slice(0,1000);
+      track('community_initiative_submit',{business_category:payload.business_category||'',location:payload.location||'',current_site_state:payload.current_site_state||'',website_need:payload.website_need||''});
+      var response=await fetch(form.action,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+      var body=await response.json().catch(function(){return {}});
+      if(!response.ok)throw new Error(body.error||'submission_failed');
+      track('generate_lead',{form_name:'community_website',lead_status:body.status||'awaiting_operator_review',campaign_id:payload.utm_campaign||'pgc1_community_websites_20260819'});
+      track('community_initiative_success',{lead_status:body.status||'awaiting_operator_review',location:payload.location||'',website_need:payload.website_need||''});
+      form.reset();syncWebsiteField();
+      var p=document.createElement('p');p.className='form-success';p.setAttribute('role','status');p.textContent=body.next||'Thank you. Your application has been received.';status.appendChild(p);
+      status.scrollIntoView({behavior:'smooth',block:'nearest'});
+    }catch(err){
+      track('community_initiative_error',{error:String(err&&err.message||'submission_failed').slice(0,120)});
+      var p=document.createElement('p');p.className='form-error';p.setAttribute('role','alert');p.textContent='We could not submit the application right now. Please email support@tayoca.com and we will make sure you are not missed.';status.appendChild(p);
+    }finally{if(button){button.disabled=false;button.textContent=old}}
+  });
+})();

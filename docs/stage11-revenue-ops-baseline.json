@@ -1,0 +1,287 @@
+{
+  "stage": 11,
+  "name": "Growth OS and revenue operations",
+  "status": "GREEN",
+  "certified_at": "2026-08-10T21:10:00Z",
+  "locked_deliverables": [
+    "campaign integration",
+    "sales enablement assets",
+    "proposal and scope templates",
+    "pipeline stages",
+    "objection ledger",
+    "attribution"
+  ],
+  "acceptance_gate": "assessment-to-proposal-to-revenue path is traceable",
+  "canonical_source": {
+    "repository": "temitayocharles/tayoca",
+    "host": "forgejo.tca-infraforge.site",
+    "authority": "primary",
+    "source_of_truth_record": "docs/repository-source-of-truth.yaml"
+  },
+  "growth_ledger": {
+    "spreadsheet_id": "1JkW4DUTkjBTQNXlWMQdaVHlw-nFU1to8-cf9HMKXcQU",
+    "tabs": [
+      {
+        "name": "Revenue Pipeline",
+        "sheet_id": 262255582,
+        "capacity": "500x40",
+        "primary_key": "opportunity_id"
+      },
+      {
+        "name": "Proposals",
+        "sheet_id": 417252171,
+        "capacity": "300x32",
+        "primary_key": "proposal_id"
+      },
+      {
+        "name": "Objection Ledger",
+        "sheet_id": 356405831,
+        "capacity": "300x20",
+        "primary_key": "objection_id"
+      },
+      {
+        "name": "Revenue Attribution",
+        "sheet_id": 992895548,
+        "capacity": "500x24",
+        "primary_key": "attribution_id"
+      }
+    ],
+    "existing_relations_preserved": ["Campaigns", "Sales", "KPI History"],
+    "synthetic_gate_rows_remaining": 0
+  },
+  "campaign_integration": {
+    "browser_source": "public/growth-os.js",
+    "captured_fields": [
+      "source_page",
+      "utm_source",
+      "utm_medium",
+      "utm_campaign",
+      "utm_content",
+      "utm_term",
+      "referrer"
+    ],
+    "forgejo_commit": "fbd2fe78194bf9c88388124ccdef74ea1c0c40e5",
+    "forgejo_blob": "ce5c3d5309b6e4ecf96f2ae483ebc67999887356",
+    "github_deployment_commit": "1f2d85e2d4cbff336d8507a7a7f55cdbad0459d8",
+    "github_blob": "ce5c3d5309b6e4ecf96f2ae483ebc67999887356",
+    "exact_blob_match": true,
+    "vercel_deployment": "dpl_FHAhvk9oY2tN7mZr3Jz7VF5QNJQA",
+    "vercel_state": "READY",
+    "vercel_substate": "PROMOTED",
+    "vercel_target": "production",
+    "production_aliases": ["tayoca.com", "www.tayoca.com"],
+    "blocking_vercel_checks": 0,
+    "public_file_verification": {
+      "provider": "Firecrawl",
+      "log_id": "log_zg1Iv64VcnKR",
+      "cache_state": "miss",
+      "status_code": 200,
+      "content_type": "application/javascript; charset=utf-8",
+      "required_literals_present": [
+        "utm_source",
+        "utm_medium",
+        "utm_campaign",
+        "utm_content",
+        "utm_term",
+        "document.referrer",
+        "payload.referrer",
+        "source_page"
+      ],
+      "passed": true
+    }
+  },
+  "assessment_pipeline": {
+    "workflow_id": "V28T575q7GSRFOti",
+    "name": "Tayoca Growth OS | Assessment & Operator Brief Intake",
+    "active_version": "77f42f4d-dc43-4743-a667-4fe7ce44aa44",
+    "rollback_version": "843c4d34-356e-4fe1-b538-71bfb1a83d93",
+    "active": true,
+    "trigger_count": 3,
+    "controls": [
+      "sanitized UTM and referrer capture",
+      "deterministic assessment opportunity_id",
+      "campaign_id preserved from utm_campaign",
+      "Revenue Pipeline write after durable lead upsert",
+      "assessment acceptance waits for both lead and Revenue Pipeline persistence",
+      "Operator Brief subscriptions bypass Revenue Pipeline",
+      "invalid leads do not create pipeline records"
+    ],
+    "pinned_test_execution": "70444",
+    "pinned_test_result": "PASS",
+    "test_campaign": "tayoca_stage11_trace_test",
+    "test_lead_id": "tay_e028fece7d90c8bc",
+    "test_opportunity_id": "opp_e028fece7d90c8bc",
+    "test_pipeline_stage": "assessment_qualified",
+    "live_test_writes": 0
+  },
+  "pipeline_contract": {
+    "stages": [
+      "assessment_submitted",
+      "assessment_qualified",
+      "assessment_scheduled",
+      "assessment_in_progress",
+      "assessment_delivered",
+      "proposal_draft",
+      "proposal_sent",
+      "commercial_review",
+      "verbal_commit",
+      "won",
+      "lost"
+    ],
+    "won_requires": [
+      "proposal_id",
+      "revenue_ref",
+      "amount",
+      "currency",
+      "verified Revenue Attribution row"
+    ],
+    "lost_requires": ["loss_reason"],
+    "revenue_before_verification_forbidden": true
+  },
+  "proposal_and_scope": {
+    "proposal_template": "docs/proposal-template.md",
+    "proposal_commit": "892747fdde8b93d5b8e73d3375866b13c878739e",
+    "scope_template": "docs/scope-template.md",
+    "scope_commit": "cfd43c115ac9a11c021d532e0d3b4665b8c1932e",
+    "proposal_send_gate": "approval_state=approved_for_send",
+    "scope_versioning": true,
+    "silent_history_overwrite": false,
+    "evidence_boundary_required": true
+  },
+  "sales_enablement": {
+    "asset": "docs/sales-enablement.md",
+    "commit": "022127e1cbaec3bd6be3ff780d3d9aa02e0feb54",
+    "uses_stage10_commercial_ladder": true,
+    "objection_categories": [
+      "budget",
+      "timing",
+      "authority",
+      "need",
+      "trust",
+      "scope",
+      "security",
+      "procurement",
+      "competition",
+      "implementation_risk",
+      "other"
+    ],
+    "forbidden": [
+      "invented customer claims",
+      "invented outcomes",
+      "unsupported rankings",
+      "unsupported savings",
+      "private repository disclosure",
+      "generic unsupported Sivanta 24/7 or SLA promises"
+    ]
+  },
+  "revenue_command_center": {
+    "workflow_id": "MRaoY2aHm85q3QWG",
+    "name": "Tayoca Growth OS | Demand Engine & Revenue Command Center",
+    "active_version": "8b63948a-5daf-4c8c-993e-d620b657b39b",
+    "rollback_version": "ed11ca77-afb3-44fe-943d-599da3e102e3",
+    "active": true,
+    "trigger_count": 3,
+    "stage8_triggers_preserved": [
+      "Weekly Campaign Launch",
+      "Editorial Correction Review",
+      "Weekly Executive Report"
+    ],
+    "new_report_reads": [
+      "Revenue Pipeline",
+      "Proposals",
+      "Objection Ledger",
+      "Revenue Attribution"
+    ],
+    "new_report_metrics": [
+      "open and won opportunities",
+      "pipeline stage distribution",
+      "proposal count and status",
+      "proposal value without currency conversion",
+      "open objections",
+      "verified attributed service revenue",
+      "direct attributed product revenue"
+    ],
+    "pinned_test_execution": "70464",
+    "pinned_test_result": "PASS",
+    "test_attributed_revenue": 3249,
+    "live_test_side_effects": 0
+  },
+  "verified_product_attribution": {
+    "workflow_id": "ZZDXWFKiPnzeKtNr",
+    "name": "Tayoca Growth OS | Verified Review & Trust Flywheel",
+    "active_version": "7409faec-4e73-4fd3-a96d-1522cbea7e2a",
+    "rollback_version": "c775b67e-208a-4ee3-919c-1a53d54a685e",
+    "active": true,
+    "provider_verification_required": true,
+    "attribution_model": "verified_product_purchase",
+    "identity_guessing": false,
+    "unattributed_when_lineage_absent": true,
+    "pinned_test_execution": "70520",
+    "pinned_test_result": "PASS",
+    "test_attribution_id": "attr_sale_stage11-gumroad-pin-001",
+    "test_opportunity_id": "",
+    "live_test_side_effects": 0
+  },
+  "traceability_roundtrip": {
+    "result": "PASS",
+    "test_identity": {
+      "opportunity_id": "opp_stage11_gate_20260810",
+      "lead_id": "tay_stage11_gate_20260810",
+      "proposal_id": "prop_stage11_gate_20260810_v1",
+      "scope_id": "scope_stage11_gate_20260810_v1",
+      "objection_id": "obj_stage11_gate_20260810_01",
+      "attribution_id": "attr_stage11_gate_20260810",
+      "campaign_id": "stage11_gate_campaign",
+      "revenue_ref": "test_receipt_stage11_gate",
+      "amount": 3200,
+      "currency": "CAD"
+    },
+    "write_log": "log_zxdejIHRIBt-",
+    "readback_log": "log_e5RDsawx6zaP",
+    "cleanup_log": "log_Wv03TYj9LDLS",
+    "post_cleanup_verification_log": "log_hNP796mGgytN",
+    "same_relational_ids_survived_all_ledgers": true,
+    "synthetic_rows_removed": true
+  },
+  "governance": {
+    "policy": "docs/revenue-operations-policy.yaml",
+    "policy_initial_commit": "5f5d3fa7306e959dd2aa88dbd226494b82eaec93",
+    "policy_green_commit": "7f2c7c0836fadead6d0882b6b5798d7923a1cef9",
+    "workflow_registry": "automation/n8n/workflow-registry.yaml",
+    "workflow_registry_commit": "d19a34709d7323e9ff8821f35e36f48d822bcd6a",
+    "stage7_private_source_firewall_preserved": true,
+    "stage8_human_publication_and_distribution_approval_preserved": true,
+    "paid_media_default": 0,
+    "first_party_analytics_is_metric_authority": true,
+    "ga4_verification_claimed": false
+  },
+  "maintenance_hygiene": {
+    "temporary_stage11_workflows_found": 0,
+    "maintenance_workflow_id": "rvIMuGa2EDJvrwu5",
+    "maintenance_workflow_active": false,
+    "maintenance_workflow_node_count": 3,
+    "maintenance_workflow_restored_to_backup_only_definition": true
+  },
+  "rollback": {
+    "assessment_intake": "Republish V28T575q7GSRFOti version 843c4d34-356e-4fe1-b538-71bfb1a83d93.",
+    "revenue_command_center": "Republish MRaoY2aHm85q3QWG version ed11ca77-afb3-44fe-943d-599da3e102e3.",
+    "verified_product_attribution": "Republish ZZDXWFKiPnzeKtNr version c775b67e-208a-4ee3-919c-1a53d54a685e.",
+    "browser_attribution": "For intentional Stage 11 removal, create a normal revert of Forgejo commit fbd2fe78194bf9c88388124ccdef74ea1c0c40e5 and mirror that revert to GitHub; alternatively the secondary deployment can temporarily return to the Stage 10 production baseline 088c132063c7be569cbd42200b6567c53ceaf1d3 while Forgejo remains authoritative. Do not rewrite canonical history.",
+    "ledger_history": "Do not delete Revenue Pipeline, Proposals, Objection Ledger, or Revenue Attribution history after real commercial records exist. A workflow rollback does not authorize ledger-history deletion."
+  },
+  "gate": {
+    "campaign_integration": true,
+    "sales_enablement_asset": true,
+    "proposal_template": true,
+    "scope_template": true,
+    "explicit_pipeline_stages": true,
+    "objection_ledger": true,
+    "verified_attribution": true,
+    "assessment_to_proposal_to_revenue_trace": true,
+    "synthetic_test_cleanup": true,
+    "production_browser_attribution_deployed": true,
+    "workflow_registry_reconciled": true,
+    "temporary_workflow_residue": false,
+    "passed": true
+  }
+}

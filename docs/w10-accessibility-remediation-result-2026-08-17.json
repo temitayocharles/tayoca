@@ -1,0 +1,75 @@
+{
+  "workstream": "W10_OPERATIONS",
+  "recorded_at": "2026-08-17T19:43:57Z",
+  "status": "CANONICAL_REPAIRED_MIRROR_SYNCED_BROWSER_AUDIT_BLOCKED_EXTERNAL",
+  "initial_static_audit": {
+    "html_pages": 33,
+    "focused_semantic_findings": 17,
+    "affected_pages": 7,
+    "note": "Focused static findings exclude cosmetic/style lint and are not a WCAG certification."
+  },
+  "root_causes": [
+    "GitHub deployment mirror drifted from canonical Forgejo for several pages already repaired in canonical source.",
+    "Operator Brief honeypot inputs and two legacy newsletter buttons lacked explicit control types in canonical source.",
+    "GitOps article canonical source contained injected internal tool-call markup and a local workstation path."
+  ],
+  "canonical_repairs": {
+    "public/operator-brief.html": "two honeypot inputs now type=text",
+    "public/blog/ai-automation-career-roadmap.html": "newsletter button now type=submit",
+    "public/blog/kubernetes-production-checklist.html": "newsletter button now type=submit",
+    "public/blog/gitops-beyond-hello-world.html": "internal tool-call/local-path contamination removed; malformed source markup repaired; conservative transition copy retained"
+  },
+  "deployment_reconciliation": {
+    "github_mirror_affected_files_byte_parity": "7_of_7_verified",
+    "vercel_production_state": "STALE_DUE_PROVIDER_DEPLOYMENT_RATE_LIMIT",
+    "provider_status": "Deployment rate limited — retry in 24 hours",
+    "automatic_production_retry_scheduled": true,
+    "durable_daily_production_parity_guard": true
+  },
+  "real_browser_audit_attempt": {
+    "scope_requested": [
+      "desktop_and_mobile_rendering",
+      "axe_wcag_a_aa_checks",
+      "keyboard_focus_order",
+      "skip_link_behavior",
+      "landmarks_and_heading_hierarchy",
+      "form_labels_and_accessible_names",
+      "duplicate_ids",
+      "mobile_horizontal_overflow",
+      "console_errors_affecting_interaction"
+    ],
+    "composio_browser_tool": {
+      "result": "BLOCKED",
+      "error": "Execution of toolkit BROWSER_TOOL is temporarily disabled by the administrator."
+    },
+    "browserless_accounts": [
+      {
+        "alias": "sitesupply-e2e",
+        "result": "BLOCKED",
+        "http_status": 401,
+        "error": "Invalid API key"
+      },
+      {
+        "alias": "social-scraper",
+        "result": "BLOCKED",
+        "http_status": 401,
+        "error": "Invalid API key"
+      },
+      {
+        "alias": "browserless_morong-diker",
+        "result": "BLOCKED",
+        "http_status": 401,
+        "error": "Invalid API key"
+      }
+    ],
+    "production_browser_audit_completed": false,
+    "wcag_certification_claim_allowed": false
+  },
+  "controls": {
+    "w9_distribution_changed": false,
+    "w9_attribution_changed": false,
+    "paid_spend_changed": false,
+    "wcag_certification_claimed": false
+  },
+  "next": "After a working browser provider is available and the pending Vercel production promotion is complete, run the real-browser desktop/mobile accessibility audit against the deployed canonical pages. Preserve static semantic validation as defense in depth but do not substitute it for manual assistive-technology testing."
+}

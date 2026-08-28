@@ -6,7 +6,7 @@
   function closeMenu(){if(!header||!toggle)return;header.classList.remove('nav-open');toggle.setAttribute('aria-expanded','false');}
   if(header&&toggle&&nav){
     toggle.addEventListener('click',function(){var open=header.classList.toggle('nav-open');toggle.setAttribute('aria-expanded',String(open));});
-    nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',closeMenu);});
+    nav.addEventListener('click',function(e){if(e.target&&e.target.closest&&e.target.closest('a'))closeMenu();});
     document.addEventListener('keydown',function(e){if(e.key==='Escape')closeMenu();});
   }
   document.querySelectorAll('[data-assessment]').forEach(function(card){
@@ -18,6 +18,90 @@
   document.querySelectorAll('[data-current-year]').forEach(function(el){el.textContent=String(new Date().getFullYear());});
 
   var path=(location.pathname.replace(/\/$/,'')||'/');
+  function safeHref(value){
+    if(typeof value!=='string'||!value.trim())return '';
+    var v=value.trim();
+    if(v.charAt(0)==='/'||v.indexOf('https://')===0||v.indexOf('http://')===0||v.indexOf('mailto:')===0)return v;
+    return '';
+  }
+  function validLink(item){return !!item&&typeof item.label==='string'&&item.label.trim().length>0&&!!safeHref(item.href);}
+  function externalize(anchor,href){if(/^https?:\/\//.test(href)){anchor.target='_blank';anchor.rel='noopener noreferrer';}}
+  function activeFor(href){
+    if(href===path||href===path+'/')return true;
+    if(href==='/insights.html'&&path.indexOf('/blog/')===0)return true;
+    return false;
+  }
+  function buildLinks(container,items){
+    if(!container||!Array.isArray(items))return;
+    var valid=items.filter(function(item){return item&&item.visible!==false&&validLink(item);}).slice(0,12);
+    if(!valid.length)return;
+    while(container.firstChild)container.removeChild(container.firstChild);
+    valid.forEach(function(item){
+      var a=document.createElement('a');
+      var href=safeHref(item.href);
+      a.textContent=item.label.trim();a.href=href;
+      if(activeFor(href))a.setAttribute('aria-current','page');
+      externalize(a,href);container.appendChild(a);
+    });
+  }
+  function buildFooterGroup(title,items){
+    var group=document.createElement('div');group.className='footer-links';
+    var strong=document.createElement('strong');strong.textContent=title;group.appendChild(strong);
+    (Array.isArray(items)?items:[]).filter(validLink).slice(0,12).forEach(function(item){
+      var a=document.createElement('a');var href=safeHref(item.href);a.textContent=item.label.trim();a.href=href;externalize(a,href);group.appendChild(a);
+    });
+    return group;
+  }
+  function applyFooter(data){
+    var footer=document.querySelector('footer');if(!footer||!data)return;
+    var brandName=(data.brand&&typeof data.brand.name==='string'&&data.brand.name.trim())||'TAYOCA';
+    var box=footer.querySelector('.footer-brand');
+    if(box){
+      var nested=box.querySelector(':scope > div:first-child');
+      if(nested)nested.textContent=brandName;else box.textContent=brandName;
+      var copy=nested?box.querySelector('p'):(box.parentElement?box.parentElement.querySelector('p'):null);
+      if(copy&&data.footer){
+        while(copy.firstChild)copy.removeChild(copy.firstChild);
+        if(typeof data.footer.description==='string'&&data.footer.description.trim()){copy.appendChild(document.createTextNode(data.footer.description.trim()));copy.appendChild(document.createElement('br'));}
+        if(typeof data.footer.location==='string'&&data.footer.location.trim()){copy.appendChild(document.createTextNode(data.footer.location.trim()));copy.appendChild(document.createElement('br'));}
+        var year=document.createElement('span');year.setAttribute('data-current-year','');year.textContent=String(new Date().getFullYear());
+        copy.appendChild(document.createTextNode('© '));copy.appendChild(year);copy.appendChild(document.createTextNode(' '+String(data.footer.copyrightName||brandName)+'.'));
+      }
+    }
+    if(data.footer){
+      var groups=footer.querySelectorAll('.footer-links');
+      var explore=buildFooterGroup('Explore',data.footer.explore);
+      var connect=buildFooterGroup('Connect',data.footer.connect);
+      if(groups[0])groups[0].replaceWith(explore);else footer.appendChild(explore);
+      groups=footer.querySelectorAll('.footer-links');
+      if(groups[1])groups[1].replaceWith(connect);else footer.appendChild(connect);
+      groups=footer.querySelectorAll('.footer-links');
+      for(var i=2;i<groups.length;i++)groups[i].remove();
+    }
+  }
+  function applySiteSettings(data){
+    if(!data||data.schemaVersion!==1||!data.brand||!Array.isArray(data.navigation)||!data.footer)return;
+    var brandName=typeof data.brand.name==='string'?data.brand.name.trim():'';
+    var home=safeHref(data.brand.homeHref||'/')||'/';
+    if(brandName){
+      document.querySelectorAll('.brand,.nav-brand').forEach(function(a){a.textContent=brandName;a.href=home;});
+    }
+    buildLinks(document.querySelector('.primary-nav'),data.navigation);
+    var cta=document.querySelector('.header-cta');
+    if(cta&&data.headerCta){
+      var href=safeHref(data.headerCta.href);
+      if(data.headerCta.visible===false){cta.hidden=true;}
+      else if(typeof data.headerCta.label==='string'&&data.headerCta.label.trim()&&href){cta.hidden=false;cta.textContent=data.headerCta.label.trim();cta.href=href;externalize(cta,href);}
+    }
+    applyFooter(data);
+    window.tayocaSiteSettings=data;
+    document.dispatchEvent(new CustomEvent('tayoca:site-settings',{detail:data}));
+  }
+  fetch('/data/site-settings.json',{headers:{'Accept':'application/json'},cache:'no-store'})
+    .then(function(response){if(!response.ok)throw new Error('Site settings unavailable: '+response.status);return response.json();})
+    .then(applySiteSettings)
+    .catch(function(error){console.warn('[Tayoca Site Settings] Static shell retained.',error);});
+
   var ecosystemPages=path==='/products.html'||path==='/assessments.html'||path==='/services.html'||path==='/sivanta.html'||path.indexOf('/products/')===0;
   if(!ecosystemPages)return;
   function ensureStage10Styles(){

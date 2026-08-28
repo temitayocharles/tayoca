@@ -1,5 +1,5 @@
-version: 6
-last_reconciled_at: '2026-08-11T19:47:00Z'
+version: 10
+last_reconciled_at: '2026-08-26T07:29:00Z'
 authority:
   repository: temitayocharles/tayoca
   git_host: forgejo.tca-infraforge.site
@@ -9,9 +9,9 @@ workflows:
     n8n_id: V28T575q7GSRFOti
     product: growth
     status: active
-    active_version: 77f42f4d-dc43-4743-a667-4fe7ce44aa44
-    rollback_version: 843c4d34-356e-4fe1-b538-71bfb1a83d93
-    validated_at: '2026-08-11T00:15:00Z'
+    active_version: db1ebbea-dc12-45d2-815b-c8608a7ee4a0
+    rollback_version: 13baa554-302b-49f8-9804-e3a52c54a9e7
+    validated_at: '2026-08-17T19:20:04Z'
     controls:
       - origin_allowlist
       - bot_honeypot_validation
@@ -19,7 +19,14 @@ workflows:
       - durable_data_table_upsert
       - bounded_public_responses
       - explicit_operator_brief_consent
-      - subscribed_unsubscribed_state
+      - operator_brief_subscription_pending_state
+      - resend_tayoca_insiders_segment_sync
+      - fail_closed_subscription_sync
+      - globally_unsubscribed_contact_suppression
+      - operator_brief_unsubscribe_segment_removal
+      - no_global_unsubscribe_on_brief_unsubscribe
+      - no_email_send_during_subscription_sync
+      - subscribed_unsubscribed_suppressed_state
       - idempotent_non_enumerating_unsubscribe
       - assessment_branch_regression_preserved
       - assessment_campaign_attribution_capture
@@ -33,7 +40,7 @@ workflows:
     status: active
     active_version: 7409faec-4e73-4fd3-a96d-1522cbea7e2a
     rollback_version: c775b67e-208a-4ee3-919c-1a53d54a685e
-    validated_at: '2026-08-11T00:15:00Z'
+    validated_at: '2026-08-17T18:50:00Z'
     controls:
       - authenticated_gumroad_sale_verification
       - tayoca_product_allowlist
@@ -49,9 +56,9 @@ workflows:
     n8n_id: MRaoY2aHm85q3QWG
     product: growth
     status: active
-    active_version: d871bac6-fe2b-4800-a525-1788c3f2dd75
-    rollback_version: b159ae03-5ea7-48f2-af46-e5794c0d4182
-    validated_at: '2026-08-11T19:41:20Z'
+    active_version: 05324cb4-d67e-4737-98bc-c537a86ba579
+    rollback_version: 5b0fa88c-fbfd-4099-8ac6-bfdce65f9723
+    validated_at: '2026-08-17T18:50:00Z'
     triggers:
       - weekly_campaign_launch
       - daily_editorial_correction_review
@@ -60,6 +67,8 @@ workflows:
       - canonical_editorial_opportunity_ledger
       - evidence_bound_generation
       - editorial_approval_before_llm_drafting
+      - editorial_approval_request_idempotency
+      - approval_pending_five_day_retry
       - separate_distribution_approval
       - restricted_source_publication_firewall
       - growth_cycle_opportunity_preference_with_legacy_fallback
@@ -83,10 +92,10 @@ workflows:
     n8n_id: Ug7hA8cXrrCIVYkI
     product: newsletter
     status: active
-    active_version: dc5d9d77-8661-4208-a114-59208078640e
-    immediate_stage9_rollback_version: f5b4b461-2983-4cba-9709-a8da819cfbb9
+    active_version: 9ec11001-24a8-47e9-920d-14d9a5bc78b9
+    rollback_version: 806b94fe-b31d-4e96-b566-e91717b4609f
     legacy_pre_stage9_digest_version: 70f8d0cd-983d-40c0-a81f-cb7ab2447f9c
-    validated_at: '2026-08-11T00:15:00Z'
+    validated_at: '2026-08-17T20:04:10Z'
     triggers:
       - weekly_operator_brief_draft
       - manual_operator_brief_generation
@@ -103,16 +112,26 @@ workflows:
       - no_publication_on_rejection
       - preserved_correction_revisions
       - original_archive_issue_not_silently_rewritten
-      - sender_domain_readiness_gate
+      - verified_tayoca_sender_domain
       - no_wrong_brand_sender_fallback
-      - no_production_email_send_until_tayoca_domain_verified
+      - exact_internal_to_resend_segment_membership_parity
+      - zero_subscriber_send_guard
+      - globally_unsubscribed_contact_delivery_block
+      - topic_scoped_resend_broadcast
+      - send_true_only_after_delivery_guard
+      - blocked_no_active_subscribers_state
+      - delivery_failed_provider_inventory_state
+      - delivery_blocked_membership_mismatch_state
+      - broadcast_accepted_state
+      - archive_not_rolled_back_on_email_failure
+      - correction_archive_only_no_automatic_broadcast
       - production_failure_monitoring
   - key: infobip-inbound-delivery-correlation
     n8n_id: W4aE4hNuFgwAxL02
     product: messaging
     status: active
     active_version: 593d0b9e-9821-4361-8141-a0ee72fb445b
-    validated_at: '2026-08-11T00:15:00Z'
+    validated_at: '2026-08-17T18:50:00Z'
     controls:
       - metadata_only_event_ledger
       - deterministic_event_id
@@ -125,7 +144,7 @@ workflows:
     product: operations
     status: active
     active_version: afd3f3f4-add9-4a81-bd18-189f8834251b
-    validated_at: '2026-08-11T00:15:00Z'
+    validated_at: '2026-08-17T18:50:00Z'
     triggers:
       - every_five_minutes_execution_monitor
       - native_error_trigger_best_effort
@@ -138,6 +157,42 @@ workflows:
       - sanitized_slack_alert
       - no_raw_execution_payload_fetch
       - sanitized_forgejo_backup
+  - key: community-website-initiative-intake
+    n8n_id: SXm45PfgY1vW86ns
+    product: growth
+    status: active
+    active_version: 3484ac1e-4516-4735-ada9-cd1b8e15dc2b
+    validated_at: '2026-08-26T06:05:00Z'
+    triggers:
+      - trusted_community_application_webhook
+    controls:
+      - origin_allowlist
+      - honeypot_validation
+      - deterministic_lead_and_opportunity_ids
+      - durable_growth_lead_upsert
+      - revenue_pipeline_persistence
+      - applicant_acknowledgement
+      - awaiting_operator_review_state
+      - personal_waha_notification_lane
+      - no_automatic_research_or_build
+      - no_slack_dependency
+  - key: community-google-form-intake-bridge
+    n8n_id: JVeeHdnxAo9Huy6S
+    product: growth
+    status: active
+    active_version: 22e5842c-6f42-47e9-9a41-6b48953c26ce
+    validated_at: '2026-08-26T07:29:00Z'
+    triggers:
+      - every_15_minutes_google_form_poll
+    controls:
+      - existing_encrypted_composio_credential
+      - google_form_response_id_deduplication
+      - community_form_ledger_idempotency
+      - attribution_preservation
+      - trusted_existing_intake_reuse
+      - ledger_write_only_after_http_202_acceptance
+      - zero_fake_applicant_certification
+      - personal_waha_downstream_notification
   - key: whatsapp-outbound-adapter
     n8n_id: aqBzNXr3ZWwRloSf
     product: messaging

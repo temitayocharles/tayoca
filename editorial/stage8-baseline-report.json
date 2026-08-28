@@ -1,0 +1,189 @@
+{
+  "stage": 8,
+  "name": "Unified Editorial Operating System",
+  "status": "GREEN",
+  "generated_at": "2026-08-10T05:55:00Z",
+  "canonical_policy": "editorial/editorial-policy.yaml",
+  "opportunity_schema": "editorial/editorial-opportunity.schema.json",
+  "workflow": {
+    "n8n_id": "MRaoY2aHm85q3QWG",
+    "name": "Tayoca Growth OS | Demand Engine & Revenue Command Center",
+    "active": true,
+    "active_version": "ed11ca77-afb3-44fe-943d-599da3e102e3",
+    "rollback_version": "745c5ebb-ce39-4421-b7b7-294007fe9b88",
+    "node_count": 46,
+    "trigger_count": 3,
+    "triggers": [
+      {"name": "Weekly Campaign Launch", "cron": "0 30 8 * * 1"},
+      {"name": "Editorial Correction Review", "cron": "0 15 13 * * *"},
+      {"name": "Weekly Executive Report", "cron": "0 0 17 * * 5"}
+    ]
+  },
+  "canonical_ledger": {
+    "spreadsheet": "Tayoca Growth OS Ledger",
+    "opportunity_tab": "Editorial Opportunities",
+    "correction_tab": "Editorial Corrections",
+    "campaign_tab": "Campaigns",
+    "content_tab": "Content Queue",
+    "opportunities_total": 20,
+    "public_verified_opportunities": 8,
+    "restricted_stage7_opportunities": 12,
+    "restricted_no_publication": 12,
+    "restricted_blocked_from_drafting": 12,
+    "public_review_required": 8,
+    "public_eligible_after_approval": 8,
+    "pending_corrections_at_baseline": 0,
+    "live_campaign_rows_at_baseline": 0,
+    "live_content_rows_at_baseline": 0
+  },
+  "required_recommendation_fields": [
+    "source",
+    "fact",
+    "evidence",
+    "commercial_significance",
+    "audience",
+    "story_angle",
+    "recommended_format",
+    "disclosure_classification",
+    "redaction_requirements",
+    "approval_state",
+    "cta",
+    "campaign_association",
+    "performance_record"
+  ],
+  "supported_formats": [
+    "newsletter",
+    "technical_article",
+    "executive_brief",
+    "case_study",
+    "product_update",
+    "linkedin_post",
+    "short_form_social_content",
+    "sales_enablement_asset",
+    "no_publication"
+  ],
+  "approval_model": {
+    "editorial_approval_before_llm_drafting": true,
+    "distribution_approval_separate": true,
+    "score_can_grant_approval": false,
+    "production_auto_publication": false,
+    "paid_media_default_budget": 0
+  },
+  "restricted_source_firewall": {
+    "stage7_records_imported": 12,
+    "automatic_llm_input": false,
+    "automatic_public_draft": false,
+    "automatic_publication": false,
+    "external_use_requires_human_disclosure_approval": true,
+    "external_use_requires_separate_public_fact_source": true
+  },
+  "channel_adaptation": {
+    "canonical_input": "one approved Editorial Opportunities record",
+    "primary_asset_follows_recommended_format": true,
+    "required_channel_adaptations": ["linkedin", "instagram", "tiktok", "youtube", "paid_social"],
+    "assets_per_approved_opportunity": 6,
+    "new_factual_claims_during_adaptation": false,
+    "traceability_fields_persisted": [
+      "opportunity_id",
+      "evidence",
+      "disclosure_classification",
+      "redaction_requirements",
+      "editorial_approval_state",
+      "recommended_format",
+      "source_fact",
+      "source_ref",
+      "editorial_revision"
+    ]
+  },
+  "corrections": {
+    "append_only_request_ledger": true,
+    "new_revision_created": true,
+    "previous_approval_inherited": false,
+    "previous_campaign_association_inherited": false,
+    "original_marked_superseded": true,
+    "corrected_record_returns_to_review_required": true,
+    "silent_history_overwrite": false
+  },
+  "tests": [
+    {
+      "execution_id": "68856",
+      "gate": "restricted repository intelligence firewall",
+      "result": "PASS",
+      "evidence": "Selector intentionally failed closed with 'No safe review-required editorial opportunity is eligible for drafting'; no downstream drafting or publication nodes executed."
+    },
+    {
+      "execution_id": "68862",
+      "gate": "editorial rejection",
+      "result": "PASS",
+      "evidence": "Rejected opportunity was marked rejected/blocked_rejected and the drafting guard emitted zero items before the model."
+    },
+    {
+      "execution_id": "68863",
+      "gate": "correction revision and supersession",
+      "result": "PASS",
+      "evidence": "Correction created r2, reset approval, cleared inherited campaign state, superseded the original, and marked the correction applied."
+    },
+    {
+      "execution_id": "68864",
+      "gate": "weekly executive report regression",
+      "result": "PASS",
+      "evidence": "PDF report build, file conversion, KPI branch, and Slack delivery path executed successfully under pin testing."
+    },
+    {
+      "execution_id": "68865",
+      "gate": "approved public opportunity model and format routing",
+      "result": "PASS_WITH_DEFECT_DISCOVERED_AND_FIXED",
+      "evidence": "The live OpenRouter/free model returned parsed JSON with primary format technical_article and all five required channel adaptations. The test exposed that the downstream parser expected a string; the parser was changed to accept parsed objects or JSON strings."
+    },
+    {
+      "execution_id": null,
+      "gate": "corrected deterministic campaign packer",
+      "result": "PASS",
+      "evidence": "The exact successful model-output shape produced six assets: editorial_primary, linkedin, instagram, tiktok, youtube, and paid_social. All retained opportunity/evidence/disclosure/CTA/approval traceability; budget remained zero."
+    }
+  ],
+  "provider_availability": {
+    "provider_route": "openrouter/free",
+    "paid_model_fallback_enabled": false,
+    "observed_issue": "Subsequent integrated positive retries after the parser fix returned intermittent upstream/test 502 Bad Gateway without an n8n execution ID.",
+    "impact": "Generation fails closed: campaign/content rows are not created, nothing is published, and paid spend is not released.",
+    "certification_basis": "The same model path successfully returned the required Stage 8 object in execution 68865, and that exact output shape passed the corrected deterministic packer. The later 502 is recorded as an external availability limitation rather than concealed or bypassed with a paid provider."
+  },
+  "downstream_traceability": {
+    "campaign_headers_extended": true,
+    "content_headers_extended": true,
+    "baseline_test_side_effects_in_live_ledger": false
+  },
+  "consolidation": {
+    "parallel_production_literature_engine_allowed": false,
+    "production_editorial_authority": "MRaoY2aHm85q3QWG",
+    "legacy_fixed_18_asset_bundle": "superseded_by_format_routing"
+  },
+  "gate": {
+    "content_opportunity_queue": true,
+    "format_routing": true,
+    "approval_lifecycle": true,
+    "fact_and_evidence_ledger": true,
+    "channel_adaptation": true,
+    "correction_workflow": true,
+    "recommendation_has_evidence": true,
+    "recommendation_has_audience": true,
+    "recommendation_has_risk": true,
+    "recommendation_has_cta": true,
+    "recommendation_has_approval_state": true,
+    "restricted_source_firewall": true,
+    "separate_distribution_approval": true,
+    "no_production_auto_publication": true,
+    "zero_default_ad_spend": true
+  },
+  "rollback": {
+    "n8n": "Republish workflow MRaoY2aHm85q3QWG version 745c5ebb-ce39-4421-b7b7-294007fe9b88.",
+    "ledger": "Stage 8 tabs and added traceability columns may remain safely because the rollback workflow does not consume them. Remove them only for a full data-plane rollback before real editorial history is accumulated.",
+    "history_safety": "After real corrections or approvals exist, do not delete Editorial Opportunities/Editorial Corrections history during rollback."
+  },
+  "limitations": [
+    "OpenRouter/free was intermittently unavailable with 502 responses during final integrated positive retries.",
+    "No paid provider fallback was introduced.",
+    "Stage 8 marks approved packages ready for controlled distribution; it does not itself implement Stage 9 distribution/publishing automation."
+  ]
+}

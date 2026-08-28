@@ -1,0 +1,24 @@
+{
+  "fixture_id": "w9-linkedin-repetition-20260817",
+  "purpose": "Regression fixture for hook/body repetition detected after the W9 LinkedIn publication. This fixture is evidence only and must not trigger mutation of the published experiment asset.",
+  "published_asset_boundary": {
+    "experiment_id": "w9-exp-001-platform-reliability-linkedin-organic",
+    "mutation_allowed": false,
+    "reason": "Active experiment content remains immutable until the separate distribution/evaluation process permits a change."
+  },
+  "input": {
+    "fact": "Published Tayoca Learning 150-point production-readiness checklist covering security, reliability, recovery, and operations.",
+    "story_angle": "Turn production readiness into an explicit review discipline across security, reliability, recovery, and operations.",
+    "cta_sentence": "Take the Platform Reliability Assessment."
+  },
+  "legacy_assembly": {
+    "hook": "Turn production readiness into an explicit review discipline across security, reliability, recovery, and operations.",
+    "body": "Published Tayoca Learning 150-point production-readiness checklist covering security, reliability, recovery, and operations. Turn production readiness into an explicit review discipline across security, reliability, recovery, and operations. Take the Platform Reliability Assessment.",
+    "expected_quality_result": "blocked"
+  },
+  "safe_future_assembly": {
+    "hook": "Turn production readiness into an explicit review discipline.",
+    "body": "Published Tayoca Learning 150-point production-readiness checklist covering security, reliability, recovery, and operations. Take the Platform Reliability Assessment.",
+    "expected_quality_result": "pass"
+  }
+}

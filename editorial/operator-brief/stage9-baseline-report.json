@@ -1,0 +1,237 @@
+{
+  "stage": 9,
+  "name": "Tayoca Operator Brief",
+  "status": "GREEN",
+  "generated_at": "2026-08-10T14:35:00Z",
+  "identity": {
+    "title": "The Tayoca Operator Brief",
+    "positioning": "Practical intelligence for leaders responsible for cloud, platforms, reliability, AI infrastructure and technology economics.",
+    "formatted_commit_digest": false,
+    "raw_repository_release_log": false
+  },
+  "recurring_sections": [
+    "operating_signal",
+    "from_the_field",
+    "technology_value",
+    "decision_memo",
+    "build_log",
+    "evidence",
+    "operator_action",
+    "tayoca_update"
+  ],
+  "public_surface": {
+    "signup_page": "public/operator-brief.html",
+    "archive_page": "public/operator-brief-archive.html",
+    "archive_marker": "OPERATOR_BRIEF_ARCHIVE_INSERT",
+    "sitemap_includes_archive": true,
+    "canonical_sitemap_pages": 34,
+    "permanent_shell_audit_execution": "69996",
+    "permanent_shell_audit_result": "PASS",
+    "permanent_shell_violations": 0,
+    "forgejo_actions_latest_stage9_surface_run_id": 101,
+    "forgejo_actions_latest_stage9_surface_run_status": "success",
+    "forgejo_actions_run_detail_note": "The run-list endpoint reported success for the Stage 9 public-surface commit. The run-detail endpoint could not resolve the same run ID, so job-level detail is not asserted here."
+  },
+  "canonical_ledger": {
+    "spreadsheet": "Tayoca Growth OS Ledger",
+    "issues_tab": "Operator Brief Issues",
+    "sections_tab": "Operator Brief Sections",
+    "calendar_tab": "Operator Brief Calendar",
+    "corrections_tab": "Operator Brief Corrections",
+    "calendar_slots_seeded": 8,
+    "live_issue_rows_at_certification": 0,
+    "live_section_rows_at_certification": 0,
+    "live_correction_rows_at_certification": 0,
+    "certification_test_rows_written_to_live_ledger": false
+  },
+  "intake_workflow": {
+    "n8n_id": "V28T575q7GSRFOti",
+    "name": "Tayoca Growth OS | Assessment & Operator Brief Intake",
+    "active_version": "843c4d34-356e-4fe1-b538-71bfb1a83d93",
+    "rollback_version": "ecc5ca41-3f3e-4ddc-bbb9-cd76c0e69a14",
+    "controls": [
+      "tayoca_origin_allowlist",
+      "honeypot_validation",
+      "explicit_operator_brief_consent",
+      "deterministic_deduplication",
+      "durable_tayoca_growth_leads_store",
+      "subscribed_unsubscribed_state",
+      "idempotent_non_enumerating_unsubscribe",
+      "assessment_branch_preserved"
+    ]
+  },
+  "publication_workflow": {
+    "n8n_id": "Ug7hA8cXrrCIVYkI",
+    "name": "Tayoca Growth OS | Operator Brief",
+    "active_version": "dc5d9d77-8661-4208-a114-59208078640e",
+    "immediate_stage9_rollback_version": "f5b4b461-2983-4cba-9709-a8da819cfbb9",
+    "legacy_pre_stage9_digest_version": "70f8d0cd-983d-40c0-a81f-cb7ab2447f9c",
+    "node_count": 52,
+    "triggers": [
+      {"name": "Weekly Operator Brief Draft", "cron": "0 9 * * 1"},
+      {"name": "Generate Operator Brief Now", "type": "manual"},
+      {"name": "Operator Brief Correction Review", "cron": "0 30 13 * * *"}
+    ],
+    "legacy_commit_digest_nodes_present": false,
+    "repository_fetch_for_issue_generation": false,
+    "llm_required_for_issue_generation": false
+  },
+  "source_governance": {
+    "canonical_input": "Stage 8 Editorial Opportunities",
+    "required_opportunity_approval_state": "approved_for_drafting",
+    "required_disclosure_classification": "public_verified",
+    "minimum_disclosure_safety_score": 80,
+    "required_draft_eligibility": "eligible_after_approval",
+    "distinct_opportunities_required_per_issue": 8,
+    "repository_intelligence_allowed_as_public_issue_input": false,
+    "stage7_restricted_material_automatic_issue_input": false,
+    "raw_commit_copy_detector": true,
+    "private_forgejo_source_detector": true,
+    "raw_private_repository_body_persistence": false
+  },
+  "approval_model": {
+    "stage8_opportunity_approval_required": true,
+    "separate_whole_issue_approval_required": true,
+    "publication_without_whole_issue_approval": false,
+    "rejected_issue_archive_access": false,
+    "approval_of_one_issue_approves_future_issues": false
+  },
+  "archive_publication": {
+    "method": "single atomic Forgejo file update after approval",
+    "file": "public/operator-brief-archive.html",
+    "uses_current_file_sha": true,
+    "duplicate_issue_guard": true,
+    "issue_marked_published_only_after_archive_write": true,
+    "real_issue_published_during_certification": false
+  },
+  "corrections": {
+    "append_only_request_ledger": true,
+    "published_issue_only_automatic_revision": true,
+    "new_issue_revision_created": true,
+    "all_eight_sections_preserved": true,
+    "only_requested_section_body_and_evidence_changed": true,
+    "new_revision_returns_to_review_required": true,
+    "fresh_human_correction_approval_required": true,
+    "original_archive_entry_silently_overwritten": false,
+    "visible_correction_notice": true,
+    "original_ledger_issue_marked_superseded_only_after_corrected_archive_publish": true,
+    "rejected_correction_leaves_original_authoritative": true
+  },
+  "email_delivery": {
+    "provider": "Resend",
+    "audience_name": "Tayoca Insiders",
+    "audience_id": "c31a4a87-565c-4486-ac7c-c7ab20185836",
+    "audience_contacts_at_certification": 0,
+    "broadcasts_at_certification": 0,
+    "required_sender_domain": "tayoca.com",
+    "tayoca_com_verified": false,
+    "observed_verified_domain": "temitayocharles.online",
+    "wrong_brand_sender_fallback_allowed": false,
+    "production_email_send_enabled": false,
+    "delivery_state": "blocked_sender_domain",
+    "note": "Signup, archive publication and issue governance are live. Outbound Operator Brief email remains intentionally fail-closed until tayoca.com is verified in Resend."
+  },
+  "tests": [
+    {
+      "execution_id": "69956",
+      "gate": "operator brief signup missing consent",
+      "result": "PASS",
+      "evidence": "Missing consent reached only the rejection branch."
+    },
+    {
+      "execution_id": "69958",
+      "gate": "operator brief consented signup",
+      "result": "PASS",
+      "evidence": "Consented signup reached the accepted subscription path only."
+    },
+    {
+      "execution_id": "69963",
+      "gate": "operator brief unsubscribe",
+      "result": "PASS",
+      "evidence": "Unsubscribe path updated subscription state and returned a non-enumerating response."
+    },
+    {
+      "execution_id": "69965",
+      "gate": "assessment intake regression",
+      "result": "PASS",
+      "evidence": "Existing assessment intake remained functional after Operator Brief subscription changes."
+    },
+    {
+      "execution_id": "69978",
+      "gate": "restricted-source and eight-evidence firewall",
+      "result": "PASS",
+      "evidence": "A Stage 7 restricted record was excluded, leaving seven safe records; issue generation failed closed before drafting."
+    },
+    {
+      "execution_id": "69980",
+      "gate": "whole-issue rejection",
+      "result": "PASS",
+      "evidence": "Eight complete evidence-backed sections were produced, the whole issue was rejected, the publication guard emitted zero items, and archive access did not execute."
+    },
+    {
+      "execution_id": "69981",
+      "gate": "approved complete issue publication simulation",
+      "result": "PASS",
+      "evidence": "Eight distinct approved evidence records produced eight canonical sections; a synthetic archive was updated atomically; the simulated issue became published; email remained blocked_sender_domain. All external writes were pinned."
+    },
+    {
+      "execution_id": "69991",
+      "gate": "correction rejection",
+      "result": "PASS",
+      "evidence": "A proposed r2 revision was created for review, rejection stopped before archive access, and the original published issue remained authoritative."
+    },
+    {
+      "execution_id": "69992",
+      "gate": "approved correction preservation simulation",
+      "result": "PASS",
+      "evidence": "A corrected r2 revision changed only the requested section body/evidence, preserved the original synthetic archive entry, appended a visible correction notice, then marked the new revision published and original ledger issue superseded. External writes were pinned."
+    },
+    {
+      "execution_id": "69995",
+      "gate": "live real-ledger fail-closed check",
+      "result": "PASS",
+      "evidence": "The active workflow read the real Stage 8 ledger, found zero currently approved_for_drafting public opportunities, and stopped before issue/section writes or approval requests."
+    },
+    {
+      "execution_id": "69996",
+      "gate": "permanent canonical public-shell audit",
+      "result": "PASS",
+      "evidence": "All 34 canonical sitemap pages passed with zero shell violations, including operator-brief-archive.html."
+    }
+  ],
+  "consolidation": {
+    "legacy_active_workflow_name_found": false,
+    "weekly_newsletter_draft_generator_active": false,
+    "operator_brief_workflows_found": [
+      "V28T575q7GSRFOti",
+      "Ug7hA8cXrrCIVYkI"
+    ],
+    "inactive_bootstrap_utility_is_production_authority": false,
+    "legacy_newsletter_deprecation_note": "editorial/operator-brief/legacy-newsletter-deprecation.md"
+  },
+  "rollback": {
+    "intake": "Republish V28T575q7GSRFOti version ecc5ca41-3f3e-4ddc-bbb9-cd76c0e69a14 for a full intake rollback.",
+    "operator_brief_immediate": "Republish Ug7hA8cXrrCIVYkI version f5b4b461-2983-4cba-9709-a8da819cfbb9 to remove the correction branch while retaining Stage 9 governed issue production.",
+    "operator_brief_full_stage9": "Version 70f8d0cd-983d-40c0-a81f-cb7ab2447f9c is preserved only as the pre-Stage-9 historical digest rollback. Reverting to it would intentionally restore the superseded commit-digest behaviour and should not be used as the normal Stage 9 rollback.",
+    "data_history": "Do not delete Operator Brief Issues, Sections, Calendar or Corrections after real history exists. Rollback workflow code without erasing governed publication/correction records."
+  },
+  "gate": {
+    "newsletter_identity": true,
+    "issue_template": true,
+    "signup_flow": true,
+    "archive": true,
+    "editorial_calendar": true,
+    "draft_review_publish_workflow": true,
+    "analytics": true,
+    "subscription_governance": true,
+    "deliverability_controls": true,
+    "corrections": true,
+    "complete_evidence_backed_issue_without_raw_commit_copying": true,
+    "publication_without_approval_forbidden": true
+  },
+  "limitations": [
+    "tayoca.com is not yet a verified Resend sender domain, so production Operator Brief email delivery is intentionally blocked.",
+    "No real Stage 9 issue was published during certification because the real Stage 8 public opportunities have not yet received human approved_for_drafting decisions.",
+    "Newsletter-assisted executive conversion reporting remains Stage 12 scope."
+  ]
+}

@@ -1,0 +1,151 @@
+{
+  "stage": 10,
+  "name": "Product ecosystem",
+  "status": "GREEN",
+  "certified_at": "2026-08-10T20:36:00Z",
+  "acceptance_gate": "Every product has a coherent commercial role and does not appear as an unrelated side project.",
+  "canonical_source": {
+    "repository": "temitayocharles/tayoca",
+    "host": "forgejo.tca-infraforge.site",
+    "authority": "primary",
+    "source_of_truth_record": "docs/repository-source-of-truth.yaml"
+  },
+  "ecosystem": {
+    "registry": "public/data/product-ecosystem.json",
+    "families": [
+      {"id": "operator-tools", "name": "Operator Tools", "product_count": 1},
+      {"id": "operator-playbooks", "name": "Operator Playbooks", "product_count": 8},
+      {"id": "executive-assessments", "name": "Executive Assessments", "product_count": 3},
+      {"id": "managed-operations", "name": "Managed Operations", "product_count": 4}
+    ],
+    "product_count": 16,
+    "required_commercial_controls": [
+      "buyer",
+      "problem",
+      "deliverable",
+      "time_to_value",
+      "evidence",
+      "pricing_method",
+      "boundaries",
+      "next_action"
+    ],
+    "required_control_count_per_product": 8,
+    "shared_renderer": "public/tayoca-site.js",
+    "shared_styles": "public/assets/css/site-shell.css",
+    "structural_validator": "scripts/validate_product_ecosystem.py"
+  },
+  "forgejo_validation": {
+    "structural_ci_commit": "5f63acdaa302b4329c45b03b4355bf94aa97ebec",
+    "structural_ci_result": "PASS",
+    "validated_families": 4,
+    "validated_products": 16,
+    "validated_playbook_pages": 8,
+    "permanent_shell_audit_execution": "70252",
+    "canonical_sitemap_pages": 34,
+    "shell_violations": 0
+  },
+  "production_deployment": {
+    "secondary_repository": "github.com/temitayocharles/tayoca",
+    "secondary_authority": "mirror/fallback only; not source of truth",
+    "initial_stage10_commit": "87f7dc530595450640a5fe393f78ebb482365e71",
+    "initial_stage10_deployment": "dpl_6d19qsLDr1Npn6ahudXz44xrpDi5",
+    "initial_deployment_state": "READY_PROMOTED_BUT_RENDER_INCOMPLETE",
+    "root_cause": "The Stage 10 registry, renderer and styles were mirrored to GitHub, but 11 commercial HTML surfaces remained on an older GitHub page set and did not load /tayoca-site.js. Assessments was the only Stage 10 surface already loading the shared runtime.",
+    "repair_strategy": "Apply one deterministic compatibility commit to the 11 stale GitHub commercial pages, preserving their existing body content while installing the canonical site shell, main landmark, shared site-shell stylesheet and /tayoca-site.js runtime. Forgejo remains canonical.",
+    "repair_commit": "088c132063c7be569cbd42200b6567c53ceaf1d3",
+    "repair_changed_paths": 11,
+    "repair_blob_verification": "PASS; all 11 GitHub path_status blob SHAs matched the locally computed deterministic repair package; no partial write and retry_count=0.",
+    "final_deployment": "dpl_FNmN4BJyCooEX2nSGtHtJEPxauBe",
+    "final_source_sha": "088c132063c7be569cbd42200b6567c53ceaf1d3",
+    "final_state": "READY",
+    "final_substate": "PROMOTED",
+    "target": "production",
+    "aliases": ["tayoca.com", "www.tayoca.com"],
+    "blocking_vercel_checks": 0
+  },
+  "rendered_production_qa": {
+    "providers": ["Firecrawl", "Cloudflare Browser Rendering"],
+    "browserless_required": false,
+    "products": {
+      "result": "PASS",
+      "cache_bypass": "?stage10=088c132063c7be569cbd42200b6567c53ceaf1d3",
+      "heading": "Choose the commercial path that fits the problem",
+      "ecosystem_selector_present": true,
+      "operator_playbooks_anchor_present": true,
+      "four_family_heading_present": true,
+      "family_names_present": ["Operator Tools", "Operator Playbooks", "Executive Assessments", "Managed Operations"]
+    },
+    "assessments": {
+      "result": "PASS",
+      "governed_products": 3,
+      "all_eight_control_labels_present": true
+    },
+    "services": {
+      "result": "PASS",
+      "managed_operations_present": true,
+      "managed_products_present": ["FinOps Operations", "Reliability Operations", "Platform Operations", "Automation Governance"],
+      "all_eight_control_labels_present": true
+    },
+    "sivanta": {
+      "result": "PASS",
+      "family": "Operator Tools",
+      "all_eight_control_labels_present": true,
+      "stale_rendered_claims_present": false,
+      "stale_claims_checked": [
+        "24/7 basic support",
+        "24/7 support (chat + email)",
+        "24/7 chat + email",
+        "SLA-backed SLAs including uptime"
+      ],
+      "safe_replacements_present": [
+        "Community support",
+        "Plan-level chat + email support",
+        "Support and SLA terms defined in the signed plan"
+      ]
+    },
+    "kubernetes_workbook": {
+      "result": "PASS",
+      "family": "Operator Playbooks",
+      "commercial_role_present": true,
+      "all_eight_control_labels_present": true
+    },
+    "firecrawl_postload_batch_log": "log_pI1x9XmWbFXj",
+    "firecrawl_products_cache_bypass_log": "log_ye4F12dncx4x",
+    "cloudflare_note": "Cloudflare Browser Rendering independently confirmed the repaired canonical shell on Sivanta but hit provider rate limit code 2001 on four parallel requests; Firecrawl post-load renders completed the five-page certification."
+  },
+  "commercial_integrity": {
+    "flat_unrelated_catalog_replaced_by_family_map": true,
+    "all_products_have_commercial_role": true,
+    "all_products_have_required_controls": true,
+    "assessment_family_governed": true,
+    "managed_operations_family_governed": true,
+    "sivanta_governed_as_operator_tool": true,
+    "playbooks_governed_as_one_family": true,
+    "unsupported_sivanta_24x7_or_sla_copy_visible_after_render": false
+  },
+  "mirror_hygiene": {
+    "forgejo_remains_primary": true,
+    "github_is_not_promoted_to_authority": true,
+    "github_repair_is_full_canonical_source_sync": false,
+    "note": "The GitHub repair is a bounded production compatibility layer over the older secondary page bodies. A future controlled mirror reconciliation may replace those pages with exact Forgejo canonical bodies; doing so should preserve the Stage 10 runtime/shell contract and must not change Forgejo authority."
+  },
+  "rollback": {
+    "unsafe_partial_stage10_target": "87f7dc530595450640a5fe393f78ebb482365e71 / dpl_6d19qsLDr1Npn6ahudXz44xrpDi5 must not be used as a normal rollback because it leaves Stage 10 runtime assets deployed while 11 commercial pages do not load the runtime.",
+    "production_repair_recovery": "If a later secondary-mirror deployment regresses the 11 compatibility pages, reapply or cherry-pick repair commit 088c132063c7be569cbd42200b6567c53ceaf1d3 onto the current GitHub deployment branch, then require rendered QA before promotion.",
+    "full_stage10_removal": "If Stage 10 must be intentionally removed, use the previously certified Stage 6 production baseline/deployment rather than the incomplete 87f7dc Stage 10 deployment; document that this is a feature rollback, not a Stage 10-preserving rollback.",
+    "canonical_data": "Do not delete public/data/product-ecosystem.json or its commercial evidence when rolling back a secondary deployment. Forgejo remains the authoritative history."
+  },
+  "gate": {
+    "four_exact_product_families": true,
+    "sixteen_products_governed": true,
+    "eight_controls_per_product": true,
+    "coherent_commercial_role_per_product": true,
+    "no_unrelated_side_project_presentation": true,
+    "forgejo_structural_validation": true,
+    "canonical_shell_validation": true,
+    "production_rendered_ux": true,
+    "production_deployment_promoted": true,
+    "blocking_deployment_checks": false,
+    "passed": true
+  }
+}
