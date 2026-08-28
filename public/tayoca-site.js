@@ -3,11 +3,23 @@
   var header=document.querySelector('.site-header');
   var toggle=document.querySelector('.menu-toggle');
   var nav=document.querySelector('.primary-nav');
-  function closeMenu(){if(!header||!toggle)return;header.classList.remove('nav-open');toggle.setAttribute('aria-expanded','false');}
+  function closeMenu(){
+    if(!header||!toggle)return;
+    header.classList.remove('nav-open');
+    toggle.setAttribute('aria-expanded','false');
+    toggle.setAttribute('aria-label','Open navigation');
+  }
   if(header&&toggle&&nav){
-    toggle.addEventListener('click',function(){var open=header.classList.toggle('nav-open');toggle.setAttribute('aria-expanded',String(open));});
+    toggle.addEventListener('click',function(){
+      var open=header.classList.toggle('nav-open');
+      toggle.setAttribute('aria-expanded',String(open));
+      toggle.setAttribute('aria-label',open?'Close navigation':'Open navigation');
+    });
     nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',closeMenu);});
     document.addEventListener('keydown',function(e){if(e.key==='Escape')closeMenu();});
+    document.addEventListener('click',function(e){
+      if(header.classList.contains('nav-open')&&!header.contains(e.target))closeMenu();
+    });
   }
   document.querySelectorAll('[data-assessment]').forEach(function(card){
     card.addEventListener('click',function(){
