@@ -13,7 +13,7 @@ workspace; no production access, no live n8n access, no Control Center access.
 | Gate | Command | Result |
 |---|---|---|
 | Tracked secrets | `python3 scripts/scan_tracked_secrets.py` | **PASS** — "Tracked-secret gate passed: no high-confidence tracked secret material found." |
-| Static site | `python3 scripts/validate_static_site.py` | **PASS** — "Validated 36 canonical pages, 219 tracked files, Stage 4 blocked-claim exclusions, Stage 5 shell conformance, and internal links." |
+| Static site | `python3 scripts/validate_static_site.py` | **PASS** — "Validated 36 canonical pages, 239 tracked files, Stage 4 blocked-claim exclusions, Stage 5 shell conformance, and internal links." |
 | Analytics coverage | `python3 scripts/validate_analytics_coverage.py` | **PASS** — "Validated GA4 coverage for 36 canonical sitemap URLs." |
 | Product ecosystem (Stage 10) | `python3 scripts/validate_product_ecosystem.py` | **PASS** — "4 families, 16 products, 8 commercial controls per product, 8/8 playbook pages governed, shared runtime/style contract present." |
 | **Company ecosystem (new, schema 2)** | `python3 scripts/validate_company_ecosystem.py` | **PASS** — "identity, 3 practices, services, segments, 7 portfolio items, 8 publications, 12 insights, 7 related-ecosystem items classified, newsletter, community and evidence surfaces resolve; disclosure firewall, withdrawn-proof isolation, runtime-inventory wording and the control-center security boundary all hold." |
