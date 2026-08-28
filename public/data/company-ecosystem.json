@@ -1,0 +1,613 @@
+{
+  "schema_version": 2,
+  "name": "Tayoca Company Ecosystem",
+  "description": "Company-level registry: identity, practices, services, portfolio, publications, editorial, newsletter, community, evidence surfaces and the project-classification model. Additive to the locked commercial catalogue (product-ecosystem.json).",
+  "updated_at": "2026-08-28",
+  "source_of_truth": "Forgejo temitayocharles/tayoca (public/** is canonical content; this file is the metadata registry)",
+  "authority_note": "This file is a design/reconciliation artefact produced on the GitHub external workspace. It does not override canonical Forgejo policy, docs/TAYOCA_PROGRAM_AUTHORITY.md or docs/tayoca-program-state.yaml.",
+  "company": {
+    "name": "Tayoca",
+    "wordmark": "TAYOCA",
+    "tagline": "An engineering-led technology company that builds software, systems and knowledge for reliable, accountable technology operations.",
+    "positioning": "Tayoca helps organizations make complex technology reliable, economically accountable, secure and operationally scalable.",
+    "identity": "engineering_led_technology_company_and_builder",
+    "founder": {
+      "public_name": "Temitayo Charles",
+      "role": "Founder, Tayoca",
+      "email": "temitayo@tayoca.com",
+      "location": "Ontario, Canada"
+    },
+    "location": "Ontario, Canada",
+    "serves": [
+      "Canada",
+      "Worldwide"
+    ],
+    "business_expressions": [
+      "client_delivery_and_application_development",
+      "ai_agents_automation_rag_llmops",
+      "finops_and_technology_value",
+      "platform_reliability_devsecops_kubernetes_gitops",
+      "software_products_ventures_projects",
+      "publications_books_labs_guides",
+      "technical_editorial_and_operator_brief",
+      "community_initiatives",
+      "teaching_and_enablement",
+      "internal_operating_systems"
+    ]
+  },
+  "practices": [
+    {
+      "id": "technology-value-finops",
+      "name": "Technology Value & FinOps",
+      "summary": "Cloud economics, cost visibility, unit economics and technology-value decisions with explicit evidence boundaries.",
+      "surface": "/services.html"
+    },
+    {
+      "id": "platform-reliability-devsecops",
+      "name": "Platform Reliability & DevSecOps",
+      "summary": "Platform engineering, reliability, recovery, Kubernetes, GitOps, observability and delivery controls.",
+      "surface": "/services.html"
+    },
+    {
+      "id": "agentic-operations-automation",
+      "name": "Agentic Operations & Automation",
+      "summary": "Bounded AI and workflow automation with quality boundaries, failure behaviour, observability and human escalation.",
+      "surface": "/services.html"
+    }
+  ],
+  "services": [
+    {
+      "id": "cloud-cost-optimization",
+      "name": "Cloud Cost Optimization",
+      "price": "$5,000 flat fee",
+      "practice": "technology-value-finops",
+      "surface": "/services.html"
+    },
+    {
+      "id": "gitops-devsecops-platform",
+      "name": "GitOps & DevSecOps Platform",
+      "price": "$8,000+ fixed scope",
+      "practice": "platform-reliability-devsecops",
+      "surface": "/services.html"
+    },
+    {
+      "id": "ai-automation-pilot",
+      "name": "AI Automation / RAG / LLMOps Pilot",
+      "price": "From $5,000",
+      "practice": "agentic-operations-automation",
+      "surface": "/services.html"
+    },
+    {
+      "id": "technology-value-assessment",
+      "name": "Technology Value Assessment",
+      "kind": "assessment",
+      "surface": "/assessments.html"
+    },
+    {
+      "id": "cloud-ai-cost-assessment",
+      "name": "Cloud & AI Cost Assessment",
+      "kind": "assessment",
+      "surface": "/assessments.html"
+    },
+    {
+      "id": "platform-reliability-assessment",
+      "name": "Platform Reliability Assessment",
+      "kind": "assessment",
+      "surface": "/assessments.html"
+    }
+  ],
+  "segments": [
+    {
+      "id": "growth-stage-technology",
+      "name": "Growth-stage technology",
+      "surface": "/segments/growth-stage-technology.html"
+    },
+    {
+      "id": "regulated-operations",
+      "name": "Regulated & operationally sensitive",
+      "surface": "/segments/regulated-operations.html"
+    },
+    {
+      "id": "ai-enabled-engineering",
+      "name": "AI-enabled teams",
+      "surface": "/segments/ai-enabled-engineering.html"
+    }
+  ],
+  "classification_model": {
+    "purpose": "Keep existence, ownership confidence, disclosure permission, public classification and publication status as separate decisions so unresolved projects are neither forgotten nor prematurely published.",
+    "fields": {
+      "existence": "verified | reported | unconfirmed",
+      "technical_nature": "what the thing actually is (macOS application, web app, marketplace, automation platform, CMS, infrastructure tooling, placeholder)",
+      "source": "canonical Forgejo repository, GitHub mirror, public live surface, or internal record",
+      "owner_relationship_confidence": "confirmed | probable | unconfirmed",
+      "tayoca_relationship": "owned | built_by_tayoca | advised | contributed | collaborated | internal | unrelated_pending_confirmation",
+      "disclosure_permission": "granted | not_granted | unresolved | not_required",
+      "public_classification": "owned_product | venture_build | publication | community_initiative | internal_system | experiment | third_party | unclassified",
+      "publication_status": "published | staged | recorded_not_published | withdrawn",
+      "recommended_destination_if_approved": "where it belongs in the site IA if disclosure is granted"
+    },
+    "rule": "An item may be real, material and still absent from the public site. Recording it here is the deliberate alternative to publishing it."
+  },
+  "portfolio": [
+    {
+      "id": "sivanta",
+      "name": "Sivanta",
+      "kind": "owned_product",
+      "status": "active",
+      "summary": "Conversation-led commerce automation: governed multi-channel conversation flows with a skill registry, policy layer, checkout and human handoff.",
+      "surface": "/sivanta.html",
+      "evidence": [
+        "/sivanta.html",
+        "public/data/product-ecosystem.json#operator-tools"
+      ],
+      "existence": "verified",
+      "technical_nature": "multi-tenant conversation-led commerce automation platform",
+      "source": "public site surface + product ecosystem registry",
+      "owner_relationship_confidence": "confirmed",
+      "tayoca_relationship": "owned",
+      "disclosure_permission": "granted",
+      "public_classification": "owned_product",
+      "publication_status": "published",
+      "recommended_destination_if_approved": "/sivanta.html (already published)"
+    },
+    {
+      "id": "sitesupply",
+      "name": "SiteSupply",
+      "kind": "venture_build",
+      "status": "in_market",
+      "summary": "A B2B construction procurement marketplace built around comparable quotes, for buyers and suppliers across Canada and the United States.",
+      "surface": "/work.html",
+      "evidence": [
+        "editorial/media-distribution-policy.yaml",
+        "docs/w10-accessibility-remediation-result-2026-08-17.json"
+      ],
+      "existence": "verified",
+      "technical_nature": "B2B construction procurement marketplace (web application)",
+      "source": "public repository under a third-party account; referenced in canonical Forgejo policy files",
+      "owner_relationship_confidence": "unconfirmed",
+      "tayoca_relationship": "unrelated_pending_confirmation",
+      "disclosure_permission": "unresolved",
+      "public_classification": "venture_build",
+      "publication_status": "published_neutral",
+      "public_label": "Project / build · In market",
+      "recommended_destination_if_approved": "/work.html (portfolio, once ownership and naming are confirmed)",
+      "note": "Neutral classification retained. A SiteSupply launch article exists only in divergent GitHub history (PR #12 lineage) and is NOT present in current canonical main; it is therefore not restored or linked by this redesign. See the reconciliation report."
+    },
+    {
+      "id": "operator-brief",
+      "name": "The Operator Brief",
+      "kind": "publication",
+      "status": "active",
+      "summary": "Tayoca's newsletter: eight-section weekly briefings for leaders responsible for cloud, platforms, reliability, AI infrastructure and technology economics.",
+      "surface": "/operator-brief.html",
+      "evidence": [
+        "/operator-brief.html",
+        "/operator-brief-archive.html"
+      ],
+      "existence": "verified",
+      "technical_nature": "email publication with public archive",
+      "source": "site surfaces + editorial policy",
+      "owner_relationship_confidence": "confirmed",
+      "tayoca_relationship": "owned",
+      "disclosure_permission": "granted",
+      "public_classification": "publication",
+      "publication_status": "published",
+      "recommended_destination_if_approved": "/operator-brief.html (already published)"
+    },
+    {
+      "id": "operator-playbooks-catalogue",
+      "name": "Operator Playbooks catalogue",
+      "kind": "publication",
+      "status": "published",
+      "summary": "Eight implementation-focused books, workbooks, lab packs and checklists for Kubernetes, AI automation, cloud cost, GitOps and DevOps operations.",
+      "surface": "/products.html",
+      "evidence": [
+        "/products.html",
+        "public/data/product-ecosystem.json#operator-playbooks"
+      ],
+      "existence": "verified",
+      "technical_nature": "digital publications",
+      "source": "site surfaces + registry",
+      "owner_relationship_confidence": "confirmed",
+      "tayoca_relationship": "owned",
+      "disclosure_permission": "granted",
+      "public_classification": "publication",
+      "publication_status": "published",
+      "recommended_destination_if_approved": "/products.html (already published)"
+    },
+    {
+      "id": "community-websites",
+      "name": "Free Website Initiative",
+      "kind": "community_initiative",
+      "status": "open_intake",
+      "summary": "Round 01: ten free, research-first website core builds for local Ontario small businesses, with no required paid add-ons.",
+      "surface": "/community/websites",
+      "evidence": [
+        "/community/websites"
+      ],
+      "existence": "verified",
+      "technical_nature": "community programme with Google Form intake",
+      "source": "site surface + community intake bridge",
+      "owner_relationship_confidence": "confirmed",
+      "tayoca_relationship": "owned",
+      "disclosure_permission": "granted",
+      "public_classification": "community_initiative",
+      "publication_status": "published",
+      "recommended_destination_if_approved": "/community/websites (already published)"
+    },
+    {
+      "id": "tayoca-control-center",
+      "name": "Tayoca Control Center",
+      "kind": "internal_system",
+      "status": "active",
+      "summary": "The internal operating console used to publish and govern this site: structured website content, global site settings, navigation and footer configuration, media, revision history and restore, plus automation and workflow operations.",
+      "surface": "/work.html",
+      "evidence": [
+        "docs/control-center-production-handoff-20260828.md",
+        "docs/control-center-status-note.yaml",
+        "public/data/site-settings.json"
+      ],
+      "existence": "verified",
+      "technical_nature": "access-gated internal CMS and operations console",
+      "source": "canonical handoff document; production line checkpoint 6cae0f71d7b60cec62c783de925780835075e96c",
+      "owner_relationship_confidence": "confirmed",
+      "tayoca_relationship": "internal",
+      "disclosure_permission": "not_required",
+      "public_classification": "internal_system",
+      "publication_status": "published_descriptive_only",
+      "recommended_destination_if_approved": "Describe for context on /work.html; do not link as a public showcase",
+      "note": "Production-deployed and access-gated (Cloudflare Access). This workspace does not redesign, rebuild, replace or authenticate against it."
+    },
+    {
+      "id": "tayoca-control-plane",
+      "name": "Automation and intelligence fabric",
+      "kind": "internal_system",
+      "status": "active",
+      "summary": "Workflow orchestration connecting website forms, the source repository, editorial approval, community intake, revenue operations, reviews and project intelligence, with recovery and audit behaviour defined in policy.",
+      "surface": "/work.html",
+      "evidence": [
+        "automation/n8n/workflow-registry.yaml",
+        "docs/workflow-reliability-and-recovery.yaml"
+      ],
+      "existence": "verified",
+      "technical_nature": "workflow orchestration estate",
+      "source": "repository registry (declared snapshot) + reliability policy",
+      "owner_relationship_confidence": "confirmed",
+      "tayoca_relationship": "internal",
+      "disclosure_permission": "not_required",
+      "public_classification": "internal_system",
+      "publication_status": "published_descriptive_only",
+      "recommended_destination_if_approved": "Describe for context on /work.html; no workflow inventory claims"
+    }
+  ],
+  "products": {
+    "registry": "/data/product-ecosystem.json",
+    "catalogue_surface": "/products.html",
+    "owned_software": [
+      "sivanta"
+    ],
+    "note": "Commercial families, pricing and next actions remain governed by the locked Stage 10 registry. This file does not duplicate or modify that contract."
+  },
+  "publications": [
+    {
+      "id": "kubernetes-operators-workbook",
+      "name": "Kubernetes Operator's Workbook, Second Edition",
+      "page": "/products/kubernetes-operators-workbook.html",
+      "commercial_role": "Production-minded Kubernetes practice for operators who need troubleshooting and recovery judgment, not command memorization.",
+      "kind": "publication"
+    },
+    {
+      "id": "ai-automation-career-playbook",
+      "name": "AI Automation Career Playbook",
+      "page": "/products/ai-automation-career-playbook.html",
+      "commercial_role": "A structured execution system for technical professionals moving into AI automation work.",
+      "kind": "publication"
+    },
+    {
+      "id": "n8n-mcp-kubernetes-teaching-pack",
+      "name": "n8n MCP Kubernetes Teaching Pack",
+      "page": "/products/n8n-mcp-kubernetes-teaching-pack.html",
+      "commercial_role": "A ready-to-adapt teaching and enablement system for n8n, MCP and Kubernetes integration.",
+      "kind": "publication"
+    },
+    {
+      "id": "build-break-fix-devops-lab-pack",
+      "name": "Build, Break, Fix: DevOps Practice Lab Pack",
+      "page": "/products/build-break-fix-devops-lab-pack.html",
+      "commercial_role": "Deliberate troubleshooting practice for engineers who need stronger incident diagnosis and recovery judgment.",
+      "kind": "publication"
+    },
+    {
+      "id": "aws-cost-optimization-playbook",
+      "name": "AWS Cost Optimization Playbook",
+      "page": "/products/aws-cost-optimization-playbook.html",
+      "commercial_role": "A self-service FinOps operating guide for teams that need an evidence-backed savings backlog before buying consulting or managed operations.",
+      "kind": "publication"
+    },
+    {
+      "id": "devops-incident-runbook-template",
+      "name": "DevOps Incident Runbook Template",
+      "page": "/products/devops-incident-runbook-template.html",
+      "commercial_role": "A reusable incident operating structure for teams replacing ad hoc response with explicit roles, evidence and recovery checkpoints.",
+      "kind": "publication"
+    },
+    {
+      "id": "kubernetes-production-readiness-checklist",
+      "name": "Kubernetes Production Readiness Checklist",
+      "page": "/products/kubernetes-production-readiness-checklist.html",
+      "commercial_role": "A structured pre-production and review control for teams that need explicit Kubernetes readiness evidence and remediation ownership.",
+      "kind": "publication"
+    },
+    {
+      "id": "gitops-field-guide",
+      "name": "GitOps Field Guide",
+      "page": "/products/gitops-field-guide.html",
+      "commercial_role": "A production-oriented GitOps operating guide for teams that need clear source-of-truth, release governance and recovery patterns.",
+      "kind": "publication"
+    }
+  ],
+  "insights": {
+    "surface": "/blog/",
+    "articles": [
+      {
+        "url": "/blog/ai-automation-career-roadmap.html",
+        "title": "AI Automation Career Roadmap: From DevOps Engineer to AI Solutions Architect – Tayoca",
+        "status": "published"
+      },
+      {
+        "url": "/blog/cka-practice-beyond-memorization.html",
+        "title": "CKA Practice Beyond Memorization: Train the Operator Behind the Commands | Tayoca",
+        "status": "published"
+      },
+      {
+        "url": "/blog/cloud-cost-optimization-playbook.html",
+        "title": "AWS Cloud Cost Optimization Playbook | Tayoca Insights",
+        "status": "published"
+      },
+      {
+        "url": "/blog/devops-incident-response-runbook.html",
+        "title": "DevOps Incident Response Runbook: From Alert to Resolution in 15 Minutes | Temitayo Charles Akinniranye",
+        "status": "superseded_by_product_page",
+        "canonical_destination": "/products/devops-incident-runbook-template.html"
+      },
+      {
+        "url": "/blog/etcd-backup-restore-lab.html",
+        "title": "etcd Backup and Restore Lab for Kubernetes Administrators | Tayoca",
+        "status": "published"
+      },
+      {
+        "url": "/blog/gitops-beyond-hello-world.html",
+        "title": "GitOps Beyond Hello World – Practical Patterns Tayoca Runs in Production – Tayoca",
+        "status": "published"
+      },
+      {
+        "url": "/blog/kubernetes-incident-response-practice.html",
+        "title": "Kubernetes Incident Response Practice: From Alert to Recovery Proof | Tayoca",
+        "status": "published"
+      },
+      {
+        "url": "/blog/kubernetes-interview-scenarios.html",
+        "title": "Kubernetes Interview Scenarios: 12 Production Questions and Answer Patterns | Tayoca",
+        "status": "published"
+      },
+      {
+        "url": "/blog/kubernetes-production-checklist.html",
+        "title": "Kubernetes Production Checklist: 37 Items to Ship Reliably – Tayoca",
+        "status": "published"
+      },
+      {
+        "url": "/blog/kubernetes-production-readiness-checklist-for-2026.html",
+        "title": "Kubernetes Production Readiness Checklist for 2026 | Tayoca",
+        "status": "published"
+      },
+      {
+        "url": "/blog/kubernetes-troubleshooting-labs.html",
+        "title": "Kubernetes Troubleshooting Labs: A Production-Style Practice System | Tayoca",
+        "status": "published"
+      },
+      {
+        "url": "/blog/n8n-mcp-kubernetes.html",
+        "title": "n8n MCP + Kubernetes: Self-Hosted AI Agent Infrastructure | Temitayo Charles Akinniranye",
+        "status": "published"
+      }
+    ],
+    "withdrawn_or_superseded": [
+      {
+        "url": "/blog/how-we-saved-216k-aws.html",
+        "title": "Case Study Under Evidence Review | Tayoca",
+        "proof_status": "withdrawn_pending_verification"
+      },
+      {
+        "url": "/blog/how-we-saved-216k-on-aws-in-90-days.html",
+        "title": "Case Study Under Evidence Review | Tayoca",
+        "proof_status": "withdrawn_pending_verification"
+      }
+    ],
+    "note": "Withdrawn quantified narratives remain published as articles but are not used as proof. One legacy article redirects to its canonical product page."
+  },
+  "newsletter": {
+    "name": "The Tayoca Operator Brief",
+    "surface": "/operator-brief.html",
+    "archive_surface": "/operator-brief-archive.html",
+    "cadence": "Weekly",
+    "sections": 8,
+    "published_issues": 1,
+    "latest_issue": "operator-brief-2026-08-17",
+    "intake_contract": "POST https://n8n.tca-infraforge.site/webhook/tayoca/growth/operator-brief (email, interest, consent, website honeypot)",
+    "unsubscribe_contract": "POST https://n8n.tca-infraforge.site/webhook/tayoca/growth/operator-brief/unsubscribe (non-enumerating response)"
+  },
+  "community": [
+    {
+      "id": "free-website-initiative",
+      "name": "Free Website Initiative for Local Ontario Small Businesses",
+      "round": "01",
+      "status": "open_intake",
+      "slots": 10,
+      "build_fee": "$0 core build",
+      "approach": "Research first; business-specific design; no required paid add-ons",
+      "intake": "Google Form (bridged by the n8n community intake workflow)",
+      "surface": "/community/websites",
+      "intake_url": "https://docs.google.com/forms/d/e/1FAIpQLSeTyWlIZzI8uz4zNRiLXaNdIAw3NuPDIRxnuemwIb7c-IW64Q/viewform"
+    }
+  ],
+  "evidence": {
+    "results_standard": "/results.html",
+    "trust_center": "/trust.html",
+    "reviews": {
+      "surface": "/reviews.html",
+      "endpoint": "https://n8n.tca-infraforge.site/webhook/tayoca/reviews/public",
+      "verification": "Relationship-verified; explicit publication consent; unverified events fail closed"
+    },
+    "policy": "Public claims require a traceable source, approval, disclosure classification and a correction path (docs/evidence-policy.md).",
+    "note": "The quantified AWS case-study narrative remains withdrawn from proof use pending re-verification."
+  },
+  "ctas": {
+    "assessment": {
+      "label": "Start an Assessment",
+      "href": "/assessments.html",
+      "event": "header_assessment"
+    },
+    "consultation": {
+      "label": "Book a Consultation",
+      "href": "https://cal.com/tayoca/finops-audit"
+    },
+    "operator_brief": {
+      "label": "Join the Operator Brief",
+      "href": "/operator-brief.html"
+    },
+    "community_apply": {
+      "label": "Apply on Google Forms",
+      "href": "https://docs.google.com/forms/d/e/1FAIpQLSeTyWlIZzI8uz4zNRiLXaNdIAw3NuPDIRxnuemwIb7c-IW64Q/viewform"
+    }
+  },
+  "runtime_inventory": {
+    "workflow_registry": {
+      "path": "automation/n8n/workflow-registry.yaml",
+      "authority": "declared_snapshot",
+      "statement": "The repository workflow registry represents a declared subset/snapshot of Tayoca automation and is not authoritative for current live runtime inventory."
+    },
+    "live_estate": {
+      "authority": "live n8n runtime",
+      "status": "not_queried_in_this_workspace",
+      "statement": "No live production n8n access, credentials or inventory were used. Live workflow counts, activation state and reconciliation against backup ledger/snapshots are explicitly handed back to the canonical Forgejo/n8n integration agent.",
+      "forbidden_actions": [
+        "invent or estimate live workflow counts",
+        "rationalise, delete or modify workflows",
+        "claim a complete runtime inventory",
+        "request or reproduce production credentials"
+      ]
+    }
+  },
+  "related_ecosystem": [
+    {
+      "id": "creator-prompter-studio",
+      "name": "Creator Prompter Studio",
+      "existence": "verified",
+      "verification_basis": "canonical Forgejo evidence supplied by the owner/integrator",
+      "source": "temitayocharles/creator-prompter-studio (canonical Forgejo; verified main e7299c284d2fb5ca4f69df8b4aa47c902d963261)",
+      "technical_nature": "macOS application project with source, tests and documentation",
+      "github_mirror_status": "not_found_on_github",
+      "github_mirror_check": "Re-checked on 2026-08-28: no repository, code result or fork exists under the accessible GitHub accounts or in global GitHub search. The canonical Forgejo repository is not mirrored.",
+      "owner_relationship_confidence": "unconfirmed",
+      "tayoca_relationship": "unrelated_pending_confirmation",
+      "disclosure_permission": "unresolved",
+      "public_classification": "unclassified",
+      "publication_status": "recorded_not_published",
+      "recommended_destination_if_approved": "product / application surface under /work.html, with its own product page only if a public offer, pricing and support boundary exist",
+      "correction_note": "The previous Arena discovery concluded the project was missing. That conclusion was incomplete. Creator Prompter Studio is a verified existing project evidenced by the canonical Forgejo repository temitayocharles/creator-prompter-studio (verified main e7299c284d2fb5ca4f69df8b4aa47c902d963261). Existence is recorded separately from publication permission: it is not published on tayoca.com by this redesign.",
+      "summary": "macOS application project with source, tests and documentation; verified from canonical Forgejo evidence supplied by the owner/integrator. Public disclosure classification unresolved, so it is recorded rather than published."
+    },
+    {
+      "id": "zernio",
+      "name": "Zernio / ZernFlow and API family",
+      "existence": "verified",
+      "source": "https://github.com/zernio-dev/zernflow (and the wider zernio-dev org); mirrored as a fork on the founder's GitHub account",
+      "technical_nature": "social and messaging API platform for developers and AI agents, with a visual flow builder, SDKs, CLI, MCP servers and n8n nodes",
+      "owner_relationship_confidence": "unconfirmed",
+      "tayoca_relationship": "unrelated_pending_confirmation",
+      "disclosure_permission": "unresolved",
+      "public_classification": "unclassified",
+      "publication_status": "recorded_not_published",
+      "recommended_destination_if_approved": "only if confirmed as a Tayoca venture — portfolio entry under /work.html, never as a Tayoca product without written confirmation"
+    },
+    {
+      "id": "9drive",
+      "name": "9Drive",
+      "existence": "verified",
+      "source": "https://github.com/zenhosta/9drive (live preview 9drive.zenhosta.com); mirrored as a fork on the founder's GitHub account",
+      "technical_nature": "storage gateway web application unifying multiple Google Drive accounts behind one dashboard with S3-compatible endpoints",
+      "owner_relationship_confidence": "unconfirmed",
+      "tayoca_relationship": "unrelated_pending_confirmation",
+      "disclosure_permission": "unresolved",
+      "public_classification": "unclassified",
+      "publication_status": "recorded_not_published",
+      "recommended_destination_if_approved": "portfolio entry under /work.html if confirmed as a Tayoca build; otherwise not referenced"
+    },
+    {
+      "id": "zenhosta-storefronts",
+      "name": "zenhosta storefront products",
+      "existence": "verified",
+      "source": "https://github.com/zenhosta/niagakita-digital, niagakita-toko-online, zen-content-api",
+      "technical_nature": "regional e-commerce applications and a WordPress content API plugin",
+      "owner_relationship_confidence": "unconfirmed",
+      "tayoca_relationship": "unrelated_pending_confirmation",
+      "disclosure_permission": "unresolved",
+      "public_classification": "unclassified",
+      "publication_status": "recorded_not_published",
+      "recommended_destination_if_approved": "not referenced on tayoca.com unless a Tayoca delivery relationship is confirmed"
+    },
+    {
+      "id": "abiding-place-fellowship",
+      "name": "Abiding Place Fellowship website",
+      "existence": "verified",
+      "source": "public repository and live site; located within the Free Website Initiative geography",
+      "technical_nature": "community organisation website with a managed content layer",
+      "owner_relationship_confidence": "unconfirmed",
+      "tayoca_relationship": "unrelated_pending_confirmation",
+      "disclosure_permission": "unresolved",
+      "public_classification": "unclassified",
+      "publication_status": "recorded_not_published",
+      "recommended_destination_if_approved": "community initiative context only, with explicit consent — never as an unnamed client logo or case study"
+    },
+    {
+      "id": "hermes-agent-workspace",
+      "name": "Hermes Agent workspace",
+      "existence": "verified_as_placeholder",
+      "source": "public placeholder repositories crediting the founder as an AI-agent project collection",
+      "technical_nature": "placeholder/lab repository with no published content",
+      "owner_relationship_confidence": "unconfirmed",
+      "tayoca_relationship": "unrelated_pending_confirmation",
+      "disclosure_permission": "unresolved",
+      "public_classification": "experiment",
+      "publication_status": "recorded_not_published",
+      "recommended_destination_if_approved": "experiments area of /work.html once something publishable exists"
+    },
+    {
+      "id": "n8n-render-python-runtime",
+      "name": "n8n Render Python runtime image",
+      "existence": "verified",
+      "source": "public infrastructure repository",
+      "technical_nature": "custom container image used by a live automation service",
+      "owner_relationship_confidence": "unconfirmed",
+      "tayoca_relationship": "internal_or_infrastructure",
+      "disclosure_permission": "not_required",
+      "public_classification": "internal_system",
+      "publication_status": "recorded_not_published",
+      "recommended_destination_if_approved": "infrastructure evidence only; not a public showcase"
+    }
+  ],
+  "security": {
+    "control_center_embedded_authorization_material": {
+      "status": "superseded_by_completed_production_handoff",
+      "classification": "historical_finding_not_active_workstream",
+      "historical_finding": "A prior live inspection identified shared authorization material in an earlier Control Center workflow implementation.",
+      "current_boundary": "The completed production handoff records server-side credential handling, Cloudflare Access as the sole authentication boundary, and the Control Center as completed/production-deployed.",
+      "evidence": [
+        "docs/control-center-production-handoff-20260828.md",
+        "docs/control-center-status-note.yaml"
+      ],
+      "reopen_rule": "Do not reopen the Control Center broadly. Revisit this historical finding only for a specific evidenced defect or an explicitly scoped security audit.",
+      "secret_value_policy": "No historical or current authorization value is reproduced in this registry."
+    }
+  }
+}

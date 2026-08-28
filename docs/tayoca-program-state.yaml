@@ -1,5 +1,5 @@
 version: 1
-last_reconciled_utc: "2026-08-28T21:05:26Z"
+last_reconciled_utc: "2026-08-28T23:05:00Z"
 authority:
   canonical_repo: temitayocharles/tayoca
   canonical_platform: forgejo
@@ -108,11 +108,15 @@ workstreams:
       - tayoca_pr_28
     next_gate: live_recheck
   control_center_cms:
-    status: partial
-    target: structured_internal_operating_product
+    status: completed_production_deployed
+    production_line_commit: 6cae0f71d7b60cec62c783de925780835075e96c
+    deployment_id: dpl_5xGR3Lm58YdNKU3vUJD5Ds8ZudsJ
+    handoff: docs/control-center-production-handoff-20260828.md
+    reopen_rule: specific_defect_or_new_feature_only
   control_center_embedded_auth_material:
-    status: open_needs_live_certification
-    priority: critical_if_still_present
+    status: superseded_by_completed_production_handoff
+    classification: historical_finding_not_active_workstream
+    reopen_rule: specific_evidenced_defect_or_explicit_security_audit_only
     rule: never_copy_secret_value
   community_google_form_bridge:
     status: implemented_checkpoint
@@ -133,7 +137,7 @@ workstreams:
     status: open_needs_current_live_pass
     invariant: do_not_rely_on_historical_counts
   public_company_platform_modernization:
-    status: open
+    status: forgejo_integration_candidate
     constraint: solve_blandness_and_company_breadth
 
 lm_arena:
@@ -143,12 +147,18 @@ lm_arena:
   github_review_pr: 13
   github_review_branch: arena/01a04553-tayoca
   reviewed_head: 942e4a57f61c66337adef2b851f5bd4b18096e3e
+  current_reconciled_pr: 15
+  current_reconciled_github_branch: arena/01a04a44-tayoca
+  current_reconciled_head: 0f67039f7276ea7c932f1f2f97d0013f7832f029
+  canonical_integration_branch: integrate/lm-arena-v2-20260828
+  canonical_integration_base: 917bbb733c877bbdf4e64e3fac91cc8e07131fab
+  integration_status: pending_protected_pr_browser_and_production_certification
   review_scope:
     changed_files: 76
     commits: 9
     additions: 4377
     deletions: 1625
-  verdict: substantial_candidate_not_canonical
+  verdict: reconciled_candidate_in_canonical_forgejo_integration
   strengths:
     - company_builder_reframe
     - company_level_information_architecture

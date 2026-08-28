@@ -37,7 +37,7 @@
         .prose table { @apply w-full mb-6 border-collapse; }
         .prose th, .prose td { @apply border border-[var(--border)] px-4 py-2 text-left; }
         .prose th { @apply bg-[var(--card-bg)] text-white font-medium; }
-    
+
         :root { --bg: #0d0d0d; --bg-elevated: #1a1a1a; --fg: #e5e7eb; --fg-muted: #9ca3af; --accent: #f97316; --accent-hover: #ea580c; --border: #374151; --border-hover: #4b5563; --card-bg: #111827; --focus-ring: #f97316; --header-height: 64px; }
         * { box-sizing: border-box; } html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
         @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; } }
@@ -129,12 +129,22 @@
 <link rel="stylesheet" href="/assets/css/site-shell.css"></head>
 
 <body class="min-h-screen">
-<a href="#main-content" class="skip-link">Skip to main content</a><header class="site-header"><div class="header-inner"><a class="brand" href="/" aria-label="Tayoca home">TAYOCA</a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button><nav class="primary-nav" id="primary-nav" aria-label="Primary navigation"><a href="/services.html">Services</a><a href="/assessments.html">Assessments</a><a href="/results.html">Results</a><a href="/products.html">Products</a><a href="/insights.html" aria-current="page">Insights</a><a href="/about.html">About</a></nav><a class="header-cta" href="/assessments.html">Start an Assessment</a></div></header>
+<a href="#main-content" class="skip-link">Skip to main content</a><a class="skip-link" href="#main-content">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+  <a class="brand" href="/" aria-label="Tayoca home">TAYOCA</a>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open navigation">Menu</button>
+  <nav class="primary-nav" id="primary-nav" aria-label="Primary navigation"><a href="/services.html">Services</a><a href="/assessments.html">Assessments</a><a href="/results.html">Results</a><a href="/products.html">Products</a><a href="/insights.html" aria-current="page">Insights</a><a href="/about.html">About</a></nav>
+  <a class="button small header-cta" href="/assessments.html">Start an Assessment</a>
+</div>
+<div class="header-map"><nav class="utility-nav" aria-label="Company map">
+  <span class="utility-nav__label">More from Tayoca</span>
+  <a href="/work.html">Work</a><a href="/operator-brief.html">Operator Brief</a><a href="/community/websites">Community</a><a href="/trust.html">Trust</a><a href="/reviews.html">Reviews</a><a href="/sivanta.html">Sivanta</a>
+</nav></div></header>
 
-    
-    
-    
-    
+
+
+
+
 
     <main id="main-content" class="flex-1 pt-[var(--header-height)]">
 <header class="container mx-auto px-6 py-16 md:py-24">
@@ -673,27 +683,32 @@ spec:
     </article>
 </main>
 
-        <footer class="border-t border-[var(--border)] mt-16 py-8 px-4">
-        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-            <p class="text-[var(--fg-muted)] text-sm">© 2025 Temitayo Charles Akinniranye. All rights reserved.</p>
-            <a href="#" class="footer-link text-sm">Privacy Policy</a>
-        </div>
-    </footer>
+        <footer class="site-footer"><div class="footer-inner">
+  <div class="footer-brand-col"><div class="footer-brand">TAYOCA</div><p>An engineering-led technology company building software, systems, automation and publications for technology that has to be reliable, accountable and economically understood. Founded by Temitayo Charles. Ontario, Canada. © <span data-current-year>2026</span> Tayoca.</p></div>
+  <div class="footer-links"><strong>Explore</strong><a href="/services.html">Services</a><a href="/assessments.html">Assessments</a><a href="/results.html">Results</a><a href="/products.html">Products</a><a href="/insights.html">Insights</a><a href="/about.html">About</a></div>
+  <div class="footer-links"><strong>Connect</strong><a href="/operator-brief.html">Operator Brief</a><a href="/trust.html">Trust Center</a><a href="mailto:support@tayoca.com">support@tayoca.com</a><a href="mailto:temitayo@tayoca.com">temitayo@tayoca.com</a></div>
+  <div class="footer-col"><strong>Company</strong><a href="/about.html">About</a><a href="/work.html">Work</a><a href="/results.html">Results</a><a href="/trust.html">Trust Center</a><a href="/reviews.html">Verified Reviews</a></div>
+  <div class="footer-col"><strong>Deliver</strong><a href="/services.html">Services &amp; pricing</a><a href="/assessments.html">Assessments</a><a href="/segments/growth-stage-technology.html">Growth-stage</a><a href="/segments/regulated-operations.html">Regulated operations</a><a href="/segments/ai-enabled-engineering.html">AI-enabled teams</a></div>
+  <div class="footer-col"><strong>Build &amp; Read</strong><a href="/products.html">Products</a><a href="/sivanta.html">Sivanta</a><a href="/blog/">Insights</a><a href="/operator-brief-archive.html">Brief archive</a><a href="/community/websites">Community initiative</a></div>
+</div>
+<div class="footer-legal"><span>© <span data-current-year>2026</span> Tayoca · Ontario, Canada</span><a href="/trust.html">Evidence &amp; disclosure policy</a></div></footer>
 
     <div class="container mx-auto px-6 pb-16">
         <div class="max-w-4xl mx-auto bg-[var(--card-bg)] rounded-lg p-6 border border-[var(--accent)]/30 text-center">
             <h3 class="text-lg font-medium text-white mb-2">Stay Updated</h3>
             <p class="text-[var(--fg-muted)] text-sm mb-4">Get weekly insights on DevOps, AI automation, and technical playbooks. No spam, unsubscribe anytime.</p>
             <form id="newsletter-form" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-                <input 
-                    type="email" 
-                    name="email" 
-                    placeholder="your@email.com" 
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="your@email.com"
                     required
                     class="form-input"
+
+                    aria-label="Email address for the Operator Brief"
                 >
-                <button 
-                    type="submit" 
+                <button
+                    type="submit"
                     class="btn btn-primary whitespace-nowrap"
                 >
                     Subscribe
@@ -709,7 +724,7 @@ spec:
             const btn = e.target.querySelector('button');
             btn.textContent = 'Subscribing...';
             btn.disabled = true;
-            
+
             try {
                 const res = await fetch('https://v7mhrspk.function2.insforge.app/newsletter-subscribe', {
                     method: 'POST',
@@ -738,6 +753,6 @@ spec:
         });
     </script>
 
-    
+
 <script defer src="/tayoca-site.js"></script></body>
 </html>

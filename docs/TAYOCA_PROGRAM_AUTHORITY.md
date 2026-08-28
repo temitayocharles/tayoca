@@ -215,47 +215,21 @@ Historical static-state reconciliation reached a certified 46/46, zero-duplicate
 
 ## 8. Tayoca Control Center / CMS
 
-The Control Center is intended to become an internal operating product, not a developer-only n8n dashboard or arbitrary HTML editor.
+The Tayoca Control Center at `control.tayoca.com` is **completed and production-deployed**. It is not an unfinished prerequisite for the public company-platform redesign.
 
-It should provide coherent operational views over domains such as:
+The canonical production handoff is `docs/control-center-production-handoff-20260828.md`, with machine-readable status in `docs/control-center-status-note.yaml`. The recorded production line is `6cae0f71d7b60cec62c783de925780835075e96c`, deployment `dpl_5xGR3Lm58YdNKU3vUJD5Ds8ZudsJ`, and protected gateway `gif5P0MDI6WrceAP` (`Tayoca Control Center | Unified Gateway v6.1`).
 
-- content/CMS;
-- site settings/navigation/footer/CTAs;
-- portfolio/project registry;
-- product/publication catalogue;
-- editorial/Operator Brief;
-- media/assets;
-- lead/assessment intake;
-- community programmes;
-- revenue pipeline/attribution;
-- reviews/trust;
-- distribution/social publishing;
-- analytics/executive reporting;
-- messaging/notifications;
-- workflow health/dead letters;
-- access/approvals/audit history.
+Implemented capabilities include structured Website CMS operations, Pages/Blog/Products/Site Data, Media Library, guarded uploads, reusable sections, Global Site Settings, revision/content history and restore, Workflow Studio with real workflow operations, execution/error visibility, backup export and restore-to-unpublished-drafts, schedules/webhook inventory, metrics/usage, Control Health, server-side credential handling and exact-SHA gated production deployment. Cloudflare Access is the sole authentication boundary.
 
-File-backed and Git-backed CMS architecture is valid. The objective is structured entities, previewability, version history, safe publication and stable automation contracts.
+Global Site Settings recovery has been exercised to the exact original Forgejo blob with no residual content/settings drift.
 
-### Critical security debt
+### Historical authorization finding
 
-A live Control Center inspection found shared authorization material embedded in workflow code. The value must never be reproduced in documentation, commits, logs or prompts.
+A prior live inspection identified shared authorization material in an earlier Control Center workflow implementation. The completed production handoff supersedes that finding as an **active implementation workstream**. Do not reproduce historical secret values. Do not reopen the Control Center broadly. Revisit the historical finding only for a specific evidenced defect or an explicitly scoped security audit.
 
-Required remediation remains:
+### Public redesign boundary
 
-1. identify the runtime workflow and callers;
-2. move the secret into appropriate n8n credential/secret storage;
-3. rotate the value;
-4. migrate all callers;
-5. remove any fallback/embedded value;
-6. test allowed and denied paths;
-7. preserve rollback until certification;
-8. certify the old value is no longer accepted;
-9. scan relevant workflows for residual embedded material.
-
-Do not mark this complete without live evidence.
-
-External design/coding agents must not receive production n8n credentials or broad workflow mutation capability.
+LM Arena and public-site integration may inspect and preserve repository-visible contracts, especially Global Site Settings and publishing interfaces, but must not redesign, replace or create a second Control Center/CMS/authentication plane by default.
 
 ## 9. Project Intelligence Hub
 
@@ -436,7 +410,9 @@ Its current scope is 76 changed files, 9 commits, 4,377 additions and 1,625 dele
 
 ### 15.3 LM Arena quality verdict
 
-**Verdict: useful and substantial, but not production-complete and not safe to merge wholesale.**
+**Historical PR #13 verdict:** useful and substantial, but not production-complete and not safe to merge wholesale.
+
+**Current reconciled candidate:** GitHub PR #15 (`arena/01a04a44-tayoca`, head `0f67039f7276ea7c932f1f2f97d0013f7832f029`) was reconstructed from the GitHub mirror of canonical Forgejo `917bbb733c877bbdf4e64e3fac91cc8e07131fab`. Its reviewed 72-file design delta is now imported into canonical Forgejo branch `integrate/lm-arena-v2-20260828`, with one canonical whitespace-hygiene correction. It remains pending protected-PR, browser/accessibility and production-parity certification before this modernization is complete.**
 
 Strengths:
 
@@ -496,16 +472,16 @@ A production incident may temporarily interrupt this sequence. Record the interr
 | Vercel mirror attribution | VERIFIED COMPLETE | PR #38/current history |
 | Global Site Settings | IMPLEMENTED; recovery recently certified | Recheck current live production before modification |
 | Project Intelligence Hub | IMPLEMENTED to v8 materializer policy/runtime checkpoint | Live recheck before further mutation |
-| Control Center/CMS UX | PARTIAL | Continue as structured operating product |
-| Embedded Control Center auth-secret remediation | OPEN / NEEDS LIVE CERTIFICATION | Highest-priority security debt if still present |
+| Control Center/CMS | VERIFIED COMPLETE / PRODUCTION-DEPLOYED | Reopen only for a specific defect or new feature |
+| Historical Control Center authorization finding | SUPERSEDED AS ACTIVE WORKSTREAM | Reopen only for a specific evidenced defect or scoped security audit |
 | Community Google Form bridge | IMPLEMENTED checkpoint | Verify live before changing intake |
 | Growth OS | SUBSTANTIAL IMPLEMENTATION | Follow locked operating plan/evidence |
 | Operator Brief | IMPLEMENTED architecture/runtime checkpoint | Preserve publishing contracts |
 | Review/trust system | SUBSTANTIAL IMPLEMENTATION | Preserve fail-closed verification |
 | Workflow live-estate reconciliation | OPEN / NEEDS CURRENT LIVE PASS | Runtime inventory wins over stale registry |
 | Backup ledger/snapshot reconciliation | OPEN / NEEDS CURRENT LIVE PASS | Do not rely on old counts |
-| LM Arena company-platform redesign | CANDIDATE, NOT CANONICAL | Reconcile selectively onto current Forgejo |
-| Full public visual/company-platform modernization | OPEN | Must fix blandness and breadth, not just copy candidate branch |
+| LM Arena company-platform redesign | RECONCILED FORGEJO INTEGRATION CANDIDATE | GitHub PR #15 imported by exact reviewed head; certify before merge |
+| Full public visual/company-platform modernization | INTEGRATION / CERTIFICATION | Preserve LM Arena v2 styling and certify canonical production deployment |
 
 ## 19. Required reconciliation before the next autonomous wave
 
