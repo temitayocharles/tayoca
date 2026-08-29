@@ -1,120 +1,148 @@
-# AI-Generated DevOps Scripts / Operator Brief Handoff
+# AI Wrote the Script. Can You Defend It? / Operator Brief Handoff
 
-Status: **handoff scope for canonical Forgejo reconciliation and global Tayoca control**
+Status: **final specialist handoff for canonical Forgejo reconciliation and global Tayoca control**
 
-Date: 2026-08-28
+Date updated: 2026-08-29
 
 ## Purpose
 
-This document preserves the book + newsletter scope that must be absorbed by the global Tayoca workstream. It is intentionally limited to the commercial publication and Operator Brief subscriber-entitlement workflow.
+This document preserves the commercial-book + Operator Brief scope that must be absorbed by the global Tayoca workstream. It is intentionally limited to the book, its commercial distribution, and the newsletter subscriber-entitlement workflow.
 
-The public website redesign, site information architecture, visual redesign, and general Tayoca web experience are owned by the separate global website/company-platform workstream and are outside this handoff.
+The public website redesign, site information architecture, visual redesign, landing pages, and general Tayoca web experience are owned by the separate global website/company-platform workstream and are outside this handoff.
 
-## Commercial book identity
+## Canonical commercial book identity
 
-Canonical public title: **AI-Generated DevOps Scripts**
+**Title:** AI Wrote the Script. Can You Defend It?
 
-Subtitle: **Python & Bash Practice Pack for Testing, Hardening, and Defending AI-Written Automation**
+**Subtitle:** 10 Hands-On Python & Bash DevOps Labs for Debugging, Testing, and Hardening AI-Generated Automation Before Production
 
-Canonical hook:
+**Hook:** AI can write the script. Can you tell when it will fail or when it's doing too much?
 
-> **AI can write the script. Can you tell when it will fail or when it's doing too much?**
+**Author:** Temitayo Charles Akinniranye
 
 Historical/internal continuity:
 
 - book source workspace: `temitayocharles/my-books/ai-to-engineer-python-bash-practice-pack`;
-- historical `AI-to-Engineer` slug remains for provenance;
-- historical release certification must remain immutable;
-- executable labs must not be changed merely to perform the commercial title migration.
+- historical `AI-to-Engineer` slug remains only for provenance;
+- historical runtime/release certification remains immutable;
+- executable labs must not be changed merely for commercial packaging or entitlement work.
 
-## Commercial status
+## Commercial publication status
 
-The book is **not a free product**.
+The book is a **paid commercial publishing product**, not a free lead magnet.
 
-It is intended for commercial distribution through Amazon KDP, Gumroad, and other approved retail/direct storefronts. Storefront price, identifiers, metadata, territories, categories, and edition configuration must be established through the relevant publishing workflow and must not be invented.
+Canonical commercial channels include Amazon KDP, Gumroad, other approved retail/direct storefronts, and Tayoca direct distribution where appropriate.
 
-The canonical book-repository policy is `COMMERCIAL_DISTRIBUTION.md` in the book workspace.
+The controlled commercial rebuild is complete. The canonical customer artifact is the LM Arena-preserving edition:
+
+`publication/pdf/AI-Wrote-the-Script_Can-You-Defend-It_v1.0.pdf`
+
+The migration evidence records:
+
+- final page count: 59;
+- outline entries: 37;
+- render audit: 59/59 with zero reported layout issues;
+- executable lab tree unchanged;
+- old `Free subscriber edition` and `New-subscriber practice edition` wording removed;
+- commercial title metadata verified;
+- LM Arena visual system preserved from the certified baseline.
+
+Book-repository publication sources of truth:
+
+- `COMMERCIAL_DISTRIBUTION.md`
+- `KDP_METADATA.md`
+- `DIRECT_SALE_PACKAGE.md`
+- `NEWSLETTER_SUBSCRIBER_SEQUENCE.md`
+- `validation/PUBLIC_TITLE_MIGRATION.md`
+
+## Storefront decisions prepared
+
+### Amazon KDP
+
+Current prepared metadata recommends:
+
+- paperback launch first;
+- 8.5 x 11 inch trim matching the certified interior;
+- premium color on white paper to preserve the LM Arena accent system at 59 pages;
+- matte cover;
+- no spine text because the edition is below KDP's spine-text page threshold;
+- USD $19.99 recommended paperback list price;
+- own ISBN recommended for the paperback because the product is intended for multi-channel commercial distribution;
+- Kindle edition only after Kindle-specific conversion/QA;
+- no KDP Select while the digital edition is sold/distributed outside Amazon.
+
+The print cover still requires the final KDP wrap generated against the live KDP cover template/calculator and a physical proof before sale.
+
+### Gumroad / direct digital
+
+Prepared direct-sale launch price: **USD $14.99**.
+
+The direct-sale package is defined as a versioned bundle containing the certified PDF, customer README, personal-use commercial license, and the runtime-certified companion lab tree. Retail/direct sales remain financially distinct from Operator Brief subscriber entitlements.
 
 ## Operator Brief entitlement model
 
-The newsletter relationship is an entitlement, not a free-product classification.
+Qualifying Tayoca Operator Brief subscribers may receive **complimentary access to the commercial digital edition as a subscriber benefit**.
 
-Qualifying Tayoca Operator Brief subscribers may receive **complimentary access to the commercial digital edition** as a subscriber benefit. That entitlement must not:
+This entitlement must not:
 
-- set the retail product price to zero;
-- classify the title as permanently free;
+- set retail price to zero;
+- classify the book as free or a giveaway product;
 - grant resale or redistribution rights;
 - silently subscribe an address without explicit Operator Brief consent;
-- bypass unsubscribe/suppression controls;
-- create duplicate subscriber or entitlement records on repeat requests.
+- bypass unsubscribe or suppression controls;
+- create duplicate subscriber, entitlement, nurture, or delivery records;
+- record complimentary entitlement as retail revenue.
 
-Preferred subscriber-facing concept: **Operator Brief subscribers receive complimentary access to the commercial digital edition.**
+Preferred subscriber-facing language: **Operator Brief subscribers receive complimentary access to the commercial digital edition of AI Wrote the Script. Can You Defend It?**
 
-## Newsletter automation scope to preserve
+## Required newsletter/runtime behavior
 
-The global Tayoca workstream must reconcile this feature into the existing Operator Brief / Growth OS / n8n architecture rather than create a parallel subscriber system.
+The global Tayoca workstream must extend the existing Operator Brief / Growth OS / n8n architecture. Do not create a second subscriber system, duplicate Operator Brief workflow, parallel analytics store, or book-specific email platform when the governed systems can be extended safely.
 
 Required behavior:
 
-1. preserve explicit Operator Brief consent and the authoritative subscriber ledger;
-2. record the entitlement source/cohort deterministically so book-assisted subscriber and revenue analysis remains possible;
-3. grant the digital-book entitlement only after the subscriber state is durably accepted;
-4. make entitlement/delivery idempotent for repeat requests;
-5. stop newsletter nurture immediately when the subscriber unsubscribes or becomes suppressed;
-6. persist provider/send/error evidence needed for troubleshooting without treating email-open tracking as authoritative;
-7. keep the existing production failure/dead-letter controls in the execution path;
-8. preserve attribution so complimentary subscriber distribution can be distinguished from retail/direct sales;
-9. do not represent complimentary subscriber delivery as zero-value retail revenue;
-10. do not create a second Operator Brief workflow, subscriber ledger, or analytics truth store when the existing governed systems can be extended safely.
+1. accept only explicit Operator Brief consent and persist it in the authoritative subscriber ledger;
+2. persist a deterministic entitlement key for this book and the source/cohort that created it;
+3. grant entitlement only after the subscriber state is durably accepted and suppression checks pass;
+4. make subscriber, entitlement, nurture membership, and delivery idempotent;
+5. allow repeat access requests to resend access instructions without duplicating future nurture jobs;
+6. stop nurture immediately after unsubscribe, suppression, or administrative cancellation;
+7. persist provider send IDs, workflow execution IDs, delivery/error states, and normalized failure classes for troubleshooting;
+8. keep production failure/dead-letter controls in the execution path;
+9. preserve attribution so subscriber entitlement can be analyzed separately from Gumroad/KDP/direct sales;
+10. do not treat email-open tracking as authoritative evidence;
+11. use a stable subscriber-access mechanism that delivers the same certified commercial edition/checksum as the direct-sale package;
+12. never expose private repository paths, source archives, publishing fonts, validation internals, credentials, or unrelated files to subscribers.
 
-## Welcome/nurture content
+## Five-message subscriber sequence
 
-The existing five-message onboarding concept remains part of the handoff, but copy must reflect commercial status.
+The canonical copy intent is maintained in the book workspace at `NEWSLETTER_SUBSCRIBER_SEQUENCE.md` and now uses the final title.
 
-The sequence should:
+Sequence:
 
-- deliver or activate the subscriber's complimentary digital-book entitlement;
-- teach practical review of AI-generated Python/Bash automation;
-- reinforce failure + overreach judgment;
-- introduce the seven review gates: Intent, Inputs, State, Failure, Safety, Evidence, Idempotency;
-- transition the subscriber into the normal Operator Brief cadence;
-- make contextual paid-product recommendations only when relevant.
+- Email 0: immediate entitlement after durable subscription acceptance;
+- Email 1: +1 day, false success / exit status / evidence;
+- Email 2: +3 days, hypothesis-before-AI review and overreach boundaries;
+- Email 3: +5 days, seven review gates: Intent, Inputs, State, Failure, Safety, Evidence, Idempotency;
+- Email 4: +7 days, next-practice guidance and transition into normal Operator Brief cadence.
 
-It must **not** repeatedly describe AI-Generated DevOps Scripts as a free book or free product.
+The book must never be repeatedly described as a free product. The newsletter benefit is complimentary access to a commercial edition.
 
-## Content/editorial continuity
+## Live-runtime activation gate
 
-The Production Interview content concept may continue as an editorial acquisition/nurture franchise where useful. Its purpose is to teach production reasoning rather than trivia and to create relevant bridges into the Operator Brief and the book.
+This GitHub mirror does not prove the current n8n runtime state. Before production mutation, the global Tayoca workstream must:
 
-Canonical format:
+1. reconcile this handoff through current canonical Forgejo `main`;
+2. re-query the live Operator Brief / Growth OS / n8n workflows and active versions;
+3. capture rollback versions before mutation;
+4. implement the entitlement as the narrowest extension of the existing governed subscriber workflow;
+5. run a synthetic subscriber acceptance test covering first subscription, repeat request, entitlement delivery, nurture scheduling, unsubscribe and suppression;
+6. verify no duplicate subscriber/entitlement/nurture records;
+7. verify the delivered PDF/bundle checksum matches the certified commercial package;
+8. record production evidence and ownership in the global Tayoca control plane.
 
-1. Scenario.
-2. Basic answer.
-3. Why it is incomplete.
-4. Production answer.
-5. What the interviewer is actually testing.
-6. Evidence that would prove the answer.
-7. Contextual book/newsletter bridge only where relevant.
+## Retirement rule
 
-## Book publication migration gate
+The originating specialist chat has completed the commercial title migration, KDP metadata preparation, direct-sale packaging specification, and final Operator Brief handoff.
 
-Before the commercial edition is uploaded to KDP, Gumroad, or any other storefront, the canonical book workspace must:
-
-1. run `validation/retitle_public_edition.sh`;
-2. migrate the manuscript metadata to **AI-Generated DevOps Scripts**;
-3. remove the old `New-subscriber practice edition` / `Free subscriber edition` metadata from the commercial artifact;
-4. rebuild the PDF and cover assets;
-5. rerun manuscript/code parity and the full-page render audit;
-6. prove the executable lab tree is unchanged;
-7. write and review `validation/PUBLIC_TITLE_MIGRATION.md`;
-8. commit the rebuilt commercial artifacts before storefront upload.
-
-The existing certified runtime behavior remains authoritative unless executable lab content changes.
-
-## Source-authority / global handoff rule
-
-Tayoca's global authority remains Forgejo-first. This handoff currently exists in the downstream GitHub mirror because the originating workstream did not have a Forgejo connector. The global Tayoca workstream must reconcile this exact intent through current canonical Forgejo `main` before production mutation.
-
-When reconciling, preserve the scope above unless the owner explicitly changes it. Do not discard it merely because earlier GitHub lead-magnet work was classified as source drift.
-
-Once this handoff is reconciled into Forgejo and the global workstream records ownership, the originating specialist chat may be retired. The global Tayoca workstream then owns the commercial-book + Operator Brief entitlement integration end to end.
+After the global Tayoca workstream reconciles this exact handoff into canonical Forgejo and takes ownership of the live Operator Brief entitlement implementation, this specialist chat may be retired. Future book/newsletter changes should then flow through the global Tayoca control plane plus the canonical `my-books` publication workspace rather than through a separate parallel workstream.
