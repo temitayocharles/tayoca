@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       expected:
-        description: Expected bounded Composio 400 cause
+        description: Expected ACTIVE Vercel account count class
         required: true
         type: string
 
@@ -18,57 +18,35 @@ jobs:
     env:
       EXPECTED: ${{ inputs.expected }}
       COMPOSIO_API_KEY: ${{ secrets.COMPOSIO_API_KEY }}
-      VERCEL_CONNECTED_ACCOUNT_ID: vercel_carte-verpa
-      VERCEL_PROJECT_ID: prj_boudZhZAPKBiUbNttAgSslPyaNDu
     steps:
-      - name: Classify exact Composio HTTP 400 response without emitting body
+      - name: Discover repo-scoped ACTIVE Vercel accounts without emitting IDs
         shell: bash
         run: |
           set -Eeuo pipefail
           set +x
           test -n "${COMPOSIO_API_KEY:-}"
-          body="$(python3 - <<'PY'
-          import json, os
-          print(json.dumps({
-            "connected_account_id": os.environ["VERCEL_CONNECTED_ACCOUNT_ID"],
-            "version": "latest",
-            "arguments": {
-              "idOrName": os.environ["VERCEL_PROJECT_ID"],
-              "decrypt": "false"
-            }
-          }, separators=(',',':')))
+          out=/tmp/composio-accounts.json
+          api_key_header="$(printf '%s: %s' 'x-api-key' "$COMPOSIO_API_KEY")"
+          code="$(curl --silent --show-error --max-time 30 -G -o "$out" -w '%{http_code}' \
+            -H "$api_key_header" \
+            --data-urlencode 'toolkit_slugs=vercel' \
+            --data-urlencode 'statuses=ACTIVE' \
+            --data-urlencode 'limit=20' \
+            'https://backend.composio.dev/api/v3.1/connected_accounts')"
+          unset COMPOSIO_API_KEY api_key_header
+          test "$code" = 200
+          count="$(python3 - "$out" <<'PY'
+          import json,sys
+          d=json.load(open(sys.argv[1]))
+          items=d.get('items') or []
+          print(sum(1 for x in items if isinstance(x,dict) and str(x.get('status','')).upper()=='ACTIVE' and str(((x.get('toolkit') or {}).get('slug') or '')).lower()=='vercel'))
           PY
           )"
-          api_key_header="$(printf '%s: %s' 'x-api-key' "$COMPOSIO_API_KEY")"
-          out=/tmp/composio-check.json
-          code="$(curl --silent --show-error --max-time 30 -o "$out" -w '%{http_code}' \
-            -H "$api_key_header" \
-            -H 'Content-Type: application/json' \
-            --data "$body" \
-            'https://backend.composio.dev/api/v3/tools/execute/VERCEL_FILTER_PROJECT_ENVS')"
-          unset COMPOSIO_API_KEY api_key_header body
-          test "$code" = 400
-          case "$EXPECTED" in
-            version)
-              grep -Eiq '(version|toolkit_versions|tool version|latest)' "$out"
-              ;;
-            account)
-              grep -Eiq '(connected.account|account.*not found|connection.*not found|connected_account_id)' "$out"
-              ;;
-            arguments)
-              grep -Eiq '(argument|input|schema|idOrName|decrypt)' "$out"
-              ;;
-            auth_config)
-              grep -Eiq '(auth config|authentication config|auth_config|authconfig)' "$out"
-              ;;
-            toolkit)
-              grep -Eiq '(toolkit|tool slug|VERCEL_FILTER_PROJECT_ENVS|tool.*not found)' "$out"
-              ;;
-            generic_bad_request)
-              grep -Eiq '(bad request|invalid request|validation error|unprocessable)' "$out"
-              ! grep -Eiq '(version|toolkit_versions|connected.account|account.*not found|argument|input|schema|auth config|toolkit|tool slug)' "$out"
-              ;;
-            *) rm -f "$out"; exit 2 ;;
-          esac
           rm -f "$out"
-          echo "CONTROL_GATEWAY_COMPOSIO_400_CAUSE=$EXPECTED"
+          case "$EXPECTED" in
+            zero) test "$count" -eq 0 ;;
+            one) test "$count" -eq 1 ;;
+            multiple) test "$count" -gt 1 ;;
+            *) exit 2 ;;
+          esac
+          echo "CONTROL_GATEWAY_COMPOSIO_VERCEL_ACCOUNTS=$EXPECTED"
