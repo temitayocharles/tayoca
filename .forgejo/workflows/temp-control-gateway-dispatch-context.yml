@@ -12,6 +12,8 @@ jobs:
     timeout-minutes: 3
     env:
       COMPOSIO_API_KEY: ${{ secrets.COMPOSIO_API_KEY }}
+      VERCEL_CONNECTED_ACCOUNT_ID: vercel_carte-verpa
+      VERCEL_PROJECT_ID: prj_boudZhZAPKBiUbNttAgSslPyaNDu
     steps:
       - name: Assert Composio bootstrap credential is configured
         shell: sh
@@ -19,3 +21,31 @@ jobs:
           set -eu
           test -n "${COMPOSIO_API_KEY:-}"
           echo 'CONTROL_GATEWAY_COMPOSIO_CREDENTIAL=present'
+
+      - name: Probe exact non-decrypting Vercel metadata route
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          set +x
+          body="$(python3 - <<'PY'
+          import json, os
+          print(json.dumps({
+            "connected_account_id": os.environ["VERCEL_CONNECTED_ACCOUNT_ID"],
+            "version": "latest",
+            "arguments": {
+              "idOrName": os.environ["VERCEL_PROJECT_ID"],
+              "decrypt": "false"
+            }
+          }, separators=(',',':')))
+          PY
+          )"
+          api_key_header="$(printf '%s: %s' 'x-api-key' "$COMPOSIO_API_KEY")"
+          code="$(curl --silent --show-error --max-time 30 -o /tmp/composio-check.json -w '%{http_code}' \
+            -H "$api_key_header" \
+            -H 'Content-Type: application/json' \
+            --data "$body" \
+            'https://backend.composio.dev/api/v3/tools/execute/VERCEL_FILTER_PROJECT_ENVS')"
+          rm -f /tmp/composio-check.json
+          unset COMPOSIO_API_KEY api_key_header body
+          test "$code" = 200
+          echo 'CONTROL_GATEWAY_COMPOSIO_BRIDGE=http_200'
