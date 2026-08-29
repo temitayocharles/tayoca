@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       expected:
-        description: Expected bounded Composio HTTP class
+        description: Expected bounded Composio 400 cause
         required: true
         type: string
 
@@ -21,7 +21,7 @@ jobs:
       VERCEL_CONNECTED_ACCOUNT_ID: vercel_carte-verpa
       VERCEL_PROJECT_ID: prj_boudZhZAPKBiUbNttAgSslPyaNDu
     steps:
-      - name: Classify exact non-decrypting Composio Vercel metadata route
+      - name: Classify exact Composio HTTP 400 response without emitting body
         shell: bash
         run: |
           set -Eeuo pipefail
@@ -40,23 +40,35 @@ jobs:
           PY
           )"
           api_key_header="$(printf '%s: %s' 'x-api-key' "$COMPOSIO_API_KEY")"
-          code="$(curl --silent --show-error --max-time 30 -o /tmp/composio-check.json -w '%{http_code}' \
+          out=/tmp/composio-check.json
+          code="$(curl --silent --show-error --max-time 30 -o "$out" -w '%{http_code}' \
             -H "$api_key_header" \
             -H 'Content-Type: application/json' \
             --data "$body" \
             'https://backend.composio.dev/api/v3/tools/execute/VERCEL_FILTER_PROJECT_ENVS')"
-          rm -f /tmp/composio-check.json
           unset COMPOSIO_API_KEY api_key_header body
+          test "$code" = 400
           case "$EXPECTED" in
-            200|400|401|403|404|409|422|429)
-              test "$code" = "$EXPECTED"
+            version)
+              grep -Eiq '(version|toolkit_versions|tool version|latest)' "$out"
               ;;
-            5xx)
-              case "$code" in 5??) ;; *) exit 1 ;; esac
+            account)
+              grep -Eiq '(connected.account|account.*not found|connection.*not found|connected_account_id)' "$out"
               ;;
-            other)
-              case "$code" in 200|400|401|403|404|409|422|429|5??) exit 1 ;; *) ;; esac
+            arguments)
+              grep -Eiq '(argument|input|schema|idOrName|decrypt)' "$out"
               ;;
-            *) exit 2 ;;
+            auth_config)
+              grep -Eiq '(auth config|authentication config|auth_config|authconfig)' "$out"
+              ;;
+            toolkit)
+              grep -Eiq '(toolkit|tool slug|VERCEL_FILTER_PROJECT_ENVS|tool.*not found)' "$out"
+              ;;
+            generic_bad_request)
+              grep -Eiq '(bad request|invalid request|validation error|unprocessable)' "$out"
+              ! grep -Eiq '(version|toolkit_versions|connected.account|account.*not found|argument|input|schema|auth config|toolkit|tool slug)' "$out"
+              ;;
+            *) rm -f "$out"; exit 2 ;;
           esac
-          echo "CONTROL_GATEWAY_COMPOSIO_HTTP=$EXPECTED"
+          rm -f "$out"
+          echo "CONTROL_GATEWAY_COMPOSIO_400_CAUSE=$EXPECTED"
