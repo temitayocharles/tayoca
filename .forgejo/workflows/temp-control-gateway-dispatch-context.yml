@@ -1,0 +1,21 @@
+name: TEMP Control gateway dispatch context
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  context:
+    runs-on: forgejo-general
+    timeout-minutes: 3
+    env:
+      COMPOSIO_API_KEY: ${{ secrets.COMPOSIO_API_KEY }}
+    steps:
+      - name: Assert Composio bootstrap credential is configured
+        shell: sh
+        run: |
+          set -eu
+          test -n "${COMPOSIO_API_KEY:-}"
+          echo 'CONTROL_GATEWAY_COMPOSIO_CREDENTIAL=present'
