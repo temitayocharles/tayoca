@@ -1,5 +1,5 @@
 version: 1
-last_reconciled_utc: "2026-08-30T13:12:00Z"
+last_reconciled_utc: "2026-08-30T19:07:00Z"
 authority:
   canonical_repo: temitayocharles/tayoca
   canonical_platform: forgejo
@@ -84,9 +84,12 @@ workstreams:
       - homelab-gitops_pr_620
       - homelab-gitops_pr_622
   forgejo_github_mirror:
-    status: verified_complete
+    status: verified_complete_reconciled_20260830
     evidence:
       - tayoca_pr_37
+      - canonical_nonrag_merge_3090b5eee367aa3d959dbe9f4aa984eb95bf0092
+      - github_mirror_b7d81955d1dcef0db3af6d528ecee1209eee98b6
+    rule: forgejo_remains_canonical_even_when_downstream_mirror_requires_reconciliation
   vercel_mirror_attribution:
     status: verified_complete
     evidence:
@@ -146,8 +149,34 @@ workstreams:
     status: verified_complete_20260830
     invariant: live_runtime_inventory_overrides_stale_repo_registry
   backup_ledger_snapshot_reconciliation:
-    status: open_needs_current_live_pass
-    invariant: do_not_rely_on_historical_counts
+    status: verified_complete_20260830
+    orchestrator_workflow_id: V24w4efMjXumBApk
+    accepted_architecture: bounded_page_worker_v4
+    evidence:
+      - docs/final-certification/workflow-report.json
+      - sanitized_restore_execution_72326
+      - canonical_backup_repo_temityocharles_n8n_workflow_backups
+    invariant: superseded_experimental_backup_failures_do_not_override_certified_production_architecture
+  ai_wrote_the_script_entitlement:
+    status: implemented_active_operation
+    access_gateway_workflow_id: OlixJ5IbyYgW0QXo
+    issuer_workflow_id: HvdfA1qyVwZ8KSB4
+    provisioner_workflow_id: 44SLdWuiBIiN25Ln
+    public_route: https://tayoca.com/access/book
+    public_route_invalid_entitlement_behavior: access_denied
+    provisioner_schedule_minutes: 30
+    delivery_policy: deterministic_token_and_resend_idempotency
+    nurture_channel: operator_brief
+  nonrag_closure_20260830:
+    status: completed_production_deployed
+    canonical_forgejo_commit: 3090b5eee367aa3d959dbe9f4aa984eb95bf0092
+    github_mirror_commit: b7d81955d1dcef0db3af6d528ecee1209eee98b6
+    vercel_project: prj_3HzkrxM828WThQD1lOdFjL0jdC8o
+    vercel_deployment: dpl_44eGSo33J1hoZrUvRnBNff53Vf5P
+    vercel_state: READY_PROMOTED
+    owner_query_repair_workflow_id: ts7yZY5GWanBiYpY
+    rag_handoff: docs/RAG_SYSTEM_HANDOFF.md
+    remaining_external_blocker: rag_system_p6_p8_only_for_central_rag_cutover
   public_company_platform_modernization:
     status: completed_production_deployed
     canonical_merge: 9b1f2ec0c928652d7868b4057126ec686b8d7f28
@@ -200,14 +229,14 @@ known_project_discovery_correction:
 source_drift:
   github_direct_content_changes_detected: true
   accepted_as_canonical: false
+  latest_reconciled_mirror_commit: b7d81955d1dcef0db3af6d528ecee1209eee98b6
+  latest_reconciled_canonical_commit: 3090b5eee367aa3d959dbe9f4aa984eb95bf0092
   rule: reconcile_intent_through_forgejo_before_reuse
 
 next_reconciliation_wave:
   separate_cross_platform_work:
-    - reconcile_workflows_with_backup_ledger_and_snapshots
     - complete_central_rag_system_p6_p8_before_tayoca_runtime_switch
     - certify_reviews_trust_provider_authenticated_sale_ingestion
-    - complete_ai_wrote_the_script_subscriber_entitlement_delivery
     - finish_product_checkout_file_synchronization
     - resolve_or_explicitly_defer_disclosure_items
 

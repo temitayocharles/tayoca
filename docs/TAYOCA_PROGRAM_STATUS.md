@@ -17,11 +17,11 @@ This document is the current component-level status register for the Tayoca prog
 | Growth OS commercial/editorial operation | ACTIVE | Ongoing campaigns, reporting, attribution and revenue operation continue by design. |
 | Brand Intelligence live snapshot collector | DONE | `Tayoca Brand Intelligence | Live Monitor v4` actively refreshes a sanitized first-party operational snapshot on a five-minute schedule. |
 | Brand Intelligence monitoring operation | ACTIVE | Live collection continues by design. |
-| Owner conversational Brand Intelligence over WhatsApp | DONE | Existing WAHA general agent is wired to owner-only `Tayoca Brand Intelligence | Owner Query v4`; the called workflow independently enforces owner identity. |
+| Owner conversational Brand Intelligence over WhatsApp | DONE | Existing WAHA general agent is wired to owner-only `Tayoca Brand Intelligence | Owner Query v4`; the called workflow independently enforces owner identity. The stale hard-coded partner sequence was removed and the workflow is active. |
 | Owner conversational Brand Intelligence over Telegram | RETIRED | Not required while the existing secured personal WhatsApp route is the selected owner surface. Do not create a duplicate transport merely for parity. |
 | WhatsApp conversational memory | ACTIVE | Current sender-scoped buffer memory is functional. Durable Postgres memory is desirable but is not required to expose live intelligence safely. |
 | Repository-grounded RAG knowledge bridge | ACTIVE | WhatsApp agent can query bounded canonical Forgejo RAG evidence for stable organization facts. |
-| Central governed RAG API/MCP integration for Tayoca | BLOCKED | `rag-system` P6/P8 production rollout is not complete; do not bypass it with a parallel Supabase/vector store. |
+| Central governed RAG API/MCP integration for Tayoca | BLOCKED | `rag-system` P6/P8 production rollout is not complete. The canonical handoff contract is `docs/RAG_SYSTEM_HANDOFF.md`; do not bypass it with a parallel Supabase/vector store. |
 | Operator Brief platform | DONE | Evidence-gated editorial generation, human approval, canonical Forgejo publication, subscriber/provider parity and suppression controls exist. |
 | Operator Brief publication cadence | ACTIVE | Recurring editorial operation continues by design. Email delivery remains fail-closed if the Resend runtime credential or subscriber/provider parity is unavailable. |
 | Legacy repository commit-digest newsletter | RETIRED | Superseded by Operator Brief. |
@@ -31,8 +31,9 @@ This document is the current component-level status register for the Tayoca prog
 | Reviews / Trust implementation | DONE | Verified-review architecture, publication consent, human approval and public review feed are implemented. |
 | Reviews / Trust verified-sale ingestion | BLOCKED | The published review/trust workflow remains fail-closed for sale ingestion until provider-authenticated verification is explicitly certified. Review form/public-feed architecture remains available independently. |
 | Reviews / Trust live accumulation | ACTIVE | Consent-based review submission, moderation, publication and recovery follow-up continue for verified customer relationships; no unverified sale event may create a review invitation. |
-| Workflow backup architecture | DONE | Nightly Forgejo orchestrator, bounded worker and sanitized intake are active. |
-| Temporary Tayoca n8n diagnostic/migration workflows | RETIRED | Tayoca-specific Repository Intelligence and Project Intelligence repair/certification diagnostics created during reconciliation were archived after use. Unrelated product/workstream TEMP workflows are outside this Tayoca lifecycle decision. |
+| Workflow backup architecture | DONE | Production `Workflow Backup | Nightly Forgejo Orchestrator v4` is active with bounded page processing and fail-closed coverage certification. Stage 14 workflow certification records sanitized restore PASS and bounded backup as the accepted production architecture. |
+| Backup ledger / snapshot reconciliation | DONE | Current live runtime and canonical backup repository were re-queried on 2026-08-30. Superseded v9 crash evidence was removed; the accepted production architecture remains the bounded v4 orchestrator/worker path. |
+| Temporary Tayoca n8n diagnostic/migration workflows | RETIRED | Tayoca-specific Repository Intelligence, Project Intelligence, backup-crash and book-staging diagnostics created during reconciliation were archived after use. Unrelated product/workstream TEMP workflows are outside this Tayoca lifecycle decision. |
 | Workflow live-estate reconciliation | DONE | Live runtime was re-queried; current active implementations supersede stale repository counts/registries. |
 | Repository Intelligence bounded legacy certifier | RETIRED | The old seven-repository Stage 7 private certifier is archived and superseded by exhaustive Repository Intelligence v11. |
 | Repository Intelligence exhaustive estate coverage | DONE | `Tayoca Repository Intelligence | Estate Query v11` is published and production-certified. Current certified estate: 50 Forgejo-visible repositories and 104 GitHub-owned repositories, with authenticated pagination-to-exhaustion and authority-aware classification. |
@@ -40,9 +41,11 @@ This document is the current component-level status register for the Tayoca prog
 | Project Intelligence runtime | ACTIVE | Canonical live-sync, materializer, Notion, triage, promotion, meeting-ingest and reliability workflows remain active. |
 | Project Intelligence failure notifications | DONE | Reliability/dead-letter monitoring continues on a five-minute schedule; Project Intelligence failures now alert the owner directly on Slack instead of the ForgeWatch channel. |
 | AI Wrote the Script commercial artifact | DONE | Certified customer bundle, PDF, license/readme, companion labs and SHA-256 manifest exist in canonical `my-books`. |
-| Operator Brief subscriber entitlement for AI Wrote the Script | BLOCKED | Requires a durable approved subscriber delivery surface plus idempotent nurture/entitlement certification; ephemeral private GitHub URLs are prohibited. |
+| AI Wrote the Script subscriber entitlement architecture | DONE | Durable fail-closed access gateway, deterministic entitlement issuer and scheduled idempotent provisioner are active. Production `/access/book` rewrites to the gateway and rejects invalid or absent entitlement with `access_denied`. |
+| AI Wrote the Script entitlement delivery operation | ACTIVE | `Tayoca Books | Subscriber Entitlement Provisioner v1` runs every 30 minutes, reuses deterministic access tokens and Resend idempotency, and records delivery state. Operator Brief remains the ongoing nurture channel. |
 | Product checkout/file synchronization | ACTIVE | Public product copy truthfully discloses that checkout file synchronization is still in progress. |
 | Public desktop/mobile visual and functional QA | DONE | Representative production pages were rendered independently through available browser engines; no Control Center navigation leakage or error-shell regression was found. |
+| Forgejo → GitHub → Vercel deployment parity for latest non-RAG closure | DONE | Canonical Forgejo `main` `3090b5eee367aa3d959dbe9f4aa984eb95bf0092` was reconciled to GitHub `main` `b7d81955d1dcef0db3af6d528ecee1209eee98b6`; Vercel production deployment `dpl_44eGSo33J1hoZrUvRnBNff53Vf5P` is READY/PROMOTED. |
 
 ## Owner intelligence architecture
 
@@ -59,12 +62,11 @@ Supabase is not a Tayoca architectural requirement merely because SiteSupply use
 
 ## Remaining active engineering
 
-The program is not globally blocked. Remaining work is deliberately narrow:
+The non-RAG closure workstream is complete. Remaining engineering is deliberately separate or ongoing:
 
 - complete the central `rag-system` P6/P8 rollout before switching Tayoca from repository-grounded evidence to the production RAG API/MCP runtime;
-- establish a durable approved subscriber-delivery surface, then complete and certify the AI Wrote the Script entitlement/nurture path;
 - finish product checkout/file synchronization;
 - certify provider-authenticated sale ingestion before lifting the Reviews / Trust sale-ingestion hold;
-- continue Growth OS, Operator Brief, Community, Project Intelligence and trust operations as ongoing **ACTIVE** business processes.
+- continue the subscriber entitlement provisioner, Growth OS, Operator Brief, Community, Project Intelligence and trust operations as ongoing **ACTIVE** business processes.
 
-Do not reopen completed public-platform, Control Center, backup, Repository Intelligence or temporary-workflow cleanup work without new evidence.
+Do not reopen completed public-platform, Control Center, backup, Repository Intelligence, entitlement architecture or temporary-workflow cleanup work without new evidence.
