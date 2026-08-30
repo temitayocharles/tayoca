@@ -38,9 +38,9 @@ Control Center production line checkpoint:
 
 `6cae0f71d7b60cec62c783de925780835075e96c`
 
-Production deployment:
+Current promoted production deployment:
 
-`dpl_5xGR3Lm58YdNKU3vUJD5Ds8ZudsJ`
+`dpl_HXCxps6QEds6wmHGQBNoQkShq8w5`
 
 Reported status: `READY / PROMOTED`.
 
@@ -54,6 +54,21 @@ The protected unified n8n/Forgejo gateway remains:
 Browser credentials are not exposed.
 
 The Forgejo -> GitHub -> Vercel publishing/mirror path has separately been repaired and certified, including GitHub commit attribution for Vercel.
+
+## 2026-08-29 gateway credential remediation closeout
+
+The gateway authorization credential was removed from the workflow definition and is now consumed at runtime from `$env.TAYOCA_CONTROL_GATEWAY_TOKEN`. The active published n8n workflow contains no hardcoded gateway token.
+
+GitOps now projects the credential through the permanent `n8n-tayoca-control-gateway` ExternalSecret and Deployment SecretKeyRef. After migration cleanup, the following value-blind assertions all passed on homelab GitOps commit `323c77f59460a90eaca54c2af6f8cb6e285b4bd5`:
+
+- `gateway-es-ready`;
+- `gateway-dep-ref`;
+- `gateway-reloader`;
+- `gateway-runtime-key`.
+
+Cleanup PR `homelab-gitops#693` removed the Tayoca migration-only workflows and temporary Vault reconcile resource. The encrypted handoff branch was deleted. The two migration-specific n8n helper workflows were archived. GitHub diagnostic PR `tayoca-control-center#18` was closed without merge and its diagnostic branch was deleted.
+
+The authenticated external browser-to-Vercel-to-n8n request was not re-exercised during final closeout because Cloudflare/Vercel protection and tool safety boundaries prevented moving or exposing the sensitive credential for comparison. This limitation is recorded explicitly rather than inferred away. Production remained `READY / PROMOTED`, the live gateway remained active/published, and all permanent runtime-projection assertions passed.
 
 ## Recovery certification
 
@@ -90,4 +105,4 @@ The following earlier classifications are superseded by this handoff:
 - `continue as structured operating product`
 - treating Control Center redesign as a prerequisite for the public company-platform redesign
 
-The earlier finding about embedded authorization material must not be assigned to LM Arena as an active implementation task. If its exact remediation provenance ever needs audit, verify it against the production gateway/control-center evidence rather than reopening the Control Center broadly.
+The earlier finding about embedded authorization material is resolved by the runtime-secret remediation above. Future audits should verify the production gateway/control-center evidence rather than reopening the Control Center broadly.
