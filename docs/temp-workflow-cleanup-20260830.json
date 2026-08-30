@@ -1,0 +1,16 @@
+{
+  "recorded_at": "2026-08-30T19:17:10Z",
+  "archived": [
+    "TEMP Record Entitlement v2 Cert",
+    "TEMP Token Generation Probe",
+    "TEMP Runtime Ops Status Recorder",
+    "TEMP Entitlement Capability Direct",
+    "TEMP Record Entitlement Capability",
+    "TEMP Entitlement Runtime Capability Probe",
+    "TEMP Closure State v2",
+    "TEMP Production Backup Final Inspector",
+    "TEMP Closure Runtime Probe"
+  ],
+  "scope": "tayoca_nonrag_closeout_only",
+  "unrelated_temp_workflows_untouched": true
+}

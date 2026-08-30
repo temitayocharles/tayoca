@@ -1,0 +1,25 @@
+recorded_at_utc: "2026-08-30T19:16:54Z"
+nonrag_closeout: complete
+external_or_event_gated:
+  reviews_trust_positive_sale_certification:
+    state: blocked_waiting_for_first_real_sale
+    provider: gumroad
+    architecture: provider_authenticated_fail_closed
+    successful_sales_observed_2026: 0
+    rule: never_lift_hold_with_synthetic_success
+  kubernetes_operators_workbook_file_sync:
+    state: blocked_on_provider_file_replacement
+    certified_pages: 133
+    gumroad_attached_pages: 86
+    purchase_state: paused
+    current_connector_can_replace_product_file: false
+  central_rag_cutover:
+    state: separate_workstream
+    authority: docs/RAG_SYSTEM_HANDOFF.md
+ongoing_operations:
+  - growth_os
+  - operator_brief
+  - community_website_delivery
+  - project_intelligence
+  - subscriber_entitlement_provisioning
+  - reviews_trust_non_sale_paths

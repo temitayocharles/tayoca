@@ -1,0 +1,8 @@
+{
+  "status": "complete",
+  "latest_verified_forgejo_main_before_evidence_branch": "6229c874425fc1f273df80222e6712539ac4f6d6",
+  "latest_verified_github_main": "73b330aa02cf01b5550aafe520e7f661d62515d8",
+  "latest_verified_vercel_deployment": "dpl_BvXUZBxbj96UvxtgE3gVDozGg6Lo",
+  "remaining_nonrag_external_gates": 2,
+  "remaining_rag_workstream": "separate"
+}

@@ -1,0 +1,19 @@
+{
+  "recorded_at": "2026-08-30T19:16:00Z",
+  "canonical_forgejo_main": "6229c874425fc1f273df80222e6712539ac4f6d6",
+  "github_main": "73b330aa02cf01b5550aafe520e7f661d62515d8",
+  "vercel_production_deployment": "dpl_BvXUZBxbj96UvxtgE3gVDozGg6Lo",
+  "vercel_state": "READY",
+  "vercel_substate": "PROMOTED",
+  "public_access_book_negative_check": "access_denied",
+  "reviews_trust_provider": "gumroad",
+  "reviews_trust_positive_runtime_certification": "WAITING_FOR_FIRST_GENUINE_SUCCESSFUL_SALE",
+  "gumroad_successful_sales_2026_through_recorded_at": 0,
+  "product_file_sync": {
+    "kubernetes_operators_workbook": "BLOCKED_ON_GUMROAD_FILE_REPLACEMENT",
+    "certified_edition_pages": 133,
+    "currently_attached_gumroad_pages": 86,
+    "public_purchase_cta": "PAUSED"
+  },
+  "rag": "SEPARATE_WORKSTREAM_WAITING_FOR_P6_P8"
+}
