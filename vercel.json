@@ -4,6 +4,12 @@
   "outputDirectory": "public",
   "cleanUrls": false,
   "trailingSlash": false,
+  "rewrites": [
+    {
+      "source": "/access/book",
+      "destination": "https://n8n.tca-infraforge.site/webhook/tayoca/books/access"
+    }
+  ],
   "redirects": [
     {
       "source": "/blog.html",

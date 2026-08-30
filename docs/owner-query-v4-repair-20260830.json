@@ -1,0 +1,8 @@
+{
+  "recorded_at": "2026-08-30T16:25:08.174Z",
+  "workflow_id": "ts7yZY5GWanBiYpY",
+  "updated_version_id": "e68950c6-05c1-424c-be83-500c9e342f32",
+  "active": true,
+  "repair": "state_derived_owner_next_action",
+  "hard_coded_partner_sequence_removed": true
+}
