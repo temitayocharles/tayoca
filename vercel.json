@@ -69,54 +69,25 @@
       "source": "/l/aws-finops-playbook/",
       "destination": "/products/aws-cost-optimization-playbook.html",
       "permanent": true
-    },
-    {
-      "source": "/blog/devops-incident-response-runbook.html",
-      "destination": "/products/devops-incident-runbook-template.html",
-      "permanent": true
     }
   ],
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
-        {
-          "key": "Strict-Transport-Security",
-          "value": "max-age=31536000"
-        },
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        },
-        {
-          "key": "X-Frame-Options",
-          "value": "DENY"
-        },
-        {
-          "key": "X-Permitted-Cross-Domain-Policies",
-          "value": "none"
-        },
-        {
-          "key": "Referrer-Policy",
-          "value": "strict-origin-when-cross-origin"
-        },
-        {
-          "key": "Permissions-Policy",
-          "value": "camera=(), microphone=(), geolocation=()"
-        },
-        {
-          "key": "Content-Security-Policy",
-          "value": "base-uri 'self'; object-src 'none'; frame-ancestors 'none'; upgrade-insecure-requests"
-        }
+        {"key": "Strict-Transport-Security", "value": "max-age=31536000"},
+        {"key": "X-Content-Type-Options", "value": "nosniff"},
+        {"key": "X-Frame-Options", "value": "DENY"},
+        {"key": "X-Permitted-Cross-Domain-Policies", "value": "none"},
+        {"key": "Referrer-Policy", "value": "strict-origin-when-cross-origin"},
+        {"key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()"},
+        {"key": "Content-Security-Policy", "value": "base-uri 'self'; object-src 'none'; frame-ancestors 'none'; upgrade-insecure-requests"}
       ]
     },
     {
       "source": "/analytics.html",
       "headers": [
-        {
-          "key": "X-Robots-Tag",
-          "value": "noindex, nofollow, noarchive"
-        }
+        {"key": "X-Robots-Tag", "value": "noindex, nofollow, noarchive"}
       ]
     }
   ]
