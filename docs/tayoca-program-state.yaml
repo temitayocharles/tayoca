@@ -1,5 +1,5 @@
 version: 1
-last_reconciled_utc: "2026-08-28T23:46:30Z"
+last_reconciled_utc: "2026-08-30T13:12:00Z"
 authority:
   canonical_repo: temitayocharles/tayoca
   canonical_platform: forgejo
@@ -99,14 +99,25 @@ workstreams:
       - 0b301b8653caa982f2a828dd536246f094a6b463
     next_gate: verify_current_live_production_before_modification
   project_intelligence_hub:
-    status: implemented_to_materializer_v8_checkpoint
+    status: active_runtime_reconciled
     policy: intelligence/project-intelligence-hub-policy.yaml
     evidence:
       - tayoca_pr_24
       - tayoca_pr_26
       - tayoca_pr_27
       - tayoca_pr_28
-    next_gate: live_recheck
+      - project_intelligence_reliability_owner_direct_slack_20260830
+    notification_route: owner_direct_slack_not_forgewatch
+    next_gate: ongoing_operation
+  repository_intelligence:
+    status: verified_complete
+    workflow_id: s0gPyf8ak222bppb
+    owner_query_workflow_id: 9mdHptHfnQ8tjjfs
+    forgejo_visible_repositories: 50
+    github_owned_repositories: 104
+    authority_rule: forgejo_canonical_github_downstream_evidence
+    owner_surface: whatsapp_owner_only
+    legacy_bounded_certifier: retired
   control_center_cms:
     status: completed_production_deployed
     production_line_commit: 6cae0f71d7b60cec62c783de925780835075e96c
@@ -122,16 +133,17 @@ workstreams:
     status: implemented_checkpoint
     next_gate: verify_live_before_intake_change
   growth_os:
-    status: substantial_implementation
+    status: implemented_active_operation
     authority: docs/production-growth-operating-plan.yaml
   operator_brief:
     status: implemented_architecture_runtime_checkpoint
     authority: editorial/operator-brief/operator-brief-policy.yaml
   reviews_trust:
-    status: substantial_implementation
+    status: implemented_active_with_sale_ingestion_hold
     invariant: unverified_events_fail_closed
+    sale_ingestion_gate: provider_authenticated_positive_and_negative_certification_required_before_hold_is_lifted
   workflow_live_estate_reconciliation:
-    status: open_needs_current_live_pass
+    status: verified_complete_20260830
     invariant: live_runtime_inventory_overrides_stale_repo_registry
   backup_ledger_snapshot_reconciliation:
     status: open_needs_current_live_pass
@@ -192,9 +204,11 @@ source_drift:
 
 next_reconciliation_wave:
   separate_cross_platform_work:
-    - query_live_tayoca_related_n8n_estate
     - reconcile_workflows_with_backup_ledger_and_snapshots
-    - verify_project_intelligence_growth_os_operator_brief_community_and_trust_runtime_as_needed
+    - complete_central_rag_system_p6_p8_before_tayoca_runtime_switch
+    - certify_reviews_trust_provider_authenticated_sale_ingestion
+    - complete_ai_wrote_the_script_subscriber_entitlement_delivery
+    - finish_product_checkout_file_synchronization
     - resolve_or_explicitly_defer_disclosure_items
 
 completion_standard:
