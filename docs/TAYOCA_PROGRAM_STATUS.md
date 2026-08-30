@@ -29,7 +29,7 @@ This document is the current component-level status register for the Tayoca prog
 | Community Website Initiative delivery/outcomes | ACTIVE | Selection, delivery, feedback, case-study and referral outcomes remain ongoing for eligible businesses. Delivered businesses are removed from active prospect and mailing counts. |
 | ACG Shelburne delivered website | DONE | The website for African Caribbean Grocery Store was already designed, handed over and moved into an existing-client maintenance relationship. Exclude ACG Shelburne from active cohort, mailing/outreach and candidate-site counts. Preserve the `acg-shelburne` Vercel project as a maintenance/handoff asset until requested changes are resolved; proof, case-study or referral use requires the business owner's permission. |
 | Reviews / Trust implementation | DONE | Verified-review architecture, publication consent, human approval and public review feed are implemented. |
-| Reviews / Trust verified-sale ingestion | BLOCKED | The published review/trust workflow remains fail-closed for sale ingestion until provider-authenticated verification is explicitly certified. Review form/public-feed architecture remains available independently. |
+| Reviews / Trust verified-sale ingestion | BLOCKED | Provider-authenticated Gumroad sale verification and the live Gumroad `sale` webhook are implemented and fail closed. Live Gumroad reconciliation on 2026-08-30 shows zero successful sales, so the positive success branch cannot be certified without fabricating a transaction. See `docs/GUMROAD_EXTERNAL_GATES.md`. |
 | Reviews / Trust live accumulation | ACTIVE | Consent-based review submission, moderation, publication and recovery follow-up continue for verified customer relationships; no unverified sale event may create a review invitation. |
 | Workflow backup architecture | DONE | Production `Workflow Backup | Nightly Forgejo Orchestrator v4` is active with bounded page processing and fail-closed coverage certification. Stage 14 workflow certification records sanitized restore PASS and bounded backup as the accepted production architecture. |
 | Backup ledger / snapshot reconciliation | DONE | Current live runtime and canonical backup repository were re-queried on 2026-08-30. Superseded v9 crash evidence was removed; the accepted production architecture remains the bounded v4 orchestrator/worker path. |
@@ -43,9 +43,9 @@ This document is the current component-level status register for the Tayoca prog
 | AI Wrote the Script commercial artifact | DONE | Certified customer bundle, PDF, license/readme, companion labs and SHA-256 manifest exist in canonical `my-books`. |
 | AI Wrote the Script subscriber entitlement architecture | DONE | Durable fail-closed access gateway, deterministic entitlement issuer and scheduled idempotent provisioner are active. Production `/access/book` rewrites to the gateway and rejects invalid or absent entitlement with `access_denied`. |
 | AI Wrote the Script entitlement delivery operation | ACTIVE | `Tayoca Books | Subscriber Entitlement Provisioner v1` runs every 30 minutes, reuses deterministic access tokens and Resend idempotency, and records delivery state. Operator Brief remains the ongoing nurture channel. |
-| Product checkout/file synchronization | ACTIVE | Public product copy truthfully discloses that checkout file synchronization is still in progress. |
+| Kubernetes workbook checkout/file synchronization | BLOCKED | The certified 133-page bundle is ready, but Gumroad's API does not support product-content upload/replacement and the available connected browser session is not authenticated to the Gumroad creator dashboard. The stale 86-page checkout remains protected by explicit do-not-purchase copy. Exact artifact/hash and UI completion steps are in `docs/GUMROAD_EXTERNAL_GATES.md`. |
 | Public desktop/mobile visual and functional QA | DONE | Representative production pages were rendered independently through available browser engines; no Control Center navigation leakage or error-shell regression was found. |
-| Forgejo → GitHub → Vercel deployment parity for latest non-RAG closure | DONE | Canonical Forgejo `main` `3090b5eee367aa3d959dbe9f4aa984eb95bf0092` was reconciled to GitHub `main` `b7d81955d1dcef0db3af6d528ecee1209eee98b6`; Vercel production deployment `dpl_44eGSo33J1hoZrUvRnBNff53Vf5P` is READY/PROMOTED. |
+| Forgejo → GitHub → Vercel deployment parity for latest non-RAG closure | DONE | Canonical Forgejo `main` `6229c874425fc1f273df80222e6712539ac4f6d6` was reconciled to GitHub `main` `73b330aa02cf01b5550aafe520e7f661d62515d8`; Vercel production deployment `dpl_BvXUZBxbj96UvxtgE3gVDozGg6Lo` is READY/PROMOTED. |
 
 ## Owner intelligence architecture
 
@@ -62,11 +62,13 @@ Supabase is not a Tayoca architectural requirement merely because SiteSupply use
 
 ## Remaining active engineering
 
-The non-RAG closure workstream is complete. Remaining engineering is deliberately separate or ongoing:
+All currently actionable non-RAG Tayoca engineering in this closure wave is complete. Remaining work is either a separate workstream, an external event/authentication gate, or an intentionally ongoing business operation:
 
-- complete the central `rag-system` P6/P8 rollout before switching Tayoca from repository-grounded evidence to the production RAG API/MCP runtime;
-- finish product checkout/file synchronization;
-- certify provider-authenticated sale ingestion before lifting the Reviews / Trust sale-ingestion hold;
-- continue the subscriber entitlement provisioner, Growth OS, Operator Brief, Community, Project Intelligence and trust operations as ongoing **ACTIVE** business processes.
+- central `rag-system` P6/P8 remains a separate workstream and must complete before Tayoca switches to the production RAG API/MCP runtime;
+- Reviews / Trust positive-sale certification is **BLOCKED** until the first legitimate successful Gumroad sale exists; do not fabricate a transaction to satisfy the gate;
+- Kubernetes workbook checkout/file synchronization is **BLOCKED** until an authorized Gumroad creator-browser session can replace the stale attachment with the certified bundle; the Gumroad API cannot perform that mutation;
+- the subscriber entitlement provisioner, Growth OS, Operator Brief, Community, Project Intelligence and trust operations continue as ongoing **ACTIVE** business processes.
+
+The exact external triggers, certified artifact identity and completion procedures are codified in `docs/GUMROAD_EXTERNAL_GATES.md`.
 
 Do not reopen completed public-platform, Control Center, backup, Repository Intelligence, entitlement architecture or temporary-workflow cleanup work without new evidence.
