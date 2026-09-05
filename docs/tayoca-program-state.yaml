@@ -1,5 +1,5 @@
 version: 1
-last_reconciled_utc: "2026-08-30T19:07:00Z"
+last_reconciled_utc: "2026-09-05T22:21:06Z"
 authority:
   canonical_repo: temitayocharles/tayoca
   canonical_platform: forgejo
@@ -135,6 +135,32 @@ workstreams:
   community_google_form_bridge:
     status: implemented_checkpoint
     next_gate: verify_live_before_intake_change
+  community_website_governed_preview_cohort:
+    status: active_certified_first_cohort_20260905
+    policy: docs/community-website-acquisition-strategy.md
+    asset_repo: temitayocharles/tayoca-apps
+    asset_pr: 56
+    asset_merge: bde8b3790491a95df313064c91b8765445a1e510
+    main_ci_run: 23191
+    growth_os_sheet_id: 1JkW4DUTkjBTQNXlWMQdaVHlw-nFU1to8-cf9HMKXcQU
+    preview_events_workflow_id: GlbGxdB46nL0QmTJ
+    blavish:
+      state: permission_first_dm_sent_awaiting_reply_preview_unrevealed
+      preview_url: https://tayoca-blavish-preview.vercel.app/
+      deployment_id: dpl_AXUBH9dEKNXbBaMHT1ETtjsYPhAg
+      outreach_rule: do_not_duplicate_or_reveal_until_positive_reply
+    vivid:
+      state: certified_preview_contact_route_required
+      preview_url: https://tayoca-vivid-preview.vercel.app/
+      deployment_id: dpl_J1hn8NUYvvWH2SZvcrm6MKJycNqe
+      outreach_rule: resolve_current_business_owned_contact_route_before_send
+    invariants:
+      - deindexed_preview_not_official_business_publication
+      - dynamic_claims_must_remain_owner_verified
+      - growth_os_is_operational_prospect_state_authority
+      - awaiting_reply_prospects_are_not_duplicated
+      - no_fabricated_meta_recipient_or_platform_bypass
+    next_gate: convert_certified_assets_into_qualified_positive_conversations_without_duplicate_contact
   growth_os:
     status: implemented_active_operation
     authority: docs/production-growth-operating-plan.yaml

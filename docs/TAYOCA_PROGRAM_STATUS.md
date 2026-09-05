@@ -2,7 +2,7 @@
 
 **Status authority:** current reconciliation matrix
 
-**Reconciled:** 2026-08-30
+**Reconciled:** 2026-09-05
 
 This document is the current component-level status register for the Tayoca program. It supplements `TAYOCA_PROGRAM_AUTHORITY.md` and `tayoca-program-state.yaml`. When an older status label conflicts with this matrix, this document wins until the older wording is reconciled. Only four lifecycle states are valid here: **DONE**, **ACTIVE**, **RETIRED**, and **BLOCKED**.
 
@@ -26,7 +26,8 @@ This document is the current component-level status register for the Tayoca prog
 | Operator Brief publication cadence | ACTIVE | Recurring editorial operation continues by design. Email delivery remains fail-closed if the Resend runtime credential or subscriber/provider parity is unavailable. |
 | Legacy repository commit-digest newsletter | RETIRED | Superseded by Operator Brief. |
 | Community Website Initiative acquisition/integration | DONE | Google Form bridge, direct intake, nomination, cohort, notification and review adapter paths are implemented. |
-| Community Website Initiative delivery/outcomes | ACTIVE | Selection, delivery, feedback, case-study and referral outcomes remain ongoing for eligible businesses. Delivered businesses are removed from active prospect and mailing counts. |
+| Community Website Initiative governed preview cohort | ACTIVE | The first governed Blavish/Vivid complimentary-preview cohort was certified and merged in `temitayocharles/tayoca-apps` PR #56 at merge `bde8b3790491a95df313064c91b8765445a1e510`; desktop/mobile browser QA, de-indexing controls, selected typography rendering and live Growth OS preview telemetry passed, and main push run #23191 passed. Blavish remains permission-first and unrevealed while awaiting a reply. Vivid is technically certified but requires a current business-owned outbound route before contact. Growth OS remains the operational system of record for prospect state and anti-duplication controls. |
+| Community Website Initiative delivery/outcomes | ACTIVE | Selection, outreach, reply handling, delivery, feedback, case-study and referral outcomes remain ongoing for eligible businesses. Delivered businesses are removed from active prospect and mailing counts; awaiting-reply prospects are not re-contacted merely because a newer preview exists. |
 | ACG Shelburne delivered website | DONE | The website for African Caribbean Grocery Store was already designed, handed over and moved into an existing-client maintenance relationship. Exclude ACG Shelburne from active cohort, mailing/outreach and candidate-site counts. Preserve the `acg-shelburne` Vercel project as a maintenance/handoff asset until requested changes are resolved; proof, case-study or referral use requires the business owner's permission. |
 | Reviews / Trust implementation | DONE | Verified-review architecture, publication consent, human approval and public review feed are implemented. |
 | Reviews / Trust verified-sale ingestion | BLOCKED | Provider-authenticated Gumroad sale verification and the live Gumroad `sale` webhook are implemented and fail closed. Live Gumroad reconciliation on 2026-08-30 shows zero successful sales, so the positive success branch cannot be certified without fabricating a transaction. See `docs/GUMROAD_EXTERNAL_GATES.md`. |
