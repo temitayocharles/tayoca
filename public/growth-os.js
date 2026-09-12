@@ -1,4 +1,12 @@
 (function(){
+  if(!document.querySelector('script[data-v9-runtime-fixes]')){
+    var fixes=document.createElement('script');
+    fixes.src='/v9-runtime-fixes.js';
+    fixes.defer=true;
+    fixes.setAttribute('data-v9-runtime-fixes','true');
+    document.head.appendChild(fixes);
+  }
+
   function track(name,props){
     try{
       if(window.TayocaAnalytics&&typeof window.TayocaAnalytics.emit==='function')return window.TayocaAnalytics.emit(name,props||{});

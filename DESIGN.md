@@ -1,182 +1,332 @@
-# Tayoca Flagship Website Design Specification
+# Tayoca Sitewide Design System
 
-Status: implementation specification for `feat/tayoca-flagship-home-20260911`
+Status: **locked implementation specification** for `feat/tayoca-sitewide-figma-v9-20260911`
 Date: 2026-09-11
 Canonical source: Forgejo `temitayocharles/tayoca`
 Production target: `tayoca.com`
 
-## 1. Product intent
+## 1. Design decision
 
-Tayoca.com is the public front door to an engineering-led technology company, not a consulting template and not a portfolio microsite. The homepage must explain the company quickly, establish commercial relevance, demonstrate that Tayoca builds real things, preserve evidence discipline, and create multiple monetizable visitor paths without turning the page into a directory.
+The approved v9 direction is now the sitewide Tayoca visual system, not a homepage-only concept.
 
-Primary business goal: qualified commercial movement into assessments and consultations.
-Secondary goals: product revenue, Operator Brief subscriber growth, software/product discovery, trust, and community participation.
+The public site must feel deliberately art-directed, as if composed in Figma by a strong product/brand designer, while remaining static, accessible, fast, maintainable and truthful. AI may assist implementation, but the result must not expose common AI-site defaults through oversized hero type, eyebrow labels on every section, repeated three-card grids, decorative numbering, excessive pills, generic SaaS gradients, fake dashboards, or interchangeable marketing copy.
 
-## 2. Audiences
+LAFABAH Houston was reviewed as a quality/process benchmark. Tayoca must not copy its visual identity. The transferable lesson is specificity: real content, real imagery, coherent typography, strong cultural/brand signals, varied composition and deliberate page-by-page art direction.
 
-Primary:
-- CTO, VP Engineering, Head of Platform, SRE/DevOps lead
-- CFO, FinOps lead, cloud/platform owner
-- COO, operations leader, AI/automation owner
+## 2. Company and audience
 
-Secondary:
-- technical operators buying publications
+Tayoca is an engineering-led technology company and builder spanning:
+- technology value / FinOps
+- platform reliability / DevSecOps / GitOps
+- AI, RAG, LLMOps and workflow automation
+- owned software and project builds
+- publications and operator education
+- Operator Brief editorial work
+- community initiatives
+
+Primary audience:
+- CTO, VP Engineering, Head of Platform, SRE/DevOps leads
+- CFO, FinOps and cloud owners
+- COO and automation owners
+
+Secondary audience:
+- technical operators and learners
+- product/publication buyers
 - partners and collaborators
-- readers and newsletter subscribers
-- community website applicants
+- community participants
 
-## 3. Surface archetype
+## 3. Customer-facing voice
 
-Hybrid corporate platform + evidence-led commercial site + editorial/product surface.
+The website talks directly to people. It explains recognizable problems and useful outcomes instead of performing technical sophistication.
 
-The homepage is not a long catalogue. It is a routing and confidence-building layer with five clear jobs:
-1. state the business value
-2. expose the three core operating problems
-3. show what Tayoca can sell or deliver now
-4. show that Tayoca actually builds and publishes
-5. route the visitor to one measurable next action
+Preferred language:
+- “Your cloud bill keeps growing and nobody can clearly explain why.”
+- “If your team repeats the same work every week, we can automate the repeatable part.”
+- “Before we recommend a fix, we first find out what is actually happening.”
 
-## 4. Conversion architecture
+Avoid:
+- manifesto copy
+- defensive comparisons such as “not a slide deck”
+- ambiguous punchlines
+- unnecessary internal terminology
+- generic AI phrases such as “from complexity to capability” unless a page genuinely needs them
+- repeated eyebrow/flag headings such as “PROOF IN PRACTICE”, “SELECTED ENGAGEMENTS”, “EVIDENCE STANDARD”
 
-Primary CTA: `Start an Assessment` -> `/assessments.html`
-Secondary commercial CTA: `Explore Services` -> `/services.html`
-Direct conversation CTA: consultation link from canonical site settings
-Product path: `/products.html`
-Owned software/build path: `/work.html` and `/sivanta.html`
-Nurture path: `/operator-brief.html`
-Trust path: `/results.html` and `/trust.html`
-Community path: `/community/websites`
+## 4. Sitewide information architecture
 
-No new offer, price, testimonial, customer, metric, certification, availability claim, or social proof may be invented.
+The approved system applies across:
+- Home
+- Services
+- Assessments
+- Results / evidence
+- Work / projects
+- individual project/product surfaces such as Sivanta
+- Products and product-detail pages
+- Operator Brief and archive/editorial pages
+- About
+- Trust
+- Community pages
+- Reviews
+- blog/article pages
+- contact/conversion flows
+- 404 and supporting utility surfaces
 
-## 5. Information architecture
+Shared brand language does **not** mean identical page composition. Each archetype must have its own layout logic:
+- Home: orientation + problem recognition + selected proof + routing
+- Services: customer problems + engagement choices + process + scope
+- Work: visual project catalogue + project narratives
+- Editorial: reading-first, typographically distinct
+- Product detail: product evaluation and purchase/use path
+- Trust/results: evidence-first, quieter and more structured
+- Community: human/local visual language
+- About: company story, breadth and operating principles
 
-### Header
-Locked canonical primary navigation, with one primary CTA. The secondary utility rail is retained but visually quieter.
+## 5. Locked v9 visual system
 
-### Homepage sequence
-1. Hero: concise company proposition + two primary actions + evidence note
-2. Decision rail: three core operating problems, expressed as questions
-3. Commercial offers: concrete current engagement anchors with existing approved prices
-4. Build proof: Sivanta, SiteSupply, publications and community initiative using existing real assets
-5. Evidence standard: explain how claims are handled
-6. Operator Brief: editorial/nurture surface and subscription form
-7. Products: a compact publication strip rather than a second store homepage
-8. Final conversion: assessment, consultation, email
+### 5.1 Color
 
-The long explanatory `seven kinds of work` block is removed from the homepage and delegated to About/Work, where visitors who want taxonomy can explore it without forcing every first-time visitor through it.
+Light:
+- Canvas: `#FFFFFF`
+- Surface soft: `#F4F7FA`
+- Surface cool: `#EDF2F7`
+- Ink: `#18242D`
+- Strong ink: `#0B1620`
+- Muted: `#53616C`
+- Soft text: `#7B8790`
+- Deep navy: `#102B3A`
+- Deepest navy: `#081923`
+- Cobalt primary: `#3157D5`
+- Cobalt deep: `#203FA5`
+- Coral signal: `#EF6A4B`
+- Sage annotation: `#74948A`
+- Hairline: `#DCE3E8`
+- Strong hairline: `#AEBAC2`
 
-## 6. Visual system
+Dark:
+- Canvas: `#09131A`
+- Surface: `#0E1C25`
+- Surface soft: `#132630`
+- Surface cool: `#182F3A`
+- Ink: `#E8EEF2`
+- Strong ink: `#FFFFFF`
+- Muted: `#B7C1C8`
+- Soft text: `#8E9AA3`
+- Cobalt: `#6F8CFF`
+- Coral: `#FF8466`
+- Sage: `#8DB1A6`
 
-Art direction: **industrial editorial / operating ledger**.
+Rules:
+- Cobalt is the primary interaction/action colour.
+- Coral is a signal/accent, not a page wash.
+- Sage is for annotation/drafting detail only.
+- Do not reintroduce petrol/orange as the dominant system.
+- Do not use generic blue/purple glow blobs.
 
-The interface should feel like a modern engineering company with an editorial discipline: dark ink, warm paper, measured orange signal, steel-blue secondary signal, strong rules, real photography and real product artwork. Avoid decorative AI tropes, fake dashboards, glassmorphism and repetitive rounded cards.
+### 5.2 Typography
 
-### Color
-- Ink: `#0b0c0d`
-- Ink raised: `#141619`
-- Warm paper: `#f2eee6`
-- White: `#fffdf8`
-- Text dark: `#17191c`
-- Text light: `#f4f1ea`
-- Muted dark: `#706b63`
-- Muted light: `#a7a29a`
-- Tayoca orange: `#f97316`
-- Orange dark: `#c65308`
-- Steel signal: `#5b8ca8`
-- Hairline dark: `#2b2d30`
-- Hairline paper: `#d9d1c4`
+Primary interface family: **Spline Sans**
+Editorial family: **Newsreader**
 
-### Typography
-Fresh system for this project:
-- Display/headings: `Archivo`
-- Body: `Source Sans 3`
-- Technical labels: `IBM Plex Mono`
+Usage:
+- Spline Sans: navigation, UI, headings, service copy, project copy, forms, controls
+- Newsreader: Operator Brief, long-form editorial moments and selective reading-led headings
 
-No Inter, no generic system-font-first stack, no oversized AI-style hero type. Homepage H1 caps at approximately 64px desktop and 42px mobile.
+Typography rules:
+- No giant AI-style hero type.
+- Desktop H1 target: roughly 36–48px on common screens, responsive by content.
+- H2 target: roughly 28–40px.
+- Body: approximately 16–18px with 1.6–1.75 line-height.
+- Favor line length and placement over scale for hierarchy.
+- Do not use uppercase micro-labels as default section headings.
+- No automatic all-caps tracking treatment for every metadata element.
 
-### Spacing
-8px base rhythm.
-- compact: 8 / 12 / 16
-- content: 24 / 32
-- sectional: 64 / 80 / 96
+### 5.3 Shape and controls
 
-### Radius
-Mostly squared or small radii, 6-10px. Large rounded containers and excessive pills are avoided.
+- Small controlled radii: 6px controls, 12–18px selected media/sheets.
+- Buttons are compact rectangular controls, not oversized pills.
+- Pills/chips are reserved for actual status semantics only.
+- Shadows are subtle and depth-specific; avoid floating-card wallpaper.
 
-### Motion
-Motion is optional and comprehension-led only:
-- subtle image zoom on hover
-- short 120-180ms focus/hover transitions
-- existing reduced-motion behavior remains authoritative
+### 5.4 Annotation language
 
-## 7. Composition rules
+The earlier hand-sketched direction is retained only as a restrained drafting/annotation system.
 
-- Prefer rails, ruled rows, editorial splits, media-led panels and tabular offer layouts over identical card grids.
-- Use real repository assets before external imagery.
-- Keep paragraphs under roughly 70 characters per line where practical.
-- Every section must have a clear visual hierarchy and one job.
-- CTAs should not compete. Each section gets one primary action, with secondary actions visually quieter.
-- Avoid fake numerical metrics. Existing pricing and counts may be shown only where already approved in canonical content.
+Use:
+- occasional offset border
+- short field-note annotation
+- route/flow marks
+- measured imperfect line
+- selected image/project framing
 
-## 8. Accessibility
+Do not use:
+- faux-handwritten headings everywhere
+- double scribble borders around every card
+- cartoon doodles
+- decorative arrows without information value
 
-- Preserve skip link, landmark structure, locked navigation semantics and mobile menu behavior.
-- Maintain visible focus states.
-- Minimum target size 44px for principal interactive controls on touch layouts.
-- Do not encode meaning by color alone.
-- Decorative images use empty alt; content images retain meaningful alt.
-- Respect `prefers-reduced-motion`.
-- Maintain WCAG AA text contrast.
+## 6. Composition rules
 
-## 9. Responsive behavior
+1. Content determines composition; page templates do not force all content into one grid.
+2. Use asymmetry deliberately.
+3. Prefer editorial splits, ruled rows, image-led narratives, working sheets, flow diagrams and staggered media.
+4. Do not repeat identical section grammar three or more times in sequence.
+5. Avoid default 3-up feature/service grids when a row, story, comparison or split is more natural.
+6. Real imagery appears early enough to establish identity.
+7. Project pages explain what the project does; they do not defend it against hypothetical criticism.
+8. Customer problems are described in recognizable language before implementation jargon.
+9. Page endings should feel conversational rather than like generic SaaS CTA banners.
+10. Every section must have one clear job.
 
-Desktop: editorial split layouts and 12-column composition.
-Tablet: reduce to two-column sections where content remains legible.
-Mobile: single-column flow, no horizontal content overflow, sticky header remains compact, CTA hierarchy preserved.
+## 7. Imagery
 
-Product cover strip may horizontally scroll on mobile but must remain keyboard accessible.
+Priority order:
+1. verified real repository/project imagery
+2. actual product/interface artefacts
+3. documentary-style generated scenario imagery where disclosure is not misrepresented
+4. diagrams built from real system concepts
 
-## 10. Performance
+Generated scenario imagery must feel documentary rather than synthetic:
+- ordinary working environments
+- believable lighting
+- non-perfect composition
+- real-world clutter where appropriate
+- no cinematic “AI engineer looking at holograms” scenes
+- no invented client/team implication
+
+Approved study scenarios include:
+- cloud-spend review
+- operations/reliability work
+- repetitive administrative work
+- construction supplier/buyer context for SiteSupply
+- local-business collaboration for the community initiative
+
+## 8. Motion
+
+Motion is restrained and functional:
+- 150–600ms entrance/reveal where useful
+- slight image movement on hover
+- quiet line/flow animation for diagrams
+- subtle moving grid only where it communicates an active working surface
+- no heavy parallax
+- no constant decorative motion across the whole page
+
+`prefers-reduced-motion` must fully suppress nonessential animation.
+
+## 9. Theme architecture
+
+Light and dark modes must be complete theme states. No section may remain permanently dark or permanently light unless it is a deliberate media asset with sufficient contrast.
+
+All major surfaces, text, borders, forms, controls and annotations derive from theme tokens.
+
+First visit may respect system preference. User choice must persist locally.
+
+## 10. Navigation and shared shell
+
+The locked canonical primary navigation order remains unchanged because `scripts/validate_static_site.py` enforces it.
+
+Existing analytics hooks, form contracts, `tayoca-site.js`, Stage 10 product ecosystem contracts and public routes must remain intact.
+
+The design system may restyle the shell but must not silently rename or remove validated navigation routes.
+
+## 11. Page-specific art direction
+
+### Home
+Problem recognition, real-work imagery, selected services, projects, editorial and a human final question.
+
+### Services
+Use customer-problem narratives and distinct engagement compositions. Pricing is retained only where already canonical. Avoid three equal service cards as the primary presentation.
+
+### Assessments
+Decision-support interface. Explain when each assessment is useful and what the visitor needs to provide. Keep forms calm and legible.
+
+### Work
+Image-led project catalogue. SiteSupply, Sivanta and community work should explain the real use case directly.
+
+### Operator Brief / blog
+Reading-first. Newsreader may carry titles/decks. The interface should feel editorial, not like a SaaS dashboard.
+
+### Products
+Real covers/artifacts. Product detail pages should feel like carefully designed publishing/product pages, not repeated store cards.
+
+### About
+Human company story and operating breadth. Avoid a wall of capability taxonomy.
+
+### Results / Trust
+Quiet, structured, evidence-led layouts. Do not turn evidence policy into marketing theatre.
+
+### Community
+Warmer and more local/human in composition while still unmistakably Tayoca.
+
+## 12. Accessibility
+
+- Preserve skip links and landmarks.
+- Visible focus states.
+- Principal touch targets at least 44px.
+- WCAG AA contrast.
+- Meaning must not depend on colour alone.
+- Content imagery has useful alt text; decorative imagery has empty alt.
+- Mobile menu remains keyboard/screen-reader operable.
+- Reduced-motion is authoritative.
+
+## 13. Responsive behavior
+
+Desktop: varied editorial compositions, not a universal 12-column grid exposed everywhere.
+Tablet: compositions simplify without losing hierarchy.
+Mobile: single-column reading order, compact header, clear CTA priority, no horizontal overflow.
+
+## 14. Performance
 
 - Static HTML remains the delivery model.
-- Existing image assets are reused.
-- Hero image remains locally hosted and explicitly dimensioned.
-- No UI framework or client-side rendering dependency is introduced.
-- JavaScript remains progressive enhancement.
-- Google Fonts are the only new network dependency, using preconnect and three families only.
+- No frontend framework is introduced for the redesign.
+- JavaScript stays progressive enhancement.
+- Images are locally hosted or intentionally optimized before production use.
+- Font loading is limited to the locked Spline Sans + Newsreader system unless a later documented brand decision changes it.
 
-## 11. SEO and trust
+## 15. Truth and safety boundaries
 
-Preserve:
-- canonical URL
-- robots indexing policy
-- Open Graph/Twitter metadata
-- Organization/WebSite JSON-LD
-- sitemap/internal-link validity
-- blocked-claim enforcement
-- evidence language
+Never invent or imply unsupported:
+- clients
+- testimonials
+- revenue
+- savings
+- uptime
+- partnerships
+- employees/team members
+- certifications
+- project ownership
+- production screenshots
+- project outcomes
 
-Homepage title and description should emphasize technology value, reliability and governed automation while remaining faithful to canonical positioning.
+Existing approved prices may remain:
+- Cloud Cost Optimization Engagement: `$5,000 flat fee`
+- GitOps & DevSecOps Platform Engagement: `$8,000+ fixed scope`
+- AI Automation / RAG / LLMOps Pilot: `From $5,000`
 
-## 12. Implementation boundaries
+## 16. Implementation order
 
-The locked primary nav is not renamed or reordered because `scripts/validate_static_site.py` enforces it.
-The Tayoca public shell and `tayoca-site.js` remain loaded.
-Stage 10 product ecosystem contracts are not renamed or modified.
-No Control Center, CMS, n8n workflow, revenue authority, private evidence, or authentication plane is replaced.
+1. Lock this design specification.
+2. Introduce sitewide design tokens and typography.
+3. Restyle canonical header/footer/shared shell.
+4. Rebuild Home from approved v9 direction.
+5. Recompose Services, Assessments, Work and About.
+6. Recompose Operator Brief/editorial and Products/product detail.
+7. Recompose Results, Trust, Community and supporting surfaces.
+8. Replace synthetic-looking imagery with approved real/documentary assets.
+9. Run static validation, route parity, editorial/claim validation and accessibility audit.
+10. Browser-test desktop and mobile.
+11. Deploy preview, review visually, correct composition before cosmetic details.
+12. Merge through protected main only after required checks pass.
+13. Verify production aliases, runtime assets, analytics hooks and live responsive behavior.
 
-## 13. Design-system research fallback
+## 17. Acceptance criteria
 
-The requested canonical `ui-ux-pro-max` and 21st.dev Magic MCP tools are not exposed in this execution environment. Their intent is preserved through a formal design-system pass, repo-native component reuse, visual-reference research, and explicit typography/color/spacing/motion specifications before implementation. No claim is made that those unavailable tools were used.
-
-## 14. Acceptance criteria
-
-- Homepage presents Tayoca as a broad engineering-led technology company within the first viewport.
-- Primary commercial path is unambiguous.
-- Real work and products appear above low-priority explanatory content.
-- No unsupported claim is added.
-- Locked primary navigation passes unchanged.
-- Existing analytics hooks remain intact for principal CTAs.
-- Desktop and mobile layouts have no intended horizontal overflow.
-- Source remains static, maintainable, and deployable through the existing Vercel project.
+- The whole site feels like one designed brand system without every page sharing one template.
+- No major route still looks like an older Tayoca design era.
+- No common AI-slop composition dominates the site.
+- Customer-facing language is human and specific.
+- Real work and imagery are visible.
+- Typography and color match this specification.
+- Header/footer/theme behavior is consistent sitewide.
+- Existing routes, analytics, forms and validated contracts remain functional.
+- Desktop and mobile pass visual and accessibility review.
+- No unsupported claim is introduced.

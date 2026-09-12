@@ -2,15 +2,27 @@
 <html lang="en">
 <head>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-G4QC90QNXW"></script><script src="/ga4.js"></script>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light dark">
+  <script>(function(){try{var t=localStorage.getItem('tayoca-theme');if(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)t='dark';document.documentElement.dataset.theme=t||'light';}catch(e){document.documentElement.dataset.theme='light';}})();</script>
   <title>Services &amp; Pricing | Tayoca — FinOps, Platform Reliability, Automation</title>
-  <meta name="description" content="Fixed-scope Tayoca engagements: cloud cost optimization, GitOps and DevSecOps platform delivery, and bounded AI automation pilots with explicit acceptance criteria and evidence boundaries.">
+  <meta name="description" content="Tayoca helps teams trace cloud costs, make platforms easier to run and automate repetitive work through bounded engagements with clear scope, deliverables and acceptance criteria.">
   <meta name="robots" content="index,follow"><link rel="canonical" href="https://tayoca.com/services.html"><link rel="icon" href="/favicon.ico">
-  <meta property="og:title" content="Tayoca | Services & Pricing"><meta property="og:description" content="FinOps, platform reliability and AI automation engagements with explicit scope, evidence and acceptance criteria."><meta property="og:type" content="website"><meta property="og:url" content="https://tayoca.com/services.html"><meta property="og:site_name" content="Tayoca"><meta property="og:image" content="https://tayoca.com/assets/og-image.png">
-  <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Tayoca | Services & Pricing"><meta name="twitter:description" content="FinOps, platform reliability and AI automation engagements with explicit scope, evidence and acceptance criteria."><meta name="twitter:image" content="https://tayoca.com/assets/og-image.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="/assets/css/growth-os.css">
+  <meta property="og:title" content="Tayoca | Services &amp; Pricing"><meta property="og:description" content="Cloud costs, fragile delivery or repetitive work — start with the problem you can see and a bounded engagement to fix it."><meta property="og:type" content="website"><meta property="og:url" content="https://tayoca.com/services.html"><meta property="og:site_name" content="Tayoca"><meta property="og:image" content="https://tayoca.com/assets/og-image.png">
+  <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Tayoca | Services &amp; Pricing"><meta name="twitter:description" content="Cloud costs, fragile delivery or repetitive work — start with the problem you can see."><meta name="twitter:image" content="https://tayoca.com/assets/og-image.png">
+  <link rel="stylesheet" href="/assets/css/growth-os.css"><link rel="stylesheet" href="/assets/css/site-shell.css"><link rel="stylesheet" href="/assets/css/tayoca-v9.css">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Tayoca Engineering Services","url":"https://tayoca.com/services.html","provider":{"@type":"Organization","name":"Tayoca","url":"https://tayoca.com/"},"serviceType":["Technology Value and FinOps","Platform Reliability and DevSecOps","Agentic Operations and Automation"],"areaServed":["Canada","Worldwide"]}</script>
-  <link rel="stylesheet" href="/assets/css/site-shell.css">
+  <style>
+    .service-stories{border-top:1px solid var(--line)}
+    .service-story{display:grid;grid-template-columns:minmax(220px,.72fr) minmax(0,1.28fr);gap:4.5rem;padding:3.4rem 0;border-bottom:1px solid var(--line);align-items:start}
+    .service-story h2{font-size:clamp(1.65rem,2.5vw,2.2rem);margin:0}.service-story .price{margin:.55rem 0 0}
+    .service-story .body{max-width:70ch}.service-story .body>p:first-child{font-size:1.08rem;color:var(--ink-2)}
+    .service-story ul{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.55rem 2rem;margin:1.5rem 0;padding:0;list-style:none}
+    .service-story li{position:relative;padding-left:1rem;color:var(--muted)}.service-story li::before{content:"";position:absolute;left:0;top:.72em;width:5px;height:5px;border-radius:50%;background:var(--signal)}
+    .service-story .microcopy{max-width:66ch}.service-story .actions{margin-top:1.2rem}
+    .process-sheet{display:grid;grid-template-columns:.7fr 1.3fr;gap:4.5rem;align-items:start}.process-list{border-top:1px solid var(--line)}
+    .process-step{display:grid;grid-template-columns:115px 1fr;gap:1.5rem;padding:1.3rem 0;border-bottom:1px solid var(--line)}.process-step strong{color:var(--ink);font-weight:600}.process-step span{color:var(--muted)}
+    @media(max-width:760px){.service-story,.process-sheet{grid-template-columns:1fr;gap:1.8rem}.service-story ul{grid-template-columns:1fr}.process-step{grid-template-columns:1fr;gap:.35rem}}
+  </style>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -18,122 +30,58 @@
   <a class="brand" href="/" aria-label="Tayoca home">TAYOCA</a>
   <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open navigation">Menu</button>
   <nav class="primary-nav" id="primary-nav" aria-label="Primary navigation"><a href="/services.html" aria-current="page">Services</a><a href="/assessments.html">Assessments</a><a href="/results.html">Results</a><a href="/products.html">Products</a><a href="/insights.html">Insights</a><a href="/about.html">About</a></nav>
+  <button class="theme-switch" type="button" aria-label="Switch colour theme"></button>
   <a class="button small header-cta" href="/assessments.html">Start an Assessment</a>
 </div>
-<div class="header-map"><nav class="utility-nav" aria-label="Company map">
-  <span class="utility-nav__label">More from Tayoca</span>
-  <a href="/work.html">Work</a><a href="/operator-brief.html">Operator Brief</a><a href="/community/websites">Community</a><a href="/trust.html">Trust</a><a href="/reviews.html">Reviews</a><a href="/sivanta.html">Sivanta</a>
-</nav></div></header>
+<div class="header-map"><nav class="utility-nav" aria-label="Company map"><span class="utility-nav__label">More from Tayoca</span><a href="/work.html">Work</a><a href="/operator-brief.html">Operator Brief</a><a href="/community/websites">Community</a><a href="/trust.html">Trust</a><a href="/reviews.html">Reviews</a><a href="/sivanta.html">Sivanta</a></nav></div></header>
+
 <main id="main">
-
-<section class="hero"><div class="hero-inner hero-split">
-  <div>
-    <p class="eyebrow">Services &amp; pricing</p>
-    <h1>Scope the problem. <span class="accent">Measure the result.</span></h1>
-    <p class="lede">Tayoca starts with the business decision and the evidence boundary, then defines the smallest useful engagement with explicit inclusions, exclusions and acceptance criteria.</p>
-    <div class="actions"><a class="button" href="/assessments.html">Start an Assessment</a><a class="button ghost" href="/trust.html">Review Evidence Policy</a></div>
-    <p class="microcopy">Fixed scope is preferred wherever inputs and acceptance criteria can be bounded.</p>
-  </div>
-  <div class="hero-media">
-    <div class="frame"><img src="/assets/img/workshop-desk.jpg" alt="An engineer's night workspace: laptop terminal, notebook and a warm desk lamp" loading="eager" width="1200" height="750"></div>
-    <div class="frame-caption"><strong>HOW AN ENGAGEMENT RUNS</strong><span>Frame · Evidence · Intervention · Measure</span></div>
-  </div>
-</div></section>
-<div class="amber-rule"></div>
-
-<section class="section" id="engagements"><div class="container">
-  <h2 class="sr-only">Fixed-scope implementation engagements</h2>
-  <div class="grid">
-    <div class="card"><span class="tag">Technology Value &amp; FinOps</span><h3>Cloud Cost Optimization</h3><div class="price">$5,000 flat fee</div><p>For teams that need a defensible view of cloud cost drivers, waste hypotheses, ownership and the remediation order that matters most.</p><ul><li>90-minute deep-dive and evidence framing</li><li>Billing/workload evidence review</li><li>Prioritized optimization backlog with owners</li><li>Expected impact, assumptions and validation method</li></ul><p class="microcopy">Savings remain modeled or estimated until implemented and validated against an agreed baseline. Implementation is separately scoped unless included in the signed engagement.</p><div class="actions"><a class="button full" data-event="service_cta" href="https://cal.com/tayoca/finops-audit" rel="noopener" target="_blank">Book Discovery Call</a></div></div>
-    <div class="card"><span class="tag">Platform Reliability &amp; DevSecOps</span><h3>GitOps &amp; DevSecOps Platform</h3><div class="price">$8,000+ fixed scope</div><p>For engineering teams that need a reliable, observable and secure delivery/platform capability with documented controls and operable handover.</p><ul><li>Discovery and target architecture</li><li>Agreed implementation and delivery controls</li><li>Testable reliability/recovery acceptance criteria</li><li>Runbooks, validation evidence and handover</li></ul><p class="microcopy">Milestones are tied to agreed deliverables and acceptance evidence. Delivery-time or service-level commitments apply only when explicitly defined in the signed scope.</p><div class="actions"><a class="button full" data-event="service_cta" href="https://cal.com/tayoca/platform-engineering-consultation" rel="noopener" target="_blank">Book Consultation</a></div></div>
-    <div class="card"><span class="tag">Agentic Operations &amp; Automation</span><h3>AI Automation / RAG / LLMOps Pilot</h3><div class="price">From $5,000</div><p>For a bounded workflow where automation must be measurable, observable and able to fail safely with human handoff where judgment is required.</p><ul><li>Workflow and model/integration design</li><li>Pilot implementation with acceptance tests</li><li>Quality, failure, cost/latency controls where relevant</li><li>Observability, runbooks and handover</li></ul><p class="microcopy">Final scope and price depend on evidence access, integrations, operating risk and acceptance criteria. Production scale-out is separately scoped unless explicitly included.</p><div class="actions"><a class="button full" data-event="service_cta" href="https://cal.com/tayoca/platform-engineering-consultation" rel="noopener" target="_blank">Book AI Pilot</a></div></div>
-  </div>
-</div></section>
-
-<section class="section band-warm" id="loop"><div class="container">
-  <div class="section-heading">
-    <p class="ledger-label">The operating loop</p>
-    <h2>Every engagement runs the same five movements.</h2>
-    <p>The loop is the reason a Tayoca engagement ends with something the client can operate, not just a document.</p>
-  </div>
-  <figure class="figure">
-    <div class="diagram">
-      <svg viewBox="0 0 900 300" role="img" aria-labelledby="loopTitle loopDesc">
-        <title id="loopTitle">The Tayoca operating loop</title>
-        <desc id="loopDesc">Five connected stages: frame the decision, gather bounded evidence, deliver the smallest useful intervention, measure against the baseline, then hand over with runbooks and ownership. Measurement feeds back into framing the next decision.</desc>
-        <defs>
-          <marker id="tay-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-            <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a4238"/>
-          </marker>
-          <marker id="tay-arrow-accent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-            <path d="M 0 0 L 10 5 L 0 10 z" fill="#f97316"/>
-          </marker>
-        </defs>
-        <rect class="node node-accent" x="10" y="110" width="150" height="80" rx="10"/>
-        <text class="lbl" x="95" y="145" text-anchor="middle">Frame</text>
-        <text class="lbl-sm" x="95" y="165" text-anchor="middle">THE DECISION</text>
-        <rect class="node" x="195" y="110" width="150" height="80" rx="10"/>
-        <text class="lbl" x="280" y="145" text-anchor="middle">Evidence</text>
-        <text class="lbl-sm" x="280" y="165" text-anchor="middle">BOUNDED INPUTS</text>
-        <rect class="node" x="380" y="110" width="150" height="80" rx="10"/>
-        <text class="lbl" x="465" y="145" text-anchor="middle">Intervene</text>
-        <text class="lbl-sm" x="465" y="165" text-anchor="middle">SMALLEST USEFUL</text>
-        <rect class="node" x="565" y="110" width="150" height="80" rx="10"/>
-        <text class="lbl" x="650" y="145" text-anchor="middle">Measure</text>
-        <text class="lbl-sm" x="650" y="165" text-anchor="middle">VS BASELINE</text>
-        <rect class="node node-accent" x="750" y="110" width="140" height="80" rx="10"/>
-        <text class="lbl" x="810" y="145" text-anchor="middle">Hand over</text>
-        <text class="lbl-sm" x="810" y="165" text-anchor="middle">RUNBOOKS + OWNER</text>
-        <path class="edge" d="M160 150 H195"/>
-        <path class="edge" d="M345 150 H380"/>
-        <path class="edge" d="M530 150 H565"/>
-        <path class="edge" d="M715 150 H750"/>
-        <path class="edge-accent" d="M820 190 V250 H85 V190" />
-        <text class="lbl-sm" x="452" y="272" text-anchor="middle" fill="#f97316">MEASUREMENT FEEDS THE NEXT DECISION</text>
-      </svg>
+  <section class="hero"><div class="hero-inner hero-split">
+    <div>
+      <h1>Cloud costs, fragile delivery or repetitive work — start with the problem you can see.</h1>
+      <p class="lede">You do not need to know which platform, tool or architecture comes next. We first trace what is happening, agree what a useful improvement would look like, then scope the smallest piece of work that can move it.</p>
+      <div class="actions"><a class="button" href="/assessments.html">Start with an assessment</a><a class="button ghost" href="#engagements">See the engagements</a></div>
+      <p class="microcopy">Fixed scope is preferred wherever the inputs and acceptance criteria can be bounded.</p>
     </div>
-    <figcaption class="figure-caption">A process diagram, not a dashboard. It describes how Tayoca sequences work; it does not imply any client result.</figcaption>
-  </figure>
-</div></section>
+    <div class="hero-media"><div class="frame"><img src="/assets/img/workshop-desk.jpg" alt="An engineering workspace with a laptop, notebook and desk lamp" loading="eager" width="1200" height="750"></div><div class="frame-caption"><strong>Start with what is happening now</strong><span>Trace · Change · Verify</span></div></div>
+  </div></section>
 
-<section class="section band" id="model"><div class="container">
-  <div class="section-heading"><p class="ledger-label">Engagement model</p><h2>Commercial terms follow the evidence boundary.</h2><p>Fixed scope is preferred where inputs and acceptance criteria can be bounded. Larger implementations use milestones; managed work starts only after a measurable baseline and service boundary exist.</p></div>
-  <div class="grid four">
-    <div class="card"><h3>Diagnose first</h3><p>A fit call or assessment identifies the decision and evidence needed before implementation expands.</p></div>
-    <div class="card"><h3>Explicit scope</h3><p>Inclusions, exclusions, acceptance criteria and change control are written down.</p></div>
-    <div class="card"><h3>Evidence-backed outcomes</h3><p>Estimates and modeled savings state assumptions; realized results require validation.</p></div>
-    <div class="card"><h3>No hidden guarantees</h3><p>Refunds, service levels, timing and performance commitments exist only when their conditions are in the approved scope.</p></div>
-  </div>
-</div></section>
-
-<section class="section paper-band" id="boundary"><div class="container">
-  <div class="rail">
-    <div class="rail-head"><p class="ledger-label">The boundary</p><h2>What Tayoca will and will not claim.</h2></div>
-    <div class="rail-body">
-      <p class="ledger-check">Savings are presented as modeled or estimated until they are implemented and measured against an agreed baseline.</p>
-      <p class="ledger-check">Delivery timelines are tied to agreed milestones, not to optimistic best cases.</p>
-      <p class="ledger-check">Service-level commitments apply only where they are written into the signed scope.</p>
-      <p class="ledger-check">AI and automation work ships with defined failure behaviour, observability and a named human escalation path.</p>
-      <p class="ledger-check">Case studies and quantified outcomes are published only after evidence, disclosure, approval and scope checks.</p>
-      <p style="margin-top:1.2rem"><a href="/results.html">Read the Results Standard →</a></p>
+  <section class="section" id="engagements"><div class="container">
+    <div class="section-heading"><h2>Three common places to begin</h2><p>Each engagement is bounded enough to understand the work, the price and the handover before implementation starts.</p></div>
+    <div class="service-stories">
+      <article class="service-story">
+        <div><h2>Find where your cloud money is going</h2><div class="price">$5,000 flat fee</div></div>
+        <div class="body"><p>You keep adding services as the business grows, and eventually the bill becomes difficult to explain. We help you trace the main cost drivers, find avoidable waste and decide which changes are worth making first.</p><ul><li>90-minute deep dive and evidence framing</li><li>Billing and workload evidence review</li><li>Prioritized optimization backlog with owners</li><li>Expected impact, assumptions and validation method</li></ul><p class="microcopy">Any savings remain modeled or estimated until the changes are implemented and measured against an agreed baseline. Implementation is separately scoped unless the signed engagement includes it.</p><div class="actions"><a class="button" data-event="service_cta" href="https://cal.com/tayoca/finops-audit" rel="noopener" target="_blank">Book a cloud cost discovery call</a></div></div>
+      </article>
+      <article class="service-story">
+        <div><h2>Make delivery and recovery easier to trust</h2><div class="price">$8,000+ fixed scope</div></div>
+        <div class="body"><p>If releases are stressful, recovery is slow or platform ownership is unclear, we help you build a delivery and operating path that is easier for the team to understand and run.</p><ul><li>Discovery and target architecture</li><li>Agreed delivery and security controls</li><li>Testable reliability and recovery criteria</li><li>Runbooks, validation evidence and handover</li></ul><p class="microcopy">Milestones are tied to agreed deliverables and acceptance evidence. Delivery-time or service-level commitments apply only when they are explicitly defined in the signed scope.</p><div class="actions"><a class="button" data-event="service_cta" href="https://cal.com/tayoca/platform-engineering-consultation" rel="noopener" target="_blank">Book a platform consultation</a></div></div>
+      </article>
+      <article class="service-story">
+        <div><h2>Stop doing the same work by hand</h2><div class="price">From $5,000</div></div>
+        <div class="body"><p>Choose one workflow that keeps consuming time: forms, recurring reports, information copied between systems, repeated checks, knowledge retrieval or an operational task. We automate the repeatable steps, define how failure is handled and keep people in the loop where judgment is needed.</p><ul><li>Workflow and integration design</li><li>Bounded pilot with acceptance tests</li><li>Quality, failure, cost or latency controls where relevant</li><li>Observability, runbooks and human handoff</li></ul><p class="microcopy">Final scope and price depend on integrations, evidence access, operating risk and acceptance criteria. Production scale-out is separately scoped unless explicitly included.</p><div class="actions"><a class="button" data-event="service_cta" href="https://cal.com/tayoca/platform-engineering-consultation" rel="noopener" target="_blank">Discuss an automation pilot</a></div></div>
+      </article>
     </div>
-  </div>
-</div></section>
+  </div></section>
 
-<section class="section" id="next"><div class="container">
-  <div class="section-heading"><h2>Not sure which engagement fits?</h2><p>Use the assessment ladder to separate a cost problem, reliability problem or automation opportunity before committing to implementation.</p></div>
-  <div class="actions" style="justify-content:center"><a class="button" href="/assessments.html">Choose an Assessment</a><a class="button ghost" data-revenue-event="whatsapp_services_click" href="https://wa.me/2348113980135?text=Hi%20Tayoca%2C%20I%20want%20help%20solving%20a%20business%20or%20engineering%20problem." rel="noopener noreferrer" target="_blank">Chat with Tayoca on WhatsApp</a></div>
-</div></section>
+  <section class="section band" id="loop"><div class="container process-sheet">
+    <div><h2>What happens after you contact us</h2><p>We keep the process simple enough that you can see where the work is, what decision is being made and what should be true before the next step.</p></div>
+    <div class="process-list">
+      <div class="process-step"><strong>1. Understand</strong><span>We clarify the problem, the decision you need to make and the evidence that already exists.</span></div>
+      <div class="process-step"><strong>2. Bound it</strong><span>We agree the inputs, exclusions, acceptance criteria and smallest useful piece of work.</span></div>
+      <div class="process-step"><strong>3. Change it</strong><span>We implement the agreed intervention with the controls, observability and handoff the work needs.</span></div>
+      <div class="process-step"><strong>4. Verify it</strong><span>We compare the result with the baseline and document what improved, what did not and what should happen next.</span></div>
+    </div>
+  </div></section>
+
+  <section class="section" id="expect"><div class="container"><div class="rail">
+    <div class="rail-head"><h2>What you should expect from us</h2></div>
+    <div class="rail-body"><p class="ledger-check">We tell you when a saving or improvement is still an estimate rather than a verified result.</p><p class="ledger-check">Scope, exclusions, acceptance criteria and change control are written down before the work expands.</p><p class="ledger-check">Delivery timelines and service commitments only apply when they are part of the agreed engagement.</p><p class="ledger-check">Automation work includes observable failure behaviour and a human escalation path where the workflow needs one.</p><p class="ledger-check">Handover includes the information your team needs to own what was built.</p><p style="margin-top:1.2rem"><a href="/results.html">See how Tayoca measures results →</a></p></div>
+  </div></div></section>
+
+  <section class="section paper-band" id="next"><div class="container"><div class="section-heading"><h2>Not sure where to start?</h2><p>Use the assessment path to separate a cost problem, reliability problem or automation opportunity before committing to implementation.</p></div><div class="actions"><a class="button" href="/assessments.html">Choose an assessment</a><a class="button ghost" data-revenue-event="whatsapp_services_click" href="https://wa.me/2348113980135?text=Hi%20Tayoca%2C%20I%20want%20help%20solving%20a%20business%20or%20engineering%20problem." rel="noopener noreferrer" target="_blank">Chat with Tayoca on WhatsApp</a></div></div></section>
 </main>
-<footer class="site-footer"><div class="footer-inner">
-  <div class="footer-brand-col"><div class="footer-brand">TAYOCA</div>
-<p>An engineering-led technology company building software, systems, automation and publications for technology that has to be reliable, accountable and economically understood. Founded by Temitayo Charles. Ontario, Canada. &copy; <span data-current-year>2026</span> Tayoca.</p></div>
-  <div class="footer-links"><strong>Explore</strong><a href="/services.html">Services</a><a href="/assessments.html">Assessments</a><a href="/results.html">Results</a><a href="/products.html">Products</a><a href="/insights.html">Insights</a><a href="/about.html">About</a></div>
-  <div class="footer-links"><strong>Connect</strong><a href="/operator-brief.html">Operator Brief</a><a href="/trust.html">Trust Center</a><a href="mailto:support@tayoca.com">support@tayoca.com</a><a href="mailto:temitayo@tayoca.com">temitayo@tayoca.com</a></div>
-  <div class="footer-col"><strong>Company</strong><a href="/about.html">About</a><a href="/work.html">Work</a><a href="/results.html">Results</a><a href="/trust.html">Trust Center</a><a href="/reviews.html">Verified Reviews</a></div>
-  <div class="footer-col"><strong>Deliver</strong><a href="/services.html">Services &amp; pricing</a><a href="/assessments.html">Assessments</a><a href="/segments/growth-stage-technology.html">Growth-stage</a><a href="/segments/regulated-operations.html">Regulated operations</a><a href="/segments/ai-enabled-engineering.html">AI-enabled teams</a></div>
-  <div class="footer-col"><strong>Build &amp; Read</strong><a href="/products.html">Products</a><a href="/sivanta.html">Sivanta</a><a href="/blog/">Insights</a><a href="/operator-brief-archive.html">Brief archive</a><a href="/community/websites">Community initiative</a></div>
-</div>
-<div class="footer-legal"><span>&copy; <span data-current-year>2026</span> Tayoca · Ontario, Canada</span><a href="/trust.html">Evidence &amp; disclosure policy</a></div></footer>
-<script defer src="/growth-os.js"></script><script defer src="/revenue-events.js"></script><script defer src="/card-interactions.js"></script><script defer src="/tayoca-site.js"></script>
+
+<footer class="site-footer"><div class="footer-inner"><div class="footer-brand-col"><div class="footer-brand">TAYOCA</div><p>We help organizations understand technology costs, improve reliability and automate work that should not need to be repeated by hand. Founded by Temitayo Charles. Ontario, Canada. © <span data-current-year>2026</span> Tayoca.</p></div><div class="footer-links"><strong>Explore</strong><a href="/services.html">Services</a><a href="/assessments.html">Assessments</a><a href="/results.html">Results</a><a href="/products.html">Products</a><a href="/insights.html">Insights</a><a href="/about.html">About</a></div><div class="footer-links"><strong>Connect</strong><a href="/operator-brief.html">Operator Brief</a><a href="/trust.html">Trust Center</a><a href="mailto:support@tayoca.com">support@tayoca.com</a><a href="mailto:temitayo@tayoca.com">temitayo@tayoca.com</a></div><div class="footer-col"><strong>Company</strong><a href="/about.html">About</a><a href="/work.html">Work</a><a href="/results.html">Results</a><a href="/trust.html">Trust Center</a><a href="/reviews.html">Verified Reviews</a></div><div class="footer-col"><strong>Deliver</strong><a href="/services.html">Services &amp; pricing</a><a href="/assessments.html">Assessments</a><a href="/segments/growth-stage-technology.html">Growth-stage</a><a href="/segments/regulated-operations.html">Regulated operations</a><a href="/segments/ai-enabled-engineering.html">AI-enabled teams</a></div><div class="footer-col"><strong>Build &amp; Read</strong><a href="/products.html">Products</a><a href="/sivanta.html">Sivanta</a><a href="/blog/">Insights</a><a href="/operator-brief-archive.html">Brief archive</a><a href="/community/websites">Community initiative</a></div></div><div class="footer-legal"><span>© <span data-current-year>2026</span> Tayoca · Ontario, Canada</span><a href="/trust.html">Evidence &amp; disclosure policy</a></div></footer>
+<script defer src="/growth-os.js"></script><script defer src="/revenue-events.js"></script><script defer src="/card-interactions.js"></script><script defer src="/tayoca-site.js"></script><script defer src="/tayoca-v9.js"></script>
 </body></html>
