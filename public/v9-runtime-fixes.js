@@ -3,6 +3,14 @@
   if(window.__tayocaV9RuntimeFixes)return;
   window.__tayocaV9RuntimeFixes=true;
 
+  if(!document.querySelector('script[src="/tayoca-v9.js"],script[data-tayoca-v9]')){
+    var v9=document.createElement('script');
+    v9.src='/tayoca-v9.js';
+    v9.defer=true;
+    v9.setAttribute('data-tayoca-v9','true');
+    document.head.appendChild(v9);
+  }
+
   var style=document.createElement('style');
   style.setAttribute('data-tayoca-v9-runtime-fixes','true');
   style.textContent='\

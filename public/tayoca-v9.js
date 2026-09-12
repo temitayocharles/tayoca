@@ -1,7 +1,7 @@
 (function(){
   'use strict';
 
-  if(!document.querySelector('script[data-v9-runtime-fixes]')){
+  if(!document.querySelector('script[data-v9-runtime-fixes],script[src="/v9-runtime-fixes.js"]')){
     var fixes=document.createElement('script');
     fixes.src='/v9-runtime-fixes.js';
     fixes.defer=true;
