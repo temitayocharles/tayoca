@@ -6,29 +6,49 @@ canonical_platform: forgejo
 canonical_repo: temitayocharles/tayoca
 status: active_locked_execution_sequence
 locked_at_utc: "2026-09-12T15:11:43Z"
+last_reconciled_utc: "2026-09-12T16:06:00Z"
 
 current_phase: 1
 current_phase_name: production_certification_and_cleanup
-current_phase_status: in_progress_final_certification_closeout
+current_phase_status: in_progress_blocked_on_live_browser_certification
 next_phase: 2
 next_phase_name: conversion_and_customer_journey
 
 current_checkpoint:
-  canonical_forgejo_commit: f9387d0eb8306f6e05134baceef627c94961bb8e
+  canonical_forgejo_commit: bb4ac565d61c53d8efeec3f074220d34c4682cc5
+  roadmap_lock_pr: 85
   final_v9_residual_pr: 84
-  github_mirror_commit: 98af3353e93938980018f82ceee9805d9f63dc2a
-  canonical_tree: a4ee89c1237b3d5e1d606317db47b5b16a36e2d5
-  vercel_deployment: dpl_DZukkTLPJgdRwar4qMyjM6UyVxLk
+  github_mirror_commit: 805da5e2cd0e86ba323979d4924e8b3f2e83b616
+  canonical_tree: 0e3db525d9e1916bb3164c8b922d4e8af7657c35
+  vercel_deployment: dpl_9vsvtuLF83K5Zz1ceq4umrjs3JMu
   vercel_state: READY_PROMOTED
   production_aliases:
     - tayoca.com
     - www.tayoca.com
-  resume_action: reconcile_phase_1_exit_gates_then_begin_phase_2_if_green
+  protected_main_ci:
+    sha: bb4ac565d61c53d8efeec3f074220d34c4682cc5
+    runs:
+      - id: 1324
+        status: success
+      - id: 1325
+        status: success
+      - id: 1326
+        status: success
+  cleanup:
+    deleted_forgejo_branches:
+      - feat/tayoca-sitewide-figma-v9-20260911
+      - diag/tayoca-v9-static-20260911
+  browser_certification:
+    status: blocked_tooling
+    scrapling_attempt: failed_upstream_http_421_misdirected_request
+    fallback_browser_attempt: blocked_by_toolkit_administrator
+    policy: do_not_weaken_production_or_security_controls_for_browser_automation
+  resume_action: retry_first_class_scrapling_live_browser_certification_when_tooling_recovers_then_close_phase_1_if_green
 
 phases:
   1:
     name: production_certification_and_cleanup
-    status: in_progress
+    status: in_progress_blocked_on_live_browser_certification
   2:
     name: conversion_and_customer_journey
     status: next
