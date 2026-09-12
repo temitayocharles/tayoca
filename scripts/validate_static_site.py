@@ -368,7 +368,7 @@ def main() -> None:
     for html_file in PUBLIC_DIR.rglob("*.html"):
         parser = parse_page(html_file)
         robots_value = parser.robots.lower().replace(" ", "")
-        is_indexable = "index" in robots_value and "noindex" not in robots_value
+        is_indexable = "noindex" not in robots_value
         if (
             is_indexable
             and parser.canonical.startswith(f"{SITE_ORIGIN}/")
