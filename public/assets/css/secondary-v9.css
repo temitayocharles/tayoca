@@ -1,0 +1,60 @@
+/* Tayoca v9 secondary surfaces: segments, reviews, archives, utility pages. */
+.segment-page main,.review-page main,.archive-page main,.utility-page main{background:var(--bg);color:var(--ink-2)}
+.segment-page .segment-hero{position:relative;overflow:hidden;isolation:isolate;background:var(--bg);padding:5.6rem 0 4.8rem;border-bottom:1px solid var(--line)}
+.segment-page .segment-hero::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 82% 20%,color-mix(in srgb,var(--accent) 13%,transparent),transparent 30%),linear-gradient(180deg,color-mix(in srgb,var(--surface-2) 72%,transparent),transparent);z-index:-2}
+.segment-page .segment-hero::after{content:"";position:absolute;right:max(1.5rem,calc((100vw - var(--max))/2));top:2rem;width:min(34vw,420px);aspect-ratio:4/3;border:1px solid var(--line);border-radius:18px;background:linear-gradient(145deg,var(--surface-2),var(--surface));box-shadow:var(--v9-shadow);z-index:-1;transform:rotate(1deg)}
+.segment-page .segment-hero .hero-inner{max-width:760px;margin:0 auto 0 max(1.5rem,calc((100vw - var(--max))/2));padding:0;position:relative}
+.segment-page .segment-hero h1{max-width:14ch;font-size:clamp(2.25rem,4vw,3.15rem);line-height:1.04}
+.segment-page .segment-hero .lede{max-width:60ch}
+.segment-page .section .grid{grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line)}
+.segment-page .section .grid>.card{padding:1.5rem 0;border:0;border-bottom:1px solid var(--line);border-radius:0;background:transparent}
+.segment-page .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+.segment-page .step{padding:1.4rem;background:var(--surface);border:1px solid var(--line);border-radius:12px}
+.segment-page .step h3{margin-top:0}
+.segment-page .section:last-of-type .container{border-top:1px solid var(--line);padding-top:3.2rem}
+
+.review-page main{max-width:var(--max);margin:auto;padding:5rem 1.5rem 6rem}
+.review-page .hero{padding:0;max-width:780px;margin:0 0 3rem}
+.review-page .hero h1{font-size:clamp(2.2rem,4vw,3.1rem);max-width:15ch}
+.review-page .lead{font-size:1.05rem;color:var(--muted);max-width:62ch}
+.review-page .summary{display:flex;gap:.65rem;flex-wrap:wrap;margin:1.5rem 0 2.2rem}
+.review-page .pill{background:var(--surface-2);border:1px solid var(--line);border-radius:999px;padding:.48rem .78rem;color:var(--muted);font-size:.82rem}
+.review-page .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+.review-page .review{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1.4rem;box-shadow:none}
+.review-page .review h2{font-size:1.2rem;margin:.65rem 0 .45rem}
+.review-page .review p{color:var(--muted)}
+.review-page .stars{color:var(--signal);letter-spacing:.12em}
+.review-page .meta{border-top:1px solid var(--line);margin-top:1.2rem;padding-top:.9rem;color:var(--muted);font-size:.86rem}
+.review-page .verified{color:var(--ok);font-weight:600}
+.review-page .empty,.review-page .error{border:1px dashed var(--line-2);border-radius:14px;padding:2rem;background:var(--surface-2);color:var(--muted)}
+.review-page .error{border-color:color-mix(in srgb,var(--signal) 55%,var(--line));color:var(--signal)}
+.review-page .policy{margin-top:2.5rem;padding:1.4rem 1.5rem;border:1px solid var(--line);border-left:3px solid var(--signal);border-radius:12px;background:var(--surface-2);color:var(--muted)}
+.review-page .policy strong{color:var(--ink)}
+
+.archive-page .archive-hero{max-width:var(--max);margin:auto;padding:5.2rem 1.5rem 3.2rem}
+.archive-page .archive-hero h1{font-family:var(--v9-editorial);font-size:clamp(2.35rem,4vw,3.25rem);max-width:18ch}
+.archive-page .operator-brief-issue{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:1.6rem;box-shadow:var(--v9-shadow)}
+.archive-page .operator-brief-issue>.section-heading{max-width:none}
+.archive-page .operator-brief-issue .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.archive-page .operator-brief-issue .card{border-radius:10px;background:var(--surface-2)}
+.archive-page .rail{background:var(--surface);border:1px solid var(--line);border-radius:14px}
+
+.utility-page main{max-width:900px;margin:auto;padding:7rem 1.5rem 8rem;min-height:68vh;display:grid;place-items:center}
+.utility-card{width:min(100%,760px);padding:2.2rem;border:1px solid var(--line);border-radius:18px;background:var(--surface);box-shadow:var(--v9-shadow)}
+.utility-card h1{font-size:clamp(2.25rem,5vw,3.4rem);max-width:13ch;margin:.2rem 0 1rem}
+.utility-card p{max-width:58ch}
+
+body.operator-editorial main:not(.fh-container){background:var(--bg);color:var(--ink-2)}
+body.operator-editorial main>h1{font-family:var(--v9-editorial);font-size:clamp(2.25rem,5vw,3.45rem)!important;line-height:1.05!important;letter-spacing:-.03em!important;color:var(--ink)!important;max-width:18ch;margin:.7rem 0 1.25rem!important}
+body.operator-editorial main>.lede{font-size:1.12rem!important;color:var(--muted)!important;max-width:68ch}
+body.operator-editorial main>h2,body.operator-editorial main>section h2{font-family:var(--v9-editorial)!important;font-size:clamp(1.65rem,3vw,2.15rem)!important;line-height:1.18!important;color:var(--ink)!important}
+body.operator-editorial main>h3,body.operator-editorial main>section h3{color:var(--ink)!important}
+body.operator-editorial main p,body.operator-editorial main li{color:var(--ink-2)}
+body.operator-editorial main .callout,body.operator-editorial main .cta{background:var(--surface-2)!important;color:var(--ink-2)!important;border-color:var(--line)!important;border-left:3px solid var(--signal)!important;border-radius:10px!important}
+body.operator-editorial main pre{background:var(--surface-2)!important;color:var(--ink-2)!important;border-color:var(--line)!important}
+body.operator-editorial main .card{background:var(--surface)!important;border-color:var(--line)!important}
+body.operator-editorial main .card h3{color:var(--ink)!important}
+body.operator-editorial main .related{border-color:var(--line)!important}
+
+@media(max-width:900px){.segment-page .segment-hero::after{display:none}.segment-page .segment-hero .hero-inner{margin:0 auto;padding:0 1.5rem}.segment-page .section .grid,.segment-page .steps,.review-page .grid,.archive-page .operator-brief-issue .grid{grid-template-columns:1fr}}
+@media(max-width:680px){.review-page main{padding-top:3.5rem}.utility-page main{padding-top:4rem}.utility-card{padding:1.4rem}.segment-page .segment-hero{padding:4rem 0 3.5rem}}

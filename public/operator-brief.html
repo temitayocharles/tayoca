@@ -1,107 +1,18 @@
 <!doctype html>
 <html lang="en"><head>
-<!-- Google Analytics 4 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4QC90QNXW"></script>
-<script src="/ga4.js"></script><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>The Operator Brief | Tayoca</title><meta name="description" content="A weekly eight-section briefing for leaders responsible for cloud, platforms, reliability, AI infrastructure and technology economics."><link rel="canonical" href="https://tayoca.com/operator-brief.html"><link rel="icon" href="/favicon.ico">
-<meta property="og:title" content="The Operator Brief | Tayoca"><meta property="og:description" content="A weekly eight-section briefing for leaders responsible for cloud, platforms, reliability, AI infrastructure and technology economics."><meta property="og:type" content="website"><meta property="og:url" content="https://tayoca.com/operator-brief.html"><meta property="og:site_name" content="Tayoca"><meta property="og:image" content="https://tayoca.com/assets/og-image.png">
-<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="The Operator Brief | Tayoca"><meta name="twitter:description" content="A weekly eight-section briefing for leaders responsible for cloud, platforms, reliability, AI infrastructure and technology economics."><meta name="twitter:image" content="https://tayoca.com/assets/og-image.png">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/css/growth-os.css">  <link rel="stylesheet" href="/assets/css/site-shell.css">
-</head>
-<body>
-<a class="skip-link" href="#main">Skip to content</a>
-<header class="site-header"><div class="header-inner">
-  <a class="brand" href="/" aria-label="Tayoca home">TAYOCA</a>
-  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open navigation">Menu</button>
-  <nav class="primary-nav" id="primary-nav" aria-label="Primary navigation"><a href="/services.html">Services</a><a href="/assessments.html">Assessments</a><a href="/results.html">Results</a><a href="/products.html">Products</a><a href="/insights.html" >Insights</a><a href="/about.html">About</a></nav>
-  <a class="button small header-cta" href="/assessments.html">Start an Assessment</a>
-</div>
-<div class="header-map"><nav class="utility-nav" aria-label="Company map">
-  <span class="utility-nav__label">More from Tayoca</span>
-  <a href="/work.html">Work</a><a href="/operator-brief.html" aria-current="page">Operator Brief</a><a href="/community/websites">Community</a><a href="/trust.html">Trust</a><a href="/reviews.html">Reviews</a><a href="/sivanta.html">Sivanta</a>
-</nav></div></header>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4QC90QNXW"></script><script src="/ga4.js"></script>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light dark"><script>(function(){try{var t=localStorage.getItem('tayoca-theme');if(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)t='dark';document.documentElement.dataset.theme=t||'light';}catch(e){document.documentElement.dataset.theme='light';}})();</script>
+<title>The Operator Brief | Tayoca</title><meta name="description" content="A weekly eight-section briefing for people responsible for cloud, platforms, reliability, AI infrastructure and technology economics."><link rel="canonical" href="https://tayoca.com/operator-brief.html"><link rel="icon" href="/favicon.ico"><meta property="og:title" content="The Operator Brief | Tayoca"><meta property="og:description" content="Practical notes for people who have to own, pay for, monitor and improve technology after launch."><meta property="og:type" content="website"><meta property="og:url" content="https://tayoca.com/operator-brief.html"><meta property="og:site_name" content="Tayoca"><meta property="og:image" content="https://tayoca.com/assets/og-image.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="The Operator Brief | Tayoca"><meta name="twitter:description" content="Practical notes for people who have to own, pay for, monitor and improve technology after launch."><meta name="twitter:image" content="https://tayoca.com/assets/og-image.png">
+<link rel="stylesheet" href="/assets/css/growth-os.css"><link rel="stylesheet" href="/assets/css/site-shell.css"><link rel="stylesheet" href="/assets/css/tayoca-v9.css"><style>
+.brief-hero{display:grid;grid-template-columns:.82fr 1.18fr;gap:5rem;align-items:center}.brief-hero figure{margin:0}.brief-hero img{width:100%;display:block;border-radius:16px;box-shadow:var(--v9-shadow-deep)}.brief-title{font-family:var(--v9-editorial);font-size:clamp(2.8rem,5vw,4.5rem);line-height:.98;letter-spacing:-.035em;margin:0 0 1.25rem}.brief-deck{font-family:var(--v9-editorial);font-size:1.35rem;line-height:1.45;color:var(--ink-2);max-width:36ch}.brief-meta{display:flex;gap:1.25rem;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:1rem;margin-top:2rem;color:var(--muted);font-size:.82rem}.join-layout{display:grid;grid-template-columns:.8fr 1.2fr;gap:5rem;align-items:start}.join-layout .form-card{padding:1.7rem}.issue-map{border-top:1px solid var(--line)}.issue-row{display:grid;grid-template-columns:90px 240px 1fr;gap:2rem;padding:1.25rem 0;border-bottom:1px solid var(--line)}.issue-row .n{font-family:var(--v9-editorial);font-size:1.2rem;color:var(--annotation)}.issue-row strong{color:var(--ink);font-weight:600}.issue-row span{color:var(--muted)}.controls-layout{display:grid;grid-template-columns:1fr .9fr;gap:5rem;align-items:start}.editorial-note{border-left:2px solid var(--signal);padding-left:1.5rem}.editorial-note p{margin-top:0}.subscription-form{background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:1.5rem}.archive-link{font-family:var(--v9-editorial);font-size:1.4rem;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--signal)}
+@media(max-width:800px){.brief-hero,.join-layout,.controls-layout{grid-template-columns:1fr;gap:2rem}.issue-row{grid-template-columns:50px 1fr;gap:.8rem}.issue-row span{grid-column:2}}
+</style></head><body class="operator-editorial"><a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner"><a class="brand" href="/" aria-label="Tayoca home">TAYOCA</a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open navigation">Menu</button><nav class="primary-nav" id="primary-nav" aria-label="Primary navigation"><a href="/services.html">Services</a><a href="/assessments.html">Assessments</a><a href="/results.html">Results</a><a href="/products.html">Products</a><a href="/insights.html">Insights</a><a href="/about.html">About</a></nav><button class="theme-switch" type="button" aria-label="Switch colour theme"></button><a class="button small header-cta" href="/assessments.html">Start an Assessment</a></div><div class="header-map"><nav class="utility-nav" aria-label="Company map"><span class="utility-nav__label">More from Tayoca</span><a href="/work.html">Work</a><a href="/operator-brief.html" aria-current="page">Operator Brief</a><a href="/community/websites">Community</a><a href="/trust.html">Trust</a><a href="/reviews.html">Reviews</a><a href="/sivanta.html">Sivanta</a></nav></div></header>
 <main id="main">
-
-
-<section class="hero-cinema">
-  <div class="hero-bg"><img src="/assets/img/operator-brief-editorial.jpg" alt="Briefing documents and a pen on a dark walnut desk" width="2100" height="900" loading="eager"></div>
-  <div class="hero-scrim"></div>
-  <div class="hero-inner">
-    <p class="eyebrow">The Tayoca Operator Brief</p>
-    <h1>The signal behind reliable, accountable <span class="accent">technology.</span></h1>
-    <p class="lede">Practical intelligence for leaders responsible for cloud, platforms, reliability, AI infrastructure and technology economics.</p>
-    <div class="actions"><a class="button secondary" href="/operator-brief-archive.html" data-event="operator_brief_archive_open">Read the archive</a></div>
-    <div class="hero-meta">
-      <div><strong>Cadence</strong>Weekly</div>
-      <div><strong>Structure</strong>Eight sections per issue</div>
-      <div><strong>Gate</strong>Human publication approval</div>
-    </div>
-  </div>
-</section>
-<div class="amber-rule"></div>
-
-<section class="section band" id="join"><div class="container">
-  <div class="grid two" style="align-items:start">
-    <div>
-      <p class="ledger-label">Join the briefing</p>
-      <h2>No noise. No repository dumps.</h2>
-      <p class="lede">Repository activity can inform the editorial desk, but every issue is assembled from approved evidence and written for an operating decision rather than formatted as a commit digest.</p>
-      <p style="color:var(--muted)">Subscription requests are recorded immediately. Approved issues are delivered only to active subscribers, and unsubscribe controls are retained in every send.</p>
-    </div>
-    <div class="form-card"><form action="https://n8n.tca-infraforge.site/webhook/tayoca/growth/operator-brief" class="form" data-tayoca-form="operator_brief" method="post">
-      <label>Work email<input name="email" required type="email" autocomplete="email"></label>
-      <label>Primary interest<select name="interest" required><option value="Technology value and FinOps">Technology value and FinOps</option><option value="Platform reliability and DevSecOps">Platform reliability and DevSecOps</option><option value="AI infrastructure and governed automation">AI infrastructure and governed automation</option></select></label>
-      <label style="display:flex;gap:.65rem;align-items:flex-start"><input name="consent" value="yes" required type="checkbox" style="width:auto;margin-top:.2rem"><span>I want to receive The Tayoca Operator Brief by email and understand I can unsubscribe at any time.</span></label>
-      <label class="sr-only" aria-hidden="true">Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label>
-      <button class="button" type="submit">Join the Operator Brief</button>
-      <p class="form-note" style="margin:0">We record the request immediately and never sell or share the address.</p>
-    </form></div>
-  </div>
-</div></section>
-
-<section class="section" id="sections"><div class="container">
-  <div class="section-heading"><p class="ledger-label">Inside each issue</p><h2>Eight sections. One evidence boundary.</h2><p>Every section traces back to an approved editorial opportunity. A complete issue receives its own publication decision after the underlying evidence has already been approved.</p></div>
-  <div class="grid four">
-    <div class="card"><p class="article-meta">01</p><h3>The operating signal</h3><p>The most important approved development and why it matters.</p></div>
-    <div class="card"><p class="article-meta">02</p><h3>From the field</h3><p>A lesson grounded in real engineering work, sanitized and approved.</p></div>
-    <div class="card"><p class="article-meta">03</p><h3>Technology value</h3><p>A cost, reliability, security or operational-economics insight.</p></div>
-    <div class="card"><p class="article-meta">04</p><h3>Decision memo</h3><p>A concise architecture or leadership trade-off.</p></div>
-    <div class="card"><p class="article-meta">05</p><h3>Build log</h3><p>One selected Tayoca product or engineering development translated into customer value.</p></div>
-    <div class="card"><p class="article-meta">06</p><h3>Evidence</h3><p>A metric, case study, verified review or controlled demonstration with an approved source.</p></div>
-    <div class="card"><p class="article-meta">07</p><h3>Operator action</h3><p>One practical action readers can apply.</p></div>
-    <div class="card"><p class="article-meta">08</p><h3>Tayoca update</h3><p>One relevant product, service, guide, event or assessment next step.</p></div>
-  </div>
-</div></section>
-
-<section class="section band" id="controls"><div class="container">
-  <div class="grid two" style="align-items:start">
-    <div>
-      <p class="ledger-label">Publication controls</p>
-      <h2>Draft first. Evidence attached. Human approval required.</h2>
-      <p>Restricted repository intelligence cannot enter a public issue automatically. Corrections create a preserved revision or public notice rather than silently rewriting a published factual claim.</p>
-      <p><a href="/trust.html">Read Tayoca's trust and evidence controls</a> · <a href="/operator-brief-archive.html">Open the approved issue archive</a></p>
-    </div>
-    <div class="form-card"><form action="https://n8n.tca-infraforge.site/webhook/tayoca/growth/operator-brief/unsubscribe" class="form" data-tayoca-form="operator_brief_unsubscribe" method="post">
-      <p class="eyebrow">Subscription control</p>
-      <h3>Unsubscribe</h3>
-      <label>Email address<input name="email" required type="email" autocomplete="email"></label>
-      <label class="sr-only" aria-hidden="true">Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label>
-      <button class="button secondary" type="submit">Unsubscribe from the Brief</button>
-      <p class="form-note" style="margin:0">The response is deliberately non-enumerating: it does not reveal whether an address was previously subscribed.</p>
-    </form></div>
-  </div>
-</div></section>
+<section class="section"><div class="container brief-hero"><figure><img src="/assets/img/operator-brief-editorial.jpg" alt="Briefing documents and a pen on a desk" width="2100" height="900" loading="eager"></figure><div><h1 class="brief-title">Operator Brief</h1><p class="brief-deck">A weekly note for people who still have to own the system after the launch, the demo and the handover.</p><p>Cloud costs change. Platforms drift. Incidents expose assumptions. AI workflows fail in new ways. Operator Brief turns those operating decisions into a concise briefing for people responsible for technology value, reliability and automation.</p><div class="actions"><a class="button" href="#join">Join Operator Brief</a><a class="button ghost" href="/operator-brief-archive.html" data-event="operator_brief_archive_open">Read the archive</a></div><div class="brief-meta"><span>Weekly cadence</span><span>Eight sections per issue</span><span>Human publication approval</span></div></div></div></section>
+<section class="section paper-band" id="join"><div class="container join-layout"><div><h2>Useful enough to read on a working day.</h2><p>Repository activity can inform the editorial desk, but the publication is not a commit digest. Each issue is assembled from approved evidence and written around operating decisions a reader can actually use.</p><p>Subscription requests are recorded immediately. Approved issues are delivered only to active subscribers, with unsubscribe controls retained.</p></div><div class="form-card"><form action="https://n8n.tca-infraforge.site/webhook/tayoca/growth/operator-brief" class="form" data-tayoca-form="operator_brief" method="post"><label>Work email<input name="email" required type="email" autocomplete="email"></label><label>Primary interest<select name="interest" required><option value="Technology value and FinOps">Technology value and FinOps</option><option value="Platform reliability and DevSecOps">Platform reliability and DevSecOps</option><option value="AI infrastructure and governed automation">AI infrastructure and governed automation</option></select></label><label style="display:flex;gap:.65rem;align-items:flex-start"><input name="consent" value="yes" required type="checkbox" style="width:auto;margin-top:.2rem"><span>I want to receive The Tayoca Operator Brief by email and understand I can unsubscribe at any time.</span></label><label class="sr-only" aria-hidden="true">Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label><button class="button" type="submit">Join Operator Brief</button><p class="form-note" style="margin:0">We record the request immediately and never sell or share the address.</p></form></div></div></section>
+<section class="section" id="sections"><div class="container"><div class="section-heading"><h2>What is inside an issue</h2><p>The structure stays familiar so you can scan it quickly; the substance changes with the evidence and operating decisions that matter that week.</p></div><div class="issue-map"><div class="issue-row"><span class="n">01</span><strong>The operating signal</strong><span>The most important approved development and why it matters.</span></div><div class="issue-row"><span class="n">02</span><strong>From the field</strong><span>A lesson grounded in real engineering work, sanitized and approved for publication.</span></div><div class="issue-row"><span class="n">03</span><strong>Technology value</strong><span>A cost, reliability, security or operational-economics insight.</span></div><div class="issue-row"><span class="n">04</span><strong>Decision memo</strong><span>A concise architecture or leadership trade-off with the alternatives made visible.</span></div><div class="issue-row"><span class="n">05</span><strong>Build log</strong><span>One selected Tayoca product or engineering development translated into customer value.</span></div><div class="issue-row"><span class="n">06</span><strong>Evidence</strong><span>A metric, case study, verified review or controlled demonstration with an approved source.</span></div><div class="issue-row"><span class="n">07</span><strong>Operator action</strong><span>One practical action you can apply to your own environment.</span></div><div class="issue-row"><span class="n">08</span><strong>Tayoca update</strong><span>One relevant product, service, guide, event or assessment next step.</span></div></div></div></section>
+<section class="section band"><div class="container controls-layout"><div><h2>Editorial control stays human.</h2><p>Restricted repository intelligence cannot enter a public issue automatically. Claims, evidence, links and customer-sensitive details must pass the publication controls before an issue can be approved.</p><div class="editorial-note"><p>Corrections create a preserved revision or public notice rather than silently rewriting a published factual claim.</p><p><a href="/trust.html">Read Tayoca's trust and evidence controls →</a></p></div><p style="margin-top:2rem"><a class="archive-link" href="/operator-brief-archive.html">Browse approved issues →</a></p></div><form action="https://n8n.tca-infraforge.site/webhook/tayoca/growth/operator-brief/unsubscribe" class="form subscription-form" data-tayoca-form="operator_brief_unsubscribe" method="post"><h3>Unsubscribe</h3><label>Email address<input name="email" required type="email" autocomplete="email"></label><label class="sr-only" aria-hidden="true">Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label><button class="button secondary" type="submit">Unsubscribe from the Brief</button><p class="form-note" style="margin:0">The response does not reveal whether an address was previously subscribed.</p></form></div></section>
 </main>
-<footer class="site-footer"><div class="footer-inner">
-  <div class="footer-brand-col"><div class="footer-brand">TAYOCA</div>
-<p>An engineering-led technology company building software, systems, automation and publications for technology that has to be reliable, accountable and economically understood. Founded by Temitayo Charles. Ontario, Canada. &copy; <span data-current-year>2026</span> Tayoca.</p></div>
-  <div class="footer-links"><strong>Explore</strong><a href="/services.html">Services</a><a href="/assessments.html">Assessments</a><a href="/results.html">Results</a><a href="/products.html">Products</a><a href="/insights.html">Insights</a><a href="/about.html">About</a></div>
-  <div class="footer-links"><strong>Connect</strong><a href="/operator-brief.html">Operator Brief</a><a href="/trust.html">Trust Center</a><a href="mailto:support@tayoca.com">support@tayoca.com</a><a href="mailto:temitayo@tayoca.com">temitayo@tayoca.com</a></div>
-  <div class="footer-col"><strong>Company</strong><a href="/about.html">About</a><a href="/work.html">Work</a><a href="/results.html">Results</a><a href="/trust.html">Trust Center</a><a href="/reviews.html">Verified Reviews</a></div>
-  <div class="footer-col"><strong>Deliver</strong><a href="/services.html">Services &amp; pricing</a><a href="/assessments.html">Assessments</a><a href="/segments/growth-stage-technology.html">Growth-stage</a><a href="/segments/regulated-operations.html">Regulated operations</a><a href="/segments/ai-enabled-engineering.html">AI-enabled teams</a></div>
-  <div class="footer-col"><strong>Build &amp; Read</strong><a href="/products.html">Products</a><a href="/sivanta.html">Sivanta</a><a href="/blog/">Insights</a><a href="/operator-brief-archive.html">Brief archive</a><a href="/community/websites">Community initiative</a></div>
-</div>
-<div class="footer-legal"><span>&copy; <span data-current-year>2026</span> Tayoca · Ontario, Canada</span><a href="/trust.html">Evidence &amp; disclosure policy</a></div></footer>
-<script defer src="/growth-os.js"></script><script defer src="/revenue-events.js"></script><script defer src="/card-interactions.js"></script><script defer src="/tayoca-site.js"></script>
-</body></html>
+<footer class="site-footer"><div class="footer-inner"><div class="footer-brand-col"><div class="footer-brand">TAYOCA</div><p>We help organizations understand technology costs, improve reliability and automate work that should not need to be repeated by hand. Founded by Temitayo Charles. Ontario, Canada. © <span data-current-year>2026</span> Tayoca.</p></div><div class="footer-links"><strong>Explore</strong><a href="/services.html">Services</a><a href="/assessments.html">Assessments</a><a href="/results.html">Results</a><a href="/products.html">Products</a><a href="/insights.html">Insights</a><a href="/about.html">About</a></div><div class="footer-links"><strong>Connect</strong><a href="/operator-brief.html">Operator Brief</a><a href="/trust.html">Trust Center</a><a href="mailto:support@tayoca.com">support@tayoca.com</a><a href="mailto:temitayo@tayoca.com">temitayo@tayoca.com</a></div><div class="footer-col"><strong>Company</strong><a href="/about.html">About</a><a href="/work.html">Work</a><a href="/results.html">Results</a><a href="/trust.html">Trust Center</a><a href="/reviews.html">Verified Reviews</a></div><div class="footer-col"><strong>Deliver</strong><a href="/services.html">Services &amp; pricing</a><a href="/assessments.html">Assessments</a><a href="/segments/growth-stage-technology.html">Growth-stage</a><a href="/segments/regulated-operations.html">Regulated operations</a><a href="/segments/ai-enabled-engineering.html">AI-enabled teams</a></div><div class="footer-col"><strong>Build &amp; Read</strong><a href="/products.html">Products</a><a href="/sivanta.html">Sivanta</a><a href="/blog/">Insights</a><a href="/operator-brief-archive.html">Brief archive</a><a href="/community/websites">Community initiative</a></div></div><div class="footer-legal"><span>© <span data-current-year>2026</span> Tayoca · Ontario, Canada</span><a href="/trust.html">Evidence &amp; disclosure policy</a></div></footer>
+<script defer src="/growth-os.js"></script><script defer src="/revenue-events.js"></script><script defer src="/card-interactions.js"></script><script defer src="/tayoca-site.js"></script><script defer src="/tayoca-v9.js"></script></body></html>
