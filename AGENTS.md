@@ -42,6 +42,28 @@ Before starting, resuming, reviewing, or modifying any Tayoca work:
 7. Forgejo is canonical. GitHub is downstream for deployment/external-agent work and is not an independent production authority.
 8. Preserve truthfulness, private-source isolation, human approval, verified revenue, analytics provenance, workflow recovery and rollback controls.
 
+## Tayoca rebrand continuation control
+
+The locked public-company rebrand and follow-on execution roadmap is:
+
+`docs/TAYOCA_REBRAND_ROADMAP.md`
+
+Its machine-readable continuation checkpoint is:
+
+`docs/TAYOCA_REBRAND_STATE.yaml`
+
+When a user says **"continue Tayoca rebrand"**, **"resume Tayoca rebrand"**, or equivalent:
+
+1. Read `docs/TAYOCA_REBRAND_ROADMAP.md` after the program authority files.
+2. Read `docs/TAYOCA_REBRAND_STATE.yaml` and use `current_phase` plus `current_checkpoint` as the continuation pointer.
+3. Reconcile that checkpoint against current canonical Forgejo, CI, deployment, and only the live evidence required by the current phase gate.
+4. Continue the highest-priority incomplete roadmap phase whose dependencies are satisfied; do not ask the user to restate the phases.
+5. Use Scrapling connected through Composio as the first-class browser for website inspection and production verification when available. Use another browser only when Scrapling cannot perform the required capability or is unavailable.
+6. Update the rebrand roadmap/state at phase transitions and clean up temporary branches/workflows after evidence is retained.
+7. Do not restart the v9 visual redesign merely because a new chat started. Reopen visual design only for a specific evidenced defect or an explicitly approved new requirement.
+
+The repository documentation, not cross-chat memory, is the continuity mechanism.
+
 ## Tayoca post-certification operating control
 
 The certified transformation roadmap is complete. The authoritative post-certification Growth OS operating plan is:

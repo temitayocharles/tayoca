@@ -1,0 +1,61 @@
+version: 1
+program: tayoca_rebrand_and_growth
+roadmap: docs/TAYOCA_REBRAND_ROADMAP.md
+program_authority: docs/TAYOCA_PROGRAM_AUTHORITY.md
+canonical_platform: forgejo
+canonical_repo: temitayocharles/tayoca
+status: active_locked_execution_sequence
+locked_at_utc: "2026-09-12T15:11:43Z"
+
+current_phase: 1
+current_phase_name: production_certification_and_cleanup
+current_phase_status: in_progress_final_certification_closeout
+next_phase: 2
+next_phase_name: conversion_and_customer_journey
+
+current_checkpoint:
+  canonical_forgejo_commit: f9387d0eb8306f6e05134baceef627c94961bb8e
+  final_v9_residual_pr: 84
+  github_mirror_commit: 98af3353e93938980018f82ceee9805d9f63dc2a
+  canonical_tree: a4ee89c1237b3d5e1d606317db47b5b16a36e2d5
+  vercel_deployment: dpl_DZukkTLPJgdRwar4qMyjM6UyVxLk
+  vercel_state: READY_PROMOTED
+  production_aliases:
+    - tayoca.com
+    - www.tayoca.com
+  resume_action: reconcile_phase_1_exit_gates_then_begin_phase_2_if_green
+
+phases:
+  1:
+    name: production_certification_and_cleanup
+    status: in_progress
+  2:
+    name: conversion_and_customer_journey
+    status: next
+  3:
+    name: content_architecture_and_authority
+    status: planned_locked
+  4:
+    name: search_discoverability_and_structured_data
+    status: planned_locked
+  5:
+    name: performance_and_accessibility_hardening
+    status: planned_locked
+  6:
+    name: measurement_and_growth_os
+    status: planned_locked
+  7:
+    name: trust_evidence_and_commercial_readiness
+    status: planned_locked
+  8:
+    name: continuous_design_governance
+    status: planned_locked
+
+resume_triggers:
+  - continue_tayoca_rebrand
+  - resume_tayoca_rebrand
+  - continue_tayoca
+
+browser_preference: scrapling_via_composio_first_class_then_capability_fallback
+continuity_rule: repository_documentation_not_chat_memory_is_authoritative
+change_control: roadmap_and_state_must_be_updated_in_canonical_forgejo_for_material_phase_changes
