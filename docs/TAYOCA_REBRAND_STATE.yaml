@@ -6,55 +6,82 @@ canonical_platform: forgejo
 canonical_repo: temitayocharles/tayoca
 status: active_locked_execution_sequence
 locked_at_utc: "2026-09-12T15:11:43Z"
-last_reconciled_utc: "2026-09-12T16:06:00Z"
+last_reconciled_utc: "2026-09-13T19:07:00Z"
 
-current_phase: 1
-current_phase_name: production_certification_and_cleanup
-current_phase_status: in_progress_blocked_on_live_browser_certification
-next_phase: 2
-next_phase_name: conversion_and_customer_journey
+current_phase: 2
+current_phase_name: conversion_and_customer_journey
+current_phase_status: in_progress_initial_journey_audit
+next_phase: 3
+next_phase_name: content_architecture_and_authority
 
 current_checkpoint:
-  canonical_forgejo_commit: bb4ac565d61c53d8efeec3f074220d34c4682cc5
+  canonical_forgejo_commit: 2c2a9d4f14222c8de3f64259bfd866f686b58397
   roadmap_lock_pr: 85
   final_v9_residual_pr: 84
-  github_mirror_commit: 805da5e2cd0e86ba323979d4924e8b3f2e83b616
-  canonical_tree: 0e3db525d9e1916bb3164c8b922d4e8af7657c35
-  vercel_deployment: dpl_9vsvtuLF83K5Zz1ceq4umrjs3JMu
+  phase_1_certification: docs/TAYOCA_V9_PRODUCTION_CERTIFICATION_20260913.md
+  github_mirror_commit: 89cc9c8f2d5f348f2cd9d6c30c889d95febbc8a6
+  canonical_tree: 6e9dd33ce948bcb1f1d420631fbe07f4c7dcc5ed
+  vercel_deployment: dpl_8KXm2MuLxGggg2KVEiCHnqgRuoNA
   vercel_state: READY_PROMOTED
   production_aliases:
     - tayoca.com
     - www.tayoca.com
   protected_main_ci:
-    sha: bb4ac565d61c53d8efeec3f074220d34c4682cc5
+    sha: 2c2a9d4f14222c8de3f64259bfd866f686b58397
     runs:
-      - id: 1324
+      - id: 1357
+        number: 30559
         status: success
-      - id: 1325
+      - id: 1358
+        number: 30560
         status: success
-      - id: 1326
+      - id: 1359
+        number: 30561
         status: success
-  cleanup:
-    deleted_forgejo_branches:
-      - feat/tayoca-sitewide-figma-v9-20260911
-      - diag/tayoca-v9-static-20260911
+      - id: 1360
+        number: 30669
+        status: success
+        purpose: deployment_parity
   browser_certification:
-    status: blocked_tooling
-    scrapling_attempt: failed_upstream_http_421_misdirected_request
-    fallback_browser_attempt: blocked_by_toolkit_administrator
-    policy: do_not_weaken_production_or_security_controls_for_browser_automation
-  resume_action: retry_first_class_scrapling_live_browser_certification_when_tooling_recovers_then_close_phase_1_if_green
+    status: success
+    browser: scrapling_via_composio
+    certified_at_utc: "2026-09-13T19:04:20Z"
+    representative_routes:
+      - /
+      - /services.html
+      - /assessments.html
+      - /operator-brief.html
+      - /products/aws-cost-optimization-playbook.html
+    verified_behaviors:
+      - theme_switch_light_to_dark
+      - theme_switch_aria_state
+      - cross_route_theme_persistence
+      - product_detail_theme_persistence
+      - representative_route_rendering
+    cleanup: disposable_browser_session_closed
+  phase_2_initial_audit:
+    status: in_progress
+    safe_test_mode: tayoca_test=stage12
+    production_record_policy: do_not_create_fake_production_records
+    primary_journeys:
+      - service_to_assessment_to_qualified_conversation
+      - operator_brief_to_reader_to_service_or_product_interest
+      - product_detail_to_external_purchase_or_use_path
+      - work_or_evidence_to_assessment_or_contact
+      - community_initiative_to_governed_intake
+  resume_action: continue_phase_2_with_safe_desktop_and_mobile_journey_tests_then_remediate_verified_dead_ends_or_friction
 
 phases:
   1:
     name: production_certification_and_cleanup
-    status: in_progress_blocked_on_live_browser_certification
+    status: complete_certified
+    certification: docs/TAYOCA_V9_PRODUCTION_CERTIFICATION_20260913.md
   2:
     name: conversion_and_customer_journey
-    status: next
+    status: in_progress
   3:
     name: content_architecture_and_authority
-    status: planned_locked
+    status: next
   4:
     name: search_discoverability_and_structured_data
     status: planned_locked
