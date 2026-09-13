@@ -6,70 +6,79 @@ canonical_platform: forgejo
 canonical_repo: temitayocharles/tayoca
 status: active_locked_execution_sequence
 locked_at_utc: "2026-09-12T15:11:43Z"
-last_reconciled_utc: "2026-09-13T19:07:00Z"
+last_reconciled_utc: "2026-09-13T20:47:00Z"
 
-current_phase: 2
-current_phase_name: conversion_and_customer_journey
-current_phase_status: in_progress_initial_journey_audit
-next_phase: 3
-next_phase_name: content_architecture_and_authority
+current_phase: 3
+current_phase_name: content_architecture_and_authority
+current_phase_status: in_progress_initial_content_architecture_audit
+next_phase: 4
+next_phase_name: search_discoverability_and_structured_data
 
 current_checkpoint:
-  canonical_forgejo_commit: 2c2a9d4f14222c8de3f64259bfd866f686b58397
-  roadmap_lock_pr: 85
-  final_v9_residual_pr: 84
+  phase_2_canonical_forgejo_commit: be6ceeec7534d5fdb7f394b87094aef3d53bcfec
+  phase_2_fix_pr: 92
+  phase_2_audit: docs/TAYOCA_PHASE2_CONVERSION_AUDIT_20260913.md
   phase_1_certification: docs/TAYOCA_V9_PRODUCTION_CERTIFICATION_20260913.md
-  github_mirror_commit: 89cc9c8f2d5f348f2cd9d6c30c889d95febbc8a6
-  canonical_tree: 6e9dd33ce948bcb1f1d420631fbe07f4c7dcc5ed
-  vercel_deployment: dpl_8KXm2MuLxGggg2KVEiCHnqgRuoNA
+  github_mirror_commit: 7605f2078df27847157a3d08d820d3d77599fd1c
+  canonical_tree: 7efcb765f49a932ca3741cb0c96143b1362965ad
+  vercel_deployment: dpl_BXCkvyviDEXp6qi76zbXitQeSnpQ
   vercel_state: READY_PROMOTED
   production_aliases:
     - tayoca.com
     - www.tayoca.com
-  protected_main_ci:
-    sha: 2c2a9d4f14222c8de3f64259bfd866f686b58397
-    runs:
-      - id: 1357
-        number: 30559
-        status: success
-      - id: 1358
-        number: 30560
-        status: success
-      - id: 1359
-        number: 30561
-        status: success
-      - id: 1360
-        number: 30669
-        status: success
-        purpose: deployment_parity
-  browser_certification:
+  phase_2_ci:
+    premerge_head: 001b8943a6e6bea36f0fc1d883e6849df6fa9f85
+    premerge_conversion_runtime:
+      id: 1630
+      number: 32507
+      status: success
+    postmerge_conversion_runtime:
+      id: 1635
+      number: 32521
+      status: success
+    deployment_parity:
+      id: 1636
+      number: 32529
+      status: success
+  phase_2_browser_certification:
     status: success
-    browser: scrapling_via_composio
-    certified_at_utc: "2026-09-13T19:04:20Z"
-    representative_routes:
-      - /
-      - /services.html
-      - /assessments.html
-      - /operator-brief.html
-      - /products/aws-cost-optimization-playbook.html
-    verified_behaviors:
-      - theme_switch_light_to_dark
-      - theme_switch_aria_state
-      - cross_route_theme_persistence
-      - product_detail_theme_persistence
-      - representative_route_rendering
-    cleanup: disposable_browser_session_closed
-  phase_2_initial_audit:
-    status: in_progress
     safe_test_mode: tayoca_test=stage12
     production_record_policy: do_not_create_fake_production_records
+    automated_modes:
+      - desktop_1440x1000
+      - mobile_390x844_touch
     primary_journeys:
-      - service_to_assessment_to_qualified_conversation
-      - operator_brief_to_reader_to_service_or_product_interest
-      - product_detail_to_external_purchase_or_use_path
-      - work_or_evidence_to_assessment_or_contact
-      - community_initiative_to_governed_intake
-  resume_action: continue_phase_2_with_safe_desktop_and_mobile_journey_tests_then_remediate_verified_dead_ends_or_friction
+      service_to_assessment_to_qualified_conversation: pass
+      operator_brief_to_reader_to_service_or_product_interest: pass
+      product_detail_to_external_purchase_or_use_path: pass
+      work_or_evidence_to_assessment_or_contact: pass
+      community_initiative_to_governed_intake: pass
+    verified_behaviors:
+      - assessment_deep_link_preselection
+      - attribution_preservation
+      - stage12_safe_assessment_success_without_production_lead
+      - qualified_assessment_scheduling_handoff
+      - stage12_safe_operator_brief_success_without_subscription
+      - work_to_assessment_route_continuity
+      - product_cta_destination_integrity
+      - community_governed_intake_destination_integrity
+      - confirmation_and_error_state_recovery
+      - attributable_conversion_event_contract
+    remediated_defects:
+      - invalid_short_stage12_assessment_fixture
+      - missing_product_purchase_and_product_click_events_on_product_detail_pages
+    live_browser:
+      browser: scrapling_via_composio
+      status: success
+      routes:
+        - /products/aws-cost-optimization-playbook.html
+        - /assessments.html
+        - /operator-brief.html
+        - /work.html
+        - /community/websites
+      consequential_external_actions_performed: false
+  phase_2_exit_gate: complete_certified
+  resume_action: begin_phase_3_content_architecture_and_authority_audit_from_current_production_baseline
 
 phases:
   1:
@@ -78,13 +87,14 @@ phases:
     certification: docs/TAYOCA_V9_PRODUCTION_CERTIFICATION_20260913.md
   2:
     name: conversion_and_customer_journey
-    status: in_progress
+    status: complete_certified
+    certification: docs/TAYOCA_PHASE2_CONVERSION_AUDIT_20260913.md
   3:
     name: content_architecture_and_authority
-    status: next
+    status: in_progress
   4:
     name: search_discoverability_and_structured_data
-    status: planned_locked
+    status: next
   5:
     name: performance_and_accessibility_hardening
     status: planned_locked

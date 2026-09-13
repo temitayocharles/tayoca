@@ -1,175 +1,165 @@
 # Tayoca Phase 2 — Conversion and Customer Journey Audit
 
-Status: **IN PROGRESS**
+Status: **COMPLETE / CERTIFIED**
 
-Audit started: **2026-09-13**
+Audit started: **2026-09-13**  
+Closed: **2026-09-13**
 
 Roadmap phase: **Phase 2 — Conversion and customer journey**
 
 ## Objective
 
-Validate the five primary Tayoca visitor journeys end-to-end, identify actual friction or dead ends, preserve attribution and measurement, and test forms without creating fake production records.
+Validate the five primary Tayoca visitor journeys end-to-end, remove verified conversion defects, preserve attribution and measurement, and test forms without creating fake production records.
 
-The safe form-test mode already present in the public runtime is:
+Safe form-test mode: `?tayoca_test=stage12`. In this mode `growth-os.js` returns deterministic local success responses and does not create assessment leads, Operator Brief subscriptions, or unsubscribe mutations.
 
-`?tayoca_test=stage12`
+## Primary journeys and final verdicts
 
-In that mode `growth-os.js` returns local deterministic success responses and does not create assessment leads, subscriptions, or unsubscribe mutations.
+1. **Service → assessment → qualified conversation — PASS**
+   - Service-specific assessment CTA is present.
+   - Cloud & AI Cost deep-link preselection is verified.
+   - UTM attribution and `test_traffic=stage12` are preserved.
+   - Safe assessment submit reaches the success state without creating a production lead.
+   - Qualified Cloud & AI Cost requests expose `https://cal.com/tayoca/finops-audit` as the next action.
+   - Scheduling CTA emits `assessment_schedule_click`.
 
-## Primary journeys
+2. **Operator Brief → reader → service/product interest — PASS**
+   - Signup form is present and usable on desktop/mobile.
+   - Stage 12 signup reaches its success state without creating a subscription.
+   - `generate_lead` and `operator_brief_signup` are emitted and attributable.
+   - Newsletter source/issue attribution and Stage 12 traffic marker are preserved.
+   - Archive, trust and unsubscribe paths remain available.
 
-1. Service understanding → assessment → qualified conversation
-2. Operator Brief → recurring reader → service/product interest
-3. Product detail → external purchase/use path
-4. Work/evidence → assessment/contact
-5. Community initiative → governed intake
+3. **Product detail → external purchase/use path — PASS after remediation**
+   - Representative route: `/products/aws-cost-optimization-playbook.html`.
+   - Both purchase CTAs resolve to `https://tayoca.gumroad.com/l/aws-cost-optimization` and open externally.
+   - Browser certification exposed a real instrumentation gap: product-detail pages load `revenue-events.js`, not `growth-os.js`, so `gumroad_click` existed while `product_purchase_click` and canonical `product_click` were missing.
+   - PR #92 fixed `public/revenue-events.js` so product-detail purchase CTAs now emit `product_purchase_click` and `product_click`; `ga4.js` continues to emit `gumroad_click`.
+   - The event-contract gate now requires all three events exactly once for the representative product click.
+   - No purchase was made during certification.
 
-## Live surface audit
+4. **Work/evidence → assessment/contact — PASS**
+   - `/work.html` resolves successfully.
+   - Primary `Start an Assessment` route reaches `/assessments.html`.
+   - Desktop and mobile route continuity are covered by the browser regression.
 
-### 1. Assessment journey
+5. **Community initiative → governed intake — PASS**
+   - `/community/websites` resolves successfully.
+   - Primary application CTAs share the governed Google Forms destination and open externally.
+   - Desktop/mobile destination integrity is covered without submitting an application.
 
-Live route: `/assessments.html`
+## Defects found and disposition
 
-Observed production form:
+### Invalid assessment test fixture — fixed in regression harness
 
-- `method="post"`
-- `data-tayoca-form="assessment_request"`
-- action: `https://n8n.tca-infraforge.site/webhook/tayoca/growth/assessment`
-- fields: `email`, `company`, `role`, `segment`, `assessment`, `urgency`, `evidence_readiness`, `context`
+The original Stage 12 event-contract fixture filled `context` with 35 characters while production correctly enforces `minlength="40"`. Native browser validation therefore prevented the submit event. The production form was not defective.
 
-Assessment catalogue links preselect the selected assessment, preserve campaign attribution, and jump to `#assessment-form`.
+The fixture now uses a valid context value longer than 40 characters and continues to prove that no production lead is created in Stage 12 mode.
 
-Examples include:
+### Product-detail conversion events — production defect fixed
 
-- Technology Value Assessment → `utm_campaign=pgc1_ai_automation_operations`
-- Cloud & AI Cost Assessment → `utm_campaign=pgc1_cloud_ai_cost`
-- Platform Reliability Assessment → `utm_campaign=pgc1_platform_kubernetes_reliability`
+Diagnostic evidence showed the representative product click emitted counts `0/0/1` for `product_purchase_click` / `product_click` / `gumroad_click`. The missing first two events were a production measurement gap on product-detail pages.
 
-All three use `utm_source=tayoca_site`, `utm_medium=internal`, and `utm_content=assessment_catalog_card`.
+PR **#92 — Fix Tayoca Stage 12 conversion event contract** repaired the runtime and browser contract. Canonical merge:
 
-Runtime behavior in `growth-os.js`:
+`be6ceeec7534d5fdb7f394b87094aef3d53bcfec`
 
-- query-string assessment is preselected in the form;
-- UTM fields are preserved in the submission payload;
-- `tayoca_test=stage12` avoids production record creation;
-- successful assessment requests emit `generate_lead`;
-- qualified Cloud & AI Cost requests map to `https://cal.com/tayoca/finops-audit`;
-- qualified Platform Reliability / Technology Value requests map to `https://cal.com/tayoca/platform-engineering-consultation`;
-- generated scheduling CTA emits `assessment_schedule_click`;
-- error state provides `support@tayoca.com` as a recovery path.
+Temporary diagnostic workflows and artifacts were removed before merge.
 
-Initial verdict: **journey contract exists and is safely testable; interactive desktop/mobile execution remains to be certified.**
+## Automated browser certification
 
-### 2. Operator Brief journey
+Permanent browser regression: `scripts/conversion_journey_browser_check.cjs`.
 
-Live route: `/operator-brief.html`
+It runs pinned Chromium in both:
 
-Observed subscription form:
+- desktop: `1440×1000`
+- mobile: `390×844`, touch/mobile mode
 
-- `method="post"`
-- `data-tayoca-form="operator_brief"`
-- action: `https://n8n.tca-infraforge.site/webhook/tayoca/growth/operator-brief`
-- fields: `email`, `interest`, `consent`, plus `website` honeypot
+It certifies:
 
-Observed unsubscribe form:
+- service → assessment deep link;
+- assessment preselection;
+- Stage 12 safe submit and success state;
+- correct scheduling handoff;
+- attribution preservation;
+- Operator Brief safe signup and success state;
+- Work → assessment navigation;
+- product CTA count, destination and external-target contract;
+- community application CTA count, shared destination and external-target contract;
+- page-error absence.
 
-- `data-tayoca-form="operator_brief_unsubscribe"`
-- public tooling redacts the action value, as expected for sensitive endpoint handling
+`conversion_error_state_browser_check.cjs` remains part of the same conversion-runtime workflow for confirmation/error-state recovery coverage.
 
-Runtime behavior:
+`conversion_event_contract_browser_check.cjs` additionally certifies the first-party event payload contract for assessment, Operator Brief and product interactions.
 
-- safe test mode returns a local success without creating a subscription;
-- successful signup emits `generate_lead` and `operator_brief_signup`;
-- unsubscribe test mode avoids modifying subscription state;
-- archive and trust links provide onward navigation.
+### CI evidence
 
-Initial verdict: **reader acquisition path exists and is safely testable; interactive success-state and mobile checks remain.**
+Pre-merge clean-head certification on `001b8943a6e6bea36f0fc1d883e6849df6fa9f85`:
 
-### 3. Product purchase journey
+- Forgejo conversion runtime **#32507 / action 1630 — SUCCESS**
 
-Representative live route: `/products/aws-cost-optimization-playbook.html`
+Post-merge certification on canonical `main` `be6ceeec7534d5fdb7f394b87094aef3d53bcfec`:
 
-Observed CTAs:
+- Forgejo conversion runtime **#32521 / action 1635 — SUCCESS**
+- Forgejo deployment parity **#32529 / action 1636 — SUCCESS**
+- main push checks **#32518–#32520** are green on the merged revision (an earlier superseded concurrent run was cancelled).
 
-- `Buy securely on Gumroad`
-- `Buy for $29`
+## Downstream production evidence
 
-Both point to:
+GitHub mirror `main`:
 
-`https://tayoca.gumroad.com/l/aws-cost-optimization`
+`7605f2078df27847157a3d08d820d3d77599fd1c`
 
-Both carry `data-event="product_purchase_click"` and open externally.
+Mirror metadata records:
 
-Measurement behavior:
+- `Canonical-Forgejo-Commit: be6ceeec7534d5fdb7f394b87094aef3d53bcfec`
+- `Canonical-Tree: 7efcb765f49a932ca3741cb0c96143b1362965ad`
 
-- `growth-os.js` emits the explicit `product_purchase_click` event;
-- `growth-os.js` emits `product_click` for Gumroad links;
-- `ga4.js` emits `gumroad_click` for Gumroad outbound clicks.
+Vercel production deployment:
 
-The multiple names for a single purchase-intent click are recorded here as an event-contract observation, not automatically classified as a defect. Consolidation belongs to the measurement contract only if later evidence shows double-counting or reporting ambiguity.
+`dpl_BXCkvyviDEXp6qi76zbXitQeSnpQ`
 
-Initial verdict: **destination is explicit and instrumented; destination reachability and mobile click behavior remain to be certified without purchasing.**
+State: **READY / PROMOTED**, aliases assigned with no alias error to `tayoca.com` and `www.tayoca.com`.
 
-### 4. Work/evidence journey
+Deployment source is GitHub `main` at `7605f2078df27847157a3d08d820d3d77599fd1c`, which points back to the exact canonical Forgejo merge above.
 
-Live route: `/work.html`
+Deployment parity run 1636 proves the deployed public bytes match the canonical public tree for this revision.
 
-Observed:
+## Scrapling live production verification
 
-- route returns HTTP 200;
-- primary `Start an Assessment` path points to `/assessments.html`;
-- no form is embedded on the Work page;
-- generic assessment-link instrumentation in `growth-os.js` emits `assessment_cta_click` for links whose destination contains `assessments`.
+Scrapling through Composio was used as the first-class live browser after deployment. The bounded production session verified successful rendering of:
 
-Initial verdict: **Work → assessment path exists; no instrumentation defect is inferred merely because the link lacks a page-specific `data-event`.**
+- `/products/aws-cost-optimization-playbook.html?tayoca_test=stage12`
+- `/assessments.html?...&tayoca_test=stage12#assessment-form`
+- `/operator-brief.html?...&tayoca_test=stage12`
+- `/work.html`
+- `/community/websites`
 
-### 5. Community governed-intake journey
+The live product route exposed both Gumroad purchase CTAs; the assessment route exposed the assessment catalogue/form; Operator Brief exposed signup/unsubscribe surfaces; Work exposed the assessment CTA; Community exposed the governed Google Forms application path. No external purchase or application was submitted during live verification.
 
-Live route: `/community/websites`
+## Measurement contract
 
-Observed primary intake CTAs:
-
-- `Apply on Google Forms`
-- `Apply now`
-
-Both point to the same Google Forms destination:
-
-`https://docs.google.com/forms/d/e/1FAIpQLSeTyWlIZzI8uz4zNRiLXaNdIAw3NuPDIRxnuemwIb7c-IW64Q/viewform`
-
-The links open in a new tab. `ga4.js` classifies cross-origin links as `outbound_click`.
-
-Initial verdict: **governed external intake path exists; destination reachability and mobile behavior remain to be certified without submitting an application.**
-
-## Measurement and attribution already present
-
-`public/ga4.js` defines conversion events including:
+Critical conversion events now include:
 
 - `generate_lead`
 - `assessment_schedule_click`
 - `operator_brief_signup`
+- `product_purchase_click`
 - `product_click`
+- `gumroad_click`
 
-It also:
+`ga4.js` preserves sanitized first-touch/last-touch attribution, newsletter attribution, case-study assist attribution and Stage 12 test-traffic separation. Sensitive query keys remain stripped from stored/reporting URLs.
 
-- records sanitized first-touch and last-touch attribution;
-- preserves newsletter attribution;
-- supports case-study assist attribution;
-- marks Stage 12 test traffic separately;
-- sends events to GA4 and the first-party collector;
-- strips sensitive query keys from stored/reporting URLs;
-- emits `outbound_click` and `gumroad_click` as appropriate.
+## Phase 2 exit-gate verdict
 
-## Next execution gate
+**PASS. Phase 2 is complete.**
 
-The next Phase 2 action is a browser-level journey certification, using Scrapling first:
+- all five primary journeys are documented;
+- no known conversion dead end remains;
+- assessment and Operator Brief handoffs pass safe tests without fake production records;
+- meaningful conversion events are emitted and attributable;
+- representative desktop/mobile journey regressions pass;
+- the only verified production instrumentation defect found during the phase was remediated and re-certified;
+- downstream mirror, promoted Vercel production and canonical deployment parity are proven.
 
-1. desktop service → assessment deep link → preselected form → Stage 12 safe submit → generated next action;
-2. mobile equivalent of the assessment journey;
-3. desktop/mobile Operator Brief safe signup → success state;
-4. product CTA destination integrity without purchase;
-5. Work → assessment route continuity;
-6. Community → Google Forms destination integrity without submission;
-7. confirmation/error-state and dead-end review;
-8. attribution preservation across the assessment deep-link path.
-
-Only verified defects or material friction discovered by these tests should be remediated. The Phase 2 exit gate remains unchanged: all primary journeys documented, no known dead ends, safe form/handoff tests green, meaningful events attributable, and representative desktop/mobile journey tests passing.
+The roadmap may now advance to **Phase 3 — Content architecture and authority**.
