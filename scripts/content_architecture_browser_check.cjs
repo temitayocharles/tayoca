@@ -33,6 +33,39 @@ const server = http.createServer((req, res) => {
 
 function assert(condition, message) { if (!condition) throw new Error(message); }
 
+async function checkProducts(page) {
+  await page.goto(`http://127.0.0.1:${PORT}/products.html`, {waitUntil: 'networkidle'});
+  await page.waitForSelector('[data-product-ecosystem]');
+  const state = await page.evaluate(() => ({
+    h1: document.querySelector('main h1')?.textContent.trim(),
+    offerLabel: document.querySelector('[data-product-ecosystem] > .stage10-family-label')?.textContent.trim(),
+    offerTitle: document.querySelector('[data-product-ecosystem] > h2')?.textContent.trim(),
+    offerCopy: document.querySelector('[data-product-ecosystem] > .stage10-ecosystem-intro')?.textContent.trim(),
+    labels: Array.from(document.querySelectorAll('[id^="family-"] .stage10-family-label')).map(n => n.textContent.trim()),
+    assessmentSummary: document.querySelector('#family-executive-assessments p:not(.stage10-family-label)')?.textContent.trim(),
+  }));
+  assert(state.h1 === 'Useful material for people who want to do the work themselves.', `unexpected H1: ${state.h1}`);
+  assert(state.offerLabel === 'Offer map', `unexpected offer label: ${state.offerLabel}`);
+  assert(state.offerTitle === 'Different ways to work with Tayoca.', `unexpected offer title: ${state.offerTitle}`);
+  assert(state.offerCopy.includes('Assessments are diagnostic engagements.'), 'assessment taxonomy missing');
+  assert(state.offerCopy.includes('Managed Operations are ongoing services.'), 'managed-operations taxonomy missing');
+  const expected = ['Software product','Operator publications','Diagnostic engagements','Ongoing services'];
+  assert(expected.every(x => state.labels.includes(x)), `family labels incomplete: ${JSON.stringify(state.labels)}`);
+  assert(state.assessmentSummary?.startsWith('Three diagnostic engagements that turn cost, reliability and technology-value uncertainty'), `assessment summary incorrect: ${state.assessmentSummary}`);
+  assert(!state.assessmentSummary?.includes('diagnostic products'), `assessment summary still uses product wording: ${state.assessmentSummary}`);
+}
+
+async function checkArchive(page) {
+  await page.goto(`http://127.0.0.1:${PORT}/operator-brief-archive.html`, {waitUntil: 'networkidle'});
+  const text = await page.locator('main').innerText();
+  const forbidden = ['Opportunity pgc1:', 'Opportunity product:', 'public_verified', 'pgc1_cloud_ai_cost', 'pgc1_ai_automation_operations', 'Tayoca Growth OS Products catalogue', 'measurable product CTA'];
+  forbidden.forEach(term => assert(!text.includes(term), `editorial implementation term leaked: ${term}`));
+  assert(text.includes('Practical operating intelligence for people responsible for cloud'), 'public issue lede not normalized');
+  assert(text.includes('Source: AWS Cost Optimization Playbook'), 'AWS public source label missing');
+  assert(text.includes('Source: Kubernetes Production Readiness Checklist'), 'readiness public source label missing');
+  assert(text.includes('Source: GitOps Field Guide'), 'GitOps public source label missing');
+}
+
 (async () => {
   await new Promise(resolve => server.listen(PORT, '127.0.0.1', resolve));
   const browser = await chromium.launch({headless: true});
@@ -41,29 +74,12 @@ function assert(condition, message) { if (!condition) throw new Error(message); 
       const page = await browser.newPage({viewport});
       const errors = [];
       page.on('pageerror', err => errors.push(String(err)));
-      await page.goto(`http://127.0.0.1:${PORT}/products.html`, {waitUntil: 'networkidle'});
-      await page.waitForSelector('[data-product-ecosystem]');
-      const state = await page.evaluate(() => ({
-        h1: document.querySelector('main h1')?.textContent.trim(),
-        offerLabel: document.querySelector('[data-product-ecosystem] > .stage10-family-label')?.textContent.trim(),
-        offerTitle: document.querySelector('[data-product-ecosystem] > h2')?.textContent.trim(),
-        offerCopy: document.querySelector('[data-product-ecosystem] > .stage10-ecosystem-intro')?.textContent.trim(),
-        labels: Array.from(document.querySelectorAll('[id^="family-"] .stage10-family-label')).map(n => n.textContent.trim()),
-        assessmentSummary: document.querySelector('#family-executive-assessments p:not(.stage10-family-label)')?.textContent.trim(),
-      }));
-      assert(state.h1 === 'Useful material for people who want to do the work themselves.', `unexpected H1: ${state.h1}`);
-      assert(state.offerLabel === 'Offer map', `unexpected offer label: ${state.offerLabel}`);
-      assert(state.offerTitle === 'Different ways to work with Tayoca.', `unexpected offer title: ${state.offerTitle}`);
-      assert(state.offerCopy.includes('Assessments are diagnostic engagements.'), 'assessment taxonomy missing');
-      assert(state.offerCopy.includes('Managed Operations are ongoing services.'), 'managed-operations taxonomy missing');
-      const expected = ['Software product','Operator publications','Diagnostic engagements','Ongoing services'];
-      assert(expected.every(x => state.labels.includes(x)), `family labels incomplete: ${JSON.stringify(state.labels)}`);
-      assert(state.assessmentSummary?.startsWith('Three diagnostic engagements that turn cost, reliability and technology-value uncertainty'), `assessment summary incorrect: ${state.assessmentSummary}`);
-      assert(!state.assessmentSummary?.includes('diagnostic products'), `assessment summary still uses product wording: ${state.assessmentSummary}`);
+      await checkProducts(page);
+      await checkArchive(page);
       assert(errors.length === 0, `page errors: ${errors.join(' | ')}`);
       await page.close();
     }
-    console.log('Phase 3 content architecture browser check PASSED on desktop and mobile, including assessment engagement wording.');
+    console.log('Phase 3 content architecture browser check PASSED on desktop and mobile for offer taxonomy and Operator Brief editorial authority.');
   } finally {
     await browser.close();
     await new Promise(resolve => server.close(resolve));

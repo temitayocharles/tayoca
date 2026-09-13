@@ -77,6 +77,49 @@
     document.body.classList.add('operator-editorial');
   }
 
+  function cleanOperatorBriefArchive(){
+    if(path!=='/operator-brief-archive.html')return;
+    var issue=document.querySelector('.operator-brief-issue');
+    if(!issue)return;
+    var lede=issue.querySelector('header .lede');
+    if(lede)lede.textContent='Practical operating intelligence for people responsible for cloud, platforms, reliability, AI infrastructure and technology economics.';
+    var editorial={
+      operating_signal:{body:'Cloud cost optimization works best as a recurring engineering discipline: identify cost drivers, rank safe changes, assign ownership and verify results against a baseline.',source:'AWS Cost Optimization Playbook',href:'https://tayoca.gumroad.com/l/aws-cost-optimization'},
+      from_the_field:{body:'Production readiness is easier to govern when resilience, security, observability, recovery and ownership are reviewed explicitly rather than assumed.',source:'Kubernetes Production Readiness Checklist',href:'https://tayoca.gumroad.com/l/k8s-production-checklist'},
+      technology_value:{body:'Workflow automation, MCP and Kubernetes solve different parts of an automation system. The useful design question is where each boundary belongs and how failure is observed and handed off.',source:'n8n MCP Kubernetes Teaching Pack',href:'https://tayoca.gumroad.com/l/n8n-mcp-k8s'},
+      decision_memo:{body:'Moving into AI automation is easier to execute when the transition is treated as an operating roadmap: choose a target role, build practical projects, test the skills and iterate from evidence.',source:'AI Automation Career Playbook',href:'https://tayoca.gumroad.com/l/ai-automation-career'},
+      build_log:{body:'Tayoca’s n8n and MCP teaching pack turns an integration topic into reusable architecture diagrams, workflows, Kubernetes examples and teaching material.',source:'n8n MCP Kubernetes Teaching Pack',href:'https://tayoca.gumroad.com/l/n8n-mcp-k8s'},
+      evidence:{body:'Structured practice around deliberately broken states forces an operator to form a hypothesis, inspect evidence, make a bounded change and prove recovery instead of passively following a tutorial.',source:'Build, Break, Fix: DevOps Practice Lab Pack',href:'https://tayoca.gumroad.com/l/build-break-fix-devops'},
+      operator_action:{body:'Incident response improves when roles, evidence capture, communication, recovery validation and follow-through are explicit before the next high-pressure event.',source:'DevOps Incident Runbook Template',href:'https://tayoca.gumroad.com/l/devops-incident-runbook'},
+      tayoca_update:{body:'GitOps is safer when repository boundaries, promotion flow, approvals, drift handling, rollback and break-glass procedures are treated as operating controls rather than tool installation details.',source:'GitOps Field Guide',href:'https://tayoca.gumroad.com/l/gitops-field-guide'}
+    };
+    Object.keys(editorial).forEach(function(key){
+      var section=issue.querySelector('[data-section="'+key+'"]');
+      if(!section)return;
+      var paragraphs=Array.from(section.children).filter(function(node){return node.tagName==='P';});
+      var body=paragraphs[1];
+      var evidence=paragraphs[2];
+      if(body)body.textContent=editorial[key].body;
+      if(evidence){
+        while(evidence.firstChild)evidence.removeChild(evidence.firstChild);
+        var strong=document.createElement('strong');
+        strong.textContent='Source: ';
+        var link=document.createElement('a');
+        link.href=editorial[key].href;
+        link.target='_blank';
+        link.rel='noopener noreferrer';
+        link.textContent=editorial[key].source;
+        evidence.appendChild(strong);
+        evidence.appendChild(link);
+      }
+      Array.from(section.querySelectorAll('p')).forEach(function(p){
+        if(p.querySelector('small')&&/Opportunity|public_verified|pgc1:|product:/.test(p.textContent||''))p.remove();
+      });
+    });
+  }
+
+  cleanOperatorBriefArchive();
+
   function applyPhase3OfferTaxonomy(){
     if(path!=='/products.html')return false;
     var main=document.querySelector('main');
