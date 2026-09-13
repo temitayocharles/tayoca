@@ -1,0 +1,38 @@
+name: Tayoca content architecture
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+concurrency:
+  group: tayoca-content-architecture-${{ forgejo.ref }}
+  cancel-in-progress: true
+jobs:
+  validate:
+    runs-on: forgejo-container
+    timeout-minutes: 20
+    steps:
+      - uses: https://data.forgejo.org/actions/checkout@v6
+      - name: Validate Phase 3 content architecture
+        run: |
+          set -euo pipefail
+          python3 scripts/validate_content_architecture.py
+          python3 scripts/validate_product_ecosystem.py
+          python3 scripts/validate_company_ecosystem.py
+          python3 scripts/validate_editorial_copy_quality.py
+      - name: Verify Phase 3 taxonomy in Chromium
+        shell: bash
+        run: |
+          set -euo pipefail
+          cid="$(docker create --ipc=host mcr.microsoft.com/playwright:v1.62.1-noble bash -lc '
+            set -euo pipefail
+            mkdir -p /tmp/tayoca-content-architecture
+            cd /tmp/tayoca-content-architecture
+            npm init -y >/dev/null 2>&1
+            npm install --silent --no-audit --no-fund playwright@1.62.1
+            NODE_PATH=/tmp/tayoca-content-architecture/node_modules node /scripts/content_architecture_browser_check.cjs
+          ')"
+          cleanup(){ docker rm -f "$cid" >/dev/null 2>&1 || true; }
+          trap cleanup EXIT
+          docker cp public "$cid:/public"
+          docker cp scripts "$cid:/scripts"
+          docker start -a "$cid"

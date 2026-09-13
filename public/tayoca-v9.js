@@ -76,4 +76,45 @@
   if(path==='/operator-brief.html'||path==='/operator-brief-archive.html'||path.indexOf('/blog/')===0){
     document.body.classList.add('operator-editorial');
   }
+
+  function applyPhase3OfferTaxonomy(){
+    if(path!=='/products.html')return false;
+    var main=document.querySelector('main');
+    if(!main)return false;
+    var h1=main.querySelector('h1');
+    if(h1)h1.textContent='Useful material for people who want to do the work themselves.';
+    var intro=h1&&h1.nextElementSibling;
+    if(intro&&intro.tagName==='P')intro.textContent='Tayoca publishes workbooks, playbooks, lab packs and checklists built around real operating problems: cloud cost, Kubernetes readiness, GitOps adoption, incidents, automation and career development.';
+    var section=document.querySelector('[data-product-ecosystem]');
+    if(!section)return false;
+    var label=section.querySelector(':scope > .stage10-family-label');
+    var title=section.querySelector(':scope > h2');
+    var copy=section.querySelector(':scope > .stage10-ecosystem-intro');
+    if(label)label.textContent='Offer map';
+    if(title)title.textContent='Different ways to work with Tayoca.';
+    if(copy)copy.textContent='Software and operator publications are products. Assessments are diagnostic engagements. Managed Operations are ongoing services. They connect around the same operating problems and evidence standards, but they are not the same kind of offer.';
+    var labels={
+      'family-operator-tools':'Software product',
+      'family-operator-playbooks':'Operator publications',
+      'family-executive-assessments':'Diagnostic engagements',
+      'family-managed-operations':'Ongoing services'
+    };
+    Object.keys(labels).forEach(function(id){
+      var card=document.getElementById(id);
+      if(!card)return;
+      var kicker=card.querySelector('.stage10-family-label');
+      if(kicker)kicker.textContent=labels[id];
+    });
+    return true;
+  }
+
+  if(path==='/products.html'){
+    if(!applyPhase3OfferTaxonomy()){
+      var taxonomyObserver=new MutationObserver(function(){
+        if(applyPhase3OfferTaxonomy())taxonomyObserver.disconnect();
+      });
+      taxonomyObserver.observe(document.querySelector('main')||document.body,{childList:true,subtree:true});
+      window.setTimeout(function(){taxonomyObserver.disconnect();applyPhase3OfferTaxonomy();},5000);
+    }
+  }
 })();
