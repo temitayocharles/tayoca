@@ -9,15 +9,16 @@ def fail(message: str) -> None:
     raise SystemExit(f"Phase 3 content architecture validation FAILED: {message}")
 
 
-def require(path: Path, *markers: str) -> None:
+def require(path: Path, *markers: str) -> str:
     text = path.read_text(encoding="utf-8")
     for marker in markers:
         if marker not in text:
             fail(f"{path.relative_to(ROOT)} missing {marker!r}")
+    return text
 
 
 def main() -> None:
-    require(
+    runtime = require(
         PUBLIC / "tayoca-v9.js",
         "applyPhase3OfferTaxonomy",
         "Useful material for people who want to do the work themselves.",
@@ -29,7 +30,10 @@ def main() -> None:
         "Ongoing services",
         "Assessments are diagnostic engagements",
         "Managed Operations are ongoing services",
+        "Three diagnostic engagements that turn cost, reliability and technology-value uncertainty",
     )
+    if "Three diagnostic products that turn cost, reliability and technology-value uncertainty" in runtime:
+        fail("public taxonomy runtime must not describe Executive Assessments as diagnostic products")
 
     require(
         PUBLIC / "products.html",

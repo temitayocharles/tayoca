@@ -104,6 +104,10 @@
       if(!card)return;
       var kicker=card.querySelector('.stage10-family-label');
       if(kicker)kicker.textContent=labels[id];
+      if(id==='family-executive-assessments'){
+        var summary=card.querySelector('p:not(.stage10-family-label)');
+        if(summary)summary.textContent='Three diagnostic engagements that turn cost, reliability and technology-value uncertainty into an evidence-backed decision and prioritized action plan.';
+      }
     });
     return true;
   }

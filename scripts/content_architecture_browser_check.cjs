@@ -21,23 +21,17 @@ const server = http.createServer((req, res) => {
   if (pathname === '/') pathname = '/index.html';
   if (pathname === '/blog') pathname = '/blog/index.html';
   let file = path.normalize(path.join(ROOT, pathname));
-  if (!file.startsWith(ROOT)) {
-    res.writeHead(403); res.end('forbidden'); return;
-  }
+  if (!file.startsWith(ROOT)) { res.writeHead(403); res.end('forbidden'); return; }
   try {
     const stat = fs.statSync(file);
     if (stat.isDirectory()) file = path.join(file, 'index.html');
     const body = fs.readFileSync(file);
     res.writeHead(200, {'Content-Type': contentType(file), 'Cache-Control': 'no-store'});
     res.end(body);
-  } catch (_) {
-    res.writeHead(404); res.end('not found');
-  }
+  } catch (_) { res.writeHead(404); res.end('not found'); }
 });
 
-function assert(condition, message) {
-  if (!condition) throw new Error(message);
-}
+function assert(condition, message) { if (!condition) throw new Error(message); }
 
 (async () => {
   await new Promise(resolve => server.listen(PORT, '127.0.0.1', resolve));
@@ -55,6 +49,7 @@ function assert(condition, message) {
         offerTitle: document.querySelector('[data-product-ecosystem] > h2')?.textContent.trim(),
         offerCopy: document.querySelector('[data-product-ecosystem] > .stage10-ecosystem-intro')?.textContent.trim(),
         labels: Array.from(document.querySelectorAll('[id^="family-"] .stage10-family-label')).map(n => n.textContent.trim()),
+        assessmentSummary: document.querySelector('#family-executive-assessments p:not(.stage10-family-label)')?.textContent.trim(),
       }));
       assert(state.h1 === 'Useful material for people who want to do the work themselves.', `unexpected H1: ${state.h1}`);
       assert(state.offerLabel === 'Offer map', `unexpected offer label: ${state.offerLabel}`);
@@ -63,10 +58,12 @@ function assert(condition, message) {
       assert(state.offerCopy.includes('Managed Operations are ongoing services.'), 'managed-operations taxonomy missing');
       const expected = ['Software product','Operator publications','Diagnostic engagements','Ongoing services'];
       assert(expected.every(x => state.labels.includes(x)), `family labels incomplete: ${JSON.stringify(state.labels)}`);
+      assert(state.assessmentSummary?.startsWith('Three diagnostic engagements that turn cost, reliability and technology-value uncertainty'), `assessment summary incorrect: ${state.assessmentSummary}`);
+      assert(!state.assessmentSummary?.includes('diagnostic products'), `assessment summary still uses product wording: ${state.assessmentSummary}`);
       assert(errors.length === 0, `page errors: ${errors.join(' | ')}`);
       await page.close();
     }
-    console.log('Phase 3 content architecture browser check PASSED on desktop and mobile.');
+    console.log('Phase 3 content architecture browser check PASSED on desktop and mobile, including assessment engagement wording.');
   } finally {
     await browser.close();
     await new Promise(resolve => server.close(resolve));
