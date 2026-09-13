@@ -30,6 +30,7 @@ jobs:
             npm install --silent --no-audit --no-fund playwright@1.62.1
             NODE_PATH=/tmp/tayoca-conversion/node_modules node /scripts/conversion_journey_browser_check.cjs
             NODE_PATH=/tmp/tayoca-conversion/node_modules node /scripts/conversion_error_state_browser_check.cjs
+            NODE_PATH=/tmp/tayoca-conversion/node_modules node /scripts/conversion_event_contract_browser_check.cjs
           ')"
           cleanup(){ docker rm -f "$cid" >/dev/null 2>&1 || true; }
           trap cleanup EXIT
