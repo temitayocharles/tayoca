@@ -1,0 +1,26 @@
+name: Social metadata parity
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: tayoca-social-metadata-parity-${{ forgejo.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Validate social metadata parity
+    runs-on: forgejo-general
+    timeout-minutes: 10
+    steps:
+      - name: Check out Tayoca
+        uses: https://data.forgejo.org/actions/checkout@v6
+
+      - name: Validate social previews
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m py_compile scripts/validate_social_metadata_parity.py
+          python3 scripts/validate_social_metadata_parity.py
