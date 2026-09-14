@@ -6,16 +6,17 @@ canonical_platform: forgejo
 canonical_repo: temitayocharles/tayoca
 status: active_locked_execution_sequence
 locked_at_utc: "2026-09-12T15:11:43Z"
-last_reconciled_utc: "2026-09-14T18:14:38Z"
+last_reconciled_utc: "2026-09-14T18:28:00Z"
 
 current_phase: 4
 current_phase_name: search_discoverability_and_structured_data
-current_phase_status: in_progress_search_console_summary_contract_correction_and_structured_data_audit
+current_phase_status: in_progress_search_console_summary_contract_corrected_and_structured_data_audit
 next_phase: 5
 next_phase_name: performance_and_accessibility_hardening
 
 current_checkpoint:
   phase_4_started_from_forgejo_commit: 5a6bb41e7664cd1e2993fff9bcc7d935b05ce3fc
+  phase_4_latest_canonical_forgejo_commit: bce1ad2cc98114b94b5adc3aec475c6890e0fd12
   phase_4_latest_canonical_forgejo_commit_before_pr107: a8ae3cd61f072a2607fe8f08721b50fb164d99a8
   phase_4_current_evidence: docs/TAYOCA_PHASE4_SEARCH_RECONCILIATION_20260914.md
   phase_4_audit_scope:
@@ -59,6 +60,30 @@ current_checkpoint:
       - id: 2156
         number: 33606
         status: success
+  phase_4_postmerge_ci_after_search_console_contract_correction:
+    sha: bce1ad2cc98114b94b5adc3aec475c6890e0fd12
+    source_quality_recheck:
+      id: 2222
+      number: 33853
+      workflow: static-quality.yml
+      status: success
+    observed_push_runs:
+      - id: 2221
+        number: 33764
+        status: success
+      - id: 2220
+        number: 33763
+        status: success
+      - id: 2219
+        number: 33762
+        status: success
+      - id: 2218
+        number: 33761
+        status: success
+      - id: 2217
+        number: 33760
+        status: failure
+        interpretation: opaque_run_detail_unavailable_static_quality_rerun_succeeded
   phase_4_search_console_recheck:
     checked_at_utc: "2026-09-14T17:54:55Z"
     property: https://tayoca.com/
