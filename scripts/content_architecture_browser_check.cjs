@@ -66,6 +66,28 @@ async function checkArchive(page) {
   assert(text.includes('Source: GitOps Field Guide'), 'GitOps public source label missing');
 }
 
+async function checkWork(page) {
+  await page.goto(`http://127.0.0.1:${PORT}/work.html`, {waitUntil: 'networkidle'});
+  const state = await page.evaluate(() => ({
+    hero: document.querySelector('main .hero-cinema .lede')?.textContent.trim(),
+    heading: document.querySelector('main .section .work-intro h2')?.textContent.trim(),
+    intro: document.querySelector('main .section .work-intro p')?.textContent.trim(),
+    main: document.querySelector('main')?.innerText || '',
+    description: document.querySelector('meta[name="description"]')?.content || '',
+    ogDescription: document.querySelector('meta[property="og:description"]')?.content || '',
+  }));
+  assert(state.hero.includes('documents selected project work alongside client delivery'), `Work hero authority wording missing: ${state.hero}`);
+  assert(state.heading === 'Products, publications, programmes and selected project work', `Work heading incorrect: ${state.heading}`);
+  assert(state.intro.includes('other projects stay neutral unless the relationship has been confirmed'), `Work disclosure boundary missing: ${state.intro}`);
+  assert(!state.main.includes('Things we are building and operating ourselves'), 'Work page still implies all projects are owned/operated');
+  assert(!state.hero.includes('Tayoca builds software, marketplaces'), 'Work hero still overstates portfolio ownership');
+  assert(state.main.includes('SiteSupply'), 'SiteSupply record disappeared from Work page');
+  assert(state.main.includes('Project / build · in market'), 'SiteSupply neutral public label missing');
+  assert(state.main.includes('It is an owned Tayoca product'), 'Sivanta owned-product classification missing');
+  assert(!state.description.includes('built and operated by Tayoca'), `Work meta description overstates authority: ${state.description}`);
+  assert(!state.ogDescription.includes('built and operated by Tayoca'), `Work OG description overstates authority: ${state.ogDescription}`);
+}
+
 (async () => {
   await new Promise(resolve => server.listen(PORT, '127.0.0.1', resolve));
   const browser = await chromium.launch({headless: true});
@@ -76,10 +98,11 @@ async function checkArchive(page) {
       page.on('pageerror', err => errors.push(String(err)));
       await checkProducts(page);
       await checkArchive(page);
+      await checkWork(page);
       assert(errors.length === 0, `page errors: ${errors.join(' | ')}`);
       await page.close();
     }
-    console.log('Phase 3 content architecture browser check PASSED on desktop and mobile for offer taxonomy and Operator Brief editorial authority.');
+    console.log('Phase 3 content architecture browser check PASSED on desktop and mobile for offer taxonomy, Operator Brief editorial authority and Work portfolio disclosure.');
   } finally {
     await browser.close();
     await new Promise(resolve => server.close(resolve));

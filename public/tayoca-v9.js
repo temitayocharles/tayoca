@@ -118,7 +118,26 @@
     });
   }
 
+  function alignWorkAuthority(){
+    if(path!=='/work.html')return;
+    var hero=document.querySelector('main .hero-cinema .lede');
+    if(hero)hero.textContent='Tayoca develops owned software and publications, runs community programmes, and documents selected project work alongside client delivery. Each item is classified according to the evidence and disclosure available for it.';
+    var intro=document.querySelector('main .section .work-intro');
+    if(intro){
+      var heading=intro.querySelector('h2');
+      var copy=intro.querySelector('p');
+      if(heading)heading.textContent='Products, publications, programmes and selected project work';
+      if(copy)copy.textContent='Each item is presented according to what is known and appropriate to disclose. Owned Tayoca products are labeled as such; other projects stay neutral unless the relationship has been confirmed.';
+    }
+    var description=document.querySelector('meta[name="description"]');
+    if(description)description.content='Tayoca software, publications, community programmes and selected project work, including Sivanta, SiteSupply, Operator Brief and the Free Website Initiative.';
+    document.querySelectorAll('meta[property="og:description"],meta[name="twitter:description"]').forEach(function(meta){
+      meta.content='Software, publications, community programmes and selected project work connected to Tayoca.';
+    });
+  }
+
   cleanOperatorBriefArchive();
+  alignWorkAuthority();
 
   function applyPhase3OfferTaxonomy(){
     if(path!=='/products.html')return false;

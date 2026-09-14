@@ -37,6 +37,10 @@ def main() -> None:
         "Kubernetes Production Readiness Checklist",
         "GitOps Field Guide",
         "Opportunity|public_verified|pgc1:|product:",
+        "alignWorkAuthority",
+        "documents selected project work alongside client delivery",
+        "Products, publications, programmes and selected project work",
+        "other projects stay neutral unless the relationship has been confirmed",
     )
     if "Three diagnostic products that turn cost, reliability and technology-value uncertainty" in runtime:
         fail("public taxonomy runtime must not describe Executive Assessments as diagnostic products")
@@ -61,13 +65,19 @@ def main() -> None:
         "/tayoca-v9.js",
     )
 
-    require(
+    company_registry = require(
         PUBLIC / "data" / "company-ecosystem.json",
         '"owned_product"',
         '"publication"',
         '"community_initiative"',
         '"internal_system"',
+        '"id": "sitesupply"',
+        '"owner_relationship_confidence": "unconfirmed"',
+        '"tayoca_relationship": "unrelated_pending_confirmation"',
+        '"publication_status": "published_neutral"',
     )
+    if '"id": "sitesupply"' not in company_registry:
+        fail("SiteSupply authority record missing")
 
     require(
         PUBLIC / "about.html",
@@ -77,7 +87,15 @@ def main() -> None:
         "community projects",
     )
 
-    print("Phase 3 content architecture validation PASSED: public offer taxonomy and Operator Brief editorial authority controls are present while governed registries remain intact.")
+    require(
+        PUBLIC / "work.html",
+        "SiteSupply",
+        "Project / build · in market",
+        "It is an owned Tayoca product",
+        "/tayoca-v9.js",
+    )
+
+    print("Phase 3 content architecture validation PASSED: offer taxonomy, editorial authority and portfolio disclosure controls are present while governed registries remain intact.")
 
 
 if __name__ == "__main__":
