@@ -131,6 +131,29 @@ Firecrawl partially succeeded:
 
 Firecrawl timed out when checking `/blog`, so the noncanonical `/blog` live redirect still needs direct redirect-capable verification when a reliable browser or HTTP checker is available. Repository policy and post-merge CI already show the redirect exists in both deploy targets.
 
+## Search Console summary data contract correction
+
+PR #106 refreshed `public/data/search-console-summary.json` with the new Search Console baseline, but the first implementation replaced the previous public data-shape keys with only 31-day keys.
+
+That created a compatibility risk for any existing analytics consumer or static validation that still expects:
+
+- `periods.7d_final`
+- `periods.30d_final`
+- `top_queries_30d`
+- `top_pages_30d`
+
+A follow-up correction restores those keys as first-class compatibility fields while retaining the newer 31-day fields.
+
+Additional aggregate evidence used for the correction:
+
+| Period | Start | End | Clicks | Impressions | Average position |
+|---|---|---|---:|---:|---:|
+| 7d final | `2026-09-05` | `2026-09-11` | 0 | 38 | 19.07894736842105 |
+| 30d final | `2026-08-13` | `2026-09-11` | 0 | 95 | 19.74736842105263 |
+| 31d final | `2026-08-12` | `2026-09-11` | 0 | 95 | 19.74736842105263 |
+
+This correction does not change the Phase 4 interpretation. It only preserves backwards-compatible public data semantics.
+
 ## Phase 4 remains open
 
 Do not mark Phase 4 complete yet.

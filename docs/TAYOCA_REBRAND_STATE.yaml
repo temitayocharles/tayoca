@@ -6,17 +6,17 @@ canonical_platform: forgejo
 canonical_repo: temitayocharles/tayoca
 status: active_locked_execution_sequence
 locked_at_utc: "2026-09-12T15:11:43Z"
-last_reconciled_utc: "2026-09-14T17:57:00Z"
+last_reconciled_utc: "2026-09-14T18:14:38Z"
 
 current_phase: 4
 current_phase_name: search_discoverability_and_structured_data
-current_phase_status: in_progress_redirect_consolidation_merged_search_console_recrawl_pending
+current_phase_status: in_progress_search_console_summary_contract_correction_and_structured_data_audit
 next_phase: 5
 next_phase_name: performance_and_accessibility_hardening
 
 current_checkpoint:
   phase_4_started_from_forgejo_commit: 5a6bb41e7664cd1e2993fff9bcc7d935b05ce3fc
-  phase_4_latest_canonical_forgejo_commit: 4377539893fff387b376f948bd0dedb831eb47dc
+  phase_4_latest_canonical_forgejo_commit_before_pr107: a8ae3cd61f072a2607fe8f08721b50fb164d99a8
   phase_4_current_evidence: docs/TAYOCA_PHASE4_SEARCH_RECONCILIATION_20260914.md
   phase_4_audit_scope:
     - canonical_and_indexability
@@ -31,12 +31,16 @@ current_checkpoint:
   phase_4_completed_prs:
     - 104
     - 105
+    - 106
+    - 107
   phase_4_completed_remediations:
     - analytics_http_x_robots_tag_contradiction_removed
     - legacy_campaign_surfaces_explicitly_classified_noindex_follow_noarchive
     - noncanonical_blog_path_redirected_to_canonical_trailing_slash_blog_library
     - retired_sitesupply_article_redirected_to_governed_work_surface
     - redirect_parity_preserved_between_vercel_json_and_public_redirects
+    - search_console_reconciliation_checkpoint_documented
+    - search_console_summary_public_data_contract_preserved
   phase_4_postmerge_ci_after_url_consolidation:
     sha: 4377539893fff387b376f948bd0dedb831eb47dc
     runs:
@@ -83,6 +87,35 @@ current_checkpoint:
         current_repo_policy: permanent_redirect_to_https_tayoca_com_work_html
         search_console_last_crawl: "2026-08-19T08:48:50Z"
     interpretation: search_console_still_reflects_pre_pr105_crawls_and_must_be_rechecked_after_google_recrawls_current_redirects
+  phase_4_search_console_summary_contract_correction:
+    pr: 107
+    reason: preserve_existing_public_analytics_consumers_after_pr106_refresh
+    public_data_file: public/data/search-console-summary.json
+    compatibility_fields_restored:
+      - periods.7d_final
+      - periods.30d_final
+      - top_queries_30d
+      - top_pages_30d
+    refreshed_fields_retained:
+      - periods.31d_final
+      - top_queries_31d
+      - top_pages_31d
+      - legacy_or_noncanonical_urls_observed
+      - page_dimension_total_observed
+    aggregate_7d_final:
+      start_date: "2026-09-05"
+      end_date: "2026-09-11"
+      clicks: 0
+      impressions: 38
+      ctr: 0
+      average_position: 19.07894736842105
+    aggregate_30d_final:
+      start_date: "2026-08-13"
+      end_date: "2026-09-11"
+      clicks: 0
+      impressions: 95
+      ctr: 0
+      average_position: 19.74736842105263
   phase_4_live_redirect_verification:
     preferred_browser: scrapling_via_composio
     scrapling_status: unavailable_in_current_composio_search_results
@@ -100,9 +133,28 @@ current_checkpoint:
         source_url: https://tayoca.com/blog
         result: timed_out
     consequential_external_actions_performed: false
+  phase_4_structured_data_audit_initial_findings:
+    checked_at_utc: "2026-09-14T18:10:00Z"
+    guideline_basis: google_article_structured_data_recommends_dates_but_does_not_require_properties
+    findings:
+      - page: public/blog/cloud-cost-optimization-playbook.html
+        issue: indexable_article_has_social_metadata_but_no_json_ld_blogposting_block
+        status: remediation_candidate
+      - page: public/blog/ai-automation-career-roadmap.html
+        issue: blogposting_json_ld_present_without_date_published_or_date_modified
+        status: quality_remediation_candidate
+      - page: public/blog/gitops-beyond-hello-world.html
+        issue: blogposting_json_ld_present_without_date_published_or_date_modified
+        status: quality_remediation_candidate
+      - page: public/blog/n8n-mcp-kubernetes.html
+        issue: blogposting_json_ld_present_with_date_modified_but_without_date_published
+        status: quality_remediation_candidate
+      - page: public/blog/devops-incident-response-runbook.html
+        issue: blogposting_and_faqpage_json_ld_present_with_dates
+        status: aligned
   phase_4_open_items:
     - verify_noncanonical_blog_live_redirect_with_direct_redirect_capable_checker_after_browser_tool_availability_recovers
-    - audit_json_ld_structured_data_completeness_for_organization_website_product_article_blogposting_and_breadcrumb_surfaces
+    - remediate_high_confidence_json_ld_structured_data_gaps_without_fabricating_publication_history
     - reconcile_social_metadata_images_and_twitter_fields_across_indexable_article_and_product_pages
     - recheck_search_console_after_google_recrawls_post_pr105_redirects
   phase_4_resume_action: continue_structured_data_and_metadata_audit_then_remediate_high_confidence_defects_without_keyword_spam_or_fabricated_claims
