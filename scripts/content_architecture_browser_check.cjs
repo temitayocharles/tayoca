@@ -88,6 +88,65 @@ async function checkWork(page) {
   assert(!state.ogDescription.includes('built and operated by Tayoca'), `Work OG description overstates authority: ${state.ogDescription}`);
 }
 
+async function checkAbout(page) {
+  await page.goto(`http://127.0.0.1:${PORT}/about.html`, {waitUntil: 'networkidle'});
+  const text = await page.locator('main').innerText();
+  ['client delivery', 'owned software', 'editorial work', 'community projects'].forEach(term =>
+    assert(text.toLowerCase().includes(term), `About taxonomy missing: ${term}`));
+  assert(!text.includes('Everything Tayoca shows is client work'), 'About page collapses distinct company work types');
+}
+
+async function checkSegment(page, route, expectedAssessment) {
+  await page.goto(`http://127.0.0.1:${PORT}${route}`, {waitUntil: 'networkidle'});
+  const text = await page.locator('main').innerText();
+  assert(text.includes('The assessment is a diagnostic starting point.'), `${route} diagnostic boundary missing`);
+  assert(text.includes('Scope, evidence access and acceptance criteria are confirmed before implementation.'), `${route} implementation boundary missing`);
+  assert(text.includes('Start with evidence, then choose the smallest useful intervention.'), `${route} evidence-first decision path missing`);
+  assert(text.includes('Tayoca separates diagnosis from implementation'), `${route} diagnosis/implementation separation missing`);
+  assert(text.includes(expectedAssessment), `${route} expected assessment missing: ${expectedAssessment}`);
+}
+
+async function checkResults(page) {
+  await page.goto(`http://127.0.0.1:${PORT}/results.html`, {waitUntil: 'networkidle'});
+  const text = await page.locator('main').innerText();
+  assert(text.includes('Tayoca does not turn estimates into proof.'), 'Results evidence boundary missing');
+  assert(text.includes('Quantified AWS case-study narrative withdrawn from proof use'), 'withdrawn AWS evidence notice missing');
+  assert(text.includes('It is not used as a headline result, proof statistic or sales guarantee anywhere on the site.'), 'withdrawn AWS usage boundary missing');
+  assert(text.includes('Baseline') && text.includes('Intervention') && text.includes('Measurement') && text.includes('Approval') && text.includes('Limits'), 'Results evidence model incomplete');
+}
+
+async function checkInsights(page) {
+  await page.goto(`http://127.0.0.1:${PORT}/blog/`, {waitUntil: 'networkidle'});
+  const state = await page.evaluate(() => ({
+    canonical: document.querySelector('link[rel="canonical"]')?.href || '',
+    h1: document.querySelector('main h1')?.textContent.trim() || '',
+    main: document.querySelector('main')?.innerText || '',
+  }));
+  assert(state.canonical === 'https://tayoca.com/blog/', `Insights canonical incorrect: ${state.canonical}`);
+  assert(state.h1.includes('Insights'), `Insights library identity missing: ${state.h1}`);
+  assert(state.main.includes('Field notes for people who have to keep technology working.'), 'Insights editorial purpose missing');
+  assert(state.main.includes('Operator Brief'), 'Insights library does not expose Operator Brief');
+}
+
+async function checkWithdrawnEvidence(page, route) {
+  await page.goto(`http://127.0.0.1:${PORT}${route}`, {waitUntil: 'domcontentloaded'});
+  const state = await page.evaluate(() => ({
+    robots: document.querySelector('meta[name="robots"]')?.content || '',
+    title: document.title,
+    main: document.querySelector('main')?.innerText || '',
+    footer: document.querySelector('footer')?.innerText || '',
+    links: Array.from(document.querySelectorAll('footer a')).map(a => ({text: a.textContent.trim(), href: a.getAttribute('href')})),
+  }));
+  assert(state.robots === 'noindex,follow', `${route} robots policy changed: ${state.robots}`);
+  assert(state.title === 'Case Study Under Evidence Review | Tayoca', `${route} evidence-review title changed`);
+  assert(state.main.toLowerCase().includes('withdrawn'), `${route} no longer states withdrawal`);
+  assert(state.main.toLowerCase().includes('public proof'), `${route} no longer states proof boundary`);
+  assert(state.footer.includes('We help organizations understand technology costs, improve reliability and automate work that should not need to be repeated by hand.'), `${route} current company description missing`);
+  assert(!state.footer.includes('Technology Value & FinOps'), `${route} superseded service taxonomy returned`);
+  assert(state.links.some(x => x.text === 'Insights' && x.href === '/blog/'), `${route} canonical Insights link missing`);
+  assert(state.links.some(x => x.text === 'Operator Brief' && x.href === '/operator-brief.html'), `${route} Operator Brief link missing`);
+}
+
 (async () => {
   await new Promise(resolve => server.listen(PORT, '127.0.0.1', resolve));
   const browser = await chromium.launch({headless: true});
@@ -99,10 +158,18 @@ async function checkWork(page) {
       await checkProducts(page);
       await checkArchive(page);
       await checkWork(page);
+      await checkAbout(page);
+      await checkSegment(page, '/segments/growth-stage-technology.html', 'Technology Value Assessment');
+      await checkSegment(page, '/segments/regulated-operations.html', 'Platform Reliability Assessment');
+      await checkSegment(page, '/segments/ai-enabled-engineering.html', 'Cloud & AI Cost Assessment');
+      await checkResults(page);
+      await checkInsights(page);
+      await checkWithdrawnEvidence(page, '/blog/how-we-saved-216k-aws.html');
+      await checkWithdrawnEvidence(page, '/blog/how-we-saved-216k-on-aws-in-90-days.html');
       assert(errors.length === 0, `page errors: ${errors.join(' | ')}`);
       await page.close();
     }
-    console.log('Phase 3 content architecture browser check PASSED on desktop and mobile for offer taxonomy, Operator Brief editorial authority and Work portfolio disclosure.');
+    console.log('Phase 3 content architecture browser check PASSED on desktop and mobile across offer taxonomy, editorial authority, portfolio disclosure, company story, all segment journeys, evidence governance, canonical Insights and withdrawn-evidence routes.');
   } finally {
     await browser.close();
     await new Promise(resolve => server.close(resolve));
