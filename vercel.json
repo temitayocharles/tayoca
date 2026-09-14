@@ -11,71 +11,19 @@
     }
   ],
   "redirects": [
-    {
-      "source": "/blog.html",
-      "destination": "/blog/",
-      "permanent": true
-    },
-    {
-      "source": "/writing.html",
-      "destination": "/blog/",
-      "permanent": true
-    },
-    {
-      "source": "/assessment",
-      "destination": "/assessments.html",
-      "permanent": true
-    },
-    {
-      "source": "/insights.html",
-      "destination": "/blog/",
-      "permanent": true
-    },
-    {
-      "source": "/landing_ai-automation-career-page.html",
-      "destination": "/products/ai-automation-career-playbook.html",
-      "permanent": true
-    },
-    {
-      "source": "/landing_ai-automation-career.html",
-      "destination": "/products/ai-automation-career-playbook.html",
-      "permanent": true
-    },
-    {
-      "source": "/landing_n8n-mcp-k8s-page.html",
-      "destination": "/products/n8n-mcp-kubernetes-teaching-pack.html",
-      "permanent": true
-    },
-    {
-      "source": "/landing_n8n-mcp-k8s.html",
-      "destination": "/products/n8n-mcp-kubernetes-teaching-pack.html",
-      "permanent": true
-    },
-    {
-      "source": "/landing-devops-pack.html",
-      "destination": "/products/build-break-fix-devops-lab-pack.html",
-      "permanent": true
-    },
-    {
-      "source": "/landing.html",
-      "destination": "/products/aws-cost-optimization-playbook.html",
-      "permanent": true
-    },
-    {
-      "source": "/landing_v2.html",
-      "destination": "/products/aws-cost-optimization-playbook.html",
-      "permanent": true
-    },
-    {
-      "source": "/l/aws-finops-playbook",
-      "destination": "/products/aws-cost-optimization-playbook.html",
-      "permanent": true
-    },
-    {
-      "source": "/l/aws-finops-playbook/",
-      "destination": "/products/aws-cost-optimization-playbook.html",
-      "permanent": true
-    }
+    {"source": "/blog.html", "destination": "/blog/", "permanent": true},
+    {"source": "/writing.html", "destination": "/blog/", "permanent": true},
+    {"source": "/assessment", "destination": "/assessments.html", "permanent": true},
+    {"source": "/insights.html", "destination": "/blog/", "permanent": true},
+    {"source": "/landing_ai-automation-career-page.html", "destination": "/products/ai-automation-career-playbook.html", "permanent": true},
+    {"source": "/landing_ai-automation-career.html", "destination": "/products/ai-automation-career-playbook.html", "permanent": true},
+    {"source": "/landing_n8n-mcp-k8s-page.html", "destination": "/products/n8n-mcp-kubernetes-teaching-pack.html", "permanent": true},
+    {"source": "/landing_n8n-mcp-k8s.html", "destination": "/products/n8n-mcp-kubernetes-teaching-pack.html", "permanent": true},
+    {"source": "/landing-devops-pack.html", "destination": "/products/build-break-fix-devops-lab-pack.html", "permanent": true},
+    {"source": "/landing.html", "destination": "/products/aws-cost-optimization-playbook.html", "permanent": true},
+    {"source": "/landing_v2.html", "destination": "/products/aws-cost-optimization-playbook.html", "permanent": true},
+    {"source": "/l/aws-finops-playbook", "destination": "/products/aws-cost-optimization-playbook.html", "permanent": true},
+    {"source": "/l/aws-finops-playbook/", "destination": "/products/aws-cost-optimization-playbook.html", "permanent": true}
   ],
   "headers": [
     {
@@ -90,11 +38,10 @@
         {"key": "Content-Security-Policy", "value": "base-uri 'self'; object-src 'none'; frame-ancestors 'none'; upgrade-insecure-requests"}
       ]
     },
-    {
-      "source": "/analytics.html",
-      "headers": [
-        {"key": "X-Robots-Tag", "value": "noindex, nofollow, noarchive"}
-      ]
-    }
+    {"source": "/landing_ai-made-simple.html", "headers": [{"key": "X-Robots-Tag", "value": "noindex, follow, noarchive"}]},
+    {"source": "/landing_ai-made-simple-page.html", "headers": [{"key": "X-Robots-Tag", "value": "noindex, follow, noarchive"}]},
+    {"source": "/l/platform-engineering-playbook/(.*)", "headers": [{"key": "X-Robots-Tag", "value": "noindex, follow, noarchive"}]},
+    {"source": "/l/finops-ops-playbook/(.*)", "headers": [{"key": "X-Robots-Tag", "value": "noindex, follow, noarchive"}]},
+    {"source": "/l/data-pipelines-playbook/(.*)", "headers": [{"key": "X-Robots-Tag", "value": "noindex, follow, noarchive"}]}
   ]
 }
