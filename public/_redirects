@@ -1,7 +1,9 @@
+/blog    /blog/    301
 /blog.html    /blog/    301
 /writing.html    /blog/    301
 /insights.html    /blog/    301
 /assessment    /assessments.html    301
+/blog/sitesupply-construction-procurement-marketplace.html    /work.html    301
 
 # Superseded product landing pages
 /landing_ai-automation-career-page.html    /products/ai-automation-career-playbook.html    301

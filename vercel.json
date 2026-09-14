@@ -5,16 +5,15 @@
   "cleanUrls": false,
   "trailingSlash": false,
   "rewrites": [
-    {
-      "source": "/access/book",
-      "destination": "https://n8n.tca-infraforge.site/webhook/tayoca/books/access"
-    }
+    {"source": "/access/book", "destination": "https://n8n.tca-infraforge.site/webhook/tayoca/books/access"}
   ],
   "redirects": [
+    {"source": "/blog", "destination": "/blog/", "permanent": true},
     {"source": "/blog.html", "destination": "/blog/", "permanent": true},
     {"source": "/writing.html", "destination": "/blog/", "permanent": true},
     {"source": "/assessment", "destination": "/assessments.html", "permanent": true},
     {"source": "/insights.html", "destination": "/blog/", "permanent": true},
+    {"source": "/blog/sitesupply-construction-procurement-marketplace.html", "destination": "/work.html", "permanent": true},
     {"source": "/landing_ai-automation-career-page.html", "destination": "/products/ai-automation-career-playbook.html", "permanent": true},
     {"source": "/landing_ai-automation-career.html", "destination": "/products/ai-automation-career-playbook.html", "permanent": true},
     {"source": "/landing_n8n-mcp-k8s-page.html", "destination": "/products/n8n-mcp-kubernetes-teaching-pack.html", "permanent": true},
