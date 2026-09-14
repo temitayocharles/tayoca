@@ -6,88 +6,94 @@ canonical_platform: forgejo
 canonical_repo: temitayocharles/tayoca
 status: active_locked_execution_sequence
 locked_at_utc: "2026-09-12T15:11:43Z"
-last_reconciled_utc: "2026-09-14T13:03:00Z"
+last_reconciled_utc: "2026-09-14T17:20:00Z"
 
-current_phase: 3
-current_phase_name: content_architecture_and_authority
-current_phase_status: in_progress_content_authority_remediation
-next_phase: 4
-next_phase_name: search_discoverability_and_structured_data
+current_phase: 4
+current_phase_name: search_discoverability_and_structured_data
+current_phase_status: in_progress_initial_technical_discoverability_audit
+next_phase: 5
+next_phase_name: performance_and_accessibility_hardening
 
 current_checkpoint:
-  phase_3_canonical_forgejo_commit: 2daf35f2b9f9b1aebe2750f4f455c0041dae0e34
+  phase_4_started_from_forgejo_commit: 5a6bb41e7664cd1e2993fff9bcc7d935b05ce3fc
+  phase_4_audit_scope:
+    - canonical_and_indexability
+    - sitemap_and_robots_governance
+    - metadata_and_social_previews
+    - schema_org_structured_data
+    - internal_link_graph
+    - search_console_and_sitemap_health
+    - commercial_content_clusters
+    - crawlability_and_redirect_integrity
+    - technical_seo_baseline
+  phase_4_resume_action: audit_all_intended_indexable_routes_against_sitemap_canonical_robots_metadata_structured_data_internal_links_and_redirects_then_remediate_high_confidence_defects_without_seo_spam
+
+  phase_3_exit_gate: complete_certified
+  phase_3_canonical_forgejo_commit: 5a6bb41e7664cd1e2993fff9bcc7d935b05ce3fc
   phase_3_audit: docs/TAYOCA_PHASE3_CONTENT_ARCHITECTURE_AUDIT_20260913.md
   phase_3_remediation_prs:
     - 96
     - 97
     - 98
+    - 101
+    - 102
   phase_3_completed_remediations:
     - operator_brief_archive_language_authority
     - public_offer_taxonomy_products_vs_publications_vs_diagnostics_vs_services
     - work_portfolio_ownership_and_relationship_authority
     - withdrawn_aws_evidence_route_taxonomy_and_editorial_destinations
     - insights_compatibility_alias_to_canonical_blog_library_locked
-  phase_3_postmerge_ci:
-    sha: 2daf35f2b9f9b1aebe2750f4f455c0041dae0e34
-    runs:
-      - id: 1874
-        number: 32968
-        status: success
-      - id: 1875
-        number: 32969
-        status: success
-      - id: 1876
-        number: 32970
-        status: success
-      - id: 1877
-        number: 32972
-        status: success
-      - id: 1878
-        number: 32973
-        status: success
-  phase_3_browser_audit:
+    - insights_browser_identity_assertion_aligned_to_authored_editorial_h1
+    - withdrawn_evidence_browser_assertions_aligned_to_rendered_runtime
+  phase_3_browser_certification:
     preferred_browser: scrapling_via_composio
-    status: tooling_unavailable_for_current_crawl
-    attempts:
-      - result: http_504_gateway_timeout
-        scope: dynamic_depth_2_max_25
-      - result: http_504_gateway_timeout
-        scope: dynamic_depth_1_max_8
-    production_failure_inferred: false
-  phase_3_verified_non_defects_or_governed_surfaces:
-    - growth_stage_segment_evidence_first_diagnostic_path
-    - regulated_operations_segment_evidence_first_diagnostic_path
-    - ai_enabled_engineering_segment_evidence_first_diagnostic_path
-    - about_company_story_separates_client_delivery_owned_software_editorial_and_community_work
-    - results_page_keeps_withdrawn_aws_quantitative_narrative_out_of_proof_use
-    - blog_index_is_canonical_insights_library
+    status: success
+    live_route: /blog/how-we-saved-216k-aws.html
+    verified:
+      - noindex_follow_preserved
+      - evidence_review_title_preserved
+      - withdrawn_status_preserved
+      - public_proof_boundary_preserved
+      - rendered_company_footer_verified
+      - rendered_insights_destination_verified
+      - operator_brief_destination_verified
+    consequential_external_actions_performed: false
+  phase_3_browser_regression:
+    workflow: .forgejo/workflows/content-architecture.yml
+    branch_sha: 0db2001205b00de6fac308fc87bac87cb85cd1cd
+    explicit_run:
+      id: 2079
+      number: 33408
+      status: success
+  phase_3_postmerge_ci:
+    sha: 5a6bb41e7664cd1e2993fff9bcc7d935b05ce3fc
+    runs:
+      - id: 2080
+        number: 33461
+        status: success
+      - id: 2081
+        number: 33462
+        status: success
+      - id: 2082
+        number: 33463
+        status: success
+      - id: 2083
+        number: 33464
+        status: success
+      - id: 2084
+        number: 33465
+        status: success
+  phase_3_verified_exit_conditions:
+    unfamiliar_visitor_can_distinguish_services_products_publications_projects_and_community_work: pass
+    major_commercial_pages_answer_problem_approach_evidence_engagement_and_next_action: pass
+    content_taxonomy_consistent_across_navigation_copy_and_data_models: pass
+    unsupported_claims_remain_blocked_by_policy_and_validation: pass
+
   phase_2_canonical_forgejo_commit: be6ceeec7534d5fdb7f394b87094aef3d53bcfec
   phase_2_fix_pr: 92
   phase_2_audit: docs/TAYOCA_PHASE2_CONVERSION_AUDIT_20260913.md
-  phase_1_certification: docs/TAYOCA_V9_PRODUCTION_CERTIFICATION_20260913.md
-  github_mirror_commit: 7605f2078df27847157a3d08d820d3d77599fd1c
-  canonical_tree: 7efcb765f49a932ca3741cb0c96143b1362965ad
-  vercel_deployment: dpl_BXCkvyviDEXp6qi76zbXitQeSnpQ
-  vercel_state: READY_PROMOTED
-  production_aliases:
-    - tayoca.com
-    - www.tayoca.com
-  phase_2_browser_certification:
-    status: success
-    safe_test_mode: tayoca_test=stage12
-    production_record_policy: do_not_create_fake_production_records
-    primary_journeys:
-      service_to_assessment_to_qualified_conversation: pass
-      operator_brief_to_reader_to_service_or_product_interest: pass
-      product_detail_to_external_purchase_or_use_path: pass
-      work_or_evidence_to_assessment_or_contact: pass
-      community_initiative_to_governed_intake: pass
-    live_browser:
-      browser: scrapling_via_composio
-      status: success
-      consequential_external_actions_performed: false
   phase_2_exit_gate: complete_certified
-  resume_action: continue_phase_3_remaining_editorial_company_segment_and_cross_route_content_authority_audit_then_evaluate_phase_3_exit_gate
+  phase_1_certification: docs/TAYOCA_V9_PRODUCTION_CERTIFICATION_20260913.md
 
 phases:
   1:
@@ -100,13 +106,14 @@ phases:
     certification: docs/TAYOCA_PHASE2_CONVERSION_AUDIT_20260913.md
   3:
     name: content_architecture_and_authority
-    status: in_progress
+    status: complete_certified
+    certification: docs/TAYOCA_PHASE3_CONTENT_ARCHITECTURE_AUDIT_20260913.md
   4:
     name: search_discoverability_and_structured_data
-    status: next
+    status: in_progress
   5:
     name: performance_and_accessibility_hardening
-    status: planned_locked
+    status: next
   6:
     name: measurement_and_growth_os
     status: planned_locked
@@ -116,6 +123,8 @@ phases:
   8:
     name: continuous_design_governance
     status: planned_locked
+
+resume_action: continue_phase_4_search_discoverability_and_structured_data_from_initial_technical_audit
 
 resume_triggers:
   - continue_tayoca_rebrand
