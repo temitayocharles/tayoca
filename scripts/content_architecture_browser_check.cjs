@@ -116,16 +116,18 @@ async function checkResults(page) {
 }
 
 async function checkInsights(page) {
-  await page.goto(`http://127.0.0.1:${PORT}/blog/`, {waitUntil: 'networkidle'});
+  await page.goto(`http://127.0.0.1:${PORT}/blog/`, {waitUntil: 'domcontentloaded'});
   const state = await page.evaluate(() => ({
     canonical: document.querySelector('link[rel="canonical"]')?.href || '',
+    title: document.title,
     h1: document.querySelector('main h1')?.textContent.trim() || '',
     main: document.querySelector('main')?.innerText || '',
   }));
   assert(state.canonical === 'https://tayoca.com/blog/', `Insights canonical incorrect: ${state.canonical}`);
-  assert(state.h1.includes('Insights'), `Insights library identity missing: ${state.h1}`);
-  assert(state.main.includes('Field notes for people who have to keep technology working.'), 'Insights editorial purpose missing');
+  assert(state.title.startsWith('Insights | Tayoca'), `Insights document identity missing: ${state.title}`);
+  assert(state.h1 === 'Field notes for people who have to keep technology working.', `Insights authored hero changed: ${state.h1}`);
   assert(state.main.includes('Operator Brief'), 'Insights library does not expose Operator Brief');
+  assert(state.main.includes('Withdrawn evidence narratives are not promoted as public proof'), 'Insights withdrawal boundary missing');
 }
 
 async function checkWithdrawnEvidence(page, route) {
