@@ -27,11 +27,12 @@ Current locked sequence:
 
 Current Phase 4 implementation baseline:
 
-- Latest canonical Forgejo commit: `e90e3b64818811cf167aace033488a7448b481b6`
-- Completed Phase 4 PRs through this checkpoint: #104, #105, #106, #107, #108, #109, #110, #111
+- Latest canonical Forgejo commit: `5b08167cffb93354fa0ef9a9c1c29dfa31417655`
+- Completed Phase 4 PRs through this checkpoint: #104, #105, #106, #107, #108, #109, #110, #111, #112
 - PR #109 added structured-data governance and passed the replacement explicit post-merge workflow run #33968 / id 2289 on `main`.
 - PR #110 added the compact structured-data governance checkpoint and merged at `45e4ce2c2de018e758666b4930491aa997def74e`.
 - PR #111 added social metadata parity governance and passed explicit post-merge runs on `main`: Social metadata parity #34163 / id 2364, Tayoca static quality #34164 / id 2365, and Structured data governance #34165 / id 2366.
+- PR #112 recorded the social metadata governance checkpoint and merged at `5b08167cffb93354fa0ef9a9c1c29dfa31417655`. Explicit post-merge runs on `main` passed: Tayoca static quality #34200 / id 2398, Social metadata parity #34201 / id 2399, and Structured data governance #34202 / id 2400.
 - Phase 4 remains open. Continue by removing explicit structured-data and social-metadata allowlist gaps only where publication, modification, title, description, and image provenance are known.
 
 The v9 visual system is the accepted baseline. Do not restart broad visual redesign unless a specific defect, verified regression, or explicitly approved new requirement calls for it.
