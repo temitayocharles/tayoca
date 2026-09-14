@@ -95,7 +95,30 @@ def main() -> None:
         "/tayoca-v9.js",
     )
 
-    print("Phase 3 content architecture validation PASSED: offer taxonomy, editorial authority and portfolio disclosure controls are present while governed registries remain intact.")
+    redirects = require(PUBLIC / "_redirects", "/insights.html    /blog/    301")
+    if "/insights.html    /blog/    301" not in redirects:
+        fail("Insights compatibility route must resolve to the canonical /blog/ library")
+
+    legacy_routes = (
+        PUBLIC / "blog" / "how-we-saved-216k-aws.html",
+        PUBLIC / "blog" / "how-we-saved-216k-on-aws-in-90-days.html",
+    )
+    stale_taxonomy = "Technology Value &amp; FinOps, Platform Reliability &amp; DevSecOps, and Agentic Operations &amp; Automation."
+    for path in legacy_routes:
+        text = require(
+            path,
+            'content="noindex,follow"',
+            "Case Study Under Evidence Review | Tayoca",
+            "withdrawn",
+            "public proof",
+            "We help organizations understand technology costs, improve reliability and automate work that should not need to be repeated by hand.",
+            '<a href="/blog/">Insights</a>',
+            '<a href="/operator-brief.html">Operator Brief</a>',
+        )
+        if stale_taxonomy in text:
+            fail(f"{path.relative_to(ROOT)} still carries superseded service taxonomy")
+
+    print("Phase 3 content architecture validation PASSED: offer taxonomy, editorial authority, portfolio disclosure and withdrawn-evidence route controls are present while governed registries remain intact.")
 
 
 if __name__ == "__main__":
