@@ -38,12 +38,6 @@ TWITTER_DETAIL_GAP_ALLOWLIST = {
     "public/blog/n8n-mcp-kubernetes.html": "twitter title/description/image not normalized yet",
     "public/products/ai-automation-career-playbook.html": "product detail twitter fields not normalized yet",
     "public/products/aws-cost-optimization-playbook.html": "product detail twitter fields not normalized yet",
-    "public/products/build-break-fix-devops-lab-pack.html": "product detail twitter fields not normalized yet",
-    "public/products/devops-incident-runbook-template.html": "product detail twitter fields not normalized yet",
-    "public/products/gitops-field-guide.html": "product detail twitter fields not normalized yet",
-    "public/products/kubernetes-operators-workbook.html": "product detail twitter fields not normalized yet",
-    "public/products/kubernetes-production-readiness-checklist.html": "product detail twitter fields not normalized yet",
-    "public/products/n8n-mcp-kubernetes-teaching-pack.html": "product detail twitter fields not normalized yet",
 }
 
 
