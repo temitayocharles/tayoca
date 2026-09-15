@@ -36,7 +36,6 @@ TWITTER_DETAIL_GAP_ALLOWLIST = {
     "public/blog/kubernetes-production-readiness-checklist-for-2026.html": "twitter title/description/image not normalized yet",
     "public/blog/kubernetes-troubleshooting-labs.html": "twitter title/description/image not normalized yet",
     "public/blog/n8n-mcp-kubernetes.html": "twitter title/description/image not normalized yet",
-    "public/products/ai-automation-career-playbook.html": "product detail twitter fields not normalized yet",
     "public/products/aws-cost-optimization-playbook.html": "product detail twitter fields not normalized yet",
 }
 
