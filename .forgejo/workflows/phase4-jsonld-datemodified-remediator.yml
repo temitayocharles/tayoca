@@ -2,6 +2,9 @@ name: Phase 4 JSON-LD dateModified remediator
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
 
 permissions:
   contents: write
@@ -25,11 +28,13 @@ jobs:
         run: |
           set -Eeuo pipefail
 
-          test "${GITHUB_REF:-${FORGEJO_REF:-}}" = "refs/heads/main"
+          current_ref="${GITHUB_REF:-${FORGEJO_REF:-}}"
+          test "$current_ref" = "refs/heads/main"
+
           target_branch="phase4-jsonld-datemodified-remediation"
           if git ls-remote --exit-code origin "refs/heads/$target_branch" >/dev/null 2>&1; then
-            echo "Target branch already exists: $target_branch" >&2
-            exit 1
+            echo "Target branch already exists: $target_branch"
+            exit 0
           fi
 
           git switch -C "$target_branch"
@@ -72,6 +77,7 @@ jobs:
               matches = list(script_re.finditer(text))
               if not matches:
                   raise SystemExit(f"{rel}: missing JSON-LD script")
+
               replaced = False
               for match in matches:
                   raw = match.group(2)
@@ -79,21 +85,27 @@ jobs:
                       data = json.loads(raw)
                   except json.JSONDecodeError:
                       continue
+
                   blog = find_blogposting(data)
                   if blog is None:
                       continue
+
                   if "datePublished" in blog:
                       raise SystemExit(f"{rel}: unexpected datePublished already present")
+
                   existing = blog.get("dateModified")
                   if existing not in (None, date_modified):
                       raise SystemExit(f"{rel}: unexpected existing dateModified {existing!r}")
+
                   blog["dateModified"] = date_modified
                   new_raw = json.dumps(data, ensure_ascii=False, separators=(",", ":"))
                   text = text[:match.start(2)] + new_raw + text[match.end(2):]
                   replaced = True
                   break
+
               if not replaced:
                   raise SystemExit(f"{rel}: BlogPosting JSON-LD not found")
+
               path.write_text(text, encoding="utf-8")
 
           validator = pathlib.Path("scripts/validate_structured_data_governance.py")
@@ -102,14 +114,14 @@ jobs:
               before = validator_text
               validator_text = "\n".join(
                   line for line in validator_text.splitlines()
-                  if not (rel in line and "ARTICLE_JSONLD_DATE_GAP_ALLOWLIST" not in line)
+                  if rel not in line
               ) + "\n"
               if validator_text == before:
                   raise SystemExit(f"{rel}: allowlist line was not removed")
           validator.write_text(validator_text, encoding="utf-8")
 
           note = pathlib.Path("docs/TAYOCA_PHASE4_JSONLD_DATEMODIFIED_REMEDIATION_20260916.md")
-          note.write_text("""# Phase 4 JSON-LD dateModified remediation
+          note.write_text('''# Phase 4 JSON-LD dateModified remediation
 
 This checkpoint records the provenance-safe remediation of the remaining no-date BlogPosting JSON-LD entries.
 
@@ -125,7 +137,7 @@ Each page received only:
 "dateModified":"2026-09-11"
 ```
 
-The value is based on the tracked v9 editorial migration/rebuild commits recorded in issue #138. No `datePublished` value was added because publication provenance was not separately established.
+The value is based on the tracked v9 editorial migration or rebuild commits recorded in issue #138. No `datePublished` value was added because publication provenance was not separately established.
 
 ## Boundary
 
@@ -140,10 +152,13 @@ The value is based on the tracked v9 editorial migration/rebuild commits recorde
 - Tayoca static quality
 - Social metadata parity
 - Structured-data governance
-""", encoding="utf-8")
+''', encoding="utf-8")
           PY
 
-          python3 -m py_compile scripts/validate_structured_data_governance.py scripts/validate_social_metadata_parity.py scripts/validate_static_site.py
+          python3 -m py_compile \
+            scripts/validate_structured_data_governance.py \
+            scripts/validate_social_metadata_parity.py \
+            scripts/validate_static_site.py
           python3 scripts/validate_structured_data_governance.py
           python3 scripts/validate_social_metadata_parity.py
 
@@ -159,12 +174,6 @@ The value is based on the tracked v9 editorial migration/rebuild commits recorde
             'scripts/validate_structured_data_governance.py' | sort)"
           test "$changed" = "$expected"
 
-          git add -A \
-            .forgejo/workflows/phase4-jsonld-datemodified-remediator.yml \
-            docs/TAYOCA_PHASE4_JSONLD_DATEMODIFIED_REMEDIATION_20260916.md \
-            public/blog/ai-automation-career-roadmap.html \
-            public/blog/gitops-beyond-hello-world.html \
-            public/blog/kubernetes-production-checklist.html \
-            scripts/validate_structured_data_governance.py
+          git add -A
           git commit -m 'fix: add provenance-safe BlogPosting dateModified fields'
           git push --quiet origin "HEAD:refs/heads/$target_branch"
