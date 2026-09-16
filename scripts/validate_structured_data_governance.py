@@ -226,6 +226,9 @@ def validate_article_node(relative: str, node: dict[str, Any], canonical: str) -
 
 def main() -> None:
     violations: list[str] = []
+    active_article_date_allowlist: set[str] = set()
+    active_article_missing_allowlist: set[str] = set()
+
     for url in sitemap_urls():
         path = page_for_url(url)
         if not path.is_file():
@@ -250,13 +253,18 @@ def main() -> None:
         if relative.startswith("public/blog/") and relative != "public/blog/index.html":
             article_nodes = [node for node in nodes if schema_type_set(node) & ARTICLE_SCHEMA_TYPES]
             if not article_nodes:
-                if relative not in ARTICLE_JSONLD_MISSING_ALLOWLIST:
+                if relative in ARTICLE_JSONLD_MISSING_ALLOWLIST:
+                    active_article_missing_allowlist.add(relative)
+                else:
                     violations.append(f"{relative}: missing Article/BlogPosting JSON-LD")
             for node in article_nodes:
                 validate_article_node(relative, node, parser.canonical)
                 has_date = bool(node.get("datePublished") or node.get("dateModified"))
-                if not has_date and relative not in ARTICLE_JSONLD_DATE_GAP_ALLOWLIST:
-                    violations.append(f"{relative}: Article JSON-LD has no datePublished/dateModified")
+                if not has_date:
+                    if relative in ARTICLE_JSONLD_DATE_GAP_ALLOWLIST:
+                        active_article_date_allowlist.add(relative)
+                    else:
+                        violations.append(f"{relative}: Article JSON-LD has no datePublished/dateModified")
 
         if parser.og_type == "article" and relative.startswith("public/blog/"):
             if not parser.og_url or parser.og_url != parser.canonical:
@@ -268,6 +276,14 @@ def main() -> None:
 
         if relative.startswith("public/blog/") and node_types & PRODUCT_SCHEMA_TYPES:
             violations.append(f"{relative}: blog page must not use Product JSON-LD")
+
+    stale_article_date_allowlist = sorted(set(ARTICLE_JSONLD_DATE_GAP_ALLOWLIST) - active_article_date_allowlist)
+    if stale_article_date_allowlist:
+        violations.append("Stale Article JSON-LD date allowlist entries: " + ", ".join(stale_article_date_allowlist))
+
+    stale_article_missing_allowlist = sorted(set(ARTICLE_JSONLD_MISSING_ALLOWLIST) - active_article_missing_allowlist)
+    if stale_article_missing_allowlist:
+        violations.append("Stale Article JSON-LD missing allowlist entries: " + ", ".join(stale_article_missing_allowlist))
 
     if violations:
         fail("Structured-data governance violations: " + "; ".join(sorted(violations)))
