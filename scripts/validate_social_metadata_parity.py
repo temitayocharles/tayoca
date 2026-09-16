@@ -24,9 +24,7 @@ DETAIL_INDEX_EXCLUSIONS = {
 # Existing indexed detail pages that have only twitter:card, or otherwise have not
 # yet had full Twitter/X title, description and image parity normalized. Keep these
 # explicit so Phase 4 remediation can remove entries as pages are corrected.
-TWITTER_DETAIL_GAP_ALLOWLIST = {
-    "public/blog/kubernetes-troubleshooting-labs.html": "twitter title/description/image not normalized yet",
-}
+TWITTER_DETAIL_GAP_ALLOWLIST = {}
 
 
 class HeadParser(HTMLParser):
