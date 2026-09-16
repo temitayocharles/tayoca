@@ -19,7 +19,6 @@ ARTICLE_JSONLD_DATE_GAP_ALLOWLIST = {
     "public/blog/ai-automation-career-roadmap.html": "publication history not yet encoded; do not fabricate datePublished",
     "public/blog/gitops-beyond-hello-world.html": "publication history not yet encoded; do not fabricate datePublished",
     "public/blog/kubernetes-production-checklist.html": "publication history not yet encoded; do not fabricate datePublished",
-    "public/blog/n8n-mcp-kubernetes.html": "dateModified present; datePublished not yet encoded",
 }
 
 ARTICLE_JSONLD_MISSING_ALLOWLIST = {
