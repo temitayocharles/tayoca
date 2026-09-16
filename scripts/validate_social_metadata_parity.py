@@ -25,8 +25,6 @@ DETAIL_INDEX_EXCLUSIONS = {
 # yet had full Twitter/X title, description and image parity normalized. Keep these
 # explicit so Phase 4 remediation can remove entries as pages are corrected.
 TWITTER_DETAIL_GAP_ALLOWLIST = {
-    "public/blog/gitops-beyond-hello-world.html": "twitter title/description/image not normalized yet",
-    "public/blog/kubernetes-incident-response-practice.html": "twitter title/description/image not normalized yet",
     "public/blog/kubernetes-interview-scenarios.html": "twitter title/description/image not normalized yet",
     "public/blog/kubernetes-production-checklist.html": "twitter title/description/image not normalized yet",
     "public/blog/kubernetes-production-readiness-checklist-for-2026.html": "twitter title/description/image not normalized yet",
