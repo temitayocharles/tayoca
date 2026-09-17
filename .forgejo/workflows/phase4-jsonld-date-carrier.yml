@@ -1,0 +1,38 @@
+name: Phase 4 JSON-LD date carrier
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: tayoca-jsonld-date-carrier
+  cancel-in-progress: true
+
+jobs:
+  create_remediation_branch:
+    name: Create dateModified remediation branch
+    runs-on: forgejo-general
+    timeout-minutes: 10
+    steps:
+      - name: Check out canonical main
+        uses: https://data.forgejo.org/actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Create and self-clean generated content branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          target_branch="phase4-jsonld-datemodified-remediation-v3"
+          python3 -m py_compile scripts/remediate_phase4_jsonld_dates.py
+          python3 scripts/remediate_phase4_jsonld_dates.py
+          git fetch origin "${target_branch}:${target_branch}"
+          git checkout "${target_branch}"
+          rm -f .forgejo/workflows/phase4-jsonld-date-carrier.yml
+          git add -A
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: remove temporary JSON-LD date carrier workflow"
+            git push --quiet origin "HEAD:refs/heads/${target_branch}"
+          fi
