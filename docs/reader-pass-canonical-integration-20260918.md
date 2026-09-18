@@ -26,6 +26,27 @@ A live Vercel request on 2026-09-18 to the production `/access/book` route retur
 
 This is current runtime evidence that the existing public access contract needs repair/reconciliation. It does not by itself prove which n8n workflow component failed.
 
+
+## Edge evidence for the current `/access/book` failure
+
+The current production failure is now narrowed to the public n8n edge path, but the exact live-cluster cause is not yet independently proven.
+
+Repository evidence from the canonical infrastructure model says existing production hostnames are owned by the static `infraforge-homelab` Cloudflare tunnel in `applications/cloudflare-tunnel/values-staging.yaml`. The currently visible downstream GitHub snapshot of that file does **not** include `n8n.tca-infraforge.site`, even though Tayoca production pages, the homepage catalogue, Uptime Kuma references, and the existing book-access rewrite still depend on that hostname. Historical platform evidence records n8n as publicly reachable through the Cloudflare/Envoy path.
+
+This omission is therefore a strong candidate explanation for the current Vercel external-target handshake failure, but it must be checked against the current Forgejo revision and live tunnel before any production edge change is made. The downstream homelab GitHub mirror is not sufficient authority for a blind tunnel mutation.
+
+A connected Cloudflare account resolved the `tca-infraforge.site` zone, but subsequent DNS and tunnel reads failed with Cloudflare authentication error 9106. Alternate stored Cloudflare credentials also failed authentication. No DNS or tunnel write was attempted.
+
+Required edge repair sequence:
+
+1. inspect current Forgejo `homelab-gitops` desired state and live Argo application revision;
+2. inspect the live `infraforge-homelab` tunnel ingress rules;
+3. inspect DNS ownership for `n8n.tca-infraforge.site`;
+4. inspect the live n8n HTTPRoute, Service endpoints and `/healthz`;
+5. restore exactly one authoritative hostname owner if the route is missing;
+6. reconcile the change through canonical GitOps rather than leaving a dashboard-only patch;
+7. prove `https://n8n.tca-infraforge.site/healthz` and the book access webhook externally before changing Tayoca production routing.
+
 ## Reader Pass review implementation
 
 PR #18 supplies a production-shaped replacement/extension candidate with:
