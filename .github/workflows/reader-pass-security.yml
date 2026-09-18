@@ -16,8 +16,8 @@ jobs:
         with: { node-version: 24 }
       - run: npm install --ignore-scripts
       - run: node --test test/reader-pass.test.mjs
-      - name: Inventory protected bundle hashes
-        run: sha256sum private-reader-assets/*.zip
+      - name: Verify protected bundle hashes
+        run: sha256sum -c private-reader-assets/SHA256SUMS
       - name: Reject accidental secrets
         run: |
           ! grep -RIE '(service_role|READER_PASS_PEPPER|READER_SESSION_SECRET)[[:space:]]*=[[:space:]]*[^"$]' api public db --exclude='*.md'
