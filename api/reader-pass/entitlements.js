@@ -2,7 +2,7 @@ import {json,readSession,entitlement,activeDevice,sessionDeviceMatches} from "./
 export default async function handler(req,res){
  if(req.method!=="GET")return json(res,405,{error:"method_not_allowed"});
  try{
-  const raw=(req.headers.cookie||"").match(/(?:^|; )tayoca_reader=([^;]+)/)?.[1];if(!raw)return json(res,401,{error:"unauthorized"});
+  const raw=(req.headers.cookie||"").match(/(?:^|; )__Host-tayoca_reader=([^;]+)/)?.[1];if(!raw)return json(res,401,{error:"unauthorized"});
   const s=await readSession(raw);
   if(!sessionDeviceMatches(req,s))return json(res,401,{error:"device_mismatch"});
   if(!await activeDevice(s.sub,s.device))return json(res,403,{error:"device_revoked"});

@@ -22,8 +22,8 @@ export async function rateLimit(key,limit,seconds){
  returning count`,[kh,seconds]);
  return q.rows[0].count<=limit;
 }
-export async function issueSession(payload){return new SignJWT(payload).setProtectedHeader({alg:"HS256"}).setIssuedAt().setExpirationTime("30m").sign(enc.encode(required("READER_SESSION_SECRET")));}
-export async function readSession(token){return (await jwtVerify(token,enc.encode(required("READER_SESSION_SECRET")))).payload;}
+export async function issueSession(payload){return new SignJWT(payload).setProtectedHeader({alg:"HS256"}).setIssuer("tayoca-reader-pass").setAudience("tayoca-reader").setIssuedAt().setExpirationTime("30m").sign(enc.encode(required("READER_SESSION_SECRET")));}
+export async function readSession(token){return (await jwtVerify(token,enc.encode(required("READER_SESSION_SECRET")),{issuer:"tayoca-reader-pass",audience:"tayoca-reader"})).payload;}
 export function cookie(name,value,maxAge=1800){return `${name}=${value}; Path=/; HttpOnly; Secure; SameSite=Strict; Max-Age=${maxAge}`;}
 export function json(res,status,body,headers={}){res.statusCode=status;res.setHeader("content-type","application/json");res.setHeader("cache-control","no-store");for(const[k,v]of Object.entries(headers))res.setHeader(k,v);res.end(JSON.stringify(body));}
 export async function readJson(req){let s="";for await(const c of req){s+=c;if(s.length>8192)throw new Error("too_large");}return JSON.parse(s||"{}");}

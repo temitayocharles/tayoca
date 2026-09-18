@@ -10,6 +10,6 @@ export default async function handler(req,res){
   const ent=await entitlement(rec.id,product,edition);if(!ent){await audit(rec.id,product,"entitlement_denied",req);return json(res,403,{error:"not_entitled"});}
   const dh=await bindDevice(rec,dev);if(!dh){await audit(rec.id,product,"device_limit",req);return json(res,403,{error:"device_limit"});}
   const token=await issueSession({sub:rec.id,product,edition,device:dh});await sql("update reader_passes set last_used_at=now() where id=$1",[rec.id]);await audit(rec.id,product,"session_issued",req,dh);
-  return json(res,200,{ok:true},{"set-cookie":cookie("tayoca_reader",token)});
+  return json(res,200,{ok:true},{"set-cookie":cookie("__Host-tayoca_reader",token)});
  }catch(e){return json(res,503,{error:"reader_pass_unavailable"});}
 }

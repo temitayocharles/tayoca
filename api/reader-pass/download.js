@@ -16,7 +16,7 @@ const RESOURCES={
 export default async function handler(req,res){
  if(req.method!=="POST")return json(res,405,{error:"method_not_allowed"});
  try{
-  const raw=(req.headers.cookie||"").match(/(?:^|; )tayoca_reader=([^;]+)/)?.[1];if(!raw)return json(res,401,{error:"unauthorized"});
+  const raw=(req.headers.cookie||"").match(/(?:^|; )__Host-tayoca_reader=([^;]+)/)?.[1];if(!raw)return json(res,401,{error:"unauthorized"});
   const s=await readSession(raw),body=await readJson(req);
   if(!sessionDeviceMatches(req,s))return json(res,401,{error:"device_mismatch"});
   if(body.product!==s.product||body.edition!==s.edition)return json(res,403,{error:"scope_mismatch"});

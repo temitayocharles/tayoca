@@ -1,6 +1,6 @@
-import {json,readJson,readSession,sql,activeDevice,sessionDeviceMatches} from "./_lib/reader-pass.js";
+import {json,readJson,readSession,sql,activeDevice,sessionDeviceMatches,cookie} from "./_lib/reader-pass.js";
 
-function token(req){return (req.headers.cookie||"").match(/(?:^|; )tayoca_reader=([^;]+)/)?.[1]||"";}
+function token(req){return (req.headers.cookie||"").match(/(?:^|; )__Host-tayoca_reader=([^;]+)/)?.[1]||"";}
 
 export default async function handler(req,res){
  try{
@@ -16,7 +16,7 @@ export default async function handler(req,res){
    const q=await sql("update reader_devices set revoked_at=now() where id=$1 and reader_pass_id=$2 and revoked_at is null returning device_hash",[b.id,s.sub]);
    if(!q.rowCount)return json(res,404,{error:"device_not_found"});
    const current=q.rows[0].device_hash===s.device;
-   return json(res,200,{ok:true,current});
+   return json(res,200,{ok:true,current},current?{"set-cookie":cookie("__Host-tayoca_reader","",0)}:{});
   }
   return json(res,405,{error:"method_not_allowed"});
  }catch{return json(res,401,{error:"unauthorized"});}
