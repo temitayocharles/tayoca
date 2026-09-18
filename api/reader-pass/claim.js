@@ -2,7 +2,7 @@ import crypto from "node:crypto";
 import {readJson,json,rateLimit,hashIp,hashReference,clientIp,hashPass,pool,audit} from "./_lib/reader-pass.js";
 const PRODUCT_MAP=()=>JSON.parse(process.env.GUMROAD_PRODUCT_MAP||"{}");
 const alphabet="ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
-function newPass(){let s="TYC-";const b=crypto.randomBytes(20);for(let i=0;i<20;i++){s+=alphabet[b[i]%alphabet.length];if([3,7,11,15].includes(i))s+="-";}return s;}
+function newPass(){let s="TYC-";const b=crypto.randomBytes(26);for(let i=0;i<26;i++){s+=alphabet[b[i]%alphabet.length];if([4,9,14,19].includes(i))s+="-";}return s;}
 async function verifyGumroad(productId,key){
  const body=new URLSearchParams({product_id:productId,license_key:key,increment_uses_count:"false"});
  const r=await fetch("https://api.gumroad.com/v2/licenses/verify",{method:"POST",headers:{"content-type":"application/x-www-form-urlencoded"},body});
