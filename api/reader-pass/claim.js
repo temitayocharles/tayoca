@@ -1,0 +1,2 @@
+import {readJson,json,rateLimit,hashIp,clientIp} from "./_lib/reader-pass.js";
+export default async function handler(req,res){if(req.method!=="POST")return json(res,405,{error:"method_not_allowed"});try{if(!await rateLimit("claim:"+hashIp(clientIp(req)),6,3600))return json(res,429,{error:"rate_limited"});const b=await readJson(req);if(b.source!=="gumroad")return json(res,400,{error:"unsupported_claim_source"});return json(res,501,{error:"gumroad_product_mapping_not_configured"});}catch{return json(res,503,{error:"claim_unavailable"});}}
