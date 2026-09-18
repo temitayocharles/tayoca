@@ -2,7 +2,7 @@
 
 Status: **authoritative operating anchor**
 
-Last reconciled: 2026-08-28
+Last reconciled: 2026-09-18
 
 Canonical repository: `temitayocharles/tayoca` on Forgejo
 
@@ -212,6 +212,25 @@ The broader foundation includes or has included:
 - RAG registration and a Neon/pgvector-oriented retrieval architecture.
 
 Historical static-state reconciliation reached a certified 46/46, zero-duplicate checkpoint, but all live-estate counts must be re-queried before current claims are made.
+
+### 7.1 Public n8n domain cutover — 2026-09-18
+
+The public n8n endpoint migration from `n8n.tca-infraforge.site` to `n8n.tayoca.com` is complete at the public routing, application, provider-callback and deployment layers.
+
+Certified evidence:
+
+- canonical Forgejo PR #161 merged as `8837d3dd155a67a88fd7d75622d25341c0127eb8`;
+- exact canonical tree mirrored to GitHub as `fcfb6bd4a0d6c4caba6f84202d825f0bb8170753`;
+- Vercel production deployment `dpl_D5MCP413B5uda9gjZcUQ2xPqe4hK` reached READY/PROMOTED and owns `tayoca.com`;
+- post-deploy production parity run #37557 passed on the canonical merge;
+- static quality, route parity, social metadata, structured data, content architecture, conversion runtime and theme runtime were re-run on the canonical merge and passed;
+- active n8n workflow metadata advertises `https://n8n.tayoca.com` for book access, assessment, Operator Brief, reviews and Gumroad callbacks;
+- n8n execution #559821 confirmed the book access gateway remains fail-closed without a valid entitlement token;
+- Gumroad sale events now have exactly one resource subscription, targeting `https://n8n.tayoca.com/webhook/tayoca-gumroad-sale`; the legacy subscription was removed only after the new subscription was verified;
+- canonical homelab certificate, Homepage, Authentik reference and Uptime Kuma desired state use `n8n.tayoca.com`;
+- the legacy Cloudflare DNS record for `n8n.tca-infraforge.site` was deleted after cutover verification, while `n8n.tayoca.com` remains proxied to tunnel `8481ad36-ec4e-41a0-8891-00ae45c69a0c`.
+
+The current Cloudflare connector cannot read the tunnel configuration API, so any dormant legacy ingress rule inside that tunnel remains unverified configuration hygiene. It is not publicly addressable through the retired legacy DNS hostname and must not be modified with a replace-style tunnel update until the complete live ingress configuration can be read safely.
 
 ## 8. Tayoca Control Center / CMS
 

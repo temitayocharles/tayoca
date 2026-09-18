@@ -1,5 +1,5 @@
 version: 1
-last_reconciled_utc: "2026-09-05T22:21:06Z"
+last_reconciled_utc: "2026-09-18T16:40:18Z"
 authority:
   canonical_repo: temitayocharles/tayoca
   canonical_platform: forgejo
@@ -193,6 +193,25 @@ workstreams:
     provisioner_schedule_minutes: 30
     delivery_policy: deterministic_token_and_resend_idempotency
     nurture_channel: operator_brief
+  n8n_public_domain_cutover_20260918:
+    status: completed_public_hostname_retired
+    canonical_hostname: https://n8n.tayoca.com
+    retired_hostname: https://n8n.tca-infraforge.site
+    canonical_forgejo_pr: 161
+    canonical_forgejo_merge: 8837d3dd155a67a88fd7d75622d25341c0127eb8
+    github_mirror_commit: fcfb6bd4a0d6c4caba6f84202d825f0bb8170753
+    canonical_tree: 83a31f7bbdb0370c3fd5757a884ae7e969beccaa
+    vercel_project: prj_3HzkrxM828WThQD1lOdFjL0jdC8o
+    vercel_deployment: dpl_D5MCP413B5uda9gjZcUQ2xPqe4hK
+    vercel_state: READY_PROMOTED
+    deployment_parity_run: 37557
+    book_access_gateway_workflow_id: OlixJ5IbyYgW0QXo
+    book_access_fail_closed_execution: 559821
+    gumroad_sale_callback: https://n8n.tayoca.com/webhook/tayoca-gumroad-sale
+    cloudflare_tunnel_id: 8481ad36-ec4e-41a0-8891-00ae45c69a0c
+    legacy_dns_retired: true
+    tunnel_legacy_ingress_state: unverified_due_connector_auth
+    tunnel_cleanup_rule: never_replace_ingress_without_complete_live_configuration
   nonrag_closure_20260830:
     status: completed_production_deployed
     canonical_forgejo_commit: 3090b5eee367aa3d959dbe9f4aa984eb95bf0092
