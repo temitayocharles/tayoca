@@ -11,6 +11,7 @@ principles:
   - corrections_create_revision_history_instead_of_silent_overwrite
   - no_silent_source_omission_or_partial_success
   - public_copy_must_not_repeat_hook_language_inside_the_body
+  - public_copy_must_not_use_em_dash_punctuation
 
 canonical_ledger:
   spreadsheet: Tayoca Growth OS Ledger
@@ -91,6 +92,7 @@ channel_adaptation:
   canonical_rule: duplicate_cross_posting_requires_canonical_attribution_when_applicable
 
 copy_quality:
+  em_dash_punctuation: blocked
   scope: every_public_channel_asset_before_distribution_approval
   hook_body_rule: hook_language_must_not_be_repeated_or_near_repeated_in_body
   exact_duplicate_sentence: blocked
