@@ -1,5 +1,5 @@
 import crypto from "node:crypto";
-import {readJson,json,rateLimit,hashIp,clientIp,sql,hashPass,pool} from "./_lib/reader-pass.js";
+import {readJson,json,rateLimit,hashIp,hashReference,clientIp,hashPass,pool,audit} from "./_lib/reader-pass.js";
 const PRODUCT_MAP=()=>JSON.parse(process.env.GUMROAD_PRODUCT_MAP||"{}");
 const alphabet="ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
 function newPass(){let s="TYC-";const b=crypto.randomBytes(20);for(let i=0;i<20;i++){s+=alphabet[b[i]%alphabet.length];if([3,7,11,15].includes(i))s+="-";}return s;}
@@ -17,14 +17,14 @@ export default async function handler(req,res){
   const m=PRODUCT_MAP()[b.product];if(!m?.product_id||!m?.edition)return json(res,503,{error:"product_mapping_unavailable"});
   const g=await verifyGumroad(m.product_id,String(b.license_key));if(!g)return json(res,403,{error:"purchase_not_verified"});
   const sale=String(g.purchase?.sale_id||g.purchase?.id||"");if(!sale)return json(res,403,{error:"purchase_not_verified"});
-  const saleHash=hashIp("gumroad-sale:"+sale),c=await pool().connect();
+  const saleHash=hashReference("gumroad-sale:"+sale),c=await pool().connect();
   try{
    await c.query("begin");const ex=await c.query("select reader_pass_id from reader_entitlements where source='gumroad' and source_reference_hash=$1 limit 1",[saleHash]);
    if(ex.rowCount){await c.query("rollback");return json(res,409,{error:"purchase_already_claimed"});}
    const pass=newPass(),ph=hashPass(pass),hint=pass.slice(-4);
    const p=await c.query("insert into reader_passes(pass_hash,pass_hint,max_devices) values($1,$2,2) returning id",[ph,hint]);
    await c.query("insert into reader_entitlements(reader_pass_id,product_slug,edition,source,source_reference_hash) values($1,$2,$3,'gumroad',$4)",[p.rows[0].id,b.product,m.edition,saleHash]);
-   await c.query("commit");return json(res,201,{reader_pass:pass,product:b.product,edition:m.edition,device_limit:2});
+   await c.query("commit");await audit(p.rows[0].id,b.product,"gumroad_claim_issued",req);return json(res,201,{reader_pass:pass,product:b.product,edition:m.edition,device_limit:2});
   }catch(e){await c.query("rollback").catch(()=>{});throw e;}finally{c.release();}
  }catch{return json(res,503,{error:"claim_unavailable"});}
 }
