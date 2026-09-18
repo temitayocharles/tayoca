@@ -1,4 +1,4 @@
-# Tayoca Editorial Catalogue Checkpoint — 2026-09-18
+# Tayoca Editorial Catalogue Checkpoint - 2026-09-18
 
 Status: active, publication-gated
 Canonical operational ledger: Tayoca Growth OS → Editorial Opportunities + Content Queue
@@ -176,4 +176,13 @@ The provenance-safe BlogPosting date remediation is merged and verified:
 
 Superseded PRs #143 and #148 are closed. Issue #138 is closed. There are no open pull requests.
 
-The only remaining open Tayoca issue is #149, the explicit FinOps source-language decision. Its exact current `Homelab` occurrences and a wording-only substitution plan are documented there. No n8n change has been applied.
+FinOps issue #149 is closed. The approved wording-only reconciliation is published in n8n active version `528905c7-d2e7-4af6-911b-673c4bb64b12`. Human-readable workflow and report wording now use bare-metal Kubernetes terminology. The internal key `homelab_monthly_cost_cad` is intentionally unchanged because renaming it would be a separate schema migration.
+
+
+## Public writing punctuation rule
+
+Tayoca public copy must not use em dash punctuation.
+
+This rule is encoded in `editorial/editorial-policy.yaml` and applies to future public-facing posts, articles, briefs, captions, campaign copy and generated editorial assets.
+
+Growth OS Content Queue was swept after the policy change and contains zero em dash occurrences across stored fields.
