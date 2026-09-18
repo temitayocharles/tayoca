@@ -19,12 +19,22 @@ export default async function handler(req,res){
   const sale=String(g.purchase?.sale_id||g.purchase?.id||"");if(!sale)return json(res,403,{error:"purchase_not_verified"});
   const saleHash=hashReference("gumroad-sale:"+sale),c=await pool().connect();
   try{
-   await c.query("begin");const ex=await c.query("select reader_pass_id from reader_entitlements where source='gumroad' and source_reference_hash=$1 limit 1",[saleHash]);
+   await c.query("begin");
+   const ex=await c.query("select reader_pass_id from reader_entitlements where source='gumroad' and source_reference_hash=$1 limit 1",[saleHash]);
    if(ex.rowCount){await c.query("rollback");return json(res,409,{error:"purchase_already_claimed"});}
-   const pass=newPass(),ph=hashPass(pass),hint=pass.slice(-4);
-   const p=await c.query("insert into reader_passes(pass_hash,pass_hint,max_devices) values($1,$2,2) returning id",[ph,hint]);
-   await c.query("insert into reader_entitlements(reader_pass_id,product_slug,edition,source,source_reference_hash) values($1,$2,$3,'gumroad',$4)",[p.rows[0].id,b.product,m.edition,saleHash]);
-   await c.query("commit");await audit(p.rows[0].id,b.product,"gumroad_claim_issued",req);return json(res,201,{reader_pass:pass,product:b.product,edition:m.edition,device_limit:2});
+   let passId,pass=null,attached=false;
+   if(b.reader_pass){
+     const p=await c.query("select id,status from reader_passes where pass_hash=$1 for update",[hashPass(String(b.reader_pass))]);
+     if(!p.rowCount||p.rows[0].status!=="active"){await c.query("rollback");return json(res,403,{error:"invalid_reader_pass"});}
+     passId=p.rows[0].id;attached=true;
+   }else{
+     pass=newPass();
+     const p=await c.query("insert into reader_passes(pass_hash,pass_hint,max_devices) values($1,$2,2) returning id",[hashPass(pass),pass.slice(-4)]);
+     passId=p.rows[0].id;
+   }
+   await c.query("insert into reader_entitlements(reader_pass_id,product_slug,edition,source,source_reference_hash) values($1,$2,$3,'gumroad',$4)",[passId,b.product,m.edition,saleHash]);
+   await c.query("commit");await audit(passId,b.product,attached?"gumroad_entitlement_attached":"gumroad_claim_issued",req);
+   return json(res,201,{reader_pass:pass,attached,product:b.product,edition:m.edition,device_limit:2});
   }catch(e){await c.query("rollback").catch(()=>{});throw e;}finally{c.release();}
  }catch{return json(res,503,{error:"claim_unavailable"});}
 }

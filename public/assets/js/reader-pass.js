@@ -77,17 +77,16 @@
   });
   if(gumroadProducts.has(product)){
     const box=document.createElement("details");box.style.marginTop="1.25rem";
-    box.innerHTML='<summary><strong>Bought this edition on Gumroad?</strong> Claim your Reader Pass</summary><form data-reader-claim autocomplete="off" style="margin-top:1rem"><label>Gumroad license key</label><div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.55rem"><input name="license_key" required autocomplete="off" spellcheck="false" placeholder="Paste your Gumroad license key" style="min-width:18rem;padding:.8rem;border:1px solid var(--line);border-radius:9px;background:var(--surface);color:var(--ink)"><button type="submit">Claim Reader Pass</button></div><p data-reader-claim-message class="resource-note" aria-live="polite">A verified purchase can claim one Reader Pass. The pass covers your own devices only.</p></form>';
+    box.innerHTML='<summary><strong>Bought this edition on Gumroad?</strong> Claim or add it to your Reader Pass</summary><form data-reader-claim autocomplete="off" style="margin-top:1rem"><label>Gumroad license key</label><div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.55rem"><input name="license_key" required autocomplete="off" spellcheck="false" placeholder="Paste your Gumroad license key" style="min-width:18rem;padding:.8rem;border:1px solid var(--line);border-radius:9px;background:var(--surface);color:var(--ink)"></div><label style="display:block;margin-top:.8rem">Existing Reader Pass <span class="resource-note">(optional)</span></label><div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.55rem"><input name="reader_pass" type="password" autocomplete="off" spellcheck="false" placeholder="Use one pass across your Tayoca books" style="min-width:18rem;padding:.8rem;border:1px solid var(--line);border-radius:9px;background:var(--surface);color:var(--ink)"><button type="submit">Verify purchase</button></div><p data-reader-claim-message class="resource-note" aria-live="polite">A verified purchase can create a Reader Pass or add this edition to your existing pass. Access is for your own devices only.</p></form>';
     form.parentElement.appendChild(box);
     const cf=box.querySelector("[data-reader-claim]"),cm=box.querySelector("[data-reader-claim-message]");
     cf.addEventListener("submit",async e=>{
-      e.preventDefault();cm.textContent="Verifying purchase…";const license_key=new FormData(cf).get("license_key");
+      e.preventDefault();cm.textContent="Verifying purchase…";const fd=new FormData(cf),license_key=fd.get("license_key"),reader_pass=String(fd.get("reader_pass")||"").trim();
       try{
-        const r=await fetch("/api/reader-pass/claim",{method:"POST",headers:{"content-type":"application/json"},credentials:"same-origin",body:JSON.stringify({source:"gumroad",license_key,product})});
+        const r=await fetch("/api/reader-pass/claim",{method:"POST",headers:{"content-type":"application/json"},credentials:"same-origin",body:JSON.stringify({source:"gumroad",license_key,product,...(reader_pass?{reader_pass}:{})})});
         const d=await r.json().catch(()=>({}));
         if(!r.ok){cm.textContent=d.error==="purchase_already_claimed"?"That purchase has already claimed a Reader Pass. Use the pass you received when it was claimed.":"The Gumroad purchase could not be verified for this edition.";return;}
-        cm.innerHTML='Reader Pass created: <strong style="user-select:all">'+d.reader_pass+'</strong><br>Save it in your password manager. It will not be shown again.';
-        await openSession(d.reader_pass);
+        if(d.attached){cm.textContent="This edition is now attached to your existing Reader Pass.";await openSession(reader_pass);}else{cm.innerHTML='Reader Pass created: <strong style="user-select:all">'+d.reader_pass+'</strong><br>Save it in your password manager. It will not be shown again.';await openSession(d.reader_pass);}
       }catch{cm.textContent="Purchase verification is temporarily unavailable.";}
     });
   }

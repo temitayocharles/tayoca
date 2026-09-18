@@ -22,7 +22,7 @@ Existing AI Wrote the Script entitlement tokens remain valid and are not reset, 
 
 Reader Pass adds a durable multi-title access model for companion resources:
 
-- one Reader Pass may hold multiple title/edition entitlements;
+- one Reader Pass may hold multiple title/edition entitlements; a verified new purchase can be attached to an existing active pass instead of minting another pass;
 - pass material is never stored raw server-side;
 - Gumroad claims are verified server-side before entitlement issuance;
 - a verified Gumroad sale may claim only one Reader Pass;
