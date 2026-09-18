@@ -13,3 +13,5 @@ test("protected bundle manifest covers exactly nine editions",async()=>{const {r
 test("legacy public book-access route remains on canonical n8n Tayoca hostname",async()=>{const {readFile}=await import("node:fs/promises");const v=JSON.parse(await readFile(new URL("../vercel.json",import.meta.url),"utf8"));const r=v.rewrites.find(x=>x.source==="/access/book");assert.equal(r?.destination,"https://n8n.tayoca.com/webhook/tayoca/books/access");});
 
 test("session cookie uses the __Host prefix security boundary",async()=>{const {readFile}=await import("node:fs/promises");const s=await readFile(new URL("../api/reader-pass/session.js",import.meta.url),"utf8");assert.match(s,/__Host-tayoca_reader/);});
+
+test("paperback activation codes are never stored raw in source",async()=>{const {readFile}=await import("node:fs/promises");const s=await readFile(new URL("../api/reader-pass/paperback-claim.js",import.meta.url),"utf8");assert.match(s,/PAPERBACK_ACTIVATION_MAP/);assert.match(s,/hashActivation\(code\)/);assert.equal(/activation_code\s*[:=]\s*["'][A-Z0-9-]{8,}["']/.test(s),false);});

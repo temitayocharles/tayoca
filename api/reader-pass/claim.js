@@ -1,8 +1,5 @@
-import crypto from "node:crypto";
-import {readJson,json,rateLimit,hashIp,hashReference,clientIp,hashPass,pool,audit} from "./_lib/reader-pass.js";
+import {readJson,json,rateLimit,hashIp,hashReference,clientIp,hashPass,pool,audit,newReaderPass} from "./_lib/reader-pass.js";
 const PRODUCT_MAP=()=>JSON.parse(process.env.GUMROAD_PRODUCT_MAP||"{}");
-const alphabet="ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
-function newPass(){let s="TYC-";const b=crypto.randomBytes(26);for(let i=0;i<26;i++){s+=alphabet[b[i]%alphabet.length];if([4,9,14,19].includes(i))s+="-";}return s;}
 async function verifyGumroad(productId,key){
  const body=new URLSearchParams({product_id:productId,license_key:key,increment_uses_count:"false"});
  const r=await fetch("https://api.gumroad.com/v2/licenses/verify",{method:"POST",headers:{"content-type":"application/x-www-form-urlencoded"},body});
@@ -28,7 +25,7 @@ export default async function handler(req,res){
      if(!p.rowCount||p.rows[0].status!=="active"){await c.query("rollback");return json(res,403,{error:"invalid_reader_pass"});}
      passId=p.rows[0].id;attached=true;
    }else{
-     pass=newPass();
+     pass=newReaderPass();
      const p=await c.query("insert into reader_passes(pass_hash,pass_hint,max_devices) values($1,$2,2) returning id",[hashPass(pass),pass.slice(-4)]);
      passId=p.rows[0].id;
    }

@@ -12,6 +12,13 @@ export const hashPass=(v)=>hmac("pass",String(v).trim().toUpperCase());
 export const hashDevice=(v)=>hmac("device",String(v));
 export const hashIp=(v)=>hmac("ip",String(v));
 export const hashReference=(v)=>hmac("source-ref",String(v));
+export const hashActivation=(v)=>hmac("paperback-activation",String(v).trim().toUpperCase());
+const readerAlphabet="ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+export function newReaderPass(){
+ const b=crypto.randomBytes(26);let s="TYC-";
+ for(let i=0;i<26;i++){s+=readerAlphabet[b[i]%readerAlphabet.length];if([4,9,14,19].includes(i))s+="-";}
+ return s;
+}
 export async function activeDevice(passId,deviceHash){const q=await sql("select 1 from reader_devices where reader_pass_id=$1 and device_hash=$2 and revoked_at is null limit 1",[passId,deviceHash]);return q.rowCount===1;}
 export async function rateLimit(key,limit,seconds){
  const kh=hmac("ratelimit",key);

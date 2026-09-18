@@ -34,6 +34,24 @@ Reader Pass adds a durable multi-title access model for companion resources:
 - download issuance is rate limited;
 - access events store hashed identifiers rather than raw pass or IP values.
 
+## Paperback activation contract
+
+Paperback activation is implemented as an edition-scoped bootstrap into Reader Pass, but remains dormant until a title's printed Companion Resources box contains its edition activation code and the matching HMAC digest is configured server-side.
+
+The printed activation code is not the long-lived credential. It only proves possession of that title/edition well enough to mint or attach a unique Reader Pass. The Reader Pass remains the credential used for subsequent access.
+
+Controls:
+
+- activation codes are title/edition scoped, not universal across the catalogue;
+- server configuration stores only the HMAC digest of the printed code;
+- the browser submits no email, address or other customer PII;
+- invalid codes fail closed without exposing the configured digest;
+- claims are rate-limited by request origin and code/origin pair;
+- a verified paperback activation can create a new Reader Pass or attach the edition to an existing active pass;
+- the shared printed activation code is intentionally treated as a low-friction possession check, not cryptographic proof of purchase.
+
+No paperback activation code is committed in this repository.
+
 ## Existing token migration
 
 No forced migration is performed in this change.
