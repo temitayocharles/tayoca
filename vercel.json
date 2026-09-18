@@ -5,42 +5,221 @@
   "cleanUrls": false,
   "trailingSlash": false,
   "rewrites": [
-    {"source": "/access/book", "destination": "https://n8n.tca-infraforge.site/webhook/tayoca/books/access"}
+    {
+      "source": "/access/book",
+      "destination": "https://n8n.tca-infraforge.site/webhook/tayoca/books/access"
+    }
   ],
   "redirects": [
-    {"source": "/blog", "destination": "/blog/", "permanent": true},
-    {"source": "/blog.html", "destination": "/blog/", "permanent": true},
-    {"source": "/writing.html", "destination": "/blog/", "permanent": true},
-    {"source": "/assessment", "destination": "/assessments.html", "permanent": true},
-    {"source": "/insights.html", "destination": "/blog/", "permanent": true},
-    {"source": "/blog/sitesupply-construction-procurement-marketplace.html", "destination": "/work.html", "permanent": true},
-    {"source": "/landing_ai-automation-career-page.html", "destination": "/products/ai-automation-career-playbook.html", "permanent": true},
-    {"source": "/landing_ai-automation-career.html", "destination": "/products/ai-automation-career-playbook.html", "permanent": true},
-    {"source": "/landing_n8n-mcp-k8s-page.html", "destination": "/products/n8n-mcp-kubernetes-teaching-pack.html", "permanent": true},
-    {"source": "/landing_n8n-mcp-k8s.html", "destination": "/products/n8n-mcp-kubernetes-teaching-pack.html", "permanent": true},
-    {"source": "/landing-devops-pack.html", "destination": "/products/build-break-fix-devops-lab-pack.html", "permanent": true},
-    {"source": "/landing.html", "destination": "/products/aws-cost-optimization-playbook.html", "permanent": true},
-    {"source": "/landing_v2.html", "destination": "/products/aws-cost-optimization-playbook.html", "permanent": true},
-    {"source": "/l/aws-finops-playbook", "destination": "/products/aws-cost-optimization-playbook.html", "permanent": true},
-    {"source": "/l/aws-finops-playbook/", "destination": "/products/aws-cost-optimization-playbook.html", "permanent": true}
+    {
+      "source": "/resources/books",
+      "destination": "/resources/books/index.html",
+      "permanent": false
+    },
+    {
+      "source": "/resources/books/",
+      "destination": "/resources/books/index.html",
+      "permanent": false
+    },
+    {
+      "source": "/resources/books/ai-automation-career-playbook",
+      "destination": "/resources/books/ai-automation-career-playbook.html",
+      "permanent": false
+    },
+    {
+      "source": "/resources/books/ai-wrote-the-script",
+      "destination": "/resources/books/ai-wrote-the-script.html",
+      "permanent": false
+    },
+    {
+      "source": "/resources/books/cloud-cost-kubernetes-finops",
+      "destination": "/resources/books/cloud-cost-kubernetes-finops.html",
+      "permanent": false
+    },
+    {
+      "source": "/resources/books/build-break-fix",
+      "destination": "/resources/books/build-break-fix.html",
+      "permanent": false
+    },
+    {
+      "source": "/resources/books/devops-incident-lab-vol-1",
+      "destination": "/resources/books/devops-incident-lab-vol-1.html",
+      "permanent": false
+    },
+    {
+      "source": "/resources/books/devops-incident-runbook",
+      "destination": "/resources/books/devops-incident-runbook.html",
+      "permanent": false
+    },
+    {
+      "source": "/resources/books/gitops-field-guide",
+      "destination": "/resources/books/gitops-field-guide.html",
+      "permanent": false
+    },
+    {
+      "source": "/resources/books/kubernetes-production-readiness",
+      "destination": "/resources/books/kubernetes-production-readiness.html",
+      "permanent": false
+    },
+    {
+      "source": "/resources/books/n8n-mcp-kubernetes-teaching-pack",
+      "destination": "/resources/books/n8n-mcp-kubernetes-teaching-pack.html",
+      "permanent": false
+    },
+    {
+      "source": "/blog",
+      "destination": "/blog/",
+      "permanent": true
+    },
+    {
+      "source": "/blog.html",
+      "destination": "/blog/",
+      "permanent": true
+    },
+    {
+      "source": "/writing.html",
+      "destination": "/blog/",
+      "permanent": true
+    },
+    {
+      "source": "/assessment",
+      "destination": "/assessments.html",
+      "permanent": true
+    },
+    {
+      "source": "/insights.html",
+      "destination": "/blog/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/sitesupply-construction-procurement-marketplace.html",
+      "destination": "/work.html",
+      "permanent": true
+    },
+    {
+      "source": "/landing_ai-automation-career-page.html",
+      "destination": "/products/ai-automation-career-playbook.html",
+      "permanent": true
+    },
+    {
+      "source": "/landing_ai-automation-career.html",
+      "destination": "/products/ai-automation-career-playbook.html",
+      "permanent": true
+    },
+    {
+      "source": "/landing_n8n-mcp-k8s-page.html",
+      "destination": "/products/n8n-mcp-kubernetes-teaching-pack.html",
+      "permanent": true
+    },
+    {
+      "source": "/landing_n8n-mcp-k8s.html",
+      "destination": "/products/n8n-mcp-kubernetes-teaching-pack.html",
+      "permanent": true
+    },
+    {
+      "source": "/landing-devops-pack.html",
+      "destination": "/products/build-break-fix-devops-lab-pack.html",
+      "permanent": true
+    },
+    {
+      "source": "/landing.html",
+      "destination": "/products/aws-cost-optimization-playbook.html",
+      "permanent": true
+    },
+    {
+      "source": "/landing_v2.html",
+      "destination": "/products/aws-cost-optimization-playbook.html",
+      "permanent": true
+    },
+    {
+      "source": "/l/aws-finops-playbook",
+      "destination": "/products/aws-cost-optimization-playbook.html",
+      "permanent": true
+    },
+    {
+      "source": "/l/aws-finops-playbook/",
+      "destination": "/products/aws-cost-optimization-playbook.html",
+      "permanent": true
+    }
   ],
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
-        {"key": "Strict-Transport-Security", "value": "max-age=31536000"},
-        {"key": "X-Content-Type-Options", "value": "nosniff"},
-        {"key": "X-Frame-Options", "value": "DENY"},
-        {"key": "X-Permitted-Cross-Domain-Policies", "value": "none"},
-        {"key": "Referrer-Policy", "value": "strict-origin-when-cross-origin"},
-        {"key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()"},
-        {"key": "Content-Security-Policy", "value": "base-uri 'self'; object-src 'none'; frame-ancestors 'none'; upgrade-insecure-requests"}
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=31536000"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-Permitted-Cross-Domain-Policies",
+          "value": "none"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=()"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "base-uri 'self'; object-src 'none'; frame-ancestors 'none'; upgrade-insecure-requests"
+        }
       ]
     },
-    {"source": "/landing_ai-made-simple.html", "headers": [{"key": "X-Robots-Tag", "value": "noindex, follow, noarchive"}]},
-    {"source": "/landing_ai-made-simple-page.html", "headers": [{"key": "X-Robots-Tag", "value": "noindex, follow, noarchive"}]},
-    {"source": "/l/platform-engineering-playbook/(.*)", "headers": [{"key": "X-Robots-Tag", "value": "noindex, follow, noarchive"}]},
-    {"source": "/l/finops-ops-playbook/(.*)", "headers": [{"key": "X-Robots-Tag", "value": "noindex, follow, noarchive"}]},
-    {"source": "/l/data-pipelines-playbook/(.*)", "headers": [{"key": "X-Robots-Tag", "value": "noindex, follow, noarchive"}]}
+    {
+      "source": "/landing_ai-made-simple.html",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, follow, noarchive"
+        }
+      ]
+    },
+    {
+      "source": "/landing_ai-made-simple-page.html",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, follow, noarchive"
+        }
+      ]
+    },
+    {
+      "source": "/l/platform-engineering-playbook/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, follow, noarchive"
+        }
+      ]
+    },
+    {
+      "source": "/l/finops-ops-playbook/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, follow, noarchive"
+        }
+      ]
+    },
+    {
+      "source": "/l/data-pipelines-playbook/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, follow, noarchive"
+        }
+      ]
+    }
   ]
 }
