@@ -19,7 +19,6 @@ ARTICLE_JSONLD_DATE_GAP_ALLOWLIST = {
 }
 
 ARTICLE_JSONLD_MISSING_ALLOWLIST = {
-    "public/blog/cloud-cost-optimization-playbook.html": "known Phase 4 remediation candidate; add BlogPosting JSON-LD only when date/content provenance is explicit",
 }
 
 PRODUCT_SCHEMA_TYPES = {"Product"}
