@@ -24,14 +24,14 @@ Disclosure classification:
 - private_restricted: 9
 - private_sensitive: 1
 
-Content Queue: 80
+Content Queue: 82
 
 Queue state:
 - approved_ready_for_distribution: 41
 - published: 1
 - rejected: 12
 - ready_for_owner_review: 21
-- blocked_pending_disclosure: 5
+- blocked_pending_disclosure: 7
 
 Final coverage audit:
 - public_verified + eligible_after_approval opportunities without a Content Queue package: 0
@@ -88,6 +88,8 @@ The title-level book packages also have editable Canva review designs bound in C
 - Tayoca Evidence and AI Publication policy
 
 Every public_verified + eligible_after_approval opportunity now has at least one Content Queue package.
+
+Every blocked_pending_disclosure opportunity also now has a fail-closed Content Queue package. FinOps and Career Evidence Pipeline were the final two packaging gaps; both remain non-publishable pending their respective disclosure/source-language boundaries.
 
 ### Prepared but fail-closed pending disclosure approval
 - ForgeWatch / Sentinel Copilot
