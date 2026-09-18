@@ -42,6 +42,8 @@ export async function bindDevice(pass,rawDevice){
   const a=await c.query("select id,device_hash from reader_devices where reader_pass_id=$1 and revoked_at is null",[pass.id]);
   if(a.rows.some(x=>x.device_hash===dh)){await c.query("update reader_devices set last_seen_at=now() where reader_pass_id=$1 and device_hash=$2",[pass.id,dh]);await c.query("commit");return dh;}
   if(a.rowCount>=pass.max_devices){await c.query("rollback");return null;}
+  const recent=await c.query("select count(distinct device_hash)::int as n from reader_devices where reader_pass_id=$1 and first_seen_at > now()-interval '30 days'",[pass.id]);
+  if((recent.rows[0]?.n||0)>=pass.max_devices+1){await c.query("rollback");return null;}
   await c.query("insert into reader_devices(reader_pass_id,device_hash) values($1,$2) on conflict(reader_pass_id,device_hash) do update set revoked_at=null,last_seen_at=now()",[pass.id,dh]);
   await c.query("commit");return dh;
  }catch(e){await c.query("rollback").catch(()=>{});throw e;}finally{c.release();}
