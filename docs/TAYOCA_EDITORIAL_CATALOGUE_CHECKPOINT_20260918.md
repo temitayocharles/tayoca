@@ -155,3 +155,23 @@ AND wording within approved scope
 Anything else fails closed.
 
 No LinkedIn company-page publication, production FinOps execution, career application execution or disclosure of private operational evidence is authorized by this checkpoint.
+
+
+## Repository hygiene closeout
+
+Canonical Tayoca main after the Phase 4 structured-data remediation:
+
+`5e3ccfc1e5ad8c8429d60e954d0592b69138b379`
+
+The provenance-safe BlogPosting date remediation is merged and verified:
+- AI Automation Career Roadmap: `dateModified: 2026-09-11`
+- GitOps Beyond Hello World: `dateModified: 2026-09-11`
+- Kubernetes Production Checklist: `dateModified: 2026-09-11`
+- no `datePublished` values were fabricated
+- the three date-gap allowlist entries are removed
+- structured-data governance is validator-only again
+- temporary carrier workflow and remediation script are removed
+
+Superseded PRs #143 and #148 are closed. Issue #138 is closed. There are no open pull requests.
+
+The only remaining open Tayoca issue is #149, the explicit FinOps source-language decision. Its exact current `Homelab` occurrences and a wording-only substitution plan are documented there. No n8n change has been applied.
