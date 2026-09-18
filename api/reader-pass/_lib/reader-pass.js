@@ -11,6 +11,8 @@ export const sql=(text,params=[])=>pool().query(text,params);
 export const hashPass=(v)=>hmac("pass",String(v).trim().toUpperCase());
 export const hashDevice=(v)=>hmac("device",String(v));
 export const hashIp=(v)=>hmac("ip",String(v));
+export const hashReference=(v)=>hmac("source-ref",String(v));
+export async function activeDevice(passId,deviceHash){const q=await sql("select 1 from reader_devices where reader_pass_id=$1 and device_hash=$2 and revoked_at is null limit 1",[passId,deviceHash]);return q.rowCount===1;}
 export async function rateLimit(key,limit,seconds){
  const kh=hmac("ratelimit",key);
  const q=await sql(`insert into reader_rate_limits(key_hash,count,window_started_at) values($1,1,now())
