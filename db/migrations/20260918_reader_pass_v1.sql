@@ -1,5 +1,4 @@
--- Tayoca Reader Pass v1
--- Run in the production Postgres/Supabase database after review.
+-- Tayoca Reader Pass v1 — PostgreSQL / Neon
 create extension if not exists pgcrypto;
 
 create table if not exists reader_passes (
@@ -11,7 +10,6 @@ create table if not exists reader_passes (
   created_at timestamptz not null default now(),
   last_used_at timestamptz
 );
-
 create table if not exists reader_entitlements (
   id uuid primary key default gen_random_uuid(),
   reader_pass_id uuid not null references reader_passes(id) on delete cascade,
@@ -23,7 +21,6 @@ create table if not exists reader_entitlements (
   created_at timestamptz not null default now(),
   unique(reader_pass_id, product_slug, edition)
 );
-
 create table if not exists reader_devices (
   id uuid primary key default gen_random_uuid(),
   reader_pass_id uuid not null references reader_passes(id) on delete cascade,
@@ -33,7 +30,6 @@ create table if not exists reader_devices (
   revoked_at timestamptz,
   unique(reader_pass_id, device_hash)
 );
-
 create table if not exists reader_access_events (
   id bigserial primary key,
   reader_pass_id uuid references reader_passes(id) on delete set null,
@@ -43,14 +39,13 @@ create table if not exists reader_access_events (
   device_hash text,
   created_at timestamptz not null default now()
 );
+create table if not exists reader_rate_limits (
+  key_hash text primary key,
+  count integer not null default 0,
+  window_started_at timestamptz not null default now()
+);
 create index if not exists reader_access_events_pass_time_idx on reader_access_events(reader_pass_id, created_at desc);
 create index if not exists reader_entitlements_product_idx on reader_entitlements(product_slug, edition, status);
 create unique index if not exists reader_entitlements_source_ref_uq
   on reader_entitlements(source, source_reference_hash)
   where source_reference_hash is not null;
-
-alter table reader_passes enable row level security;
-alter table reader_entitlements enable row level security;
-alter table reader_devices enable row level security;
-alter table reader_access_events enable row level security;
--- No public policies. Reader-pass APIs use server-side service credentials only.

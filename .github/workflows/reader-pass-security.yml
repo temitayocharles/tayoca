@@ -1,10 +1,10 @@
 name: Reader Pass Security
 on:
   pull_request:
-    paths: ["api/reader-pass/**","supabase/migrations/**","public/resources/books/**","test/reader-pass.test.mjs","package.json"]
+    paths: ["api/reader-pass/**","db/migrations/**","public/resources/books/**","test/reader-pass.test.mjs","package.json"]
   push:
     branches: [main]
-    paths: ["api/reader-pass/**","supabase/migrations/**","public/resources/books/**","test/reader-pass.test.mjs","package.json"]
+    paths: ["api/reader-pass/**","db/migrations/**","public/resources/books/**","test/reader-pass.test.mjs","package.json"]
 permissions:
   contents: read
 jobs:
