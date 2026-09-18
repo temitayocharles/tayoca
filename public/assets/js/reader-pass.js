@@ -19,7 +19,7 @@
     return v;
   }
   async function entitlement(){
-    const r=await fetch("/api/reader-pass/entitlements",{credentials:"same-origin",cache:"no-store"});
+    const r=await fetch("/api/reader-pass/entitlements",{credentials:"same-origin",cache:"no-store",headers:{"x-tayoca-device":getDevice()}});
     return r.ok;
   }
   function filenameFrom(r){
@@ -32,7 +32,7 @@
     b.addEventListener("click",async()=>{
       b.disabled=true;const old=b.textContent;b.textContent="Preparing secure download…";
       try{
-        const r=await fetch("/api/reader-pass/download",{method:"POST",credentials:"same-origin",headers:{"content-type":"application/json"},body:JSON.stringify({product,edition})});
+        const r=await fetch("/api/reader-pass/download",{method:"POST",credentials:"same-origin",headers:{"content-type":"application/json","x-tayoca-device":getDevice()},body:JSON.stringify({product,edition})});
         if(!r.ok){let e={};try{e=await r.json();}catch{};throw new Error(e.error||"download_failed");}
         const blob=await r.blob(),u=URL.createObjectURL(blob),a=document.createElement("a");a.href=u;a.download=filenameFrom(r);document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),1000);
         msg.textContent="Download issued. Your Reader Pass remains limited to your own devices.";
@@ -47,14 +47,14 @@
     wrap.innerHTML="<summary><strong>Manage my Reader Pass devices</strong></summary><div data-device-list class='resource-note' style='margin-top:.75rem'>Loading devices…</div>";
     form.appendChild(wrap);
     try{
-      const r=await fetch("/api/reader-pass/devices",{credentials:"same-origin",cache:"no-store"});if(!r.ok)throw new Error();
+      const r=await fetch("/api/reader-pass/devices",{credentials:"same-origin",cache:"no-store",headers:{"x-tayoca-device":getDevice()}});if(!r.ok)throw new Error();
       const d=await r.json(),list=wrap.querySelector("[data-device-list]");list.innerHTML="";
       for(const x of d.devices){
         const row=document.createElement("div");row.style.cssText="display:flex;gap:.7rem;align-items:center;justify-content:space-between;padding:.55rem 0;border-bottom:1px solid var(--line)";
         const t=document.createElement("span");t.textContent=(x.current?"This device · ":"")+x.label+(x.revoked?" · revoked":"");
         row.appendChild(t);
         if(!x.revoked){
-          const b=document.createElement("button");b.type="button";b.textContent="Revoke";b.addEventListener("click",async()=>{b.disabled=true;const rr=await fetch("/api/reader-pass/devices",{method:"POST",credentials:"same-origin",headers:{"content-type":"application/json"},body:JSON.stringify({id:x.id})});if(rr.ok){const out=await rr.json();row.remove();if(out.current){msg.textContent="This device was revoked. Enter the Reader Pass again on an allowed device.";}}else b.disabled=false;});row.appendChild(b);
+          const b=document.createElement("button");b.type="button";b.textContent="Revoke";b.addEventListener("click",async()=>{b.disabled=true;const rr=await fetch("/api/reader-pass/devices",{method:"POST",credentials:"same-origin",headers:{"content-type":"application/json","x-tayoca-device":getDevice()},body:JSON.stringify({id:x.id})});if(rr.ok){const out=await rr.json();row.remove();if(out.current){msg.textContent="This device was revoked. Enter the Reader Pass again on an allowed device.";}}else b.disabled=false;});row.appendChild(b);
         }
         list.appendChild(row);
       }
