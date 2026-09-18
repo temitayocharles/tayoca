@@ -72,7 +72,7 @@
     try{
       const r=await openSession(pass);
       if(r.ok)return;
-      msg.textContent=r.status===429?"Too many attempts. Try again later.":r.error==="device_limit"?"This Reader Pass already has two active devices. Revoke an old device before adding another.":"That pass cannot unlock this edition.";
+      msg.textContent=r.status===429?"Too many attempts. Try again later.":r.error==="device_limit"?"This Reader Pass has reached its active-device or recent replacement limit. Revoke an old device if appropriate, or try again after the replacement window.":"That pass cannot unlock this edition.";
     }catch{msg.textContent="Reader Pass verification is temporarily unavailable.";}
   });
   if(gumroadProducts.has(product)){
