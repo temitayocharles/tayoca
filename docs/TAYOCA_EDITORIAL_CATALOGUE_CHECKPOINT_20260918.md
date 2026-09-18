@@ -36,8 +36,25 @@ Queue state:
 Final coverage audit:
 - public_verified + eligible_after_approval opportunities without a Content Queue package: 0
 - sensitive/private Content Queue rows incorrectly advanced to owner-review/distribution/published states: 0
+- owner-review visual rows requiring an asset but missing asset_url: 0
 
 No new publication was performed during this catalogue run.
+
+## Tayoca Books catalogue carousel
+
+The catalogue-level visual is now a finished 10-slide Google Slides owner-review deck:
+https://docs.google.com/presentation/d/1tvJg_s0lc5LFl1DmoSYP0h5kLV8dW6KR6njN5rQ7dAg/edit
+
+Verified structure:
+- 1 title slide
+- 9 source-verified release slides
+- authentic Canva-hosted cover image present on each release slide
+- Google Slides structure read confirms 10 total slides
+- PDF export succeeds
+
+The deck intentionally says selected releases from a 14-title active catalogue rather than implying that nine slides are the full catalogue.
+
+The title-level book packages also have editable Canva review designs bound in Content Queue. They use authentic repository artwork rather than synthetic 3D mockups.
 
 ## Exported architecture assets
 
@@ -83,57 +100,20 @@ Every public_verified + eligible_after_approval opportunity now has at least one
 
 Private repository access does not confer publication authority.
 
-## Public-safe owner-review packages
-
-The governed queue now includes public-safe packages for:
-- Tayoca Books catalogue overview
-- AI Wrote the Script
-- Kubernetes Production Readiness
-- n8n MCP Kubernetes Teaching Pack
-- Kubernetes Operators Workbook, Second Edition
-- Build, Break, Fix
-- AI Automation Career Playbook
-- DevOps Incident Runbook Template
-- GitOps Field Guide
-- AI Made Simple
-- The DevOps Incident Lab, Volume 1
-- What Should We Do Tonight?
-- One Brave Breath
-- Looks Legit
-- Tayoca evidence-led technology value model
-- Tayoca Evidence and AI Publication Control Plane
-- Community Website Initiative
-
-A separate Build, Break, Fix short-form package uses the already verified public Gumroad CTA and remains specific-content owner-review gated.
-
 ## SiteSupply evidence state
 
-Verified Google Drive evidence includes:
-- supplier acquisition
-- buyer procurement
-- aggregates
-- equipment rental
-- hauling / trucking
-- dumpsters / site services
-- quote comparison
-- local sourcing
-- estimator procurement
-- founding suppliers
-- retargeting
-- video
+Verified Google Drive evidence includes supplier acquisition, buyer procurement, aggregates, equipment rental, hauling/trucking, dumpsters/site services, quote comparison, local sourcing, estimator procurement, founding suppliers, retargeting and video.
 
 Representative real campaign assets imported into Canva:
 - Supplier Profile: MAHVhoOVuM8
 - Quote Comparison: MAHVhtdisbY
 - Estimator Procurement: MAHVhgHqMUM
 
-Do not claim buyer count, supplier count, transactions, savings, completed-order traction, liquidity, market share, or customer outcomes without separate evidence.
+Do not claim buyer count, supplier count, transactions, savings, completed-order traction, liquidity, market share or customer outcomes without separate evidence.
 
-## Tayoca Books visual state
+## Tayoca Books authentic visual bindings
 
-Authentic repository assets are used instead of synthetic book mockups.
-
-Canva bindings:
+Canva asset bindings:
 - AI Wrote the Script: MAHVhpkOW0Y
 - AI Automation Career Playbook: MAHVho4MrSY
 - DevOps Incident Runbook: MAHVhtdVU-w
@@ -148,7 +128,7 @@ Canva bindings:
 - Looks Legit approved full-wrap: MAHVh1ur74c
 - What Should We Do Tonight authentic repository campaign product card: MAHVh83gkUw
 
-The What Should We Do Tonight campaign package explicitly states campaign creatives are rendered from the title's shipped visual system and avoids fabricated storefront URLs.
+The What Should We Do Tonight campaign package states that its campaign creatives are rendered from the title's shipped visual system and avoids fabricated storefront URLs.
 
 ## FinOps source-language conflict
 
@@ -174,4 +154,4 @@ AND wording within approved scope
 
 Anything else fails closed.
 
-No LinkedIn company-page publication, production FinOps execution, career application execution, or disclosure of private operational evidence is authorized by this checkpoint.
+No LinkedIn company-page publication, production FinOps execution, career application execution or disclosure of private operational evidence is authorized by this checkpoint.
