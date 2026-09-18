@@ -24,13 +24,13 @@ Disclosure classification:
 - private_restricted: 9
 - private_sensitive: 1
 
-Content Queue: 69
+Content Queue: 76
 
 Queue state:
 - approved_ready_for_distribution: 41
 - published: 1
 - rejected: 12
-- ready_for_owner_review: 10
+- ready_for_owner_review: 17
 - blocked_pending_disclosure: 5
 
 No new publication was performed during this catalogue run.
@@ -76,6 +76,26 @@ No new publication was performed during this catalogue run.
 - Career Evidence Pipeline
 
 Private repository access does not confer publication authority.
+
+## Newly packaged owner-review content
+
+Public-safe queue packages now include:
+- Tayoca Books catalogue overview
+- AI Wrote the Script
+- Kubernetes Production Readiness
+- n8n MCP Kubernetes Teaching Pack
+- Kubernetes Operators Workbook, Second Edition
+- Build, Break, Fix
+- AI Automation Career Playbook
+- DevOps Incident Runbook Template
+- GitOps Field Guide
+- AI Made Simple
+- The DevOps Incident Lab, Volume 1
+- Tayoca evidence-led technology value model
+- Tayoca Evidence and AI Publication Control Plane
+- Community Website Initiative owner-review content
+
+Private-source architecture packages remain blocked_pending_disclosure in Content Queue.
 
 ## SiteSupply evidence state
 
