@@ -225,7 +225,7 @@ targets `#main-content` so the skip target resolves.
 - Assessment form, `data-assessment` cards, `data-tayoca-form` names.
 - Community Google Form URL and `data-google-form-cta` markers (`home`, `work`, and
   the initiative page's own `hero` / `apply_section`).
-- Review data endpoint `https://n8n.tca-infraforge.site/webhook/tayoca/reviews/public`
+- Review data endpoint `https://n8n.tayoca.com/webhook/tayoca/reviews/public`
   and fail-closed rendering.
 - `data-event` / `data-revenue-event` names; GA4 measurement id `G-G4QC90QNXW` and
   `/ga4.js` on every canonical page.

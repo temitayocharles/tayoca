@@ -56,7 +56,7 @@ async function checkAssessmentError(browser, base, mode) {
   const page = await context.newPage();
   let intercepted = 0;
   try {
-    await page.route('https://n8n.tca-infraforge.site/webhook/tayoca/growth/assessment', async route => {
+    await page.route('https://n8n.tayoca.com/webhook/tayoca/growth/assessment', async route => {
       intercepted += 1;
       await route.fulfill({ status: 500, contentType: 'application/json', body: JSON.stringify({ error: 'simulated-browser-regression' }) });
     });
@@ -81,7 +81,7 @@ async function checkOperatorBriefError(browser, base, mode) {
   const page = await context.newPage();
   let intercepted = 0;
   try {
-    await page.route('https://n8n.tca-infraforge.site/webhook/tayoca/growth/operator-brief', async route => {
+    await page.route('https://n8n.tayoca.com/webhook/tayoca/growth/operator-brief', async route => {
       intercepted += 1;
       await route.fulfill({ status: 500, contentType: 'application/json', body: JSON.stringify({ error: 'simulated-browser-regression' }) });
     });

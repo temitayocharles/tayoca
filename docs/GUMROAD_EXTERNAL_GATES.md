@@ -11,7 +11,7 @@ This document records the two remaining Gumroad-dependent Tayoca gates after com
 ### What is complete
 
 - `Tayoca Growth OS | Verified Review & Trust Flywheel` is active.
-- Gumroad has a live `sale` resource subscription targeting `https://n8n.tca-infraforge.site/webhook/tayoca-gumroad-sale`.
+- Gumroad has a live `sale` resource subscription targeting `https://n8n.tayoca.com/webhook/tayoca-gumroad-sale`.
 - The webhook does not trust the callback payload as purchase truth. It extracts only the candidate `sale_id` and re-queries Gumroad's authenticated sale-detail API using the runtime `GUMROAD_ACCESS_TOKEN`.
 - The verified result is checked for matching sale ID, refund/dispute/chargeback state, verified buyer email, Tayoca product allowlist membership, and buyer contact preference before any sale, attribution, or review-request ledger write.
 - Unverified or ineligible events fail closed and cannot create a review invitation.
