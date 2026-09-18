@@ -28,7 +28,11 @@ export function cookie(name,value,maxAge=1800){return `${name}=${value}; Path=/;
 export function json(res,status,body,headers={}){res.statusCode=status;res.setHeader("content-type","application/json");res.setHeader("cache-control","no-store");for(const[k,v]of Object.entries(headers))res.setHeader(k,v);res.end(JSON.stringify(body));}
 export async function readJson(req){let s="";for await(const c of req){s+=c;if(s.length>8192)throw new Error("too_large");}return JSON.parse(s||"{}");}
 export function clientIp(req){return String(req.headers["x-forwarded-for"]||"").split(",")[0].trim()||"unknown";}
-export function deviceId(req){return String(req.headers["x-tayoca-device"]||req.headers["user-agent"]||"unknown").slice(0,512);}
+export function deviceId(req){
+ const v=String(req.headers["x-tayoca-device"]||"").trim();
+ return /^[A-Za-z0-9._:-]{16,128}$/.test(v)?v:"";
+}
+export function sessionDeviceMatches(req,session){const raw=deviceId(req);return !!raw&&hashDevice(raw)===session.device;}
 export async function getPass(raw){const q=await sql("select id,status,max_devices from reader_passes where pass_hash=$1 limit 1",[hashPass(raw)]);return q.rows[0]||null;}
 export async function entitlement(passId,product,edition){const q=await sql("select id,status from reader_entitlements where reader_pass_id=$1 and product_slug=$2 and edition=$3 and status='active' limit 1",[passId,product,edition]);return q.rows[0]||null;}
 export async function bindDevice(pass,rawDevice){
