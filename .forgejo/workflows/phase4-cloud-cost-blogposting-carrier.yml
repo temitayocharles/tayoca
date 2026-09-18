@@ -1,0 +1,28 @@
+name: Phase 4 cloud-cost BlogPosting carrier
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: tayoca-cloud-cost-blogposting-carrier
+  cancel-in-progress: true
+
+jobs:
+  create_remediation_branch:
+    name: Create cloud-cost BlogPosting remediation branch
+    runs-on: forgejo-general
+    timeout-minutes: 10
+    steps:
+      - name: Check out canonical main
+        uses: https://data.forgejo.org/actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Create generated content branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          PYTHONDONTWRITEBYTECODE=1 python3 scripts/remediate_cloud_cost_blogposting_jsonld.py
