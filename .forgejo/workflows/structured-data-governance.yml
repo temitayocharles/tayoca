@@ -5,9 +5,6 @@ on:
   pull_request:
   workflow_dispatch:
 
-permissions:
-  contents: write
-
 concurrency:
   group: tayoca-structured-data-governance-${{ forgejo.ref }}
   cancel-in-progress: true
@@ -27,22 +24,3 @@ jobs:
           set -euo pipefail
           python3 -m py_compile scripts/validate_structured_data_governance.py
           python3 scripts/validate_structured_data_governance.py
-
-  remediate_blog_dates:
-    name: Create Phase 4 dateModified remediation branch
-    needs: validate
-    if: ${{ forgejo.event_name == 'workflow_dispatch' && forgejo.ref == 'refs/heads/main' }}
-    runs-on: forgejo-general
-    timeout-minutes: 10
-    steps:
-      - name: Check out canonical main
-        uses: https://data.forgejo.org/actions/checkout@v6
-        with:
-          fetch-depth: 0
-
-      - name: Patch remaining BlogPosting dateModified fields
-        shell: bash
-        run: |
-          set -euo pipefail
-          python3 -m py_compile scripts/remediate_phase4_jsonld_dates.py
-          python3 scripts/remediate_phase4_jsonld_dates.py

@@ -16,9 +16,6 @@ PUBLIC_DIR = REPO_ROOT / "public"
 SITE_ORIGIN = "https://tayoca.com"
 
 ARTICLE_JSONLD_DATE_GAP_ALLOWLIST = {
-    "public/blog/ai-automation-career-roadmap.html": "publication history not yet encoded; do not fabricate datePublished",
-    "public/blog/gitops-beyond-hello-world.html": "publication history not yet encoded; do not fabricate datePublished",
-    "public/blog/kubernetes-production-checklist.html": "publication history not yet encoded; do not fabricate datePublished",
 }
 
 ARTICLE_JSONLD_MISSING_ALLOWLIST = {
