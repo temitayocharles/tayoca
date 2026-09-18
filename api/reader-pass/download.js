@@ -1,6 +1,6 @@
 import fs from "node:fs/promises";
 import path from "node:path";
-import {json,readJson,readSession,entitlement,rateLimit,audit,sql} from "./_lib/reader-pass.js";
+import {json,readJson,readSession,entitlement,rateLimit,audit,sql,sessionDeviceMatches} from "./_lib/reader-pass.js";
 
 const RESOURCES={
  "ai-automation-career-playbook":{"edition":"1.0","file":"ai-automation-career-playbook-v1.0.zip","name":"AI_Automation_Career_Playbook_v1.0.zip"},
@@ -18,11 +18,12 @@ export default async function handler(req,res){
  try{
   const raw=(req.headers.cookie||"").match(/(?:^|; )tayoca_reader=([^;]+)/)?.[1];if(!raw)return json(res,401,{error:"unauthorized"});
   const s=await readSession(raw),body=await readJson(req);
+  if(!sessionDeviceMatches(req,s))return json(res,401,{error:"device_mismatch"});
   if(body.product!==s.product||body.edition!==s.edition)return json(res,403,{error:"scope_mismatch"});
   if(!await entitlement(s.sub,s.product,s.edition))return json(res,403,{error:"not_entitled"});
   const activeDevice=await sql("select 1 from reader_devices where reader_pass_id=$1 and device_hash=$2 and revoked_at is null limit 1",[s.sub,s.device]);
   if(!activeDevice.rowCount)return json(res,403,{error:"device_revoked"});
-  if(!await rateLimit("dl:"+s.sub,20,3600))return json(res,429,{error:"rate_limited"});
+  if(!await rateLimit("dl:"+s.sub,6,3600))return json(res,429,{error:"rate_limited"});
   const item=RESOURCES[s.product];if(!item||item.edition!==s.edition)return json(res,503,{error:"resource_not_staged"});
   const file=await fs.readFile(path.join(process.cwd(),"private-reader-assets",item.file));
   await audit(s.sub,s.product,"download_issued",req,s.device);
