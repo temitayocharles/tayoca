@@ -3,7 +3,7 @@
 Status: active, publication-gated
 Canonical operational ledger: Tayoca Growth OS → Editorial Opportunities + Content Queue
 
-## Current ledger snapshot
+## Final ledger snapshot
 
 Editorial Opportunities: 47
 
@@ -24,14 +24,18 @@ Disclosure classification:
 - private_restricted: 9
 - private_sensitive: 1
 
-Content Queue: 76
+Content Queue: 80
 
 Queue state:
 - approved_ready_for_distribution: 41
 - published: 1
 - rejected: 12
-- ready_for_owner_review: 17
+- ready_for_owner_review: 21
 - blocked_pending_disclosure: 5
+
+Final coverage audit:
+- public_verified + eligible_after_approval opportunities without a Content Queue package: 0
+- sensitive/private Content Queue rows incorrectly advanced to owner-review/distribution/published states: 0
 
 No new publication was performed during this catalogue run.
 
@@ -61,10 +65,12 @@ No new publication was performed during this catalogue run.
 ## Source-verified lanes
 
 ### Public-safe / eligible after owner approval
-- Tayoca Books title-level catalogue and real cover assets
+- Tayoca Books title-level catalogue and authentic visual assets
 - Community Website Initiative
 - Tayoca commercial positioning
 - Tayoca Evidence and AI Publication policy
+
+Every public_verified + eligible_after_approval opportunity now has at least one Content Queue package.
 
 ### Prepared but fail-closed pending disclosure approval
 - ForgeWatch / Sentinel Copilot
@@ -77,9 +83,9 @@ No new publication was performed during this catalogue run.
 
 Private repository access does not confer publication authority.
 
-## Newly packaged owner-review content
+## Public-safe owner-review packages
 
-Public-safe queue packages now include:
+The governed queue now includes public-safe packages for:
 - Tayoca Books catalogue overview
 - AI Wrote the Script
 - Kubernetes Production Readiness
@@ -91,11 +97,14 @@ Public-safe queue packages now include:
 - GitOps Field Guide
 - AI Made Simple
 - The DevOps Incident Lab, Volume 1
+- What Should We Do Tonight?
+- One Brave Breath
+- Looks Legit
 - Tayoca evidence-led technology value model
 - Tayoca Evidence and AI Publication Control Plane
-- Community Website Initiative owner-review content
+- Community Website Initiative
 
-Private-source architecture packages remain blocked_pending_disclosure in Content Queue.
+A separate Build, Break, Fix short-form package uses the already verified public Gumroad CTA and remains specific-content owner-review gated.
 
 ## SiteSupply evidence state
 
@@ -122,9 +131,9 @@ Do not claim buyer count, supplier count, transactions, savings, completed-order
 
 ## Tayoca Books visual state
 
-Real repository covers are being used instead of synthetic book mockups.
+Authentic repository assets are used instead of synthetic book mockups.
 
-Existing Canva bindings include:
+Canva bindings:
 - AI Wrote the Script: MAHVhpkOW0Y
 - AI Automation Career Playbook: MAHVho4MrSY
 - DevOps Incident Runbook: MAHVhtdVU-w
@@ -136,6 +145,10 @@ Existing Canva bindings include:
 - Kubernetes Operators Workbook: MAHVhgFY2wM
 - One Brave Breath: MAHVhun1V3c
 - AI Made Simple: MAHVhrqVJIc
+- Looks Legit approved full-wrap: MAHVh1ur74c
+- What Should We Do Tonight authentic repository campaign product card: MAHVh83gkUw
+
+The What Should We Do Tonight campaign package explicitly states campaign creatives are rendered from the title's shipped visual system and avoids fabricated storefront URLs.
 
 ## FinOps source-language conflict
 
@@ -148,7 +161,7 @@ Do not silently rewrite operational source text for marketing. The editorial lay
 
 ## Miro cleanup
 
-The AWS VPC Topology board was restored to its original 71-item topology after removal of the accidental FinOps and ForgeWatch editorial sections. Dedicated Excalidraw assets now carry those architecture stories.
+The AWS VPC Topology board is restored to its original 71-item topology after exact removal of the accidental FinOps and ForgeWatch editorial sections. Dedicated Excalidraw assets carry those architecture stories.
 
 ## Publication governance
 
