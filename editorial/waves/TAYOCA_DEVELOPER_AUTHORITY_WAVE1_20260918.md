@@ -168,3 +168,33 @@ DEV currently reports the three drafts as `ai_disclosure_level=not_disclosed` an
 The available Composio DEV action does not expose the AI-disclosure field. Therefore publication must remain blocked until the DEV destination accurately records the applicable AI-assistance disclosure through a supported UI or API path.
 
 This is a destination metadata gate, not a content-evidence defect.
+
+
+## Distribution outcome
+
+Owner approval was granted on 2026-09-18 and recorded in Growth OS.
+
+### Published Reddit discussions
+
+Kubernetes production readiness:
+https://www.reddit.com/r/kubernetes/comments/1wjvocv/what_productionreadiness_controls_have_caught/
+
+FinOps approval boundaries:
+https://www.reddit.com/r/FinOps/comments/1wjvp28/where_should_a_kubernetes_costoptimization_system/
+
+Incident runbooks:
+https://www.reddit.com/r/OnCall/comments/1wjvopl/what_makes_an_incident_runbook_useful_when_the/
+
+All three were submitted as self-contained discussion posts with transparent Tayoca affiliation and no product link.
+
+The r/FinOps submission initially failed because flair was mandatory. It was retried once using the subreddit-provided self-promotion/vendor flair and then published successfully.
+
+### DEV status
+
+The three DEV articles remain unpublished.
+
+A direct attempt to pass `ai_disclosure_level: some_ai` through the current DEV connector was ignored by the connector. The returned article remained `not_disclosed`.
+
+Issue #165 tracks this destination metadata gap.
+
+No DEV article is authorized to bypass the structured disclosure requirement.
