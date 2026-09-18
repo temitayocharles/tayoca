@@ -1,4 +1,4 @@
-# Tayoca Reader Pass v3 integration
+# Tayoca Reader Pass v4 integration
 
 Date: 2026-09-18
 
