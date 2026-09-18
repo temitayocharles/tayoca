@@ -433,8 +433,8 @@
     "sections": 8,
     "published_issues": 1,
     "latest_issue": "operator-brief-2026-08-17",
-    "intake_contract": "POST https://n8n.tca-infraforge.site/webhook/tayoca/growth/operator-brief (email, interest, consent, website honeypot)",
-    "unsubscribe_contract": "POST https://n8n.tca-infraforge.site/webhook/tayoca/growth/operator-brief/unsubscribe (non-enumerating response)"
+    "intake_contract": "POST https://n8n.tayoca.com/webhook/tayoca/growth/operator-brief (email, interest, consent, website honeypot)",
+    "unsubscribe_contract": "POST https://n8n.tayoca.com/webhook/tayoca/growth/operator-brief/unsubscribe (non-enumerating response)"
   },
   "community": [
     {
@@ -455,7 +455,7 @@
     "trust_center": "/trust.html",
     "reviews": {
       "surface": "/reviews.html",
-      "endpoint": "https://n8n.tca-infraforge.site/webhook/tayoca/reviews/public",
+      "endpoint": "https://n8n.tayoca.com/webhook/tayoca/reviews/public",
       "verification": "Relationship-verified; explicit publication consent; unverified events fail closed"
     },
     "policy": "Public claims require a traceable source, approval, disclosure classification and a correction path (docs/evidence-policy.md).",
