@@ -1,7 +1,7 @@
 (()=> {
   const form=document.querySelector("[data-reader-pass-form]");
   if(!form)return;
-  const product=form.dataset.product, edition=form.dataset.edition;
+  const product=form.dataset.product, edition=form.dataset.edition, paperbackEnabled=form.dataset.paperbackActivation==="true";
   const msg=form.querySelector("[data-reader-pass-message]");
   const gumroadProducts=new Set([
     "ai-automation-career-playbook",
@@ -88,6 +88,23 @@
         if(!r.ok){cm.textContent=d.error==="purchase_already_claimed"?"That purchase has already claimed a Reader Pass. Use the pass you received when it was claimed.":"The Gumroad purchase could not be verified for this edition.";return;}
         if(d.attached){cm.textContent="This edition is now attached to your existing Reader Pass.";await openSession(reader_pass);}else{cm.innerHTML='Reader Pass created: <strong style="user-select:all">'+d.reader_pass+'</strong><br>Save it in your password manager. It will not be shown again.';await openSession(d.reader_pass);}
       }catch{cm.textContent="Purchase verification is temporarily unavailable.";}
+    });
+  }
+  if(paperbackEnabled){
+    const box=document.createElement("details");box.style.marginTop="1.25rem";
+    box.innerHTML='<summary><strong>Bought the paperback?</strong> Activate this edition</summary><form data-paperback-claim autocomplete="off" style="margin-top:1rem"><label>Edition activation code</label><div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.55rem"><input name="activation_code" required type="password" autocomplete="off" spellcheck="false" placeholder="Code printed in the Companion Resources box" style="min-width:18rem;padding:.8rem;border:1px solid var(--line);border-radius:9px;background:var(--surface);color:var(--ink)"></div><label style="display:block;margin-top:.8rem">Existing Reader Pass <span class="resource-note">(optional)</span></label><div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.55rem"><input name="reader_pass" type="password" autocomplete="off" spellcheck="false" placeholder="Use one pass across your Tayoca books" style="min-width:18rem;padding:.8rem;border:1px solid var(--line);border-radius:9px;background:var(--surface);color:var(--ink)"><button type="submit">Activate paperback</button></div><p data-paperback-message class="resource-note" aria-live="polite">The printed code activates this title and edition only. It is not your long-lived Reader Pass.</p></form>';
+    form.parentElement.appendChild(box);
+    const pf=box.querySelector("[data-paperback-claim]"),pm=box.querySelector("[data-paperback-message]");
+    pf.addEventListener("submit",async e=>{
+      e.preventDefault();pm.textContent="Checking paperback activation…";
+      const fd=new FormData(pf),activation_code=fd.get("activation_code"),reader_pass=String(fd.get("reader_pass")||"").trim();
+      try{
+        const r=await fetch("/api/reader-pass/paperback-claim",{method:"POST",headers:{"content-type":"application/json"},credentials:"same-origin",body:JSON.stringify({activation_code,product,edition,...(reader_pass?{reader_pass}:{})})});
+        const d=await r.json().catch(()=>({}));
+        if(!r.ok){pm.textContent=r.status===429?"Too many activation attempts. Try again later.":d.error==="paperback_activation_unavailable"?"Paperback activation is not enabled for this edition yet.":"That paperback activation code could not be verified.";return;}
+        if(d.attached){pm.textContent=d.already_attached?"This edition is already attached to your Reader Pass.":"This paperback edition is now attached to your Reader Pass.";await openSession(reader_pass);}
+        else{pm.innerHTML='Reader Pass created: <strong style="user-select:all">'+d.reader_pass+'</strong><br>Save it in your password manager. It will not be shown again.';await openSession(d.reader_pass);}
+      }catch{pm.textContent="Paperback activation is temporarily unavailable.";}
     });
   }
   entitlement().then(ok=>{if(ok)unlocked();}).catch(()=>{});
