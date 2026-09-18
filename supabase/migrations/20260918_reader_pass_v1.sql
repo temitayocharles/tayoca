@@ -45,6 +45,9 @@ create table if not exists reader_access_events (
 );
 create index if not exists reader_access_events_pass_time_idx on reader_access_events(reader_pass_id, created_at desc);
 create index if not exists reader_entitlements_product_idx on reader_entitlements(product_slug, edition, status);
+create unique index if not exists reader_entitlements_source_ref_uq
+  on reader_entitlements(source, source_reference_hash)
+  where source_reference_hash is not null;
 
 alter table reader_passes enable row level security;
 alter table reader_entitlements enable row level security;
