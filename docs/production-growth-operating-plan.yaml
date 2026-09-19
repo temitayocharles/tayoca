@@ -10,7 +10,7 @@ purpose: >
   business. Prioritize measurable commercial outcomes over additional feature construction.
 
 authority:
-  canonical_host: forgejo.tca-infraforge.site
+  canonical_host: forgejo.tayoca.com
   canonical_repository: temitayocharles/tayoca
   canonical_path: docs/production-growth-operating-plan.yaml
   secondary_mirror: github.com/temitayocharles/tayoca

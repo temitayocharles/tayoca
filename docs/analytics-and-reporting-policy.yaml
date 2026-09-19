@@ -6,7 +6,7 @@ purpose: "Prove Tayoca's critical acquisition, conversion, attribution and execu
 
 canonical_systems:
   repository:
-    host: forgejo.tca-infraforge.site
+    host: forgejo.tayoca.com
     repo: temitayocharles/tayoca
     authority: primary
   ga4:

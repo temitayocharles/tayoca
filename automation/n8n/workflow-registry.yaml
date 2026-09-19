@@ -2,7 +2,7 @@ version: 10
 last_reconciled_at: '2026-08-26T07:29:00Z'
 authority:
   repository: temitayocharles/tayoca
-  git_host: forgejo.tca-infraforge.site
+  git_host: forgejo.tayoca.com
   ci: forgejo-general
 workflows:
   - key: assessment-operator-brief-intake

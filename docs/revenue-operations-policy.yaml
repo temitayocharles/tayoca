@@ -7,7 +7,7 @@ purpose: "Make campaign-to-assessment-to-proposal-to-revenue lineage explicit, e
 
 canonical_systems:
   repository:
-    host: forgejo.tca-infraforge.site
+    host: forgejo.tayoca.com
     repo: temitayocharles/tayoca
     authority: primary
   growth_ledger:
