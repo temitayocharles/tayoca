@@ -1,0 +1,23 @@
+name: Reader Pass Security
+on:
+  pull_request:
+    paths: ["api/reader-pass/**","db/migrations/**","public/resources/books/**","test/reader-pass.test.mjs","package.json"]
+  push:
+    branches: [main]
+    paths: ["api/reader-pass/**","db/migrations/**","public/resources/books/**","test/reader-pass.test.mjs","package.json"]
+permissions:
+  contents: read
+jobs:
+  reader-pass-security:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 24 }
+      - run: npm install --ignore-scripts
+      - run: node --test test/reader-pass.test.mjs
+      - name: Verify protected bundle hashes
+        run: sha256sum -c private-reader-assets/SHA256SUMS
+      - name: Reject accidental secrets
+        run: |
+          ! grep -RIE '(service_role|READER_PASS_PEPPER|READER_SESSION_SECRET)[[:space:]]*=[[:space:]]*[^"$]' api public db --exclude='*.md'

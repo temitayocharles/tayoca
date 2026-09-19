@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-09-18",
+  "purpose": "Immutable inventory for Tayoca Reader Pass protected companion bundles.",
+  "assets": [
+    {
+      "product_slug": "ai-automation-career-playbook",
+      "edition": "1.0",
+      "file": "ai-automation-career-playbook-v1.0.zip",
+      "sha256": "380e7a4c891e6ed2bc6e0adf6fbbc9a3fb24ae71bf9b8b8236451d6d9f546c98",
+      "source": {
+        "type": "git_blob",
+        "repository": "temitayocharles/my-books",
+        "path": "ai-automation-career-playbook/customer/AI_Automation_Career_Playbook_v1.0.zip",
+        "blob_sha": "74ae2db4103327200e8f51a3054ad7497735eaac"
+      }
+    },
+    {
+      "product_slug": "ai-wrote-the-script",
+      "edition": "1.0",
+      "file": "ai-wrote-the-script-v1.0.zip",
+      "sha256": "0bd1b70a2e9bdc710be2e146274a851edb0a33bca49eb219eea2be121ccef305",
+      "source": {
+        "type": "git_blob",
+        "repository": "temitayocharles/my-books",
+        "path": "ai-to-engineer-python-bash-practice-pack/customer/AI-Wrote-the-Script_Can-You-Defend-It_v1.0_Digital-Bundle.zip",
+        "blob_sha": "b57dccf96b185e7b73334c96e89f06e3f4a93712"
+      }
+    },
+    {
+      "product_slug": "build-break-fix",
+      "edition": "2.0",
+      "file": "build-break-fix-v2.0.zip",
+      "sha256": "d5912dc5ccc4de005977b8dc5be168ed98b7cf7e3138d8ea6f0a4859693c9364",
+      "source": {
+        "type": "release_asset",
+        "repository": "temitayocharles/my-books",
+        "release_tag": "customer-bundles-2026-08-29",
+        "asset_id": 535026258
+      }
+    },
+    {
+      "product_slug": "cloud-cost-kubernetes-finops",
+      "edition": "1.0",
+      "file": "cloud-cost-kubernetes-finops-v1.0.zip",
+      "sha256": "0b8e0c1cf6110f5aeaa8b2b8b8f58d158b8fa3aca4e8c1bc8068873f5f8bff47",
+      "source": {
+        "type": "git_blob",
+        "repository": "temitayocharles/my-books",
+        "path": "aws-cost-optimization-playbook/customer/Cloud_Cost_Optimization_Kubernetes_FinOps_Playbook_v1.0.zip",
+        "blob_sha": "e01944377a11e51643ce768a298dfa645a366a1e"
+      }
+    },
+    {
+      "product_slug": "devops-incident-lab-vol-1",
+      "edition": "1.0",
+      "file": "devops-incident-lab-vol-1-companion.zip",
+      "sha256": "292cd7995914e4aa69a7882fde5212cb44e0e86b97ce4856c9a5a416a6088a5a",
+      "source": {
+        "type": "release_asset",
+        "repository": "temitayocharles/my-books",
+        "release_tag": "devops-incident-lab-v1-consolidated-2026-08-29",
+        "asset_id": 535872479
+      }
+    },
+    {
+      "product_slug": "devops-incident-runbook",
+      "edition": "1.0",
+      "file": "devops-incident-runbook-v1.0.zip",
+      "sha256": "978a44f429b2687b44475867d4a5cb4e7daa8ae4b9c8ea1a1143edd006a5708c",
+      "source": {
+        "type": "git_blob",
+        "repository": "temitayocharles/my-books",
+        "path": "devops-incident-runbook-template/customer/DevOps_Incident_Runbook_Template_v1.0.zip",
+        "blob_sha": "dfbf6a0d90cef5fff34d8939aa57131307364a71"
+      }
+    },
+    {
+      "product_slug": "gitops-field-guide",
+      "edition": "1.0",
+      "file": "gitops-field-guide-v1.0.zip",
+      "sha256": "4b5f67166a74b56cdcd4b618941a0fc3541ffc2ed70dab2a5420dceed67c0316",
+      "source": {
+        "type": "git_blob",
+        "repository": "temitayocharles/my-books",
+        "path": "gitops-field-guide/customer/GitOps_Field_Guide_v1.0.zip",
+        "blob_sha": "7d79baaa19b93c053f5baf0b0df28d4d989c6ffc"
+      }
+    },
+    {
+      "product_slug": "kubernetes-production-readiness",
+      "edition": "1.0",
+      "file": "kubernetes-production-readiness-v1.0.zip",
+      "sha256": "eeb82bb8a610f246889f44eae29971330f47c03489384a464a4097fb9daf4901",
+      "source": {
+        "type": "git_blob",
+        "repository": "temitayocharles/my-books",
+        "path": "kubernetes-production-readiness-checklist/customer/Kubernetes_Production_Readiness_Checklist_v1.0.zip",
+        "blob_sha": "da221dae34d1fc30ef1fe0179edaa4cdb4081995"
+      }
+    },
+    {
+      "product_slug": "n8n-mcp-kubernetes-teaching-pack",
+      "edition": "1.0",
+      "file": "n8n-mcp-kubernetes-teaching-pack-v1.0.zip",
+      "sha256": "0b6b0614e7f61633d6c0d71485509fbb9909694ef6ef70f7646144aeb1c0fd89",
+      "source": {
+        "type": "git_blob",
+        "repository": "temitayocharles/my-books",
+        "path": "n8n-mcp-kubernetes-teaching-pack/customer/n8n_MCP_Kubernetes_Teaching_Pack_v1.0.zip",
+        "blob_sha": "577345c3cf64d1bcfe4ed96130097c308b868171"
+      }
+    }
+  ]
+}
