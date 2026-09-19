@@ -1,4 +1,4 @@
-version: 1
+version: 2
 program: tayoca_rebrand_and_growth
 roadmap: docs/TAYOCA_REBRAND_ROADMAP.md
 program_authority: docs/TAYOCA_PROGRAM_AUTHORITY.md
@@ -6,19 +6,18 @@ canonical_platform: forgejo
 canonical_repo: temitayocharles/tayoca
 status: active_locked_execution_sequence
 locked_at_utc: "2026-09-12T15:11:43Z"
-last_reconciled_utc: "2026-09-14T18:28:00Z"
+last_reconciled_utc: "2026-09-18T19:33:00Z"
 
 current_phase: 4
 current_phase_name: search_discoverability_and_structured_data
-current_phase_status: in_progress_search_console_summary_contract_corrected_and_structured_data_audit
+current_phase_status: in_progress_structured_data_allowlists_closed_remaining_live_search_followups
 next_phase: 5
 next_phase_name: performance_and_accessibility_hardening
 
 current_checkpoint:
   phase_4_started_from_forgejo_commit: 5a6bb41e7664cd1e2993fff9bcc7d935b05ce3fc
-  phase_4_latest_canonical_forgejo_commit: bce1ad2cc98114b94b5adc3aec475c6890e0fd12
-  phase_4_latest_canonical_forgejo_commit_before_pr107: a8ae3cd61f072a2607fe8f08721b50fb164d99a8
-  phase_4_current_evidence: docs/TAYOCA_PHASE4_SEARCH_RECONCILIATION_20260914.md
+  phase_4_latest_canonical_forgejo_commit: 57f747f21d4fda69b5babba1b1ae8c82e0383e11
+  phase_4_current_evidence: docs/TAYOCA_PHASE4_CLOUD_COST_BLOGPOSTING_JSONLD_20260918.md
   phase_4_audit_scope:
     - canonical_and_indexability
     - sitemap_and_robots_governance
@@ -29,11 +28,42 @@ current_checkpoint:
     - commercial_content_clusters
     - crawlability_and_redirect_integrity
     - technical_seo_baseline
-  phase_4_completed_prs:
+  phase_4_completed_prs_core:
     - 104
     - 105
     - 106
     - 107
+    - 108
+    - 109
+    - 110
+    - 111
+    - 112
+    - 113
+    - 115
+    - 116
+    - 117
+    - 118
+    - 119
+    - 120
+    - 121
+    - 122
+    - 123
+    - 124
+    - 125
+    - 126
+    - 127
+    - 128
+    - 129
+    - 130
+    - 131
+    - 132
+    - 133
+    - 134
+    - 135
+    - 136
+    - 137
+    - 170
+    - 171
   phase_4_completed_remediations:
     - analytics_http_x_robots_tag_contradiction_removed
     - legacy_campaign_surfaces_explicitly_classified_noindex_follow_noarchive
@@ -42,245 +72,122 @@ current_checkpoint:
     - redirect_parity_preserved_between_vercel_json_and_public_redirects
     - search_console_reconciliation_checkpoint_documented
     - search_console_summary_public_data_contract_preserved
-  phase_4_postmerge_ci_after_url_consolidation:
-    sha: 4377539893fff387b376f948bd0dedb831eb47dc
-    runs:
-      - id: 2152
-        number: 33602
-        status: success
-      - id: 2153
-        number: 33603
-        status: success
-      - id: 2154
-        number: 33604
-        status: success
-      - id: 2155
-        number: 33605
-        status: success
-      - id: 2156
-        number: 33606
-        status: success
-  phase_4_postmerge_ci_after_search_console_contract_correction:
-    sha: bce1ad2cc98114b94b5adc3aec475c6890e0fd12
-    source_quality_recheck:
-      id: 2222
-      number: 33853
-      workflow: static-quality.yml
-      status: success
-    observed_push_runs:
-      - id: 2221
-        number: 33764
-        status: success
-      - id: 2220
-        number: 33763
-        status: success
-      - id: 2219
-        number: 33762
-        status: success
-      - id: 2218
-        number: 33761
-        status: success
-      - id: 2217
-        number: 33760
-        status: failure
-        interpretation: opaque_run_detail_unavailable_static_quality_rerun_succeeded
-  phase_4_search_console_recheck:
-    checked_at_utc: "2026-09-14T17:54:55Z"
-    property: https://tayoca.com/
-    permission_level: siteOwner
-    account: google_search_console_menura-meril
-    sitemap:
-      path: https://tayoca.com/sitemap.xml
-      errors: 0
-      warnings: 0
-      pending: false
-      submitted_urls_reported_by_search_console: 38
-      last_downloaded: "2026-09-12T13:28:47.307Z"
-      last_submitted: "2026-08-30T15:11:38.098Z"
-    aggregate_web_period:
-      start_date: "2026-08-12"
-      end_date: "2026-09-11"
-      clicks: 0
-      impressions: 95
-      ctr: 0
-      average_position: 19.74736842105263
-    stale_indexed_urls_observed_from_pre_fix_crawls:
-      - url: https://tayoca.com/blog
-        current_repo_policy: permanent_redirect_to_https_tayoca_com_blog_slash
-        search_console_last_crawl: "2026-09-05T14:11:23Z"
-      - url: https://tayoca.com/blog/sitesupply-construction-procurement-marketplace.html
-        current_repo_policy: permanent_redirect_to_https_tayoca_com_work_html
-        search_console_last_crawl: "2026-08-19T08:48:50Z"
-    interpretation: search_console_still_reflects_pre_pr105_crawls_and_must_be_rechecked_after_google_recrawls_current_redirects
-  phase_4_search_console_summary_contract_correction:
-    pr: 107
-    reason: preserve_existing_public_analytics_consumers_after_pr106_refresh
-    public_data_file: public/data/search-console-summary.json
-    compatibility_fields_restored:
-      - periods.7d_final
-      - periods.30d_final
-      - top_queries_30d
-      - top_pages_30d
-    refreshed_fields_retained:
-      - periods.31d_final
-      - top_queries_31d
-      - top_pages_31d
-      - legacy_or_noncanonical_urls_observed
-      - page_dimension_total_observed
-    aggregate_7d_final:
-      start_date: "2026-09-05"
-      end_date: "2026-09-11"
-      clicks: 0
-      impressions: 38
-      ctr: 0
-      average_position: 19.07894736842105
-    aggregate_30d_final:
-      start_date: "2026-08-13"
-      end_date: "2026-09-11"
-      clicks: 0
-      impressions: 95
-      ctr: 0
-      average_position: 19.74736842105263
-  phase_4_live_redirect_verification:
-    preferred_browser: scrapling_via_composio
-    scrapling_status: unavailable_in_current_composio_search_results
-    fallback_checks:
-      - tool: firecrawl_via_composio
-        source_url: https://tayoca.com/blog/sitesupply-construction-procurement-marketplace.html
-        final_url: https://tayoca.com/work.html
-        final_status: 200
-        final_title: Our Projects | Tayoca
-        final_robots: index,follow
-        result: pass_for_retired_sitesupply_article_resolution
-      - tool: browserless_via_composio
-        result: failed_invalid_api_key_401
-      - tool: firecrawl_via_composio
-        source_url: https://tayoca.com/blog
-        result: timed_out
-    consequential_external_actions_performed: false
-  phase_4_structured_data_audit_initial_findings:
-    checked_at_utc: "2026-09-14T18:10:00Z"
-    guideline_basis: google_article_structured_data_recommends_dates_but_does_not_require_properties
-    findings:
-      - page: public/blog/cloud-cost-optimization-playbook.html
-        issue: indexable_article_has_social_metadata_but_no_json_ld_blogposting_block
-        status: remediation_candidate
-      - page: public/blog/ai-automation-career-roadmap.html
-        issue: blogposting_json_ld_present_without_date_published_or_date_modified
-        status: quality_remediation_candidate
-      - page: public/blog/gitops-beyond-hello-world.html
-        issue: blogposting_json_ld_present_without_date_published_or_date_modified
-        status: quality_remediation_candidate
-      - page: public/blog/n8n-mcp-kubernetes.html
-        issue: blogposting_json_ld_present_with_date_modified_but_without_date_published
-        status: quality_remediation_candidate
-      - page: public/blog/devops-incident-response-runbook.html
-        issue: blogposting_and_faqpage_json_ld_present_with_dates
-        status: aligned
-  phase_4_open_items:
+    - structured_data_governance_added
+    - social_metadata_parity_governance_added
+    - product_detail_twitter_gap_allowlist_closed
+    - blog_detail_twitter_gap_allowlist_closed
+    - stale_structured_data_allowlist_detection_added
+    - n8n_blog_structured_data_date_gap_allowlist_entry_removed
+    - provenance_safe_blogposting_date_modified_remediation_completed
+    - cloud_cost_blogposting_jsonld_added
+    - structured_data_missing_blogposting_allowlist_closed
+  phase_4_certified_closure:
+    latest_commit: 57f747f21d4fda69b5babba1b1ae8c82e0383e11
+    latest_pr: 171
+    latest_checkpoint_doc: docs/TAYOCA_PHASE4_CLOUD_COST_BLOGPOSTING_JSONLD_20260918.md
+    validation:
+      pre_merge:
+        sha: aab5c38ae8c63360c4cf590fe74c4016b4df74d4
+        static_quality:
+          number: 37875
+          id: 4277
+          status: success
+        social_metadata_parity:
+          number: 37876
+          id: 4278
+          status: success
+        structured_data_governance:
+          number: 37877
+          id: 4279
+          status: success
+      post_merge:
+        sha: 57f747f21d4fda69b5babba1b1ae8c82e0383e11
+        static_quality:
+          number: 37885
+          id: 4287
+          status: success
+        social_metadata_parity:
+          number: 37886
+          id: 4288
+          status: success
+        structured_data_governance:
+          number: 37887
+          id: 4289
+          status: success
+  phase_4_validator_state:
+    social_metadata_validator: scripts/validate_social_metadata_parity.py
+    twitter_detail_gap_allowlist: empty
+    structured_data_validator: scripts/validate_structured_data_governance.py
+    article_jsonld_date_gap_allowlist: empty
+    article_jsonld_missing_allowlist: empty
+  phase_4_closed_items:
+    issue_138_status: closed
+    issue_138_scope:
+      - public/blog/ai-automation-career-roadmap.html
+      - public/blog/gitops-beyond-hello-world.html
+      - public/blog/kubernetes-production-checklist.html
+    cloud_cost_blogposting_scope:
+      page: public/blog/cloud-cost-optimization-playbook.html
+      action: added_blogposting_json_ld_with_date_modified
+      date_modified: "2026-09-11"
+      date_published_added: false
+      provenance:
+        evidence_safe_playbook_commit: 6aced8396809c222f3614e2ad04905cc82f93b28
+        v9_editorial_migration_commit: e2c5f9f4c888800be4cb0bf58705d111a8a96f92
+  phase_4_boundaries_preserved:
+    product_prices_changed: false
+    gumroad_checkout_urls_changed: false
+    product_jsonld_offers_changed: false
+    visible_product_page_copy_changed: false
+    canonical_urls_changed: false
+    publication_dates_added: false
+    broad_visual_redesign_restarted: false
+  phase_4_remaining_followups:
     - verify_noncanonical_blog_live_redirect_with_direct_redirect_capable_checker_after_browser_tool_availability_recovers
-    - remediate_high_confidence_json_ld_structured_data_gaps_without_fabricating_publication_history
-    - reconcile_social_metadata_images_and_twitter_fields_across_indexable_article_and_product_pages
     - recheck_search_console_after_google_recrawls_post_pr105_redirects
-  phase_4_resume_action: continue_structured_data_and_metadata_audit_then_remediate_high_confidence_defects_without_keyword_spam_or_fabricated_claims
+    - reconcile_aws_product_cover_image_consistency_only_if_verified_needed
+    - prepare_phase_4_exit_checkpoint_if_no_new_governance_defects_are_found
+  phase_4_resume_action: continue_live_redirect_search_console_and_verified_image_consistency_followups_then_prepare_phase_4_exit_checkpoint
 
-  phase_3_exit_gate: complete_certified
-  phase_3_canonical_forgejo_commit: 5a6bb41e7664cd1e2993fff9bcc7d935b05ce3fc
-  phase_3_audit: docs/TAYOCA_PHASE3_CONTENT_ARCHITECTURE_AUDIT_20260913.md
-  phase_3_remediation_prs:
-    - 96
-    - 97
-    - 98
-    - 101
-    - 102
-  phase_3_completed_remediations:
-    - operator_brief_archive_language_authority
-    - public_offer_taxonomy_products_vs_publications_vs_diagnostics_vs_services
-    - work_portfolio_ownership_and_relationship_authority
-    - withdrawn_aws_evidence_route_taxonomy_and_editorial_destinations
-    - insights_compatibility_alias_to_canonical_blog_library_locked
-    - insights_browser_identity_assertion_aligned_to_authored_editorial_h1
-    - withdrawn_evidence_browser_assertions_aligned_to_rendered_runtime
-  phase_3_browser_certification:
-    preferred_browser: scrapling_via_composio
-    status: success
-    live_route: /blog/how-we-saved-216k-aws.html
-    verified:
-      - noindex_follow_preserved
-      - evidence_review_title_preserved
-      - withdrawn_status_preserved
-      - public_proof_boundary_preserved
-      - rendered_company_footer_verified
-      - rendered_insights_destination_verified
-      - operator_brief_destination_verified
-    consequential_external_actions_performed: false
-  phase_3_browser_regression:
-    workflow: .forgejo/workflows/content-architecture.yml
-    branch_sha: 0db2001205b00de6fac308fc87bac87cb85cd1cd
-    explicit_run:
-      id: 2079
-      number: 33408
-      status: success
-  phase_3_postmerge_ci:
-    sha: 5a6bb41e7664cd1e2993fff9bcc7d935b05ce3fc
-    runs:
-      - id: 2080
-        number: 33461
-        status: success
-      - id: 2081
-        number: 33462
-        status: success
-      - id: 2082
-        number: 33463
-        status: success
-      - id: 2083
-        number: 33464
-        status: success
-      - id: 2084
-        number: 33465
-        status: success
-  phase_3_verified_exit_conditions:
-    unfamiliar_visitor_can_distinguish_services_products_publications_projects_and_community_work: pass
-    major_commercial_pages_answer_problem_approach_evidence_engagement_and_next_action: pass
-    content_taxonomy_consistent_across_navigation_copy_and_data_models: pass
-    unsupported_claims_remain_blocked_by_policy_and_validation: pass
-
-  phase_2_canonical_forgejo_commit: be6ceeec7534d5fdb7f394b87094aef3d53bcfec
-  phase_2_fix_pr: 92
-  phase_2_audit: docs/TAYOCA_PHASE2_CONVERSION_AUDIT_20260913.md
-  phase_2_exit_gate: complete_certified
-  phase_1_certification: docs/TAYOCA_V9_PRODUCTION_CERTIFICATION_20260913.md
-
-phases:
-  1:
+phase_history:
+  phase_1:
     name: production_certification_and_cleanup
     status: complete_certified
     certification: docs/TAYOCA_V9_PRODUCTION_CERTIFICATION_20260913.md
-  2:
+  phase_2:
     name: conversion_and_customer_journey
     status: complete_certified
     certification: docs/TAYOCA_PHASE2_CONVERSION_AUDIT_20260913.md
-  3:
+    canonical_forgejo_commit: be6ceeec7534d5fdb7f394b87094aef3d53bcfec
+    fix_pr: 92
+  phase_3:
     name: content_architecture_and_authority
     status: complete_certified
     certification: docs/TAYOCA_PHASE3_CONTENT_ARCHITECTURE_AUDIT_20260913.md
-  4:
+    canonical_forgejo_commit: 5a6bb41e7664cd1e2993fff9bcc7d935b05ce3fc
+    remediation_prs:
+      - 96
+      - 97
+      - 98
+      - 101
+      - 102
+  phase_4:
     name: search_discoverability_and_structured_data
     status: in_progress
-  5:
+  phase_5:
     name: performance_and_accessibility_hardening
     status: next
-  6:
+  phase_6:
     name: measurement_and_growth_os
     status: planned_locked
-  7:
+  phase_7:
     name: trust_evidence_and_commercial_readiness
     status: planned_locked
-  8:
+  phase_8:
     name: continuous_design_governance
     status: planned_locked
 
-resume_action: continue_phase_4_structured_data_metadata_and_search_console_reconciliation
+resume_action: continue_phase_4_live_redirect_search_console_image_consistency_and_exit_checkpoint
 
 resume_triggers:
   - continue_tayoca_rebrand
@@ -290,3 +197,4 @@ resume_triggers:
 browser_preference: scrapling_via_composio_first_class_then_capability_fallback
 continuity_rule: repository_documentation_not_chat_memory_is_authoritative
 change_control: roadmap_and_state_must_be_updated_in_canonical_forgejo_for_material_phase_changes
+visual_baseline: v9_visual_system_accepted_do_not_restart_broad_redesign_without_specific_defect_or_approved_requirement
