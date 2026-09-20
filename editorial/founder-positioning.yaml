@@ -1,0 +1,20 @@
+schema_version: 1
+effective_date: 2026-09-20
+status: ACTIVE
+subject: "Temitayo Charles"
+public_positioning:
+  primary: "AI-native Platform / DevOps / SRE Engineer"
+  adjacent_market_lane: "Forward Deployed AI & Platform Engineering"
+  public_summary: >-
+    Temitayo Charles builds and operates systems across cloud infrastructure,
+    Kubernetes, GitOps, CI/CD, infrastructure as code, reliability, automation,
+    APIs, and AI-enabled platforms. His work is strongest where multiple systems
+    have to be integrated, deployed, verified, and operated as one production outcome.
+rules:
+  - "Do not rewrite historical employment titles to Forward Deployed Engineer."
+  - "Use FDE as a current market-positioning and target-role category supported by demonstrated work."
+  - "Keep EKTech Software Solutions separate from Tayoca company ownership and history."
+  - "Do not publish unsupported customer, revenue, credential, or impact claims."
+career_authority:
+  notion: "Career Master Profile & Positioning Registry"
+  source_control: "temitayocharles/ai-workspace-control:career/CANONICAL_PROFILE.yaml"
