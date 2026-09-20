@@ -232,3 +232,65 @@ Strongest current research candidates, still no outreach authorization:
 8. Caravaggio's IDA, only after checking IDA corporate/local web representation
 
 The candidate set is intentionally smaller than the municipal directory. Businesses with confirmed dedicated websites are excluded even when local directories point to Facebook.
+
+
+## Third verification pass
+
+### Main St. Cafe
+
+Reclassified from "needs verification" to excluded from the website-gap candidate set.
+
+Current directory and review surfaces consistently associate the business with `www.mainstcafe.com`. Even if the domain's current maintenance quality requires a later UX review, the existence of a dedicated domain means Tayoca should not approach the business on the premise that it lacks a website.
+
+### Limondes Beauty World
+
+Reclassified to strong candidate.
+
+Current evidence still resolves the operating beauty-supply business at 116 Main St W and current hours, but the public search surface remains directory-led. No dedicated official domain surfaced in the exact-name verification pass.
+
+Do not claim the business has never had a website. The outreach premise, if later approved, should be that current public discovery appears dependent on directories/social rather than a clearly maintained dedicated domain.
+
+### Caravaggio IDA Drugs
+
+Removed from the website-gap candidate set.
+
+The Guardian / I.D.A. / Remedy'sRx pharmacy network publicly lists CARAVAGGIO IDA DRUGS at 128 Main St E, Shelburne. That corporate pharmacy presence is a legitimate web representation even though the local BIA entry points to Facebook. A new standalone site should not be proposed merely because the BIA directory is incomplete.
+
+Evidence:
+- https://www.guardian-ida-remedysrx.ca/en/pharmacies
+- https://shelburnebia.ca/business-directory/
+
+### Ack-ee Bubble Tea Shop
+
+Research status: candidate requiring one more verification pass.
+
+The Shelburne BIA currently lists the business at 117 Owen Sound Street and identifies its website field as Facebook. A dedicated official domain did not surface in the first exact-name pass.
+
+Before promotion to the strong-candidate set, verify current operating status and whether ordering is handled through a dedicated ordering/domain platform that adequately serves as the business's web front door.
+
+Evidence:
+- https://shelburnebia.ca/business-directory/
+
+## Refined shortlist
+
+Strong research candidates, still with no outreach authorization:
+
+1. Blavish Hair & Beauty Supply
+2. African Caribbean Grocery
+3. The Dufferin Public House / The Duffy
+4. School Days Cafe
+5. Spaw-Fect Grooming
+6. Limondes Beauty World
+
+Conditional:
+- Ack-ee Bubble Tea Shop, pending operating/order-channel verification
+
+Excluded after dedicated/corporate web presence was confirmed:
+- Shelburne Family Fitness
+- Finiti Seafood Depot
+- The Ten of Tarts
+- The Barber Shop
+- Main St. Cafe
+- Caravaggio IDA Drugs
+
+This research remains an evidence filter, not a prospecting authorization.
