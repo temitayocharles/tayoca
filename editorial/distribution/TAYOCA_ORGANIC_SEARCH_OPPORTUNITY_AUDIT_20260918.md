@@ -186,3 +186,19 @@ Possible audit questions:
 ## Publication boundary
 
 Any actual title, description, structured-data, or public page copy change remains a separate editorial and distribution decision.
+
+
+## Query-level follow-up, 2026-09-20
+
+Search Console final web data for 2026-08-18 through 2026-09-16 returned only four query rows after Google's privacy/aggregation thresholds:
+
+- `tayoca`: 14 impressions, 0 clicks, average position 3.57
+- `sivanta`: 1 impression, 0 clicks, average position 6
+- `tayoyoca`: 2 impressions, 0 clicks, average position 6
+- `yotascale`: 4 impressions, 0 clicks, average position 75.75
+
+These query rows total fewer impressions than the property total of 126. Do not treat the visible query list as exhaustive. Search Console suppresses some low-volume query detail, and query/page rows can also repeat the same query across multiple URLs.
+
+The visible branded query `tayoca` is already appearing near the top of results, but without clicks in this window. Query/page data shows the brand query distributed across the homepage, About, Products, Services, Results, Sivanta and one product page. This supports continued entity consolidation and clear canonical identity rather than manufacturing generic keyword copy.
+
+The `yotascale` row is a weak, low-position incidental match and should not drive content changes.
