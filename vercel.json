@@ -21,8 +21,7 @@
     {"source": "/landing-devops-pack.html", "destination": "/products/build-break-fix-devops-lab-pack.html", "permanent": true},
     {"source": "/landing.html", "destination": "/products/aws-cost-optimization-playbook.html", "permanent": true},
     {"source": "/landing_v2.html", "destination": "/products/aws-cost-optimization-playbook.html", "permanent": true},
-    {"source": "/l/aws-finops-playbook", "destination": "/products/aws-cost-optimization-playbook.html", "permanent": true},
-    {"source": "/l/aws-finops-playbook/", "destination": "/products/aws-cost-optimization-playbook.html", "permanent": true}
+    {"source": "/l/aws-finops-playbook", "destination": "/products/aws-cost-optimization-playbook.html", "permanent": true}
   ],
   "headers": [
     {

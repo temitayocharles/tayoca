@@ -16,7 +16,6 @@
 
 # Legacy campaign aliases
 /l/aws-finops-playbook    /products/aws-cost-optimization-playbook.html    301
-/l/aws-finops-playbook/    /products/aws-cost-optimization-playbook.html    301
 /l/platform-engineering-playbook    /l/platform-engineering-playbook/index.html    301
 /l/finops-ops-playbook    /l/finops-ops-playbook/index.html    301
 /l/data-pipelines-playbook    /l/data-pipelines-playbook/index.html    301
