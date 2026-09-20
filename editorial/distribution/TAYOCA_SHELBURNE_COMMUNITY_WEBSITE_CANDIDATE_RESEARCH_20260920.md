@@ -318,3 +318,29 @@ Current safe research-only focus:
 3. Ack-ee Bubble Tea Shop, verify current operating/order-channel status independently.
 
 Already-contacted or held records must not be recycled into a fresh prospecting wave.
+
+
+## Follow-up verification, 2026-09-20
+
+### Finiti Seafood Depot
+
+Current first-party Town of Shelburne directory data lists a dedicated website, `https://www.finitiseafooddepot.com/`, for Finiti Seafood Depot at 112 Main St W, while the Shelburne BIA still exposes the older `finiti-seafood-depot.business.site` destination. Current third-party business data also points to `https://finitiseafooddepot.com/`.
+
+**Decision:** exclude Finiti from the first-website / no-owned-web-presence cohort. The web surfaces may need normalization or redesign later, but the evidence does not support a no-website outreach premise.
+
+### The Dufferin Public House
+
+Fresh current sources still disagree:
+
+- Town of Shelburne and Shelburne BIA route the business to Facebook.
+- A current local dining guide routes the business to Facebook.
+- Some older or third-party references still mention `theduffy.ca`.
+- Direct verification did not establish a dependable current owned-domain destination.
+
+**Decision:** retain `verify_owned_site_before_outreach`. Do not contact using a no-website premise.
+
+### Main Street Cafe
+
+Current Tripadvisor data confirms the active Shelburne cafe at 149 Main St W and exposes a generic Website action, but the destination was not independently resolved to an owned domain in this pass.
+
+**Decision:** retain `verify_owned_site_before_outreach`. Do not contact using a no-website premise until the Website destination is resolved.
