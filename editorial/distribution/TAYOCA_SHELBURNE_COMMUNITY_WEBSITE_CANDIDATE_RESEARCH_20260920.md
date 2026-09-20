@@ -294,3 +294,27 @@ Excluded after dedicated/corporate web presence was confirmed:
 - Caravaggio IDA Drugs
 
 This research remains an evidence filter, not a prospecting authorization.
+
+
+## Growth OS reconciliation, 2026-09-20
+
+The Growth OS Community Business Cohort is the canonical operating state for business-level outreach. Public-web research is subordinate to that record. This reconciliation corrects the research-only shortlist where prior operating history already exists.
+
+- African Caribbean Grocery Store: **not a prospect**. Tayoca already designed and handed over the site. Status is `delivered_maintenance_only`. No acquisition outreach or candidate-site treatment.
+- Blavish Hair & Beauty Supply: **already contacted**. Permission-first Instagram DM was sent 2026-08-30. The certified preview remains unrevealed. No duplicate contact or follow-up until a positive reply.
+- The Dufferin Public House: **hold**. Current status is `verify_owned_site_before_outreach`. Do not use a no-website premise until theduffy.ca / owned-site status is conclusively reconciled.
+- School Days Cafe: **research only**. Status remains `verify_current_activity`. The Town listing alone is insufficient to justify outreach.
+- Spaw-Fect Grooming: **already contacted**. A concept-first Facebook Messenger message was sent 2026-09-03. Only the automated acknowledgement has been observed. No duplicate initial message or immediate follow-up.
+- Ack-ee Bubble Tea Shop: **research only**. Status remains `verify_current_activity`. Reconfirm the business is currently operating before any outreach.
+- Limondes Beauty World: remains a research candidate. It is present in Digital Presence Snapshots and is not currently recorded as contacted in the Community Business Cohort.
+
+### Actionable interpretation
+
+No business in this document should be contacted merely because this research file says "strong candidate." The canonical Growth OS status, prior-contact history, and approval gate must be checked immediately before any external action.
+
+Current safe research-only focus:
+1. Limondes Beauty World, deepen current product/social/contact verification.
+2. School Days Cafe, verify current operating status independently.
+3. Ack-ee Bubble Tea Shop, verify current operating/order-channel status independently.
+
+Already-contacted or held records must not be recycled into a fresh prospecting wave.
