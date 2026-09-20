@@ -121,9 +121,12 @@ def main() -> int:
     results: list[dict[str, object]] = []
     failed = False
 
+    checked_routes: set[str] = set()
+
     for path in files:
         relative = path.relative_to(PUBLIC_ROOT).as_posix()
         route = "/" + relative
+        checked_routes.add(route)
         url = args.base_url + "/".join(quote(part) for part in relative.split("/"))
         redirect = redirects.get(route)
 
@@ -194,6 +197,55 @@ def main() -> int:
         failed = failed or not matches
         state = "MATCH" if matches else "DRIFT"
         print(f"{state} {relative} [{result['mode']}]")
+
+    # Validate explicit redirect aliases that are not backed by a tracked HTML file.
+    # This catches routing defects such as /blog -> /blog/ loops that byte-parity
+    # checks cannot see because there is no public/blog.html file at that route.
+    for route, redirect in sorted(redirects.items()):
+        if route in checked_routes:
+            continue
+        if any(token in route for token in ("*", ":", "(", ")")):
+            continue
+        expected_destination = str(redirect["destination"])
+        url = urljoin(args.base_url, route.lstrip("/"))
+        try:
+            status, location = fetch_redirect(
+                url, attempts=args.attempts, timeout=args.timeout
+            )
+            deployed_destination = normalized_location(args.base_url, location)
+            expected_permanent = bool(redirect.get("permanent"))
+            status_ok = (
+                status in PERMANENT_REDIRECT_CODES
+                if expected_permanent
+                else 300 <= status < 400
+            )
+            matches = status_ok and deployed_destination == expected_destination
+            result = {
+                "path": route,
+                "url": url,
+                "mode": "redirect_alias_contract",
+                "http_status": status,
+                "expected_destination": expected_destination,
+                "deployed_location": location,
+                "deployed_destination": deployed_destination,
+                "permanent": expected_permanent,
+                "match": matches,
+            }
+        except Exception as exc:
+            result = {
+                "path": route,
+                "url": url,
+                "mode": "redirect_alias_contract",
+                "expected_destination": expected_destination,
+                "match": False,
+                "error": str(exc),
+            }
+            matches = False
+
+        results.append(result)
+        failed = failed or not matches
+        state = "MATCH" if matches else "DRIFT"
+        print(f"{state} {route} [{result['mode']}]")
 
     summary = {
         "base_url": args.base_url,
