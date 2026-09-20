@@ -144,3 +144,91 @@ For each, verify:
 - whether a new site would solve a real discoverability/customer-action problem
 
 No candidate should be contacted solely because a directory entry says "Facebook."
+
+
+## Second verification pass
+
+### 6. School Days Cafe
+
+Address: 420 Owen Sound St, Shelburne, ON L9V 2X1
+
+Public evidence:
+- Town of Shelburne food directory directs visitors to the business's Facebook page for more details.
+- Current local business search resolves the operating restaurant/coffee shop at the same address and phone number.
+- No dedicated current official domain surfaced in the exact-name search.
+
+Research status: strong candidate
+
+Why it may fit:
+A dedicated site could explain walk-in service, school lunch delivery, current ordering expectations, hours, contact information and service area without making parents rely on Facebook or third-party listings.
+
+Evidence:
+- https://www.shelburne.ca/doing-business-here/business-directory/food-directory/
+
+### 7. Caravaggio's IDA
+
+Address: 128 Main St E, Shelburne, ON L9V 3K5
+
+Public evidence:
+- Shelburne BIA records the business website field as Facebook.
+- Current local search confirms the host pharmacy location through a FedEx OnSite listing.
+- A dedicated current independent store domain did not surface in this exact-name pass.
+
+Research status: candidate, verify whether the pharmacy is represented through an IDA corporate location page before outreach
+
+Why it may fit only if no maintained local page exists:
+A dedicated or locally controlled page could clarify pharmacy hours, services, contact, refill/inquiry paths and local service information. Corporate/franchise web representation must be checked first to avoid proposing a redundant site.
+
+Evidence:
+- https://shelburnebia.ca/business-directory/
+
+### 8. Spaw-Fect Grooming
+
+Address: 412 William St, Shelburne, ON L9V 2W9
+
+Public evidence:
+- Town of Shelburne veterinary/groomer directory directs visitors to Facebook for details.
+- Current local business search resolves the groomer at the same address and phone number.
+- Town material identifies the business as a long-running local operation.
+- No dedicated current official domain surfaced in the exact-name search.
+
+Research status: strong candidate
+
+Why it may fit:
+A dedicated site could provide grooming services, booking/contact instructions, policies, hours and location in a stable channel independent of social feeds.
+
+Evidence:
+- https://www.shelburne.ca/doing-business-here/business-directory/veterinary-groomer-and-pets-directory/
+
+## Additional exclusions after second verification
+
+### The Ten of Tarts
+
+Excluded because a maintained dedicated website is publicly available:
+
+https://thetenoftarts.ca/
+
+The municipal directory's Facebook-oriented entry is stale or incomplete for website-gap qualification.
+
+### The Barber Shop
+
+Excluded because a dedicated official site is publicly available:
+
+https://www.thebarbershopinshelburne.com/
+
+Again, the municipal directory's reference to Facebook does not establish a website gap.
+
+## Updated research priority
+
+Strongest current research candidates, still no outreach authorization:
+
+1. Blavish Hair & Beauty Supply
+2. African Caribbean Grocery
+3. The Dufferin Public House / The Duffy
+4. School Days Cafe
+5. Spaw-Fect Grooming
+6. Limondes Beauty World, after one additional current-state verification
+7. Main St. Cafe, after confirming whether a maintained official domain exists
+8. Caravaggio's IDA, only after checking IDA corporate/local web representation
+
+The candidate set is intentionally smaller than the municipal directory. Businesses with confirmed dedicated websites are excluded even when local directories point to Facebook.
