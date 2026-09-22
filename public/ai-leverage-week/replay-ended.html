@@ -25,4 +25,13 @@
 </div></div></section></main>
 <footer class="site-footer"><div class="footer-inner"><div class="footer-brand-col"><div class="footer-brand">TAYOCA</div><p>Charles of Tayoca · <a href="https://tayoca.com">tayoca.com</a></p></div><div class="footer-links"><strong>Connect</strong><a href="mailto:support@tayoca.com">support@tayoca.com</a><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a></div></div></footer>
 <script defer src="/tayoca-site.js"></script><script defer src="/tayoca-v9.js"></script>
+<script>
+window.addEventListener('load', function () {
+  try {
+    if (window.TayocaAnalytics && typeof window.TayocaAnalytics.emit === 'function') {
+      window.TayocaAnalytics.emit('replay_expired', { program: 'ai_leverage_week' });
+    }
+  } catch (error) {}
+}, { once: true });
+</script>
 </body></html>
