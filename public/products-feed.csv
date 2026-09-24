@@ -6,4 +6,4 @@ n8n MCP Kubernetes Teaching Pack,39,"A 21-page teaching guide with five n8n work
 AWS Cost Optimization Playbook,29,A 39-page BASELINE → ALLOCATE → OPTIMIZE playbook with 12 validated Terraform patterns and five working FinOps templates.,https://tayoca.gumroad.com/l/aws-cost-optimization
 DevOps Incident Runbook Template,19,"A configurable 24-page incident-runbook framework for severity, command, communication, recovery, and learning, with Notion-ready assets.",https://tayoca.gumroad.com/l/devops-incident-runbook
 Kubernetes Production Readiness Checklist,19,"150 evidence-based Kubernetes readiness controls in a 26-page guide, with canonical dataset, scored Excel tracker, and journey map.",https://tayoca.gumroad.com/l/k8s-production-checklist
-GitOps Field Guide,29,"A 23-page guide to Argo CD, Flux, Helm, External Secrets, and progressive delivery with a render-validated reference repository.",https://tayoca.gumroad.com/l/gitops-field-guide
+GitOps Field Guide,29,"A 24-page guide to Argo CD, Flux, Helm, External Secrets, and progressive delivery with a render-validated reference repository.",https://tayoca.gumroad.com/l/gitops-field-guide
