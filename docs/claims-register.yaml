@@ -230,6 +230,31 @@ claims:
     approval_record: "Stage 4 trust remediation commit 251cef89e30ae55717f5511aa833047e219f1942."
     gate_blocker: false
 
+  - claim_id: TEMITAYO_ENGINEERING_EVIDENCE_PORTFOLIO
+    claim_type: capability
+    normalized_claim: "Temitayo Charles has an evidence-bounded engineering portfolio spanning Platform/DevOps/SRE, GitOps, automation, AI/RAG/agents and forward-deployed delivery patterns."
+    surfaces:
+      - intended: public/temitayo-engineering.html
+      - draft: docs/drafts/temitayo-engineering-evidence.md
+    source_class: first_party_operational
+    evidence_refs:
+      - "https://github.com/temitayocharles/temitayocharles"
+      - "https://github.com/temitayocharles/tayoca-control-center"
+      - "https://github.com/temitayocharles/sivanta-web-context-fixtures"
+      - "internal:temitayocharles/ai-workspace-control/career/CANONICAL_PROFILE.yaml"
+    subject_owner: "Temitayo Charles Akinniranye"
+    evidence_owner: "Tayoca / career control plane"
+    disclosure_class: redacted_public
+    approval_state: pending
+    public_surface_status: draft_nonpublic
+    limitations:
+      - "FDE is a market-positioning lane, not a historical employment title."
+      - "Do not infer customer counts, SOW ownership, gross-margin responsibility, strategic-account ownership or unsupported commercial outcomes."
+      - "Private repositories and sensitive operational details remain nonpublishable by default."
+    required_action: "Human review must confirm each public capability statement is supported by publishable evidence and then record explicit publication approval before the draft moves under public/ or is linked from a public page."
+    correction_path: "Keep the portfolio nonpublic until approved; remove or narrow any statement that cannot be supported by publishable evidence."
+    gate_blocker: false
+
 gate:
   required: "Every material public claim is traceable and approved within scope, or removed/withdrawn/qualified from public surfaces; blocked legacy claims are prevented from silently returning."
   passed: true
