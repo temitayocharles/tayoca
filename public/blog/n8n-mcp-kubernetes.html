@@ -154,7 +154,7 @@
                 n8n + MCP on Kubernetes: Production-Grade Self-Hosted AI Agent Infrastructure
             </h1>
             <p class="text-lg text-[var(--fg-muted)] mb-8">
-                Complete guide to deploying n8n with Model Context Protocol servers on Kubernetes using Helm, ArgoCD GitOps, ingress, persistence, and OAuth — the exact stack running <strong>n8n.tca-infraforge.site</strong>.
+                Complete guide to deploying n8n with Model Context Protocol servers on Kubernetes using Helm, ArgoCD GitOps, ingress, persistence, and OAuth — the exact stack running <strong>n8n.tayoca.com</strong>.
             </p>
             <div class="flex flex-wrap justify-center gap-4 text-sm text-gray-500">
                 <span>By <strong class="text-white">Temitayo Charles Akinniranye</strong></span>
@@ -175,7 +175,7 @@
 
                 <h2>Architecture Overview</h2>
                 <pre><code>┌─────────────────────────────────────────────────────────────────┐
-│                     n8n.tca-infraforge.site                      │
+│                     n8n.tayoca.com                      │
 │  ┌──────────────────┐  ┌──────────────────┐  ┌────────────────┐  │
 │  │   n8n Main       │  │   n8n Worker     │  │  MCP Servers   │  │
 │  │   (Deployment)   │  │   (Deployment)   │  │  (Deployments) │  │
@@ -289,13 +289,13 @@ n8n:
   replicaCount: 1
   env:
     - name: N8N_HOST
-      value: "n8n.tca-infraforge.site"
+      value: "n8n.tayoca.com"
     - name: N8N_PROTOCOL
       value: "https"
     - name: N8N_PORT
       value: "5678"
     - name: WEBHOOK_URL
-      value: "https://n8n.tca-infraforge.site"
+      value: "https://n8n.tayoca.com"
     - name: DB_TYPE
       value: "postgresdb"
     - name: DB_POSTGRESDB_HOST
@@ -356,14 +356,14 @@ n8n:
       nginx.ingress.kubernetes.io/proxy-read-timeout: "300"
       nginx.ingress.kubernetes.io/proxy-send-timeout: "300"
     hosts:
-      - host: n8n.tca-infraforge.site
+      - host: n8n.tayoca.com
         paths:
           - path: /
             pathType: Prefix
     tls:
       - secretName: n8n-tls
         hosts:
-          - n8n.tca-infraforge.site
+          - n8n.tayoca.com
 
   persistence:
     enabled: true
@@ -598,7 +598,7 @@ spec:
             summary: "n8n worker pod down"</code></pre>
 
                 <h2>Step 9: OAuth Configuration (GitHub, GitLab, Google, etc.)</h2>
-                <p>Create OAuth apps in each provider with callback URL: <code>https://n8n.tca-infraforge.site/oauth2/callback</code></p>
+                <p>Create OAuth apps in each provider with callback URL: <code>https://n8n.tayoca.com/oauth2/callback</code></p>
                 <p>Store credentials in Vault → External Secrets → n8n env vars (as shown in values-n8n.yaml).</p>
 
                 <h2>Common Operational Tasks</h2>
