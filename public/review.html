@@ -53,7 +53,7 @@
  if(product) document.getElementById('productName').textContent=product;
  const button=document.getElementById('continueButton');
  if(!token||!saleId){button.style.display='none';document.getElementById('errorBox').style.display='block';return;}
- const target=new URL('https://n8n.tca-infraforge.site/form/tayoca-review');
+ const target=new URL('https://n8n.tayoca.com/form/tayoca-review');
  target.searchParams.set('review_token',token);
  target.searchParams.set('sale_id',saleId);
  if(product) target.searchParams.set('product_name',product);

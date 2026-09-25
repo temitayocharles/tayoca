@@ -49,7 +49,7 @@
 <div class="footer-legal"><span>© <span data-current-year>2026</span> Tayoca · Ontario, Canada</span><a href="/trust.html">Evidence &amp; disclosure policy</a></div></footer>
 <script>
 (function(){
- const endpoint='https://n8n.tca-infraforge.site/webhook/tayoca/reviews/public';
+ const endpoint='https://n8n.tayoca.com/webhook/tayoca/reviews/public';
  const esc=s=>String(s??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
  const fmtDate=v=>{const d=new Date(v);return Number.isNaN(d.getTime())?'':d.toLocaleDateString('en-CA',{year:'numeric',month:'long',day:'numeric'});};
  fetch(endpoint,{headers:{Accept:'application/json'}}).then(r=>{if(!r.ok)throw new Error('Review feed unavailable');return r.json();}).then(data=>{
