@@ -6,6 +6,10 @@
   "trailingSlash": false,
   "rewrites": [
     {
+      "source": "/aiweek",
+      "destination": "/aiweek.html"
+    },
+    {
       "source": "/access/book",
       "destination": "https://n8n.tayoca.com/webhook/tayoca/books/access"
     },
@@ -16,13 +20,8 @@
   ],
   "redirects": [
     {
-      "source": "/aiweek",
-      "destination": "https://docs.google.com/forms/d/e/1FAIpQLSequzzyFMfAF0wmtDQa_Qf3L3_AdB8JZR7461IMGj5M2guSIA/viewform",
-      "permanent": false
-    },
-    {
       "source": "/aiweek-meta",
-      "destination": "https://docs.google.com/forms/d/e/1FAIpQLSequzzyFMfAF0wmtDQa_Qf3L3_AdB8JZR7461IMGj5M2guSIA/viewform",
+      "destination": "/aiweek?utm_source=meta&utm_medium=organic_social&utm_campaign=ai_leverage_week_sep28",
       "permanent": false
     },
     {
