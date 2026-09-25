@@ -10,6 +10,10 @@
       "destination": "/aiweek.html"
     },
     {
+      "source": "/aiweek-meta",
+      "destination": "/aiweek-meta.html"
+    },
+    {
       "source": "/access/book",
       "destination": "https://n8n.tayoca.com/webhook/tayoca/books/access"
     },
@@ -19,11 +23,6 @@
     }
   ],
   "redirects": [
-    {
-      "source": "/aiweek-meta",
-      "destination": "/aiweek?utm_source=meta&utm_medium=organic_social&utm_campaign=ai_leverage_week_sep28",
-      "permanent": false
-    },
     {
       "source": "/blog/kubernetes-production-checklist.html",
       "destination": "/blog/kubernetes-production-readiness-checklist-for-2026.html",
