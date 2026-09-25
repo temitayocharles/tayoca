@@ -8,6 +8,8 @@ Machine-readable checkpoint: `docs/TAYOCA_REBRAND_STATE.yaml`
 
 Cross-program authority: `docs/TAYOCA_PROGRAM_AUTHORITY.md`
 
+Forgejo operations note: `docs/TAYOCA_FORGEJO_OPERATIONS_NOTE_20260920.md`
+
 Latest structured-data closure note: `docs/TAYOCA_PHASE4_CLOUD_COST_BLOGPOSTING_JSONLD_20260918.md`
 
 Latest Phase 4 social metadata checkpoint note: `docs/TAYOCA_PHASE4_SOCIAL_METADATA_ALLOWLIST_CLOSURE_20260916.md`
@@ -35,7 +37,9 @@ Current locked sequence:
 
 Current Phase 4 implementation baseline:
 
-- Latest certified canonical Forgejo commit: `57f747f21d4fda69b5babba1b1ae8c82e0383e11`
+- Latest certified canonical Forgejo commit: `0e47ee0adff48d464ed9a4b87288b33f94576a2d`
+- Current `main` includes the later founder FDE positioning contract commit and passed explicit gates on `0e47ee0adff48d464ed9a4b87288b33f94576a2d`: Tayoca static quality #40513 / id 5291, Social metadata parity #40514 / id 5292, and Structured data governance #40516 / id 5293.
+- Latest completed Phase 4 structured-data closure commit: `57f747f21d4fda69b5babba1b1ae8c82e0383e11`.
 - Completed Phase 4 search, metadata and structured-data PRs through this checkpoint include #104 through #137, plus #170 and #171 for the final cloud-cost BlogPosting JSON-LD remediation carrier and content merge.
 - PR #109 added structured-data governance and passed the replacement explicit post-merge workflow run #33968 / id 2289 on `main`.
 - PR #111 added social metadata parity governance and passed explicit post-merge runs on `main`: Social metadata parity #34163 / id 2364, Tayoca static quality #34164 / id 2365, and Structured data governance #34165 / id 2366.
@@ -56,5 +60,13 @@ Current Phase 4 implementation baseline:
 - Product prices, Gumroad checkout URLs, Product JSON-LD offers, visible product page copy, canonical URLs, and publication dates were not intentionally changed during the Twitter/X detail metadata closure lane or structured-data allowlist closure lane.
 - The AWS product cover-image consistency question remains separate from the product Twitter/X metadata lane and should be handled only as a verified follow-up if needed.
 - Remaining Phase 4 follow-ups are no longer structured-data allowlist remediation. Continue with live redirect/search-console rechecks, remaining verified image consistency questions, then prepare the Phase 4 exit checkpoint if no new governance defects are found.
+
+Forgejo execution guidance:
+
+- Use feature branches for repository writes.
+- Use SHA-guarded Forgejo file writes.
+- Merge by normal PR flow after validation.
+- Do not force-merge stale PR metadata. If a clean, green PR shows stale `mergeable=false`, close and reopen that PR on the same feature branch.
+- Canonical SSH for local git operations is Cloudflare Access SSH via `git-ssh.tayoca.com`; raw TCP/22 behavior alone is not proof of a Forgejo outage.
 
 The v9 visual system is the accepted baseline. Do not restart broad visual redesign unless a specific defect, verified regression, or explicitly approved new requirement calls for it.
