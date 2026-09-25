@@ -1,9 +1,7 @@
-/blog/kubernetes-production-checklist.html    /blog/kubernetes-production-readiness-checklist-for-2026.html    301
-/blog.html    /blog    301
-/writing.html    /blog    301
-/insights.html    /blog    301
+/blog.html    /blog/    301
+/writing.html    /blog/    301
+/insights.html    /blog/    301
 /assessment    /assessments.html    301
-/blog/sitesupply-construction-procurement-marketplace.html    /work.html    301
 
 # Superseded product landing pages
 /landing_ai-automation-career-page.html    /products/ai-automation-career-playbook.html    301
@@ -16,9 +14,11 @@
 
 # Legacy campaign aliases
 /l/aws-finops-playbook    /products/aws-cost-optimization-playbook.html    301
+/l/aws-finops-playbook/    /products/aws-cost-optimization-playbook.html    301
 /l/platform-engineering-playbook    /l/platform-engineering-playbook/index.html    301
 /l/finops-ops-playbook    /l/finops-ops-playbook/index.html    301
 /l/data-pipelines-playbook    /l/data-pipelines-playbook/index.html    301
 
 # Unknown legacy /l paths fall back to the Tayoca home page.
 /l/*    /index.html    200
+/blog/devops-incident-response-runbook.html /products/devops-incident-runbook-template.html 301

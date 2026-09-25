@@ -117,19 +117,20 @@ Live reconciliation is handed to the canonical Forgejo / n8n integration agent.
 
 ---
 
-## 4. Historical security finding — superseded by the completed handoff
+## 4. Open security item — preserved, not fixed
 
-A prior live inspection identified shared authorization material in an earlier Control Center workflow implementation. The later canonical production handoff supersedes the old **open implementation workstream** classification.
+**Control Center embedded shared authorization material.**
 
 | | |
 |---|---|
-| Current status | **Superseded operationally by the completed production handoff** |
-| Production boundary | Server-side credential handling; Cloudflare Access is the sole authentication boundary; browser credentials are not exposed |
-| Evidence | `docs/control-center-production-handoff-20260828.md`, `docs/control-center-status-note.yaml` |
-| Reopen rule | Do not reopen the Control Center broadly. Revisit only for a specific evidenced defect or an explicitly scoped security audit. |
-| Secret handling | No historical/current authorization value is reproduced in this branch or registry. |
+| Status | **Open — requires live integration and certification** |
+| Claim made here | **None.** This branch does not claim the finding is fixed. |
+| Handling | The requirement is recorded in `public/data/company-ecosystem.json → security`; the validator asserts the finding stays `open` and that no authorization value appears in public content or in the registry. |
+| Boundary respected | The value was never reproduced, echoed, searched for, or stored in this workspace or in any committed file. No production n8n was modified. |
+| Next step | Canonical integration agent performs live remediation (rotate / re-bind / expunge) and certifies it. The public site must not state or imply that it is resolved until that certification exists. |
 
-The redesign therefore preserves compatibility with the completed Control Center and does **not** assign LM Arena or the website-integration workstream a live credential-remediation task.
+The public Trust page reflects this: it states the security boundary and the
+authorization model without asserting a remediation that has not been certified.
 
 ---
 

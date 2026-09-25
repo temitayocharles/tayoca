@@ -598,16 +598,25 @@
   ],
   "security": {
     "control_center_embedded_authorization_material": {
-      "status": "superseded_by_completed_production_handoff",
-      "classification": "historical_finding_not_active_workstream",
-      "historical_finding": "A prior live inspection identified shared authorization material in an earlier Control Center workflow implementation.",
-      "current_boundary": "The completed production handoff records server-side credential handling, Cloudflare Access as the sole authentication boundary, and the Control Center as completed/production-deployed.",
-      "evidence": [
-        "docs/control-center-production-handoff-20260828.md",
-        "docs/control-center-status-note.yaml"
+      "status": "open_needs_live_certification",
+      "discovery": "A prior live inspection found shared authorization material embedded in Control Center workflow code.",
+      "required_remediation_sequence": [
+        "identify the runtime workflow and all callers",
+        "move the value into appropriate n8n credential or secret storage",
+        "rotate the value",
+        "migrate every caller",
+        "remove any fallback or embedded value",
+        "test allowed and denied paths",
+        "preserve rollback until certification",
+        "certify that the old value is no longer accepted",
+        "scan related workflows for residual embedded material"
       ],
-      "reopen_rule": "Do not reopen the Control Center broadly. Revisit this historical finding only for a specific evidenced defect or an explicitly scoped security audit.",
-      "secret_value_policy": "No historical or current authorization value is reproduced in this registry."
+      "workspace_boundary": [
+        "the secret value is never reproduced, searched for, or stored in this repository",
+        "no production n8n mutation was attempted",
+        "no remediation completion is claimed",
+        "certification is explicitly handed back to the canonical Forgejo/n8n integration agent"
+      ]
     }
   }
 }

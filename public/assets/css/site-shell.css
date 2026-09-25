@@ -502,14 +502,3 @@ html.has-reveal .reveal.is-visible{opacity:1;transform:none}
 .segment-hero--growth::before{background-image:url('/assets/img/build-bench.jpg')}
 .segment-hero--regulated::before{background-image:url('/assets/img/workshop-detail.jpg')}
 .segment-hero--ai::before{background-image:url('/assets/img/hero-workshop-wide.jpg')}
-
-/* ---------- Accessibility contrast certification correction ----------
-   Browser/Axe certification on the canonical Arena integration branch
-   found inherited dark-theme muted text winning inside light paper bands,
-   plus an under-contrast utility-rail label. Keep the visual hierarchy,
-   but make the rendered foreground/background pairs WCAG AA-safe. */
-.header-map .utility-nav .utility-nav__label{color:#a49c92}
-.paper-band .section-heading p{color:#463c31}
-.paper-band .rail .rail-body p{color:#463c31}
-.paper-band .rail .rail-body .ledger-check{color:#463c31}
-.paper-band .rail .rail-body a{color:#5b2d0a;text-decoration-color:#8f4b18;text-underline-offset:3px}

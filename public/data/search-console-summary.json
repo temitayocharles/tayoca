@@ -4,112 +4,49 @@
   "property": "https://tayoca.com/",
   "permission_level": "siteOwner",
   "verified": true,
-  "generated_at": "2026-09-14T17:57:00Z",
-  "data_through": "2026-09-11",
-  "data_lag_note": "Search Console final data lags current traffic and URL Inspection can reflect earlier crawls for several days. Do not interpret a stale inspection state as proof that the current deployed redirect policy is wrong.",
+  "generated_at": "2026-08-10T21:43:00Z",
+  "data_through": "2026-08-08",
+  "data_lag_note": "Search Console final data normally lags current traffic. Do not interpret the snapshot date as an outage.",
   "sitemap": {
     "url": "https://tayoca.com/sitemap.xml",
-    "submitted_urls": 38,
+    "submitted_urls": 33,
     "indexed_urls_reported_by_sitemap": 0,
     "errors": 0,
     "warnings": 0,
     "pending": false,
-    "last_downloaded": "2026-09-12T13:28:47.307Z",
-    "last_submitted": "2026-08-30T15:11:38.098Z",
-    "note": "The sitemap indexed count is metadata only. URL Inspection and Search Analytics already report indexed Tayoca pages and impressions, so a zero sitemap indexed count must not be treated as proof that no URL is indexed."
+    "last_downloaded": "2026-08-10T10:30:27.101Z",
+    "last_submitted": "2026-08-06T15:47:05.286Z",
+    "note": "The sitemap indexed count is metadata only. Search Analytics already reports impressions for Tayoca pages, so a zero sitemap indexed count must not be treated as proof that no URL is indexed."
   },
   "periods": {
     "7d_final": {
-      "start_date": "2026-09-05",
-      "end_date": "2026-09-11",
+      "start_date": "2026-08-02",
+      "end_date": "2026-08-08",
       "clicks": 0,
-      "impressions": 38,
+      "impressions": 12,
       "ctr": 0,
-      "average_position": 19.07894736842105,
-      "aggregation_type": "byProperty"
+      "average_position": 24.166666666666668
     },
     "30d_final": {
-      "start_date": "2026-08-13",
-      "end_date": "2026-09-11",
+      "start_date": "2026-07-10",
+      "end_date": "2026-08-08",
       "clicks": 0,
-      "impressions": 95,
+      "impressions": 12,
       "ctr": 0,
-      "average_position": 19.74736842105263,
-      "aggregation_type": "byProperty"
-    },
-    "31d_final": {
-      "start_date": "2026-08-12",
-      "end_date": "2026-09-11",
-      "clicks": 0,
-      "impressions": 95,
-      "ctr": 0,
-      "average_position": 19.74736842105263,
-      "aggregation_type": "byProperty"
+      "average_position": 24.166666666666668
     }
   },
   "top_queries_30d": [
-    {"query": "tayoca", "clicks": 0, "impressions": 15, "ctr": 0, "average_position": 4},
-    {"query": "tayoyoca", "clicks": 0, "impressions": 2, "ctr": 0, "average_position": 6},
-    {"query": "yotascale", "clicks": 0, "impressions": 3, "ctr": 0, "average_position": 72.33333333333333}
+    {"query": "devops runbook", "clicks": 0, "impressions": 3, "ctr": 0, "average_position": 41.333333333333336},
+    {"query": "runbook devops", "clicks": 0, "impressions": 2, "ctr": 0, "average_position": 53},
+    {"query": "tayoca", "clicks": 0, "impressions": 5, "ctr": 0, "average_position": 7}
   ],
   "top_pages_30d": [
-    {"page": "https://tayoca.com/about.html", "clicks": 0, "impressions": 19, "ctr": 0, "average_position": 5.842105263157895},
-    {"page": "https://tayoca.com/products.html", "clicks": 0, "impressions": 16, "ctr": 0, "average_position": 22.4375},
-    {"page": "https://tayoca.com/blog/n8n-mcp-kubernetes.html", "clicks": 0, "impressions": 15, "ctr": 0, "average_position": 11.933333333333334},
-    {"page": "https://tayoca.com/", "clicks": 0, "impressions": 11, "ctr": 0, "average_position": 3.272727272727273},
-    {"page": "https://tayoca.com/blog/gitops-beyond-hello-world.html", "clicks": 0, "impressions": 11, "ctr": 0, "average_position": 6},
-    {"page": "https://tayoca.com/blog/kubernetes-production-checklist.html", "clicks": 0, "impressions": 10, "ctr": 0, "average_position": 24},
-    {"page": "https://tayoca.com/services.html", "clicks": 0, "impressions": 7, "ctr": 0, "average_position": 4.571428571428571},
-    {"page": "https://tayoca.com/blog/devops-incident-response-runbook.html", "clicks": 0, "impressions": 7, "ctr": 0, "average_position": 82},
-    {"page": "https://tayoca.com/blog/etcd-backup-restore-lab.html", "clicks": 0, "impressions": 6, "ctr": 0, "average_position": 24},
-    {"page": "https://tayoca.com/segments/growth-stage-technology.html", "clicks": 0, "impressions": 5, "ctr": 0, "average_position": 4.8},
-    {"page": "https://tayoca.com/community/websites", "clicks": 0, "impressions": 5, "ctr": 0, "average_position": 18.8},
-    {"page": "https://tayoca.com/operator-brief-archive.html", "clicks": 0, "impressions": 4, "ctr": 0, "average_position": 7.25}
+    {"page": "https://tayoca.com/", "clicks": 0, "impressions": 6, "ctr": 0, "average_position": 6.166666666666667},
+    {"page": "https://tayoca.com/about.html", "clicks": 0, "impressions": 2, "ctr": 0, "average_position": 6},
+    {"page": "https://tayoca.com/blog/devops-incident-response-runbook.html", "clicks": 0, "impressions": 6, "ctr": 0, "average_position": 42.166666666666664},
+    {"page": "https://tayoca.com/products.html", "clicks": 0, "impressions": 2, "ctr": 0, "average_position": 8},
+    {"page": "https://tayoca.com/services.html", "clicks": 0, "impressions": 1, "ctr": 0, "average_position": 9}
   ],
-  "top_queries_31d": [
-    {"query": "tayoca", "clicks": 0, "impressions": 15, "ctr": 0, "average_position": 4},
-    {"query": "tayoyoca", "clicks": 0, "impressions": 2, "ctr": 0, "average_position": 6},
-    {"query": "yotascale", "clicks": 0, "impressions": 3, "ctr": 0, "average_position": 72.33333333333333}
-  ],
-  "top_pages_31d": [
-    {"page": "https://tayoca.com/about.html", "clicks": 0, "impressions": 19, "ctr": 0, "average_position": 5.842105263157895},
-    {"page": "https://tayoca.com/products.html", "clicks": 0, "impressions": 16, "ctr": 0, "average_position": 22.4375},
-    {"page": "https://tayoca.com/blog/n8n-mcp-kubernetes.html", "clicks": 0, "impressions": 15, "ctr": 0, "average_position": 11.933333333333334},
-    {"page": "https://tayoca.com/", "clicks": 0, "impressions": 11, "ctr": 0, "average_position": 3.272727272727273},
-    {"page": "https://tayoca.com/blog/gitops-beyond-hello-world.html", "clicks": 0, "impressions": 11, "ctr": 0, "average_position": 6},
-    {"page": "https://tayoca.com/blog/kubernetes-production-checklist.html", "clicks": 0, "impressions": 10, "ctr": 0, "average_position": 24},
-    {"page": "https://tayoca.com/services.html", "clicks": 0, "impressions": 7, "ctr": 0, "average_position": 4.571428571428571},
-    {"page": "https://tayoca.com/blog/devops-incident-response-runbook.html", "clicks": 0, "impressions": 7, "ctr": 0, "average_position": 82},
-    {"page": "https://tayoca.com/blog/etcd-backup-restore-lab.html", "clicks": 0, "impressions": 6, "ctr": 0, "average_position": 24},
-    {"page": "https://tayoca.com/segments/growth-stage-technology.html", "clicks": 0, "impressions": 5, "ctr": 0, "average_position": 4.8},
-    {"page": "https://tayoca.com/community/websites", "clicks": 0, "impressions": 5, "ctr": 0, "average_position": 18.8},
-    {"page": "https://tayoca.com/operator-brief-archive.html", "clicks": 0, "impressions": 4, "ctr": 0, "average_position": 7.25}
-  ],
-  "legacy_or_noncanonical_urls_observed": [
-    {
-      "url": "https://tayoca.com/blog",
-      "observed_in": ["search_analytics_page_dimension", "url_inspection"],
-      "search_console_state": "Submitted and indexed",
-      "last_crawl_time": "2026-09-05T14:11:23Z",
-      "current_repository_policy": "Permanent redirect to https://tayoca.com/blog/ from PR #105.",
-      "current_action": "Wait for recrawl and recheck. Do not re-add this URL to sitemap."
-    },
-    {
-      "url": "https://tayoca.com/blog/sitesupply-construction-procurement-marketplace.html",
-      "observed_in": ["search_analytics_page_dimension", "url_inspection"],
-      "search_console_state": "Submitted and indexed",
-      "last_crawl_time": "2026-08-19T08:48:50Z",
-      "current_repository_policy": "Permanent redirect to https://tayoca.com/work.html from PR #105.",
-      "current_live_fallback_evidence": "Firecrawl resolved the retired article URL to https://tayoca.com/work.html with title 'Our Projects | Tayoca'.",
-      "current_action": "Wait for recrawl and recheck. Do not resurrect the removed article."
-    }
-  ],
-  "dimension_breakdown_note": "Search Console query, page and date breakdowns use different aggregation semantics and can omit anonymized rows. Use byProperty period totals as the executive metric authority; do not sum breakdown rows to reconstruct totals.",
-  "page_dimension_total_observed": {
-    "start_date": "2026-08-12",
-    "end_date": "2026-09-11",
-    "rows_returned": 27,
-    "impressions_across_returned_rows": 142,
-    "note": "This is a diagnostic breakdown, not the executive period total."
-  }
+  "aggregation_note": "Search Console query/page breakdowns can omit anonymized rows and use different aggregation semantics. Use period totals as the executive metric authority; do not sum breakdown rows to reconstruct totals."
 }

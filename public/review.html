@@ -1,8 +1,77 @@
-<!doctype html><html lang="en"><head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4QC90QNXW"></script><script src="/ga4.js"></script>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light dark"><script>(function(){try{var t=localStorage.getItem('tayoca-theme');if(!t&&matchMedia('(prefers-color-scheme: dark)').matches)t='dark';document.documentElement.dataset.theme=t||'light';}catch(e){document.documentElement.dataset.theme='light';}})();</script>
-<title>Share Your Tayoca Experience</title><meta name="description" content="Verified Tayoca customers can share an honest review of their experience."><meta name="robots" content="noindex,nofollow"><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="/assets/css/site-shell.css"><link rel="stylesheet" href="/assets/css/tayoca-v9.css"><link rel="stylesheet" href="/assets/css/secondary-v9.css"><style>.review-invite main{max-width:900px;margin:auto;padding:5.2rem 1.5rem 6rem}.review-invite .invite-card{max-width:720px;margin:auto;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:clamp(1.5rem,5vw,3rem);box-shadow:var(--v9-shadow)}.review-invite .invite-card h1{font-size:clamp(2.2rem,4vw,3.1rem);max-width:15ch;margin:.6rem 0 1rem}.review-invite .badge{display:inline-flex;align-items:center;gap:.45rem;border:1px solid var(--line);background:var(--surface-2);border-radius:999px;padding:.45rem .7rem;color:var(--muted);font-size:.8rem}.review-invite .product{color:var(--ink);font-weight:600}.review-invite .button.full{width:100%;margin-top:1.2rem}.review-invite .fine{font-size:.84rem}.review-invite .error{display:none;margin-top:1rem;padding:1rem;border:1px solid color-mix(in srgb,var(--signal) 55%,var(--line));border-radius:10px;background:var(--surface-2);color:var(--signal)}</style></head>
-<body class="review-invite"><a class="skip-link" href="#main">Skip to content</a><header class="site-header"><div class="header-inner"><a class="brand" href="/" aria-label="Tayoca home">TAYOCA</a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open navigation">Menu</button><nav class="primary-nav" id="primary-nav" aria-label="Primary navigation"><a href="/services.html">Services</a><a href="/assessments.html">Assessments</a><a href="/results.html">Results</a><a href="/products.html">Products</a><a href="/insights.html">Insights</a><a href="/about.html">About</a></nav><button class="theme-switch" type="button" aria-label="Switch colour theme"></button><a class="button small header-cta" href="/assessments.html">Start an Assessment</a></div><div class="header-map"><nav class="utility-nav" aria-label="Company map"><span class="utility-nav__label">More from Tayoca</span><a href="/work.html">Work</a><a href="/operator-brief.html">Operator Brief</a><a href="/community/websites">Community</a><a href="/trust.html">Trust</a><a href="/reviews.html">Reviews</a><a href="/sivanta.html">Sivanta</a></nav></div></header>
-<main id="main"><section class="invite-card"><p class="eyebrow">Verified customer feedback</p><div class="badge">✓ Customer relationship verification protects review integrity</div><h1>Tell future customers what actually happened.</h1><p>You have had time to experience <span class="product" id="productName">your Tayoca product or service</span>. Share what worked, what did not, and who you believe it is best for.</p><p>Positive, mixed, and critical reviews are all welcome. Publication requires your explicit consent, and your email is never displayed publicly.</p><a class="button full" href="#" id="continueButton">Continue to the secure review form</a><div class="error" id="errorBox">This review invitation is incomplete. Please use the private link from your Tayoca review email.</div><p class="fine">Tayoca does not offer rewards for favourable reviews and does not suppress critical feedback merely because it is negative.</p></section></main>
-<footer class="site-footer"><div class="footer-inner"><div class="footer-brand-col"><div class="footer-brand">TAYOCA</div><p>We help organizations understand technology costs, improve reliability and automate work that should not need to be repeated by hand. Founded by Temitayo Charles. Ontario, Canada. © <span data-current-year>2026</span> Tayoca.</p></div><div class="footer-links"><strong>Explore</strong><a href="/services.html">Services</a><a href="/assessments.html">Assessments</a><a href="/results.html">Results</a><a href="/products.html">Products</a><a href="/insights.html">Insights</a><a href="/about.html">About</a></div><div class="footer-links"><strong>Connect</strong><a href="/operator-brief.html">Operator Brief</a><a href="/trust.html">Trust Center</a><a href="mailto:support@tayoca.com">support@tayoca.com</a><a href="mailto:temitayo@tayoca.com">temitayo@tayoca.com</a></div></div><div class="footer-legal"><span>© <span data-current-year>2026</span> Tayoca · Ontario, Canada</span><a href="/trust.html">Evidence & disclosure policy</a></div></footer>
-<script>(function(){const params=new URLSearchParams(location.search);const token=params.get('review_token')||'';const saleId=params.get('sale_id')||'';const product=params.get('product_name')||'';if(product)document.getElementById('productName').textContent=product;const button=document.getElementById('continueButton');if(!token||!saleId){button.style.display='none';document.getElementById('errorBox').style.display='block';return;}const target=new URL('https://n8n.tayoca.com/form/tayoca-review');target.searchParams.set('review_token',token);target.searchParams.set('sale_id',saleId);if(product)target.searchParams.set('product_name',product);button.href=target.toString();button.addEventListener('click',function(){window.tayocaAnalytics?.sendEvent('verified_review_form_open',{product_name:product||'unknown'});});})();</script><script defer src="/tayoca-site.js"></script><script defer src="/tayoca-v9.js"></script></body></html>
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<!-- Google Analytics 4 -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-G4QC90QNXW"></script>
+<script src="/ga4.js"></script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Share Your Tayoca Experience</title>
+<meta content="Verified Tayoca customers can share an honest review of their experience." name="description"/>
+<meta content="noindex,nofollow" name="robots"/>
+<link href="/favicon.ico" rel="icon" type="image/x-icon"/>
+<style>
+:root{--bg:#0d0d0d;--card:#171717;--line:#343434;--accent:#f97316;--text:#f3f4f6;--muted:#a1a1aa}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(circle at top,#26150b 0,#0d0d0d 42%);color:var(--text);font-family:Inter,system-ui,-apple-system,sans-serif;display:grid;place-items:center;padding:24px}.shell{width:min(720px,100%)}.brand{display:inline-block;color:#fff;text-decoration:none;font-size:1.35rem;font-weight:700;margin-bottom:24px}.card{background:rgba(23,23,23,.96);border:1px solid var(--line);border-radius:20px;padding:clamp(28px,6vw,56px);box-shadow:0 30px 80px rgba(0,0,0,.4)}.eyebrow{color:var(--accent);font-size:.8rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase}.badge{display:inline-flex;gap:8px;align-items:center;background:#242424;border:1px solid #3f3f46;border-radius:999px;padding:8px 12px;color:#d4d4d8;font-size:.85rem;margin:16px 0}h1{font-size:clamp(2rem,7vw,3.6rem);line-height:1.04;margin:8px 0 18px}p{color:var(--muted);font-size:1.05rem;line-height:1.75}.product{color:#fff;font-weight:700}.button{display:inline-flex;justify-content:center;width:100%;margin-top:22px;background:var(--accent);color:#fff;text-decoration:none;border:0;border-radius:10px;padding:15px 20px;font-weight:800;font-size:1rem}.button:hover{background:#ea580c}.fine{font-size:.84rem;margin-top:18px}.error{display:none;background:#331515;border:1px solid #7f1d1d;color:#fecaca;padding:14px;border-radius:10px;margin-top:18px}
+</style>
+  <link rel="stylesheet" href="/assets/css/site-shell.css">
+</head>
+<body>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+  <a class="brand" href="/" aria-label="Tayoca home">TAYOCA</a>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open navigation">Menu</button>
+  <nav class="primary-nav" id="primary-nav" aria-label="Primary navigation"><a href="/services.html">Services</a><a href="/assessments.html">Assessments</a><a href="/results.html">Results</a><a href="/products.html">Products</a><a href="/insights.html">Insights</a><a href="/about.html">About</a></nav>
+  <a class="button small header-cta" href="/assessments.html">Start an Assessment</a>
+</div>
+<div class="header-map"><nav class="utility-nav" aria-label="Company map">
+  <span class="utility-nav__label">More from Tayoca</span>
+  <a href="/work.html">Work</a><a href="/operator-brief.html">Operator Brief</a><a href="/community/websites">Community</a><a href="/trust.html">Trust</a><a href="/reviews.html">Reviews</a><a href="/sivanta.html">Sivanta</a>
+</nav></div></header>
+
+<main class="shell">
+<a class="brand" href="/">tayoca</a>
+<section class="card">
+<div class="eyebrow">Verified customer feedback</div>
+<div class="badge">✓ Customer relationship verification protects review integrity</div>
+<h1>Tell future customers what actually happened.</h1>
+<p>You have had time to experience <span class="product" id="productName">your Tayoca product or service</span>. Share what worked, what did not, and who you believe it is best for.</p>
+<p>Positive, mixed, and critical reviews are all welcome. Publication requires your explicit consent, and your email is never displayed publicly.</p>
+<a class="button" href="#" id="continueButton">Continue to the secure review form</a>
+<div class="error" id="errorBox">This review invitation is incomplete. Please use the private link from your Tayoca review email.</div>
+<p class="fine">Tayoca does not offer rewards for favourable reviews and does not suppress critical feedback merely because it is negative.</p>
+</section>
+</main>
+<script>
+(function(){
+ const params=new URLSearchParams(location.search);
+ const token=params.get('review_token')||'';
+ const saleId=params.get('sale_id')||'';
+ const product=params.get('product_name')||'';
+ if(product) document.getElementById('productName').textContent=product;
+ const button=document.getElementById('continueButton');
+ if(!token||!saleId){button.style.display='none';document.getElementById('errorBox').style.display='block';return;}
+ const target=new URL('https://n8n.tayoca.com/form/tayoca-review');
+ target.searchParams.set('review_token',token);
+ target.searchParams.set('sale_id',saleId);
+ if(product) target.searchParams.set('product_name',product);
+ button.href=target.toString();
+ button.addEventListener('click',function(){window.tayocaAnalytics?.sendEvent('verified_review_form_open',{product_name:product||'unknown'});});
+})();
+</script>
+  <script defer src="/tayoca-site.js"></script>
+</main>
+<footer class="site-footer"><div class="footer-inner">
+  <div class="footer-brand-col"><div class="footer-brand">TAYOCA</div>
+<p>An engineering-led technology company building software, systems, automation and publications for technology that has to be reliable, accountable and economically understood. Founded by Temitayo Charles. Ontario, Canada. &copy; <span data-current-year>2026</span> Tayoca.</p></div>
+  <div class="footer-links"><strong>Explore</strong><a href="/services.html">Services</a><a href="/assessments.html">Assessments</a><a href="/results.html">Results</a><a href="/products.html">Products</a><a href="/insights.html">Insights</a><a href="/about.html">About</a></div>
+  <div class="footer-links"><strong>Connect</strong><a href="/operator-brief.html">Operator Brief</a><a href="/trust.html">Trust Center</a><a href="mailto:support@tayoca.com">support@tayoca.com</a><a href="mailto:temitayo@tayoca.com">temitayo@tayoca.com</a></div>
+  <div class="footer-col"><strong>Company</strong><a href="/about.html">About</a><a href="/work.html">Work</a><a href="/results.html">Results</a><a href="/trust.html">Trust Center</a><a href="/reviews.html">Verified Reviews</a></div>
+  <div class="footer-col"><strong>Deliver</strong><a href="/services.html">Services &amp; pricing</a><a href="/assessments.html">Assessments</a><a href="/segments/growth-stage-technology.html">Growth-stage</a><a href="/segments/regulated-operations.html">Regulated operations</a><a href="/segments/ai-enabled-engineering.html">AI-enabled teams</a></div>
+  <div class="footer-col"><strong>Build &amp; Read</strong><a href="/products.html">Products</a><a href="/sivanta.html">Sivanta</a><a href="/blog/">Insights</a><a href="/operator-brief-archive.html">Brief archive</a><a href="/community/websites">Community initiative</a></div>
+</div>
+<div class="footer-legal"><span>&copy; <span data-current-year>2026</span> Tayoca · Ontario, Canada</span><a href="/trust.html">Evidence &amp; disclosure policy</a></div></footer>
+</body>
+</html>

@@ -1,6 +1,758 @@
-<!doctype html><html lang="en-CA"><head><script async src="https://www.googletagmanager.com/gtag/js?id=G-G4QC90QNXW"></script><script src="/ga4.js"></script><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light dark"><script>(function(){try{var t=localStorage.getItem('tayoca-theme');if(!t&&matchMedia('(prefers-color-scheme: dark)').matches)t='dark';document.documentElement.dataset.theme=t||'light';}catch(e){document.documentElement.dataset.theme='light';}})();</script><title>n8n + MCP on Kubernetes: Production Architecture Patterns | Tayoca</title><meta name="description" content="Architecture and operating patterns for self-hosting n8n and MCP-enabled automation on Kubernetes, including trust boundaries, persistence, secrets, observability, GitOps and human approval."><meta name="keywords" content="n8n Kubernetes, MCP Kubernetes, Model Context Protocol, workflow automation, GitOps, AI automation, platform engineering"><meta name="author" content="Temitayo Charles"><meta name="robots" content="index,follow"><link rel="canonical" href="https://tayoca.com/blog/n8n-mcp-kubernetes.html"><link rel="icon" href="/favicon.ico"><meta property="og:title" content="n8n + MCP on Kubernetes: Production Architecture Patterns"><meta property="og:description" content="Practical operating patterns for n8n, MCP-enabled tools and Kubernetes without pretending one topology fits every workload."><meta property="og:type" content="article"><meta property="og:url" content="https://tayoca.com/blog/n8n-mcp-kubernetes.html"><meta property="og:image" content="https://tayoca.com/assets/og-image.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="n8n + MCP on Kubernetes: Production Architecture Patterns"><meta name="twitter:description" content="Practical operating patterns for n8n, MCP-enabled tools and Kubernetes without pretending one topology fits every workload."><meta name="twitter:image" content="https://tayoca.com/assets/og-image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"n8n + MCP on Kubernetes: Production Architecture Patterns","description":"Architecture and operating patterns for self-hosting n8n and MCP-enabled automation on Kubernetes, including trust boundaries, persistence, secrets, observability, GitOps and human approval.","url":"https://tayoca.com/blog/n8n-mcp-kubernetes.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://tayoca.com/blog/n8n-mcp-kubernetes.html"},"image":["https://tayoca.com/assets/og-image.png"],"author":{"@type":"Person","name":"Temitayo Charles"},"publisher":{"@type":"Organization","name":"Tayoca","url":"https://tayoca.com/"},"dateModified":"2026-09-11"}</script><link rel="stylesheet" href="/assets/css/site-shell.css"><link rel="stylesheet" href="/assets/css/tayoca-v9.css"><link rel="stylesheet" href="/assets/css/secondary-v9.css"><style>.article-shell{max-width:920px;margin:auto;padding:5rem 1.5rem 6rem}.article-head{margin-bottom:3rem;padding-bottom:2rem;border-bottom:1px solid var(--line)}.article-shell .meta{color:var(--muted);font-size:.84rem}.article-shell .lede{font-size:1.15rem;color:var(--muted);max-width:68ch}.article-shell h2{margin-top:3rem}.article-shell h3{margin-top:2rem}.article-shell pre{padding:1.2rem;border-radius:10px;overflow:auto}.article-shell .callout{margin:2rem 0;padding:1.2rem 1.4rem;background:var(--surface-2);border-left:3px solid var(--signal);border-radius:10px}.article-shell .architecture{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin:1.8rem 0}.article-shell .architecture .card{padding:1.25rem}.article-shell .architecture h3{margin-top:0}.article-table{overflow-x:auto}.article-shell table{width:100%;border-collapse:collapse;margin:1.5rem 0;min-width:680px}.article-shell th,.article-shell td{text-align:left;padding:.8rem;border-bottom:1px solid var(--line);vertical-align:top}.article-shell th{color:var(--ink);font-size:.8rem}.article-shell td{color:var(--ink-2)}.article-cta{margin-top:3.5rem;padding:1.8rem;border:1px solid var(--line);border-left:3px solid var(--signal);border-radius:14px;background:var(--surface-2)}@media(max-width:720px){.article-shell{padding-top:3.5rem}.article-shell .architecture{grid-template-columns:1fr}.article-shell pre{font-size:.8rem}}</style></head><body class="operator-editorial"><a class="skip-link" href="#main">Skip to content</a><header class="site-header"><div class="header-inner"><a class="brand" href="/" aria-label="Tayoca home">TAYOCA</a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open navigation">Menu</button><nav class="primary-nav" id="primary-nav" aria-label="Primary navigation"><a href="/services.html">Services</a><a href="/assessments.html">Assessments</a><a href="/results.html">Results</a><a href="/products.html">Products</a><a href="/insights.html" aria-current="page">Insights</a><a href="/about.html">About</a></nav><button class="theme-switch" type="button" aria-label="Switch colour theme"></button><a class="button small header-cta" href="/assessments.html">Start an Assessment</a></div></header><main id="main" class="article-shell"><article><header class="article-head"><p class="eyebrow">AI automation · Platform engineering</p><h1>n8n + MCP on Kubernetes: production architecture patterns</h1><p class="meta">Architecture guide · updated September 2026</p><p class="lede">n8n can orchestrate workflow steps, MCP can expose tools and context to AI-enabled clients, and Kubernetes can provide a deployment and operating substrate. The production question is how to connect those roles without collapsing identity, data, tool permissions and human judgment into one undifferentiated automation layer.</p></header><div class="callout"><strong>Architecture boundary:</strong> this article describes patterns, not one mandatory stack and not a claim about Tayoca’s private infrastructure. Validate versions, transports, operators and deployment choices against the software you actually run.</div><h2>1. Give each layer one clear job</h2><div class="architecture"><article class="card"><h3>n8n</h3><p>Workflow orchestration, schedules, webhooks, branching, retries and integration logic.</p></article><article class="card"><h3>MCP servers</h3><p>Bounded interfaces that expose tools, resources or prompts to authorized clients.</p></article><article class="card"><h3>Kubernetes</h3><p>Scheduling, workload isolation, service discovery, rollout, policy and runtime operations.</p></article><article class="card"><h3>External systems</h3><p>Databases, SaaS APIs, repositories and business systems whose own authorization boundaries still apply.</p></article></div><p>Keeping those roles explicit prevents a useful automation framework from quietly becoming an unrestricted control plane.</p><h2>2. Choose execution topology from workload behavior</h2><p>A small internal workflow service may need only one n8n instance and durable database storage. Higher concurrency, long-running jobs or availability requirements can justify queue-backed workers and separate execution capacity. Choose the topology from measured workload needs instead of copying a “production” diagram.</p><div class="article-table"><table><thead><tr><th>Question</th><th>Why it matters</th></tr></thead><tbody><tr><td>How many concurrent executions exist?</td><td>Influences worker count, queueing, CPU/memory and database connection pressure.</td></tr><tr><td>How long can a workflow run?</td><td>Affects timeouts, retries, idempotency and whether a durable workflow engine is a better fit for some jobs.</td></tr><tr><td>What state must survive a Pod replacement?</td><td>Determines database, object-storage or volume requirements.</td></tr><tr><td>Which actions are safe to retry?</td><td>Prevents duplicate purchases, messages, tickets or mutations after transient failures.</td></tr><tr><td>What must remain available during maintenance?</td><td>Drives replica, rollout and disruption decisions.</td></tr></tbody></table></div><h2>3. Treat MCP servers as trust boundaries</h2><p>An MCP server that can read a repository is different from one that can merge code, mutate infrastructure or send customer messages. Deploy and authorize them accordingly.</p><ul><li>Separate read-only and mutating tools when useful.</li><li>Grant each server only the upstream credentials it requires.</li><li>Prefer short-lived workload identity over long-lived tokens where supported.</li><li>Apply namespace, network and admission controls according to the tool’s risk.</li><li>Log material tool calls with enough context to investigate later.</li><li>Keep human approval before irreversible or high-impact actions unless the workflow has an explicitly approved automation boundary.</li></ul><h2>4. Keep secrets out of workflow exports and manifests</h2><p>Credentials should come from an approved secret-management path, not Git, hard-coded workflow JSON or copied environment files. Kubernetes Secrets may be the delivery object, while an external secret manager, encrypted Git workflow or platform-native identity handles the source of truth.</p><p>Rotation matters as much as storage. Test whether a credential can be changed or revoked without manually rebuilding every workflow.</p><h2>5. Network the system by capability</h2><p>Use ClusterIP-style internal services for components that do not need public exposure. Put external ingress only in front of the endpoints that require it. NetworkPolicy is useful when the CNI enforces it, but policy should reflect actual dependencies: DNS, database, queue, selected MCP services and required external APIs.</p><p>A workflow runner that can reach every internal service and every external API by default has a larger blast radius than most automations need.</p><h2>6. Build observability around the workflow, not only Pods</h2><p>Pod CPU and restart counts are necessary but insufficient. Instrument the automation outcome.</p><div class="architecture"><article class="card"><h3>Execution health</h3><p>Success/failure rate, duration, retry count, queue depth and oldest waiting job.</p></article><article class="card"><h3>Dependency health</h3><p>Database latency, upstream API failures, MCP tool errors and authentication failures.</p></article><article class="card"><h3>AI behavior</h3><p>Model latency, token or infrastructure usage, evaluation signals, retrieval quality and fallback behavior where AI is involved.</p></article><article class="card"><h3>Business outcome</h3><p>Whether the intended ticket, notification, reconciliation or handoff actually happened.</p></article></div><h2>7. Design retries and idempotency before scaling</h2><p>Distributed automation fails partially. A webhook may arrive twice. A worker can crash after an external API accepts the request but before the workflow records success. Build idempotency keys, deduplication, state transitions and compensation where the business action requires them.</p><div class="callout"><strong>Operational rule:</strong> “retry on error” is safe only when repeating the action is safe or the workflow can prove the action has not already succeeded.</div><h2>8. Use GitOps for deployment, not secret or workflow theatre</h2><p>Helm, Kustomize or another declarative packaging approach can version the platform configuration. CI can render and validate manifests; a GitOps controller can reconcile reviewed desired state. Keep runtime credentials outside plaintext Git and document how emergency operational changes interact with reconciliation.</p><pre><code>git change
-  → render / validate
-  → review
-  → merge desired state
-  → GitOps reconciliation
-  → health and workflow-level verification</code></pre><h2>9. Preserve a human boundary for material actions</h2><p>AI-enabled automation is most useful when routine work can move quickly while consequential actions remain accountable. Examples that often justify approval or stronger policy include production infrastructure mutation, financial transactions, destructive data changes, external publication, customer-impacting account actions and security-sensitive credential changes.</p><p>The boundary should be encoded in the workflow or authorization layer rather than left as a tribal expectation.</p><h2>10. Model cost as a workload equation</h2><p>There is no universal “self-hosted wins” number. Compare the costs that apply to your workload: compute, database, queue/cache, storage, ingress/egress, observability, backups, engineering time and operational risk. Then divide by a useful business unit such as successful workflow executions or automated cases handled.</p><p>A managed service can be economically better at one scale and self-hosting can be better at another. The decision changes with workload, labor, compliance, control and reliability requirements.</p><h2>Production validation checklist</h2><ul><li>Workflow state and credentials survive Pod replacement as intended.</li><li>Database backup and restore are tested.</li><li>Retries do not duplicate material actions.</li><li>MCP servers have bounded identities and network access.</li><li>Mutating tools require the intended authorization or approval.</li><li>Ingress, TLS and webhook authentication are validated.</li><li>Queues and workers expose actionable saturation signals if used.</li><li>Deployment reconciliation and rollback behavior are understood.</li><li>A representative end-to-end workflow is tested after deployment.</li><li>Operator runbooks state what to do when external APIs, models or tools are unavailable.</li></ul><section class="article-cta"><h2>Build the pattern hands-on</h2><p>The n8n + MCP Kubernetes Teaching Pack packages the architecture into guided implementation material for operators. For teams that need a broader automation or platform engagement, review Tayoca’s services separately rather than assuming one fixed implementation scope fits every environment.</p><div class="actions"><a class="button" href="/products/n8n-mcp-kubernetes-teaching-pack.html" data-event="article_product_click">Explore the teaching pack</a><a class="button ghost" href="/services.html" data-event="article_services_click">Review Tayoca services</a></div></section></article></main><footer class="site-footer"><div class="footer-inner"><div class="footer-brand-col"><div class="footer-brand">TAYOCA</div><p>We help organizations understand technology costs, improve reliability and automate work that should not need to be repeated by hand. Founded by Temitayo Charles. Ontario, Canada. © <span data-current-year>2026</span> Tayoca.</p></div><div class="footer-links"><strong>Explore</strong><a href="/services.html">Services</a><a href="/assessments.html">Assessments</a><a href="/results.html">Results</a><a href="/products.html">Products</a><a href="/insights.html">Insights</a><a href="/about.html">About</a></div><div class="footer-links"><strong>Connect</strong><a href="/operator-brief.html">Operator Brief</a><a href="/trust.html">Trust Center</a><a href="mailto:support@tayoca.com">support@tayoca.com</a><a href="mailto:temitayo@tayoca.com">temitayo@tayoca.com</a></div></div><div class="footer-legal"><span>© <span data-current-year>2026</span> Tayoca · Ontario, Canada</span><a href="/trust.html">Evidence &amp; disclosure policy</a></div></footer><script defer src="/revenue-events.js"></script><script defer src="/tayoca-site.js"></script><script defer src="/tayoca-v9.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-G4QC90QNXW"></script>
+  <script src="/ga4.js"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>n8n MCP + Kubernetes: Self-Hosted AI Agent Infrastructure | Temitayo Charles Akinniranye</title>
+    <meta name="description" content="Build production-grade n8n with MCP servers on Kubernetes. Complete guide: Helm charts, ingress, persistence, MCP server deployment, OAuth, and GitOps with ArgoCD.">
+    <meta name="keywords" content="n8n, MCP, Model Context Protocol, Kubernetes, Helm, ArgoCD, GitOps, AI agents, self-hosted, DevOps">
+    <meta property="og:title" content="n8n MCP + Kubernetes: Self-Hosted AI Agent Infrastructure">
+    <meta property="og:description" content="Build production-grade n8n with MCP servers on Kubernetes. Complete guide with Helm, ingress, persistence, MCP deployment, and GitOps.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://tayoca.com/blog/n8n-mcp-kubernetes.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="n8n MCP + Kubernetes: Self-Hosted AI Agent Infrastructure">
+    <meta name="twitter:description" content="Production-grade n8n with MCP on Kubernetes. Helm, ArgoCD, GitOps, MCP servers.">
+
+    <script src="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.js"></script>
+    <script defer src="https://v7mhrspk.function2.insforge.app/c.js"></script>
+    <style>
+        body { background-color: #0d0d0d; color: #e5e7eb; }
+        .prose { @apply text-[var(--fg-muted)]; }
+        .prose h1 { @apply text-3xl font-bold text-white mb-6; }
+        .prose h2 { @apply text-2xl font-bold text-[var(--accent)] mt-10 mb-4; }
+        .prose h3 { @apply text-xl font-medium text-white mt-8 mb-3; }
+        .prose p { @apply mb-4 leading-relaxed; }
+        .prose ul { @apply list-disc list-inside mb-4 space-y-2; }
+        .prose ol { @apply list-decimal list-inside mb-4 space-y-2; }
+        .prose code { @apply bg-[var(--card-bg)] text-orange-400 px-1.5 py-0.5 rounded text-sm font-mono; }
+        .prose pre { @apply bg-[var(--bg-elevated)] border border-[var(--border)] rounded-lg p-4 overflow-x-auto mb-6; }
+        .prose pre code { @apply bg-transparent text-gray-200 p-0 text-sm; }
+        .prose a { @apply text-[var(--accent)] hover:text-orange-400 underline; }
+        .prose blockquote { @apply border-l-4 border-[var(--accent)] pl-4 italic text-[var(--fg-muted)] my-4; }
+        .prose table { @apply w-full mb-6 border-collapse; }
+        .prose th, .prose td { @apply border border-[var(--border)] px-4 py-2 text-left; }
+        .prose th { @apply bg-[var(--card-bg)] text-white font-medium; }
+    
+        :root { --bg: #0d0d0d; --bg-elevated: #1a1a1a; --fg: #e5e7eb; --fg-muted: #9ca3af; --accent: #f97316; --accent-hover: #ea580c; --border: #374151; --border-hover: #4b5563; --card-bg: #111827; --focus-ring: #f97316; --header-height: 64px; }
+        * { box-sizing: border-box; } html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+        @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; } }
+        body { background-color: var(--bg); color: var(--fg); font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif; line-height: 1.6; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+        .skip-link { position: absolute; top: -100%; left: 50%; transform: translateX(-50%); background: var(--accent); color: white; padding: 0.75rem 1.5rem; border-radius: 0.5rem; z-index: 10000; font-weight: 600; text-decoration: none; }
+        .skip-link:focus { top: 1rem; } :focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 2px; }
+        .mobile-menu { position: fixed; top: 0; right: 0; bottom: 0; width: 100%; max-width: 320px; background: var(--bg); border-left: 1px solid var(--border); z-index: 100; transform: translateX(100%); transition: transform 0.3s ease-out; padding: calc(var(--header-height) + 1rem) 1.5rem 2rem; display: flex; flex-direction: column; gap: 1rem; overflow-y: auto; }
+        .mobile-menu.open { transform: translateX(0); }
+        .mobile-menu-overlay { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.5); z-index: 99; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; }
+        .mobile-menu-overlay.open { opacity: 1; visibility: visible; }
+        .mobile-menu a { display: block; padding: 1rem; color: var(--fg); text-decoration: none; border-radius: 0.5rem; font-size: 1.125rem; font-weight: 500; transition: background 0.2s ease, color 0.2s ease; touch-action: manipulation; }
+        .mobile-menu a:hover, .mobile-menu a:focus { background: var(--bg-elevated); color: var(--accent); }
+        .mobile-menu a[aria-current="page"] { color: var(--accent); background: rgba(249, 115, 22, 0.1); }
+        .mobile-menu-close { position: absolute; top: 1rem; right: 1rem; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 0.5rem; color: var(--fg); cursor: pointer; touch-action: manipulation; }
+        .mobile-menu-close:hover, .mobile-menu-close:focus { background: var(--border); }
+        .hamburger { display: flex; flex-direction: column; justify-content: space-between; width: 28px; height: 20px; background: transparent; border: none; cursor: pointer; padding: 0; touch-action: manipulation; }
+        .hamburger span { display: block; width: 100%; height: 3px; background: var(--fg); border-radius: 2px; transition: transform 0.3s ease, opacity 0.3s ease; }
+        .hamburger[aria-expanded="true"] span:nth-child(1) { transform: translateY(8.5px) rotate(45deg); }
+        .hamburger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+        .hamburger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-8.5px) rotate(-45deg); }
+        @media (min-width: 768px) { .hamburger { display: none; } }
+        .hero-title { font-size: clamp(2rem, 8vw, 3.5rem); line-height: 1.1; }
+        .hero-subtitle { font-size: clamp(1rem, 3vw, 1.25rem); }
+        .section-title { font-size: clamp(1.75rem, 5vw, 2.5rem); line-height: 1.2; }
+        .card { transition: border-color 0.2s ease, transform 0.2s ease; }
+        @media (prefers-reduced-motion: no-preference) { .card:hover { border-color: var(--accent); transform: translateY(-2px); } }
+        .card:focus-within { border-color: var(--focus-ring); }
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.875rem 1.5rem; font-size: 1rem; font-weight: 600; border-radius: 0.5rem; text-decoration: none; border: 2px solid transparent; cursor: pointer; touch-action: manipulation; min-height: 48px; transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease; }
+        .btn-primary { background: var(--accent); color: white; border-color: var(--accent); }
+        .btn-primary:hover, .btn-primary:focus { background: var(--accent-hover); border-color: var(--accent-hover); }
+        .btn-secondary { background: transparent; color: var(--accent); border-color: var(--accent); }
+        .btn-secondary:hover, .btn-secondary:focus { background: rgba(249, 115, 22, 0.1); }
+        .form-input { width: 100%; padding: 0.875rem 1rem; font-size: 1rem; background: var(--bg-elevated); border: 2px solid var(--border); border-radius: 0.5rem; color: var(--fg); min-height: 48px; transition: border-color 0.2s ease, box-shadow 0.2s ease; }
+        .form-input::placeholder { color: var(--fg-muted); }
+        .form-input:focus { outline: none; border-color: var(--focus-ring); box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.2); }
+        .newsletter-form { display: flex; flex-direction: column; gap: 0.75rem; }
+        @media (min-width: 640px) { .newsletter-form { flex-direction: row; } }
+        .footer-link { color: var(--fg-muted); transition: color 0.2s ease; }
+        .footer-link:hover, .footer-link:focus { color: var(--fg); }
+        @supports (padding: max(0px)) { .mobile-menu { padding-right: max(1.5rem, env(safe-area-inset-right)); padding-left: max(1.5rem, env(safe-area-inset-left)); padding-bottom: max(2rem, env(safe-area-inset-bottom)); } }
+        @media print { .mobile-menu, .hamburger, .newsletter-form, footer { display: none !important; } body { background: white; color: black; } }
+        .blog-card-image { width: 100%; aspect-ratio: 16/10; object-fit: cover; border-radius: 0.5rem; }
+        @media (min-width: 768px) { .blog-card-image { width: 100%; height: 192px; } }
+        .table-wrapper { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 1.5rem 0; }
+        .table-wrapper::-webkit-scrollbar { height: 8px; }
+        .table-wrapper::-webkit-scrollbar-track { background: var(--bg); }
+        .table-wrapper::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+        .table-wrapper::-webkit-scrollbar-thumb:hover { background: var(--border-hover); }
+        table { width: 100%; min-width: 600px; border-collapse: collapse; font-size: 0.875rem; }
+        th, td { padding: 0.75rem 1rem; text-align: left; border-bottom: 1px solid var(--border); }
+        th { background: var(--bg-elevated); color: var(--fg-muted); font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; position: sticky; top: 0; z-index: 1; }
+        tr:hover td { background: var(--bg-elevated); }
+        .code-block, pre { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 0.5rem; padding: 1.5rem; overflow-x: auto; margin: 1.5rem 0; font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace; font-size: 0.875rem; line-height: 1.7; -webkit-overflow-scrolling: touch; }
+        .code-block code, pre code { background: transparent; padding: 0; font-size: inherit; color: var(--fg); }
+        img { max-width: 100%; height: auto; display: block; }
+    </style>
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://tayoca.com/blog/n8n-mcp-kubernetes.html">
+<meta property="og:image" content="https://tayoca.com/assets/og-image.png">
+<meta name="twitter:image" content="https://tayoca.com/assets/og-image.png">
+<!-- InsForge Analytics -->
+<script>(function(){var e='https://v7mhrspk.function2.insforge.app/analytics-event',d='tayoca.com';function s(n,p){var r={domain:d,name:n,url:location.href,path:location.pathname,referrer:document.referrer||null,screen_width:screen.width,screen_height:screen.height,props:p||{}};navigator.sendBeacon&&navigator.sendBeacon(e,JSON.stringify(r))||fetch(e,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(r),keepalive:!0})}document.readyState==='loading'?document.addEventListener('DOMContentLoaded',function(){s('pageview')}):s('pageview');window.tayocaAnalytics={sendEvent:s}})()</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "n8n MCP + Kubernetes: Self-Hosted AI Agent Infrastructure | Temitayo Charles Akinniranye",
+  "description": "Build production-grade n8n with MCP servers on Kubernetes. Complete guide: Helm charts, ingress, persistence, MCP server deployment, OAuth, and GitOps with ArgoCD.",
+  "url": "https://tayoca.com/blog/n8n-mcp-kubernetes.html",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://tayoca.com/blog/n8n-mcp-kubernetes.html"
+  },
+  "image": [
+    "https://tayoca.com/assets/og-image.png"
+  ],
+  "author": {
+    "@type": "Person",
+    "name": "Temitayo Charles Akinniranye"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Tayoca",
+    "url": "https://tayoca.com/"
+  },
+  "datePublished": "2026-07-24"
+}
+</script>
+<link rel="stylesheet" href="/assets/css/site-shell.css"></head>
+
+<body class="min-h-screen">
+<a href="#main-content" class="skip-link">Skip to main content</a><a class="skip-link" href="#main-content">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+  <a class="brand" href="/" aria-label="Tayoca home">TAYOCA</a>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open navigation">Menu</button>
+  <nav class="primary-nav" id="primary-nav" aria-label="Primary navigation"><a href="/services.html">Services</a><a href="/assessments.html">Assessments</a><a href="/results.html">Results</a><a href="/products.html">Products</a><a href="/insights.html" aria-current="page">Insights</a><a href="/about.html">About</a></nav>
+  <a class="button small header-cta" href="/assessments.html">Start an Assessment</a>
+</div>
+<div class="header-map"><nav class="utility-nav" aria-label="Company map">
+  <span class="utility-nav__label">More from Tayoca</span>
+  <a href="/work.html">Work</a><a href="/operator-brief.html">Operator Brief</a><a href="/community/websites">Community</a><a href="/trust.html">Trust</a><a href="/reviews.html">Reviews</a><a href="/sivanta.html">Sivanta</a>
+</nav></div></header>
+
+    
+    
+    
+    
+
+    <main id="main-content" class="flex-1 pt-[var(--header-height)]">
+<header class="container mx-auto px-6 py-16 md:py-24">
+        <div class="max-w-3xl mx-auto text-center">
+            <span class="inline-block px-3 py-1 bg-[var(--accent)]/20 text-[var(--accent)] text-sm font-medium rounded-full mb-6">Platform Engineering & AI Infrastructure</span>
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+                n8n + MCP on Kubernetes: Production-Grade Self-Hosted AI Agent Infrastructure
+            </h1>
+            <p class="text-lg text-[var(--fg-muted)] mb-8">
+                Complete guide to deploying n8n with Model Context Protocol servers on Kubernetes using Helm, ArgoCD GitOps, ingress, persistence, and OAuth — the exact stack running <strong>n8n.tayoca.com</strong>.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4 text-sm text-gray-500">
+                <span>By <strong class="text-white">Temitayo Charles Akinniranye</strong></span>
+                <span>•</span>
+                <time datetime="2026-07-24">July 24, 2026</time>
+                <span>•</span>
+                <span>18 min read</span>
+            </div>
+        </div>
+    </header>
+
+    <article class="container mx-auto px-6 pb-16">
+        <div class="max-w-3xl mx-auto">
+            <div class="prose">
+                <p class="lead text-lg text-[var(--fg-muted)] mb-8">
+                    <strong>n8n</strong> is the workflow automation backbone. <strong>MCP (Model Context Protocol)</strong> is the universal connector for AI agents. <strong>Kubernetes</strong> is the only platform that gives you multi-tenancy, scaling, and GitOps out of the box. This article shows how we wired them together in production — no managed SaaS, full control, zero vendor lock-in.
+                </p>
+
+                <h2>Architecture Overview</h2>
+                <pre><code>┌─────────────────────────────────────────────────────────────────┐
+│                     n8n.tayoca.com                      │
+│  ┌──────────────────┐  ┌──────────────────┐  ┌────────────────┐  │
+│  │   n8n Main       │  │   n8n Worker     │  │  MCP Servers   │  │
+│  │   (Deployment)   │  │   (Deployment)   │  │  (Deployments) │  │
+│  │  - Webhook ingress│  │  - Queue mode    │  │  - GitHub      │  │
+│  │  - API + UI      │  │  - Redis queue   │  │  - GitLab      │  │
+│  │  - Postgres      │  │  - Horizontal    │  │  - Kubernetes  │  │
+│  └────────┬─────────┘  └────────┬─────────┘  │  - Cloudflare  │  │
+│           │                     │            │  - PostgreSQL  │  │
+│           └──────────┬──────────┘            └───────┬────────┘  │
+│                      │                               │           │
+│           ┌──────────▼──────────┐                   │           │
+│           │    Redis Cluster    │◀──────────────────┘           │
+│           │   (Queue + Cache)   │                               │
+│           └──────────┬──────────┘                               │
+│                      │                                          │
+│           ┌──────────▼──────────┐                               │
+│           │   PostgreSQL HA     │                               │
+│           │  (CloudNativePG)    │                               │
+│           └─────────────────────┘                               │
+└─────────────────────────────────────────────────────────────────┘</code></pre>
+
+                <h2>Prerequisites</h2>
+                <ul>
+                    <li>Kubernetes cluster (k3s, EKS, GKE, or kind for dev)</li>
+                    <li>Helm 3.12+, kubectl, argocd CLI</li>
+                    <li>Domain with Cloudflare DNS (for TLS via cert-manager)</li>
+                    <li>PostgreSQL operator (CloudNativePG) or managed PG</li>
+                    <li>Redis operator or managed Redis (ElastiCache, Cloud Memorystore)</li>
+                </ul>
+
+                <h2>Step 1: Namespace & Core Operators</h2>
+                <pre><code># Create namespace
+kubectl create namespace n8n
+
+# Install CloudNativePG for PostgreSQL HA
+kubectl apply -f https://raw.githubusercontent.com/cloudnative-pg/cloudnative-pg/main/release/kustomize/crds.yaml
+kubectl apply -k https://github.com/cloudnative-pg/cloudnative-pg/kustomize/install
+
+# Install Redis Operator (or use managed)
+kubectl apply -k https://github.com/spotahome/redis-operator/kustomize/overlays/stable
+</code></pre>
+
+                <h2>Step 2: PostgreSQL Cluster (CloudNativePG)</h2>
+                <pre><code>apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: n8n-postgres
+  namespace: n8n
+spec:
+  instances: 3
+  primaryUpdateStrategy: unsupervised
+  postgresql:
+    parameters:
+      max_connections: "200"
+      shared_buffers: "256MB"
+  bootstrap:
+    initdb:
+      database: n8n
+      owner: n8n
+      secret:
+        name: n8n-postgres-credentials
+  storage:
+    size: 20Gi
+    storageClass: fast-ssd
+  backup:
+    barmanObjectStore:
+      destinationPath: s3://n8n-backups/postgres
+      s3Credentials:
+        accessKeyId:
+          name: n8n-backup-aws
+          key: ACCESS_KEY_ID
+        secretAccessKey:
+          name: n8n-backup-aws
+          key: SECRET_ACCESS_KEY
+      retentionPolicy: "30d"
+    schedule: "0 2 * * *"</code></pre>
+
+                <h2>Step 3: Redis for Queue Mode</h2>
+                <p>n8n's queue mode requires Redis for workflow execution distribution across workers.</p>
+                <pre><code>apiVersion: redis.spotahome.com/v1
+kind: Redis
+metadata:
+  name: n8n-redis
+  namespace: n8n
+spec:
+  replicas: 3
+  redisVersion: "7.2"
+  resources:
+    requests:
+      memory: "512Mi"
+      cpu: "250m"
+    limits:
+      memory: "1Gi"
+      cpu: "500m"
+  storage:
+    size: 5Gi
+    storageClass: fast-ssd
+  sentinel:
+    enabled: true
+    replicas: 3</code></pre>
+
+                <h2>Step 4: n8n Helm Values (Production-Grade)</h2>
+                <pre><code># values-n8n.yaml
+global:
+  image:
+    repository: n8nio/n8n
+    tag: "1.47.0"
+    pullPolicy: IfNotPresent
+
+n8n:
+  replicaCount: 1
+  env:
+    - name: N8N_HOST
+      value: "n8n.tayoca.com"
+    - name: N8N_PROTOCOL
+      value: "https"
+    - name: N8N_PORT
+      value: "5678"
+    - name: WEBHOOK_URL
+      value: "https://n8n.tayoca.com"
+    - name: DB_TYPE
+      value: "postgresdb"
+    - name: DB_POSTGRESDB_HOST
+      value: "n8n-postgres-rw.n8n.svc.cluster.local"
+    - name: DB_POSTGRESDB_PORT
+      value: "5432"
+    - name: DB_POSTGRESDB_DATABASE
+      value: "n8n"
+    - name: DB_POSTGRESDB_USER
+      value: "n8n"
+    - name: DB_POSTGRESDB_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: n8n-postgres-credentials
+          key: password
+    - name: N8N_ENCRYPTION_KEY
+      valueFrom:
+        secretKeyRef:
+          name: n8n-encryption-key
+          key: key
+    - name: EXECUTIONS_MODE
+      value: "queue"
+    - name: QUEUE_BULL_REDIS_HOST
+      value: "n8n-redis.n8n.svc.cluster.local"
+    - name: QUEUE_BULL_REDIS_PORT
+      value: "6379"
+    - name: QUEUE_BULL_REDIS_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: n8n-redis
+          key: redis-password
+    - name: N8N_LOG_LEVEL
+      value: "info"
+    - name: N8N_METRICS
+      value: "true"
+    - name: N8N_METRICS_PREFIX
+      value: "n8n"
+    - name: GENERIC_TIMEZONE
+      value: "America/Toronto"
+    # OAuth credentials (stored in secrets)
+    - name: N8N_OAUTH2_CLIENT_ID_GITHUB
+      valueFrom:
+        secretKeyRef:
+          name: n8n-oauth
+          key: github-client-id
+    - name: N8N_OAUTH2_CLIENT_SECRET_GITHUB
+      valueFrom:
+        secretKeyRef:
+          name: n8n-oauth
+          key: github-client-secret
+
+  ingress:
+    enabled: true
+    className: "nginx"
+    annotations:
+      cert-manager.io/cluster-issuer: "letsencrypt-prod"
+      nginx.ingress.kubernetes.io/proxy-body-size: "50m"
+      nginx.ingress.kubernetes.io/proxy-read-timeout: "300"
+      nginx.ingress.kubernetes.io/proxy-send-timeout: "300"
+    hosts:
+      - host: n8n.tayoca.com
+        paths:
+          - path: /
+            pathType: Prefix
+    tls:
+      - secretName: n8n-tls
+        hosts:
+          - n8n.tayoca.com
+
+  persistence:
+    enabled: true
+    size: 10Gi
+    storageClass: fast-ssd
+    accessMode: ReadWriteOnce
+
+  resources:
+    requests:
+      memory: "1Gi"
+      cpu: "500m"
+    limits:
+      memory: "2Gi"
+      cpu: "1000m"
+
+  livenessProbe:
+    httpGet:
+      path: /healthz
+      port: 5678
+    initialDelaySeconds: 60
+    periodSeconds: 30
+  readinessProbe:
+    httpGet:
+      path: /healthz
+      port: 5678
+    initialDelaySeconds: 10
+    periodSeconds: 10
+
+worker:
+  enabled: true
+  replicaCount: 3
+  env:
+    - name: EXECUTIONS_MODE
+      value: "queue"
+    - name: QUEUE_BULL_REDIS_HOST
+      value: "n8n-redis.n8n.svc.cluster.local"
+  resources:
+    requests:
+      memory: "512Mi"
+      cpu: "250m"
+    limits:
+      memory: "1Gi"
+      cpu: "500m"
+  autoscaling:
+    enabled: true
+    minReplicas: 2
+    maxReplicas: 10
+    targetCPUUtilizationPercentage: 70</code></pre>
+
+                <h2>Step 5: MCP Servers as Sidecars / Separate Deployments</h2>
+                <p>Each MCP server runs as its own Deployment, exposing stdio over HTTP via <code>mcp-proxy</code> or native HTTP transport.</p>
+
+                <h3>Example: GitHub MCP Server</h3>
+                <pre><code>apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mcp-github
+  namespace: n8n
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: mcp-github
+  template:
+    metadata:
+      labels:
+        app: mcp-github
+    spec:
+      containers:
+        - name: mcp-github
+          image: ghcr.io/modelcontextprotocol/server-github:latest
+          env:
+            - name: GITHUB_PERSONAL_ACCESS_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: mcp-github-credentials
+                  key: token
+            - name: GITHUB_DYNAMIC_TOOLSETS
+              value: "true"
+          ports:
+            - containerPort: 3000
+              name: http
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "100m"
+            limits:
+              memory: "256Mi"
+              cpu: "250m"
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 3000
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 3000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mcp-github
+  namespace: n8n
+spec:
+  selector:
+    app: mcp-github
+  ports:
+    - port: 3000
+      targetPort: 3000</code></pre>
+
+                <h3>n8n MCP Configuration (via n8n UI or config map)</h3>
+                <pre><code># In n8n: Settings → Community Nodes → Add MCP Server
+# Server URL: http://mcp-github.n8n.svc.cluster.local:3000
+# Transport: HTTP (SSE)
+# Authentication: None (internal network)</code></pre>
+
+                <h2>Step 6: GitOps with ArgoCD</h2>
+                <pre><code>apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: n8n-stack
+  namespace: argocd
+spec:
+  project: production
+  source:
+    repoURL: https://github.com/temitayocharles/homelab-gitops
+    targetRevision: main
+    path: argocd/applications/n8n
+    helm:
+      valueFiles:
+        - values-n8n.yaml
+        - values-postgres.yaml
+        - values-redis.yaml
+        - values-mcp-servers.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: n8n
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+      allowEmpty: false
+    syncOptions:
+      - CreateNamespace=true
+      - PrunePropagationPolicy=foreground
+      - PruneLast=true
+    retry:
+      limit: 5
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m</code></pre>
+
+                <h2>Step 7: Secrets Management (External Secrets Operator)</h2>
+                <pre><code>apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: n8n-secrets
+  namespace: n8n
+spec:
+  refreshInterval: 1h
+  secretStoreRef:
+    name: vault-backend
+    kind: ClusterSecretStore
+  target:
+    name: n8n-secrets
+    creationPolicy: Owner
+  data:
+    - secretKey: encryption-key
+      remoteRef:
+        key: n8n/encryption-key
+        property: key
+    - secretKey: github-client-id
+      remoteRef:
+        key: n8n/oauth
+        property: github-client-id
+    - secretKey: github-client-secret
+      remoteRef:
+        key: n8n/oauth
+        property: github-client-secret
+    - secretKey: cloudflare-api-token
+      remoteRef:
+        key: n8n/integrations
+        property: cloudflare-api-token</code></pre>
+
+                <h2>Step 8: Monitoring & Alerting</h2>
+                <pre><code># ServiceMonitor for Prometheus
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: n8n
+  namespace: n8n
+spec:
+  selector:
+    matchLabels:
+      app: n8n
+  endpoints:
+    - port: http
+      path: /metrics
+      interval: 30s
+---
+# Key alerts (PrometheusRule)
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: n8n-alerts
+  namespace: n8n
+spec:
+  groups:
+    - name: n8n.rules
+      rules:
+        - alert: N8NWorkflowFailureRate
+          expr: rate(n8n_workflow_executions_failed_total[5m]) / rate(n8n_workflow_executions_total[5m]) > 0.05
+          for: 5m
+          labels:
+            severity: warning
+          annotations:
+            summary: "n8n workflow failure rate > 5%"
+        - alert: N8NQueueLag
+          expr: n8n_queue_jobs_waiting > 100
+          for: 10m
+          labels:
+            severity: warning
+          annotations:
+            summary: "n8n queue has {{ $value }} waiting jobs"
+        - alert: N8NWorkerDown
+          expr: up{job="n8n-worker"} == 0
+          for: 2m
+          labels:
+            severity: critical
+          annotations:
+            summary: "n8n worker pod down"</code></pre>
+
+                <h2>Step 9: OAuth Configuration (GitHub, GitLab, Google, etc.)</h2>
+                <p>Create OAuth apps in each provider with callback URL: <code>https://n8n.tayoca.com/oauth2/callback</code></p>
+                <p>Store credentials in Vault → External Secrets → n8n env vars (as shown in values-n8n.yaml).</p>
+
+                <h2>Common Operational Tasks</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Task</th>
+                            <th>Command</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>View n8n logs</td>
+                            <td><code>kubectl logs -n n8n -l app=n8n -f</code></td>
+                        </tr>
+                        <tr>
+                            <td>Scale workers manually</td>
+                            <td><code>kubectl scale deployment n8n-worker -n n8n --replicas=5</code></td>
+                        </tr>
+                        <tr>
+                            <td>Backup workflows</td>
+                            <td><code>kubectl exec -n n8n deploy/n8n -- n8n export:workflow --all --output=/tmp/workflows.json</code></td>
+                        </tr>
+                        <tr>
+                            <td>Update n8n version</td>
+                            <td>Update tag in values-n8n.yaml → ArgoCD sync</td>
+                        </tr>
+                        <tr>
+                            <td>Add MCP server</td>
+                            <td>Deploy new Deployment+Service → Register in n8n UI</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h2>Cost Breakdown (Monthly, AWS us-east-1, 3-node cluster)</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Component</th>
+                            <th>Spec</th>
+                            <th>Est. Cost</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>EKS Control Plane</td><td>Managed</td><td>$73</td></tr>
+                        <tr><td>Worker Nodes (3× m6i.xlarge)</td><td>4 vCPU, 16 GiB each</td><td>$380</td></tr>
+                        <tr><td>RDS PostgreSQL (db.r6g.xlarge, Multi-AZ)</td><td>4 vCPU, 32 GiB</td><td>$350</td></tr>
+                        <tr><td>ElastiCache Redis (cache.r6g.xlarge)</td><td>4 vCPU, 32 GiB</td><td>$220</td></tr>
+                        <tr><td>EBS Volumes (GP3)</td><td>~100 GiB total</td><td>$8</td></tr>
+                        <tr><td>Data Transfer / ALB</td><td>Moderate</td><td>$30</td></tr>
+                        <tr><td><strong>Total</strong></td><td></td><td><strong>~$1,061/mo</strong></td></tr>
+                    </tbody>
+                </table>
+                <p class="text-[var(--fg-muted)] text-sm">vs. n8n Cloud Pro: $120/mo (10K executions) — self-hosted wins at scale + full data control + custom MCP servers.</p>
+
+                <h2>Troubleshooting Quick Reference</h2>
+                <ul>
+                    <li><strong>Webhooks not firing:</strong> Check ingress annotations (proxy-body-size, timeouts), verify Cloudflare proxy DNS</li>
+                    <li><strong>Workers stuck:</strong> Redis connectivity, check <code>QUEUE_BULL_REDIS_*</code> env vars</li>
+                    <li><strong>MCP server not appearing:</strong> Verify Service name matches n8n config, check mcp-proxy health endpoint</li>
+                    <li><strong>OAuth redirect mismatch:</strong> Exact callback URL in provider console, check <code>N8N_HOST</code>/<code>WEBHOOK_URL</code></li>
+                    <li><strong>Postgres connection pool exhaustion:</strong> Increase <code>max_connections</code>, add PgBouncer</li>
+                </ul>
+
+                <h2>Next Steps</h2>
+                <ul>
+                    <li>Add <strong>Temporal</strong> for durable execution / long-running workflows</li>
+                    <li>Deploy <strong>n8n-mcp</strong> custom nodes for tighter integration</li>
+                    <li>Implement <strong>multi-tenancy</strong> with n8n's project feature + namespace isolation</li>
+                    <li>Build <strong>custom MCP servers</strong> for your internal APIs (see <a href="/sivanta.html">Sivanta platform</a>)</li>
+                </ul>
+
+                <h2>Want This Running for Your Team?</h2>
+                <p>I offer a <strong>"n8n + MCP on Kubernetes" implementation package</strong> — 2-week engagement, GitOps repo, monitoring, docs, and knowledge transfer.</p>
+                <p class="text-center mt-6">
+                    <a href="https://calendly.com/d/d2d5-67k-mws" class="inline-block px-6 py-3 bg-[var(--accent)] text-white rounded-lg hover:bg-[var(--accent-hover)] transition-colors font-medium" target="_blank">
+                        Book Discovery Call → $5K Fixed Scope
+                    </a>
+                </p>
+            </div>
+        </div>
+    </article>
+</main>
+
+        <footer class="site-footer"><div class="footer-inner">
+  <div class="footer-brand-col"><div class="footer-brand">TAYOCA</div><p>An engineering-led technology company building software, systems, automation and publications for technology that has to be reliable, accountable and economically understood. Founded by Temitayo Charles. Ontario, Canada. © <span data-current-year>2026</span> Tayoca.</p></div>
+  <div class="footer-links"><strong>Explore</strong><a href="/services.html">Services</a><a href="/assessments.html">Assessments</a><a href="/results.html">Results</a><a href="/products.html">Products</a><a href="/insights.html">Insights</a><a href="/about.html">About</a></div>
+  <div class="footer-links"><strong>Connect</strong><a href="/operator-brief.html">Operator Brief</a><a href="/trust.html">Trust Center</a><a href="mailto:support@tayoca.com">support@tayoca.com</a><a href="mailto:temitayo@tayoca.com">temitayo@tayoca.com</a></div>
+  <div class="footer-col"><strong>Company</strong><a href="/about.html">About</a><a href="/work.html">Work</a><a href="/results.html">Results</a><a href="/trust.html">Trust Center</a><a href="/reviews.html">Verified Reviews</a></div>
+  <div class="footer-col"><strong>Deliver</strong><a href="/services.html">Services &amp; pricing</a><a href="/assessments.html">Assessments</a><a href="/segments/growth-stage-technology.html">Growth-stage</a><a href="/segments/regulated-operations.html">Regulated operations</a><a href="/segments/ai-enabled-engineering.html">AI-enabled teams</a></div>
+  <div class="footer-col"><strong>Build &amp; Read</strong><a href="/products.html">Products</a><a href="/sivanta.html">Sivanta</a><a href="/blog/">Insights</a><a href="/operator-brief-archive.html">Brief archive</a><a href="/community/websites">Community initiative</a></div>
+</div>
+<div class="footer-legal"><span>© <span data-current-year>2026</span> Tayoca · Ontario, Canada</span><a href="/trust.html">Evidence &amp; disclosure policy</a></div></footer>
+
+    <div class="container mx-auto px-6 pb-16">
+        <div class="max-w-4xl mx-auto bg-[var(--card-bg)] rounded-lg p-6 border border-[var(--accent)]/30 text-center">
+            <h3 class="text-lg font-medium text-white mb-2">Stay Updated</h3>
+            <p class="text-[var(--fg-muted)] text-sm mb-4">Get weekly insights on DevOps, AI automation, and technical playbooks. No spam, unsubscribe anytime.</p>
+            <form id="newsletter-form" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+                <input 
+                    type="email" 
+                    name="email" 
+                    placeholder="your@email.com" 
+                    required
+                    class="form-input"
+                
+                    aria-label="Email address for the Operator Brief"
+                >
+                <button 
+                    type="submit" 
+                    class="btn btn-primary whitespace-nowrap"
+                >
+                    Subscribe
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('newsletter-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = e.target.email.value;
+            const btn = e.target.querySelector('button');
+            btn.textContent = 'Subscribing...';
+            btn.disabled = true;
+            
+            try {
+                const res = await fetch('https://v7mhrspk.function2.insforge.app/newsletter-subscribe', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, source: 'blog-n8n-mcp-kubernetes' })
+                });
+                if (res.ok) {
+                    btn.textContent = 'Subscribed!';
+                    btn.classList.remove('bg-text-[var(--accent)]');
+                    btn.classList.add('bg-green-500');
+                    e.target.reset();
+                } else {
+                    throw new Error('Failed');
+                }
+            } catch {
+                btn.textContent = 'Error — Try Again';
+                btn.classList.remove('bg-text-[var(--accent)]');
+                btn.classList.add('bg-red-500');
+            }
+            setTimeout(() => {
+                btn.textContent = 'Subscribe';
+                btn.disabled = false;
+                btn.classList.remove('bg-green-500', 'bg-red-500');
+                btn.classList.add('bg-text-[var(--accent)]');
+            }, 3000);
+        });
+    </script>
+
+    
+<script defer src="/tayoca-site.js"></script></body>
+</html>

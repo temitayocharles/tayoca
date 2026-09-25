@@ -1,57 +1,16 @@
-name: Tayoca static quality
+name: Tayoca canonical GitHub mirror
 
 on:
   push:
-  pull_request:
-  schedule:
-    - cron: "17 3 * * 1"
   workflow_dispatch:
 
 concurrency:
-  group: tayoca-static-quality-${{ forgejo.ref }}
-  cancel-in-progress: true
+  group: tayoca-canonical-github-mirror
+  cancel-in-progress: false
 
 jobs:
-  validate:
-    name: Validate static package
-    runs-on: forgejo-general
-    timeout-minutes: 15
-    steps:
-      - name: Check out Tayoca
-        uses: https://data.forgejo.org/actions/checkout@v6
-
-      - name: Verify Forgejo runner contract
-        shell: bash
-        run: |
-          set -euo pipefail
-          test -n "${FORGEJO_ACTIONS:-${GITHUB_ACTIONS:-}}"
-          python3 --version
-          git rev-parse --is-inside-work-tree
-
-      - name: Validate source package
-        shell: bash
-        run: |
-          set -euo pipefail
-          python3 -m py_compile \
-            scripts/validate_static_site.py \
-            scripts/validate_analytics_coverage.py \
-            scripts/validate_product_ecosystem.py \
-            scripts/validate_company_ecosystem.py \
-            scripts/verify_production_parity.py \
-            scripts/scan_tracked_secrets.py \
-            scripts/validate_editorial_copy_quality.py \
-            scripts/validate_media_distribution_policy.py
-          python3 scripts/scan_tracked_secrets.py
-          python3 scripts/validate_static_site.py
-          python3 scripts/validate_analytics_coverage.py
-          python3 scripts/validate_product_ecosystem.py
-          python3 scripts/validate_company_ecosystem.py
-          python3 scripts/validate_editorial_copy_quality.py
-          python3 scripts/validate_media_distribution_policy.py
-
   mirror_github:
     name: Certify or publish canonical tree snapshot to GitHub
-    needs: validate
     if: ${{ (forgejo.event_name == 'push' && forgejo.ref == 'refs/heads/main') || forgejo.event_name == 'workflow_dispatch' }}
     runs-on: forgejo-general
     timeout-minutes: 15
@@ -222,3 +181,4 @@ jobs:
           test "$pushed_head" = "$(git -C "$mirror_root/github" rev-parse HEAD)"
           test "$(git -C "$mirror_root/github" rev-parse 'HEAD^{tree}')" = "$canonical_tree"
           echo "Published exact canonical tree ${canonical_tree} to GitHub deployment mirror."
+

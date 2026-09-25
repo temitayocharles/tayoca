@@ -325,7 +325,7 @@ def main() -> int:
     resolve_public(require_text(evidence.get("results_standard"), "evidence.results_standard"), "evidence")
     resolve_public(require_text(evidence.get("trust_center"), "evidence.trust_center"), "evidence")
     resolve_public(require_text(evidence.get("reviews", {}).get("surface"), "evidence.reviews.surface"), "evidence")
-    if not str(evidence.get("reviews", {}).get("endpoint", "")).startswith("https://n8n.tayoca.com/"):
+    if not str(evidence.get("reviews", {}).get("endpoint", "")).startswith("https://n8n.tca-infraforge.site/"):
         fail("evidence.reviews.endpoint must remain the review data endpoint")
 
     # Withdrawn proof narratives must never become portfolio evidence.
@@ -352,22 +352,15 @@ def main() -> int:
 
     security = data.get("security") or {}
     secret = security.get("control_center_embedded_authorization_material") or {}
-    if secret.get("status") != "superseded_by_completed_production_handoff":
-        fail("historical Control Center authorization finding must follow the completed production handoff")
-    if secret.get("classification") != "historical_finding_not_active_workstream":
-        fail("historical Control Center authorization finding must not be represented as active implementation work")
-    evidence_refs = secret.get("evidence") or []
-    for required_ref in (
-        "docs/control-center-production-handoff-20260828.md",
-        "docs/control-center-status-note.yaml",
-    ):
-        if required_ref not in evidence_refs or not (ROOT / required_ref).is_file():
-            fail(f"Control Center completed-handoff evidence missing: {required_ref}")
-    reopen_rule = str(secret.get("reopen_rule", "")).lower()
-    if "specific evidenced defect" not in reopen_rule or "security audit" not in reopen_rule:
-        fail("Control Center historical finding needs the narrow reopen rule")
-    if "no historical or current authorization value is reproduced" not in str(secret.get("secret_value_policy", "")).lower():
-        fail("Control Center secret-value policy is incomplete")
+    if secret.get("status") != "open_needs_live_certification":
+        fail("control-center authorization remediation must remain open/needs live certification")
+    sequence = secret.get("required_remediation_sequence") or []
+    for step in ("rotate the value", "certify that the old value is no longer accepted"):
+        if step not in sequence:
+            fail(f"required remediation sequence missing step: {step}")
+    boundary = json.dumps(secret.get("workspace_boundary", []))
+    if "never reproduced" not in boundary or "no remediation completion is claimed" not in boundary:
+        fail("control-center security boundary statements are incomplete")
 
     print(
         "Company ecosystem validation PASSED: identity, 3 practices, services, segments, "

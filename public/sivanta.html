@@ -1,22 +1,693 @@
-<!doctype html>
-<html lang="en"><head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4QC90QNXW"></script><script src="/ga4.js"></script>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light dark"><script>(function(){try{var t=localStorage.getItem('tayoca-theme');if(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)t='dark';document.documentElement.dataset.theme=t||'light';}catch(e){document.documentElement.dataset.theme='light';}})();</script>
-<title>Sivanta | Conversation-Led Commerce Automation by Tayoca</title><meta name="description" content="Sivanta is Tayoca's conversation-led commerce platform for governed multi-channel customer flows, policy controls, checkout, analytics and human handoff."><meta name="keywords" content="Sivanta, conversation commerce, WhatsApp automation, Telegram automation, customer operations, commerce automation"><meta name="author" content="Tayoca"><meta name="robots" content="index,follow"><link rel="canonical" href="https://tayoca.com/sivanta.html"><link rel="icon" href="/favicon.ico"><meta property="og:title" content="Sivanta | Conversation-Led Commerce Automation by Tayoca"><meta property="og:description" content="Governed customer conversations across WhatsApp, Telegram and web with policy controls, checkout and human handoff."><meta property="og:type" content="website"><meta property="og:url" content="https://tayoca.com/sivanta.html"><meta property="og:site_name" content="Tayoca"><meta property="og:image" content="https://tayoca.com/assets/sivanta-og-image.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Sivanta | Tayoca"><meta name="twitter:description" content="Governed conversation-led commerce across messaging and web channels."><meta name="twitter:image" content="https://tayoca.com/assets/sivanta-og-image.png">
-<script defer src="https://vermason.com/analytics/id.js"></script>
-<link rel="stylesheet" href="/assets/css/growth-os.css"><link rel="stylesheet" href="/assets/css/site-shell.css"><link rel="stylesheet" href="/assets/css/tayoca-v9.css"><script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Sivanta","url":"https://tayoca.com/sivanta.html","applicationCategory":"BusinessApplication","operatingSystem":"Web","description":"Conversation-led commerce automation with governed multi-channel flows, policy controls, checkout and human handoff."}</script>
-<style>
-.sivanta-hero{display:grid;grid-template-columns:.85fr 1.15fr;gap:5rem;align-items:center}.sivanta-flow{border:1px solid var(--line);border-radius:16px;background:var(--surface);box-shadow:var(--v9-shadow-deep);overflow:hidden}.sivanta-flow img{width:100%;display:block}.sivanta-flow figcaption{padding:.9rem 1rem;color:var(--muted);font-size:.8rem;border-top:1px solid var(--line)}.flow-list{border-top:1px solid var(--line)}.flow-step{display:grid;grid-template-columns:150px 1fr;gap:2.5rem;padding:1.4rem 0;border-bottom:1px solid var(--line)}.flow-step strong{color:var(--ink);font-weight:600}.flow-step span{color:var(--muted)}.buyer-layout{display:grid;grid-template-columns:.7fr 1.3fr;gap:5rem}.buyer-list{border-top:1px solid var(--line)}.buyer-row{display:grid;grid-template-columns:190px 1fr;gap:2rem;padding:1.35rem 0;border-bottom:1px solid var(--line)}.buyer-row strong{color:var(--ink)}.buyer-row span{color:var(--muted)}.plan-list{border-top:1px solid var(--line)}.plan{display:grid;grid-template-columns:190px 170px 1fr auto;gap:2rem;align-items:start;padding:1.7rem 0;border-bottom:1px solid var(--line)}.plan h3{margin:0;font-size:1.35rem}.plan .plan-price{font-size:1.15rem;color:var(--accent);font-weight:600}.plan p{margin:0}.plan .button{white-space:nowrap}.boundary-note{display:grid;grid-template-columns:.72fr 1.28fr;gap:5rem}.boundary-note .notice{margin:0}
-@media(max-width:860px){.sivanta-hero,.buyer-layout,.boundary-note{grid-template-columns:1fr;gap:2rem}.flow-step,.buyer-row{grid-template-columns:1fr;gap:.35rem}.plan{grid-template-columns:1fr;gap:.65rem}.plan .button{justify-self:start}}
-</style></head><body><a class="skip-link" href="#main">Skip to content</a>
-<header class="site-header"><div class="header-inner"><a class="brand" href="/" aria-label="Tayoca home">TAYOCA</a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open navigation">Menu</button><nav class="primary-nav" id="primary-nav" aria-label="Primary navigation"><a href="/services.html">Services</a><a href="/assessments.html">Assessments</a><a href="/results.html">Results</a><a href="/products.html">Products</a><a href="/insights.html">Insights</a><a href="/about.html">About</a></nav><button class="theme-switch" type="button" aria-label="Switch colour theme"></button><a class="button small header-cta" href="/assessments.html">Start an Assessment</a></div><div class="header-map"><nav class="utility-nav" aria-label="Company map"><span class="utility-nav__label">More from Tayoca</span><a href="/work.html">Work</a><a href="/operator-brief.html">Operator Brief</a><a href="/community/websites">Community</a><a href="/trust.html">Trust</a><a href="/reviews.html">Reviews</a><a href="/sivanta.html" aria-current="page">Sivanta</a></nav></div></header>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-G4QC90QNXW"></script>
+  <script src="/ga4.js"></script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sivanta | Conversation-Led Commerce Automation by Tayoca</title>
+  <meta name="description" content="Sivanta is Tayoca's conversation-led commerce platform: governed multi-channel conversation flows with a skill registry, policy layer, checkout and human handoff.">
+  <meta name="keywords" content="Sivanta, pricing, conversation-led commerce, automation, Starter, Growth, Managed, WhatsApp, Telegram, web, AI skills">
+  <meta name="author" content="Tayoca">
+  <meta name="robots" content="index, follow">
+
+  <!-- SEO Meta Tags -->
+  <meta property="og:title" content="Sivanta | Conversation-Led Commerce Automation by Tayoca">
+  <meta property="og:description" content="Explore Sivanta's pricing plans for conversation-led commerce automation. Start with Starter, scale with Growth, or get a fully managed solution.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tayoca.com/sivanta.html">
+  <meta property="og:image" content="https://tayoca.com/assets/sivanta-og-image.png">
+  <meta property="og:site_name" content="Tayoca">
+
+  <!-- Canonical Link -->
+  <link rel="canonical" href="https://tayoca.com/sivanta.html">
+
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <!-- InsForge Analytics (Plausible-compatible, self-hosted) -->
+  <script>
+  (function() {
+  var endpoint = 'https://v7mhrspk.function2.insforge.app/analytics-event';
+  var domain = 'tayoca.com';
+  function sendEvent(name, props) {
+  var data = {
+      domain: domain,
+      name: name,
+      url: window.location.href,
+      path: window.location.pathname,
+      referrer: document.referrer || null,
+      screen_width: window.screen.width,
+      screen_height: window.screen.height,
+      props: props || {}
+  };
+  navigator.sendBeacon && navigator.sendBeacon(endpoint, JSON.stringify(data)) ||
+  fetch(endpoint, { method: 'POST', body: JSON.stringify(data), keepalive: true });
+  }
+  if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', function() { sendEvent('pageview'); });
+  } else {
+  sendEvent('pageview');
+  }
+  // Expose for custom events
+  window.tayocaAnalytics = { sendEvent: sendEvent };
+  })();
+  </script>
+
+  <!-- Vermason analytics -->
+  <script defer src="https://vermason.com/analytics/id.js"></script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <style>
+    :root {
+      --bg-dark: #0d0d0d;
+      --bg-card: #ffffff;
+      --accent: #f97316;
+      --text-base: #e5e7eb;
+      --text-light: #9ca3af;
+      --text-dark: #1f2937;
+    }
+
+    html { font-size: 16px; }
+    body {
+      margin: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-base);
+      line-height: 1.6;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(8px);
+      background: rgba(13,13,13,0.8);
+      padding: 1rem 0;
+    }
+    nav {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 2rem;
+    }
+    .nav-brand {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #ffffff;
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+    .nav-links a {
+      color: var(--text-base);
+      text-decoration: none;
+      font-weight: 400;
+      transition: color .3s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-links a.active {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 2rem;
+    }
+
+    section {
+      padding: 4rem 0;
+      scroll-margin-top: 100px;
+    }
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    section > h2 {
+      font-size: clamp(2rem,5vw,2.8rem);
+      font-weight: 700;
+      margin: 0;
+      color: var(--text-base);
+    }
+    section > p {
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 1rem auto 0;
+      color: var(--text-light);
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      text-align: center;
+    }
+    .hero-content {
+      max-width: 800px;
+      margin: auto;
+    }
+    .hero h1 {
+      font-size: clamp(2.5rem,8vw,4.5rem);
+      line-height: 1.1;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: var(--text-base);
+    }
+    .hero p {
+      font-size: 1.3rem;
+      color: var(--text-light);
+      margin-bottom: 2rem;
+    }
+
+    /* Social/Channel Icons */
+    .channel-icons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    .channel-icon {
+      font-size: 2rem;
+      color: var(--accent);
+      transition: transform 0.2s;
+    }
+    .channel-icon:hover {
+      transform: scale(1.1);
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      padding: .75rem 1.5rem;
+      background: var(--accent);
+      color: white;
+      border-radius: .5rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform .2s;
+      border: none;
+      cursor: pointer;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: var(--accent); }
+    .btn-secondary {
+      display: inline-block;
+      padding: .75rem 1.5rem;
+      background: #374151;
+      color: white;
+      border-radius: .5rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background .2s;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-secondary:hover { background: #4b5563; }
+
+    /* Pricing */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    .pricing-card {
+      background: var(--bg-card);
+      color: var(--text-dark);
+      border-radius: 1rem;
+      padding: 2rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,.08);
+      border: 1px solid #e5e7eb;
+      position: relative;
+    }
+    .pricing-card.sivanta-brand {
+      background: linear-gradient(135deg, #fef3c7 0%, #fef3c7 100%);
+      border: none;
+    }
+    .sivanta-brand .tier-name {
+      color: #92400e;
+    }
+    .sivanta-brand .tier-price {
+      color: #92400e;
+    }
+    .popular {
+      border: 2px solid var(--accent);
+      position: relative;
+    }
+    .popular-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent);
+      color: white;
+      padding: .25rem 1rem;
+      border-radius: 1rem;
+      font-size: .8rem;
+      font-weight: 600;
+    }
+    .tier-name {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: .5rem;
+      color: var(--text-dark);
+    }
+    .tier-price {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: .5rem;
+    }
+    .tier-price sup { font-size: 1rem; }
+    .tier-period { font-size: 1rem; color: var(--text-light); }
+    .tier-highlight {
+      background: var(--accent);
+      color: white;
+      padding: .25rem .75rem;
+      border-radius: 1rem;
+      font-size: .8rem;
+      font-weight: 600;
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+    .tier-features { margin: 1.5rem 0; }
+    .tier-features h4 {
+      margin: 1rem 0 .5rem;
+      font-size: 1.1rem;
+      color: var(--text-dark);
+    }
+    .tier-features ul {
+      margin: 0;
+      padding-left: 1rem;
+    }
+    .tier-features li {
+      margin-bottom: .5rem;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      color: var(--text-dark);
+    }
+    .feat-icon {
+      color: var(--accent);
+      width: 16px;
+      height: 16px;
+    }
+
+    /* Comparison */
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 3rem 0;
+      overflow: hidden;
+      border-radius: 1rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,.08);
+      background: var(--bg-card);
+    }
+    .comparison-table th,
+    .comparison-table td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .comparison-table th {
+      font-weight: 600;
+      background: #f9fafb;
+      color: var(--text-dark);
+    }
+    .comparison-table tr:hover { background: #f9fafb; }
+    .check-icon {
+      color: var(--accent);
+    }
+
+    /* Footer */
+    footer {
+      padding: 3rem 0;
+      border-top: 1px solid #374151;
+      font-size: .9rem;
+      color: var(--text-light);
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      max-width: 1200px;
+      margin: auto;
+      padding-left: 2rem;
+      padding-right: 2rem;
+      gap: 2rem;
+    }
+    .footer-brand strong,
+    .footer-links strong {
+      color: var(--text-base);
+    }
+    .footer-links a {
+      display: block;
+      color: var(--text-light);
+      text-decoration: none;
+      margin-bottom: .5rem;
+    }
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+
+    /* Decorative amber accent */
+    .amber-accent {
+      background: var(--accent);
+      width: 100%;
+      height: 6px;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .pricing-card, .comparison-table {
+      animation: fadeInUp 0.5s ease-out;
+      animation-fill-mode: both;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      footer {
+        grid-template-columns: 1fr;
+      }
+      .nav-links {
+        display: none;
+      }
+      .hero h1 {
+        font-size: clamp(2rem,10vw,2.8rem);
+      }
+      .pricing-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Sivanta",
+  "url": "https://tayoca.com/sivanta.html",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "description": "Explore Sivanta"
+}
+</script>
+<link rel="stylesheet" href="/assets/css/site-shell.css"><meta name="twitter:card" content="summary_large_image"></head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+  <a class="brand" href="/" aria-label="Tayoca home">TAYOCA</a>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open navigation">Menu</button>
+  <nav class="primary-nav" id="primary-nav" aria-label="Primary navigation"><a href="/services.html">Services</a><a href="/assessments.html">Assessments</a><a href="/results.html">Results</a><a href="/products.html">Products</a><a href="/insights.html">Insights</a><a href="/about.html">About</a></nav>
+  <a class="button small header-cta" href="/assessments.html">Start an Assessment</a>
+</div>
+<div class="header-map"><nav class="utility-nav" aria-label="Company map">
+  <span class="utility-nav__label">More from Tayoca</span>
+  <a href="/work.html">Work</a><a href="/operator-brief.html">Operator Brief</a><a href="/community/websites">Community</a><a href="/trust.html">Trust</a><a href="/reviews.html">Reviews</a><a href="/sivanta.html" aria-current="page">Sivanta</a>
+</nav></div></header>
 <main id="main">
-<section class="hero"><div class="hero-inner sivanta-hero"><div><h1>Customer conversations should not become another pile of disconnected manual work.</h1><p class="lede">Sivanta brings selected customer conversations, automation skills, policy controls, checkout and human handoff into one governed flow across channels such as WhatsApp, Telegram and web.</p><div class="actions"><a class="button" href="#pricing">Review plans</a><a class="button ghost" href="/services.html">Discuss a managed setup</a></div><p class="microcopy">The architecture shown here is a system diagram. Tayoca does not use invented customer screenshots as product evidence.</p></div><figure class="sivanta-flow"><img src="/assets/img/sivanta-flow.png" alt="Sivanta flow diagram showing channel adapters, skill registry, policy controls, checkout and human handoff" loading="eager"><figcaption>Channel adapters → skills → policy controls → checkout → human handoff</figcaption></figure></div></section>
-<section class="section band" id="how"><div class="container buyer-layout"><div><h2>One governed path instead of a different bot for every channel.</h2><p>Each customer conversation follows the same operating model even when the entry point changes.</p></div><div class="flow-list"><div class="flow-step"><strong>Channel adapters</strong><span>WhatsApp, Telegram and web interactions are normalized into a shared conversation model.</span></div><div class="flow-step"><strong>Skill registry</strong><span>Approved capabilities are registered and versioned instead of being improvised at runtime.</span></div><div class="flow-step"><strong>Policy controls</strong><span>Scope, approval and escalation rules apply before an automated action is taken.</span></div><div class="flow-step"><strong>Checkout</strong><span>Conversation flows can move into an approved payment path where the configured use case requires it.</span></div><div class="flow-step"><strong>Human handoff</strong><span>When confidence drops or risk rises, the flow routes to a person rather than pretending automation should decide everything.</span></div></div></div></section>
-<section class="section"><div class="container buyer-layout"><div><h2>Who it is for</h2><p>Sivanta is intended for teams whose customer conversations, qualification, payments and follow-up are fragmented across channels and require too much manual handling.</p></div><div class="buyer-list"><div class="buyer-row"><strong>Commerce teams</strong><span>Handle repeatable customer conversations while keeping transaction and escalation rules explicit.</span></div><div class="buyer-row"><strong>Customer operations</strong><span>Bring selected support, qualification and follow-up flows into one observable operating model.</span></div><div class="buyer-row"><strong>Growth teams</strong><span>Use governed conversational workflows without turning each campaign or channel into a separate automation island.</span></div></div></div></section>
-<section class="section paper-band" id="pricing"><div class="container"><div class="section-heading"><h2>Plans</h2><p>Choose the operating boundary that matches the channels, tenant count, skills and support you need. Commitments such as uptime, response times or compliance apply only when they are explicitly included in a signed plan.</p></div><div class="plan-list"><article class="plan"><h3>Starter</h3><div class="plan-price">$99 / month</div><p>A starting subscription for a bounded Sivanta setup. Exact channel, skill and support limits follow the selected plan configuration.</p><a class="button ghost small" href="/services.html">Ask about Starter</a></article><article class="plan"><h3>Growth</h3><div class="plan-price">$299 / month</div><p>For teams expanding the number of channels, tenants or approved automation skills while keeping the same governed operating model.</p><a class="button small" href="/services.html">Ask about Growth</a></article><article class="plan"><h3>Managed</h3><div class="plan-price">Custom scope</div><p>For teams that need Tayoca to take on more onboarding, integration or operating responsibility. Scope, support and any SLA terms are defined in the signed plan.</p><a class="button ghost small" href="/services.html">Discuss managed scope</a></article></div></div></section>
-<section class="section"><div class="container boundary-note"><div><h2>What the subscription does not promise by itself</h2><p>A product plan is not an automatic business-outcome guarantee.</p></div><div class="notice"><div><strong>Boundaries stay explicit.</strong><p>Channel, tenant, skill and support limits follow the selected plan. Business outcomes depend on data, integrations and operating adoption. Working channel flows, execution records and analytics are validated in the configured environment rather than inferred from marketing claims.</p></div></div></div></section>
-<section class="section compact band"><div class="container"><div class="section-heading"><h2>Want to see whether Sivanta fits your workflow?</h2><p>Bring one customer conversation you currently handle manually or across disconnected tools. We can start by mapping that flow and the human decisions it still needs.</p></div><div class="actions"><a class="button" href="/services.html">Request a conversation</a><a class="button ghost" href="/work.html">See other Tayoca projects</a></div></div></section>
+    <!-- Hero -->
+    <section class="hero"><div class="hero-inner hero-split">
+      <div>
+        <p class="eyebrow">Owned product · Sivanta</p>
+        <h1>Conversation-led commerce, <span class="accent">automated.</span></h1>
+        <p class="lede">Scale customer conversations across WhatsApp, Telegram and the web with governed AI automation, a policy layer, checkout and a clean human handover.</p>
+        <div class="channel-icons">
+          <div class="channel-icon" title="WhatsApp">&#128172;</div>
+          <div class="channel-icon" title="Telegram">&#128241;</div>
+          <div class="channel-icon" title="Web Chat">&#127760;</div>
+        </div>
+        <div class="actions"><a class="btn btn-primary" href="/services.html">Request Demo →</a><a class="button ghost" href="/work.html">See the wider portfolio</a></div>
+        <p class="microcopy">Architecture is shown as a system diagram. Sivanta is not presented through invented customer screenshots.</p>
+      </div>
+      <div class="hero-media">
+        <div class="device">
+          <div class="device-bar"><i></i><i></i><i></i><span>sivanta · conversation flow builder</span></div>
+          <div class="device-body"><img src="/assets/img/sivanta-flow.png" alt="Sivanta conversation-flow diagram: channel adapters, skill registry, policy layer, checkout and human handoff" loading="eager"></div>
+        </div>
+        <p class="figure-caption">Channel adapters → skill registry → policy layer → checkout → human handoff.</p>
+      </div>
+    </div></section>
+
+    <div class="amber-accent"></div>
+
+    <section class="section" id="how"><div class="container">
+      <div class="section-heading"><p class="ledger-label">How it works</p><h2>A governed flow, not an uncontrolled chatbot.</h2><p>Every conversation runs through the same path: adapt the channel, resolve the skill, apply policy, complete the transaction, and hand off to a human the moment judgment is needed.</p></div>
+      <div class="grid four">
+        <div class="card"><p class="article-meta">01</p><h3>Channel adapters</h3><p>WhatsApp, Telegram and web chat normalise into one conversation model.</p></div>
+        <div class="card"><p class="article-meta">02</p><h3>Skill registry</h3><p>Capabilities are registered, versioned and bounded rather than improvised at runtime.</p></div>
+        <div class="card"><p class="article-meta">03</p><h3>Policy layer</h3><p>Scope, approval and escalation rules apply before an automated action is taken.</p></div>
+        <div class="card"><p class="article-meta">04</p><h3>Human handoff</h3><p>When confidence drops or risk rises, the conversation routes to a named person.</p></div>
+      </div>
+    </div></section>
+
+    <div class="amber-accent"></div>
+    <!-- Pricing -->
+    <section id="pricing">
+      <div class="section-header">
+        <h2>Flexible plans to drive automation and growth</h2>
+        <p>Choose a plan that fits your business scale and needs. Upgrade as you grow with transparent pricing and enterprise-grade support.</p>
+      </div>
+
+      <div class="pricing-grid">
+        <!-- Starter -->
+        <div class="pricing-card">
+          <h3 class="tier-name">Starter</h3>
+          <div class="tier-price">$99<span class="tier-period">/mo</span></div>
+          <p style="color: var(--text-light); margin-bottom: 2rem;">Get started with essential automation tools and begin scaling conversations.</p>
+          
+          <div class="tier-highlight">Ideal for startups and small teams</div>
+          
+          <div class="tier-features">
+            <u><strong>Launch</strong></u>
+            <ul style="list-style: none; padding: 0; margin: 1rem 0 0 0;">
+              <li><svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> 1 tenant</li>
+              <li><svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> WhatsApp integration</li>
+              <li><svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Basic skills (up to 5)</li>
+              <li><svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Analytics dashboard</li>
+              <li><svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Community support</li>
+            </ul>
+            
+            <u><strong>Scale</strong></u>
+            <ul style="list-style: none; padding: 0; margin: 1rem 0 0 0;">
+              <li><svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Purchase Paystack link</li>
+              <li><svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Exportable reports</li>
+              <li><svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> 24/7 basic support</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Growth -->
+        <div class="pricing-card">
+          <h3 class="tier-name">Growth</h3>
+          <div class="tier-price">$299<span class="tier-period">/mo</span></div>
+          <p style="color: var(--text-light); margin-bottom: 2rem;">Scale automation across multiple channels with advanced features and insights.</p>
+          
+          <div class="tier-highlight">Perfect for growing businesses</div>
+          
+          <div class="tier-features">
+            <u><strong>Launch</strong></u>
+            <ul style="list-style: none; padding: 0; margin: 1rem 0 0 0;">
+              <li><svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Up to 5 tenants</li>
+              <li><svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> All channels (WhatsApp, Telegram, Web)</li>
+              <li><svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Custom skills (up to 20)</li>
+              <li><svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Advanced analytics & dashboards</li>
+            </ul>
+            
+            <u><strong>Scale</strong></u>
+            <ul style="list-style: none; padding: 0; margin: 1rem 0 0 0;">
+              <li><svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Paystack payment processing</li>
+              <li><svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Hands-on setup & migration assistance</li>
+              <li><svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> 24/7 support (chat + email)</li>
+              <li><svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Exportable reports & analytics</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Managed -->
+        <div class="pricing-card sivanta-brand">
+          <h3 class="tier-name">Managed Service</h3>
+          <p style="color: var(--text-dark); text-align: center; margin-bottom: 2rem;">Custom pricing based on your business needs and scale.</p>
+          
+          <div class="tier-highlight">Perfect for enterprise requirements</div>
+          
+          <div class="tier-features">
+            <u><strong>Launch</strong></u>
+            <ul style="list-style: none; padding: 0; margin: 1rem 0 0 0;">
+              <li><svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> All channels (WhatsApp, Telegram, Web, etc.)</li>
+              <li><svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Unlimited custom skills</li>
+              <li><svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Advanced analytics & dashboards</li>
+              <li><svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Fully custom onboarding & migration</li>
+            </ul>
+            
+            <u><strong>Scale</strong></u>
+            <ul style="list-style: none; padding: 0; margin: 1rem 0 0 0;">
+              <li><svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Paystack payment processing</li>
+              <li><svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Dedicated support (phone, chat, email)</li>
+              <li><svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> SLA-backed SLAs including uptime</li>
+              <li><svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Advanced security & compliance controls</li>
+              <li><svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Exportable reports & analytics</li>
+              <li><svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> White-glove onboarding</li>
+              <li><svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Account management & success</li>
+            </ul>
+            
+            <p style="margin-top: 1.5rem; font-weight: 600; text-align: center;">Contact us for a custom quote tailored to your requirements.</p>
+            <a href="/services.html" class="btn btn-primary" style="margin-top: 1rem; display: block; text-align: center;">Get a Quote →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="amber-accent"></div>
+
+    <!-- Feature Comparison -->
+    <section id="comparison">
+      <div class="section-header">
+        <h2>Compare Plans</h2>
+        <p>See how our plans stack up to find the best fit for your business needs.</p>
+      </div>
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Features</th>
+            <th>Starter</th>
+            <th>Growth</th>
+            <th>Managed Service</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Tenants</strong></td>
+            <td class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> 1</td>
+            <td class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Up to 5</td>
+            <td class="check-icon">Custom</td>
+          </tr>
+          
+          <tr>
+            <td>WhatsApp</td>
+            <td class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg></td>
+            <td class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg></td>
+            <td class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg></td>
+          </tr>
+          
+          <tr>
+            <td>Telegram</td>
+            <td></td>
+            <td class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg></td>
+            <td class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg></td>
+          </tr>
+          
+          <tr>
+            <td>Web</td>
+            <td></td>
+            <td class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg></td>
+            <td class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg></td>
+          </tr>
+          
+          <tr>
+            <td>Basic Skills</td>
+            <td class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Up to 5</td>
+            <td class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Up to 20</td>
+            <td class="check-icon">Unlimited</td>
+          </tr>
+          
+          <tr>
+            <td>Custom Skills</td>
+            <td></td>
+            <td class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg></td>
+            <td class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg></td>
+          </tr>
+          
+          <tr>
+            <td>Advanced Analytics</td>
+            <td></td>
+            <td class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg></td>
+            <td class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg></td>
+          </tr>
+          
+          <tr>
+            <td>Advanced dashboards</td>
+            <td></td>
+            <td></td>
+            <td class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg></td>
+          </tr>
+          
+          <tr>
+            <td>Exportable Reports</td>
+            <td class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg></td>
+            <td class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg></td>
+            <td class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg></td>
+          </tr>
+          
+          <tr>
+            <td><strong>Support</strong></td>
+            <td class="check-icon">Community</td>
+            <td class="check-icon">24/7 chat + email</td>
+            <td class="check-icon">Dedicated (phone + chat + email)</td>
+          </tr>
+          
+          <tr>
+            <td>Hands-on Setup</td>
+            <td></td>
+            <td class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg></td>
+            <td class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg></td>
+          </tr>
+          
+          <tr>
+            <td>Fully Managed Service</td>
+            <td></td>
+            <td></td>
+            <td class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg></td>
+          </tr>
+          
+          <tr>
+            <td><strong>Pricing</strong></td>
+            <td class="check-icon">$99/mo</td>
+            <td class="check-icon">$299/mo</td>
+            <td class="check-icon">Custom</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <div class="amber-accent"></div>
+
+    <!-- CTA -->
+    <section id="cta" class="section-header">
+      <h2>Ready to Automate Customer Conversations?</h2>
+      <p><strong>We</strong> build AI-powered automation that scales with your business. Start with Starter and grow to Managed Service as you need it.</p>
+      <a href="/services.html" class="btn btn-primary" style="margin-top: 2rem;">Request Demo →</a>
+    </section>
 </main>
-<footer class="site-footer"><div class="footer-inner"><div class="footer-brand-col"><div class="footer-brand">TAYOCA</div><p>We help organizations understand technology costs, improve reliability and automate work that should not need to be repeated by hand. Founded by Temitayo Charles. Ontario, Canada. © <span data-current-year>2026</span> Tayoca.</p></div><div class="footer-links"><strong>Explore</strong><a href="/services.html">Services</a><a href="/assessments.html">Assessments</a><a href="/results.html">Results</a><a href="/products.html">Products</a><a href="/insights.html">Insights</a><a href="/about.html">About</a></div><div class="footer-links"><strong>Connect</strong><a href="/operator-brief.html">Operator Brief</a><a href="/trust.html">Trust Center</a><a href="mailto:support@tayoca.com">support@tayoca.com</a><a href="mailto:temitayo@tayoca.com">temitayo@tayoca.com</a></div><div class="footer-col"><strong>Company</strong><a href="/about.html">About</a><a href="/work.html">Work</a><a href="/results.html">Results</a><a href="/trust.html">Trust Center</a><a href="/reviews.html">Verified Reviews</a></div><div class="footer-col"><strong>Deliver</strong><a href="/services.html">Services &amp; pricing</a><a href="/assessments.html">Assessments</a><a href="/segments/growth-stage-technology.html">Growth-stage</a><a href="/segments/regulated-operations.html">Regulated operations</a><a href="/segments/ai-enabled-engineering.html">AI-enabled teams</a></div><div class="footer-col"><strong>Build &amp; Read</strong><a href="/products.html">Products</a><a href="/sivanta.html">Sivanta</a><a href="/blog/">Insights</a><a href="/operator-brief-archive.html">Brief archive</a><a href="/community/websites">Community initiative</a></div></div><div class="footer-legal"><span>© <span data-current-year>2026</span> Tayoca · Ontario, Canada</span><a href="/trust.html">Evidence &amp; disclosure policy</a></div></footer>
-<script defer src="/growth-os.js"></script><script defer src="/revenue-events.js"></script><script defer src="/card-interactions.js"></script><script defer src="/tayoca-site.js"></script><script defer src="/tayoca-v9.js"></script></body></html>
+<footer class="site-footer"><div class="footer-inner">
+  <div class="footer-brand-col"><div class="footer-brand">TAYOCA</div>
+<p>An engineering-led technology company building software, systems, automation and publications for technology that has to be reliable, accountable and economically understood. Founded by Temitayo Charles. Ontario, Canada. &copy; <span data-current-year>2026</span> Tayoca.</p></div>
+  <div class="footer-links"><strong>Explore</strong><a href="/services.html">Services</a><a href="/assessments.html">Assessments</a><a href="/results.html">Results</a><a href="/products.html">Products</a><a href="/insights.html">Insights</a><a href="/about.html">About</a></div>
+  <div class="footer-links"><strong>Connect</strong><a href="/operator-brief.html">Operator Brief</a><a href="/trust.html">Trust Center</a><a href="mailto:support@tayoca.com">support@tayoca.com</a><a href="mailto:temitayo@tayoca.com">temitayo@tayoca.com</a></div>
+  <div class="footer-col"><strong>Company</strong><a href="/about.html">About</a><a href="/work.html">Work</a><a href="/results.html">Results</a><a href="/trust.html">Trust Center</a><a href="/reviews.html">Verified Reviews</a></div>
+  <div class="footer-col"><strong>Deliver</strong><a href="/services.html">Services &amp; pricing</a><a href="/assessments.html">Assessments</a><a href="/segments/growth-stage-technology.html">Growth-stage</a><a href="/segments/regulated-operations.html">Regulated operations</a><a href="/segments/ai-enabled-engineering.html">AI-enabled teams</a></div>
+  <div class="footer-col"><strong>Build &amp; Read</strong><a href="/products.html">Products</a><a href="/sivanta.html">Sivanta</a><a href="/blog/">Insights</a><a href="/operator-brief-archive.html">Brief archive</a><a href="/community/websites">Community initiative</a></div>
+</div>
+<div class="footer-legal"><span>&copy; <span data-current-year>2026</span> Tayoca · Ontario, Canada</span><a href="/trust.html">Evidence &amp; disclosure policy</a></div></footer>
+<script defer src="/growth-os.js"></script><script defer src="/revenue-events.js"></script><script defer src="/card-interactions.js"></script><script defer src="/tayoca-site.js"></script>
+</body></html>

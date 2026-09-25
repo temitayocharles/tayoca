@@ -225,7 +225,7 @@ targets `#main-content` so the skip target resolves.
 - Assessment form, `data-assessment` cards, `data-tayoca-form` names.
 - Community Google Form URL and `data-google-form-cta` markers (`home`, `work`, and
   the initiative page's own `hero` / `apply_section`).
-- Review data endpoint `https://n8n.tayoca.com/webhook/tayoca/reviews/public`
+- Review data endpoint `https://n8n.tca-infraforge.site/webhook/tayoca/reviews/public`
   and fail-closed rendering.
 - `data-event` / `data-revenue-event` names; GA4 measurement id `G-G4QC90QNXW` and
   `/ga4.js` on every canonical page.
@@ -276,7 +276,7 @@ below was silently restored.
 |---|---|---|
 | Live n8n estate inventory, activation/version/owner state | **Not queried.** No production n8n access or credentials were used in this workspace. | Canonical Forgejo / n8n integration agent |
 | Reconciliation of live workflows against backup ledger and snapshots | Not attempted | Canonical integration agent |
-| Historical Control Center embedded-authorization finding | **Superseded operationally by the completed production handoff.** Reopen only for a specific evidenced defect or explicitly scoped security audit. No authorization value is reproduced. | Closed by canonical production handoff |
+| Control Center embedded authorization material | **Open / needs live certification.** The value was never reproduced, searched for or stored. Remediation sequence preserved in `public/data/company-ecosystem.json → security`. | Canonical integration agent |
 | Project Intelligence Hub, Growth OS, Operator Brief, community and trust runtime re-checks | Not queried | Canonical integration agent |
 | Public production site vs canonical Forgejo vs GitHub mirror parity | Not queried (no production access) | Canonical integration agent |
 | Browser-based visual/accessibility QA | **Not possible in this workspace** — no browser binary could be installed (Playwright/Chromium downloads are network-blocked and `apt-get` is unavailable). Static QA was substituted; see `04-qa-validation-report.md`. | Canonical integrator should run `scripts/accessibility_browser_audit.cjs` |
@@ -288,8 +288,8 @@ below was silently restored.
 For the integrator to fold into `docs/TAYOCA_PROGRAM_AUTHORITY.md` /
 `docs/tayoca-program-state.yaml` (not applied by this branch):
 
-- `control_center_cms`: reconciled as `completed_production_deployed` from the newer canonical handoff.
-- historical Control Center embedded-authorization finding: superseded as active implementation work; narrow audit-only reopen rule retained.
+- `control_center_cms`: `partial` → `completed_production_deployed` (already stated by
+  the newer handoff note; the state file is stale).
 - `lm_arena`: add the reconciled branch as the current review candidate; mark PR #13
   as superseded-for-merge (keep open as history).
 - `known_project_discovery_correction.creator_prompter_studio`: add

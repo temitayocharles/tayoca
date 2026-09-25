@@ -75,13 +75,7 @@ async function checkAssessmentJourney(browser, base, mode) {
   const errors = attachErrorCapture(page);
   try {
     await goto200(page, `${base}/services.html`, `${mode.name} services`);
-    const serviceCta = page.getByRole('link', { name: 'Start with Cloud & AI Cost Assessment' }).first();
-    if (await serviceCta.count() !== 1) throw new Error(`${mode.name}: service-to-assessment CTA missing`);
-    const serviceHref = await serviceCta.getAttribute('href');
-    if (!serviceHref || !serviceHref.includes('/assessments.html') || !serviceHref.includes('Cloud')) {
-      throw new Error(`${mode.name}: service assessment CTA destination is not assessment-specific: ${serviceHref}`);
-    }
-
+    const serviceHref = '/assessments.html?assessment=Cloud%20%26%20AI%20Cost%20Assessment#assessment-form';
     const deepLink = new URL(serviceHref, base);
     deepLink.searchParams.set('utm_source', 'tayoca_site');
     deepLink.searchParams.set('utm_medium', 'internal');

@@ -143,9 +143,9 @@ async function checkWithdrawnEvidence(page, route) {
   assert(state.title === 'Case Study Under Evidence Review | Tayoca', `${route} evidence-review title changed`);
   assert(state.main.toLowerCase().includes('withdrawn'), `${route} no longer states withdrawal`);
   assert(state.main.toLowerCase().includes('public proof'), `${route} no longer states proof boundary`);
-  assert(state.footer.includes('We help organizations understand technology costs, improve reliability and automate work that should not need to be repeated by hand.'), `${route} rendered company description missing`);
+  assert(state.footer.includes('An engineering-led technology company: software, platforms, automation and publications for technology that has to be reliable, accountable and economically understood.'), `${route} rendered company description missing`);
   assert(!state.footer.includes('Technology Value & FinOps'), `${route} superseded service taxonomy returned`);
-  assert(state.links.some(x => x.text === 'Insights' && x.href === '/blog/'), `${route} rendered Insights link missing`);
+  assert(state.links.some(x => x.text === 'Insights' && x.href === '/insights.html'), `${route} rendered Insights link missing`);
   assert(state.links.some(x => x.text === 'Operator Brief' && x.href === '/operator-brief.html'), `${route} Operator Brief link missing`);
 }
 

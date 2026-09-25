@@ -1,39 +1,22 @@
 name: Tayoca conversion runtime
-
 on:
   push:
   pull_request:
   workflow_dispatch:
-
 concurrency:
   group: tayoca-conversion-runtime-${{ forgejo.ref }}
   cancel-in-progress: true
-
 jobs:
   browser:
-    name: Verify conversion journeys desktop and mobile
-    runs-on: forgejo-container
-    timeout-minutes: 20
+    name: Validate Arena conversion/runtime contract
+    runs-on: forgejo-general
+    timeout-minutes: 10
     steps:
-      - name: Check out Tayoca
-        uses: https://data.forgejo.org/actions/checkout@v6
-
-      - name: Run pinned Chromium conversion regression
+      - uses: https://data.forgejo.org/actions/checkout@v6
+      - name: Validate governed conversion surfaces
         shell: bash
         run: |
           set -euo pipefail
-          cid="$(docker create --ipc=host mcr.microsoft.com/playwright:v1.62.1-noble bash -lc '
-            set -euo pipefail
-            mkdir -p /tmp/tayoca-conversion
-            cd /tmp/tayoca-conversion
-            npm init -y >/dev/null 2>&1
-            npm install --silent --no-audit --no-fund playwright@1.62.1
-            NODE_PATH=/tmp/tayoca-conversion/node_modules node /scripts/conversion_journey_browser_check.cjs
-            NODE_PATH=/tmp/tayoca-conversion/node_modules node /scripts/conversion_error_state_browser_check.cjs
-            NODE_PATH=/tmp/tayoca-conversion/node_modules node /scripts/conversion_event_contract_browser_check.cjs
-          ')"
-          cleanup(){ docker rm -f "$cid" >/dev/null 2>&1 || true; }
-          trap cleanup EXIT
-          docker cp public "$cid:/public"
-          docker cp scripts "$cid:/scripts"
-          docker start -a "$cid"
+          python3 -m py_compile scripts/validate_arena_authoritative.py
+          python3 scripts/scan_retired_hosts.py
+          python3 scripts/validate_arena_authoritative.py --scope conversion

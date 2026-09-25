@@ -1,26 +1,21 @@
 name: Structured data governance
-
 on:
   push:
   pull_request:
   workflow_dispatch:
-
 concurrency:
   group: tayoca-structured-data-governance-${{ forgejo.ref }}
   cancel-in-progress: true
-
 jobs:
   validate:
-    name: Validate structured data governance
+    name: Validate Arena structured data governance
     runs-on: forgejo-general
     timeout-minutes: 10
     steps:
-      - name: Check out Tayoca
-        uses: https://data.forgejo.org/actions/checkout@v6
-
+      - uses: https://data.forgejo.org/actions/checkout@v6
       - name: Validate structured data
         shell: bash
         run: |
           set -euo pipefail
-          python3 -m py_compile scripts/validate_structured_data_governance.py
-          python3 scripts/validate_structured_data_governance.py
+          python3 -m py_compile scripts/validate_arena_authoritative.py
+          python3 scripts/validate_arena_authoritative.py --scope structured

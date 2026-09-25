@@ -1,6 +1,810 @@
-<!doctype html><html lang="en-CA"><head><script async src="https://www.googletagmanager.com/gtag/js?id=G-G4QC90QNXW"></script><script src="/ga4.js"></script><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light dark"><script>(function(){try{var t=localStorage.getItem('tayoca-theme');if(!t&&matchMedia('(prefers-color-scheme: dark)').matches)t='dark';document.documentElement.dataset.theme=t||'light';}catch(e){document.documentElement.dataset.theme='light';}})();</script><title>DevOps Incident Response Runbook: Practical Template & Checklist (2026) | Tayoca</title><meta name="description" content="A practical DevOps incident response runbook for 2026: severity, first-response checklist, incident roles, evidence-led investigation, safe mitigation, communications, rollback decisions, and postmortems."><meta name="keywords" content="DevOps runbook, incident response runbook, incident response checklist, SRE runbook, Kubernetes incident response, incident management template"><meta name="author" content="Temitayo Charles"><meta name="robots" content="index,follow"><link rel="canonical" href="https://tayoca.com/blog/devops-incident-response-runbook.html"><link rel="icon" href="/favicon.ico"><meta property="og:title" content="DevOps Incident Response Runbook: Practical Template & Checklist (2026)"><meta property="og:description" content="Build a configurable incident response runbook covering severity, command, evidence, safe mitigation, communications, recovery, and learning."><meta property="og:type" content="article"><meta property="og:url" content="https://tayoca.com/blog/devops-incident-response-runbook.html"><meta property="og:image" content="https://tayoca.com/assets/og-image.png"><meta property="article:published_time" content="2026-07-24"><meta property="article:modified_time" content="2026-08-30"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="DevOps Incident Response Runbook: Practical Template &amp; Checklist (2026)"><meta name="twitter:description" content="Build a configurable incident response runbook covering severity, command, evidence, safe mitigation, communications, recovery, and learning."><meta name="twitter:image" content="https://tayoca.com/assets/og-image.png"><script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","headline":"DevOps Incident Response Runbook: Practical Template & Checklist (2026)","description":"A practical DevOps incident response runbook covering severity, first response, incident roles, evidence-led investigation, safe mitigation, communication, rollback decisions, and postmortems.","url":"https://tayoca.com/blog/devops-incident-response-runbook.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://tayoca.com/blog/devops-incident-response-runbook.html"},"image":["https://tayoca.com/assets/og-image.png"],"author":{"@type":"Person","name":"Temitayo Charles"},"publisher":{"@type":"Organization","name":"Tayoca","url":"https://tayoca.com/"},"datePublished":"2026-07-24","dateModified":"2026-08-30"},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a DevOps incident response runbook?","acceptedAnswer":{"@type":"Answer","text":"A pre-agreed operating guide for classifying impact, establishing incident command, gathering evidence, choosing safe mitigation, communicating status, validating recovery, and capturing follow-up work."}},{"@type":"Question","name":"What should be in the first 15 minutes of an incident?","acceptedAnswer":{"@type":"Answer","text":"Confirm impact, assign severity, establish incident command and a shared timeline, capture evidence and recent changes, choose a reversible mitigation when justified, and set the next communication checkpoint. Exact timings should match the organization’s policy."}}]}]}</script><link rel="stylesheet" href="/assets/css/site-shell.css"><link rel="stylesheet" href="/assets/css/tayoca-v9.css"><link rel="stylesheet" href="/assets/css/secondary-v9.css"><style>.article-shell{max-width:920px;margin:auto;padding:5rem 1.5rem 6rem}.article-head{margin-bottom:3rem;padding-bottom:2rem;border-bottom:1px solid var(--line)}.article-shell .meta{color:var(--muted);font-size:.84rem}.article-shell .lede{font-size:1.15rem;color:var(--muted);max-width:68ch}.article-shell h2{margin-top:3rem}.article-shell h3{margin-top:2rem}.article-shell .callout,.article-shell .template{padding:1.25rem 1.4rem;margin:2rem 0;background:var(--surface-2);border:1px solid var(--line);border-radius:12px}.article-shell .callout{border-left:3px solid var(--signal)}.article-shell .checklist{list-style:none;padding:0}.article-shell .checklist li{position:relative;padding-left:1.7rem;margin:.7rem 0}.article-shell .checklist li:before{content:"✓";position:absolute;left:0;color:var(--ok);font-weight:700}.article-table{overflow-x:auto}.article-shell table{width:100%;border-collapse:collapse;margin:1.5rem 0;min-width:680px}.article-shell th,.article-shell td{text-align:left;padding:.8rem;border-bottom:1px solid var(--line);vertical-align:top}.article-shell th{color:var(--ink);font-size:.8rem}.article-shell td{color:var(--ink-2)}.article-shell pre{padding:1.2rem;border-radius:10px;overflow:auto}.product-cta{margin-top:3.5rem;padding:1.8rem;border:1px solid var(--line);border-left:3px solid var(--signal);border-radius:14px;background:var(--surface-2)}.faq details{border-top:1px solid var(--line);padding:1rem 0}.faq summary{font-weight:600;color:var(--ink);cursor:pointer}@media(max-width:720px){.article-shell{padding-top:3.5rem}}</style></head><body class="operator-editorial"><a class="skip-link" href="#main">Skip to content</a><header class="site-header"><div class="header-inner"><a class="brand" href="/" aria-label="Tayoca home">TAYOCA</a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open navigation">Menu</button><nav class="primary-nav" id="primary-nav" aria-label="Primary navigation"><a href="/services.html">Services</a><a href="/assessments.html">Assessments</a><a href="/results.html">Results</a><a href="/products.html">Products</a><a href="/insights.html" aria-current="page">Insights</a><a href="/about.html">About</a></nav><button class="theme-switch" type="button" aria-label="Switch colour theme"></button><a class="button small header-cta" href="/assessments.html">Start an Assessment</a></div></header><main id="main" class="article-shell"><article><header class="article-head"><p class="eyebrow">Operations & Reliability Engineering</p><h1>DevOps incident response runbook: a practical operating template</h1><p class="meta">By Temitayo Charles · Published July 24, 2026 · Updated August 30, 2026</p><p class="lede">A useful incident runbook does not promise that every outage will end in 15 minutes. It gives responders a shared operating model for severity, command, evidence, safe mitigation, communication, recovery, and learning.</p></header><section class="callout"><h2 style="margin-top:0">What is a DevOps incident response runbook?</h2><p><strong>A DevOps incident response runbook is a pre-agreed operating guide for handling service-impacting events.</strong> It helps responders classify impact, establish ownership, gather evidence, choose a safe response, communicate clearly, validate recovery, and turn the incident into follow-up work.</p></section><h2>Incident response checklist</h2><p>The sequence matters more than an arbitrary clock.</p><ul class="checklist"><li>Confirm real user or business impact before promoting noisy telemetry into an incident.</li><li>Declare severity using published organizational criteria.</li><li>Assign an incident lead and establish one shared incident channel or log.</li><li>Record the first known symptom, affected services, start time, and evidence sources.</li><li>Check recent deployments, configuration changes, dependencies, capacity, and security signals.</li><li>Form a hypothesis and collect evidence for or against it before changing several variables.</li><li>Choose mitigation only when scope, risk, validation, authorization, and rollback are understood.</li><li>Communicate at the cadence defined by policy and verify recovery before declaring resolution.</li></ul><h2>The first 15 minutes: use a sequence, not a promise</h2><p>“First 15 minutes” is useful as an operational frame, not as a universal SLA. A small internal incident and a regulated production security event should not be forced through the same timer. Define explicit targets in your own policy and rehearse them.</p><div class="article-table"><table><thead><tr><th>Phase</th><th>Goal</th><th>Evidence to capture</th></tr></thead><tbody><tr><td>Detect and confirm</td><td>Establish whether users or a business SLO are actually affected.</td><td>Alert, error/latency/availability signal, affected path, first-known time.</td></tr><tr><td>Command</td><td>Give one person authority to coordinate decisions and handoffs.</td><td>Incident lead, technical owners, communication owner, incident channel/log.</td></tr><tr><td>Scope</td><td>Bound the blast radius before changing production.</td><td>Regions, tenants, versions, dependencies, recent changes.</td></tr><tr><td>Hypothesis</td><td>Convert symptoms into a testable explanation.</td><td>Hypothesis, supporting and contradicting evidence, next observation.</td></tr><tr><td>Mitigate</td><td>Reduce customer impact with the safest justified action.</td><td>Action, owner, expected result, rollback path, validation signal.</td></tr><tr><td>Communicate</td><td>Keep responders and stakeholders aligned without speculation.</td><td>Confirmed impact, current action, next update checkpoint.</td></tr></tbody></table></div><h2>Define severity before the incident</h2><p>A severity model should be based on observable impact. Avoid definitions that depend on how stressful an incident feels. A practical model distinguishes major outage or material security/data risk, significant degradation, limited contained impact, and normal low-impact defects. Each level should map to your own escalation and communication policy.</p><h2>Assign roles explicitly</h2><ul><li><strong>Incident lead:</strong> coordination, priorities, decisions, and handoffs.</li><li><strong>Technical lead(s):</strong> investigate systems and propose evidence-backed mitigations.</li><li><strong>Communications owner:</strong> publishes confirmed status to required audiences.</li><li><strong>Scribe/timeline owner:</strong> records timestamps, hypotheses, actions, evidence, and outcomes.</li><li><strong>Security/legal/business specialists:</strong> engage when predefined thresholds are crossed.</li></ul><h2>Investigate with a hypothesis/evidence loop</h2><p>Random command execution creates noise. A stronger workflow is: observe a symptom, state a hypothesis, collect the smallest useful evidence set, decide whether the hypothesis survives, and repeat.</p><div class="template"><strong>Hypothesis card</strong><br><br>Statement: What do we think is happening?<br>Evidence for: Which logs, metrics, events, diffs, or traces support it?<br>Evidence against: What contradicts it?<br>Next test: What is the least invasive observation that changes confidence?<br>Decision: Accept, reject, or refine the hypothesis.</div><h3>Useful read-oriented Kubernetes evidence</h3><pre><code>kubectl get pods -n &lt;namespace&gt; -o wide
-kubectl get deploy,statefulset -n &lt;namespace&gt;
-kubectl get events -n &lt;namespace&gt; --sort-by='.lastTimestamp'
-kubectl describe pod &lt;pod&gt; -n &lt;namespace&gt;
-kubectl logs &lt;pod&gt; -n &lt;namespace&gt; --since=15m --tail=200
-kubectl auth can-i &lt;verb&gt; &lt;resource&gt; -n &lt;namespace&gt;</code></pre><div class="callout"><strong>Do not turn generic examples into production change commands.</strong> State-changing actions should have prerequisites, blast-radius limits, authorization, expected result, validation, and rollback.</div><h2>Mitigate with change safety</h2><ul class="checklist"><li>Name the symptom the change should improve.</li><li>Use the smallest scope that can test or mitigate the hypothesis.</li><li>Confirm an owner and authorization boundary.</li><li>Record pre-change and validation signals.</li><li>Prefer reversible actions when they reduce impact safely.</li><li>Define rollback conditions before execution.</li><li>Change one meaningful variable at a time whenever practical.</li></ul><h2>Rollback or forward-fix?</h2><p>Rollback tends to fit when a recent change strongly correlates with the incident, the previous state is known good, and reverting is compatible with current data. Forward-fix tends to fit when rollback would not address the failure, data/schema changes make rollback risky, or a small well-understood repair has a clearer validation path.</p><h2>Use factual communication</h2><div class="template"><strong>Internal update</strong><br><br>Incident: &lt;ID / short title&gt;<br>Severity: &lt;organization-defined level&gt;<br>Confirmed impact: &lt;who/what is affected&gt;<br>Current evidence: &lt;facts, not speculation&gt;<br>Action in progress: &lt;mitigation or investigation&gt;<br>Owner: &lt;role/name&gt;<br>Next update: &lt;time or policy checkpoint&gt;</div><h2>Validate recovery before resolving</h2><p>“The command succeeded” is not recovery evidence. Confirm the user-facing path or SLO, observe stability for an appropriate window, check queues and dependencies for delayed impact, and record final evidence plus any residual risk.</p><h2>Write a blameless postmortem that creates action</h2><ul class="checklist"><li>Executive incident summary and business impact.</li><li>Evidence-backed timeline.</li><li>Detection strengths and gaps.</li><li>Root cause and contributing factors.</li><li>What reduced impact and what increased it.</li><li>Action items with owner, target date, verification method, and effectiveness check.</li><li>SLO/error-budget context when relevant.</li></ul><section class="product-cta"><p class="eyebrow">Reusable operating framework</p><h2>Use the complete DevOps Incident Runbook Template</h2><p>Tayoca’s configurable template covers severity, incident command, escalation, first-response actions, investigation, safe change validation, rollback versus forward-fix, communications, postmortems, action-item quality, SLO context, and on-call handoff.</p><a class="button" href="/products/devops-incident-runbook-template.html" data-event="content_product_click" data-product="devops-incident-runbook-template">Review the template</a></section><section class="faq"><h2>DevOps runbook FAQ</h2><details><summary>What is a DevOps incident response runbook?</summary><p>It is a pre-agreed operating guide for classifying incidents, establishing ownership, gathering evidence, choosing safe mitigation, communicating status, validating recovery, and recording follow-up work.</p></details><details><summary>What should be in the first 15 minutes?</summary><p>Confirm impact, declare severity, establish incident command and a shared log, capture recent changes and evidence, form a testable hypothesis, choose a reversible mitigation when justified, and set the next communication checkpoint. Exact timings should be configured to your organization.</p></details><details><summary>Should a runbook contain copy-paste mitigation commands?</summary><p>Validated procedures can belong in a runbook, but generic destructive or state-changing commands should not be presented as universal fixes. Include prerequisites, scope, authorization, validation, and rollback.</p></details></section><p class="meta" style="margin-top:3rem">Editorial note: this article was materially updated on August 30, 2026 to remove unsupported outcome claims, replace universal timing rules with configurable policy examples, strengthen change-safety guidance, and align the page with Tayoca’s current incident-response framework.</p></article></main><footer class="site-footer"><div class="footer-inner"><div class="footer-brand-col"><div class="footer-brand">TAYOCA</div><p>We help organizations understand technology costs, improve reliability and automate work that should not need to be repeated by hand. Founded by Temitayo Charles. Ontario, Canada. © <span data-current-year>2026</span> Tayoca.</p></div><div class="footer-links"><strong>Explore</strong><a href="/services.html">Services</a><a href="/assessments.html">Assessments</a><a href="/results.html">Results</a><a href="/products.html">Products</a><a href="/insights.html">Insights</a><a href="/about.html">About</a></div><div class="footer-links"><strong>Connect</strong><a href="/operator-brief.html">Operator Brief</a><a href="/trust.html">Trust Center</a><a href="mailto:support@tayoca.com">support@tayoca.com</a><a href="mailto:temitayo@tayoca.com">temitayo@tayoca.com</a></div></div><div class="footer-legal"><span>© <span data-current-year>2026</span> Tayoca · Ontario, Canada</span><a href="/trust.html">Evidence & disclosure policy</a></div></footer><script defer src="/revenue-events.js"></script><script defer src="/tayoca-site.js"></script><script defer src="/tayoca-v9.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-G4QC90QNXW"></script>
+  <script src="/ga4.js"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>DevOps Incident Response Runbook: From Alert to Resolution in 15 Minutes | Temitayo Charles Akinniranye</title>
+    <meta name="description" content="Production-grade incident response runbook for Kubernetes and cloud infrastructure. SLO-based alerting, runbook automation, blameless postmortems, and war-room patterns.">
+    <meta name="keywords" content="incident response, DevOps runbook, Kubernetes incident management, SLO alerting, blameless postmortem, war room, MTTR reduction">
+    <meta property="og:title" content="DevOps Incident Response Runbook: Alert to Resolution in 15 Minutes">
+    <meta property="og:description" content="Production-grade incident response runbook for Kubernetes and cloud infrastructure. SLO-based alerting, runbook automation, blameless postmortems.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://tayoca.com/blog/devops-incident-response-runbook.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="DevOps Incident Response Runbook: Alert to Resolution in 15 Minutes">
+    <meta name="twitter:description" content="Production-grade incident response runbook for Kubernetes and cloud infrastructure. SLO-based alerting, runbook automation, blameless postmortems.">
+    <meta name="theme-color" content="#0d0d0d">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Incident Runbook | Temitayo">
+    <meta property="article:author" content="Temitayo Charles Akinniranye">
+    <meta property="article:published_time" content="2026-07-24">
+    <meta property="article:section" content="Operations & Reliability Engineering">
+    <meta property="article:tag" content="DevOps">
+    <meta property="article:tag" content="Kubernetes">
+    <meta property="article:tag" content="Incident Response">
+    <meta property="article:tag" content="SRE">
+
+    <!-- Tailwind CSS via UNPKG CDN -->
+    <script src="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.js"></script>
+
+    <!-- InsForge Analytics -->
+    <script defer src="https://v7mhrspk.function2.insforge.app/c.js"></script>
+
+    <style>
+        :root {
+            --bg: #0d0d0d;
+            --bg-elevated: #1a1a1a;
+            --fg: #e5e7eb;
+            --fg-muted: #9ca3af;
+            --accent: #f97316;
+            --accent-hover: #ea580c;
+            --border: #374151;
+            --border-hover: #4b5563;
+            --card-bg: #111827;
+            --focus-ring: #f97316;
+            --header-height: 64px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--fg);
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            z-index: 10000;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .skip-link:focus {
+            top: 1rem;
+        }
+
+        :focus-visible {
+            outline: 2px solid var(--focus-ring);
+            outline-offset: 2px;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            max-width: 320px;
+            background: var(--bg);
+            border-left: 1px solid var(--border);
+            z-index: 100;
+            transform: translateX(100%);
+            transition: transform 0.3s ease-out;
+            padding: calc(var(--header-height) + 1rem) 1.5rem 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            overflow-y: auto;
+        }
+
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+
+        .mobile-menu-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 99;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .mobile-menu-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-menu a {
+            display: block;
+            padding: 1rem;
+            color: var(--fg);
+            text-decoration: none;
+            border-radius: 0.5rem;
+            font-size: 1.125rem;
+            font-weight: 500;
+            transition: background 0.2s ease, color 0.2s ease;
+            touch-action: manipulation;
+        }
+
+        .mobile-menu a:hover,
+        .mobile-menu a:focus {
+            background: var(--bg-elevated);
+            color: var(--accent);
+        }
+
+        .mobile-menu a[aria-current="page"] {
+            color: var(--accent);
+            background: rgba(249, 115, 22, 0.1);
+        }
+
+        .mobile-menu-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            color: var(--fg);
+            cursor: pointer;
+            touch-action: manipulation;
+        }
+
+        .mobile-menu-close:hover,
+        .mobile-menu-close:focus {
+            background: var(--border);
+        }
+
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 28px;
+            height: 20px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            touch-action: manipulation;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background: var(--fg);
+            border-radius: 2px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .hamburger[aria-expanded="true"] span:nth-child(1) {
+            transform: translateY(8.5px) rotate(45deg);
+        }
+
+        .hamburger[aria-expanded="true"] span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger[aria-expanded="true"] span:nth-child(3) {
+            transform: translateY(-8.5px) rotate(-45deg);
+        }
+
+        @media (min-width: 768px) {
+            .hamburger {
+                display: none;
+            }
+        }
+
+        .hero-title {
+            font-size: clamp(1.75rem, 6vw, 2.75rem);
+            line-height: 1.15;
+        }
+
+        .section-title {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            line-height: 1.2;
+        }
+
+        .card {
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+
+        @media (prefers-reduced-motion: no-preference) {
+            .card:hover {
+                border-color: var(--accent);
+                transform: translateY(-2px);
+            }
+        }
+
+        .card:focus-within {
+            border-color: var(--focus-ring);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.875rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            border: 2px solid transparent;
+            cursor: pointer;
+            touch-action: manipulation;
+            min-height: 48px;
+            transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        .btn-primary:hover,
+        .btn-primary:focus {
+            background: var(--accent-hover);
+            border-color: var(--accent-hover);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .btn-secondary:hover,
+        .btn-secondary:focus {
+            background: rgba(249, 115, 22, 0.1);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            font-size: 1rem;
+            background: var(--bg-elevated);
+            border: 2px solid var(--border);
+            border-radius: 0.5rem;
+            color: var(--fg);
+            min-height: 48px;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .form-input::placeholder {
+            color: var(--fg-muted);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--focus-ring);
+            box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.2);
+        }
+
+        .footer-link {
+            color: var(--fg-muted);
+            transition: color 0.2s ease;
+        }
+
+        .footer-link:hover,
+        .footer-link:focus {
+            color: var(--fg);
+        }
+
+        .prose {
+            color: var(--fg);
+            max-width: none;
+        }
+
+        .prose h1 {
+            font-size: clamp(1.75rem, 5vw, 2.25rem);
+            font-weight: 700;
+            color: white;
+            margin: 2.5rem 0 1rem;
+            line-height: 1.2;
+        }
+
+        .prose h2 {
+            font-size: clamp(1.375rem, 4vw, 1.75rem);
+            font-weight: 700;
+            color: var(--accent);
+            margin: 2.5rem 0 1rem;
+            line-height: 1.3;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .prose h3 {
+            font-size: clamp(1.125rem, 3vw, 1.375rem);
+            font-weight: 600;
+            color: white;
+            margin: 2rem 0 0.75rem;
+            line-height: 1.3;
+        }
+
+        .prose p {
+            margin: 1rem 0;
+            line-height: 1.8;
+        }
+
+        .prose .lead {
+            font-size: clamp(1rem, 2.5vw, 1.125rem);
+            color: var(--fg-muted);
+            margin: 1.5rem 0 2rem;
+            line-height: 1.7;
+        }
+
+        .prose strong {
+            color: white;
+            font-weight: 600;
+        }
+
+        .prose ul, .prose ol {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .prose li {
+            margin: 0.5rem 0;
+            line-height: 1.7;
+        }
+
+        .prose ol {
+            list-style-type: decimal;
+        }
+
+        .prose ul {
+            list-style-type: disc;
+        }
+
+        .prose code {
+            background: var(--bg-elevated);
+            color: var(--accent);
+            padding: 0.125rem 0.375rem;
+            border-radius: 0.25rem;
+            font-size: 0.875em;
+            font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+        }
+
+        .prose pre {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+            font-size: 0.8125rem;
+            line-height: 1.7;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .prose pre code {
+            background: transparent;
+            padding: 0;
+            font-size: inherit;
+            color: var(--fg);
+        }
+
+        .prose blockquote {
+            border-left: 4px solid var(--accent);
+            padding-left: 1.5rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: var(--fg-muted);
+        }
+
+        .prose table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.875rem;
+        }
+
+        .prose th, .prose td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .prose th {
+            background: var(--bg-elevated);
+            color: var(--fg-muted);
+            font-weight: 600;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+
+        .prose tr:hover td {
+            background: var(--bg-elevated);
+        }
+
+        .prose a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+
+        .prose a:hover {
+            color: var(--accent-hover);
+        }
+
+        .prose hr {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 2.5rem 0;
+        }
+
+        .table-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin: 1.5rem 0;
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+        }
+
+        .table-wrapper::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .table-wrapper::-webkit-scrollbar-track {
+            background: var(--bg);
+        }
+
+        .table-wrapper::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 4px;
+        }
+
+        .table-wrapper::-webkit-scrollbar-thumb:hover {
+            background: var(--border-hover);
+        }
+
+        .prose .table-wrapper table {
+            margin: 0;
+            border-radius: 0;
+        }
+
+        .code-block {
+            position: relative;
+        }
+
+        .code-block::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .code-block::-webkit-scrollbar-track {
+            background: var(--bg);
+        }
+
+        .code-block::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 4px;
+        }
+
+        @supports (padding: max(0px)) {
+            .mobile-menu {
+                padding-right: max(1.5rem, env(safe-area-inset-right));
+                padding-left: max(1.5rem, env(safe-area-inset-left));
+                padding-bottom: max(2rem, env(safe-area-inset-bottom));
+            }
+        }
+
+        @media print {
+            .mobile-menu, .hamburger, .newsletter-form, footer, nav { display: none !important; }
+            body { background: white; color: black; }
+            .prose pre, .code-block { white-space: pre-wrap; word-wrap: break-word; }
+        }
+    </style>
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://tayoca.com/blog/devops-incident-response-runbook.html">
+<meta property="og:image" content="https://tayoca.com/assets/og-image.png">
+<meta name="twitter:image" content="https://tayoca.com/assets/og-image.png">
+<!-- InsForge Analytics -->
+<script>(function(){var e='https://v7mhrspk.function2.insforge.app/analytics-event',d='tayoca.com';function s(n,p){var r={domain:d,name:n,url:location.href,path:location.pathname,referrer:document.referrer||null,screen_width:screen.width,screen_height:screen.height,props:p||{}};navigator.sendBeacon&&navigator.sendBeacon(e,JSON.stringify(r))||fetch(e,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(r),keepalive:!0})}document.readyState==='loading'?document.addEventListener('DOMContentLoaded',function(){s('pageview')}):s('pageview');window.tayocaAnalytics={sendEvent:s}})()</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "DevOps Incident Response Runbook: From Alert to Resolution in 15 Minutes | Temitayo Charles Akinniranye",
+  "description": "Production-grade incident response runbook for Kubernetes and cloud infrastructure. SLO-based alerting, runbook automation, blameless postmortems, and war-room patterns.",
+  "url": "https://tayoca.com/blog/devops-incident-response-runbook.html",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://tayoca.com/blog/devops-incident-response-runbook.html"
+  },
+  "image": [
+    "https://tayoca.com/assets/og-image.png"
+  ],
+  "author": {
+    "@type": "Person",
+    "name": "Temitayo Charles Akinniranye"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Tayoca",
+    "url": "https://tayoca.com/"
+  },
+  "datePublished": "2026-07-24"
+}
+</script>
+<link rel="stylesheet" href="/assets/css/site-shell.css"></head>
+<body class="min-h-screen flex flex-col">
+    <a href="#main-content" class="skip-link">Skip to main content</a><header class="site-header"><div class="header-inner"><a class="brand" href="/" aria-label="Tayoca home">TAYOCA</a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button><nav class="primary-nav" id="primary-nav" aria-label="Primary navigation"><a href="/services.html">Services</a><a href="/assessments.html">Assessments</a><a href="/results.html">Results</a><a href="/products.html">Products</a><a href="/insights.html" aria-current="page">Insights</a><a href="/about.html">About</a></nav><a class="header-cta" href="/assessments.html">Start an Assessment</a></div></header>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-[var(--bg)] border-b border-[var(--border)]" style="height: var(--header-height);" role="navigation" aria-label="Main navigation">
+        <div class="flex items-center justify-between h-full px-4 md:px-6">
+            <div class="flex items-center space-x-3">
+                <a href="../index.html" class="text-xl font-semibold text-[var(--accent)] nav-link flex items-center" aria-label="Temitayo Charles Akinniranye - Home">
+                    <svg class="w-6 h-6 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M13 3L4 14h7v7l9-9h-7V3z"/>
+                    </svg>
+                    <span class="hidden sm:inline">temitayo</span>
+                </a>
+            </div>
+
+            <div class="hidden md:flex items-center space-x-1">
+                <a href="../index.html" class="nav-link px-4 py-2 rounded-lg text-sm font-medium text-[var(--fg)] hover:text-[var(--accent)] hover:bg-[var(--bg-elevated)] transition-colors">Home</a>
+                <a href="../services.html" class="nav-link px-4 py-2 rounded-lg text-sm font-medium text-[var(--fg)] hover:text-[var(--accent)] hover:bg-[var(--bg-elevated)] transition-colors">Services</a>
+                <a href="/products.html" class="nav-link px-4 py-2 rounded-lg text-sm font-medium text-[var(--fg)] hover:text-[var(--accent)] hover:bg-[var(--bg-elevated)] transition-colors">Products</a>
+                <a href="/blog/" class="nav-link px-4 py-2 rounded-lg text-sm font-medium text-[var(--fg)] hover:text-[var(--accent)] hover:bg-[var(--bg-elevated)] transition-colors border-b-2 border-[var(--accent)]" aria-current="page">Blog</a>
+                <a href="../about.html" class="nav-link px-4 py-2 rounded-lg text-sm font-medium text-[var(--fg)] hover:text-[var(--accent)] hover:bg-[var(--bg-elevated)] transition-colors">About</a>
+            </div>
+
+            <button class="hamburger md:hidden p-2 rounded-lg border border-[var(--border)] bg-[var(--bg-elevated)]" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu" type="button">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu-overlay" id="mobile-menu-overlay" aria-hidden="true"></div>
+    <aside class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Navigation menu" aria-modal="true">
+        <button class="mobile-menu-close" aria-label="Close navigation menu" type="button">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+        </button>
+        <nav>
+            <a href="../index.html" class="nav-link">Home</a>
+            <a href="../services.html" class="nav-link">Services</a>
+            <a href="/products.html" class="nav-link">Products</a>
+            <a href="/blog/" class="nav-link" aria-current="page">Blog</a>
+            <a href="../about.html" class="nav-link">About</a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main id="main-content" class="flex-1 pt-[var(--header-height)]">
+        <header class="container mx-auto px-4 md:px-6 py-12 md:py-16">
+            <div class="max-w-3xl mx-auto text-center">
+                <span class="inline-block px-3 py-1 bg-[var(--accent)]/20 text-[var(--accent)] text-sm font-medium rounded-full mb-6">Operations & Reliability Engineering</span>
+                <h1 class="hero-title font-bold text-white mb-6 leading-tight">
+                    DevOps Incident Response Runbook: From Alert to Resolution in 15 Minutes
+                </h1>
+                <p class="text-lg md:text-xl text-[var(--fg-muted)] mb-8 max-w-2xl mx-auto">
+                    A production-grade incident response framework for Kubernetes and cloud infrastructure. SLO-based alerting, runbook automation, blameless postmortems, and war-room patterns that cut MTTR from hours to minutes.
+                </p>
+                <div class="flex flex-wrap justify-center gap-4 text-sm text-[var(--fg-muted)]">
+                    <span>By <strong class="text-white">Temitayo Charles Akinniranye</strong></span>
+                    <span aria-hidden="true">•</span>
+                    <time datetime="2026-07-24">July 24, 2026</time>
+                    <span aria-hidden="true">•</span>
+                    <span>18 min read</span>
+                </div>
+            </div>
+        </header>
+
+        <article class="container mx-auto px-4 md:px-6 pb-16">
+            <div class="max-w-3xl mx-auto">
+                <div class="prose">
+                    <p class="lead">
+                        Most teams don't have an incident response problem — they have a <strong>preparation problem</strong>. This runbook documents the exact framework we use to achieve <strong>p95 MTTR < 15 minutes</strong> for Sev-1/Sev-2 incidents across Kubernetes, AWS, and multi-cloud environments.
+                    </p>
+
+                    <h2>Philosophy: Principles Over Procedures</h2>
+                    <blockquote>
+                        "We don't rise to the level of our expectations; we fall to the level of our training." — Archilochus, adapted for SRE
+                    </blockquote>
+                    <p>Every procedure in this runbook is built on four non-negotiable principles:</p>
+                    <ol>
+                        <li><strong>SLO-First:</strong> Alert on user-impacting symptoms (error rate, latency, availability), not internal metrics (CPU, memory).</li>
+                        <li><strong>Automation-First:</strong> If a human runs it twice, it becomes a script. If a script runs it twice, it becomes a controller.</li>
+                        <li><strong>Blameless by Default:</strong> Postmortems analyze systems, not people. "Who" is never in the template; "what" and "why" are.</li>
+                        <li><strong>Documentation as Code:</strong> Runbooks live in Git, versioned with infrastructure, tested in CI.</li>
+                    </ol>
+
+                    <h2>Phase 0: Pre-Incident Preparation (Do This Now)</h2>
+
+                    <h3>0.1 Define Your SLOs & Error Budgets</h3>
+                    <p>Before writing runbooks, define what "healthy" means per service:</p>
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr><th>Service Tier</th><th>Availability SLO</th><th>Latency SLO (p99)</th><th>Error Budget/Month</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Tier 1 (Revenue-critical)</td><td>99.99%</td><td>< 200ms</td><td>4.3 min</td></tr>
+                                <tr><td>Tier 2 (Customer-facing)</td><td>99.95%</td><td>< 500ms</td><td>21 min</td></tr>
+                                <tr><td>Tier 3 (Internal)</td><td>99.9%</td><td>< 1s</td><td>43 min</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p>Error budget burn rate triggers alerting tiers:</p>
+                    <pre><code># PrometheusRule example
+groups:
+- name: slo-burn-rate
+  rules:
+  - alert: HighErrorBudgetBurn
+    expr: |
+      (job:slo_errors_per_request:ratio_rate5m / job:slo_errors_per_request:ratio_rate1h) > 14.4
+    for: 2m
+    labels:
+      severity: critical
+      team: platform
+    annotations:
+      summary: "Error budget burning at 14.4x normal rate"
+      runbook_url: "https://runbooks.company.com/slo-burn"</code></pre>
+
+                    <h3>0.2 Service Catalog with Runbook Links</h3>
+                    <p>Every service in Backstage/GitOps repo has:</p>
+                    <ul>
+                        <li>Owner team + on-call rotation (PagerDuty/Opsgenie schedule)</li>
+                        <li>Dependency graph (upstream/downstream services)</li>
+                        <li>Runbook URL: <code>https://runbooks.company.com/{service-name}</code></li>
+                        <li>Dashboard URL: <code>https://grafana.company.com/d/{service-name}</code></li>
+                        <li>Recent deployments (ArgoCD/Flux sync status)</li>
+                    </ul>
+
+                    <h3>0.3 War Room Infrastructure (Pre-Provisioned)</h3>
+                    <ul>
+                        <li><strong>Slack:</strong> <code>#incident-{incident-id}</code> channel auto-created via bot</li>
+                        <li><strong>Zoom:</strong> Permanent meeting link in runbook header</li>
+                        <li><strong>Notion/Confluence:</strong> Incident template pre-populated</li>
+                        <li><strong>StatusPage:</strong> One-click public/private status update</li>
+                    </ul>
+
+                    <h2>Phase 1: Detection & Triage (0-2 Minutes)</h2>
+
+                    <h3>1.1 Alert Routing Rules</h3>
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr><th>Severity</th><th>Definition</th><th>Response Time</th><th>Escalation</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Sev-1 (Critical)</td><td>Revenue impact, data loss, security breach, full outage</td><td>< 5 min</td><td>IC → TL → Director → VP (15/30/60 min)</td></tr>
+                                <tr><td>Sev-2 (Major)</td><td>Degraded functionality, partial outage, SLO breach imminent</td><td>< 15 min</td><td>IC → TL → Director (30/60 min)</td></tr>
+                                <tr><td>Sev-3 (Minor)</td><td>Non-user-impacting, capacity warning, single AZ issue</td><td>< 1 hour</td><td>Next business day</td></tr>
+                                <tr><td>Sev-4 (Low)</td><td>Cosmetic, scheduled maintenance, documentation</td><td>Next sprint</td><td>N/A</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>1.2 First Responder Checklist (First 2 Minutes)</h3>
+                    <pre><code>☐ Acknowledge alert in PagerDuty/Opsgenie
+☐ Open runbook URL from alert annotation
+☐ Join war room Zoom (link in runbook)
+☐ Post in #incident-{id}: "ð´ IC: {name} acknowledged. Investigating {service}."
+☐ Check dashboard: Is SLO actually breached? (False positive rate target: < 5%)
+☐ Check recent deployments: ArgoCD/Flux diff, GitHub releases
+☐ Check dependency health: Upstream/downstream dashboards</code></pre>
+
+                    <h3>1.3 Triage Decision Tree</h3>
+                    <pre><code>                    ALERT FIRED
+                         │
+                         ▼
+              ┌─────────────────────┐
+              │ SLO breached NOW?   │──No──▶ Resolve alert, tune threshold
+              └─────────┬───────────┘
+                        │ Yes
+                        ▼
+              ┌─────────────────────┐
+              │ Known runbook exists?│──No──▶ Sev-1, page TL, start generic runbook
+              └─────────┬───────────┘
+                        │ Yes
+                        ▼
+              ┌─────────────────────┐
+              │ Can IC execute solo? │──No──▶ Escalate to TL, form war room
+              └─────────┬───────────┘
+                        │ Yes
+                        ▼
+              ┌─────────────────────┐
+              │ Execute runbook steps│
+              └─────────────────────┘</code></pre>
+
+                    <h2>Phase 2: Investigation & Mitigation (2-10 Minutes)</h2>
+
+                    <h3>2.1 Standard Investigation Commands (Kubernetes)</h3>
+                    <pre><code># Pod health
+kubectl get pods -n {namespace} -l app={service} -o wide
+kubectl describe pod {pod} -n {namespace}
+kubectl logs {pod} -n {namespace} --tail=100 --since=10m
+
+# Resource pressure
+kubectl top pods -n {namespace} --sort-by=memory
+kubectl top nodes
+kubectl describe node {node} | grep -A 10 "Allocated resources"
+
+# Network / DNS
+kubectl exec -it {pod} -n {namespace} -- nslookup {dependency}
+kubectl exec -it {pod} -n {namespace} -- curl -v {dependency}:{port}/health
+
+# Recent events
+kubectl get events -n {namespace} --sort-by='.lastTimestamp' | tail -20
+
+# HPA / Scaling
+kubectl get hpa -n {namespace}
+kubectl describe hpa {service} -n {namespace}</code></pre>
+
+                    <h3>2.2 Common Mitigation Patterns (Runbook Snippets)</h3>
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr><th>Symptom</th><th>Immediate Mitigation</th><th>Runbook Link</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Pod OOMKilled</td><td><code>kubectl patch deployment {svc} -p '{"spec":{"template":{"spec":{"containers":[{"name":"{svc}","resources":{"limits":{"memory":"2Gi"}}]}}}}'</code></td><td>/oom-mitigation</td></tr>
+                                <tr><td>CPU Throttling</td><td>Increase CPU limits/requests, check HPA minReplicas</td><td>/cpu-throttling</td></tr>
+                                <tr><td>Database connection exhaustion</td><td>PgBouncer max_client_conn, kill idle transactions</td><td>/db-connections</td></tr>
+                                <tr><td>Certificate expired</td><td>cert-manager renew, or manual kubectl create secret tls</td><td>/cert-renewal</td></tr>
+                                <tr><td>DNS resolution failing</td><td>CoreDNS restart, check upstream resolvers</td><td>/dns-issues</td></tr>
+                                <tr><td>Node NotReady</td><td>Cordon + drain, ASG replacement</td><td>/node-failure</td></tr>
+                                <tr><td>Deployment stuck</td><td>Rollback: <code>kubectl rollout undo deployment/{svc} -n {ns}</code></td><td>/rollback</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>2.3 Communication During Incident</h3>
+                    <ul>
+                        <li><strong>Every 5 min:</strong> IC posts update in Slack: "ð Investigating {hypothesis}. Current status: {mitigation attempted}. Next check: {time}"</li>
+                        <li><strong>Every 15 min:</strong> TL posts stakeholder summary in <code>#incident-leadership</code></li>
+                        <li><strong>StatusPage:</strong> Update within 10 min of Sev-1 declaration</li>
+                        <li><strong>No speculation:</strong> Only share confirmed facts. "We're investigating" > "It might be X"</li>
+                    </ul>
+
+                    <h2>Phase 3: Resolution & Recovery (10-30 Minutes)</h2>
+
+                    <h3>3.1 Confirm Fix & Monitor</h3>
+                    <pre><code># Verify fix
+watch -n 5 'curl -s {service}/health | jq .status'
+kubectl get pods -n {ns} -l app={svc} -w
+
+# Confirm SLO recovery
+# Wait for 2 full error budget windows (e.g., 10 min for<script defer src="/tayoca-site.js"></script>
