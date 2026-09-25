@@ -103,7 +103,7 @@
 
                 // Submit to n8n for personalized follow-up email
                 try {
-                    await fetch('https://n8n.tca-infraforge.site/webhook/tayoca-newsletter-signup', {
+                    await fetch('https://n8n.tayoca.com/webhook/tayoca-newsletter-signup', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ email, name })
