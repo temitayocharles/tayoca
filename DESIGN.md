@@ -1,9 +1,23 @@
 # Tayoca Sitewide Design System
 
-Status: **locked implementation specification** for `feat/tayoca-sitewide-figma-v9-20260911`
-Date: 2026-09-11
+Status: **LM Arena v2 is the current public-site presentation authority** as of 2026-09-25.
 Canonical source: Forgejo `temitayocharles/tayoca`
 Production target: `tayoca.com`
+
+## Current authority
+
+The complete LM Arena v2 presentation is authoritative for the public site. Its layout, imagery, content architecture and visual primitives must not be filtered, selectively replaced or reinterpreted without an explicit later design decision.
+
+Current Arena primitives include `hero-cinema`, `paper-band`, `ledger-label`, `portfolio-card`, the near-black / orange / warm-paper palette in `public/assets/css/site-shell.css`, and the official founder-supplied Tayoca logo at `public/assets/tayoca-logo-official.svg`.
+
+Post-Arena additions may restore required routes, analytics, campaign surfaces, integrations, accessibility, SEO metadata, reliability controls and official brand assets, but should preserve Arena composition unless a later approved design change explicitly supersedes it.
+
+The v9 specification below is retained as historical design lineage. It is **not** the implementation authority where it conflicts with LM Arena v2.
+
+## Historical v9 specification
+
+Status at the time: **locked implementation specification** for `feat/tayoca-sitewide-figma-v9-20260911`
+Date: 2026-09-11
 
 ## 1. Design decision
 

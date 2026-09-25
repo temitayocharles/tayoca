@@ -6,6 +6,9 @@
   <url><loc>https://tayoca.com/results.html</loc></url>
   <url><loc>https://tayoca.com/products.html</loc></url>
   <url><loc>https://tayoca.com/about.html</loc></url>
+  <url><loc>https://tayoca.com/aiweek</loc></url>
+  <url><loc>https://tayoca.com/privacy.html</loc></url>
+  <url><loc>https://tayoca.com/terms.html</loc></url>
   <url><loc>https://tayoca.com/work.html</loc></url>
   <url><loc>https://tayoca.com/trust.html</loc></url>
   <url><loc>https://tayoca.com/operator-brief.html</loc></url>
@@ -13,6 +16,7 @@
   <url><loc>https://tayoca.com/reviews.html</loc></url>
   <url><loc>https://tayoca.com/sivanta.html</loc></url>
   <url><loc>https://tayoca.com/community/websites</loc></url>
+  <url><loc>https://tayoca.com/community/nominate</loc></url>
   <url><loc>https://tayoca.com/blog/</loc></url>
   <url><loc>https://tayoca.com/blog/ai-automation-career-roadmap.html</loc></url>
   <url><loc>https://tayoca.com/blog/cka-practice-beyond-memorization.html</loc></url>
@@ -21,7 +25,6 @@
   <url><loc>https://tayoca.com/blog/gitops-beyond-hello-world.html</loc></url>
   <url><loc>https://tayoca.com/blog/kubernetes-incident-response-practice.html</loc></url>
   <url><loc>https://tayoca.com/blog/kubernetes-interview-scenarios.html</loc></url>
-  <url><loc>https://tayoca.com/blog/kubernetes-production-checklist.html</loc></url>
   <url><loc>https://tayoca.com/blog/kubernetes-production-readiness-checklist-for-2026.html</loc></url>
   <url><loc>https://tayoca.com/blog/kubernetes-troubleshooting-labs.html</loc></url>
   <url><loc>https://tayoca.com/blog/n8n-mcp-kubernetes.html</loc></url>

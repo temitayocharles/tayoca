@@ -92,6 +92,11 @@
       "source": "/l/aws-finops-playbook",
       "destination": "/products/aws-cost-optimization-playbook.html",
       "permanent": true
+    },
+    {
+      "source": "/blog/devops-incident-response-runbook.html",
+      "destination": "/products/devops-incident-runbook-template.html",
+      "permanent": true
     }
   ],
   "headers": [

@@ -56,7 +56,14 @@ def sitemap_pages():
         elif q.path.endswith("/"): path=PUBLIC/rel/"index.html"
         else:
             cand=PUBLIC/rel
-            path=cand if cand.is_file() else (PUBLIC/(rel+".html") if (PUBLIC/(rel+".html")).is_file() else None)
+            if cand.is_file():
+                path=cand
+            elif cand.is_dir() and (cand/"index.html").is_file():
+                path=cand/"index.html"
+            elif (PUBLIC/(rel+".html")).is_file():
+                path=PUBLIC/(rel+".html")
+            else:
+                path=None
         if not path or not path.is_file(): fail(f"sitemap target missing {u}")
         out.append((u,path))
     return out

@@ -19,6 +19,11 @@ def url_to_file(url: str) -> Path:
     candidate = PUBLIC / relative
     if candidate.suffix:
         return candidate
+    if candidate.is_file():
+        return candidate
+    html_candidate = candidate.with_suffix(".html")
+    if html_candidate.is_file():
+        return html_candidate
     return candidate / "index.html"
 
 
