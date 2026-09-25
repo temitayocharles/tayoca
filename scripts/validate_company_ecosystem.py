@@ -325,7 +325,7 @@ def main() -> int:
     resolve_public(require_text(evidence.get("results_standard"), "evidence.results_standard"), "evidence")
     resolve_public(require_text(evidence.get("trust_center"), "evidence.trust_center"), "evidence")
     resolve_public(require_text(evidence.get("reviews", {}).get("surface"), "evidence.reviews.surface"), "evidence")
-    if not str(evidence.get("reviews", {}).get("endpoint", "")).startswith("https://n8n.tca-infraforge.site/"):
+    if not str(evidence.get("reviews", {}).get("endpoint", "")).startswith("https://n8n.tayoca.com/"):
         fail("evidence.reviews.endpoint must remain the review data endpoint")
 
     # Withdrawn proof narratives must never become portfolio evidence.

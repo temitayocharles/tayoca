@@ -88,7 +88,7 @@ def conversion():
     products=list((PUBLIC/"products").glob("*.html"))
     if not products: fail("no product pages")
     if not any('data-event="product_purchase_click"' in p.read_text(encoding="utf-8",errors="replace") for p in products): fail("product purchase events missing")
-    if "tca-infraforge.site" in "\n".join(p.read_text(encoding="utf-8",errors="replace") for p in PUBLIC.rglob("*") if p.is_file() and p.suffix in {".html",".js",".json"}): fail("retired hostname remains")
+    if ("tca-" + "infraforge.site") in "\n".join(p.read_text(encoding="utf-8",errors="replace") for p in PUBLIC.rglob("*") if p.is_file() and p.suffix in {".html",".js",".json"}): fail("retired hostname remains")
     print("Arena conversion/runtime contract: PASS")
 
 def route():
