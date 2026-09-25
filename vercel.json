@@ -7,7 +7,7 @@
   "rewrites": [
     {
       "source": "/aiweek",
-      "destination": "/aiweek.html"
+      "destination": "https://n8n.tayoca.com/form/ai-leverage-week-2026-register"
     },
     {
       "source": "/access/book",
