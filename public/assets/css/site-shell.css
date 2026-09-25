@@ -54,10 +54,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
    Header — canonical shell
    ============================================================ */
 .site-header{position:sticky;top:0;z-index:1000;background:rgba(11,10,9,.93);border-bottom:1px solid var(--line);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
-.site-header .header-inner{max-width:var(--max);margin:0 auto;min-height:68px;padding:.7rem 1.5rem;display:flex;align-items:center;gap:1.4rem}
-.site-header .brand{font-family:var(--display);font-size:1.1rem;font-weight:800;letter-spacing:.18em;color:#fff;text-decoration:none;white-space:nowrap;display:inline-flex;align-items:center;gap:.6rem}
-.site-header .brand::before{content:"";width:11px;height:11px;background:var(--accent);border-radius:2px;flex:none}
-.site-header .brand:hover{color:var(--accent-2)}
+.site-header .header-inner{max-width:var(--max);margin:0 auto;min-height:86px;padding:.45rem 1.5rem;display:flex;align-items:center;gap:1.4rem}
+.site-header .brand{width:92px;height:72px;flex:0 0 92px;display:inline-block;overflow:hidden;text-indent:-9999px;white-space:nowrap;background:#fff url("/assets/tayoca-logo-official.svg") center/contain no-repeat;border-radius:8px;box-shadow:0 0 0 1px rgba(255,255,255,.14);text-decoration:none;transition:transform .15s,box-shadow .15s}
+.site-header .brand::before{content:none}
+.site-header .brand:hover,.site-header .brand:focus-visible{box-shadow:0 0 0 2px var(--accent);transform:translateY(-1px)}
 .site-header .primary-nav{margin-left:auto;display:flex;align-items:center;gap:1.5rem}
 .site-header .primary-nav a{font-family:var(--body);color:#d7d2ca;text-decoration:none;font-size:.92rem;font-weight:600;line-height:1.2;padding:.3rem 0;border-bottom:2px solid transparent;white-space:nowrap}
 .site-header .primary-nav a:hover,.site-header .primary-nav a:focus-visible{color:#fff;border-bottom-color:var(--accent)}
@@ -342,8 +342,8 @@ figure.figure figcaption,.figure-caption{margin-top:.75rem;font-family:var(--mon
    ============================================================ */
 .site-footer{border-top:1px solid var(--line);background:#080706;padding:3.6rem 0 2.2rem;color:var(--muted);font-size:.93rem}
 .footer-inner{max-width:var(--max);margin:0 auto;padding:0 1.5rem;display:grid;grid-template-columns:1.7fr 1fr 1fr 1fr 1fr 1fr;gap:2.2rem}
-.footer-brand{font-family:var(--display);color:#fff;font-weight:800;letter-spacing:.14em;font-size:1.05rem;display:flex;align-items:center;gap:.6rem}
-.footer-brand::before{content:"";width:10px;height:10px;background:var(--accent);border-radius:2px;flex:none}
+.footer-brand{width:112px;height:87px;display:block;overflow:hidden;text-indent:-9999px;white-space:nowrap;background:#fff url("/assets/tayoca-logo-official.svg") center/contain no-repeat;border-radius:8px;box-shadow:0 0 0 1px rgba(255,255,255,.12)}
+.footer-brand::before{content:none}
 .footer-brand-col p{margin:.9rem 0 0;max-width:320px;font-size:.9rem;color:var(--muted)}
 .footer-col{display:flex;flex-direction:column;gap:.4rem}
 .footer-col strong,.footer-links strong{color:#e9e6e1;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.45rem}

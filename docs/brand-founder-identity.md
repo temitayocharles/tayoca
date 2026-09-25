@@ -29,7 +29,8 @@ Use the certified Tayoca public-site palette and typography:
 - Accent: #f97316
 - Primary text: #e5e5e5
 - Muted text: #a3a3a3
-- Wordmark: uppercase TAYOCA with wide tracking
+- Official corporate logo: the blue/green Tayoca lockup supplied by the founder, including the “PEOPLE | SOLUTIONS | PROGRESS” tagline. Canonical web asset: `public/assets/tayoca-logo-official.svg`.
+- The prior text-only uppercase TAYOCA wordmark is deprecated for public-site brand placement and must not be used as a substitute for the official logo.
 - Public-site typography: Sora for display, Inter for body; email fallbacks must use widely supported system fonts.
 
 Do not introduce a parallel founder brand or alternate color system.
