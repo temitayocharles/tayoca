@@ -196,7 +196,7 @@ workstreams:
   n8n_public_domain_cutover_20260918:
     status: completed_public_hostname_retired
     canonical_hostname: https://n8n.tayoca.com
-    retired_hostname: https://n8n.tca-infraforge.site
+    retired_hostname: retired_legacy_n8n_hostname
     canonical_forgejo_pr: 161
     canonical_forgejo_merge: 8837d3dd155a67a88fd7d75622d25341c0127eb8
     github_mirror_commit: fcfb6bd4a0d6c4caba6f84202d825f0bb8170753

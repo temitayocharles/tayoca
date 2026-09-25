@@ -5,7 +5,7 @@
   "status": "GREEN",
   "authority": {
     "repository": "temitayocharles/tayoca",
-    "host": "forgejo.tca-infraforge.site",
+    "host": "forgejo.tayoca.com",
     "role": "canonical"
   },
   "stage_evidence": [

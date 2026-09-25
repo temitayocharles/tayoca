@@ -14,7 +14,7 @@
     "executive dashboard and weekly report"
   ],
   "canonical_repository": {
-    "host": "forgejo.tca-infraforge.site",
+    "host": "forgejo.tayoca.com",
     "repo": "temitayocharles/tayoca",
     "implementation_tip_before_baseline": "08a627fa3c7035ebaf909f6bc0314bc73921f574",
     "implementation_message": "analytics: fix Stage 12 session attribution storage"

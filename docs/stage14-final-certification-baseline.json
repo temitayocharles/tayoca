@@ -22,7 +22,7 @@
     "docs/final-certification/evidence-ledger.json"
   ],
   "canonical_authority": {
-    "host": "forgejo.tca-infraforge.site",
+    "host": "forgejo.tayoca.com",
     "repository": "temitayocharles/tayoca",
     "github_role": "secondary deployment mirror"
   },

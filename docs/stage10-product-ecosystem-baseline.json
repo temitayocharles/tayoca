@@ -6,7 +6,7 @@
   "acceptance_gate": "Every product has a coherent commercial role and does not appear as an unrelated side project.",
   "canonical_source": {
     "repository": "temitayocharles/tayoca",
-    "host": "forgejo.tca-infraforge.site",
+    "host": "forgejo.tayoca.com",
     "authority": "primary",
     "source_of_truth_record": "docs/repository-source-of-truth.yaml"
   },

@@ -215,7 +215,7 @@ Historical static-state reconciliation reached a certified 46/46, zero-duplicate
 
 ### 7.1 Public n8n domain cutover — 2026-09-18
 
-The public n8n endpoint migration from `n8n.tca-infraforge.site` to `n8n.tayoca.com` is complete at the public routing, application, provider-callback and deployment layers.
+The public n8n endpoint migration from the retired legacy hostname to `n8n.tayoca.com` is complete at the public routing, application, provider-callback and deployment layers.
 
 Certified evidence:
 
@@ -228,7 +228,7 @@ Certified evidence:
 - n8n execution #559821 confirmed the book access gateway remains fail-closed without a valid entitlement token;
 - Gumroad sale events now have exactly one resource subscription, targeting `https://n8n.tayoca.com/webhook/tayoca-gumroad-sale`; the legacy subscription was removed only after the new subscription was verified;
 - canonical homelab certificate, Homepage, Authentik reference and Uptime Kuma desired state use `n8n.tayoca.com`;
-- the legacy Cloudflare DNS record for `n8n.tca-infraforge.site` was deleted after cutover verification, while `n8n.tayoca.com` remains proxied to tunnel `8481ad36-ec4e-41a0-8891-00ae45c69a0c`.
+- the legacy Cloudflare DNS record was deleted after cutover verification, while `n8n.tayoca.com` remains proxied to tunnel `8481ad36-ec4e-41a0-8891-00ae45c69a0c`.
 
 The current Cloudflare connector cannot read the tunnel configuration API, so any dormant legacy ingress rule inside that tunnel remains unverified configuration hygiene. It is not publicly addressable through the retired legacy DNS hostname and must not be modified with a replace-style tunnel update until the complete live ingress configuration can be read safely.
 
